@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}About | {{ config.site_name }}{% endblock %}
+{% block description %}About {{ config.curator_name }} and {{ config.site_name }}{% endblock %}
+
+{% block content %}
+<section class="about-page">
+    <header class="page-header">
+        <h1>About {{ config.site_name }}</h1>
+    </header>
+
+    <div class="about-content">
+        <section class="about-section">
+            <h2>The Mission</h2>
+            <p>{{ config.site_name }} is a daily curated collection of the most important news, research, and developments in quantum computing. In a field moving as fast as quantum technology, staying informed can be overwhelming. This site cuts through the noise to bring you the stories that matter.</p>
+            <p>Every article is hand-selected and accompanied by expert commentary to help you understand not just <em>what</em> happened, but <em>why</em> it matters for the future of quantum computing.</p>
+        </section>
+
+        <section class="about-section curator-section">
+            <h2>About the Curator</h2>
+            <div class="curator-profile">
+                <div class="curator-details">
+                    <h3>{{ config.curator_name }}</h3>
+                    <p>{{ config.curator_bio }}</p>
+                </div>
+            </div>
+            {% if config.social_links %}
+            <div class="curator-links">
+                <h4>Connect</h4>
+                <ul>
+                    {% for platform, url in config.social_links.items() %}
+                    <li><a href="{{ url }}" target="_blank" rel="noopener">{{ platform }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </section>
+
+        <section class="about-section">
+            <h2>Sources</h2>
+            <p>Articles are aggregated from leading sources in quantum computing including:</p>
+            <ul class="source-list">
+                <li><strong>Academic Research:</strong> arXiv (quant-ph, cs.QI)</li>
+                <li><strong>Industry Blogs:</strong> IBM Quantum, Google AI, Microsoft Quantum, AWS Quantum, IonQ</li>
+                <li><strong>Science Publications:</strong> Nature Physics, Quanta Magazine, Phys.org</li>
+                <li><strong>Tech News:</strong> Ars Technica, MIT Technology Review, Wired</li>
+                <li><strong>Quantum-Focused:</strong> Quantum Computing Report, The Quantum Insider</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to the <a href="/feed.xml">RSS feed</a> to get the latest quantum computing news delivered to your reader.</p>
+        </section>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Archive | {{ config.site_name }}{% endblock %}
+{% block description %}Browse all quantum computing articles curated by {{ config.curator_name }}{% endblock %}
+
+{% block content %}
+<section class="archive-page">
+    <header class="page-header">
+        <h1>Article Archive</h1>
+        <p class="page-subtitle">Browse all curated quantum computing articles by month</p>
+    </header>
+
+    <div class="archive-list">
+        {% for month in months %}
+        {% set month_date = month_posts[month][0].published_at %}
+        <div class="archive-month">
+            <h2>
+                <a href="/archive/{{ month }}.html">
+                    {{ month_date.strftime('%B %Y') }}
+                </a>
+                <span class="article-count">({{ month_posts[month] | length }} articles)</span>
+            </h2>
+            <ul class="month-articles">
+                {% for post in month_posts[month][:5] %}
+                <li>
+                    <a href="/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+                    <span class="article-source">{{ post.source_name }}</span>
+                </li>
+                {% endfor %}
+                {% if month_posts[month] | length > 5 %}
+                <li class="more-link">
+                    <a href="/archive/{{ month }}.html">View all {{ month_posts[month] | length }} articles &rarr;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% else %}
+        <p class="no-articles">No archived articles yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ month.strftime('%B %Y') }} | Archive | {{ config.site_name }}{% endblock %}
+{% block description %}Quantum computing articles from {{ month.strftime('%B %Y') }} curated by {{ config.curator_name }}{% endblock %}
+
+{% block content %}
+<section class="archive-month-page">
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/">Home</a> &raquo; <a href="/archive/">Archive</a> &raquo;
+        </nav>
+        <h1>{{ month.strftime('%B %Y') }}</h1>
+        <p class="page-subtitle">{{ posts | length }} curated articles</p>
+    </header>
+
+    <div class="posts-list">
+        {% for post in posts %}
+        <article class="post-item">
+            <div class="post-date">
+                {{ post.published_at.strftime('%d') }}
+            </div>
+            <div class="post-content">
+                <div class="post-topics">
+                    {% for topic in post.topics %}
+                    <a href="/topics/{{ topic.value | topic_class }}.html" class="topic-tag topic-{{ topic.value | topic_class }}">{{ topic.value }}</a>
+                    {% endfor %}
+                </div>
+                <h2><a href="/posts/{{ post.id[:8] }}.html">{{ post.title }}</a></h2>
+                <p class="post-summary">{{ post.summary[:200] }}{% if post.summary|length > 200 %}...{% endif %}</p>
+                <div class="post-meta">
+                    <span class="source">{{ post.source_name }}</span>
+                    <a href="{{ post.original_url }}" class="original-link" target="_blank" rel="noopener">Read Original</a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <nav class="archive-nav">
+        <a href="/archive/">&larr; Back to Archive</a>
+    </nav>
+</section>
+{% endblock %}

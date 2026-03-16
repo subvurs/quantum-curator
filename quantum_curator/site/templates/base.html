@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ config.site_name }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ config.site_description }}{% endblock %}">
+    <meta name="author" content="{{ config.curator_name }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}{{ config.site_name }}{% endblock %}">
+    <meta property="og:description" content="{{ config.site_description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ config.base_url }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ config.site_name }}">
+    <meta name="twitter:description" content="{{ config.site_description }}">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ config.site_name }} RSS Feed" href="{{ config.base_url }}/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">{{ config.site_name }}</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>{{ config.curator_name }}</strong></p>
+                    <p class="footer-tagline">{{ config.site_description }}</p>
+                </div>
+                <div class="footer-links">
+                    {% if config.social_links %}
+                    <div class="social-links">
+                        {% for platform, url in config.social_links.items() %}
+                        <a href="{{ url }}" target="_blank" rel="noopener">{{ platform }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="copyright">&copy; {{ now.year }} {{ config.curator_name }}. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} | {{ config.site_name }}{% endblock %}
+{% block description %}{{ post.summary[:160] }}{% endblock %}
+{% block og_title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            {% for topic in post.topics %}
+            <a href="/topics/{{ topic.value | topic_class }}.html" class="topic-tag topic-{{ topic.value | topic_class }}">{{ topic.value }}</a>
+            {% endfor %}
+        </div>
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>{{ post.source_name }}</strong></span>
+            <span class="date">{{ post.published_at | date }}</span>
+            <span class="curator">Curated by <strong>{{ post.curator_name }}</strong></span>
+        </div>
+    </header>
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                {{ post.curator_commentary }}
+            </blockquote>
+            <p class="curator-attr">&mdash; {{ post.curator_name }}</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>{{ post.summary }}</p>
+        </section>
+
+        <div class="read-original">
+            <a href="{{ post.original_url }}" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at {{ post.source_name }} &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text={{ post.title | urlencode }}&url={{ config.base_url }}/posts/{{ post.id[:8] }}.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ config.base_url }}/posts/{{ post.id[:8] }}.html&title={{ post.title | urlencode }}" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+{% endblock %}

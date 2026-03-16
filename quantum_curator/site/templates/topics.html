@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Topics | {{ config.site_name }}{% endblock %}
+{% block description %}Browse quantum computing articles by topic{% endblock %}
+
+{% block content %}
+<section class="topics-page">
+    <header class="page-header">
+        <h1>Browse by Topic</h1>
+        <p class="page-subtitle">Explore curated quantum computing articles organized by topic</p>
+    </header>
+
+    <div class="topics-grid">
+        {% for topic, posts in topic_posts.items() %}
+        <a href="/topics/{{ topic | topic_class }}.html" class="topic-card topic-{{ topic | topic_class }}">
+            <h2>{{ topic }}</h2>
+            <p class="topic-count">{{ posts | length }} article{% if posts | length != 1 %}s{% endif %}</p>
+            <ul class="topic-preview">
+                {% for post in posts[:3] %}
+                <li>{{ post.title[:50] }}{% if post.title|length > 50 %}...{% endif %}</li>
+                {% endfor %}
+            </ul>
+        </a>
+        {% else %}
+        <p class="no-topics">No topics yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

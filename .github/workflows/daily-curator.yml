@@ -1,0 +1,59 @@
+name: Daily Quantum Curation
+
+on:
+  schedule:
+    # Run twice daily: 6 AM and 6 PM UTC
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:  # Allow manual triggers
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+
+jobs:
+  curate-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Initialize database
+        run: quantum-curator init
+
+      - name: Fetch articles
+        run: quantum-curator fetch
+
+      - name: Curate content
+        run: quantum-curator curate --auto-publish --create-digest
+
+      - name: Build site
+        run: quantum-curator build --output ./public
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          user_name: 'Quantum Curator Bot'
+          user_email: 'curator@quantum-curator.com'
+          commit_message: 'Daily curation update'
+
+      - name: Notify on success
+        if: success()
+        run: echo "✓ Daily curation complete and deployed"
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "✗ Daily curation failed"

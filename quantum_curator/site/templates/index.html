@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>Quantum Computing News</h1>
+    <p class="hero-subtitle">Daily curated news and insights from the world of quantum computing, handpicked by {{ config.curator_name }}</p>
+</section>
+
+{% if digest %}
+<section class="daily-digest">
+    <h2>Today's Digest</h2>
+    <div class="digest-card">
+        <h3>{{ digest.title }}</h3>
+        <div class="digest-summary">
+            {{ digest.summary | safe }}
+        </div>
+        <div class="digest-meta">
+            <span class="digest-date">{{ digest.date | date }}</span>
+            <span class="digest-count">{{ digest.post_ids | length }} articles</span>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="latest-posts">
+    <div class="section-header">
+        <h2>Latest Articles</h2>
+        <a href="/archive/" class="view-all">View All &rarr;</a>
+    </div>
+
+    <div class="posts-grid">
+        {% for post in posts %}
+        <article class="post-card">
+            <div class="post-topics">
+                {% for topic in post.topics %}
+                <a href="/topics/{{ topic.value | topic_class }}.html" class="topic-tag topic-{{ topic.value | topic_class }}">{{ topic.value }}</a>
+                {% endfor %}
+            </div>
+            <h3 class="post-title">
+                <a href="/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+            </h3>
+            <p class="post-summary">{{ post.summary[:200] }}{% if post.summary|length > 200 %}...{% endif %}</p>
+            <div class="post-commentary">
+                <blockquote>{{ post.curator_commentary }}</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">{{ post.source_name }}</span>
+                <span class="post-date">{{ post.published_at | date }}</span>
+                <a href="{{ post.original_url }}" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        {% else %}
+        <p class="no-posts">No articles yet. Check back soon!</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% if topic_counts %}
+<section class="topics-sidebar">
+    <h2>Browse by Topic</h2>
+    <div class="topic-cloud">
+        {% for topic, count in topic_counts.items() %}
+        <a href="/topics/{{ topic | topic_class }}.html" class="topic-pill topic-{{ topic | topic_class }}">
+            {{ topic }} <span class="count">({{ count }})</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="curator-card">
+    <h2>About the Curator</h2>
+    <div class="curator-info">
+        <div class="curator-details">
+            <h3>{{ config.curator_name }}</h3>
+            <p>{{ config.curator_bio }}</p>
+            <a href="/about.html" class="learn-more">Learn More &rarr;</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ config.site_name }}</title>
+        <link>{{ config.base_url }}</link>
+        <description>{{ config.site_description }}</description>
+        <language>en-us</language>
+        <lastBuildDate>{{ now | datetime }}</lastBuildDate>
+        <atom:link href="{{ config.base_url }}/feed.xml" rel="self" type="application/rss+xml"/>
+        <managingEditor>{{ config.curator_name }}</managingEditor>
+        <webMaster>{{ config.curator_name }}</webMaster>
+
+        {% for post in posts %}
+        <item>
+            <title>{{ post.title | e }}</title>
+            <link>{{ config.base_url }}/posts/{{ post.id[:8] }}.html</link>
+            <guid isPermaLink="true">{{ config.base_url }}/posts/{{ post.id[:8] }}.html</guid>
+            <pubDate>{{ post.published_at | datetime }}</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> {{ post.curator_commentary }}</p>
+                <p>{{ post.summary }}</p>
+                <p><a href="{{ post.original_url }}">Read original at {{ post.source_name }}</a></p>
+            ]]></description>
+            <author>{{ config.curator_name }}</author>
+            {% for topic in post.topics %}
+            <category>{{ topic.value }}</category>
+            {% endfor %}
+        </item>
+        {% endfor %}
+    </channel>
+</rss>

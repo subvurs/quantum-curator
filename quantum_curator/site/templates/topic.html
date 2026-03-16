@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ topic }} | Topics | {{ config.site_name }}{% endblock %}
+{% block description %}Quantum computing articles about {{ topic }} curated by {{ config.curator_name }}{% endblock %}
+
+{% block content %}
+<section class="topic-page">
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
+        </nav>
+        <h1>{{ topic }}</h1>
+        <p class="page-subtitle">{{ posts | length }} curated article{% if posts | length != 1 %}s{% endif %}</p>
+    </header>
+
+    <div class="posts-grid">
+        {% for post in posts %}
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+            </h3>
+            <p class="post-summary">{{ post.summary[:200] }}{% if post.summary|length > 200 %}...{% endif %}</p>
+            <div class="post-commentary">
+                <blockquote>{{ post.curator_commentary }}</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">{{ post.source_name }}</span>
+                <span class="post-date">{{ post.published_at | date }}</span>
+                <a href="{{ post.original_url }}" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <nav class="topic-nav">
+        <a href="/topics/">&larr; All Topics</a>
+    </nav>
+</section>
+{% endblock %}
