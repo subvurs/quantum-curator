@@ -9,17 +9,17 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Quantum Pulse">
-    <meta property="og:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quantum-pulse.github.io">
+    <meta property="og:url" content="https://subvurs.github.io/quantum-curator">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Quantum Pulse">
-    <meta name="twitter:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://quantum-pulse.github.io/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://subvurs.github.io/quantum-curator/feed.xml">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -54,117 +54,86 @@
             <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
         </nav>
         <h1>simulation</h1>
-        <p class="page-subtitle">7 curated articles</p>
+        <p class="page-subtitle">4 curated articles</p>
     </header>
 
-    <div class="posts-grid">
+    
+    
+    <article class="featured-card featured-card--wide" style="margin-bottom: var(--space-xl);">
         
-        <article class="post-card">
+        <div class="featured-image image-fallback topic-bg-simulation"></div>
+        
+        <div class="featured-content">
             <h3 class="post-title">
-                <a href="/posts/d39e6206.html">Benchmarking quantum simulation with neutron-scattering experiments</a>
+                <a href="/posts/9f8da3dc.html">Auger Spectroscopy via Generative Quantum Eigensolver: A Quantum Approach to Molecular Excitations</a>
             </h3>
-            <p class="post-summary">A central goal of quantum computation is the realistic simulation of quantum materials. Although quantum processors have advanced rapidly in scale and fidelity, it has remained unclear whether pre-fau...</p>
+            <p class="post-summary">Auger electron spectroscopy, a way of characterizing electronic structure through core-level decay processes, is widely used in materials characterization; however direct calculation from molecular geometry requires accurate treatment of many excited states, posing a challenge for classical methods....</p>
             <div class="post-commentary">
-                <blockquote>This groundbreaking work represents a crucial milestone in quantum computing&#39;s journey toward practical utility, demonstrating that today&#39;s noisy intermediate-scale quantum devices can already produce scientifically meaningful results when simulating complex quantum materials. By directly benchmarking their 50-qubit superconducting processor against real neutron-scattering experiments of KCuF₃, the researchers have shown that quantum simulators can now tackle the notoriously difficult regime of strongly correlated quantum systems where classical computers struggle. The development of their quantum-classical workflow for computing dynamical structure factors creates a powerful new framework that bridges the gap between quantum simulation and experimental validation, potentially accelerating materials discovery and our understanding of exotic quantum phases. Most importantly, this work proves that we don&#39;t need to wait for fault-tolerant quantum computers to start extracting real scientific value from quantum simulation—the near-term devices available today are already crossing the threshold into genuine utility for materials research.</blockquote>
+                <blockquote>This article represents a fascinating convergence of quantum computing, machine learning, and materials science, demonstrating how AI-generated quantum circuits can tackle complex molecular spectroscopy problems that challenge classical computers. The researchers&#39; hybrid approach cleverly combines a GPT-2 model to design efficient quantum circuits with quantum algorithms for calculating excited states—addressing one of the most computationally demanding aspects of molecular characterization. What&#39;s particularly compelling is that their Generative Quantum Eigensolver (GQE) achieves similar accuracy to traditional variational quantum eigensolvers while requiring roughly half the quantum gates, potentially making these calculations more feasible on near-term quantum devices. This work opens an intriguing pathway where large language models could help optimize quantum algorithms for real-world chemistry applications, bridging three of today&#39;s most transformative computing paradigms.</blockquote>
             </div>
             <div class="post-meta">
                 <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15608v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-date">March 13, 2026</span>
+                <a href="https://arxiv.org/abs/2603.12859v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </div>
+    </article>
+    
+
+    
+    
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail image-fallback topic-bg-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/6ea20c97.html">Reaction-Level Consistency within the Variational Quantum Eigensolver: Homodesmotic Ring Strain Energies of Cyclic Hydrocarbons</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Simulation of chemical reactions on quantum computing platforms using quantum classical hybrid algorithms such as the Variational Quantum Eigensolver ...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/81eec93d.html">Simulating the Open System Dynamics of Multiple Exchange-Only Qubits using Subspace Monte Carlo</a>
-            </h3>
-            <p class="post-summary">We propose a Monte Carlo based method for simulating the open system dynamics of multiple exchange-only (EO) qubits. In the EO encoding, the total spin projection quantum number along the $z$-axis of ...</p>
-            <div class="post-commentary">
-                <blockquote>This work tackles a crucial computational bottleneck in simulating exchange-only qubits—a promising architecture for quantum computing where logical qubits are encoded in the spin states of three electrons. By cleverly exploiting the physics of these systems, the researchers developed a &#34;Subspace Monte Carlo&#34; method that dramatically reduces the computational complexity from exponentially scaling with 8^(2n) to 3^(2n) dimensions for n qubits. The approach works by recognizing that measuring the total spin projection after each operation naturally separates the system into independent subspaces, making large-scale simulations of realistic noise models computationally feasible. This simulation breakthrough is particularly valuable for optimizing error correction protocols in exchange-only qubit systems, which are being actively pursued by several quantum computing companies due to their potential for all-electrical control and integration with semiconductor manufacturing.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15577v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/eb7dd118.html">Analog-Digital Quantum Computing with Quantum Annealing Processors</a>
-            </h3>
-            <p class="post-summary">Quantum annealing processors typically control qubits in unison, attenuating quantum fluctuations uniformly until the applied system Hamiltonian is diagonal in the computational basis. This simplifies...</p>
-            <div class="post-commentary">
-                <blockquote>This research represents a significant breakthrough in making quantum annealing processors far more versatile by essentially giving them &#34;gate-like&#34; capabilities at the start and end of computations. By combining the scalability advantages of quantum annealers (which can handle hundreds of qubits) with the flexibility of arbitrary qubit initialization and measurement, the team has created a hybrid analog-digital approach that dramatically expands what these commercially available systems can accomplish. The successful demonstrations of quantum walks and Anderson localization show this isn&#39;t just theoretical—it&#39;s a practical pathway to unlock new quantum simulation and computation applications on existing hardware like D-Wave systems. This could be a game-changer for researchers who want to explore complex quantum phenomena but have been limited by the rigid operational constraints of traditional quantum annealing.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15534v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail image-fallback topic-bg-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/c9847074.html">Efficient equivalence checking of Clifford-U circuits with shared single-qubit unitaries</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Quantum circuit equivalence checking asks whether two circuits implement the same unitary. It guarantees compiler correctness and safe optimization, y...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/b026df94.html">End-to-end performance of quantum-accelerated large-scale linear algebra workflows</a>
-            </h3>
-            <p class="post-summary">Solving large-scale sparse linear systems is a challenging computational task due to the introduction of non-zero elements, or &#34;fill-in.&#34; The Graph Partitioning Problem (GPP) arises naturally when min...</p>
-            <div class="post-commentary">
-                <blockquote>This article represents a significant milestone in demonstrating quantum advantage for real-world industrial applications, moving beyond theoretical proofs to measure actual performance improvements in commercial finite element analysis software used across automotive and aerospace industries. The researchers successfully integrated quantum optimization into Synopsys/Ansys&#39; LS-DYNA platform—a widely-used multiphysics simulation tool—and tested it on complex models including sedan cars and Rolls-Royce jet engines with meshes containing up to 35 million elements. What makes this particularly compelling is their focus on end-to-end wall-clock performance rather than just algorithmic complexity, providing concrete evidence of quantum acceleration in the type of large-scale linear algebra problems that form the computational backbone of modern engineering simulation. The work bridges the crucial gap between quantum computing research and industrial adoption, offering a clear pathway for quantum computers to enhance the design and analysis workflows that power everything from automotive crash testing to aerospace component optimization.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15515v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/63e0c9ae.html">Ab Initio Study of Erbium Point Defects in 4H-SiC for Quantum Devices</a>
-            </h3>
-            <p class="post-summary">Identifying scalable materials systems that exhibit quantum behavior is a central challenge in quantum information science. Point defects in certain wide-bandgap semiconductors are promising in this r...</p>
-            <div class="post-commentary">
-                <blockquote>This computational study tackles a crucial bottleneck in quantum technology development: finding defect centers that can be reliably manufactured using existing semiconductor processes. By using first-principles calculations to map out how erbium atoms behave when embedded in silicon carbide crystal structures, researchers are essentially creating a theoretical blueprint for quantum devices that could leverage the same mature fabrication techniques used in classical electronics. The focus on erbium defects in 4H-SiC is particularly strategic, as these systems can emit single photons at telecommunications wavelengths—making them ideal candidates for quantum networks that need to transmit quantum information over existing fiber optic infrastructure. This type of foundational theoretical work is essential for bridging the gap between laboratory quantum experiments and the scalable manufacturing needed for practical quantum technologies.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15343v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/e3767158.html">Building advanced quantum chemistry calculations with Kvantify Qrunch on Amazon Braket</a>
-            </h3>
-            <p class="post-summary">Quantum computing promises breakthroughs in chemistry simulations. However, building scalable calculations on today’s noisy quantum hardware remains challenging. This blog introduces Kvantify Qrunch s...</p>
-            <div class="post-commentary">
-                <blockquote>This article showcases a significant step toward making quantum chemistry practically accessible on today&#39;s NISQ devices through Kvantify&#39;s specialized software stack on Amazon Braket. By focusing on hybrid algorithms that can work effectively despite current hardware limitations, this represents the kind of pragmatic approach the field needs to bridge the gap between quantum computing&#39;s theoretical promise and real-world chemical simulation applications. The integration with AWS&#39;s cloud quantum platform could democratize access to advanced quantum chemistry calculations for researchers and companies who previously lacked the expertise to implement these complex algorithms from scratch. This development is particularly noteworthy as chemistry simulations remain one of the most compelling near-term applications for quantum advantage, with potential impacts spanning drug discovery, materials science, and catalyst design.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">February 25, 2026</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/building-advanced-quantum-chemistry-calculations-with-kvantify-qrunch-on-amazon-braket/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/ed2da588.html">Exact simulation of Quantum Enhanced Signature Kernels for financial data streams prediction using Amazon Braket</a>
-            </h3>
-            <p class="post-summary">This post was contributed by Ernesto Palidda and Marco Paini from Rigetti Computing, Cristopher Salvi and Antoine Jacquier from Imperial College London, Samuel Crew from National Tsing Hua University ...</p>
-            <div class="post-commentary">
-                <blockquote>This collaboration between Rigetti, Imperial College London, and Standard Chartered demonstrates quantum computing&#39;s potential to tackle real-world financial problems through quantum-enhanced signature kernels - a sophisticated mathematical framework for analyzing sequential data like market prices. The work is particularly noteworthy because it bridges academic quantum machine learning research with practical financial applications, using Amazon Braket to simulate quantum algorithms that could eventually provide computational advantages for time-series prediction in trading and risk management. While still in the simulation phase, this represents the kind of industry-academia partnership that&#39;s essential for moving quantum computing from research curiosity to practical financial tools, especially given the financial sector&#39;s hunger for any edge in processing complex market data streams.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">November 12, 2025</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/exact-simulation-of-quantum-enhanced-signature-kernels-for-financial-data-streams-prediction-using-amazon-braket/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail image-fallback topic-bg-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/838504fe.html">Probing many-body localization crossover in quasiperiodic Floquet circuits on a quantum processor</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Many-body localization (MBL) provides a mechanism by which interacting quantum systems evade thermalization, leading to persistent memory of initial c...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
     </div>
+    
 
     <nav class="topic-nav">
         <a href="/topics/">&larr; All Topics</a>
@@ -179,7 +148,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <p>Curated by <strong>Mark Eatherly</strong></p>
-                    <p class="footer-tagline">A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
                 </div>
                 <div class="footer-links">
                     
@@ -188,5 +157,16 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
 </body>
 </html>

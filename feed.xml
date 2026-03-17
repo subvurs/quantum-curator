@@ -2,384 +2,142 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Quantum Pulse</title>
-        <link>https://quantum-pulse.github.io</link>
-        <description>A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</description>
+        <link>https://subvurs.github.io/quantum-curator</link>
+        <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Tue, 17 Mar 2026 19:03:04 +0000</lastBuildDate>
-        <atom:link href="https://quantum-pulse.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Tue, 17 Mar 2026 22:24:20 +0000</lastBuildDate>
+        <atom:link href="https://subvurs.github.io/quantum-curator/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
         
         <item>
-            <title>Benchmarking quantum simulation with neutron-scattering experiments</title>
-            <link>https://quantum-pulse.github.io/posts/d39e6206.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/d39e6206.html</guid>
-            <pubDate>Mon, 16 Mar 2026 17:56:58 +0000</pubDate>
+            <title>Auger Spectroscopy via Generative Quantum Eigensolver: A Quantum Approach to Molecular Excitations</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/9f8da3dc.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/9f8da3dc.html</guid>
+            <pubDate>Fri, 13 Mar 2026 10:03:39 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This groundbreaking work represents a crucial milestone in quantum computing&#39;s journey toward practical utility, demonstrating that today&#39;s noisy intermediate-scale quantum devices can already produce scientifically meaningful results when simulating complex quantum materials. By directly benchmarking their 50-qubit superconducting processor against real neutron-scattering experiments of KCuF₃, the researchers have shown that quantum simulators can now tackle the notoriously difficult regime of strongly correlated quantum systems where classical computers struggle. The development of their quantum-classical workflow for computing dynamical structure factors creates a powerful new framework that bridges the gap between quantum simulation and experimental validation, potentially accelerating materials discovery and our understanding of exotic quantum phases. Most importantly, this work proves that we don&#39;t need to wait for fault-tolerant quantum computers to start extracting real scientific value from quantum simulation—the near-term devices available today are already crossing the threshold into genuine utility for materials research.</p>
-                <p>A central goal of quantum computation is the realistic simulation of quantum materials. Although quantum processors have advanced rapidly in scale and fidelity, it has remained unclear whether pre-fault-tolerant devices can perform quantitatively reliable material simulations within their limited gate budgets. Here, we demonstrate that a superconducting quantum processor operating on up to 50 qubits can already produce meaningful, quantitative comparisons with inelastic neutron-scattering measurements of KCuF$_3$, a canonical realization of a gapless Luttinger liquid system with a strongly correlated ground state and a spectrum of emergent spinons. The quantum simulation is enabled by a quantum-classical workflow for computing dynamical structure factors (DSFs). The resulting spectra are benchmarked against experimental measurements using multiple metrics, highlighting the impact of circuit depth and circuit fidelity on simulation accuracy. Finally, we extend our simulations to 1D XXZ Heisenberg model with next-nearest neighbor interactions and a strong anisotropy, producing a gapped excitation spectrum, which could be used to describe the CsCoX$_3$ compounds above the Néel temperature. Our results establish a framework for computing DSFs for quantum materials in classically challenging regimes of strong entanglement and long-range interactions, enabling quantum simulations that are directly testable against laboratory measurements.</p>
-                <p><a href="https://arxiv.org/abs/2603.15608v1">Read original at arXiv Quantum Physics</a></p>
+                <p><strong>Curator's Take:</strong> This article represents a fascinating convergence of quantum computing, machine learning, and materials science, demonstrating how AI-generated quantum circuits can tackle complex molecular spectroscopy problems that challenge classical computers. The researchers&#39; hybrid approach cleverly combines a GPT-2 model to design efficient quantum circuits with quantum algorithms for calculating excited states—addressing one of the most computationally demanding aspects of molecular characterization. What&#39;s particularly compelling is that their Generative Quantum Eigensolver (GQE) achieves similar accuracy to traditional variational quantum eigensolvers while requiring roughly half the quantum gates, potentially making these calculations more feasible on near-term quantum devices. This work opens an intriguing pathway where large language models could help optimize quantum algorithms for real-world chemistry applications, bridging three of today&#39;s most transformative computing paradigms.</p>
+                <p>Auger electron spectroscopy, a way of characterizing electronic structure through core-level decay processes, is widely used in materials characterization; however direct calculation from molecular geometry requires accurate treatment of many excited states, posing a challenge for classical methods. We present a hybrid quantum-classical workflow for calculating Auger spectra that combines the generative quantum eigensolver (GQE) for ground-state preparation, the quantum self-consistent equation-of-motion method for excited-state calculations, and the one-centre approximation for Auger transition rates. GQE uses a GPT-2 model to generate quantum circuits for ground-state optimization, allowing our workflow to benefit from HPC parallelization and GPU-acceleration for favourable scaling with system size. We demonstrate the validity of our workflow by calculating the Auger spectrum of water with the STO-3G basis set and demonstrating qualitative and quantitative agreement with spectra obtained using completely classical full configuration interaction calculations, from the computational literature, and from the experimental literature. We also find that for water, substituting the variational quantum eigensolver (VQE) for GQE results in near-identical spectra, but that the ground state estimator generated by GQE contains about half the total gate count as that generated by VQE.</p>
+                <p><a href="https://arxiv.org/abs/2603.12859v1">Read original at arXiv Quantum Physics</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>A direct controlled-phase gate between microwave photons</title>
-            <link>https://quantum-pulse.github.io/posts/0b45583d.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/0b45583d.html</guid>
-            <pubDate>Mon, 16 Mar 2026 17:48:06 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough demonstrates a direct controlled-phase gate between microwave photons without relying on ancillary nonlinear elements, addressing a fundamental challenge in bosonic quantum computing where existing approaches introduce unwanted dissipation and decoherence. The Raman-assisted cross-Kerr interaction developed here enables cleaner entanglement between oscillators while protecting quantum information from measurement-induced decoherence, which is crucial for error-correctable bosonic encodings like cat states or GKP codes. This work significantly expands the bosonic circuit QED toolkit and could accelerate the development of hardware-efficient quantum error correction schemes, bringing us closer to fault-tolerant quantum computers that leverage the natural high-dimensional Hilbert spaces of harmonic oscillators.</p>
-                <p>Useful quantum information processing ultimately requires operations over large Hilbert spaces, where logical information can be encoded efficiently and protected against noise. Harmonic oscillators naturally provide access to such high-dimensional spaces and enable hardware-efficient, error-correctable bosonic encodings. However, direct entangling operations between oscillators remains an outstanding challenge. Existing strategies typically rely on parametrically activating interactions that populate the excited states of an ancillary nonlinear element. This induces an effective interaction between the oscillators, at the expense of introducing additional dissipation channels and potential leakage from the encoded manifold. Here, we engineer a Raman-assisted cross-Kerr interaction between microwave photons hosted in two superconducting cavities, without exciting the nonlinear element, thereby suppressing coupler-induced decoherence.This approach generates a direct coupling between microwave photons that is exploited to implement a controlled-phase gate within the single- and two-photon subspaces of two oscillators, directly entangling them. Finally, we harness this dynamics to map the photon-number parity of a storage cavity onto an auxiliary oscillator rather than a nonlinear element, enabling error detection while protecting the storage mode from measurement-induced decoherence. Our work expands the bosonic circuit quantum electrodynamics (cQED) toolbox by enabling coherence-preserving direct photon-photon interactions between oscillators. This realizes an entangling gate that operates entirely within a bosonic code space while suppressing decoherence from nonlinear ancilla excitations, providing a key primitive for fault-tolerant bosonic quantum computing.</p>
-                <p><a href="https://arxiv.org/abs/2603.15587v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Simulating the Open System Dynamics of Multiple Exchange-Only Qubits using Subspace Monte Carlo</title>
-            <link>https://quantum-pulse.github.io/posts/81eec93d.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/81eec93d.html</guid>
-            <pubDate>Mon, 16 Mar 2026 17:40:29 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This work tackles a crucial computational bottleneck in simulating exchange-only qubits—a promising architecture for quantum computing where logical qubits are encoded in the spin states of three electrons. By cleverly exploiting the physics of these systems, the researchers developed a &#34;Subspace Monte Carlo&#34; method that dramatically reduces the computational complexity from exponentially scaling with 8^(2n) to 3^(2n) dimensions for n qubits. The approach works by recognizing that measuring the total spin projection after each operation naturally separates the system into independent subspaces, making large-scale simulations of realistic noise models computationally feasible. This simulation breakthrough is particularly valuable for optimizing error correction protocols in exchange-only qubit systems, which are being actively pursued by several quantum computing companies due to their potential for all-electrical control and integration with semiconductor manufacturing.</p>
-                <p>We propose a Monte Carlo based method for simulating the open system dynamics of multiple exchange-only (EO) qubits. In the EO encoding, the total spin projection quantum number along the $z$-axis of the three constituent spins remains unchanged under exchange operations, in contrast to the open system (or multi-qubit miscalibration) setting where coherent and incoherent mixing of states with different quantum numbers occurs. In our approach, we choose to measure the total spin component along the $z$-axis of each EO qubit after every logical quantum operation, which decoheres coherent mixtures of states with different spin projection quantum numbers. Independent simulations thus give different trajectories of the system in the associated subspaces, so we refer to this method as the Subspace Monte Carlo method. With each EO qubit having a definite spin projection quantum number, the density matrix of $n$ qubits can be represented by a vector of dimension $3^{2n}$, instead of $8^{2n}$, with an additional vector of dimension $n$ to label the quantum number of each qubit. We show that this approximation of the dynamics remains faithful to the true dynamics when the simulated circuits twirl the noise, converting coherent errors to stochastic errors, which can be achieved using randomized compiling. We use this simulation approach to study how correlations in measurement outcomes of circuits with reset-if-leaked gadgets, such as a multi-round Bell state stabilization circuit that uses 6 EO qubits, are affected by the choice of CNOT implementations.</p>
-                <p><a href="https://arxiv.org/abs/2603.15577v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Velocity-Enabled Quantum Computing with Neutral Atoms</title>
-            <link>https://quantum-pulse.github.io/posts/a3ee8cce.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/a3ee8cce.html</guid>
-            <pubDate>Mon, 16 Mar 2026 17:24:15 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough introduces a clever new approach to neutral atom quantum computing by turning atomic motion from a challenge into a feature, using controlled velocity and Doppler shifts to selectively manipulate moving atoms without affecting neighboring qubits. The technique eliminates much of the complex shuttling overhead that has limited scalability in current neutral atom systems, while still achieving impressive gate fidelities of 99.86% and successfully implementing error correction primitives including an 8-qubit cluster state. What makes this particularly significant is how it reduces hardware complexity by using global control beams rather than individual atom addressing, potentially offering a more practical path to large-scale quantum error correction. This &#34;velocity-enabled&#34; architecture could give neutral atoms a competitive edge in the race toward fault-tolerant quantum computers, especially given their natural advantages in connectivity and parallel operations.</p>
-                <p>Realizing error-corrected logical qubits is a central goal for the current development of digital quantum computers. Neutral atoms offer the opportunity to coherently shuttle atoms for realizing efficient quantum error correction based on long-range connectivity and parallel atom transport. Nevertheless, time overheads in shuttling atoms and complex control hardware pose challenges to scaling current architectures. Here, we introduce atom velocity as a new degree of freedom in neutral-atom architectures tailored to quantum error correction. Through controlled Doppler shifts, we demonstrate velocity-selective mid-circuit state preparation and measurement on moving atoms, leaving spectator atoms unaffected. Furthermore, we achieve on-the-fly local single-qubit rotations by mapping micron-scale atom displacements to the spatial phase of global control beams. Complementing these techniques with CZ entangling gates with a fidelity of 99.86(4)%, we experimentally implement key primitives for quantum error correction and measurement-based quantum computing. We generate an eight-qubit entangled cluster state with an average stabilizer value of 0.830(4), realize an [[4,2,2]] error-detection code with 99.0(3) % logical Bell-state fidelity, and perform stabilizer measurements using a flying ancilla. By enabling selective operations on continuously moving atoms using only global beams, this velocity-enabled architecture reduces hardware overhead while minimizing shuttling and transfer delays, opening a new pathway for fast, large-scale atom-based quantum computation.</p>
-                <p><a href="https://arxiv.org/abs/2603.15561v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Analog-Digital Quantum Computing with Quantum Annealing Processors</title>
-            <link>https://quantum-pulse.github.io/posts/eb7dd118.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/eb7dd118.html</guid>
-            <pubDate>Mon, 16 Mar 2026 16:58:49 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research represents a significant breakthrough in making quantum annealing processors far more versatile by essentially giving them &#34;gate-like&#34; capabilities at the start and end of computations. By combining the scalability advantages of quantum annealers (which can handle hundreds of qubits) with the flexibility of arbitrary qubit initialization and measurement, the team has created a hybrid analog-digital approach that dramatically expands what these commercially available systems can accomplish. The successful demonstrations of quantum walks and Anderson localization show this isn&#39;t just theoretical—it&#39;s a practical pathway to unlock new quantum simulation and computation applications on existing hardware like D-Wave systems. This could be a game-changer for researchers who want to explore complex quantum phenomena but have been limited by the rigid operational constraints of traditional quantum annealing.</p>
-                <p>Quantum annealing processors typically control qubits in unison, attenuating quantum fluctuations uniformly until the applied system Hamiltonian is diagonal in the computational basis. This simplifies control requirements, allowing annealing QPUs to scale to much larger sizes than gate-based systems, but constraining the class of available operations. Here we expand the class by performing analog-digital quantum computing in a highly-multiplexed, superconducting quantum annealing processor. This involves evolution under a fixed many-body Hamiltonian that, in the weak-coupling regime, is well-described by an effective XY model, together with arbitrary-basis initialization and measurement via auxiliary qubits. Operationally, this is equivalent to implementing single-qubit gates at the beginning and end of an analog quantum evolution. We demonstrate this capability with several foundational applications: single-qubit and two-qubit coherent oscillations with varying initialization and measurement bases, a multi-qubit quantum walk with fermionic dispersion in line with theory, and Anderson localization in a disordered chain. These experiments open the door to a wide range of new possibilities in quantum computation and simulation, greatly expanding the applications of commercially available quantum annealing processors.</p>
-                <p><a href="https://arxiv.org/abs/2603.15534v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>sensing</category>
-            
-            <category>industry</category>
-            
-        </item>
-        
-        <item>
-            <title>End-to-end performance of quantum-accelerated large-scale linear algebra workflows</title>
-            <link>https://quantum-pulse.github.io/posts/b026df94.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/b026df94.html</guid>
-            <pubDate>Mon, 16 Mar 2026 16:42:40 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article represents a significant milestone in demonstrating quantum advantage for real-world industrial applications, moving beyond theoretical proofs to measure actual performance improvements in commercial finite element analysis software used across automotive and aerospace industries. The researchers successfully integrated quantum optimization into Synopsys/Ansys&#39; LS-DYNA platform—a widely-used multiphysics simulation tool—and tested it on complex models including sedan cars and Rolls-Royce jet engines with meshes containing up to 35 million elements. What makes this particularly compelling is their focus on end-to-end wall-clock performance rather than just algorithmic complexity, providing concrete evidence of quantum acceleration in the type of large-scale linear algebra problems that form the computational backbone of modern engineering simulation. The work bridges the crucial gap between quantum computing research and industrial adoption, offering a clear pathway for quantum computers to enhance the design and analysis workflows that power everything from automotive crash testing to aerospace component optimization.</p>
-                <p>Solving large-scale sparse linear systems is a challenging computational task due to the introduction of non-zero elements, or &#34;fill-in.&#34; The Graph Partitioning Problem (GPP) arises naturally when minimizing fill-in and accelerating solvers. In this paper, we measure the end-to-end performance of a hybrid quantum-classical framework designed to accelerate Finite Element Analysis (FEA) by integrating a quantum solver for GPP into Synopsys/Ansys&#39; LS-DYNA multiphysics simulation software. The quantum solver we use is based on Iterative-QAOA, a scalable, non-variational quantum approach for optimization. We focus on two specific classes of FEA problems, namely vibrational (eigenmode) analysis and transient simulation. We report numerical simulations on up to 150 qubits done on NVIDIA&#39;s CUDA-Q/cuTensorNet and implementation on IonQ&#39;s Forte quantum hardware. The potential impact on LS-DYNA workflows is quantified by measuring the wall-clock time-to-solution for complex problem instances, including vibrational analysis of large finite element models of a sedan car and a Rolls-Royce jet engine, as well as transient simulations of a drill and an impeller. We performed end-to-end performance measurements on meshes comprising up to 35 million elements. Measurements were conducted using LS-DYNA in distributed-memory mode via Message Passing Interface (MPI) on AWS and Synopsys compute clusters. Our findings indicate that with a quantum computer in the loop, amortized LS-DYNA wall-clock time can be improved by up to 15% for specific cases and by at least 7% for all models considered. These results highlight the significant potential of quantum computing to reduce time-to-solution for large-scale FEA simulations within the Noisy Intermediate-Scale Quantum (NISQ) era, offering an approach that is scalable and extendable into the fault-tolerant quantum computing regime.</p>
-                <p><a href="https://arxiv.org/abs/2603.15515v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
             
             <category>algorithms</category>
             
             <category>simulation</category>
             
-            <category>sensing</category>
-            
-            <category>research</category>
-            
         </item>
         
         <item>
-            <title>Error semitransparent universal control of a bosonic logical qubit</title>
-            <link>https://quantum-pulse.github.io/posts/f6a55bd8.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/f6a55bd8.html</guid>
-            <pubDate>Mon, 16 Mar 2026 14:36:31 +0000</pubDate>
+            <title>A Directly Modulated Laser Platform for High-Dimensional Quantum Key Distribution</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/416682a6.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/416682a6.html</guid>
+            <pubDate>Fri, 13 Mar 2026 09:20:29 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough tackles one of the most pressing challenges in bosonic quantum computing: performing high-fidelity logical operations while maintaining error protection. While previous work demonstrated that bosonic codes could store quantum information better than physical qubits, actually manipulating that information without destroying the error correction has remained elusive. The researchers&#39; &#34;error semi-transparent&#34; gate framework represents a major step toward practical fault-tolerant quantum computing, achieving a five-fold reduction in errors during gate operations and demonstrating universal quantum control—meaning they can perform any quantum computation while preserving the protective benefits of bosonic encoding. This work bridges the critical gap between passive quantum memory and active quantum computation, bringing hardware-efficient bosonic systems closer to real-world applications.</p>
-                <p>Bosonic codes offer hardware-efficient approaches to logical qubit construction and hosted the first demonstration of beyond-break even logical quantum memory.However, such accomplishments were done for idling information, and realization of fault-tolerant logical operations remains a critical bottleneck for universal quantum computation in scaled systems. Error-transparent (ET) gates offer an avenue to resolve this issue, but experimental demonstrations have been limited to phase gates. Here, we introduce a framework based on dynamic encoding subspaces that enables simple linear drives to accomplish universal gates that are error semi-transparent (EsT) to oscillator photon loss. With an EsT logical gate set of {X, H, T}, we observe a five-fold reduction in infidelity conditioned on photon loss, demonstrate extended active-manipulation lifetimes with quantum error correction, and construct a composite EsT non-Clifford operation using a sequence of eight gates from the set. Our approach is compatible with methods for detectable ancilla errors, offering an approach to error-mitigated universal control of bosonic logical qubits with the standard quantum control toolkit.</p>
-                <p><a href="https://arxiv.org/abs/2603.15356v1">Read original at arXiv Quantum Physics</a></p>
+                <p><strong>Curator's Take:</strong> This breakthrough dramatically simplifies high-dimensional quantum key distribution by using directly modulated lasers instead of complex state preparation systems, making HD-QKD far more practical for real-world deployment. The 250 km transmission distance represents a new record for HD-QKD systems, while the 312.5 MHz repetition rate and chip-scale integration potential position this approach as a serious contender for commercial quantum communication networks. Most significantly, the researchers demonstrated that four-dimensional quantum states actually outperform traditional two-dimensional systems in secret key rates, providing concrete evidence that the added complexity of HD-QKD delivers tangible security advantages worth pursuing.</p>
+                <p>High-dimensional quantum key distribution (HD-QKD) offers a promising approach to enhance secret key rates beyond conventional binary-encoded QKD, addressing the growing demand for secure data transmission. However, the practical application of most HD-QKD systems has been hindered by their complexity, as they require the preparation and detection of quantum states in large Hilbert spaces. Here, we design and experimentally realize a directly modulated laser platform for HD-QKD. It operates at a repetition rate of 312.5 MHz, yielding a remarkably simple and scalable architecture. Through which, we achieve a record transmission distance of 250 km for HD-QKD, demonstrating its feasibility for long-distance quantum communication. Furthermore, we witness that the four-dimensional states outperform their two-dimensional counterpart in secret key rate, highlighting the practical advantage of high-dimensional encoding. This simple and scalable approach shows strong potential for chip-scale integration.</p>
+                <p><a href="https://arxiv.org/abs/2603.12819v1">Read original at arXiv Quantum Physics</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
             <category>hardware</category>
             
-            <category>error_correction</category>
+            <category>cryptography</category>
             
         </item>
         
         <item>
-            <title>Ab Initio Study of Erbium Point Defects in 4H-SiC for Quantum Devices</title>
-            <link>https://quantum-pulse.github.io/posts/63e0c9ae.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/63e0c9ae.html</guid>
-            <pubDate>Mon, 16 Mar 2026 14:29:23 +0000</pubDate>
+            <title>Quantum CDMA-based Continuous Variable Quantum Key Distribution using Chaotic Phase Shifters</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/5c644daa.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/5c644daa.html</guid>
+            <pubDate>Fri, 13 Mar 2026 08:27:34 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This computational study tackles a crucial bottleneck in quantum technology development: finding defect centers that can be reliably manufactured using existing semiconductor processes. By using first-principles calculations to map out how erbium atoms behave when embedded in silicon carbide crystal structures, researchers are essentially creating a theoretical blueprint for quantum devices that could leverage the same mature fabrication techniques used in classical electronics. The focus on erbium defects in 4H-SiC is particularly strategic, as these systems can emit single photons at telecommunications wavelengths—making them ideal candidates for quantum networks that need to transmit quantum information over existing fiber optic infrastructure. This type of foundational theoretical work is essential for bridging the gap between laboratory quantum experiments and the scalable manufacturing needed for practical quantum technologies.</p>
-                <p>Identifying scalable materials systems that exhibit quantum behavior is a central challenge in quantum information science. Point defects in certain wide-bandgap semiconductors are promising in this regard due to the maturity of semiconductor manufacturing and ion implantation technology. Single erbium defect centers in 4H-SiC are examples of such defects that provide access to discrete defect-induced electron energy levels within the bulk material bandgap, which can be utilized for a variety of quantum technologies, such as single-photon emission for secure communication and distributed quantum computing. This work presents a first-principles study of erbium point defects in 4H-SiC using density functional theory. These results provide materials-level support for the development of Er point defects in 4H-SiC as a scalable platform for quantum devices, helping to bridge the gap between quantum physics and the practical realization of quantum networks.</p>
-                <p><a href="https://arxiv.org/abs/2603.15343v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Scalable Self-Testing of Mutually Anticommuting Observables and Maximally Entangled Two-Qudits</title>
-            <link>https://quantum-pulse.github.io/posts/a2735e84.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/a2735e84.html</guid>
-            <pubDate>Mon, 16 Mar 2026 09:22:17 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This arXiv paper presents a significant theoretical breakthrough in device-independent quantum certification, demonstrating how to simultaneously verify both maximally entangled multi-qubit states and sets of anticommuting observables—crucial building blocks for fault-tolerant quantum computing. The work&#39;s elegance lies in showing that achieving maximal violation of their proposed Bell inequality naturally self-tests the minimal quantum resources needed, providing a scalable framework that could revolutionize how we certify quantum hardware without needing to trust the devices themselves. While highly theoretical, this research addresses a fundamental challenge in quantum computing: how to verify that your quantum system is actually doing what you think it&#39;s doing, which becomes increasingly critical as quantum processors scale up and quantum sensing applications demand certified performance guarantees.</p>
-                <p>The next frontier in device-independent quantum information lies in the certification of scalable and parallel quantum resources, which underpin advanced quantum technologies. We put forth a simultaneous self-testing framework for maximally entangled two-qudit state of local dimension $m_*=2^{\lfloor n/2 \rfloor}$ (equivalently $\lfloor n/2 \rfloor$ copies of maximally entangled two-qubit pairs), together with $n$ numbers of anti-commuting observables on one side. To this end, we employ an $n$-settings Bell inequality comprising two space-like separated observers, Alice and Bob, having $2^{n-1}$ and $n$ number of measurement settings, respectively. We derive the local ontic bound of this inequality and, crucially, employ the Sum-of-Squares decomposition to determine the optimal quantum bound without presupposing the dimension of the state or observables. We then establish that any physical realisation achieving the maximal quantum violation must, up to local isometries and complex conjugation, correspond to a reference strategy consisting of a maximally entangled state of local dimension of at least $2^{\lfloor n/2 \rfloor}$ and local observables forming an irreducible representation of the Clifford algebra. This construction thereby demonstrates that the minimal dimension compatible with $n$ mutually anticommuting observables is naturally self-tested by the maximal violation of the proposed Bell functional. Finally, we analyse the robustness of the protocol by establishing quantitative bounds relating deviations in the observed Bell value to the fidelity between the realised and the ideal strategies. Our results thus provide a scalable, dimension-independent route for the certification of high-dimensional entanglement and Clifford measurements in a fully device-independent framework.</p>
-                <p><a href="https://arxiv.org/abs/2603.15018v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>sensing</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>Cavity-Free Distributed Quantum Computing with Rydberg Ensembles via Collective Enhancement</title>
-            <link>https://quantum-pulse.github.io/posts/9992aaf7.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/9992aaf7.html</guid>
-            <pubDate>Mon, 16 Mar 2026 05:53:21 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article presents a breakthrough approach to quantum networking that could dramatically simplify the hardware requirements for distributed quantum computing by eliminating the need for optical cavities—typically among the most challenging and expensive components in quantum systems. By leveraging collective enhancement in Rydberg atom ensembles, the researchers achieve impressive performance metrics including 99.93% gate fidelity and 600 Hz entanglement generation rates at 20 km distances, proving that cavity-free architectures can compete with traditional cavity-based approaches. The practical significance is enormous: removing optical cavities makes quantum networks far more accessible and scalable, potentially accelerating the development of multi-node quantum computers and quantum internet infrastructure. This work represents a crucial step toward making distributed quantum computing systems more practical and cost-effective for real-world deployment.</p>
-                <p>A complete architecture for cavity-free quantum networking based on collective enhancement in Rydberg atom ensembles is presented. The protocol exploits Rydberg blockade and phase-matched directional emission to eliminate optical cavities without sacrificing performance. The architecture comprises three steps: (i) local control-ensemble entanglement via Rydberg blockade with fidelity $F_{\mathrm{gate}} \approx 99.93\%$; (ii) atom-photon conversion via Raman transitions, achieving directional emission ($η_{\mathrm{dir}} \approx 35\%$) and single-node efficiency $η_{\mathrm{node}} \approx 19\%$; and (iii) remote atom-atom entanglement via Hong-Ou-Mandel interference, producing Bell states with fidelity $F &gt; 97.5\%$. With quantum memories enabling retry protocols, entanglement generation rates exceed $600$ Hz at 20 km separation. This cavity-free approach provides a practical and scalable pathway for distributed quantum computing and secure quantum communication.</p>
-                <p><a href="https://arxiv.org/abs/2603.14854v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>general</category>
-            
-        </item>
-        
-        <item>
-            <title>Protecting Distributed Blockchain with Twin-Field Quantum Key Distribution: A Quantum Resistant Approach</title>
-            <link>https://quantum-pulse.github.io/posts/b717c4a0.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/b717c4a0.html</guid>
-            <pubDate>Mon, 16 Mar 2026 05:07:31 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles a critical challenge facing blockchain technology in the quantum era: how to maintain secure distributed networks when quantum computers can potentially break current cryptographic defenses. The authors propose using twin-field quantum key distribution (TF-QKD) to create a quantum-resistant blockchain architecture that cleverly reduces infrastructure complexity from quadratic to linear scaling - a breakthrough that makes large-scale deployment actually feasible rather than prohibitively expensive. What makes this particularly significant is that it addresses the notorious distance limitations of quantum key distribution while maintaining information-theoretic security, potentially enabling secure blockchain networks spanning hundreds of kilometers. This represents a promising pathway for &#34;quantum-proofing&#34; critical distributed systems before large-scale quantum computers arrive to threaten classical cryptography.</p>
-                <p>Quantum computing provides the feasible multi-layered security challenges to classical blockchain systems. Whereas, quantum-secured blockchains relied on quantum key distribution (QKD) to establish secure channels can address this potential threat. This paper presents a scalable quantum-resistant blockchain architecture designed to address the connectivity and distance limitations of the QKD integrated quantum networks. By leveraging the twin-field (TF) QKD protocol within a measurement-device-independent (MDI) topology, the proposed framework can optimize the infrastructure complexity from quadratic to linear scaling. This architecture effectively integrates information-theoretic security with distributed consensus mechanisms, allowing the system to overcome the fundamental rate-loss limits inherent in traditional point-to-point links. The proposed scheme offers a theoretically sound and feasible solution for deploying large-scale and long-distance consortium.</p>
-                <p><a href="https://arxiv.org/abs/2603.14826v1">Read original at arXiv Quantum Physics</a></p>
+                <p><strong>Curator's Take:</strong> An interesting development in cryptography. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</p>
+                <p>We present a quantum code-division multiple-access (q-CDMA) framework for multiuser continuous-variable quantum key distribution (CV-QKD) over a shared quantum channel. The proposed architecture employs chaotic phase shifters to encode and decode quantum states, enabling efficient multiplexing and demultiplexing of signals generated by multiple transmitters. In this scheme, quantum states from different users are chaotically phase-encoded and combined through a beam splitter network before transmission. At the receiver, synchronized chaotic phase shifters are used for decoding, followed by an inverse beam splitter structure to recover the individual user signals. This chaotic synchronization allows reliable state recovery and secure key establishment between each sender-receiver pair. For an arbitrary number of users, we derive the input-output quadrature relations describing the multiuser q-CDMA CV-QKD system. Using this model, we evaluate the achievable secret key rate under collective attacks with reverse reconciliation. We further investigate the impact of key system parameters including the correction factor, multiuser interference noise, environmental noise, and channel transmittance. A comparison between the asymptotic and finite-size regimes is also presented to highlight the associated performance trade-offs. These results provide a theoretical framework for assessing the performance of q-CDMA-based CV-QKD and support the development of scalable and secure multiuser quantum communication networks.</p>
+                <p><a href="https://arxiv.org/abs/2603.12777v1">Read original at arXiv Quantum Physics</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
             <category>cryptography</category>
             
+        </item>
+        
+        <item>
+            <title>Reaction-Level Consistency within the Variational Quantum Eigensolver: Homodesmotic Ring Strain Energies of Cyclic Hydrocarbons</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/6ea20c97.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/6ea20c97.html</guid>
+            <pubDate>Fri, 13 Mar 2026 07:32:18 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> An interesting development in algorithms. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</p>
+                <p>Simulation of chemical reactions on quantum computing platforms using quantum classical hybrid algorithms such as the Variational Quantum Eigensolver (VQE) is challenged by the need for a reaction consistent treatment of electron correlation in reaction energy evaluations. In this work, we employ a previously reported symmetry guided active space selection protocol to compute ring strain energies of cyclic hydrocarbons using homodesmotic reaction schemes. The protocol enforces symmetry consistency across all reactants and products by selecting active spaces that yield identical symmetry matched fraction (SMF) values, thereby ensuring balanced correlation treatment at the reaction level. When multiple active spaces satisfy this criterion for a given molecule, larger active spaces often provide improved correlation treatment; however, smaller symmetry consistent active spaces can also yield comparable agreement due to favorable error cancellation within the homodesmotic framework. Using this framework, ring strain energies were evaluated for a series of saturated and unsaturated cyclic hydrocarbons, ranging from cyclopropane to the structurally complex adamantane. The resulting energies achieve chemical accuracy relative to density functional theory (DFT) and remain in close agreement with coupled cluster singles and doubles (CCSD) benchmarks. The systematic performance across increasing molecular complexity highlights the effectiveness of combining homodesmotic reaction design with symmetry-consistent VQE calculations. This approach, which enforces physically grounded consistency across reaction species, demonstrates clear potential for extending reaction based quantum simulations to larger molecular systems and broader classes of chemical reactions.</p>
+                <p><a href="https://arxiv.org/abs/2603.12737v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>algorithms</category>
+            
+            <category>simulation</category>
+            
+        </item>
+        
+        <item>
+            <title>Efficient equivalence checking of Clifford-U circuits with shared single-qubit unitaries</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/c9847074.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/c9847074.html</guid>
+            <pubDate>Fri, 13 Mar 2026 06:25:26 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> An interesting development in hardware. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</p>
+                <p>Quantum circuit equivalence checking asks whether two circuits implement the same unitary. It guarantees compiler correctness and safe optimization, yet most existing approaches scale exponentially with the number of qubits or the circuit depth, or are restricted to specific circuit structures. In this work, we present an equivalence-checking method for circuits formed by arbitrary single-qubit layers interleaved with Clifford layers. This pattern is common in variational quantum algorithms and Hamiltonian simulation via Trotter decomposition. It can also represent any unitary with sufficient depth. We prove the existence of an efficient classical algorithm that determines whether a pair of circuits with shared single-qubit layers are equivalent for every possible choice of the shared single-qubit unitaries. The same algorithm can also certify their non-equivalence for fixed assignments of single-qubit unitaries. Our framework supports the validation of emerging quantum compilers and facilitate the discovery of novel circuit optimization passes.</p>
+                <p><a href="https://arxiv.org/abs/2603.12697v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>simulation</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>Optimal Continuous- to Discrete-Variable Bipartite Entanglement Conversion</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/424b840f.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/424b840f.html</guid>
+            <pubDate>Fri, 13 Mar 2026 05:54:24 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> An interesting development in hardware. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</p>
+                <p>Discrete-variable (DV) entanglement is crucial for numerous quantum applications, yet its deterministic generation in many bosonic systems remains experimentally challenging. In contrast, continuous-variable (CV) entanglement can be produced efficiently. We propose two optimal schemes for converting CV bipartite entanglement into DV entanglement using only local operations and classical communication. The first scheme extracts maximally entangled qubit pairs at the theoretically maximal rate, while the second probabilistically produces a maximally entangled qudit pair with the highest average entanglement. In both schemes, we quantify the optimal performance and identify the measurement operators required for implementation. Notably, using only a sequence of binary measurements, our approach can succeed in a finite number of measurement rounds on average, even though the CV resource is infinite-dimensional. Our schemes improve the feasibility of implementing DV-based quantum technologies on bosonic platforms.</p>
+                <p><a href="https://arxiv.org/abs/2603.12682v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
             <category>sensing</category>
             
-            <category>research</category>
-            
         </item>
         
         <item>
-            <title>Towards Exponential Quantum Improvements in Solving Cardinality-Constrained Binary Optimization</title>
-            <link>https://quantum-pulse.github.io/posts/e2ba9d66.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/e2ba9d66.html</guid>
-            <pubDate>Mon, 16 Mar 2026 02:30:52 +0000</pubDate>
+            <title>Probing many-body localization crossover in quasiperiodic Floquet circuits on a quantum processor</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/838504fe.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/838504fe.html</guid>
+            <pubDate>Fri, 13 Mar 2026 05:44:56 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research presents a compelling step toward practical quantum advantage by tackling cardinality-constrained binary optimization—a problem that appears everywhere from portfolio selection in finance to feature selection in machine learning. The key breakthrough lies in exploiting the mathematical structure of fixed-cardinality constraints to achieve exponential speedups over naive quantum search, requiring only O(√(C(n,k)/M)) Grover rotations instead of searching the entire 2^n solution space. What makes this particularly exciting is the hybrid classical-quantum ADMM framework that could actually be implementable on near-term quantum devices, offering a realistic path to quantum advantage for optimization problems that classical computers struggle with as problem sizes grow. The work demonstrates how clever algorithm design can unlock quantum speedups in structured problems, moving beyond theoretical curiosities toward applications that could genuinely benefit from quantum computing.</p>
-                <p>Cardinality-constrained binary optimization is a fundamental computational primitive with broad applications in machine learning, finance, and scientific computing. In this work, we introduce a Grover-based quantum algorithm that exploits the structure of the fixed-cardinality feasible subspace under a natural promise on solution existence. For quadratic objectives, our approach achieves ${O}\left(\sqrt{\frac{\binom{n}{k}}{M}}\right)$ Grover rotations for any fixed cardinality $k$ and degeneracy of the optima $M$, yielding an exponential reduction in the number of Grover iterations compared with unstructured search over $\{0,1\}^n$. Building on this result, we develop a hybrid classical--quantum framework based on the alternating direction method of multipliers (ADMM) algorithm. The proposed framework is guaranteed to output an $ε$-approximate solution with a consistency tolerance $ε+ δ$ using at most $ {O}\left(\sqrt{\binom{n}{k}}\frac{n^{6}k^{3/2} }{ \sqrt{M}ε^2 δ}\right)$ queries to a quadratic oracle, together with ${O}\left(\frac{n^{6}k^{3/2}}{ε^2δ}\right)$ classical overhead. Overall, our method suggests a practical use of quantum resources and demonstrates an exponential improvements over existing Grover-based approaches in certain parameter regimes, thereby paving the way toward quantum advantage in constrained binary optimization.</p>
-                <p><a href="https://arxiv.org/abs/2603.14744v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-            <category>machine_learning</category>
-            
-        </item>
-        
-        <item>
-            <title>Building advanced quantum chemistry calculations with Kvantify Qrunch on Amazon Braket</title>
-            <link>https://quantum-pulse.github.io/posts/e3767158.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/e3767158.html</guid>
-            <pubDate>Wed, 25 Feb 2026 21:59:58 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article showcases a significant step toward making quantum chemistry practically accessible on today&#39;s NISQ devices through Kvantify&#39;s specialized software stack on Amazon Braket. By focusing on hybrid algorithms that can work effectively despite current hardware limitations, this represents the kind of pragmatic approach the field needs to bridge the gap between quantum computing&#39;s theoretical promise and real-world chemical simulation applications. The integration with AWS&#39;s cloud quantum platform could democratize access to advanced quantum chemistry calculations for researchers and companies who previously lacked the expertise to implement these complex algorithms from scratch. This development is particularly noteworthy as chemistry simulations remain one of the most compelling near-term applications for quantum advantage, with potential impacts spanning drug discovery, materials science, and catalyst design.</p>
-                <p>Quantum computing promises breakthroughs in chemistry simulations. However, building scalable calculations on today’s noisy quantum hardware remains challenging. This blog introduces Kvantify Qrunch software on Amazon Braket. It enables advanced chemistry calculations using efficient hybrid quantum algorithms on current Noisy Intermediate-Scale Quantum (NISQ) devices. Chemistry is at the heart of several industries with profound economic […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/building-advanced-quantum-chemistry-calculations-with-kvantify-qrunch-on-amazon-braket/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-            <category>simulation</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Quantum-Guided Cluster Algorithms for Combinatorial Optimization</title>
-            <link>https://quantum-pulse.github.io/posts/0a870f69.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/0a870f69.html</guid>
-            <pubDate>Thu, 12 Feb 2026 06:05:03 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This AWS Quantum Computing Blog post introduces quantum-guided cluster algorithms, a hybrid approach that leverages quantum insights to improve classical optimization methods for real-world problems like scheduling and logistics. The collaborative research from multiple institutions demonstrates how quantum computing principles can enhance traditional algorithms even before fault-tolerant quantum computers become widely available. What makes this particularly significant is the focus on near-term practical applications – showing how quantum-inspired techniques can deliver measurable improvements for combinatorial optimization challenges that plague industries today. This work exemplifies the growing trend of hybrid quantum-classical algorithms that bridge the gap between current quantum capabilities and future quantum advantage.</p>
-                <p>This post was contributed by Peter Eder, Aron Kerschbaumer, Jernej Rudi Finžgar, Raimel Medina, Martin Schuetz, Helmut Katzgraber, Sarah Braun, and Christian Mendl. Optimizing complex systems is a major challenge in science and industry. Many tasks – such as scheduling, routing, portfolio selection, or network design – can be written as combinatorial optimization problems that […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/quantum-guided-cluster-algorithms-for-combinatorial-optimization/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-        </item>
-        
-        <item>
-            <title>Reservoir computing on an analog Rydberg-atom quantum computer</title>
-            <link>https://quantum-pulse.github.io/posts/1ef3288b.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/1ef3288b.html</guid>
-            <pubDate>Mon, 09 Feb 2026 22:47:24 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article demonstrates a compelling near-term application for quantum computing by leveraging the natural dynamics of Rydberg-atom systems as computational reservoirs for machine learning tasks. The approach is particularly intriguing because it sidesteps some of the noise and error correction challenges that plague gate-based quantum algorithms, instead harnessing the inherent quantum properties of atomic interactions for computation. The focus on small dataset performance—especially in pharmaceutical research—addresses a real pain point where classical machine learning often struggles due to limited training data, potentially offering quantum computers a practical advantage in specialized domains before achieving full fault tolerance.</p>
-                <p>This post shows how quantum reservoir computing (QRC) can tackle machine learning challenges using Rydberg-atom quantum computers. Readers will learn how QRC works, see its performance on image classification and time series prediction tasks, and understand when it outperforms classical methods—particularly for small datasets in pharmaceutical research. After decades of progress, machine learning (ML) has […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/reservoir-computing-on-an-analog-rydberg-atom-quantum-computer/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>machine_learning</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>“Purifying” photons: Scientists found a way to clean light itself</title>
-            <link>https://quantum-pulse.github.io/posts/55565dea.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/55565dea.html</guid>
-            <pubDate>Tue, 23 Dec 2025 14:51:14 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough tackles one of photonic quantum computing&#39;s most persistent challenges: the &#34;messy&#34; stray photons that typically destroy delicate quantum states. What makes this work particularly clever is the counterintuitive approach of using unwanted light to actually purify the system rather than simply trying to block it out—essentially turning quantum noise into a cleaning tool. The ability to produce cleaner single-photon streams could be a game-changer for scaling up photonic quantum computers and quantum communication networks, both of which rely heavily on pristine light particles to maintain their quantum properties. This represents the kind of fundamental advance that could help bridge the gap between promising lab demonstrations and practical quantum photonic systems.</p>
-                <p>A new discovery shows that messy, stray light can be used to clean up quantum systems instead of disrupting them. University of Iowa researchers found that unwanted photons produced by lasers can be canceled out by carefully tuning the light itself. The result is a much purer stream of single photons, a key requirement for quantum computing and secure communication. The work could help push photonic quantum technology closer to real-world use.</p>
-                <p><a href="https://www.sciencedaily.com/releases/2025/12/251223084534.htm">Read original at Science Daily - Quantum</a></p>
+                <p><strong>Curator's Take:</strong> An interesting development in hardware. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</p>
+                <p>Many-body localization (MBL) provides a mechanism by which interacting quantum systems evade thermalization, leading to persistent memory of initial conditions and slow entanglement growth. Probing these dynamical signatures in large systems and at long evolution times remains challenging for both classical simulations and current quantum devices. Here we experimentally investigate the ergodic-MBL crossover in quasiperiodic Floquet Ising systems using up to 144 qubits on an IBM Quantum processor. By implementing deep Floquet circuits reaching up to 5000 cycles, we access long-time many-body dynamics beyond the regime explored in previous quantum computing experiments. Measurements of autocorrelation functions reveal a smooth crossover from rapid thermalization at weak quasiperiodic potential strength to persistent correlations in the strong-disorder regime. Notably, in addition to the one-dimensional system, we also observe clear signatures consistent with localization behavior in the two-dimensional system. Furthermore, the quantum Fisher information exhibits logarithmic growth over thousands of Floquet cycles, providing evidence for slow entanglement spreading characteristic of the MBL regime. These results demonstrate that programmable quantum processors can serve as experimental platforms for probing nonergodic quantum many-body dynamics and exploring localization phenomena in regimes beyond the reach of classical simulations.</p>
+                <p><a href="https://arxiv.org/abs/2603.12675v1">Read original at arXiv Quantum Physics</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
             <category>hardware</category>
             
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>AWS re:Invent 2025: Your Complete Guide to Quantum Computing Sessions</title>
-            <link>https://quantum-pulse.github.io/posts/5871d6fc.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/5871d6fc.html</guid>
-            <pubDate>Tue, 25 Nov 2025 23:55:36 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article signals quantum computing&#39;s evolution from pure research curiosity to a technology ready for mainstream enterprise consideration, as evidenced by AWS dedicating significant re:Invent session time to quantum topics. The focus on &#34;early real-world use&#34; through Amazon Braket reflects the industry&#39;s pivot toward practical applications, offering developers and businesses hands-on access to multiple quantum hardware platforms without the complexity of direct vendor relationships. For organizations evaluating quantum strategies, these sessions will likely showcase concrete use cases and implementation pathways that bridge the gap between quantum theory and business value. This represents a crucial moment where cloud giants are positioning quantum computing as an accessible tool rather than an exotic research project.</p>
-                <p>AWS re:Invent 2025 returns to Las Vegas from December 1 to 5, bringing together builders, researchers, and business leaders who are exploring what is next in advanced computing on AWS. Quantum computing is moving from research labs into early real-world use. With Amazon Braket , AWS gives you managed access to multiple quantum hardware providers, […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/aws-reinvent-2025-your-complete-guide-to-quantum-computing-sessions/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Amazon Braket launches trapped-ion quantum computer from Alpine Quantum Technologies</title>
-            <link>https://quantum-pulse.github.io/posts/86ee4900.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/86ee4900.html</guid>
-            <pubDate>Tue, 18 Nov 2025 16:27:48 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article marks a significant expansion of Amazon Braket&#39;s quantum hardware ecosystem, introducing Alpine Quantum Technologies&#39; IBEX Q1 trapped-ion system as the platform&#39;s newest 12-qubit offering. The addition is particularly noteworthy because trapped-ion systems typically offer superior qubit coherence and gate fidelities compared to superconducting alternatives, potentially providing Braket users with access to higher-quality quantum operations for algorithm development and testing. This move reinforces Amazon&#39;s strategy of creating a hardware-agnostic quantum cloud platform, giving researchers and developers the ability to benchmark algorithms across different quantum computing architectures—from IBM&#39;s superconducting systems to IonQ&#39;s trapped ions and now AQT&#39;s European-built hardware. For the broader quantum ecosystem, this represents another step toward making diverse quantum hardware accessible to a global developer community without requiring individual partnerships with each hardware provider.</p>
-                <p>Amazon Braket enables customers to design and run quantum algorithms on a broad selection of quantum hardware through a unified interface. Today, we expand the hardware available on Braket by adding Alpine Quantum Technologies (AQT) as a new quantum hardware provider. AQT brings their IBEX Q1 trapped-ion quantum computer to Braket, offering customers a 12-qubit […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/amazon-braket-launches-trapped-ion-quantum-computer-from-alpine-quantum-technologies/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-        </item>
-        
-        <item>
-            <title>Exact simulation of Quantum Enhanced Signature Kernels for financial data streams prediction using Amazon Braket</title>
-            <link>https://quantum-pulse.github.io/posts/ed2da588.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/ed2da588.html</guid>
-            <pubDate>Wed, 12 Nov 2025 21:29:13 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This collaboration between Rigetti, Imperial College London, and Standard Chartered demonstrates quantum computing&#39;s potential to tackle real-world financial problems through quantum-enhanced signature kernels - a sophisticated mathematical framework for analyzing sequential data like market prices. The work is particularly noteworthy because it bridges academic quantum machine learning research with practical financial applications, using Amazon Braket to simulate quantum algorithms that could eventually provide computational advantages for time-series prediction in trading and risk management. While still in the simulation phase, this represents the kind of industry-academia partnership that&#39;s essential for moving quantum computing from research curiosity to practical financial tools, especially given the financial sector&#39;s hunger for any edge in processing complex market data streams.</p>
-                <p>This post was contributed by Ernesto Palidda and Marco Paini from Rigetti Computing, Cristopher Salvi and Antoine Jacquier from Imperial College London, Samuel Crew from National Tsing Hua University and Shaun Geaney from Standard Chartered along with Sebastian Stern and Michael Brett from Amazon Web Services (AWS). Empirical evidence suggests that well-chosen quantum feature maps […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/exact-simulation-of-quantum-enhanced-signature-kernels-for-financial-data-streams-prediction-using-amazon-braket/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
             <category>simulation</category>
             
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>Leveraging near-term quantum hardware for simulating high-dimensional dynamics</title>
-            <link>https://quantum-pulse.github.io/posts/cddb6bfd.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/cddb6bfd.html</guid>
-            <pubDate>Sat, 08 Nov 2025 00:20:06 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This AWS Quantum Computing Blog post tackles one of quantum computing&#39;s most promising near-term applications: solving high-dimensional partial differential equations that are computationally intractable for classical computers. The research demonstrates how current noisy intermediate-scale quantum (NISQ) devices could provide practical advantages for simulating complex systems in fluid dynamics, heat propagation, and engineering design—problems that scale exponentially with dimension on classical hardware. What makes this particularly significant is its focus on leveraging existing quantum hardware rather than waiting for fault-tolerant systems, potentially bringing quantum advantages to real-world engineering challenges much sooner than previously expected. The work represents a concrete step toward quantum computing&#39;s &#34;killer app&#34; in scientific simulation, where quantum speedups could revolutionize how we model everything from aircraft aerodynamics to climate systems.</p>
-                <p>This post was contributed by Jiaqi Leng, Joseph Li, Xiaodi Wu Scientists and engineers face numerous computational challenges in fields like fluid dynamics [1], modeling heat and sound propagation [2], and aircraft design [3]. Simulating partial differential equations (PDEs) in high dimensions offers a powerful approach to addressing these challenges. However, solving these high-dimensional differential […]</p>
-                <p><a href="https://aws.amazon.com/blogs/quantum-computing/leveraging-near-term-quantum-hardware-for-simulating-high-dimensional-dynamics/">Read original at AWS Quantum Computing Blog</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>general</category>
+            <category>sensing</category>
             
         </item>
         

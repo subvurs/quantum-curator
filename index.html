@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Pulse</title>
-    <meta name="description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta name="description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Quantum Pulse">
-    <meta property="og:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quantum-pulse.github.io">
+    <meta property="og:url" content="https://subvurs.github.io/quantum-curator">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Quantum Pulse">
-    <meta name="twitter:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://quantum-pulse.github.io/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://subvurs.github.io/quantum-curator/feed.xml">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -48,547 +48,234 @@
     <main class="site-main">
         <div class="container">
             
-<section class="hero">
-    <h1>Quantum Computing News</h1>
-    <p class="hero-subtitle">Daily curated news and insights from the world of quantum computing, handpicked by Mark Eatherly</p>
-</section>
 
 
 <section class="daily-digest">
-    <h2>Today's Digest</h2>
     <div class="digest-card">
-        <h3>Quantum News Digest - March 17, 2026</h3>
-        <div class="digest-summary">
-            **Quantum Computing Finds Its Practical Stride as Applications Move Beyond Theory**
-
-March 17th marks a pivotal moment in quantum computing's evolution, with researchers demonstrating that current quantum hardware is finally ready for real-world applications. The standout development comes from breakthrough work on quantum-enhanced financial modeling, where teams from Imperial College London and Standard Chartered successfully deployed Quantum Enhanced Signature Kernels on Amazon Braket to predict financial data streams—proving that quantum advantage isn't just theoretical anymore. Meanwhile, AWS expanded its quantum ecosystem by launching Alpine Quantum Technologies' trapped-ion system, giving developers access to yet another quantum computing architecture alongside the existing superconducting and photonic options.
-
-What's particularly striking about today's developments is the convergence around practical problem-solving rather than pure quantum supremacy demonstrations. From using quantum annealing for large-scale linear algebra workflows to leveraging neutral atoms for error correction, researchers are focusing on hybrid approaches that squeeze maximum performance from today's noisy intermediate-scale quantum devices. The quantum reservoir computing work on Rydberg atoms and advanced chemistry calculations with Kvantify Qrunch further underscore this trend—teams are finding clever ways to make current quantum hardware useful for domain-specific challenges in machine learning, materials science, and drug discovery.
-
-As we head toward AWS re:Invent 2025, the quantum computing landscape is clearly shifting from "when will quantum be useful?" to "how do we scale these early wins?" Watch for continued integration between classical and quantum workflows, more industry-specific quantum software tools, and the growing importance of cloud-based quantum computing platforms in democratizing access to this transformative technology.
+        <h3>Daily Summary</h3>
+        <div class="digest-summary digest-expandable" id="digest-text">
+            <p>Quantum Security and Computation Take Center Stage with Breakthrough Protocol Developments</p>
+<p>March 16th marks a pivotal day for quantum networking and computational chemistry, led by a revolutionary advancement in quantum key distribution that could finally make ultra-secure communications practically scalable. Researchers have unveiled a directly modulated laser platform for high-dimensional quantum key distribution (HD-QKD), promising to dramatically boost secret key rates beyond traditional binary systems while maintaining real-world applicability. This breakthrough addresses one of quantum cryptography's most persistent challenges: bridging the gap between theoretical security advantages and practical deployment constraints that have limited widespread adoption.</p>
+<p>The day's developments reveal a clear trend toward solving quantum computing's "connection problem" – both in securing quantum communications and enabling distributed quantum processing. Complementing the HD-QKD advance, scientists have demonstrated feasible protocols for nonlocal continuous-variable quantum gates using optical connections, a critical stepping stone for distributed quantum computing networks. Meanwhile, the introduction of Auger spectroscopy via generative quantum eigensolvers showcases quantum computing's growing maturity in tackling complex molecular characterization problems that overwhelm classical methods, particularly in understanding core-level decay processes essential for materials science.</p>
+<p>These parallel advances in quantum networking infrastructure and computational applications suggest we're witnessing the early stages of quantum technology's transition from laboratory curiosities to practical tools. Watch for upcoming demonstrations of these HD-QKD systems in real-world network conditions and the first commercial applications of quantum-enhanced molecular spectroscopy – both could signal quantum computing's long-awaited breakthrough into mainstream technological utility.</p>
         </div>
+        <button class="digest-toggle" id="digest-toggle" onclick="(function(){var t=document.getElementById('digest-text'),b=document.getElementById('digest-toggle');t.classList.toggle('digest-expanded');b.textContent=t.classList.contains('digest-expanded')?'Show less':'Read more'})()">Read more</button>
         <div class="digest-meta">
-            <span class="digest-date">March 17, 2026</span>
-            <span class="digest-count">20 articles</span>
+            <span class="digest-date">March 16, 2026</span>
+            <span class="digest-count">3 articles</span>
         </div>
     </div>
 </section>
 
 
-<section class="latest-posts">
+
+
+<section class="magazine-hero">
+    <h2 class="top-story-label">Top Story</h2>
+    <article class="hero-article">
+        <div class="hero-content">
+            <div class="post-topics">
+                
+                <a href="/topics/algorithms.html"
+                   class="topic-tag topic-algorithms">algorithms</a>
+                
+                <a href="/topics/simulation.html"
+                   class="topic-tag topic-simulation">simulation</a>
+                
+            </div>
+            <h1 class="hero-title">
+                <a href="/posts/9f8da3dc.html">Auger Spectroscopy via Generative Quantum Eigensolver: A Quantum Approach to Molecular Excitations</a>
+            </h1>
+            <p class="hero-summary">Auger electron spectroscopy, a way of characterizing electronic structure through core-level decay processes, is widely used in materials characterization; however direct calculation from molecular geometry requires accurate treatment of many excited...</p>
+            <div class="hero-commentary">
+                <blockquote>This article represents a fascinating convergence of quantum computing, machine learning, and materials science, demonstrating how AI-generated quantum circuits can tackle complex molecular spectroscopy problems that challenge classical computers. The researchers&#39; hybrid approach cleverly combines a GPT-2 model to design efficient quantum circuits with quantum algorithms for calculating excited states—addressing one of the most computationally demanding aspects of molecular characterization. What&#39;s particularly compelling is that their Generative Quantum Eigensolver (GQE) achieves similar accuracy to traditional variational quantum eigensolvers while requiring roughly half the quantum gates, potentially making these calculations more feasible on near-term quantum devices. This work opens an intriguing pathway where large language models could help optimize quantum algorithms for real-world chemistry applications, bridging three of today&#39;s most transformative computing paradigms.</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 13, 2026</span>
+                <a href="https://arxiv.org/abs/2603.12859v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </div>
+        
+    </article>
+</section>
+
+
+
+
+<section class="featured-section">
     <div class="section-header">
-        <h2>Latest Articles</h2>
+        <h2>Qrater</h2>
         <a href="/archive/" class="view-all">View All &rarr;</a>
     </div>
-
-    <div class="posts-grid">
+    <div class="featured-grid">
         
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/d39e6206.html">Benchmarking quantum simulation with neutron-scattering experiments</a>
-            </h3>
-            <p class="post-summary">A central goal of quantum computation is the realistic simulation of quantum materials. Although quantum processors have advanced rapidly in scale and fidelity, it has remained unclear whether pre-fau...</p>
-            <div class="post-commentary">
-                <blockquote>This groundbreaking work represents a crucial milestone in quantum computing&#39;s journey toward practical utility, demonstrating that today&#39;s noisy intermediate-scale quantum devices can already produce scientifically meaningful results when simulating complex quantum materials. By directly benchmarking their 50-qubit superconducting processor against real neutron-scattering experiments of KCuF₃, the researchers have shown that quantum simulators can now tackle the notoriously difficult regime of strongly correlated quantum systems where classical computers struggle. The development of their quantum-classical workflow for computing dynamical structure factors creates a powerful new framework that bridges the gap between quantum simulation and experimental validation, potentially accelerating materials discovery and our understanding of exotic quantum phases. Most importantly, this work proves that we don&#39;t need to wait for fault-tolerant quantum computers to start extracting real scientific value from quantum simulation—the near-term devices available today are already crossing the threshold into genuine utility for materials research.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15608v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+        <article class="featured-card no-image">
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/hardware.html"
+                       class="topic-tag topic-hardware">hardware</a>
+                    
+                    <a href="/topics/cryptography.html"
+                       class="topic-tag topic-cryptography">cryptography</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/416682a6.html">A Directly Modulated Laser Platform for High-Dimensional Quantum Key Distribution</a>
+                </h3>
+                <p class="post-summary">High-dimensional quantum key distribution (HD-QKD) offers a promising approach to enhance secret key rates beyond conventional binary-encoded QKD, add...</p>
+                <div class="post-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/0b45583d.html">A direct controlled-phase gate between microwave photons</a>
-            </h3>
-            <p class="post-summary">Useful quantum information processing ultimately requires operations over large Hilbert spaces, where logical information can be encoded efficiently and protected against noise. Harmonic oscillators n...</p>
-            <div class="post-commentary">
-                <blockquote>This breakthrough demonstrates a direct controlled-phase gate between microwave photons without relying on ancillary nonlinear elements, addressing a fundamental challenge in bosonic quantum computing where existing approaches introduce unwanted dissipation and decoherence. The Raman-assisted cross-Kerr interaction developed here enables cleaner entanglement between oscillators while protecting quantum information from measurement-induced decoherence, which is crucial for error-correctable bosonic encodings like cat states or GKP codes. This work significantly expands the bosonic circuit QED toolkit and could accelerate the development of hardware-efficient quantum error correction schemes, bringing us closer to fault-tolerant quantum computers that leverage the natural high-dimensional Hilbert spaces of harmonic oscillators.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15587v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+        <article class="featured-card no-image">
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/cryptography.html"
+                       class="topic-tag topic-cryptography">cryptography</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/5c644daa.html">Quantum CDMA-based Continuous Variable Quantum Key Distribution using Chaotic Phase Shifters</a>
+                </h3>
+                <p class="post-summary">We present a quantum code-division multiple-access (q-CDMA) framework for multiuser continuous-variable quantum key distribution (CV-QKD) over a share...</p>
+                <div class="post-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/81eec93d.html">Simulating the Open System Dynamics of Multiple Exchange-Only Qubits using Subspace Monte Carlo</a>
-            </h3>
-            <p class="post-summary">We propose a Monte Carlo based method for simulating the open system dynamics of multiple exchange-only (EO) qubits. In the EO encoding, the total spin projection quantum number along the $z$-axis of ...</p>
-            <div class="post-commentary">
-                <blockquote>This work tackles a crucial computational bottleneck in simulating exchange-only qubits—a promising architecture for quantum computing where logical qubits are encoded in the spin states of three electrons. By cleverly exploiting the physics of these systems, the researchers developed a &#34;Subspace Monte Carlo&#34; method that dramatically reduces the computational complexity from exponentially scaling with 8^(2n) to 3^(2n) dimensions for n qubits. The approach works by recognizing that measuring the total spin projection after each operation naturally separates the system into independent subspaces, making large-scale simulations of realistic noise models computationally feasible. This simulation breakthrough is particularly valuable for optimizing error correction protocols in exchange-only qubit systems, which are being actively pursued by several quantum computing companies due to their potential for all-electrical control and integration with semiconductor manufacturing.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15577v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/a3ee8cce.html">Velocity-Enabled Quantum Computing with Neutral Atoms</a>
-            </h3>
-            <p class="post-summary">Realizing error-corrected logical qubits is a central goal for the current development of digital quantum computers. Neutral atoms offer the opportunity to coherently shuttle atoms for realizing effic...</p>
-            <div class="post-commentary">
-                <blockquote>This breakthrough introduces a clever new approach to neutral atom quantum computing by turning atomic motion from a challenge into a feature, using controlled velocity and Doppler shifts to selectively manipulate moving atoms without affecting neighboring qubits. The technique eliminates much of the complex shuttling overhead that has limited scalability in current neutral atom systems, while still achieving impressive gate fidelities of 99.86% and successfully implementing error correction primitives including an 8-qubit cluster state. What makes this particularly significant is how it reduces hardware complexity by using global control beams rather than individual atom addressing, potentially offering a more practical path to large-scale quantum error correction. This &#34;velocity-enabled&#34; architecture could give neutral atoms a competitive edge in the race toward fault-tolerant quantum computers, especially given their natural advantages in connectivity and parallel operations.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15561v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-                <a href="/topics/industry.html" class="topic-tag topic-industry">industry</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/eb7dd118.html">Analog-Digital Quantum Computing with Quantum Annealing Processors</a>
-            </h3>
-            <p class="post-summary">Quantum annealing processors typically control qubits in unison, attenuating quantum fluctuations uniformly until the applied system Hamiltonian is diagonal in the computational basis. This simplifies...</p>
-            <div class="post-commentary">
-                <blockquote>This research represents a significant breakthrough in making quantum annealing processors far more versatile by essentially giving them &#34;gate-like&#34; capabilities at the start and end of computations. By combining the scalability advantages of quantum annealers (which can handle hundreds of qubits) with the flexibility of arbitrary qubit initialization and measurement, the team has created a hybrid analog-digital approach that dramatically expands what these commercially available systems can accomplish. The successful demonstrations of quantum walks and Anderson localization show this isn&#39;t just theoretical—it&#39;s a practical pathway to unlock new quantum simulation and computation applications on existing hardware like D-Wave systems. This could be a game-changer for researchers who want to explore complex quantum phenomena but have been limited by the rigid operational constraints of traditional quantum annealing.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15534v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-                <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/b026df94.html">End-to-end performance of quantum-accelerated large-scale linear algebra workflows</a>
-            </h3>
-            <p class="post-summary">Solving large-scale sparse linear systems is a challenging computational task due to the introduction of non-zero elements, or &#34;fill-in.&#34; The Graph Partitioning Problem (GPP) arises naturally when min...</p>
-            <div class="post-commentary">
-                <blockquote>This article represents a significant milestone in demonstrating quantum advantage for real-world industrial applications, moving beyond theoretical proofs to measure actual performance improvements in commercial finite element analysis software used across automotive and aerospace industries. The researchers successfully integrated quantum optimization into Synopsys/Ansys&#39; LS-DYNA platform—a widely-used multiphysics simulation tool—and tested it on complex models including sedan cars and Rolls-Royce jet engines with meshes containing up to 35 million elements. What makes this particularly compelling is their focus on end-to-end wall-clock performance rather than just algorithmic complexity, providing concrete evidence of quantum acceleration in the type of large-scale linear algebra problems that form the computational backbone of modern engineering simulation. The work bridges the crucial gap between quantum computing research and industrial adoption, offering a clear pathway for quantum computers to enhance the design and analysis workflows that power everything from automotive crash testing to aerospace component optimization.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15515v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/f6a55bd8.html">Error semitransparent universal control of a bosonic logical qubit</a>
-            </h3>
-            <p class="post-summary">Bosonic codes offer hardware-efficient approaches to logical qubit construction and hosted the first demonstration of beyond-break even logical quantum memory.However, such accomplishments were done f...</p>
-            <div class="post-commentary">
-                <blockquote>This breakthrough tackles one of the most pressing challenges in bosonic quantum computing: performing high-fidelity logical operations while maintaining error protection. While previous work demonstrated that bosonic codes could store quantum information better than physical qubits, actually manipulating that information without destroying the error correction has remained elusive. The researchers&#39; &#34;error semi-transparent&#34; gate framework represents a major step toward practical fault-tolerant quantum computing, achieving a five-fold reduction in errors during gate operations and demonstrating universal quantum control—meaning they can perform any quantum computation while preserving the protective benefits of bosonic encoding. This work bridges the critical gap between passive quantum memory and active quantum computation, bringing hardware-efficient bosonic systems closer to real-world applications.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15356v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/63e0c9ae.html">Ab Initio Study of Erbium Point Defects in 4H-SiC for Quantum Devices</a>
-            </h3>
-            <p class="post-summary">Identifying scalable materials systems that exhibit quantum behavior is a central challenge in quantum information science. Point defects in certain wide-bandgap semiconductors are promising in this r...</p>
-            <div class="post-commentary">
-                <blockquote>This computational study tackles a crucial bottleneck in quantum technology development: finding defect centers that can be reliably manufactured using existing semiconductor processes. By using first-principles calculations to map out how erbium atoms behave when embedded in silicon carbide crystal structures, researchers are essentially creating a theoretical blueprint for quantum devices that could leverage the same mature fabrication techniques used in classical electronics. The focus on erbium defects in 4H-SiC is particularly strategic, as these systems can emit single photons at telecommunications wavelengths—making them ideal candidates for quantum networks that need to transmit quantum information over existing fiber optic infrastructure. This type of foundational theoretical work is essential for bridging the gap between laboratory quantum experiments and the scalable manufacturing needed for practical quantum technologies.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15343v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-                <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/a2735e84.html">Scalable Self-Testing of Mutually Anticommuting Observables and Maximally Entangled Two-Qudits</a>
-            </h3>
-            <p class="post-summary">The next frontier in device-independent quantum information lies in the certification of scalable and parallel quantum resources, which underpin advanced quantum technologies. We put forth a simultane...</p>
-            <div class="post-commentary">
-                <blockquote>This arXiv paper presents a significant theoretical breakthrough in device-independent quantum certification, demonstrating how to simultaneously verify both maximally entangled multi-qubit states and sets of anticommuting observables—crucial building blocks for fault-tolerant quantum computing. The work&#39;s elegance lies in showing that achieving maximal violation of their proposed Bell inequality naturally self-tests the minimal quantum resources needed, providing a scalable framework that could revolutionize how we certify quantum hardware without needing to trust the devices themselves. While highly theoretical, this research addresses a fundamental challenge in quantum computing: how to verify that your quantum system is actually doing what you think it&#39;s doing, which becomes increasingly critical as quantum processors scale up and quantum sensing applications demand certified performance guarantees.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15018v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/general.html" class="topic-tag topic-general">general</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/9992aaf7.html">Cavity-Free Distributed Quantum Computing with Rydberg Ensembles via Collective Enhancement</a>
-            </h3>
-            <p class="post-summary">A complete architecture for cavity-free quantum networking based on collective enhancement in Rydberg atom ensembles is presented. The protocol exploits Rydberg blockade and phase-matched directional ...</p>
-            <div class="post-commentary">
-                <blockquote>This article presents a breakthrough approach to quantum networking that could dramatically simplify the hardware requirements for distributed quantum computing by eliminating the need for optical cavities—typically among the most challenging and expensive components in quantum systems. By leveraging collective enhancement in Rydberg atom ensembles, the researchers achieve impressive performance metrics including 99.93% gate fidelity and 600 Hz entanglement generation rates at 20 km distances, proving that cavity-free architectures can compete with traditional cavity-based approaches. The practical significance is enormous: removing optical cavities makes quantum networks far more accessible and scalable, potentially accelerating the development of multi-node quantum computers and quantum internet infrastructure. This work represents a crucial step toward making distributed quantum computing systems more practical and cost-effective for real-world deployment.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.14854v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
-                
-                <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-                
-                <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/b717c4a0.html">Protecting Distributed Blockchain with Twin-Field Quantum Key Distribution: A Quantum Resistant Approach</a>
-            </h3>
-            <p class="post-summary">Quantum computing provides the feasible multi-layered security challenges to classical blockchain systems. Whereas, quantum-secured blockchains relied on quantum key distribution (QKD) to establish se...</p>
-            <div class="post-commentary">
-                <blockquote>This research tackles a critical challenge facing blockchain technology in the quantum era: how to maintain secure distributed networks when quantum computers can potentially break current cryptographic defenses. The authors propose using twin-field quantum key distribution (TF-QKD) to create a quantum-resistant blockchain architecture that cleverly reduces infrastructure complexity from quadratic to linear scaling - a breakthrough that makes large-scale deployment actually feasible rather than prohibitively expensive. What makes this particularly significant is that it addresses the notorious distance limitations of quantum key distribution while maintaining information-theoretic security, potentially enabling secure blockchain networks spanning hundreds of kilometers. This represents a promising pathway for &#34;quantum-proofing&#34; critical distributed systems before large-scale quantum computers arrive to threaten classical cryptography.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.14826v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-                
-                <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/e2ba9d66.html">Towards Exponential Quantum Improvements in Solving Cardinality-Constrained Binary Optimization</a>
-            </h3>
-            <p class="post-summary">Cardinality-constrained binary optimization is a fundamental computational primitive with broad applications in machine learning, finance, and scientific computing. In this work, we introduce a Grover...</p>
-            <div class="post-commentary">
-                <blockquote>This research presents a compelling step toward practical quantum advantage by tackling cardinality-constrained binary optimization—a problem that appears everywhere from portfolio selection in finance to feature selection in machine learning. The key breakthrough lies in exploiting the mathematical structure of fixed-cardinality constraints to achieve exponential speedups over naive quantum search, requiring only O(√(C(n,k)/M)) Grover rotations instead of searching the entire 2^n solution space. What makes this particularly exciting is the hybrid classical-quantum ADMM framework that could actually be implementable on near-term quantum devices, offering a realistic path to quantum advantage for optimization problems that classical computers struggle with as problem sizes grow. The work demonstrates how clever algorithm design can unlock quantum speedups in structured problems, moving beyond theoretical curiosities toward applications that could genuinely benefit from quantum computing.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.14744v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-                <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/e3767158.html">Building advanced quantum chemistry calculations with Kvantify Qrunch on Amazon Braket</a>
-            </h3>
-            <p class="post-summary">Quantum computing promises breakthroughs in chemistry simulations. However, building scalable calculations on today’s noisy quantum hardware remains challenging. This blog introduces Kvantify Qrunch s...</p>
-            <div class="post-commentary">
-                <blockquote>This article showcases a significant step toward making quantum chemistry practically accessible on today&#39;s NISQ devices through Kvantify&#39;s specialized software stack on Amazon Braket. By focusing on hybrid algorithms that can work effectively despite current hardware limitations, this represents the kind of pragmatic approach the field needs to bridge the gap between quantum computing&#39;s theoretical promise and real-world chemical simulation applications. The integration with AWS&#39;s cloud quantum platform could democratize access to advanced quantum chemistry calculations for researchers and companies who previously lacked the expertise to implement these complex algorithms from scratch. This development is particularly noteworthy as chemistry simulations remain one of the most compelling near-term applications for quantum advantage, with potential impacts spanning drug discovery, materials science, and catalyst design.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">February 25, 2026</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/building-advanced-quantum-chemistry-calculations-with-kvantify-qrunch-on-amazon-braket/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/0a870f69.html">Quantum-Guided Cluster Algorithms for Combinatorial Optimization</a>
-            </h3>
-            <p class="post-summary">This post was contributed by Peter Eder, Aron Kerschbaumer, Jernej Rudi Finžgar, Raimel Medina, Martin Schuetz, Helmut Katzgraber, Sarah Braun, and Christian Mendl. Optimizing complex systems is a maj...</p>
-            <div class="post-commentary">
-                <blockquote>This AWS Quantum Computing Blog post introduces quantum-guided cluster algorithms, a hybrid approach that leverages quantum insights to improve classical optimization methods for real-world problems like scheduling and logistics. The collaborative research from multiple institutions demonstrates how quantum computing principles can enhance traditional algorithms even before fault-tolerant quantum computers become widely available. What makes this particularly significant is the focus on near-term practical applications – showing how quantum-inspired techniques can deliver measurable improvements for combinatorial optimization challenges that plague industries today. This work exemplifies the growing trend of hybrid quantum-classical algorithms that bridge the gap between current quantum capabilities and future quantum advantage.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">February 12, 2026</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/quantum-guided-cluster-algorithms-for-combinatorial-optimization/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
-                
-                <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/1ef3288b.html">Reservoir computing on an analog Rydberg-atom quantum computer</a>
-            </h3>
-            <p class="post-summary">This post shows how quantum reservoir computing (QRC) can tackle machine learning challenges using Rydberg-atom quantum computers. Readers will learn how QRC works, see its performance on image classi...</p>
-            <div class="post-commentary">
-                <blockquote>This article demonstrates a compelling near-term application for quantum computing by leveraging the natural dynamics of Rydberg-atom systems as computational reservoirs for machine learning tasks. The approach is particularly intriguing because it sidesteps some of the noise and error correction challenges that plague gate-based quantum algorithms, instead harnessing the inherent quantum properties of atomic interactions for computation. The focus on small dataset performance—especially in pharmaceutical research—addresses a real pain point where classical machine learning often struggles due to limited training data, potentially offering quantum computers a practical advantage in specialized domains before achieving full fault tolerance.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">February 09, 2026</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/reservoir-computing-on-an-analog-rydberg-atom-quantum-computer/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/55565dea.html">“Purifying” photons: Scientists found a way to clean light itself</a>
-            </h3>
-            <p class="post-summary">A new discovery shows that messy, stray light can be used to clean up quantum systems instead of disrupting them. University of Iowa researchers found that unwanted photons produced by lasers can be c...</p>
-            <div class="post-commentary">
-                <blockquote>This breakthrough tackles one of photonic quantum computing&#39;s most persistent challenges: the &#34;messy&#34; stray photons that typically destroy delicate quantum states. What makes this work particularly clever is the counterintuitive approach of using unwanted light to actually purify the system rather than simply trying to block it out—essentially turning quantum noise into a cleaning tool. The ability to produce cleaner single-photon streams could be a game-changer for scaling up photonic quantum computers and quantum communication networks, both of which rely heavily on pristine light particles to maintain their quantum properties. This represents the kind of fundamental advance that could help bridge the gap between promising lab demonstrations and practical quantum photonic systems.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">Science Daily - Quantum</span>
-                <span class="post-date">December 23, 2025</span>
-                <a href="https://www.sciencedaily.com/releases/2025/12/251223084534.htm" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/5871d6fc.html">AWS re:Invent 2025: Your Complete Guide to Quantum Computing Sessions</a>
-            </h3>
-            <p class="post-summary">AWS re:Invent 2025 returns to Las Vegas from December 1 to 5, bringing together builders, researchers, and business leaders who are exploring what is next in advanced computing on AWS. Quantum computi...</p>
-            <div class="post-commentary">
-                <blockquote>This article signals quantum computing&#39;s evolution from pure research curiosity to a technology ready for mainstream enterprise consideration, as evidenced by AWS dedicating significant re:Invent session time to quantum topics. The focus on &#34;early real-world use&#34; through Amazon Braket reflects the industry&#39;s pivot toward practical applications, offering developers and businesses hands-on access to multiple quantum hardware platforms without the complexity of direct vendor relationships. For organizations evaluating quantum strategies, these sessions will likely showcase concrete use cases and implementation pathways that bridge the gap between quantum theory and business value. This represents a crucial moment where cloud giants are positioning quantum computing as an accessible tool rather than an exotic research project.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">November 25, 2025</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/aws-reinvent-2025-your-complete-guide-to-quantum-computing-sessions/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/86ee4900.html">Amazon Braket launches trapped-ion quantum computer from Alpine Quantum Technologies</a>
-            </h3>
-            <p class="post-summary">Amazon Braket enables customers to design and run quantum algorithms on a broad selection of quantum hardware through a unified interface. Today, we expand the hardware available on Braket by adding A...</p>
-            <div class="post-commentary">
-                <blockquote>This article marks a significant expansion of Amazon Braket&#39;s quantum hardware ecosystem, introducing Alpine Quantum Technologies&#39; IBEX Q1 trapped-ion system as the platform&#39;s newest 12-qubit offering. The addition is particularly noteworthy because trapped-ion systems typically offer superior qubit coherence and gate fidelities compared to superconducting alternatives, potentially providing Braket users with access to higher-quality quantum operations for algorithm development and testing. This move reinforces Amazon&#39;s strategy of creating a hardware-agnostic quantum cloud platform, giving researchers and developers the ability to benchmark algorithms across different quantum computing architectures—from IBM&#39;s superconducting systems to IonQ&#39;s trapped ions and now AQT&#39;s European-built hardware. For the broader quantum ecosystem, this represents another step toward making diverse quantum hardware accessible to a global developer community without requiring individual partnerships with each hardware provider.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">November 18, 2025</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/amazon-braket-launches-trapped-ion-quantum-computer-from-alpine-quantum-technologies/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-                
-                <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/ed2da588.html">Exact simulation of Quantum Enhanced Signature Kernels for financial data streams prediction using Amazon Braket</a>
-            </h3>
-            <p class="post-summary">This post was contributed by Ernesto Palidda and Marco Paini from Rigetti Computing, Cristopher Salvi and Antoine Jacquier from Imperial College London, Samuel Crew from National Tsing Hua University ...</p>
-            <div class="post-commentary">
-                <blockquote>This collaboration between Rigetti, Imperial College London, and Standard Chartered demonstrates quantum computing&#39;s potential to tackle real-world financial problems through quantum-enhanced signature kernels - a sophisticated mathematical framework for analyzing sequential data like market prices. The work is particularly noteworthy because it bridges academic quantum machine learning research with practical financial applications, using Amazon Braket to simulate quantum algorithms that could eventually provide computational advantages for time-series prediction in trading and risk management. While still in the simulation phase, this represents the kind of industry-academia partnership that&#39;s essential for moving quantum computing from research curiosity to practical financial tools, especially given the financial sector&#39;s hunger for any edge in processing complex market data streams.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">November 12, 2025</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/exact-simulation-of-quantum-enhanced-signature-kernels-for-financial-data-streams-prediction-using-amazon-braket/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <div class="post-topics">
-                
-                <a href="/topics/general.html" class="topic-tag topic-general">general</a>
-                
-            </div>
-            <h3 class="post-title">
-                <a href="/posts/cddb6bfd.html">Leveraging near-term quantum hardware for simulating high-dimensional dynamics</a>
-            </h3>
-            <p class="post-summary">This post was contributed by Jiaqi Leng, Joseph Li, Xiaodi Wu Scientists and engineers face numerous computational challenges in fields like fluid dynamics [1], modeling heat and sound propagation [2]...</p>
-            <div class="post-commentary">
-                <blockquote>This AWS Quantum Computing Blog post tackles one of quantum computing&#39;s most promising near-term applications: solving high-dimensional partial differential equations that are computationally intractable for classical computers. The research demonstrates how current noisy intermediate-scale quantum (NISQ) devices could provide practical advantages for simulating complex systems in fluid dynamics, heat propagation, and engineering design—problems that scale exponentially with dimension on classical hardware. What makes this particularly significant is its focus on leveraging existing quantum hardware rather than waiting for fault-tolerant systems, potentially bringing quantum advantages to real-world engineering challenges much sooner than previously expected. The work represents a concrete step toward quantum computing&#39;s &#34;killer app&#34; in scientific simulation, where quantum speedups could revolutionize how we model everything from aircraft aerodynamics to climate systems.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">November 08, 2025</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/leveraging-near-term-quantum-hardware-for-simulating-high-dimensional-dynamics/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+        <article class="featured-card no-image">
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/algorithms.html"
+                       class="topic-tag topic-algorithms">algorithms</a>
+                    
+                    <a href="/topics/simulation.html"
+                       class="topic-tag topic-simulation">simulation</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/6ea20c97.html">Reaction-Level Consistency within the Variational Quantum Eigensolver: Homodesmotic Ring Strain Energies of Cyclic Hydrocarbons</a>
+                </h3>
+                <p class="post-summary">Simulation of chemical reactions on quantum computing platforms using quantum classical hybrid algorithms such as the Variational Quantum Eigensolver ...</p>
+                <div class="post-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
     </div>
 </section>
+
+
+
+
+
+<section class="topic-section">
+    <div class="section-header">
+        <h2 class="topic-section-title">
+            <span class="topic-accent topic-accent-hardware"></span>
+            Hardware
+        </h2>
+        <a href="/topics/hardware.html" class="view-all">View All &rarr;</a>
+    </div>
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/c9847074.html">Efficient equivalence checking of Clifford-U circuits with shared single-qubit unitaries</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/424b840f.html">Optimal Continuous- to Discrete-Variable Bipartite Entanglement Conversion</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/838504fe.html">Probing many-body localization crossover in quasiperiodic Floquet circuits on a quantum processor</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+
+
 
 
 <section class="topics-sidebar">
     <h2>Browse by Topic</h2>
     <div class="topic-cloud">
         
-        <a href="/topics/hardware.html" class="topic-pill topic-hardware">
-            hardware <span class="count">(10)</span>
-        </a>
-        
-        <a href="/topics/sensing.html" class="topic-pill topic-sensing">
-            sensing <span class="count">(8)</span>
-        </a>
-        
         <a href="/topics/simulation.html" class="topic-pill topic-simulation">
-            simulation <span class="count">(7)</span>
+            simulation <span class="count">(4)</span>
         </a>
         
-        <a href="/topics/research.html" class="topic-pill topic-research">
-            research <span class="count">(6)</span>
+        <a href="/topics/hardware.html" class="topic-pill topic-hardware">
+            hardware <span class="count">(4)</span>
         </a>
         
         <a href="/topics/algorithms.html" class="topic-pill topic-algorithms">
-            algorithms <span class="count">(5)</span>
-        </a>
-        
-        <a href="/topics/error_correction.html" class="topic-pill topic-error_correction">
-            error_correction <span class="count">(2)</span>
-        </a>
-        
-        <a href="/topics/policy.html" class="topic-pill topic-policy">
-            policy <span class="count">(2)</span>
-        </a>
-        
-        <a href="/topics/general.html" class="topic-pill topic-general">
-            general <span class="count">(2)</span>
-        </a>
-        
-        <a href="/topics/machine_learning.html" class="topic-pill topic-machine_learning">
-            machine_learning <span class="count">(2)</span>
-        </a>
-        
-        <a href="/topics/industry.html" class="topic-pill topic-industry">
-            industry <span class="count">(1)</span>
+            algorithms <span class="count">(3)</span>
         </a>
         
         <a href="/topics/cryptography.html" class="topic-pill topic-cryptography">
-            cryptography <span class="count">(1)</span>
+            cryptography <span class="count">(2)</span>
+        </a>
+        
+        <a href="/topics/sensing.html" class="topic-pill topic-sensing">
+            sensing <span class="count">(2)</span>
+        </a>
+        
+        <a href="/topics/research.html" class="topic-pill topic-research">
+            research <span class="count">(1)</span>
         </a>
         
     </div>
 </section>
+
 
 
 <section class="curator-card">
@@ -610,7 +297,7 @@ As we head toward AWS re:Invent 2025, the quantum computing landscape is clearly
             <div class="footer-content">
                 <div class="footer-info">
                     <p>Curated by <strong>Mark Eatherly</strong></p>
-                    <p class="footer-tagline">A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
                 </div>
                 <div class="footer-links">
                     
@@ -619,5 +306,16 @@ As we head toward AWS re:Invent 2025, the quantum computing landscape is clearly
             </div>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
 </body>
 </html>

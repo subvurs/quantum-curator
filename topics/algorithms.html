@@ -9,17 +9,17 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Quantum Pulse">
-    <meta property="og:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quantum-pulse.github.io">
+    <meta property="og:url" content="https://subvurs.github.io/quantum-curator">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Quantum Pulse">
-    <meta name="twitter:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://quantum-pulse.github.io/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://subvurs.github.io/quantum-curator/feed.xml">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -54,87 +54,70 @@
             <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
         </nav>
         <h1>algorithms</h1>
-        <p class="page-subtitle">5 curated articles</p>
+        <p class="page-subtitle">3 curated articles</p>
     </header>
 
-    <div class="posts-grid">
+    
+    
+    <article class="featured-card featured-card--wide" style="margin-bottom: var(--space-xl);">
         
-        <article class="post-card">
+        <div class="featured-image image-fallback topic-bg-algorithms"></div>
+        
+        <div class="featured-content">
             <h3 class="post-title">
-                <a href="/posts/b026df94.html">End-to-end performance of quantum-accelerated large-scale linear algebra workflows</a>
+                <a href="/posts/9f8da3dc.html">Auger Spectroscopy via Generative Quantum Eigensolver: A Quantum Approach to Molecular Excitations</a>
             </h3>
-            <p class="post-summary">Solving large-scale sparse linear systems is a challenging computational task due to the introduction of non-zero elements, or &#34;fill-in.&#34; The Graph Partitioning Problem (GPP) arises naturally when min...</p>
+            <p class="post-summary">Auger electron spectroscopy, a way of characterizing electronic structure through core-level decay processes, is widely used in materials characterization; however direct calculation from molecular geometry requires accurate treatment of many excited states, posing a challenge for classical methods....</p>
             <div class="post-commentary">
-                <blockquote>This article represents a significant milestone in demonstrating quantum advantage for real-world industrial applications, moving beyond theoretical proofs to measure actual performance improvements in commercial finite element analysis software used across automotive and aerospace industries. The researchers successfully integrated quantum optimization into Synopsys/Ansys&#39; LS-DYNA platform—a widely-used multiphysics simulation tool—and tested it on complex models including sedan cars and Rolls-Royce jet engines with meshes containing up to 35 million elements. What makes this particularly compelling is their focus on end-to-end wall-clock performance rather than just algorithmic complexity, providing concrete evidence of quantum acceleration in the type of large-scale linear algebra problems that form the computational backbone of modern engineering simulation. The work bridges the crucial gap between quantum computing research and industrial adoption, offering a clear pathway for quantum computers to enhance the design and analysis workflows that power everything from automotive crash testing to aerospace component optimization.</blockquote>
+                <blockquote>This article represents a fascinating convergence of quantum computing, machine learning, and materials science, demonstrating how AI-generated quantum circuits can tackle complex molecular spectroscopy problems that challenge classical computers. The researchers&#39; hybrid approach cleverly combines a GPT-2 model to design efficient quantum circuits with quantum algorithms for calculating excited states—addressing one of the most computationally demanding aspects of molecular characterization. What&#39;s particularly compelling is that their Generative Quantum Eigensolver (GQE) achieves similar accuracy to traditional variational quantum eigensolvers while requiring roughly half the quantum gates, potentially making these calculations more feasible on near-term quantum devices. This work opens an intriguing pathway where large language models could help optimize quantum algorithms for real-world chemistry applications, bridging three of today&#39;s most transformative computing paradigms.</blockquote>
             </div>
             <div class="post-meta">
                 <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.15515v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-date">March 13, 2026</span>
+                <a href="https://arxiv.org/abs/2603.12859v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </div>
+    </article>
+    
+
+    
+    
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail image-fallback topic-bg-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/6ea20c97.html">Reaction-Level Consistency within the Variational Quantum Eigensolver: Homodesmotic Ring Strain Energies of Cyclic Hydrocarbons</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Simulation of chemical reactions on quantum computing platforms using quantum classical hybrid algorithms such as the Variational Quantum Eigensolver ...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/e2ba9d66.html">Towards Exponential Quantum Improvements in Solving Cardinality-Constrained Binary Optimization</a>
-            </h3>
-            <p class="post-summary">Cardinality-constrained binary optimization is a fundamental computational primitive with broad applications in machine learning, finance, and scientific computing. In this work, we introduce a Grover...</p>
-            <div class="post-commentary">
-                <blockquote>This research presents a compelling step toward practical quantum advantage by tackling cardinality-constrained binary optimization—a problem that appears everywhere from portfolio selection in finance to feature selection in machine learning. The key breakthrough lies in exploiting the mathematical structure of fixed-cardinality constraints to achieve exponential speedups over naive quantum search, requiring only O(√(C(n,k)/M)) Grover rotations instead of searching the entire 2^n solution space. What makes this particularly exciting is the hybrid classical-quantum ADMM framework that could actually be implementable on near-term quantum devices, offering a realistic path to quantum advantage for optimization problems that classical computers struggle with as problem sizes grow. The work demonstrates how clever algorithm design can unlock quantum speedups in structured problems, moving beyond theoretical curiosities toward applications that could genuinely benefit from quantum computing.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 16, 2026</span>
-                <a href="https://arxiv.org/abs/2603.14744v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/e3767158.html">Building advanced quantum chemistry calculations with Kvantify Qrunch on Amazon Braket</a>
-            </h3>
-            <p class="post-summary">Quantum computing promises breakthroughs in chemistry simulations. However, building scalable calculations on today’s noisy quantum hardware remains challenging. This blog introduces Kvantify Qrunch s...</p>
-            <div class="post-commentary">
-                <blockquote>This article showcases a significant step toward making quantum chemistry practically accessible on today&#39;s NISQ devices through Kvantify&#39;s specialized software stack on Amazon Braket. By focusing on hybrid algorithms that can work effectively despite current hardware limitations, this represents the kind of pragmatic approach the field needs to bridge the gap between quantum computing&#39;s theoretical promise and real-world chemical simulation applications. The integration with AWS&#39;s cloud quantum platform could democratize access to advanced quantum chemistry calculations for researchers and companies who previously lacked the expertise to implement these complex algorithms from scratch. This development is particularly noteworthy as chemistry simulations remain one of the most compelling near-term applications for quantum advantage, with potential impacts spanning drug discovery, materials science, and catalyst design.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">February 25, 2026</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/building-advanced-quantum-chemistry-calculations-with-kvantify-qrunch-on-amazon-braket/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/0a870f69.html">Quantum-Guided Cluster Algorithms for Combinatorial Optimization</a>
-            </h3>
-            <p class="post-summary">This post was contributed by Peter Eder, Aron Kerschbaumer, Jernej Rudi Finžgar, Raimel Medina, Martin Schuetz, Helmut Katzgraber, Sarah Braun, and Christian Mendl. Optimizing complex systems is a maj...</p>
-            <div class="post-commentary">
-                <blockquote>This AWS Quantum Computing Blog post introduces quantum-guided cluster algorithms, a hybrid approach that leverages quantum insights to improve classical optimization methods for real-world problems like scheduling and logistics. The collaborative research from multiple institutions demonstrates how quantum computing principles can enhance traditional algorithms even before fault-tolerant quantum computers become widely available. What makes this particularly significant is the focus on near-term practical applications – showing how quantum-inspired techniques can deliver measurable improvements for combinatorial optimization challenges that plague industries today. This work exemplifies the growing trend of hybrid quantum-classical algorithms that bridge the gap between current quantum capabilities and future quantum advantage.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">February 12, 2026</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/quantum-guided-cluster-algorithms-for-combinatorial-optimization/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
-            </div>
-        </article>
-        
-        <article class="post-card">
-            <h3 class="post-title">
-                <a href="/posts/86ee4900.html">Amazon Braket launches trapped-ion quantum computer from Alpine Quantum Technologies</a>
-            </h3>
-            <p class="post-summary">Amazon Braket enables customers to design and run quantum algorithms on a broad selection of quantum hardware through a unified interface. Today, we expand the hardware available on Braket by adding A...</p>
-            <div class="post-commentary">
-                <blockquote>This article marks a significant expansion of Amazon Braket&#39;s quantum hardware ecosystem, introducing Alpine Quantum Technologies&#39; IBEX Q1 trapped-ion system as the platform&#39;s newest 12-qubit offering. The addition is particularly noteworthy because trapped-ion systems typically offer superior qubit coherence and gate fidelities compared to superconducting alternatives, potentially providing Braket users with access to higher-quality quantum operations for algorithm development and testing. This move reinforces Amazon&#39;s strategy of creating a hardware-agnostic quantum cloud platform, giving researchers and developers the ability to benchmark algorithms across different quantum computing architectures—from IBM&#39;s superconducting systems to IonQ&#39;s trapped ions and now AQT&#39;s European-built hardware. For the broader quantum ecosystem, this represents another step toward making diverse quantum hardware accessible to a global developer community without requiring individual partnerships with each hardware provider.</blockquote>
-            </div>
-            <div class="post-meta">
-                <span class="post-source">AWS Quantum Computing Blog</span>
-                <span class="post-date">November 18, 2025</span>
-                <a href="https://aws.amazon.com/blogs/quantum-computing/amazon-braket-launches-trapped-ion-quantum-computer-from-alpine-quantum-technologies/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail image-fallback topic-bg-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/c9847074.html">Efficient equivalence checking of Clifford-U circuits with shared single-qubit unitaries</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Quantum circuit equivalence checking asks whether two circuits implement the same unitary. It guarantees compiler correctness and safe optimization, y...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">March 13, 2026</span>
+                </div>
             </div>
         </article>
         
     </div>
+    
 
     <nav class="topic-nav">
         <a href="/topics/">&larr; All Topics</a>
@@ -149,7 +132,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <p>Curated by <strong>Mark Eatherly</strong></p>
-                    <p class="footer-tagline">A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
                 </div>
                 <div class="footer-links">
                     
@@ -158,5 +141,16 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
 </body>
 </html>

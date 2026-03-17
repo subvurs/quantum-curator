@@ -9,17 +9,17 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Quantum Pulse">
-    <meta property="og:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quantum-pulse.github.io">
+    <meta property="og:url" content="https://subvurs.github.io/quantum-curator">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Quantum Pulse">
-    <meta name="twitter:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://quantum-pulse.github.io/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://subvurs.github.io/quantum-curator/feed.xml">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -98,7 +98,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <p>Curated by <strong>Mark Eatherly</strong></p>
-                    <p class="footer-tagline">A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
                 </div>
                 <div class="footer-links">
                     
@@ -107,5 +107,16 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
 </body>
 </html>
