@@ -9,17 +9,17 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Quantum Pulse">
-    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://subvurs.github.io/quantum-curator">
+    <meta property="og:url" content="https://quantum-pulse.github.io">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Quantum Pulse">
-    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta name="twitter:description" content="A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://subvurs.github.io/quantum-curator/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Quantum Pulse RSS Feed" href="https://quantum-pulse.github.io/feed.xml">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -54,38 +54,128 @@
             <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
         </nav>
         <h1>sensing</h1>
-        <p class="page-subtitle">2 curated articles</p>
+        <p class="page-subtitle">8 curated articles</p>
     </header>
 
     <div class="posts-grid">
         
         <article class="post-card">
             <h3 class="post-title">
-                <a href="/posts/424b840f.html">Optimal Continuous- to Discrete-Variable Bipartite Entanglement Conversion</a>
+                <a href="/posts/53be05b7.html">Benchmarking quantum simulation with neutron-scattering experiments</a>
             </h3>
-            <p class="post-summary">Discrete-variable (DV) entanglement is crucial for numerous quantum applications, yet its deterministic generation in many bosonic systems remains experimentally challenging. In contrast, continuous-v...</p>
+            <p class="post-summary">A central goal of quantum computation is the realistic simulation of quantum materials. Although quantum processors have advanced rapidly in scale and fidelity, it has remained unclear whether pre-fau...</p>
             <div class="post-commentary">
-                <blockquote>An interesting development in hardware. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</blockquote>
+                <blockquote>This breakthrough represents a crucial milestone in validating quantum computers as practical tools for materials science, demonstrating that today&#39;s 50-qubit processors can already produce quantitatively accurate simulations of real quantum materials like KCuF₃ that match neutron-scattering experiments. What makes this particularly significant is the direct benchmarking against laboratory measurements rather than theoretical predictions—establishing a rigorous experimental framework that could finally bridge the gap between quantum simulation promises and real-world materials discovery. The successful simulation of strongly correlated systems with exotic properties like spinon excitations showcases quantum computers tackling problems that are computationally intractable for classical machines, suggesting we may be closer than expected to quantum advantage in materials research.</blockquote>
             </div>
             <div class="post-meta">
                 <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 13, 2026</span>
-                <a href="https://arxiv.org/abs/2603.12682v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15608v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </article>
         
         <article class="post-card">
             <h3 class="post-title">
-                <a href="/posts/838504fe.html">Probing many-body localization crossover in quasiperiodic Floquet circuits on a quantum processor</a>
+                <a href="/posts/bcc26a95.html">A direct controlled-phase gate between microwave photons</a>
             </h3>
-            <p class="post-summary">Many-body localization (MBL) provides a mechanism by which interacting quantum systems evade thermalization, leading to persistent memory of initial conditions and slow entanglement growth. Probing th...</p>
+            <p class="post-summary">Useful quantum information processing ultimately requires operations over large Hilbert spaces, where logical information can be encoded efficiently and protected against noise. Harmonic oscillators n...</p>
             <div class="post-commentary">
-                <blockquote>An interesting development in hardware. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.</blockquote>
+                <blockquote>This research represents a significant breakthrough in bosonic quantum computing by demonstrating the first direct controlled-phase gate between microwave photons without relying on excited ancillary qubits. The team&#39;s clever use of Raman-assisted cross-Kerr interactions sidesteps a major limitation in current approaches—the need to excite nonlinear elements that introduce unwanted decoherence and leakage errors. Most excitingly, they show how this direct photon-photon coupling enables error detection by mapping photon-number parity to an auxiliary oscillator rather than a fragile qubit, potentially offering a cleaner path toward fault-tolerant bosonic codes. This work could accelerate the development of hardware-efficient quantum processors based on high-dimensional oscillator spaces, which many view as a promising alternative to traditional qubit-based architectures.</blockquote>
             </div>
             <div class="post-meta">
                 <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">March 13, 2026</span>
-                <a href="https://arxiv.org/abs/2603.12675v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15587v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/5f44e2f1.html">Simulating the Open System Dynamics of Multiple Exchange-Only Qubits using Subspace Monte Carlo</a>
+            </h3>
+            <p class="post-summary">We propose a Monte Carlo based method for simulating the open system dynamics of multiple exchange-only (EO) qubits. In the EO encoding, the total spin projection quantum number along the $z$-axis of ...</p>
+            <div class="post-commentary">
+                <blockquote>This article tackles a critical challenge in simulating exchange-only qubits—a promising quantum computing architecture that encodes logical qubits in the exchange interactions between three physical spins. The researchers&#39; Subspace Monte Carlo method dramatically reduces computational complexity from exponential scaling (8^{2n}) to a more manageable 3^{2n} by cleverly exploiting the physics of these systems, where measuring total spin projection naturally separates the dynamics into distinct subspaces. What makes this particularly valuable is that the method remains accurate when combined with randomized compiling techniques that convert coherent errors into stochastic ones—a common practice in modern quantum error correction protocols. This simulation breakthrough could accelerate the development of exchange-only qubit systems by enabling researchers to model larger, more realistic quantum circuits that include the messy effects of noise and decoherence.</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15577v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/63db12fb.html">Velocity-Enabled Quantum Computing with Neutral Atoms</a>
+            </h3>
+            <p class="post-summary">Realizing error-corrected logical qubits is a central goal for the current development of digital quantum computers. Neutral atoms offer the opportunity to coherently shuttle atoms for realizing effic...</p>
+            <div class="post-commentary">
+                <blockquote>This breakthrough introduces a clever twist to neutral atom quantum computing by using atom velocity as a controllable quantum resource, allowing operations on moving atoms through Doppler shifts while leaving stationary &#34;spectator&#34; atoms unaffected. The approach elegantly addresses two major scaling challenges in neutral atom systems: the time overhead of shuttling atoms between interaction zones and the hardware complexity of individual atom control. By demonstrating high-fidelity quantum error correction primitives including an 8-qubit cluster state and a [[4,2,2]] error detection code using only global control beams, this velocity-enabled architecture could significantly reduce the engineering complexity needed to scale neutral atom quantum computers. The ability to perform &#34;flying ancilla&#34; measurements represents a particularly novel approach that could streamline quantum error correction protocols compared to traditional stop-and-go shuttling methods.</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15561v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/811f672e.html">Analog-Digital Quantum Computing with Quantum Annealing Processors</a>
+            </h3>
+            <p class="post-summary">Quantum annealing processors typically control qubits in unison, attenuating quantum fluctuations uniformly until the applied system Hamiltonian is diagonal in the computational basis. This simplifies...</p>
+            <div class="post-commentary">
+                <blockquote>This research represents a significant leap forward for quantum annealing processors, traditionally limited to optimization problems, by demonstrating how they can be transformed into versatile analog-digital quantum computers capable of simulating complex many-body physics. By cleverly using auxiliary qubits for arbitrary state preparation and measurement while leveraging the processor&#39;s natural XY-model evolution, the team has essentially unlocked a new computational paradigm that combines the scalability advantages of annealing hardware with the flexibility of gate-based operations. The successful demonstration of quantum walks and Anderson localization shows these commercially available D-Wave-style processors can now tackle fundamental quantum simulation problems previously reserved for more complex gate-based systems. This breakthrough could dramatically expand the practical applications of existing quantum annealing hardware, offering researchers a more accessible pathway to explore quantum many-body phenomena and potentially accelerating progress in quantum materials research and condensed matter physics.</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15534v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/18890280.html">End-to-end performance of quantum-accelerated large-scale linear algebra workflows</a>
+            </h3>
+            <p class="post-summary">Solving large-scale sparse linear systems is a challenging computational task due to the introduction of non-zero elements, or &#34;fill-in.&#34; The Graph Partitioning Problem (GPP) arises naturally when min...</p>
+            <div class="post-commentary">
+                <blockquote>This research represents a significant milestone in demonstrating practical quantum advantage for real-world industrial applications, integrating quantum optimization directly into Synopsys/Ansys&#39; widely-used LS-DYNA simulation software to accelerate complex engineering tasks like analyzing car vibrations and jet engine components. The work is particularly noteworthy because it measures actual end-to-end performance improvements on massive finite element meshes with up to 35 million elements—moving beyond proof-of-concept demonstrations to tackle the scale and complexity that industrial engineers face daily. By using Iterative-QAOA to solve the graph partitioning problem that bottlenecks large sparse linear systems, the researchers have identified a concrete pathway where near-term quantum computers could provide meaningful speedups in the $10+ billion computer-aided engineering market. The fact that they tested on both classical simulators (150 qubits) and real quantum hardware (IonQ Forte) while measuring wall-clock improvements in production software environments suggests we&#39;re approaching a tipping point where quantum-accelerated workflows could become commercially viable.</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15515v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/723b1fb2.html">Scalable Self-Testing of Mutually Anticommuting Observables and Maximally Entangled Two-Qudits</a>
+            </h3>
+            <p class="post-summary">The next frontier in device-independent quantum information lies in the certification of scalable and parallel quantum resources, which underpin advanced quantum technologies. We put forth a simultane...</p>
+            <div class="post-commentary">
+                <blockquote>This article tackles one of quantum computing&#39;s most pressing challenges: how to verify that quantum devices are working correctly without trusting the devices themselves. The researchers present a breakthrough &#34;self-testing&#34; protocol that can simultaneously verify both maximally entangled quantum states and sets of mutually anticommuting observables—fundamental building blocks for quantum error correction and fault-tolerant quantum computing. What makes this particularly exciting is the scalability: their framework can certify increasingly complex quantum resources as the number of observables grows, potentially offering a practical path to validate the quantum advantage in real-world devices. This device-independent certification approach could become crucial as quantum computers scale up, providing the mathematical foundation to trust quantum computations even when we can&#39;t peek inside the quantum &#34;black box.&#34;</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.15018v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </article>
+        
+        <article class="post-card">
+            <h3 class="post-title">
+                <a href="/posts/a9ab1178.html">Protecting Distributed Blockchain with Twin-Field Quantum Key Distribution: A Quantum Resistant Approach</a>
+            </h3>
+            <p class="post-summary">Quantum computing provides the feasible multi-layered security challenges to classical blockchain systems. Whereas, quantum-secured blockchains relied on quantum key distribution (QKD) to establish se...</p>
+            <div class="post-commentary">
+                <blockquote>This research tackles one of quantum computing&#39;s most pressing paradoxes: while quantum computers threaten to break the cryptographic foundations of blockchain technology, quantum communication protocols like QKD could actually strengthen blockchain security against these very same threats. The breakthrough here lies in using twin-field QKD to dramatically reduce the infrastructure complexity of quantum-secured blockchain networks from quadratic to linear scaling—essentially making it feasible to build large-scale quantum-resistant blockchain systems that were previously impractical due to connectivity requirements. By combining information-theoretic security guarantees with distributed consensus mechanisms, this approach offers a compelling path forward for enterprise blockchain applications that need to be future-proof against quantum attacks, potentially transforming how we think about post-quantum cryptography in distributed systems.</blockquote>
+            </div>
+            <div class="post-meta">
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">March 16, 2026</span>
+                <a href="https://arxiv.org/abs/2603.14826v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </article>
         
@@ -104,7 +194,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <p>Curated by <strong>Mark Eatherly</strong></p>
-                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                    <p class="footer-tagline">A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</p>
                 </div>
                 <div class="footer-links">
                     
