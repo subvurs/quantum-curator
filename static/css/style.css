@@ -1200,6 +1200,50 @@ img {
 }
 
 /* ============================================
+   SEARCH PAGE
+   ============================================ */
+
+.search-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-controls {
+    margin-bottom: var(--space-lg);
+}
+
+.search-box {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box::placeholder {
+    color: var(--text-dim);
+}
+
+.search-box:focus {
+    border-color: var(--primary);
+}
+
+.search-results-count {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-lg);
+}
+
+.search-results .compact-list {
+    margin-bottom: var(--space-xl);
+}
+
+/* ============================================
    MAGAZINE RESPONSIVE OVERRIDES
    ============================================ */
 
