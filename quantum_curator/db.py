@@ -400,8 +400,8 @@ def list_posts(
         params.append(status.value)
 
     if since:
-        query += " AND (published_at >= ? OR curated_at >= ?)"
-        params.extend([since.isoformat(), since.isoformat()])
+        query += " AND COALESCE(published_at, curated_at) >= ?"
+        params.append(since.isoformat())
 
     query += " ORDER BY COALESCE(published_at, curated_at) DESC LIMIT ?"
     params.append(limit)

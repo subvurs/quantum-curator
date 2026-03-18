@@ -23,6 +23,12 @@ class SiteBuilder:
         self.settings = get_settings()
         self.output_dir = Path(output_dir or self.settings.output_dir)
 
+        # Content freshness cutoff — only include posts newer than this
+        from datetime import timedelta
+        self.freshness_cutoff = datetime.utcnow() - timedelta(
+            days=self.settings.max_article_age_days
+        )
+
         # Set up Jinja2 environment
         template_dir = Path(__file__).parent / "templates"
         self.env = Environment(
@@ -82,6 +88,14 @@ class SiteBuilder:
         print(f"Site built at: {self.output_dir}")
         return self.output_dir
 
+    def _get_fresh_posts(self, limit: int = 100) -> list[CuratedPost]:
+        """Return published posts within the freshness window."""
+        return db.list_curated_posts(
+            status=PostStatus.PUBLISHED,
+            since=self.freshness_cutoff,
+            limit=limit,
+        )
+
     def _get_site_config(self) -> SiteConfig:
         """Get site configuration."""
         return SiteConfig(
@@ -112,11 +126,8 @@ class SiteBuilder:
 
     def _build_index(self, config: SiteConfig):
         """Build the home page with magazine-style layout."""
-        # Get recent posts
-        posts = db.list_curated_posts(
-            status=PostStatus.PUBLISHED,
-            limit=30,
-        )
+        # Get recent posts (within freshness window only)
+        posts = self._get_fresh_posts(limit=30)
 
         # Get latest digest
         digests = db.list_daily_digests(limit=1)
@@ -166,7 +177,7 @@ class SiteBuilder:
         posts_dir = self.output_dir / "posts"
         posts_dir.mkdir(exist_ok=True)
 
-        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+        posts = self._get_fresh_posts(limit=500)
         template = self.env.get_template("post.html")
 
         for post in posts:
@@ -184,8 +195,8 @@ class SiteBuilder:
         archive_dir = self.output_dir / "archive"
         archive_dir.mkdir(exist_ok=True)
 
-        # Get all posts
-        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+        # Get posts within freshness window
+        posts = self._get_fresh_posts(limit=500)
 
         # Group by month
         months: dict[str, list[CuratedPost]] = {}
@@ -223,8 +234,8 @@ class SiteBuilder:
         topics_dir = self.output_dir / "topics"
         topics_dir.mkdir(exist_ok=True)
 
-        # Get posts by topic
-        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+        # Get posts by topic (within freshness window)
+        posts = self._get_fresh_posts(limit=500)
         topic_posts: dict[str, list[CuratedPost]] = {}
 
         for post in posts:
@@ -268,10 +279,7 @@ class SiteBuilder:
 
     def _build_rss_feed(self, config: SiteConfig):
         """Build RSS feed."""
-        posts = db.list_curated_posts(
-            status=PostStatus.PUBLISHED,
-            limit=50,
-        )
+        posts = self._get_fresh_posts(limit=50)
 
         template = self.env.get_template("feed.xml")
         xml = template.render(
@@ -283,7 +291,7 @@ class SiteBuilder:
 
     def _build_search(self, config: SiteConfig):
         """Build search index JSON and search page."""
-        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+        posts = self._get_fresh_posts(limit=500)
 
         # Build search index
         index = []
@@ -318,7 +326,7 @@ class SiteBuilder:
 
     def _get_topic_counts(self) -> dict[str, int]:
         """Count posts by topic."""
-        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+        posts = self._get_fresh_posts(limit=500)
         counts: dict[str, int] = {}
 
         for post in posts:

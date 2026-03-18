@@ -86,6 +86,18 @@ class Aggregator:
         min_score = self.settings.min_relevance_score
         filtered = [a for a in scored_articles if a.relevance_score >= min_score]
 
+        # Filter out articles older than max_article_age_days
+        max_age = timedelta(days=self.settings.max_article_age_days)
+        cutoff = datetime.utcnow() - max_age
+        before_count = len(filtered)
+        filtered = [
+            a for a in filtered
+            if a.published_at is None or a.published_at >= cutoff
+        ]
+        dropped = before_count - len(filtered)
+        if dropped:
+            print(f"Dropped {dropped} articles older than {self.settings.max_article_age_days} days")
+
         # Save to database
         for article in filtered:
             db.save_raw_article(article)

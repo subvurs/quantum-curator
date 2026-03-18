@@ -65,6 +65,9 @@ class Settings(BaseSettings):
     news_api_key: str = Field(default="", description="NewsAPI key for news aggregation")
     unsplash_api_key: str = Field(default="", description="Unsplash API key for stock photo search")
 
+    # Content freshness
+    max_article_age_days: int = Field(default=60, description="Maximum article age in days — older articles are dropped during fetch and excluded from the site")
+
     # Image generation
     generate_images: bool = Field(default=True, description="Auto-generate images for articles without one")
 
