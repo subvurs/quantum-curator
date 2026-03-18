@@ -37,7 +37,7 @@ class Settings(BaseSettings):
         default="Daily curated insights from the quantum frontier",
         description="Site tagline/subtitle",
     )
-    site_url: str = Field(default="https://subvurs.github.io/quantum-curator", description="Published site URL")
+    site_url: str = Field(default="https://quantumcrier.com", description="Published site URL")
     site_description: str = Field(
         default="A daily curated collection of the latest news, research, and developments "
         "in quantum computing, quantum physics, and quantum information science.",
@@ -81,7 +81,7 @@ class Settings(BaseSettings):
     # Qrater settings
     qrater_output_dir: Path = Field(default=Path("qrater_output"), description="Qrater site output directory")
     qrater_github_repo: str = Field(default="qrater", description="GitHub repo name for Qrater Pages")
-    qrater_site_url: str = Field(default="https://subvurs.github.io/qrater", description="Qrater published site URL")
+    qrater_site_url: str = Field(default="https://qrater.org", description="Qrater published site URL")
     buttondown_username: str = Field(default="", description="Buttondown newsletter username for Qrater email signup")
 
     # Aggregation settings
