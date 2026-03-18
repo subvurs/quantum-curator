@@ -814,6 +814,30 @@ img {
     color: var(--text-dim);
 }
 
+.copyright a {
+    color: var(--primary-light, #818cf8);
+    text-decoration: none;
+}
+
+.copyright a:hover {
+    text-decoration: underline;
+}
+
+.footer-powered {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: var(--space-xs, 0.25rem);
+}
+
+.footer-powered a {
+    color: var(--primary-light, #818cf8);
+    text-decoration: none;
+}
+
+.footer-powered a:hover {
+    text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .container {
