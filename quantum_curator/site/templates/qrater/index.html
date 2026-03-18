@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qrater — Interactive Quantum News Dashboard</title>
+    <meta name="description" content="Filter and explore curated quantum computing news by topic, date, and source. Subscribe for personalized updates.">
+
+    <meta property="og:title" content="Qrater — Quantum News Dashboard">
+    <meta property="og:description" content="Interactive quantum computing news filtered by your interests.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ qrater_url }}">
+
+    <link rel="stylesheet" href="./static/qrater/qrater.css">
+</head>
+<body>
+    <header class="qrater-header">
+        <div class="header-inner">
+            <a href="./" class="qrater-logo">Qrater</a>
+            <nav class="header-nav">
+                <a href="{{ curator_url }}">Quantum Curator</a>
+            </nav>
+            <button class="filter-toggle" id="filter-toggle" aria-label="Toggle filters">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="5" x2="17" y2="5"/><line x1="5" y1="10" x2="15" y2="10"/><line x1="7" y1="15" x2="13" y2="15"/>
+                </svg>
+                Filters
+            </button>
+        </div>
+    </header>
+
+    <div class="qrater-app">
+        <aside class="filters-panel" id="filters-panel">
+            <div class="filter-group">
+                <h3>Topics</h3>
+                <div class="topic-checkboxes">
+                    {% for topic, count in topic_counts.items() %}
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="{{ topic }}" checked>
+                        <span class="topic-label topic-color-{{ topic }}">{{ topic | replace('_', ' ') | title }}</span>
+                        <span class="topic-count">{{ count }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+                <div class="topic-actions">
+                    <button class="btn-sm" id="select-all">Select All</button>
+                    <button class="btn-sm" id="clear-all">Clear All</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Date Range</h3>
+                <div class="date-presets">
+                    <button class="preset-btn" data-range="today">Today</button>
+                    <button class="preset-btn" data-range="week">This Week</button>
+                    <button class="preset-btn" data-range="month">This Month</button>
+                    <button class="preset-btn active" data-range="all">All Time</button>
+                </div>
+                <div class="custom-dates">
+                    <label>From <input type="date" id="date-from"></label>
+                    <label>To <input type="date" id="date-to"></label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Source</h3>
+                <select id="source-filter">
+                    <option value="">All Sources</option>
+                    {% for source in sources %}
+                    <option value="{{ source }}">{{ source }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h3>Sort By</h3>
+                <select id="sort-by">
+                    <option value="date-desc">Newest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="relevance">Relevance Score</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <div class="results-bar">
+                <span id="results-count">{{ article_count }} articles</span>
+                <span class="build-time">Updated {{ build_time }}</span>
+            </div>
+
+            <div class="articles-grid" id="articles-grid">
+                <div class="loading-msg">Loading articles...</div>
+            </div>
+
+            {% if buttondown_username %}
+            <section class="email-signup">
+                <h2>Get Quantum News In Your Inbox</h2>
+                <p>Select topics you care about and receive a curated digest.</p>
+                <form
+                    action="https://buttondown.com/api/emails/embed-subscribe/{{ buttondown_username }}"
+                    method="post"
+                    target="popupwindow"
+                    class="signup-form"
+                >
+                    <div class="signup-topics">
+                        {% for topic in topic_counts.keys() %}
+                        <label class="signup-topic-check">
+                            <input type="checkbox" name="tag" value="{{ topic }}">
+                            <span>{{ topic | replace('_', ' ') | title }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <div class="signup-row">
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </form>
+            </section>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer class="qrater-footer">
+        <p>Powered by <a href="{{ curator_url }}">Quantum Crier</a> &mdash; A <a href="https://github.com/subvurs">Subvurs</a> Project &mdash; Founded by Mark Eatherly</p>
+        <p class="footer-note">Data refreshed daily at 06:00 UTC</p>
+    </footer>
+
+    <script src="./static/qrater/qrater.js"></script>
+</body>
+</html>

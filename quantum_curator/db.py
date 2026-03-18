@@ -93,6 +93,7 @@ def init_db() -> None:
             published_to_site_at TEXT,
             slug TEXT DEFAULT '',
             meta_description TEXT DEFAULT '',
+            subvurs_notes TEXT DEFAULT '',
             FOREIGN KEY (article_id) REFERENCES raw_articles(id)
         );
 
@@ -114,6 +115,13 @@ def init_db() -> None:
         CREATE INDEX IF NOT EXISTS idx_posts_published ON curated_posts(published_to_site_at);
         CREATE INDEX IF NOT EXISTS idx_digests_date ON daily_digests(date);
     """)
+
+    # Migrate existing databases: add subvurs_notes column if missing
+    try:
+        conn.execute("ALTER TABLE curated_posts ADD COLUMN subvurs_notes TEXT DEFAULT ''")
+        conn.commit()
+    except sqlite3.OperationalError:
+        pass  # Column already exists
 
     conn.commit()
     conn.close()
@@ -341,8 +349,9 @@ def save_post(post: CuratedPost) -> CuratedPost:
         INSERT OR REPLACE INTO curated_posts
         (id, article_id, title, original_url, summary, author,
          source_name, image_url, published_at, curator_commentary, curator_name, curator_headline,
-         topics, tags, relevance_score, status, curated_at, published_to_site_at, slug, meta_description)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         topics, tags, relevance_score, status, curated_at, published_to_site_at, slug, meta_description,
+         subvurs_notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         post.id,
         post.article_id,
@@ -364,6 +373,7 @@ def save_post(post: CuratedPost) -> CuratedPost:
         post.published_to_site_at.isoformat() if post.published_to_site_at else None,
         post.slug,
         post.meta_description,
+        post.subvurs_notes,
     ))
     conn.commit()
     conn.close()
@@ -475,6 +485,7 @@ def _row_to_post(row: sqlite3.Row) -> CuratedPost:
         published_to_site_at=datetime.fromisoformat(row["published_to_site_at"]) if row["published_to_site_at"] else None,
         slug=row["slug"],
         meta_description=row["meta_description"],
+        subvurs_notes=row["subvurs_notes"] if "subvurs_notes" in row.keys() else "",
     )
 
 

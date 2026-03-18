@@ -97,6 +97,7 @@ class Settings(BaseSettings):
         description="Commentary style: insightful, technical, accessible, brief",
     )
     claude_model: str = Field(default="claude-sonnet-4-20250514", description="Claude model for commentary")
+    generate_subvurs_notes: bool = Field(default=True, description="Generate internal Subvurs research connection notes during curation")
 
     @property
     def database_path(self) -> Path:

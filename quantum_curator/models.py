@@ -153,6 +153,7 @@ class CuratedPost(BaseModel):
     # SEO
     slug: str = ""
     meta_description: str = ""
+    subvurs_notes: str = ""  # Internal Subvurs research connection notes
 
     # Aliases for backward compatibility
     @property

@@ -45,10 +45,13 @@ jobs:
       - name: Curate content
         run: quantum-curator curate --auto-publish --create-digest
 
-      - name: Build site
+      - name: Build Quantum Crier site
         run: quantum-curator build --output ./public
 
-      - name: Deploy to GitHub Pages
+      - name: Build Qrater dashboard
+        run: quantum-curator build-qrater --output ./qrater_public
+
+      - name: Deploy Quantum Crier to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -58,9 +61,20 @@ jobs:
           user_email: 'curator@quantum-curator.com'
           commit_message: 'Daily curation update'
 
+      - name: Deploy Qrater to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./qrater_public
+          publish_branch: gh-pages
+          destination_dir: qrater
+          user_name: 'Quantum Curator Bot'
+          user_email: 'curator@quantum-curator.com'
+          commit_message: 'Daily Qrater dashboard update'
+
       - name: Notify on success
         if: success()
-        run: echo "✓ Daily curation complete and deployed"
+        run: echo "✓ Daily curation complete — Quantum Crier and Qrater deployed"
 
       - name: Notify on failure
         if: failure()

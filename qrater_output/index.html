@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qrater — Interactive Quantum News Dashboard</title>
+    <meta name="description" content="Filter and explore curated quantum computing news by topic, date, and source. Subscribe for personalized updates.">
+
+    <meta property="og:title" content="Qrater — Quantum News Dashboard">
+    <meta property="og:description" content="Interactive quantum computing news filtered by your interests.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://subvurs.github.io/qrater">
+
+    <link rel="stylesheet" href="./static/qrater/qrater.css">
+</head>
+<body>
+    <header class="qrater-header">
+        <div class="header-inner">
+            <a href="./" class="qrater-logo">Qrater</a>
+            <nav class="header-nav">
+                <a href="https://subvurs.github.io/quantum-curator">Quantum Curator</a>
+            </nav>
+            <button class="filter-toggle" id="filter-toggle" aria-label="Toggle filters">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="5" x2="17" y2="5"/><line x1="5" y1="10" x2="15" y2="10"/><line x1="7" y1="15" x2="13" y2="15"/>
+                </svg>
+                Filters
+            </button>
+        </div>
+    </header>
+
+    <div class="qrater-app">
+        <aside class="filters-panel" id="filters-panel">
+            <div class="filter-group">
+                <h3>Topics</h3>
+                <div class="topic-checkboxes">
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="simulation" checked>
+                        <span class="topic-label topic-color-simulation">Simulation</span>
+                        <span class="topic-count">4</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="hardware" checked>
+                        <span class="topic-label topic-color-hardware">Hardware</span>
+                        <span class="topic-count">4</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="algorithms" checked>
+                        <span class="topic-label topic-color-algorithms">Algorithms</span>
+                        <span class="topic-count">3</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="cryptography" checked>
+                        <span class="topic-label topic-color-cryptography">Cryptography</span>
+                        <span class="topic-count">2</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="sensing" checked>
+                        <span class="topic-label topic-color-sensing">Sensing</span>
+                        <span class="topic-count">2</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="research" checked>
+                        <span class="topic-label topic-color-research">Research</span>
+                        <span class="topic-count">1</span>
+                    </label>
+                    
+                </div>
+                <div class="topic-actions">
+                    <button class="btn-sm" id="select-all">Select All</button>
+                    <button class="btn-sm" id="clear-all">Clear All</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Date Range</h3>
+                <div class="date-presets">
+                    <button class="preset-btn" data-range="today">Today</button>
+                    <button class="preset-btn" data-range="week">This Week</button>
+                    <button class="preset-btn" data-range="month">This Month</button>
+                    <button class="preset-btn active" data-range="all">All Time</button>
+                </div>
+                <div class="custom-dates">
+                    <label>From <input type="date" id="date-from"></label>
+                    <label>To <input type="date" id="date-to"></label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Source</h3>
+                <select id="source-filter">
+                    <option value="">All Sources</option>
+                    
+                    <option value="arXiv Quantum Physics">arXiv Quantum Physics</option>
+                    
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h3>Sort By</h3>
+                <select id="sort-by">
+                    <option value="date-desc">Newest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="relevance">Relevance Score</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <div class="results-bar">
+                <span id="results-count">7 articles</span>
+                <span class="build-time">Updated March 18, 2026 at 17:45 UTC</span>
+            </div>
+
+            <div class="articles-grid" id="articles-grid">
+                <div class="loading-msg">Loading articles...</div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <footer class="qrater-footer">
+        <p>Powered by <a href="https://subvurs.github.io/quantum-curator">Quantum Crier</a> &mdash; A <a href="https://github.com/subvurs">Subvurs</a> Project &mdash; Founded by Mark Eatherly</p>
+        <p class="footer-note">Data refreshed daily at 06:00 UTC</p>
+    </footer>
+
+    <script src="./static/qrater/qrater.js"></script>
+</body>
+</html>

@@ -227,6 +227,7 @@ def run(force_fetch: bool, do_deploy: bool):
     from .aggregator import Aggregator
     from .curator import Curator
     from .site import build_site
+    from .site.qrater_builder import build_qrater as _build_qrater
     from .publisher import GitHubPagesPublisher
 
     settings = get_settings()
@@ -251,22 +252,95 @@ def run(force_fetch: bool, do_deploy: bool):
         else:
             console.print("[yellow]No new articles to curate[/]\n")
 
-        # Step 3: Build
-        console.print(Panel("[bold blue]Step 3: Building site[/]"))
+        # Step 3: Build both sites
+        console.print(Panel("[bold blue]Step 3: Building sites[/]"))
         site_path = build_site()
-        console.print(f"[green]Site built at {site_path}[/]\n")
+        console.print(f"[green]Quantum Crier built at {site_path}[/]")
+        qrater_path = _build_qrater()
+        console.print(f"[green]Qrater built at {qrater_path}[/]\n")
 
         # Step 4: Deploy (optional)
         if do_deploy:
             console.print(Panel("[bold blue]Step 4: Deploying[/]"))
             publisher = GitHubPagesPublisher()
             if publisher.deploy(site_path):
-                console.print("[green]Deployment successful![/]")
+                console.print("[green]Quantum Crier deployed![/]")
             else:
-                console.print("[red]Deployment failed[/]")
+                console.print("[red]Quantum Crier deployment failed[/]")
+
+            if publisher.deploy(
+                qrater_path,
+                repo_url=f"https://github.com/{settings.github_username}/{settings.qrater_github_repo}",
+                branch="gh-pages",
+            ):
+                console.print("[green]Qrater deployed![/]")
+            else:
+                console.print("[red]Qrater deployment failed[/]")
 
     asyncio.run(run_pipeline())
     console.print("\n[bold green]Pipeline complete![/]")
+
+
+# --- Qrater ---
+
+@cli.command("build-qrater")
+@click.option("--output", "-o", type=click.Path(), help="Output directory")
+@click.option("--no-clean", is_flag=True, help="Don't clean output directory first")
+def build_qrater(output: str | None, no_clean: bool):
+    """Build the Qrater interactive dashboard site."""
+    from .site.qrater_builder import build_qrater as _build_qrater
+
+    output_path = Path(output) if output else None
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Building Qrater dashboard...", total=None)
+        site_path = _build_qrater(output_dir=output_path, clean=not no_clean)
+        progress.update(task, completed=True)
+
+    console.print(f"\n[green]Qrater built at:[/] {site_path}")
+    console.print(f"\nPreview with: [bold]python -m http.server -d {site_path}[/]")
+
+
+@cli.command("deploy-qrater")
+@click.option("--site-dir", "-s", type=click.Path(exists=True), help="Qrater site directory to deploy")
+@click.option("--verify", "-v", is_flag=True, help="Verify deployment after push")
+def deploy_qrater(site_dir: str | None, verify: bool):
+    """Deploy Qrater dashboard to GitHub Pages."""
+    from .publisher import GitHubPagesPublisher
+
+    settings = get_settings()
+    site_path = Path(site_dir) if site_dir else Path(settings.qrater_output_dir)
+
+    if not site_path.exists():
+        console.print(f"[red]Qrater directory not found: {site_path}[/]")
+        console.print("Run [bold]quantum-curator build-qrater[/] first.")
+        return
+
+    publisher = GitHubPagesPublisher()
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Deploying Qrater to GitHub Pages...", total=None)
+        success = publisher.deploy(
+            site_path,
+            repo_url=f"https://github.com/{settings.github_username}/{settings.qrater_github_repo}",
+            branch="gh-pages",
+        )
+        progress.update(task, completed=True)
+
+    if success:
+        console.print(f"[green]Qrater deployed to {settings.qrater_site_url}[/]")
+        if verify:
+            publisher.verify_deployment()
+    else:
+        console.print("[red]Qrater deployment failed[/]")
 
 
 # --- Status & Info ---
@@ -392,6 +466,46 @@ def config():
     table.add_row("NewsAPI", "[green]Configured[/]" if settings.news_api_key else "[dim]Not set[/]")
     table.add_row("Min Relevance Score", str(settings.min_relevance_score))
     table.add_row("Max Articles/Day", str(settings.max_articles_per_day))
+    table.add_row("", "")
+    table.add_row("[bold]Qrater[/]", "")
+    table.add_row("Qrater URL", settings.qrater_site_url)
+    table.add_row("Qrater Output", str(settings.qrater_output_dir))
+    table.add_row("Qrater Repo", settings.qrater_github_repo)
+    table.add_row("Buttondown", settings.buttondown_username or "[dim]Not set[/]")
+
+    console.print(table)
+
+
+@cli.command()
+@click.option("--limit", "-l", default=50, help="Maximum posts to scan")
+@click.option("--all", "show_all", is_flag=True, help="Show all posts, including those with no connections")
+def insights(limit: int, show_all: bool):
+    """Show Subvurs research connection notes for curated articles."""
+    all_posts = db.list_curated_posts(limit=limit)
+
+    if not all_posts:
+        console.print("[yellow]No curated posts found. Run 'quantum-curator curate' first.[/]")
+        return
+
+    with_notes = [p for p in all_posts if p.subvurs_notes]
+    display_posts = all_posts if show_all else with_notes
+
+    console.print(Panel(f"[bold]Subvurs Research Connections[/]\n{len(with_notes)} of {len(all_posts)} curated articles have connections"))
+
+    if not display_posts:
+        console.print("[dim]No articles with Subvurs connections found.[/]")
+        return
+
+    table = Table(show_lines=True)
+    table.add_column("Title", style="cyan", max_width=40)
+    table.add_column("Date", style="dim", max_width=12)
+    table.add_column("Subvurs Notes", style="green", max_width=80)
+
+    for post in display_posts:
+        date_str = post.published_at.strftime("%Y-%m-%d") if post.published_at else "N/A"
+        title = post.title[:40] + "..." if len(post.title) > 40 else post.title
+        notes = post.subvurs_notes if post.subvurs_notes else "[dim]None[/]"
+        table.add_row(title, date_str, notes)
 
     console.print(table)
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import re
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
 import anthropic
@@ -31,6 +32,30 @@ Focus on:
 - Any caveats or context needed
 
 IMPORTANT: Write in plain text only. Do NOT use any markdown formatting — no bold (**text**), no italics (*text*), no headers (#), no bullet points (- or *), and no code blocks. Your output will be displayed directly on a web page as plain prose."""
+
+
+SUBVURS_NOTES_SYSTEM_PROMPT = """You are a research assistant identifying connections between quantum computing news and the Subvurs/Quasmology research program. Key concepts to look for:
+
+- Nyx equation: Ψ(c,p,n) = 100c² × [(1-p) + p×exp(-50(d-0.504)²)] × Ψ_n(n) — a framework for emergence from quantum vacuum
+- Chaos Valley (d=0.504): optimal emergence point, maps to quantum phase transition / critical point
+- Inverse scaling: Nyx performance improves with problem size (avoids barren plateaus)
+- Bidirectional coupling: error mitigation via feedback loops (21.3% improvement)
+- T=0.857 time symmetry: 73.4% deterministic + 26.6% stochastic split
+- Pattern 51/69/76 triad: quantum coherence state machine (entropy → topological transition → stable coherence)
+- DMC3: quantum-enhanced optimization showing inverse scaling with problem size
+- IQAS: integrated quantum acceleration pipeline (6-stage, 144.9Q× combined speedup)
+- VQE/QAOA outperformance: 62x on H2O vs VQE, 2-6x on MaxCut vs QAOA
+- Noise-enhanced computation: structured noise improves rather than degrades results
+- Impax: classical sensing beats quantum sensing 43x for coherence detection
+- Barren plateau avoidance via non-gradient, non-variational optimization
+- Quasmology: unified mathematical framework for structure emergence, 17 modes
+
+RULES:
+- Return 1-3 sentences ONLY if a genuine, actionable connection exists to a specific concept above
+- Return exactly "None" if no clear connection exists
+- Be specific: name which Subvurs concept connects and how it relates
+- Never force or speculate — only surface connections that could advance the research
+- This is for internal research notes, not public display"""
 
 
 DIGEST_SYSTEM_PROMPT = """You are creating a daily digest summary for {curator_name}'s quantum computing news site. Write a compelling 2-3 paragraph summary of today's quantum news highlights.
@@ -102,6 +127,13 @@ class Curator:
                 base_url=self.settings.site_url,
             )
 
+        # Generate Subvurs research connection notes
+        subvurs_notes = ""
+        if self.settings.generate_subvurs_notes:
+            subvurs_notes = await self._generate_subvurs_notes(article)
+            if subvurs_notes:
+                self._save_subvurs_notes_file(article, subvurs_notes)
+
         # Create curated post
         post = CuratedPost(
             article_id=article.id,
@@ -111,6 +143,7 @@ class Curator:
             summary=article.summary,
             image_url=image_url,
             curator_commentary=commentary,
+            subvurs_notes=subvurs_notes,
             topics=article.topics,
             relevance_score=article.relevance_score,
             curator_name=self.settings.curator_name,
@@ -203,6 +236,60 @@ Write 2-4 sentences of engaging commentary explaining why this matters."""
             f"This article from {article.source_name} covers recent progress "
             f"that may have implications for the broader quantum computing field."
         )
+
+    async def _generate_subvurs_notes(self, article: RawArticle) -> str:
+        """Generate internal Subvurs research connection notes for an article."""
+        if not self.settings.anthropic_api_key:
+            return ""
+
+        user_prompt = f"""Analyze this quantum computing article for connections to Subvurs/Quasmology research:
+
+Title: {article.title}
+Source: {article.source_name}
+Topics: {', '.join(t.value for t in article.topics)}
+
+Summary:
+{article.summary[:1500]}
+
+Return 1-3 sentences identifying a specific connection, or exactly "None" if no genuine connection exists."""
+
+        try:
+            response = self.client.messages.create(
+                model="claude-haiku-4-20250414",
+                max_tokens=200,
+                system=SUBVURS_NOTES_SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": user_prompt}],
+            )
+            notes = response.content[0].text.strip()
+            if notes.lower() == "none":
+                return ""
+            return notes
+        except Exception as e:
+            print(f"Subvurs notes generation error: {e}")
+            return ""
+
+    def _save_subvurs_notes_file(self, article: RawArticle, notes: str) -> Path:
+        """Save subvurs notes to a text file in data/subvurs_notes/."""
+        notes_dir = self.settings.data_dir / "subvurs_notes"
+        notes_dir.mkdir(parents=True, exist_ok=True)
+
+        date_str = (article.published_at or datetime.utcnow()).strftime("%Y-%m-%d")
+        # Build a filename-safe slug from the title
+        slug = re.sub(r"[^\w\s-]", "", article.title.lower())
+        slug = re.sub(r"[\s_]+", "-", slug).strip("-")[:60]
+        filename = f"{date_str}_{slug}.md"
+
+        filepath = notes_dir / filename
+        filepath.write_text(
+            f"# {article.title}\n\n"
+            f"**Source:** {article.source_name}\n"
+            f"**URL:** {article.url}\n"
+            f"**Date:** {date_str}\n\n"
+            f"## Subvurs Connection\n\n"
+            f"{notes}\n",
+            encoding="utf-8",
+        )
+        return filepath
 
     async def create_daily_digest(
         self,

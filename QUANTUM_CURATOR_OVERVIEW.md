@@ -1,6 +1,6 @@
 # Quantum Curator: Project Overview
 
-**Version**: 1.2.0
+**Version**: 1.3.0
 **Created**: March 16, 2026
 **Author**: Mark Eatherly
 **Repository**: https://github.com/subvurs/quantum-curator
@@ -280,15 +280,14 @@ quantum-curator status                 # Show statistics
 quantum-curator sources                # List configured sources
 quantum-curator posts                  # List curated posts
 quantum-curator config                 # Show configuration
+quantum-curator insights               # Show Subvurs research connections
+quantum-curator insights --all         # Include posts with no connections
 ```
 
 ### Automation Schedule
 
-The GitHub Actions workflow runs at:
+The GitHub Actions workflow runs once daily at:
 - **6:00 AM UTC** (11 PM PST, 2 AM EST)
-- **6:00 PM UTC** (11 AM PST, 2 PM EST)
-
-This ensures fresh content for both US morning readers and evening readers.
 
 ---
 
@@ -308,7 +307,9 @@ This ensures fresh content for both US morning readers and evening readers.
 | Magazine-style front-end | ✅ Operational (hero, featured, topic sections) |
 | Static site generation | ✅ Operational |
 | GitHub Pages deployment | ✅ Operational |
-| Automated pipeline | ✅ Configured |
+| Content freshness window | ✅ Operational (60-day default, configurable) |
+| Subvurs research notes | ✅ Operational (Haiku-powered, file + DB storage) |
+| Automated pipeline | ✅ Configured (once daily at 6 AM UTC) |
 
 ### Content Capacity
 
@@ -774,5 +775,182 @@ Previously: 32 articles from arXiv only. Now: 228 articles from 12 different sou
 
 ---
 
-*Document updated: March 17, 2026*
-*Quantum Curator v1.2.0 — Source diversity fixes + Unsplash image generation*
+## 60-Day Freshness Window & Schedule Change (v1.2.1 — March 17-18, 2026)
+
+### Problem
+
+The site accumulated stale articles over time. Old content from weeks or months ago appeared alongside fresh news on the homepage, topic pages, archive, search, and RSS feed. There was no mechanism to age out content. Separately, the twice-daily automation schedule (6 AM and 6 PM UTC) was more frequent than needed.
+
+### Changes Made
+
+#### Content Freshness Enforcement
+
+**Config** (`config.py`):
+- Added `max_article_age_days: int = 60` setting (env: `MAX_ARTICLE_AGE_DAYS`)
+- Articles older than this window are dropped during fetch and excluded from all site pages
+
+**Aggregator** (`aggregator.py`):
+- After relevance scoring, articles with `published_at` older than `max_article_age_days` are filtered out before saving to the database
+- Logs how many articles were dropped (e.g., "Dropped 12 articles older than 60 days")
+
+**Database** (`db.py`):
+- Fixed `list_posts()` `since` filter — previously used `OR` logic (`published_at >= ? OR curated_at >= ?`) which let old articles through if they were recently curated
+- Now uses `COALESCE(published_at, curated_at) >= ?` which correctly checks the article's actual publication date
+
+**Site Builder** (`site/builder.py`):
+- Added `freshness_cutoff` computed once at build time from `max_article_age_days`
+- Added `_get_fresh_posts()` helper that queries published posts within the freshness window
+- All page-building methods now use `_get_fresh_posts()` instead of raw `db.list_curated_posts()`:
+  - Homepage (`_build_index`)
+  - Individual post pages (`_build_posts`)
+  - Archive pages (`_build_archive`)
+  - Topic pages (`_build_topics`)
+  - RSS feed (`_build_rss_feed`)
+  - Search index (`_build_search`)
+  - Topic counts (`_get_topic_counts`)
+
+This ensures every page on the site only shows content from the last 60 days, and old content naturally falls off without manual cleanup.
+
+#### Schedule Change
+
+**Workflow** (`.github/workflows/daily-curator.yml`):
+- Changed from twice-daily (`0 6,18 * * *`) to once-daily (`0 6 * * *`)
+- Runs at 6:00 AM UTC (11 PM PST / 2 AM EST)
+
+### Files Changed
+
+| File | Change |
+|------|--------|
+| `quantum_curator/config.py` | Added `max_article_age_days` setting (default: 60) |
+| `quantum_curator/aggregator.py` | Added age filter after relevance scoring |
+| `quantum_curator/db.py` | Fixed `list_posts()` since filter to use COALESCE |
+| `quantum_curator/site/builder.py` | Added `freshness_cutoff`, `_get_fresh_posts()`, replaced all raw queries with freshness-filtered queries |
+| `.github/workflows/daily-curator.yml` | Changed cron from `0 6,18 * * *` to `0 6 * * *` |
+
+---
+
+## Subvurs Research Connection Notes (v1.3.0 — March 18, 2026)
+
+### Motivation
+
+The Quantum Curator ingests dozens of quantum computing articles daily, many of which touch on concepts directly relevant to the Subvurs/Quasmology research program — phase transitions, noise-enhanced computation, variational algorithm improvements, error mitigation techniques, etc. Manually scanning every curated article for research connections is impractical.
+
+This feature adds an automated internal research annotation layer: during curation, each article is analyzed for genuine connections to Subvurs concepts. The notes are stored in the database and saved as individual files, but never appear on the public site.
+
+### What Changed
+
+#### Model (`models.py`)
+
+Added `subvurs_notes: str = ""` field to the `CuratedPost` model, after `meta_description`. This stores the AI-generated connection notes (or empty string if no connection found).
+
+#### Config (`config.py`)
+
+| Setting | Type | Default | Env Var | Purpose |
+|---------|------|---------|---------|---------|
+| `generate_subvurs_notes` | bool | `True` | `GENERATE_SUBVURS_NOTES` | Toggle Subvurs notes generation during curation |
+
+#### Database (`db.py`)
+
+| Change | Detail |
+|--------|--------|
+| CREATE TABLE | Added `subvurs_notes TEXT DEFAULT ''` column to `curated_posts` |
+| Migration | `init_db()` runs `ALTER TABLE curated_posts ADD COLUMN subvurs_notes TEXT DEFAULT ''` in try/except — safe for both new and existing databases |
+| INSERT | `save_post()` now includes `subvurs_notes` in column list and values tuple |
+| SELECT | `_row_to_post()` reads `subvurs_notes` with safe fallback to `""` if column missing |
+
+#### Curator (`curator.py`)
+
+**New system prompt** — `SUBVURS_NOTES_SYSTEM_PROMPT` provides a concise summary of key Subvurs/Quasmology concepts for the AI to match against:
+
+- Nyx equation and Chaos Valley (d=0.504)
+- Inverse scaling / barren plateau avoidance
+- Bidirectional coupling for error mitigation
+- T=0.857 time symmetry split
+- Pattern 51/69/76 triad
+- DMC3 optimization, IQAS pipeline
+- VQE/QAOA outperformance results
+- Noise-enhanced computation
+- Impax classical sensing advantage
+
+The prompt instructs the model to return 1-3 specific sentences if a genuine connection exists, or exactly "None" if not. Speculation and forced connections are explicitly prohibited.
+
+**New method** — `_generate_subvurs_notes(article)`:
+- Uses `claude-haiku-4-20250414` for cost efficiency (~200 tokens prompt + ~100 tokens response per call)
+- Returns empty string if API key is missing or if the model responds "None"
+- Gated behind `settings.generate_subvurs_notes`
+
+**New method** — `_save_subvurs_notes_file(article, notes)`:
+- Saves each non-empty note as an individual markdown file in `data/subvurs_notes/`
+- Filename format: `{YYYY-MM-DD}_{article-title-slug}.md`
+- File contains article title, source, URL, date, and the connection notes
+- Only called when notes are non-empty (articles with no connection produce no file)
+
+**Integration** — `curate_article()` now generates Subvurs notes after commentary, saves the file if notes are non-empty, and includes `subvurs_notes` in the `CuratedPost` constructor.
+
+#### CLI (`cli.py`)
+
+**New command** — `quantum-curator insights`:
+
+```bash
+quantum-curator insights              # Show only posts with Subvurs connections
+quantum-curator insights --all        # Show all posts, including those with no connections
+quantum-curator insights --limit 50   # Scan more posts (default: 50)
+```
+
+Output: Rich table with Title, Date, and Subvurs Notes columns. Header panel shows count: "X of Y curated articles have connections."
+
+### Storage
+
+Subvurs notes are stored in two places:
+
+1. **Database**: `subvurs_notes` column in `curated_posts` table at `data/curator.db`
+2. **Files**: Individual markdown files in `data/subvurs_notes/` with date-prefixed filenames
+
+```
+data/
+├── curator.db                              # subvurs_notes column in curated_posts
+└── subvurs_notes/
+    ├── 2026-03-18_quantum-error-correction-breakthrough.md
+    ├── 2026-03-18_noise-enhanced-variational-algorithms.md
+    └── ...
+```
+
+Each file contains:
+
+```markdown
+# Article Title
+
+**Source:** Source Name
+**URL:** https://...
+**Date:** 2026-03-18
+
+## Subvurs Connection
+
+1-3 sentences describing the specific connection to Subvurs research.
+```
+
+### Cost
+
+- Uses `claude-haiku-4-20250414` (not Sonnet) — approximately $0.001 per article
+- ~200 tokens input + ~100 tokens output per call
+- At 20 articles/day: ~$0.02/day, ~$0.60/month
+- Can be disabled via `GENERATE_SUBVURS_NOTES=false` in `.env` or GitHub secrets
+
+### Files Changed
+
+| File | Change |
+|------|--------|
+| `quantum_curator/models.py` | Added `subvurs_notes` field to `CuratedPost` |
+| `quantum_curator/config.py` | Added `generate_subvurs_notes` setting |
+| `quantum_curator/db.py` | Added column to schema, migration, INSERT, and SELECT |
+| `quantum_curator/curator.py` | Added `SUBVURS_NOTES_SYSTEM_PROMPT`, `_generate_subvurs_notes()`, `_save_subvurs_notes_file()`, integrated into `curate_article()` |
+| `quantum_curator/cli.py` | Added `insights` command |
+
+### Workflow Impact
+
+No changes needed to `.github/workflows/daily-curator.yml` — the notes are generated during the existing `curate` step. The `insights` command is for local use only; it is not part of the automated pipeline.
+
+---
+
+*Document updated: March 18, 2026*
+*Quantum Curator v1.3.0 — Subvurs research connection notes*
