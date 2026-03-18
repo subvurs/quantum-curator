@@ -1,337 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Quantum Pulse</title>
-        <link>https://quantum-pulse.github.io</link>
-        <description>A daily curated collection of the latest news, research, and developments in quantum computing, quantum physics, and quantum information science.</description>
+        <title>Quantum Crier</title>
+        <link>https://subvurs.github.io/quantum-curator</link>
+        <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Wed, 18 Mar 2026 07:04:37 +0000</lastBuildDate>
-        <atom:link href="https://quantum-pulse.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 18 Mar 2026 16:10:08 +0000</lastBuildDate>
+        <atom:link href="https://subvurs.github.io/quantum-curator/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
         
         <item>
-            <title>Boosted linear-optical measurements on single-rail qubits with unentangled ancillas</title>
-            <link>https://quantum-pulse.github.io/posts/c723455e.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/c723455e.html</guid>
-            <pubDate>Tue, 17 Mar 2026 17:03:53 +0000</pubDate>
+            <title>Physicists turn atomic motion from a nuisance to a resource</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/59f73c3c.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/59f73c3c.html</guid>
+            <pubDate>Mon, 28 Jul 2025 16:33:50 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles a fundamental challenge in photonic quantum computing: how to perform arbitrary measurements on single photons when you can&#39;t easily make them interact with each other. The team demonstrates a clever workaround using unentangled ancilla photons and an 8-port interferometer to boost measurement success rates on single-rail qubits (where information is encoded in vacuum versus single-photon states) to nearly 60%, significantly improving on the previous 50% theoretical limit. This advance could be particularly impactful for quantum sensing applications and distributed quantum networks, where photons naturally serve as information carriers but their weak interactions have historically limited measurement capabilities. The approach represents an important step toward making photonic quantum systems more practical by squeezing better performance out of linear optical components.</p>
-                <p>Any quantum state of the radiation field, sliced in small non-overlapping space-time bins is a collection of single-rail qubits, each spanning the vacuum and single-photon Fock state of a mode. Quantum logic on these qubits would enable arbitrary measurements on information-bearing light, but is hard due to the lack of strong nonlinearities. With unentangled ancilla single-rail qubits, an $8$-port interferometer and photon detection, we show any single-rail qubit measurement in the $XY$ Bloch plane is realizable with success probability $147/256$, which beats the prior-known $1/2$ limit.</p>
-                <p><a href="https://arxiv.org/abs/2603.16795v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Decoherence and the Reemergence of Coherence From a Superconducting &#34;Horizon&#34;</title>
-            <link>https://quantum-pulse.github.io/posts/78a476d7.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/78a476d7.html</guid>
-            <pubDate>Tue, 17 Mar 2026 16:45:16 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This fascinating research demonstrates how superconducting circuits can serve as &#34;quantum simulators&#34; for some of the most exotic physics in the universe - the quantum effects near black hole event horizons. The team&#39;s discovery that decoherence from their artificial &#34;horizon&#34; can actually reverse and restore quantum coherence at strong coupling strengths suggests there might be previously unknown quantum phenomena occurring near real black holes that could be mediated by Hawking radiation. What makes this particularly exciting is that it opens up an entirely terrestrial laboratory approach to exploring the mysterious intersection of quantum mechanics and gravity, using accessible superconducting hardware rather than requiring actual black holes. This work exemplifies how quantum devices are becoming powerful tools not just for computation, but for probing fundamental physics questions that were previously purely theoretical.</p>
-                <p>In a recent paper arXiv:2205.06279, Danielson et al. demonstrated that the mere presence of a black hole causes universal decoherence of quantum superpositions (dubbed the DSW decoherence). This result has profound implications for the interplay of quantum mechanics and gravity. We analyze decoherence in a superconducting analogue arXiv:1709.06154 of the event horizon of a black hole, where Andreev reflection plays the role of Hawking radiation. We consider a normal metal interferometer threaded by an Aharonov-Bohm flux, where one of the arms of the interferometer is coupled to a superconductor by a tunnel coupling of varying strength. At absolute zero and for weak coupling, we find that the scattering states of the interferometer are decohered by Andreev reflection, a nontrivial manifestation of the proximity effect analogous to DSW decoherence from the event horizon of a black hole. However, for increasing coupling strength to the superconductor, we find a reemergence of coherence via resonant tunneling through Andreev bound states. This suggests the existence of an analogue gravitational phenomenon wherein transmission mediated by virtual Hawking radiation leads to a reemergence of coherence in an interferometer placed within a few Compton wavelengths of a black hole&#39;s event horizon. Our results open a new path to study black hole quantum physics on earth via analogue studies.</p>
-                <p><a href="https://arxiv.org/abs/2603.16765v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Secure Quantum Communication: Simulation and Analysis of Quantum Key Distribution Protocols</title>
-            <link>https://quantum-pulse.github.io/posts/ae0ecff9.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/ae0ecff9.html</guid>
-            <pubDate>Tue, 17 Mar 2026 15:48:26 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This comprehensive simulation study provides crucial insights into how quantum key distribution protocols perform under real-world conditions, moving beyond theoretical promises to examine practical challenges like noise and hardware limitations. By comparing three foundational QKD protocols (BB84, B92, and E91) using IBM&#39;s Qiskit framework, the research offers valuable benchmarking data for developers working to deploy quantum-secure communication systems. The work is particularly timely as organizations increasingly recognize the urgent need to prepare for post-quantum cryptography, with QKD representing one of the few provably secure alternatives to current encryption methods that will be vulnerable to future quantum computers. The study&#39;s focus on scalability challenges and channel losses addresses critical engineering hurdles that must be overcome before QKD can transition from laboratory demonstrations to widespread commercial deployment.</p>
-                <p>Quantum computing poses significant threats to conventional cryptographic techniques such as RSA and AES, motivating the need for quantum secure communication methods. Quantum Key Distribution (QKD) offers information theoretic security based on fundamental quantum principles. This paper presents a simulation-based analysis of well-known QKD protocols, namely BB84, B92, and E91, using the IBM Qiskit framework. Realistic quantum channel effects, including noise, decoherence, and eavesdropping, are modeled to evaluate protocol performance. Key metrics such as error rate, secret key generation, and security characteristics are analyzed and compared. The study highlights practical challenges in QKD implementation, including hardware limitations and channel losses, and discusses insights toward scalable and robust quantum communication systems. The results support the feasibility of QKD as a promising solution for secure communication in the quantum era.</p>
-                <p><a href="https://arxiv.org/abs/2603.16690v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>cryptography</category>
-            
-            <category>simulation</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>CryoCMOS RF multiplexer for superconducting qubit control, readout and flux biasing at millikelvin temperatures with picowatt power consumption</title>
-            <link>https://quantum-pulse.github.io/posts/d5788285.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/d5788285.html</guid>
-            <pubDate>Tue, 17 Mar 2026 14:49:28 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough tackles one of the most pressing engineering challenges in scaling up quantum computers: the notorious &#34;refrigerator wiring problem&#34; where each qubit traditionally requires multiple dedicated control lines threading down from room temperature to the millikelvin quantum processor. By demonstrating a cryogenic CMOS multiplexer that operates directly at the qubit plane with incredibly low power consumption (just 200 picowatts), researchers have shown how to dramatically reduce the wiring complexity that currently limits quantum systems to hundreds rather than millions of qubits. The device&#39;s ability to handle readout, flux control, and drive signals while barely affecting qubit coherence times represents a crucial step toward the integrated quantum-classical control systems that large-scale, fault-tolerant quantum computers will require. This work exemplifies the kind of quantum engineering innovation needed to bridge the gap between today&#39;s research devices and tomorrow&#39;s practical quantum processors.</p>
-                <p>Large-scale cryogenic quantum systems are constrained by an input-output bottleneck between room-temperature electronics and millikelvin stages, particularly in superconducting qubit platforms. This bottleneck is most acute for output lines, where bulky and expensive microwave components limit scalability. A promising approach for scalable characterization and testing is to perform signal multiplexing directly at the qubit plane. We demonstrate a cryogenic CMOS (cryoCMOS) RF multiplexer operating at 10 millikelvin with record-low static power consumption of 200 pW. The device provides &lt; 2 dB insertion loss and &gt; 30 dB isolation across DC-8 GHz. Direct connection to transmon qubits marginally affects coherence times in the range of 100 microseconds, enabling multiplexing of readout, flux and, in principle, XY drive lines. This work introduces cryoCMOS multiplexers as valuable tools for scalable, high-throughput cryogenic characterization and testing, and advances co-integrated quantum-classical control for future large-scale quantum processors.</p>
-                <p><a href="https://arxiv.org/abs/2603.16608v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Logarithmic-depth quantum state preparation of polynomials</title>
-            <link>https://quantum-pulse.github.io/posts/e75b819f.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/e75b819f.html</guid>
-            <pubDate>Tue, 17 Mar 2026 13:50:36 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough addresses one of quantum computing&#39;s most fundamental bottlenecks by dramatically reducing the circuit depth needed to prepare polynomial quantum states from linear to logarithmic scaling—a game-changing improvement for near-term quantum devices where decoherence limits how deep circuits can be. The work is particularly significant because polynomial approximations are the backbone of scientific computing, from molecular simulations in quantum chemistry to financial modeling, making this a broadly applicable advance rather than a narrow theoretical result. The researchers&#39; successful demonstration on a 14-qubit trapped-ion processor with over 500 gates proves the approach works in practice, not just on paper, while their novel techniques for implementing the linear combination of unitaries could have applications well beyond state preparation in the broader quantum algorithm toolkit.</p>
-                <p>Quantum state preparation is a central primitive in many quantum algorithms, yet it is generally resource intensive, with efficient constructions known only for structured families of states. This work introduces a method for preparing quantum states whose amplitudes are given by a degree$-d$ polynomial, using circuits with logarithmic depth in the number $n$ of qubits and only $\mathcal O(n)$ ancilla qubits, improving previous approaches that required linear-depth circuits. The construction first relies on a block-encoding of an affine diagonal operator based on its Pauli-basis decomposition, which involves only $n$ terms. A modified linear-combination-of-unitaries (LCU) technique is introduced to implement this decomposition in logarithmic depth, together with a novel circuit for the EXACT-one oracle that flags basis states in which exactly one qubit is in the state $|1\rangle$. It then uses a generalized quantum eigenvalue transformation (GQET) to promote this affine operator to an arbitrary degree polynomial. Theoretical analysis and numerical simulations are reported along with a proof-of-principle implementation on a trapped-ion quantum processor using $14$ qubits and more than $500$ primitive quantum gates. Because polynomial approximations are ubiquitous in scientific computing, this construction provides a scalable and resource-efficient approach to quantum state preparation, further improving the potential of quantum algorithms in fields such as chemistry, physics, engineering, and finance.</p>
-                <p><a href="https://arxiv.org/abs/2603.16527v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Dark state role in time-reversal symmetry breaking</title>
-            <link>https://quantum-pulse.github.io/posts/eae94696.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/eae94696.html</guid>
-            <pubDate>Tue, 17 Mar 2026 13:39:31 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research reveals how &#34;dark states&#34; - quantum states that remain decoupled from driving fields - can serve as powerful tools for maintaining symmetry in quantum control protocols, even when full time-reversal symmetry is broken. The findings provide practical design principles for robust quantum operations by showing how these spectator states constrain system dynamics to more predictable, symmetric patterns in population transfer. This work has immediate relevance for quantum computing platforms built on atoms, molecules, and solid-state systems, where precise control over quantum state manipulation is essential for reliable gate operations and error correction schemes. The theoretical framework extends to arbitrary system sizes and offers quantum engineers new strategies for building more stable control protocols that could improve the fidelity of quantum processors.</p>
-                <p>We investigate the role of the global driving phase $Φ$ in the dynamics of driven few-level quantum systems, a central setting in coherent control of atomic, molecular, and solid-state platforms. In particular, we focus on systems with closed-loop couplings, where external driving fields induce interference effects that strongly influence population transfer and symmetry properties of time-evolution. While full time-reversal symmetry requires $Φ=0,π$, leading to a real Hamiltonian, we focus on a less restrictive transformation, the phase inversion (or complex conjugation of the Hamiltonian), under which population dynamics can remain symmetric even though coherences generally do not. We show that the presence of a dark (spectator) state is a sufficient condition for this population phase symmetry (P$Φ$S), as it constrains the dynamics to reduced subspaces characterized by SU(2) or open-loop SU(3) evolution. We analyze this mechanism in three- and four-level systems and derive general conditions for P$Φ$S that extend to generic $n$-level configurations, with $n$ even. These findings provide practical guidelines for achieving robust control in quantum systems, with potential applications in quantum information processing and quantum computing.</p>
-                <p><a href="https://arxiv.org/abs/2603.16512v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>High Fidelity Single-NV Qubit Quantum State Tomography by Photoelectric Readout</title>
-            <link>https://quantum-pulse.github.io/posts/d506ba02.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/d506ba02.html</guid>
-            <pubDate>Tue, 17 Mar 2026 13:27:25 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles a critical engineering challenge for room-temperature quantum computing by demonstrating that nitrogen-vacancy centers in diamond can achieve exceptional quantum state readout fidelity (99.5%) using photoelectric detection instead of traditional optical methods. The breakthrough is significant because optical readout systems require bulky, complex optics that make it nearly impossible to scale NV-based quantum processors into practical, chip-sized devices that could integrate with conventional electronics. By proving that photoelectric readout maintains the same high fidelity as optical methods while being far more compatible with standard semiconductor manufacturing, this work removes a major obstacle to building ambient-temperature quantum computers that could operate outside of expensive dilution refrigerators. This development positions NV centers as increasingly viable candidates for distributed quantum networks and embedded quantum sensors that could revolutionize everything from medical imaging to navigation systems.</p>
-                <p>Quantum computing is a rapidly developing field. However, the most commonly used qubits require cryogenic conditions to operate, which increases the costs and puts constraints on the up-scaling. Ambient solid-state qubits provide an alternative with potential for large-scale application. The nitrogen-vacancy (NV) center in diamond is one of the main candidates for solid-state computing architectures at room temperature and has proven to be competitive in terms of gate fidelity, quantum error correction, couplings, etc. Each NV center has an associated electronic spin that is conventionally read out by photoluminescence. However, regarding the creation of small, ambient NV-based quantum processors, the optical readout introduces limitations on the collection efficiency and resolution of the readout as well as the size of the final device and its integration into standard semiconductor architectures. In this work, we investigate the competitiveness of the photoelectric readout versus the traditional optical readout. In particular, we report on using photoelectrical detection to perform quantum state tomography measurements on a single NV center. We achieve the fidelity $0.995 \pm 0.0062$ for state reconstruction, comparable to optical measurements, demonstrating that the fidelity does not suffer from the adapted readout, highlighting the value of photoelectric detection for NV-based quantum processors.</p>
-                <p><a href="https://arxiv.org/abs/2603.16502v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Distinguishing types of correlated errors in superconducting qubits</title>
-            <link>https://quantum-pulse.github.io/posts/38741cd3.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/38741cd3.html</guid>
-            <pubDate>Tue, 17 Mar 2026 13:21:34 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles a critical challenge for scaling quantum computers: distinguishing between different types of correlated errors that can devastate quantum error correction schemes. The team&#39;s method for separating radiation-induced quasiparticle tunneling from mechanical vibration effects represents a significant step toward developing targeted mitigation strategies rather than generic approaches. Particularly intriguing is their finding that transmon designs with larger superconducting gap differences—already known to reduce radiation errors—also provide protection against vibration-induced errors, suggesting a unified hardware solution. This work could inform the design of more robust superconducting quantum processors by enabling engineers to identify and address specific error sources in their cryogenic environments.</p>
-                <p>Errors in superconducting qubits that are correlated in time and space can pose problems for quantum error correction codes. Radiation from cosmic and terrestrial sources can increase the quasiparticle (QP) density in a superconducting qubit device, resulting in an increased rate of QPs tunneling across proximal Josephson junctions (JJs) and causing correlated errors. Mechanical vibrations, such as those induced by the pulse tube in a dry dilution refrigerator, are also a known source of correlated errors. We present a method for distinguishing these two types of errors by their temporal, spatial, and frequency domain features, enabling physically motivated error-mitigation strategies. We also present accelerometer data to study the correlation between dilution refrigerator vibrations and the errors. We measure arrays of transmon qubits where the difference in superconducting gap across the JJ is less than the qubit energy, as well as those where the gap is greater than the qubit energy, which has been shown to mitigate radiation-induced errors. We show that these latter devices are also protected against vibration-induced errors.</p>
-                <p><a href="https://arxiv.org/abs/2603.16494v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-        </item>
-        
-        <item>
-            <title>Achieving Sub-Zeptonewton Force Sensitivity and Spin-Motion Entanglement in Levitated Diamond via Pulsed Backaction Evasion</title>
-            <link>https://quantum-pulse.github.io/posts/8e9fec8a.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/8e9fec8a.html</guid>
-            <pubDate>Tue, 17 Mar 2026 13:14:57 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research pushes the boundaries of quantum sensing to unprecedented levels, achieving force sensitivity that&#39;s literally millions of times more precise than current state-of-the-art sensors—reaching into the sub-zeptonewton range (10^-21 Newtons). The breakthrough lies in cleverly using pulsed backaction evasion techniques with levitated nanodiamonds containing nitrogen-vacancy centers, which simultaneously creates robust spin-motion entanglement while beating the standard quantum limit that typically constrains precision measurements. Beyond the impressive sensitivity numbers, this work opens practical pathways for detecting incredibly weak forces like those predicted by theories of quantum gravity, dark matter interactions, or violations of the equivalence principle—making it a potential game-changer for both fundamental physics tests and next-generation sensing applications.</p>
-                <p>We propose a system to achieve sub-zeptonewton force sensing and robust spin-mechanical entanglement in a levitated diamond system. By coupling a Nitrogen-Vacancy (NV) center spin to the motion of its host diamond within a magnetic trap, we develop a platform designed to surpass the standard quantum limit. We develop and compare three distinct pulse sequences--Ramsey, Hahn echo, and Carr-Purcell-Meiboom-Gill (CPMG)--to create increasing amounts of backaction evasion while mitigating the effects of shot noise and thermal decoherence. Our results show that the CPMG sequences yield the most significant performance gains, reaching a force sensitivity of better than $10^{-23} \text{ N}/\sqrt{\text{Hz}}$ for broadband sensing around $10^4 \text{ Hz}$. Furthermore, we derive an entanglement witness protocol that accounts for pulsed dynamical decoupling, proving that spin-motion entanglement remains detectable even when occurring much faster than the mechanical period. These findings provide a more practical path for using levitated nanodiamonds both as high-precision sensors and as non-classical mechanical systems for fundamental tests of quantum mechanics.</p>
-                <p><a href="https://arxiv.org/abs/2603.16487v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Chipmunq: Fault-Tolerant Compiler for Chiplet Quantum Architectures</title>
-            <link>https://quantum-pulse.github.io/posts/268cc7e0.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/268cc7e0.html</guid>
-            <pubDate>Tue, 17 Mar 2026 11:20:37 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article addresses a critical bottleneck in scaling quantum computers: how to efficiently compile fault-tolerant quantum circuits for the modular chiplet architectures that will be essential for reaching millions of qubits. Chipmunq&#39;s breakthrough lies in understanding that traditional compilation approaches fall apart when dealing with quantum error correction codes spread across multiple chiplets connected by sparse, noisy links. The compiler&#39;s dramatic improvements—86% reduction in circuit depth and two orders of magnitude better logical error rates—could be the difference between theoretical fault-tolerance and practical quantum advantage. As companies like IBM and Google push toward modular quantum systems, tools like Chipmunq will be essential infrastructure for making these architectures actually work in practice.</p>
-                <p>As quantum computing advances toward fault-tolerance through quantum error correction, modular chiplet architectures have emerged to provide the massive qubit counts required while overcoming fabrication limits of monolithic chips. However, this transition introduces a critical compilation gap: existing frameworks cannot handle the scale of fault-tolerant quantum circuits while managing the noisy, sparse interconnects of chiplet backends. We present Chipmunq, the first hardware-aware compiler for mapping and routing fault-tolerant circuits onto modular architectures. Chipmunq employs a quantum-error-correction-aware partitioning strategy that preserves the integrity of logical qubit patches, preventing prohibitive gate overheads common in general-purpose compilers. Our evaluation demonstrates that Chipmunq achieves a 13.5x speedup in compilation time compared to state-of-the-art tools. By incorporating chiplet constraints and defective qubits, it reduces circuit depth by 86.4% and SWAP gate counts by 91.4% across varying code distances. Crucially, Chipmunq overcomes heterogeneous inter-chiplet links, improving logical error rates by up to two orders of magnitude.</p>
-                <p><a href="https://arxiv.org/abs/2603.16389v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>How Quantum Circuits Actually Learn: A Causal Identification of Genuine Quantum Contributions</title>
-            <link>https://quantum-pulse.github.io/posts/8c7f6452.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/8c7f6452.html</guid>
-            <pubDate>Tue, 17 Mar 2026 09:55:25 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles one of quantum machine learning&#39;s most pressing questions: are performance improvements actually coming from quantum effects, or just from having more parameters and clever circuit design? Using sophisticated causal analysis across multiple circuit types and datasets, the authors found that genuine quantum contributions (like entanglement) account for less than 1% of performance gains, while classical architectural factors dominate by a ratio of 13:1. While this might sound disappointing, it&#39;s actually valuable news—it means current quantum ML algorithms are operating far below their quantum potential and provides a clear roadmap for designing circuits that genuinely leverage quantum resources rather than just mimicking classical neural networks with quantum hardware.</p>
-                <p>Attributing performance gains in quantum machine learning to genuine quantum resources rather than to classical architectural scaling remains an open methodological challenge. We address this by introducing a counterfactual causal mediation framework that decomposes inter-architectural performance differences into direct effects, attributable to circuit parameterization and expressivity, and indirect effects mediated by quantum information-theoretic observables: entanglement entropy, purity, linear entropy, and quantum mutual information. Applying this framework to five circuit topologies and three benchmark datasets (across 43 validated configurations) reveals that direct architectural contributions systematically exceed quantum-mediated effects, with a mean ratio of 13.1:1 and a mean indirect contribution of 0.82%. These results suggest that current variational quantum circuits operate substantially below their quantum potential, and that principled resource-aware circuit design represents a tractable path toward measurable quantum-mediated performance gains.</p>
-                <p><a href="https://arxiv.org/abs/2603.16321v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-            <category>machine_learning</category>
-            
-        </item>
-        
-        <item>
-            <title>An Energetic Constraint for Qubit-Qubit Entanglement</title>
-            <link>https://quantum-pulse.github.io/posts/0f5e56ae.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/0f5e56ae.html</guid>
-            <pubDate>Tue, 17 Mar 2026 08:05:45 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research unveils a fundamental energetic principle that could reshape how we think about generating and preserving quantum entanglement in practical systems. By demonstrating that creating entanglement between qubits necessarily comes at the cost of individual qubit coherent energy—with this &#34;energy deficit&#34; precisely quantifying the entanglement strength—the work provides a new lens for understanding the physical resources required for quantum operations. The finding that this energy trade-off equals the square negativity, a well-established entanglement measure, creates an elegant bridge between thermodynamics and quantum information theory that could inform more energy-efficient quantum computing architectures. For quantum engineers working with limited energy budgets, this framework offers concrete metrics to optimize entanglement protocols while accounting for the fundamental energetic costs of quantum coherence.</p>
-                <p>We analyze qubit-qubit entanglement from an energetic perspective and reveal an energetic trade-off between quantum coherence and entanglement. We decompose each qubit internal energy into a coherent and an incoherent component. The qubits&#39; coherent energies are maximal if the qubit-qubit state is pure and separable. They decrease as qubit-qubit entanglement builds up under locally-energy-preserving processes. This yields a &#34;coherent energy deficit&#34; that we show is equal to a well-known measure of entanglement, the square negativity. In general, a qubit-qubit state can always be represented as a mixture of pure states. Then, the coherent energy deficit splits into a quantum component, corresponding to the average square negativity of the pure states, and a classical one reflecting the mixedness of the joint state. Minimizing the quantum deficit over the possible pure state decompositions yields the square negativity of the mixture. Our findings bring out new figures of merit to optimize and secure entanglement generation and distribution under energetic constraints.</p>
-                <p><a href="https://arxiv.org/abs/2603.16225v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Towards End-to-End Quantum Estimation of Non-Hermitian Pseudospectra</title>
-            <link>https://quantum-pulse.github.io/posts/7ee838cb.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/7ee838cb.html</guid>
-            <pubDate>Tue, 17 Mar 2026 07:44:04 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article tackles a fundamental challenge in quantum many-body physics by developing the first complete quantum algorithm for analyzing pseudospectra—a crucial tool for understanding how non-Hermitian quantum systems respond to perturbations. The work is particularly significant because it bridges pure theory with practical implementation, demonstrating their &#34;QSIGS&#34; algorithm on actual trapped-ion hardware to distinguish spectral stability regions around exceptional points. What makes this especially compelling is the computational complexity result showing that pseudospectrum problems are naturally suited for quantum advantage, with the classical version being PSPACE-hard while remaining in QMA for quantum computers. This represents a rare example of moving from fundamental complexity theory to working quantum algorithms that could help predict and control the behavior of open quantum systems and non-Hermitian materials.</p>
-                <p>Non-Hermitian many-body systems can be spectrally unstable, so small perturbations may induce large eigenvalue shifts. The pseudospectrum quantifies this instability and provides a perturbation-robust diagnostic. For inverse-polynomially small $ε$, we show that deciding whether a point $z\in\mathbb{C}$ is $ε$-close to the spectrum is PSPACE-hard for $5$-local operators, whereas deciding whether $z$ lies in the $ε$-pseudospectrum is QMA-complete for $4$-local operators. This identifies pseudospectrum membership as a natural computational target. We then present a concrete end-to-end quantum framework for deciding pseudospectrum membership, which combines a singular-value estimation step with a dissipative state preparation algorithm. Our Quantum Singular-value Gaussian-filtered Search (QSIGS) combines quantum singular value transformation (QSVT) with classical post-processing to achieve Heisenberg-limited query scaling for singular-value estimation. To prepare suitable input states, we introduce an algorithmic Lindbladian protocol for approximate ground right singular vectors and prove its effectiveness for the Hatano--Nelson model. Finally, we demonstrate the full pipeline on a trapped-ion quantum computer and distinguish points inside and outside the target pseudospectrum near the exceptional point of a minimal non-Hermitian qubit model.</p>
-                <p><a href="https://arxiv.org/abs/2603.16214v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-        </item>
-        
-        <item>
-            <title>A Scalable Open-Source QEC System with Sub-Microsecond Decoding-Feedback Latency</title>
-            <link>https://quantum-pulse.github.io/posts/d1227177.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/d1227177.html</guid>
-            <pubDate>Tue, 17 Mar 2026 07:30:35 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This work tackles one of quantum computing&#39;s most pressing engineering bottlenecks: building the ultra-fast error correction systems needed for fault-tolerant quantum computers. While much attention focuses on clever decoding algorithms, this team demonstrates that real-world quantum error correction requires seamless integration of control systems, networking, and decoders—achieving an impressive 446 nanosecond end-to-end latency that&#39;s fast enough to outpace error accumulation in superconducting qubits. The open-source nature of their RISC-Q platform could accelerate industry adoption by providing a proven hardware foundation that scales to distance-21 surface codes, bringing us closer to the thousands of logical qubits needed for practical quantum algorithms.</p>
-                <p>Quantum error correction (QEC) is essential for realizing large-scale, fault-tolerant quantum computation, yet its practical implementation remains a major engineering challenge. In particular, QEC demands precise real-time control of a large number of qubits and low-latency, high-throughput and accurate decoding of error syndromes. While most prior work has focused primarily on decoder design, the overall performance of any QEC system depends critically on all its subsystems including control, communication, and decoding, as well as their integration. To address this challenge, we present an open-source, fully integrated QEC system built on RISC-Q, a generator for RISC-V-based quantum control architectures. Implemented on RFSoC FPGAs, our system prototype integrates real-time qubit control, a scalable distributed multi-board architecture, and the state-of-the-art hardware QEC decoder within a low-latency, high-throughput decoding pipeline, forming a complete hardware platform ready for deployment with superconducting qubits. Experimental evaluation on a three-board prototype based on AMD ZCU216 RFSoCs demonstrates an end-to-end QEC decoding-feedback latency of 446 ns for a distance-3 surface code, including syndrome aggregation, network communication, syndrome decoding, and error distribution. Extrapolating from measured subsystem performance and state-of-the-art decoder benchmarks, the architecture can achieve sub-microsecond decoding-feedback latency up to a distance-21 surface code ($\sim$881 physical qubits) when scaled to larger hardware configurations.</p>
-                <p><a href="https://arxiv.org/abs/2603.16203v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-        </item>
-        
-        <item>
-            <title>Qudit Implementation of the Rodeo Algorithm for Quantum Spectral Filtering</title>
-            <link>https://quantum-pulse.github.io/posts/80b27a9f.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/80b27a9f.html</guid>
-            <pubDate>Tue, 17 Mar 2026 01:24:44 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research demonstrates how qudits—quantum systems with more than two levels—can significantly improve the performance of quantum algorithms, achieving an 18% reduction in measurement fluctuations compared to traditional qubit implementations. The work introduces an elegant &#34;Rodeo kernel&#34; concept that acts as a spectral filter, potentially making quantum simulations of complex materials and molecules more precise and efficient. By extending beyond the binary qubit paradigm, this approach opens new pathways for quantum advantage in computational chemistry and condensed matter physics, where accurately capturing multi-level quantum systems is crucial. The microcanonical protocol for estimating thermodynamic properties through a single energy sweep could prove particularly valuable for studying phase transitions and quantum many-body systems.</p>
-                <p>Qudits, the multi-level generalization of qubits, provide a natural extension of the binary paradigm in quantum computation and offer new opportunities to enhance algorithmic performance. Beyond their direct applicability to the simulation of multi-level quantum systems, higher-dimensional ancillae can improve sampling efficiency in quantum algorithms by enabling the simultaneous implementation of multiple control operations, thereby reducing circuit complexity. In this work, we pursue three main objectives. First, we present a formulation of the Rodeo algorithm employing a general $d$-level ancilla qudit. Second, we introduce the concept of the \emph{Rodeo kernel}, defined as a two-frequency interferometer, which acts as a spectral filter in the energy domain. Finally, we propose a microcanonical protocol for the Rodeo algorithm. This protocol enables the estimation of entropic quantities through a single energy sweep and admits a natural interpretation as a Gaussian convolution of the density of states. To support the theoretical analysis, we perform numerical evaluations of the corresponding quantum circuit using ancilla qudits of dimensions three, four, and five. The simulations are performed for the one-dimensional Ising model, considering both spin-$\frac{1}{2}$ and spin-$1$ particles. The ancilla qutrit implementation exhibits an $18\%$ reduction in fluctuations compared to the qubit implementation. Our results show that the qudits provide a framework for spectral analysis and thermodynamic characterization of multi-level quantum systems.</p>
-                <p><a href="https://arxiv.org/abs/2603.16049v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Monolithic Segmented 3D Ion Trap for Quantum Technology Applications</title>
-            <link>https://quantum-pulse.github.io/posts/484a4529.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/484a4529.html</guid>
-            <pubDate>Tue, 17 Mar 2026 01:24:14 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough represents a significant step toward scalable ion trap quantum computing by solving a persistent engineering challenge: how to maintain the precise control needed for high-fidelity operations while working with heavy ions like Ytterbium and Barium. The monolithic 3D fused silica design cleverly combines the manufacturing precision of chip-scale traps with the performance advantages of larger, traditional ion traps, achieving an impressive 99.3% two-qubit gate fidelity and ultralow heating rates that have historically plagued miniaturized systems. What makes this particularly exciting is the &#34;segmented&#34; architecture that enables modular scaling—imagine connecting multiple trap modules like quantum Lego blocks to build larger processors. The demonstration with heavy ionic species is especially important since these ions offer unique advantages for quantum networking and atomic clocks, potentially opening new pathways for distributed quantum systems and precision metrology applications.</p>
-                <p>Monolithic three-dimensional (3D) Paul traps combine the high-precision microfabrication of two-dimensional (2D) chip traps with the deep trapping potentials and low heating rates characteristic of macroscopic Paul traps, which are typically manually assembled. However, achieving low motional heating rates and optical access with a high numerical aperture (NA) while maintaining the high radio-frequency (RF) voltages required for heavy ionic species, such as Yb$^{+}$ and Ba$^{+}$, remains a significant technical challenge. In this work, we present a segmented, monolithic 3D fused silica blade trap, featuring an ion-electrode distance of 250 $μ$m with stable operation at high RF voltages. We benchmark the performance of the trap using Yb$^{+}$ ions, demonstrating axially homogeneous trapping potentials for 200 $μ$m around the axial center of the trap, high multi-directional optical access (up to 0.7 NA), and radial motional heating rate as low as 1.1 $\pm$ 0.1 quanta/s at radial trap frequencies about 3 MHz near room temperature. Furthermore, we observe a motional Ramsey coherence time, $T_{2}$, of around 95 ms for the radial center-of-mass mode. We demonstrate a two-qubit gate fidelity of ${99.3}^{+ 0.7}_{- 1.5}$$\%$ with state preparation and measurement correction. These results establish fused-silica monolithic blade traps as a scalable, modular platform for quantum simulation, computation, metrology, and networking with heavy ionic species.</p>
-                <p><a href="https://arxiv.org/abs/2603.16048v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>3D tomography of exchange phase in a Si/SiGe quantum dot device</title>
-            <link>https://quantum-pulse.github.io/posts/aacd4206.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/aacd4206.html</guid>
-            <pubDate>Tue, 17 Mar 2026 00:17:02 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article tackles one of the most persistent challenges in silicon quantum dot spin qubits: accurately measuring and mapping the exchange interaction that enables two-qubit gates across different voltage configurations. The researchers have developed an innovative 3D tomography approach that borrows techniques from digital holography and network flow algorithms to robustly extract phase information from noisy experimental data—a critical step toward precise qubit calibration and control. This work represents a significant methodological advance for silicon quantum processors, as understanding how exchange interactions vary with gate voltages is essential for scaling up these systems and achieving the high-fidelity operations needed for fault-tolerant quantum computing. The ability to create detailed 3D maps of exchange phases could dramatically improve how researchers characterize and optimize spin qubit devices, potentially accelerating the development of large-scale silicon quantum computers.</p>
-                <p>The exchange interaction is a foundational building block for the operation of spin-based quantum processors. Extracting the exchange interaction coefficient $J(\mathbf{V})$, as a function of gate electrode voltages, is important for understanding disorder, faithfully simulating device performance, and operating spin qubits with high fidelity. Typical coherent measurements of exchange in spin qubit devices yield a modulated cosine of an accumulated phase, which in turn is the time integral of exchange. As such, extracting $J(\mathbf{V})$ from experimental data is difficult due to the ambiguity of inverting a cosine, the sensitivity to noise when unwrapping phase, as well as the problem of inverting the integral. As a step toward obtaining $J(\mathbf{V})$, we tackle the first two challenges to reveal the accumulated phase, $φ(\mathbf{V})$. We incorporate techniques from a wide range of fields to robustly extract and model a 3D phase volume for spin qubit devices from a sequence of 2D measurements. In particular, we present a measurement technique to obtain the wrapped phase, as done in phase-shifting digital holography, and utilize the max-flow/min-cut phase unwrapping method (PUMA) to unwrap the phase in 3D voltage space. We show this method is robust to the minimal observed drift in the device, which we confirm by increasing scan resolution. Upon building a model of the extracted phase, we optimize over the model to locate a minimal-gradient $π$ exchange pulse point in voltage space. Our measurement protocol may provide detailed information useful for understanding the origins of device variability governing device yield, enable calibrating device models to specific devices during operation for more sophisticated error attribution, and enable a systematic optimization of qubit control. We anticipate that the methods presented here may be applicable to other qubit platforms.</p>
-                <p><a href="https://arxiv.org/abs/2603.16025v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Quantum computing meets the Möbius molecule</title>
-            <link>https://quantum-pulse.github.io/posts/5e7044e3.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/5e7044e3.html</guid>
-            <pubDate>Wed, 11 Mar 2026 11:07:54 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article highlights a fascinating convergence where quantum computing hardware is finally sophisticated enough to tackle complex molecular structures like the Möbius molecule, which features unusual twisted geometries and intricate electron interactions that have long challenged classical computational methods. The ability to simulate such multi-electron systems represents a crucial milestone for quantum chemistry applications, as these Möbius structures appear in everything from advanced materials to biological processes. What makes this particularly exciting is that it demonstrates how today&#39;s noisy intermediate-scale quantum (NISQ) devices are moving beyond toy problems toward real chemical systems that could inform drug discovery and materials science, bridging the gap between quantum computing&#39;s theoretical promise and practical molecular modeling.</p>
-                <p>A complex structure with multiple electrons is within reach of today&#39;s hardware.</p>
-                <p><a href="https://arstechnica.com/science/2026/03/quantum-computing-meets-the-mobius-molecule/">Read original at Ars Technica - Science</a></p>
+                <p><strong>Curator's Take:</strong> This breakthrough represents a clever paradigm shift in trapped-ion quantum computing, where researchers have transformed atomic motion from a major source of decoherence into an actual quantum resource. Traditional approaches treat motional heating as pure noise to be suppressed, but this &#34;erasure correction cooling&#34; technique harnesses these atomic vibrations to store and process quantum information more reliably. The method could significantly improve error rates in ion trap systems by giving quantum computers a new way to detect and correct errors before they propagate through calculations. This work exemplifies how quantum computing advances often come from reframing fundamental challenges rather than simply trying to eliminate them.</p>
+                <p>New &#34;erasure correction cooling&#34; method stores quantum information in atoms’ motional states The post Physicists turn atomic motion from a nuisance to a resource appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/physicists-turn-atomic-motion-from-a-nuisance-to-a-resource/">Read original at Physics World - Quantum</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
@@ -340,38 +28,310 @@
         </item>
         
         <item>
-            <title>A tiny light trap could unlock million qubit quantum computers</title>
-            <link>https://quantum-pulse.github.io/posts/8af14e61.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/8af14e61.html</guid>
-            <pubDate>Mon, 02 Feb 2026 05:01:14 +0000</pubDate>
+            <title>Spin-qubit control circuit stays cool</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/7b4a48dd.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/7b4a48dd.html</guid>
+            <pubDate>Tue, 22 Jul 2025 10:00:22 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This Stanford breakthrough tackles one of quantum computing&#39;s most stubborn scaling challenges: efficiently reading out information from large arrays of qubits simultaneously. While current quantum computers struggle with the complex infrastructure needed to control and measure even hundreds of qubits, these miniature optical cavities could dramatically simplify the readout process by allowing parallel measurement of many atomic qubits at once. The leap from demonstrating dozens to hundreds of cavities suggests the approach has real scaling potential, addressing a critical bottleneck that has limited quantum computers to the hundreds-of-qubits range. If this optical readout method proves robust, it could be a key enabling technology for the million-qubit quantum computers needed for truly transformative applications like drug discovery and climate modeling.</p>
-                <p>A new light-based breakthrough could help quantum computers finally scale up. Stanford researchers created miniature optical cavities that efficiently collect light from individual atoms, allowing many qubits to be read at once. The team has already demonstrated working arrays with dozens and even hundreds of cavities. The approach could eventually support massive quantum networks with millions of qubits.</p>
-                <p><a href="https://www.sciencedaily.com/releases/2026/02/260201223737.htm">Read original at Science Daily - Quantum</a></p>
+                <p><strong>Curator's Take:</strong> This development addresses one of the most pressing engineering challenges in quantum computing: keeping control electronics close to qubits while maintaining the ultra-low temperatures required for quantum coherence. Traditional approaches require control signals to travel from room-temperature electronics down to millikelvin environments, introducing noise and latency that can degrade qubit performance. By developing control circuits that can operate directly in cryogenic conditions, researchers are paving the way for much more scalable quantum processors with tighter integration and potentially better fidelity. This represents a crucial step toward the kind of large-scale quantum systems needed for practical quantum advantage, where thousands or millions of qubits will require local, low-noise control.</p>
+                <p>Cryogenic architecture supports tighter integration The post Spin-qubit control circuit stays cool appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/spin-qubit-control-circuit-stays-cool/">Read original at Physics World - Quantum</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
             <category>hardware</category>
-            
-            <category>research</category>
             
         </item>
         
         <item>
-            <title>“Purifying” photons: Scientists found a way to clean light itself</title>
-            <link>https://quantum-pulse.github.io/posts/047f1504.html</link>
-            <guid isPermaLink="true">https://quantum-pulse.github.io/posts/047f1504.html</guid>
-            <pubDate>Tue, 23 Dec 2025 14:51:14 +0000</pubDate>
+            <title>Helgoland 2025: the inside story of what happened on the ‘quantum island’</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/f143dfe4.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/f143dfe4.html</guid>
+            <pubDate>Thu, 03 Jul 2025 09:30:29 +0000</pubDate>
             <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This breakthrough tackles one of photonic quantum computing&#39;s most persistent challenges: the &#34;dirty&#34; light that typically sabotages delicate quantum operations. By turning the problem on its head and using unwanted photons as a cleaning mechanism rather than just filtering them out, the University of Iowa team has found an elegant solution that could dramatically improve the quality of single-photon sources. This approach is particularly exciting because it works with existing laser technology, potentially making high-purity photonic qubits more accessible without requiring entirely new hardware architectures. The advancement could accelerate progress in both quantum computing and quantum cryptography, where pristine single photons are absolutely essential for maintaining quantum states and ensuring security.</p>
-                <p>A new discovery shows that messy, stray light can be used to clean up quantum systems instead of disrupting them. University of Iowa researchers found that unwanted photons produced by lasers can be canceled out by carefully tuning the light itself. The result is a much purer stream of single photons, a key requirement for quantum computing and secure communication. The work could help push photonic quantum technology closer to real-world use.</p>
-                <p><a href="https://www.sciencedaily.com/releases/2025/12/251223084534.htm">Read original at Science Daily - Quantum</a></p>
+                <p><strong>Curator's Take:</strong> This article captures a historic moment as physicists gathered on the remote German island of Helgoland to commemorate the centennial of Werner Heisenberg&#39;s groundbreaking work that launched quantum mechanics in 1925. The conference brings together leading quantum researchers to reflect on how far the field has traveled from Heisenberg&#39;s original matrix mechanics to today&#39;s quantum computers, sensors, and communication systems that are reshaping technology. Beyond the symbolic importance of returning to quantum mechanics&#39; birthplace, such gatherings offer valuable insights into where prominent physicists see the field heading next, making this both a celebration of past achievements and a roadmap for quantum&#39;s second century. The timing is particularly poignant as we stand at the threshold of practical quantum advantage in multiple applications, from cryptography to drug discovery.</p>
+                <p>Matin Durrani reports from the Helgoland 2025 conference marking 100 years of quantum mechanics The post Helgoland 2025: the inside story of what happened on the ‘quantum island’ appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/helgoland-2025-the-inside-story-of-what-happened-on-the-quantum-island/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Gino Elia: ‘I worry that scientists are too confident that the acceptance of scientific truth is inevitable’</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/b8fb5344.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/b8fb5344.html</guid>
+            <pubDate>Wed, 02 Jul 2025 13:00:19 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article raises important questions about scientific communication and public trust that are particularly relevant to quantum computing, where complex concepts like quantum supremacy and error correction often face skepticism or misunderstanding. As quantum technologies move closer to practical applications in cryptography, drug discovery, and financial modeling, the field cannot afford to assume that revolutionary capabilities will be automatically accepted by society or policymakers. Elia&#39;s concerns echo broader challenges quantum researchers face when explaining counterintuitive phenomena like superposition and entanglement to stakeholders who will ultimately decide funding priorities and regulatory frameworks. The quantum computing community would benefit from heeding these warnings about scientific overconfidence, especially as we approach the critical transition from laboratory demonstrations to real-world quantum advantage.</p>
+                <p>Following the Helgoland 2025 meeting in June, Gino Elia leaves with concerns about the culture of science The post Gino Elia: ‘I worry that scientists are too confident that the acceptance of scientific truth is inevitable’ appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/gino-elia-i-worry-that-scientists-are-too-confident-that-the-acceptance-of-scientific-truth-is-inevitable/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum island: why Helgoland is a great spot for fundamental thinking</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/ea5441ac.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/ea5441ac.html</guid>
+            <pubDate>Thu, 12 Jun 2025 00:00:12 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article highlights the ongoing Helgoland 2025 conference, where physicists are gathering on the historic North Sea island where Werner Heisenberg first formulated matrix mechanics in 1925 to tackle fundamental questions about quantum mechanics that remain unresolved a century later. The location is deeply symbolic - Helgoland was where the mathematical foundations of quantum theory were born during Heisenberg&#39;s famous hay fever retreat, making it an inspired venue for contemplating the deepest mysteries that still puzzle quantum theorists today. While quantum computing has made remarkable practical strides, conferences like this remind us that foundational questions about measurement, interpretation, and the nature of quantum reality continue to drive scientific inquiry and could influence how we understand and develop quantum technologies. The gathering demonstrates how the quantum community remains committed to wrestling with the profound philosophical and physical questions that underpin all quantum applications, from computing to sensing.</p>
+                <p>Matin Durrani explains why delegates at Helgoland 2025 are discussing foundational questions in quantum mechanics The post Quantum island: why Helgoland is a great spot for fundamental thinking appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/quantum-island-why-helgoland-is-a-great-spot-for-fundamental-thinking/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Superconducting innovation: SQMS shapes up  for scalable success in quantum computing</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/97ba794c.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/97ba794c.html</guid>
+            <pubDate>Thu, 05 Jun 2025 14:00:07 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article highlights Fermilab&#39;s SQMS Center&#39;s ambitious push toward qudit-based quantum computing, which could represent a significant leap beyond today&#39;s qubit systems by utilizing quantum states with more than two levels per unit. The focus on qudits is particularly intriguing because these higher-dimensional quantum states could dramatically increase computational density and potentially simplify certain quantum algorithms, though they come with added complexity in control and readout. What makes this especially noteworthy is SQMS&#39;s emphasis on inherent scalability from the ground up, addressing one of quantum computing&#39;s most persistent challenges by designing systems that can grow without hitting fundamental roadblocks. This research direction could prove crucial as the field moves toward fault-tolerant quantum computers that require thousands or millions of quantum units working together.</p>
+                <p>Fermilab’s SQMS Center is on a mission to realize inherently scalable “qudit-based” quantum computing and quantum communication systems The post Superconducting innovation: SQMS shapes up for scalable success in quantum computing appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/superconducting-innovation-sqms-shapes-up-for-scalable-success-in-quantum-computing/">Read original at Physics World - Quantum</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
             <category>hardware</category>
             
-            <category>research</category>
+        </item>
+        
+        <item>
+            <title>Teaching quantum physics to everyone: pictures offer a new way of understanding</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/151e36b3.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/151e36b3.html</guid>
+            <pubDate>Thu, 29 May 2025 14:49:48 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article addresses one of quantum computing&#39;s biggest challenges: making quantum mechanics accessible to broader audiences beyond physics specialists. As quantum technologies move closer to practical applications, the ability to communicate quantum concepts clearly becomes crucial for educating the workforce, informing policy decisions, and building public understanding of this transformative field. Visual approaches to teaching quantum mechanics could prove especially valuable as quantum computing moves from research labs into industry, where engineers, software developers, and business leaders need to grasp quantum principles without necessarily having advanced physics backgrounds. Better educational tools for quantum concepts will be essential for scaling the quantum ecosystem and ensuring that the quantum advantage can be realized across diverse sectors.</p>
+                <p>We talk about a new way of describing quantum mechanics The post Teaching quantum physics to everyone: pictures offer a new way of understanding appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/teaching-quantum-physics-to-everyone-pictures-offer-a-new-way-of-understanding/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>The quantum eraser doesn’t rewrite the past – it rewrites observers</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/d8ae3ae2.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/d8ae3ae2.html</guid>
+            <pubDate>Tue, 27 May 2025 13:00:21 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This Physics World article tackles one of quantum mechanics&#39; most mind-bending phenomena - the quantum eraser experiment - and offers a fresh perspective on what it really tells us about the nature of measurement and observation. Rather than suggesting we can retroactively change the past (a common misinterpretation), Violaris argues that quantum erasers reveal how the act of measurement fundamentally shapes what we can know about a quantum system&#39;s history. This distinction is crucial for quantum computing applications, where understanding the precise role of measurement in quantum information processing directly impacts how we design quantum algorithms and error correction schemes. The article provides valuable clarity on a concept that often gets sensationalized, helping readers grasp the true quantum mechanical principles that underpin technologies from quantum sensors to quantum computers.</p>
+                <p>Maria Violaris looks to the past and future of quantum observers and measurements The post The quantum eraser doesn’t rewrite the past – it rewrites observers appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/the-quantum-eraser-doesnt-rewrite-the-past-it-rewrites-observers/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>‘We must prioritize continuity and stability to maintain momentum’: Mauro Paternostro on how to ensure that quantum tech continues to thrive</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/37eb47df.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/37eb47df.html</guid>
+            <pubDate>Tue, 13 May 2025 13:05:52 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article captures a critical moment in quantum computing&#39;s evolution, as the field transitions from pure research breakthroughs to sustained technological development requiring long-term investment strategies. Paternostro&#39;s emphasis on continuity and stability reflects growing industry awareness that quantum advantage won&#39;t emerge from sporadic funding bursts, but rather from consistent, patient capital that allows complex quantum systems to mature over multiple development cycles. His perspective is particularly timely as governments and corporations worldwide are making billion-dollar quantum commitments, yet many programs still operate on short funding cycles that can disrupt the deep, methodical work quantum technologies demand. The insights offer valuable guidance for policymakers and industry leaders navigating the delicate balance between maintaining innovation momentum and building the stable ecosystem quantum computing needs to fulfill its transformative potential.</p>
+                <p>Quantum physicist Mauro Paternostro shares his views on the quantum future The post ‘We must prioritize continuity and stability to maintain momentum’: Mauro Paternostro on how to ensure that quantum tech continues to thrive appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/we-must-prioritize-continuity-and-stability-to-maintain-momentum-mauro-paternostro-on-how-to-ensure-that-quantum-tech-continues-to-thrive/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>India must boost investment in quantum technologies to become world leader, says report</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/61dff217.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/61dff217.html</guid>
+            <pubDate>Mon, 28 Apr 2025 15:00:32 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This report from India&#39;s National Quantum Mission highlights the increasingly competitive global race for quantum supremacy, with nations recognizing that early investment and strategic planning will determine future technological leadership. India&#39;s emphasis on both advancing quantum technologies and strengthening quantum security reflects a mature understanding that quantum computing will simultaneously create new capabilities and vulnerabilities that countries must prepare for simultaneously. The timing is particularly significant as India seeks to position itself alongside the US, China, and EU in quantum research while addressing the critical need for quantum-safe cryptography before large-scale quantum computers threaten current security systems. This dual focus on offensive quantum capabilities and defensive quantum security measures represents exactly the kind of comprehensive national strategy that experts believe will separate quantum leaders from followers in the coming decade.</p>
+                <p>First report by the National Quantum Mission also warns that India needs to improve its quantum security The post India must boost investment in quantum technologies to become world leader, says report appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/india-must-boost-investment-in-quantum-technologies-to-become-world-leader-says-report/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>industry</category>
+            
+            <category>policy</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum transducer enables optical control of a superconducting qubit</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/8ffefaa7.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/8ffefaa7.html</guid>
+            <pubDate>Mon, 28 Apr 2025 08:10:10 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This breakthrough represents a major step toward practical quantum networking by solving one of the field&#39;s most persistent challenges: connecting superconducting qubits, which operate at microwave frequencies, with optical photons used for long-distance quantum communication. The quantum transducer essentially acts as a translator between these two incompatible &#34;languages,&#34; enabling researchers to control superconducting qubits directly with light for the first time. This development could dramatically simplify the architecture of distributed quantum computers and quantum networks, eliminating the need for complex electronic intermediaries that introduce noise and reduce fidelity. The work brings us closer to a future where superconducting quantum processors can be seamlessly networked using existing fiber optic infrastructure.</p>
+                <p>Physicists create the first device that can control a superconducting microwave qubit using only light The post Quantum transducer enables optical control of a superconducting qubit appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/quantum-transducer-enables-optical-control-of-a-superconducting-qubit/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+        </item>
+        
+        <item>
+            <title>On the path towards a quantum economy</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/19379c78.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/19379c78.html</guid>
+            <pubDate>Wed, 16 Apr 2025 14:15:56 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article highlights a crucial phase in quantum computing&#39;s evolution where the field is transitioning from pure research to practical business applications through systematic feasibility studies. These collaborative efforts between quantum specialists and industry experts represent a vital bridge-building exercise, helping companies understand which quantum computing advantages might genuinely benefit their operations versus areas where classical computing remains superior. The emphasis on feasibility studies is particularly significant because it suggests the quantum computing industry is maturing beyond the hype cycle into rigorous, evidence-based assessments of where quantum advantage can realistically emerge. This collaborative approach could accelerate the timeline for meaningful quantum applications by ensuring development efforts focus on problems where quantum computers can deliver measurable business value rather than pursuing quantum solutions simply for their novelty.</p>
+                <p>Feasibility studies are enabling industry experts to collaborate with quantum specialists to discover the potential benefits of quantum computing for their businesses and their customers The post On the path towards a quantum economy appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/on-the-path-towards-a-quantum-economy/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Schrödinger cat states like it hot</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/2864fe17.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/2864fe17.html</guid>
+            <pubDate>Tue, 15 Apr 2025 14:00:55 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This breakthrough demonstrates that quantum superposition states can survive at surprisingly high temperatures of 1.8 Kelvin, which is remarkably warm by quantum standards where most experiments require near absolute zero conditions. The ability to maintain these delicate &#34;Schrödinger cat&#34; states at higher temperatures could dramatically reduce the cooling requirements for quantum computers, potentially making them more practical and less expensive to operate. This finding challenges conventional wisdom about the fragility of quantum states and opens new possibilities for quantum devices that don&#39;t require extreme refrigeration, bringing us closer to room-temperature quantum computing applications. The research represents a significant step toward making quantum technology more accessible by relaxing one of its most demanding technical requirements.</p>
+                <p>Superpositions persist at temperatures up to 1.8 K – practically oven-like by quantum standards The post Schrödinger cat states like it hot appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/schrodinger-cat-states-like-it-hot/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>The quantum Zeno effect: how the ‘measurement problem’ went from philosophers’ paradox to physicists’ toolbox</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/b1588bd4.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/b1588bd4.html</guid>
+            <pubDate>Mon, 14 Apr 2025 10:00:05 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article explores how the quantum Zeno effect, named after the ancient Greek philosopher&#39;s paradox about motion, has evolved from a theoretical curiosity into a practical quantum technology tool. The effect demonstrates that frequent quantum measurements can actually freeze a quantum system&#39;s evolution, which initially seemed like just another bizarre quantum phenomenon but now serves as the foundation for enhanced quantum sensing applications and error correction schemes. What makes this particularly fascinating is how it bridges the gap between quantum mechanics&#39; most counterintuitive aspects and real-world utility, showing that even the &#34;measurement problem&#34; that has puzzled physicists for decades can become an engineering advantage. The transformation from philosophical puzzle to technological asset perfectly illustrates how our understanding of quantum mechanics continues to mature into actionable quantum technologies.</p>
+                <p>A stand-out example of quantum weirdness is turning out to be surprisingly useful, as Margaret Harris explains The post The quantum Zeno effect: how the ‘measurement problem’ went from philosophers’ paradox to physicists’ toolbox appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/the-quantum-zeno-effect-how-the-measurement-problem-went-from-philosophers-paradox-to-physicists-toolbox/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum computer generates strings of certifiably random numbers</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/f5dec53e.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/f5dec53e.html</guid>
+            <pubDate>Thu, 10 Apr 2025 08:00:04 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This breakthrough demonstrates one of quantum computing&#39;s most practically valuable near-term applications: generating truly random numbers that can be mathematically certified as unpredictable, unlike the pseudo-random numbers produced by classical computers. Quantinuum&#39;s achievement using trapped-ion technology showcases how quantum systems can leverage fundamental quantum mechanical properties like superposition and measurement uncertainty to create genuine randomness, which is crucial for cryptography, secure communications, and scientific simulations. The fact that this work also extends to studying quantum magnetism and knot theory highlights how today&#39;s quantum computers are becoming versatile research tools capable of tackling multiple complex problems simultaneously. This represents a significant step toward practical quantum advantage in applications where certified randomness provides clear benefits over classical alternatives.</p>
+                <p>Quantinuum’s trapped-ion computer has also been used to study problems in quantum magnetism and knot theory The post Quantum computer generates strings of certifiably random numbers appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/quantum-computer-generates-strings-of-certifiably-random-numbers/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>New entanglement approach could boost photonic quantum computing</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/bcb14269.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/bcb14269.html</guid>
+            <pubDate>Wed, 09 Apr 2025 13:39:03 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This theoretical breakthrough could address one of photonic quantum computing&#39;s biggest headaches: the probabilistic nature of photon entanglement that has plagued efforts to scale up light-based quantum systems. By leveraging non-Abelian holonomy - essentially exploiting how quantum states change when moved around closed paths in parameter space - researchers propose a way to create entangled photon pairs deterministically rather than relying on the hit-or-miss approaches that currently dominate the field. This matters enormously because deterministic entanglement could dramatically improve the success rates of photonic quantum gates, potentially making room-temperature photonic quantum computers more viable competitors to their superconducting cousins. While still theoretical, this approach represents the kind of mathematical elegance that often translates into practical quantum computing advantages down the road.</p>
+                <p>Harnessing the mathematical concept of non-Abelian holonomy makes it possible to entangle photons deterministically, say theorists The post New entanglement approach could boost photonic quantum computing appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/new-entanglement-approach-could-boost-photonic-quantum-computing/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+        </item>
+        
+        <item>
+            <title>William Phillips: Nobel laureate talks about his passion for quantum physics</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/80c62fbb.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/80c62fbb.html</guid>
+            <pubDate>Fri, 04 Apr 2025 15:01:20 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This interview with Nobel Prize winner William Phillips offers valuable perspective from one of the foundational figures in quantum technology, whose pioneering work in laser cooling of atoms laid crucial groundwork for today&#39;s quantum computing and sensing applications. Phillips&#39; insights are particularly relevant as the field grapples with scaling challenges, since his techniques for precisely controlling atomic motion remain central to trapped-ion quantum computers and atomic clocks that serve as quantum sensors. The article provides readers with a rare glimpse into how a quantum physics pioneer views the current state and future potential of the technologies his research helped make possible. Given Phillips&#39; decades of experience bridging fundamental physics and practical applications, his thoughts on where quantum technologies are headed carry significant weight in understanding the field&#39;s trajectory.</p>
+                <p>Laser-cooling expert looks to the future of quantum technologies The post William Phillips: Nobel laureate talks about his passion for quantum physics appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/william-phillips-nobel-laureate-talks-about-his-passion-for-quantum-physics/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Operating system for quantum networks is a first</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/c1047743.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/c1047743.html</guid>
+            <pubDate>Thu, 03 Apr 2025 13:08:47 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This development represents a crucial step toward making quantum networks as user-friendly as classical computer networks, addressing one of the biggest barriers to widespread quantum adoption. QNodeOS could standardize how different quantum devices communicate and operate together, much like how traditional operating systems allow various software applications to run on different hardware platforms. The creation of a dedicated quantum network operating system suggests the field is maturing from experimental demonstrations toward practical, scalable infrastructure that non-experts could eventually use. This kind of abstraction layer is essential for quantum computing to transition from specialized research labs to broader commercial and academic applications.</p>
+                <p>QNodeOS could help make quantum computation more accessible The post Operating system for quantum networks is a first appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/operating-system-for-quantum-networks-is-a-first/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Microsoft’s Chetan Nayak on topological qubits, the physics of bigger splashes</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/bfa4e84c.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/bfa4e84c.html</guid>
+            <pubDate>Thu, 27 Mar 2025 14:55:04 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This Physics World podcast with Microsoft&#39;s Chetan Nayak offers valuable insights into one of quantum computing&#39;s most ambitious hardware approaches - topological qubits based on Majorana zero modes. Microsoft has been pursuing this challenging but potentially revolutionary path for over a decade, betting that topological protection could provide inherently error-resistant qubits that would dramatically reduce the overhead needed for quantum error correction. While Microsoft&#39;s topological quantum computing program has faced significant technical hurdles and timeline delays, recent progress in materials science and fabrication techniques has renewed optimism about this approach. The discussion likely provides important updates on Microsoft&#39;s current progress and the fundamental physics challenges that make topological qubits both incredibly difficult to realize and potentially game-changing for fault-tolerant quantum computing.</p>
+                <p>Manu jumping and Majorana zero modes feature in this podcast The post Microsoft’s Chetan Nayak on topological qubits, the physics of bigger splashes appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/microsofts-chetan-nayak-on-topological-qubits-the-physics-of-bigger-splashes/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>error_correction</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum computers extend lead over classical machines in random circuit sampling</title>
+            <link>https://subvurs.github.io/quantum-curator/posts/ee105404.html</link>
+            <guid isPermaLink="true">https://subvurs.github.io/quantum-curator/posts/ee105404.html</guid>
+            <pubDate>Tue, 25 Mar 2025 16:41:36 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This latest achievement with the Zuchongzhi 3.0 processor represents another significant milestone in demonstrating quantum supremacy, showing that quantum computers continue to widen their advantage over classical systems in specific computational tasks. Random circuit sampling, while not immediately practical, serves as a crucial benchmark for proving quantum computers can outperform even the world&#39;s most powerful supercomputers by astronomical margins - in this case, reducing billions of years of classical computation to mere minutes. The result reinforces that we&#39;re witnessing genuine quantum advantage in action and validates the rapid progress being made in quantum hardware development, particularly in photonic and superconducting quantum systems. While these demonstrations don&#39;t yet translate to solving real-world problems faster than classical computers, they provide essential proof that quantum computing is moving from theoretical possibility to computational reality.</p>
+                <p>New Zuchongzhi 3.0 processor can solve in minutes a problem that would take a supercomputer billions of years The post Quantum computers extend lead over classical machines in random circuit sampling appeared first on Physics World .</p>
+                <p><a href="https://physicsworld.com/a/quantum-computers-extend-lead-over-classical-machines-in-random-circuit-sampling/">Read original at Physics World - Quantum</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
             
         </item>
         
