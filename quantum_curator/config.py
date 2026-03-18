@@ -32,12 +32,12 @@ class Settings(BaseSettings):
     curator_website: str = Field(default="", description="Personal website URL")
 
     # Site settings
-    site_name: str = Field(default="Quantum Pulse", description="Site name/title")
+    site_name: str = Field(default="Quantum Crier", description="Site name/title")
     site_tagline: str = Field(
         default="Daily curated insights from the quantum frontier",
         description="Site tagline/subtitle",
     )
-    site_url: str = Field(default="https://quantum-pulse.github.io", description="Published site URL")
+    site_url: str = Field(default="https://subvurs.github.io/quantum-curator", description="Published site URL")
     site_description: str = Field(
         default="A daily curated collection of the latest news, research, and developments "
         "in quantum computing, quantum physics, and quantum information science.",
@@ -63,6 +63,10 @@ class Settings(BaseSettings):
     # API keys
     anthropic_api_key: str = Field(default="", description="Anthropic API key for commentary generation")
     news_api_key: str = Field(default="", description="NewsAPI key for news aggregation")
+    unsplash_api_key: str = Field(default="", description="Unsplash API key for stock photo search")
+
+    # Image generation
+    generate_images: bool = Field(default=True, description="Auto-generate images for articles without one")
 
     # GitHub deployment
     github_token: str = Field(default="", description="GitHub PAT for deployment")
@@ -70,6 +74,12 @@ class Settings(BaseSettings):
     github_username: str = Field(default="", description="GitHub username")
     github_branch: str = Field(default="gh-pages", description="Branch for GitHub Pages")
     custom_domain: str = Field(default="", description="Custom domain for GitHub Pages")
+
+    # Qrater settings
+    qrater_output_dir: Path = Field(default=Path("qrater_output"), description="Qrater site output directory")
+    qrater_github_repo: str = Field(default="qrater", description="GitHub repo name for Qrater Pages")
+    qrater_site_url: str = Field(default="https://subvurs.github.io/qrater", description="Qrater published site URL")
+    buttondown_username: str = Field(default="", description="Buttondown newsletter username for Qrater email signup")
 
     # Aggregation settings
     max_posts_per_day: int = Field(default=15, description="Maximum posts to curate per day")

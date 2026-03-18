@@ -38,17 +38,17 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
 
     # --- Major Quantum Companies ---
     {
-        "name": "IBM Quantum Blog",
+        "name": "Qiskit Blog (IBM)",
         "source_type": SourceType.RSS,
-        "url": "https://www.ibm.com/quantum/blog",
-        "feed_url": "https://www.ibm.com/quantum/blog/rss",
+        "url": "https://medium.com/qiskit",
+        "feed_url": "https://medium.com/feed/qiskit",
         "fetch_interval_hours": 6,
     },
     {
-        "name": "Google AI Blog",
+        "name": "Google Research Blog",
         "source_type": SourceType.RSS,
-        "url": "https://ai.googleblog.com",
-        "feed_url": "https://ai.googleblog.com/atom.xml",
+        "url": "https://blog.google/technology/research/",
+        "feed_url": "https://blog.google/technology/research/rss/",
         "fetch_interval_hours": 6,
     },
     {
@@ -101,7 +101,7 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         "name": "Phys.org Quantum",
         "source_type": SourceType.RSS,
         "url": "https://phys.org/physics-news/quantum-physics/",
-        "feed_url": "https://phys.org/rss-feed/physics-news/quantum-physics/",
+        "feed_url": "https://phys.org/rss-feed/breaking/physics-news/quantum-physics/",
         "fetch_interval_hours": 4,
     },
     {
@@ -142,6 +142,22 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         "fetch_interval_hours": 6,
     },
 
+    # --- Additional Science Sources ---
+    {
+        "name": "Physics World - Quantum",
+        "source_type": SourceType.RSS,
+        "url": "https://physicsworld.com/c/quantum/",
+        "feed_url": "https://physicsworld.com/c/quantum/feed/",
+        "fetch_interval_hours": 6,
+    },
+    {
+        "name": "New Scientist - Physics",
+        "source_type": SourceType.RSS,
+        "url": "https://www.newscientist.com/subject/physics/",
+        "feed_url": "https://www.newscientist.com/subject/physics/feed/",
+        "fetch_interval_hours": 6,
+    },
+
     # --- NewsAPI (if configured) ---
     {
         "name": "Quantum News (NewsAPI)",
@@ -154,10 +170,23 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
 
 
 def register_builtin_sources() -> list[Source]:
-    """Register all built-in sources in the database."""
+    """Register all built-in sources in the database.
+
+    Uses source name as a stable key to avoid duplicates on repeated init.
+    Existing sources are updated with current feed URLs; new sources are added.
+    """
+    existing = {s.name: s for s in db.list_sources()}
     sources = []
     for source_data in BUILTIN_SOURCES:
-        source = Source(**source_data)
+        if source_data["name"] in existing:
+            # Update existing source with current config (e.g. fixed feed URL)
+            source = existing[source_data["name"]]
+            source.feed_url = source_data.get("feed_url", source.feed_url)
+            source.url = source_data.get("url", source.url)
+            source.news_query = source_data.get("news_query", source.news_query)
+            source.arxiv_categories = source_data.get("arxiv_categories", source.arxiv_categories)
+        else:
+            source = Source(**source_data)
         db.save_source(source)
         sources.append(source)
     return sources

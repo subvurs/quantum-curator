@@ -7,33 +7,70 @@
 <section class="topic-page">
     <header class="page-header">
         <nav class="breadcrumb">
-            <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
+            <a href="{{ base_path }}/">Home</a> &raquo; <a href="{{ base_path }}/topics/">Topics</a> &raquo;
         </nav>
         <h1>{{ topic }}</h1>
         <p class="page-subtitle">{{ posts | length }} curated article{% if posts | length != 1 %}s{% endif %}</p>
     </header>
 
-    <div class="posts-grid">
-        {% for post in posts %}
-        <article class="post-card">
+    {# Featured first article #}
+    {% if featured_post %}
+    <article class="featured-card featured-card--wide" style="margin-bottom: var(--space-xl);">
+        {% if featured_post.image_url %}
+        <div class="featured-image">
+            <img src="{{ featured_post.image_url }}" alt="" loading="eager"
+                 onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+        </div>
+        {% else %}
+        <div class="featured-image image-fallback topic-bg-{{ topic | topic_class }}"></div>
+        {% endif %}
+        <div class="featured-content">
             <h3 class="post-title">
-                <a href="/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+                <a href="{{ base_path }}/posts/{{ featured_post.id[:8] }}.html">{{ featured_post.title }}</a>
             </h3>
-            <p class="post-summary">{{ post.summary[:200] }}{% if post.summary|length > 200 %}...{% endif %}</p>
+            <p class="post-summary">{{ featured_post.summary[:300] }}{% if featured_post.summary|length > 300 %}...{% endif %}</p>
             <div class="post-commentary">
-                <blockquote>{{ post.curator_commentary }}</blockquote>
+                <blockquote>{{ featured_post.curator_commentary }}</blockquote>
             </div>
             <div class="post-meta">
-                <span class="post-source">{{ post.source_name }}</span>
-                <span class="post-date">{{ post.published_at | date }}</span>
-                <a href="{{ post.original_url }}" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-source">{{ featured_post.source_name }}</span>
+                <span class="post-date">{{ featured_post.published_at | date }}</span>
+                <a href="{{ featured_post.original_url }}" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+            </div>
+        </div>
+    </article>
+    {% endif %}
+
+    {# Compact list for remaining articles #}
+    {% if remaining_posts %}
+    <div class="compact-list">
+        {% for post in remaining_posts %}
+        <article class="compact-article">
+            {% if post.image_url %}
+            <div class="compact-thumbnail">
+                <img src="{{ post.image_url }}" alt="" loading="lazy"
+                     onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+            </div>
+            {% else %}
+            <div class="compact-thumbnail image-fallback topic-bg-{{ topic | topic_class }}"></div>
+            {% endif %}
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="{{ base_path }}/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">{{ post.summary[:150] }}{% if post.summary|length > 150 %}...{% endif %}</p>
+                <div class="compact-meta">
+                    <span class="post-source">{{ post.source_name }}</span>
+                    <span class="post-date">{{ post.published_at | date }}</span>
+                </div>
             </div>
         </article>
         {% endfor %}
     </div>
+    {% endif %}
 
     <nav class="topic-nav">
-        <a href="/topics/">&larr; All Topics</a>
+        <a href="{{ base_path }}/topics/">&larr; All Topics</a>
     </nav>
 </section>
 {% endblock %}

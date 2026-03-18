@@ -4,12 +4,20 @@
 {% block description %}{{ post.summary[:160] }}{% endblock %}
 {% block og_title %}{{ post.title }}{% endblock %}
 
+{% block head %}
+{% if post.image_url %}
+<meta property="og:image" content="{{ post.image_url }}">
+<meta name="twitter:image" content="{{ post.image_url }}">
+<meta name="twitter:card" content="summary_large_image">
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <article class="post-full">
     <header class="post-header">
         <div class="post-topics">
             {% for topic in post.topics %}
-            <a href="/topics/{{ topic.value | topic_class }}.html" class="topic-tag topic-{{ topic.value | topic_class }}">{{ topic.value }}</a>
+            <a href="{{ base_path }}/topics/{{ topic.value | topic_class }}.html" class="topic-tag topic-{{ topic.value | topic_class }}">{{ topic.value }}</a>
             {% endfor %}
         </div>
         <h1>{{ post.title }}</h1>
@@ -19,6 +27,13 @@
             <span class="curator">Curated by <strong>{{ post.curator_name }}</strong></span>
         </div>
     </header>
+
+    {% if post.image_url %}
+    <div class="post-hero-image">
+        <img src="{{ post.image_url }}" alt="{{ post.title }}" loading="eager"
+             onerror="this.parentElement.style.display='none'">
+    </div>
+    {% endif %}
 
     <div class="post-body">
         <section class="curator-take">
@@ -50,7 +65,7 @@
             </div>
         </div>
         <div class="nav-links">
-            <a href="/">&larr; Back to Home</a>
+            <a href="{{ base_path }}/">&larr; Back to Home</a>
         </div>
     </footer>
 </article>

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import re
 from datetime import datetime
 from typing import Any
 
@@ -27,17 +28,48 @@ Focus on:
 - What's genuinely novel or significant
 - How it connects to the broader quantum computing landscape
 - Why readers should care
-- Any caveats or context needed"""
+- Any caveats or context needed
+
+IMPORTANT: Write in plain text only. Do NOT use any markdown formatting — no bold (**text**), no italics (*text*), no headers (#), no bullet points (- or *), and no code blocks. Your output will be displayed directly on a web page as plain prose."""
 
 
 DIGEST_SYSTEM_PROMPT = """You are creating a daily digest summary for {curator_name}'s quantum computing news site. Write a compelling 2-3 paragraph summary of today's quantum news highlights.
 
-Structure:
-1. Opening hook - What's the most significant development today?
-2. Key themes - What patterns or trends emerge from today's news?
-3. Looking ahead - What should readers watch for?
+Structure your writing as flowing prose paragraphs:
+- First paragraph: Opening hook — what is the most significant development today?
+- Second paragraph: Key themes — what patterns or trends emerge from today's news?
+- Third paragraph: Looking ahead — what should readers watch for?
 
-Be engaging, informative, and accessible to tech-savvy readers interested in quantum computing."""
+Be engaging, informative, and accessible to tech-savvy readers interested in quantum computing.
+
+IMPORTANT: Write in plain text only. Do NOT use any markdown formatting — no bold (**text**), no italics (*text*), no headers (#), no bullet points (- or *), and no code blocks. Write clean, professional prose paragraphs only. Your output will be displayed directly on a web page."""
+
+
+def _strip_markdown(text: str) -> str:
+    """Remove common markdown formatting from text.
+
+    Safety net to ensure AI output renders as clean prose on the site,
+    even if the model slips in markdown syntax despite prompt instructions.
+    """
+    # Remove bold: **text** or __text__
+    text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
+    text = re.sub(r'__(.+?)__', r'\1', text)
+    # Remove italic: *text* or _text_ (but not underscores in words)
+    text = re.sub(r'(?<!\w)\*(.+?)\*(?!\w)', r'\1', text)
+    text = re.sub(r'(?<!\w)_(.+?)_(?!\w)', r'\1', text)
+    # Remove headers: # Header
+    text = re.sub(r'^#{1,6}\s+', '', text, flags=re.MULTILINE)
+    # Remove bullet points at line start: - item or * item
+    text = re.sub(r'^\s*[-*]\s+', '', text, flags=re.MULTILINE)
+    # Remove numbered list markers: 1. item
+    text = re.sub(r'^\s*\d+\.\s+', '', text, flags=re.MULTILINE)
+    # Remove inline code: `code`
+    text = re.sub(r'`(.+?)`', r'\1', text)
+    # Remove code blocks: ```...```
+    text = re.sub(r'```[\s\S]*?```', '', text)
+    # Clean up excess whitespace
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
 
 
 class Curator:
@@ -59,6 +91,17 @@ class Curator:
         # Generate commentary
         commentary = await self._generate_commentary(article)
 
+        # Auto-generate image if missing and feature is enabled
+        image_url = article.image_url
+        if not image_url and self.settings.generate_images:
+            from .image_generator import ensure_article_image
+
+            image_url = await ensure_article_image(
+                article,
+                data_dir=self.settings.data_dir,
+                base_url=self.settings.site_url,
+            )
+
         # Create curated post
         post = CuratedPost(
             article_id=article.id,
@@ -66,6 +109,7 @@ class Curator:
             original_url=article.url,
             source_name=article.source_name,
             summary=article.summary,
+            image_url=image_url,
             curator_commentary=commentary,
             topics=article.topics,
             relevance_score=article.relevance_score,
@@ -146,7 +190,7 @@ Write 2-4 sentences of engaging commentary explaining why this matters."""
                 system=system_prompt,
                 messages=[{"role": "user", "content": user_prompt}],
             )
-            return response.content[0].text.strip()
+            return _strip_markdown(response.content[0].text.strip())
         except Exception as e:
             print(f"Claude API error: {e}")
             return self._generate_fallback_commentary(article)
@@ -243,7 +287,7 @@ Write a 2-3 paragraph digest summary highlighting the key developments."""
                 system=system_prompt,
                 messages=[{"role": "user", "content": user_prompt}],
             )
-            return response.content[0].text.strip()
+            return _strip_markdown(response.content[0].text.strip())
         except Exception as e:
             print(f"Claude API error for digest: {e}")
             return self._generate_fallback_digest(posts, date)

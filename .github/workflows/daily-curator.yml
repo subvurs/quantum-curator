@@ -2,8 +2,9 @@ name: Daily Quantum Curation
 
 on:
   schedule:
-    # Run once daily at 6 AM UTC
+    # Run twice daily at 6 AM and 6 PM UTC
     - cron: '0 6 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:  # Allow manual triggers
 
 permissions:
@@ -12,6 +13,10 @@ permissions:
 env:
   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
   NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+  UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
+  SITE_URL: https://subvurs.github.io/quantum-curator
+  SITE_NAME: Quantum Crier
+  SITE_DESCRIPTION: "Daily curated quantum computing news and insights by Mark Eatherly"
 
 jobs:
   curate-and-deploy:

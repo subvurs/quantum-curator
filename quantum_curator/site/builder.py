@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from datetime import datetime
 from pathlib import Path
@@ -33,6 +34,14 @@ class SiteBuilder:
         self.env.filters["date"] = self._format_date
         self.env.filters["datetime"] = self._format_datetime
         self.env.filters["topic_class"] = self._topic_class
+        self.env.filters["has_image"] = lambda post: bool(post.image_url)
+        self.env.filters["clean_text"] = self._clean_text
+        self.env.tests["has_image"] = lambda post: bool(post.image_url)
+
+        # Extract base path from site URL for internal links
+        from urllib.parse import urlparse
+        parsed = urlparse(self.settings.site_url)
+        self.env.globals["base_path"] = parsed.path.rstrip("/")
 
     def build(self, clean: bool = True) -> Path:
         """Build the complete static site.
@@ -61,6 +70,7 @@ class SiteBuilder:
         self._build_topics(site_config)
         self._build_about(site_config)
         self._build_rss_feed(site_config)
+        self._build_search(site_config)
 
         # Generate CNAME if custom domain configured
         if self.settings.custom_domain:
@@ -84,19 +94,28 @@ class SiteBuilder:
         )
 
     def _copy_static_assets(self):
-        """Copy CSS and static files to output."""
+        """Copy CSS, static files, and generated images to output."""
         static_src = Path(__file__).parent / "static"
         static_dst = self.output_dir / "static"
 
         if static_src.exists():
             shutil.copytree(static_src, static_dst, dirs_exist_ok=True)
 
+        # Copy generated images from data/images/ into the build output
+        generated_src = self.settings.data_dir / "images"
+        if generated_src.exists() and any(generated_src.iterdir()):
+            generated_dst = static_dst / "images" / "generated"
+            generated_dst.mkdir(parents=True, exist_ok=True)
+            for img_file in generated_src.iterdir():
+                if img_file.is_file():
+                    shutil.copy2(img_file, generated_dst / img_file.name)
+
     def _build_index(self, config: SiteConfig):
-        """Build the home page."""
+        """Build the home page with magazine-style layout."""
         # Get recent posts
         posts = db.list_curated_posts(
             status=PostStatus.PUBLISHED,
-            limit=20,
+            limit=30,
         )
 
         # Get latest digest
@@ -106,10 +125,35 @@ class SiteBuilder:
         # Get topic counts
         topic_counts = self._get_topic_counts()
 
+        # Tier splitting for magazine layout
+        hero_post = posts[0] if posts else None
+        remaining = posts[1:] if posts else []
+
+        # Prefer posts with images for featured slots
+        with_images = [p for p in remaining if p.image_url]
+        without_images = [p for p in remaining if not p.image_url]
+        featured_candidates = with_images + without_images
+        featured_posts = featured_candidates[:3]
+
+        # Group the rest by primary topic
+        rest_posts = featured_candidates[3:]
+        topic_sections: dict[str, list[CuratedPost]] = {}
+        for post in rest_posts:
+            primary_topic = post.topics[0].value if post.topics else "general"
+            if primary_topic not in topic_sections:
+                topic_sections[primary_topic] = []
+            topic_sections[primary_topic].append(post)
+        topic_sections = dict(
+            sorted(topic_sections.items(), key=lambda x: len(x[1]), reverse=True)
+        )
+
         template = self.env.get_template("index.html")
         html = template.render(
             config=config,
             posts=posts,
+            hero_post=hero_post,
+            featured_posts=featured_posts,
+            topic_sections=topic_sections,
             digest=latest_digest,
             topic_counts=topic_counts,
             now=datetime.utcnow(),
@@ -207,6 +251,8 @@ class SiteBuilder:
                 config=config,
                 topic=topic_name,
                 posts=topic_list,
+                featured_post=topic_list[0] if topic_list else None,
+                remaining_posts=topic_list[1:] if topic_list else [],
                 now=datetime.utcnow(),
             )
             (topics_dir / f"{slug}.html").write_text(html)
@@ -234,6 +280,41 @@ class SiteBuilder:
             now=datetime.utcnow(),
         )
         (self.output_dir / "feed.xml").write_text(xml)
+
+    def _build_search(self, config: SiteConfig):
+        """Build search index JSON and search page."""
+        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+
+        # Build search index
+        index = []
+        for post in posts:
+            summary = post.summary or ""
+            commentary = post.curator_commentary or ""
+            index.append({
+                "id": post.id[:8],
+                "title": post.title,
+                "summary": summary[:300] + ("..." if len(summary) > 300 else ""),
+                "source": post.source_name,
+                "topics": [t.value for t in post.topics],
+                "date": self._format_date(post.published_at),
+                "image_url": post.image_url or "",
+                "commentary": commentary[:200] + ("..." if len(commentary) > 200 else ""),
+            })
+
+        # Write search index
+        data_dir = self.output_dir / "data"
+        data_dir.mkdir(exist_ok=True)
+        (data_dir / "search-index.json").write_text(
+            json.dumps(index, ensure_ascii=False, indent=None)
+        )
+
+        # Render search page
+        template = self.env.get_template("search.html")
+        html = template.render(
+            config=config,
+            now=datetime.utcnow(),
+        )
+        (self.output_dir / "search.html").write_text(html)
 
     def _get_topic_counts(self) -> dict[str, int]:
         """Count posts by topic."""
@@ -265,6 +346,37 @@ class SiteBuilder:
     def _topic_class(topic: str) -> str:
         """Convert topic to CSS class name."""
         return topic.lower().replace(" ", "-")
+
+    @staticmethod
+    def _clean_text(text: str) -> str:
+        """Strip markdown formatting and render as clean HTML paragraphs.
+
+        Converts plain text with paragraph breaks into proper <p> tags
+        while removing any markdown syntax from AI-generated content.
+        """
+        if not text:
+            return ""
+        # Remove bold
+        text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
+        text = re.sub(r'__(.+?)__', r'\1', text)
+        # Remove italic
+        text = re.sub(r'(?<!\w)\*(.+?)\*(?!\w)', r'\1', text)
+        text = re.sub(r'(?<!\w)_(.+?)_(?!\w)', r'\1', text)
+        # Remove headers
+        text = re.sub(r'^#{1,6}\s+', '', text, flags=re.MULTILINE)
+        # Remove bullet points
+        text = re.sub(r'^\s*[-*]\s+', '', text, flags=re.MULTILINE)
+        # Remove numbered lists
+        text = re.sub(r'^\s*\d+\.\s+', '', text, flags=re.MULTILINE)
+        # Remove inline code
+        text = re.sub(r'`(.+?)`', r'\1', text)
+        # Remove code blocks
+        text = re.sub(r'```[\s\S]*?```', '', text)
+        # Split into paragraphs and wrap in <p> tags
+        paragraphs = [p.strip() for p in text.strip().split('\n\n') if p.strip()]
+        if not paragraphs:
+            return text.strip()
+        return '\n'.join(f'<p>{p}</p>' for p in paragraphs)
 
 
 def build_site(output_dir: str | Path | None = None, clean: bool = True) -> Path:

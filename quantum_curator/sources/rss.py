@@ -26,7 +26,11 @@ class RSSFetcher:
             return []
 
         try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
+            async with httpx.AsyncClient(
+                timeout=self.timeout,
+                follow_redirects=True,
+                headers={"User-Agent": "QuantumCurator/1.0 (+https://quantum-pulse.github.io)"},
+            ) as client:
                 response = await client.get(source.feed_url)
                 response.raise_for_status()
                 content = response.text

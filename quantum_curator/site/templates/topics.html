@@ -12,7 +12,7 @@
 
     <div class="topics-grid">
         {% for topic, posts in topic_posts.items() %}
-        <a href="/topics/{{ topic | topic_class }}.html" class="topic-card topic-{{ topic | topic_class }}">
+        <a href="{{ base_path }}/topics/{{ topic | topic_class }}.html" class="topic-card topic-{{ topic | topic_class }}">
             <h2>{{ topic }}</h2>
             <p class="topic-count">{{ posts | length }} article{% if posts | length != 1 %}s{% endif %}</p>
             <ul class="topic-preview">

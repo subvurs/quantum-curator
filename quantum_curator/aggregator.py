@@ -68,6 +68,20 @@ class Aggregator:
         # Score relevance
         scored_articles = self._score_articles(unique_articles)
 
+        # Extract OG images for articles missing image_url (skip arXiv)
+        articles_needing_images = [
+            a for a in scored_articles
+            if not a.image_url and a.source_type != SourceType.ARXIV
+        ]
+        if articles_needing_images:
+            from .image_extractor import extract_og_image
+
+            image_tasks = [extract_og_image(a.url) for a in articles_needing_images]
+            image_results = await asyncio.gather(*image_tasks, return_exceptions=True)
+            for article, result in zip(articles_needing_images, image_results):
+                if isinstance(result, str) and result:
+                    article.image_url = result
+
         # Filter by minimum relevance
         min_score = self.settings.min_relevance_score
         filtered = [a for a in scored_articles if a.relevance_score >= min_score]

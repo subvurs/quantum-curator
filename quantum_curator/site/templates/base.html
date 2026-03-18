@@ -22,7 +22,7 @@
     <link rel="alternate" type="application/rss+xml" title="{{ config.site_name }} RSS Feed" href="{{ config.base_url }}/feed.xml">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ config.base_url }}/static/css/style.css">
 
     {% block head %}{% endblock %}
 </head>
@@ -30,16 +30,17 @@
     <header class="site-header">
         <div class="container">
             <div class="header-content">
-                <a href="/" class="site-logo">
+                <a href="{{ base_path }}/" class="site-logo">
                     <span class="logo-icon">&#9883;</span>
                     <span class="logo-text">{{ config.site_name }}</span>
                 </a>
                 <nav class="main-nav">
-                    <a href="/">Home</a>
-                    <a href="/topics/">Topics</a>
-                    <a href="/archive/">Archive</a>
-                    <a href="/about.html">About</a>
-                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="{{ base_path }}/">Home</a>
+                    <a href="{{ base_path }}/topics/">Topics</a>
+                    <a href="{{ base_path }}/archive/">Archive</a>
+                    <a href="{{ base_path }}/search.html">Search</a>
+                    <a href="{{ base_path }}/about.html">About</a>
+                    <a href="{{ base_path }}/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
                 </nav>
             </div>
         </div>
@@ -71,5 +72,16 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
 </body>
 </html>

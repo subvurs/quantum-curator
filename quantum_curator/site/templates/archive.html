@@ -15,7 +15,7 @@
         {% set month_date = month_posts[month][0].published_at %}
         <div class="archive-month">
             <h2>
-                <a href="/archive/{{ month }}.html">
+                <a href="{{ base_path }}/archive/{{ month }}.html">
                     {{ month_date.strftime('%B %Y') }}
                 </a>
                 <span class="article-count">({{ month_posts[month] | length }} articles)</span>
@@ -23,13 +23,13 @@
             <ul class="month-articles">
                 {% for post in month_posts[month][:5] %}
                 <li>
-                    <a href="/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+                    <a href="{{ base_path }}/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
                     <span class="article-source">{{ post.source_name }}</span>
                 </li>
                 {% endfor %}
                 {% if month_posts[month] | length > 5 %}
                 <li class="more-link">
-                    <a href="/archive/{{ month }}.html">View all {{ month_posts[month] | length }} articles &rarr;</a>
+                    <a href="{{ base_path }}/archive/{{ month }}.html">View all {{ month_posts[month] | length }} articles &rarr;</a>
                 </li>
                 {% endif %}
             </ul>
