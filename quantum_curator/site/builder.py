@@ -44,10 +44,10 @@ class SiteBuilder:
         self.env.filters["clean_text"] = self._clean_text
         self.env.tests["has_image"] = lambda post: bool(post.image_url)
 
-        # Extract base path from site URL for internal links
+        # Base path for internal links — empty for custom domains (root-relative)
         from urllib.parse import urlparse
         parsed = urlparse(self.settings.site_url)
-        self.env.globals["base_path"] = parsed.path.rstrip("/")
+        self.env.globals["base_path"] = parsed.path.rstrip("/") or ""
 
     def build(self, clean: bool = True) -> Path:
         """Build the complete static site.
