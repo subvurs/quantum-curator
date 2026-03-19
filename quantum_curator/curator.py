@@ -255,7 +255,7 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
 
         try:
             response = self.client.messages.create(
-                model="claude-haiku-4-20250414",
+                model="claude-haiku-4-20250514",
                 max_tokens=200,
                 system=SUBVURS_NOTES_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_prompt}],

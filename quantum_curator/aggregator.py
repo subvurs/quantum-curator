@@ -92,7 +92,8 @@ class Aggregator:
         before_count = len(filtered)
         filtered = [
             a for a in filtered
-            if a.published_at is None or a.published_at >= cutoff
+            if a.published_at is None
+            or (a.published_at.replace(tzinfo=a.published_at.tzinfo or timezone.utc) >= cutoff)
         ]
         dropped = before_count - len(filtered)
         if dropped:
