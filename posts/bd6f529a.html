@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General circuit compilation protocol into partially fault-tolerant quantum computing architecture | Quantum Crier</title>
+    <meta name="description" content="As we are entering an early-FTQC era, circuit execution protocols with logical qubits and certain error-correcting codes are being discussed. Here, we propose a">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="General circuit compilation protocol into partially fault-tolerant quantum computing architecture">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://subvurs.github.io/quantum-curator">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="https://subvurs.github.io/quantum-curator/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://subvurs.github.io/quantum-curator/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/quantum-curator/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/quantum-curator/">Home</a>
+                    <a href="/quantum-curator/topics/">Topics</a>
+                    <a href="/quantum-curator/archive/">Archive</a>
+                    <a href="/quantum-curator/search.html">Search</a>
+                    <a href="/quantum-curator/about.html">About</a>
+                    <a href="/quantum-curator/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/quantum-curator/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/quantum-curator/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/quantum-curator/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/quantum-curator/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/quantum-curator/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>General circuit compilation protocol into partially fault-tolerant quantum computing architecture</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">March 18, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article tackles one of the most pressing challenges in early fault-tolerant quantum computing: how to efficiently execute circuits when your quantum operations are inherently probabilistic and time-consuming. The researchers develop a clever protocol for the STAR architecture that parallelizes the creation of resource states and optimizes their allocation using classical optimization techniques, potentially reducing the massive time overhead that typically plagues repeat-until-success protocols in surface code implementations. What makes this particularly valuable is their performance prediction framework that can help determine optimal qubit topologies without running expensive full simulations - a practical tool that could significantly accelerate the development and deployment of early fault-tolerant quantum algorithms as the field transitions from noisy intermediate-scale devices to logical qubit systems.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>As we are entering an early-FTQC era, circuit execution protocols with logical qubits and certain error-correcting codes are being discussed. Here, we propose a circuit execution protocol for the space-time efficient analog rotation (STAR) architecture. Gate operations within the STAR architecture is based on lattice surgery with surface codes, but it allows direct execution of continuous gates $Rz(θ)$ as non-Clifford gates instead of $T = Rz(π/4)$. $Rz(θ)$ operations involve creation of resource states $|m_θ\rangle = \frac{1}{\sqrt{2}} (|0 \rangle + e^{iθ} |1\rangle ) $ followed by ZZ joint measurements with target logical qubits. While employing $Rz(θ)$ enables more efficient circuit execution, both their creations and joint measurements are probabilistic processes and adopt repeat-until-success (RUS) protocols which are likely to result in considerable time overhead. Our circuit execution protocol aims to reduce such time overhead by parallel trials of resource state creations and more frequent trials of joint measurements. By employing quadratic unconstrained binary optimization (QUBO) in determining resource state allocations within the space, we successfully make our protocol efficient. Furthermore, we proposed performance estimators given the target circuit and qubit topology. It successfully predicts the time performance within less time than actual simulations do, and helps find the optimal qubit topology to run the target circuits efficiently.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2603.17428v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=General%20circuit%20compilation%20protocol%20into%20partially%20fault-tolerant%20quantum%20computing%20architecture&url=https://subvurs.github.io/quantum-curator/posts/bd6f529a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://subvurs.github.io/quantum-curator/posts/bd6f529a.html&title=General%20circuit%20compilation%20protocol%20into%20partially%20fault-tolerant%20quantum%20computing%20architecture" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/quantum-curator/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
