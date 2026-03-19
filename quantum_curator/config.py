@@ -76,7 +76,7 @@ class Settings(BaseSettings):
     github_repo: str = Field(default="quantum-pulse", description="GitHub repo name for Pages")
     github_username: str = Field(default="", description="GitHub username")
     github_branch: str = Field(default="gh-pages", description="Branch for GitHub Pages")
-    custom_domain: str = Field(default="", description="Custom domain for GitHub Pages")
+    custom_domain: str = Field(default="quantumcrier.com", description="Custom domain for GitHub Pages")
 
     # Qrater settings
     qrater_output_dir: Path = Field(default=Path("qrater_output"), description="Qrater site output directory")

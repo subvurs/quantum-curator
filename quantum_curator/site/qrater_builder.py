@@ -123,6 +123,13 @@ class QraterBuilder:
 
         (self.output_dir / "index.html").write_text(html)
 
+        # Generate CNAME for custom domain
+        if self.settings.qrater_site_url:
+            from urllib.parse import urlparse
+            domain = urlparse(self.settings.qrater_site_url).netloc
+            if domain:
+                (self.output_dir / "CNAME").write_text(domain)
+
 
 def build_qrater(output_dir: str | Path | None = None, clean: bool = True) -> Path:
     """Convenience function to build the Qrater site."""
