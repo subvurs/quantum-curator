@@ -6,7 +6,7 @@ import asyncio
 import hashlib
 import re
 from collections import Counter
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from .config import QUANTUM_KEYWORDS, QUANTUM_TOPICS, get_settings
@@ -88,7 +88,7 @@ class Aggregator:
 
         # Filter out articles older than max_article_age_days
         max_age = timedelta(days=self.settings.max_article_age_days)
-        cutoff = datetime.utcnow() - max_age
+        cutoff = datetime.now(timezone.utc) - max_age
         before_count = len(filtered)
         filtered = [
             a for a in filtered

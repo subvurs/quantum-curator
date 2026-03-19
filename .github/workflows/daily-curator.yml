@@ -2,9 +2,7 @@ name: Daily Quantum Curation
 
 on:
   schedule:
-    # Run twice daily at 6 AM and 6 PM UTC
     - cron: '0 6 * * *'
-    - cron: '0 18 * * *'
   workflow_dispatch:  # Allow manual triggers
 
 permissions:
@@ -14,7 +12,7 @@ env:
   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
   NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
   UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
-  SITE_URL: https://subvurs.github.io/quantum-curator
+  SITE_URL: https://quantumcrier.com
   SITE_NAME: Quantum Crier
   SITE_DESCRIPTION: "Daily curated quantum computing news and insights by Mark Eatherly"
 
@@ -62,15 +60,17 @@ jobs:
           commit_message: 'Daily curation update'
 
       - name: Deploy Qrater to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./qrater_public
-          publish_branch: gh-pages
-          destination_dir: qrater
-          user_name: 'Quantum Curator Bot'
-          user_email: 'curator@quantum-curator.com'
-          commit_message: 'Daily Qrater dashboard update'
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          cd qrater_public
+          git init
+          git checkout -b gh-pages
+          git config user.name "Quantum Curator Bot"
+          git config user.email "curator@quantum-curator.com"
+          git add -A
+          git commit -m "Daily Qrater dashboard update"
+          git push --force https://x-access-token:${DEPLOY_TOKEN}@github.com/subvurs/qrater.git gh-pages
 
       - name: Notify on success
         if: success()
