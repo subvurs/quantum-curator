@@ -34,6 +34,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .
 
+      - name: Restore database cache
+        uses: actions/cache@v4
+        with:
+          path: data/
+          key: curator-db-${{ github.run_number }}
+          restore-keys: |
+            curator-db-
+
       - name: Initialize database
         run: quantum-curator init
 

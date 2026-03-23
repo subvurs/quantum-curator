@@ -67,8 +67,12 @@ class QraterBuilder:
             shutil.copytree(static_src, static_dst, dirs_exist_ok=True)
 
     def _generate_articles_json(self) -> list[dict]:
-        """Generate the articles data for the client-side dashboard."""
-        posts = db.list_curated_posts(status=PostStatus.PUBLISHED)
+        """Generate the articles data for the client-side dashboard.
+
+        Note: We fetch ALL published posts (no limit) since Qrater is meant
+        to accumulate content over time, unlike Quantum Crier's 60-day window.
+        """
+        posts = db.list_curated_posts(status=PostStatus.PUBLISHED, limit=100000)
         curator_base = self.settings.site_url.rstrip("/")
 
         articles = []

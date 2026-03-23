@@ -88,8 +88,12 @@ class SiteBuilder:
         print(f"Site built at: {self.output_dir}")
         return self.output_dir
 
-    def _get_fresh_posts(self, limit: int = 100) -> list[CuratedPost]:
-        """Return published posts within the freshness window."""
+    def _get_fresh_posts(self, limit: int = 1000) -> list[CuratedPost]:
+        """Return published posts within the freshness window.
+
+        Note: Default limit increased to 1000 to ensure all articles
+        within the 60-day freshness window are included.
+        """
         return db.list_curated_posts(
             status=PostStatus.PUBLISHED,
             since=self.freshness_cutoff,
@@ -177,7 +181,7 @@ class SiteBuilder:
         posts_dir = self.output_dir / "posts"
         posts_dir.mkdir(exist_ok=True)
 
-        posts = self._get_fresh_posts(limit=500)
+        posts = self._get_fresh_posts(limit=2000)
         template = self.env.get_template("post.html")
 
         for post in posts:
@@ -196,7 +200,7 @@ class SiteBuilder:
         archive_dir.mkdir(exist_ok=True)
 
         # Get posts within freshness window
-        posts = self._get_fresh_posts(limit=500)
+        posts = self._get_fresh_posts(limit=2000)
 
         # Group by month
         months: dict[str, list[CuratedPost]] = {}
@@ -235,7 +239,7 @@ class SiteBuilder:
         topics_dir.mkdir(exist_ok=True)
 
         # Get posts by topic (within freshness window)
-        posts = self._get_fresh_posts(limit=500)
+        posts = self._get_fresh_posts(limit=2000)
         topic_posts: dict[str, list[CuratedPost]] = {}
 
         for post in posts:
@@ -291,7 +295,7 @@ class SiteBuilder:
 
     def _build_search(self, config: SiteConfig):
         """Build search index JSON and search page."""
-        posts = self._get_fresh_posts(limit=500)
+        posts = self._get_fresh_posts(limit=2000)
 
         # Build search index
         index = []
@@ -326,7 +330,7 @@ class SiteBuilder:
 
     def _get_topic_counts(self) -> dict[str, int]:
         """Count posts by topic."""
-        posts = self._get_fresh_posts(limit=500)
+        posts = self._get_fresh_posts(limit=2000)
         counts: dict[str, int] = {}
 
         for post in posts:
