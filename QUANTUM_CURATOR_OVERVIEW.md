@@ -1,16 +1,21 @@
 # Quantum Curator: Project Overview
 
-**Version**: 1.3.0
+**Version**: 1.4.0
 **Created**: March 16, 2026
 **Author**: Mark Eatherly
 **Repository**: https://github.com/subvurs/quantum-curator
 **Live Site**: https://subvurs.github.io/quantum-curator/
+**Qrater Dashboard**: https://subvurs.github.io/qrater/
 
 ---
 
 ## Executive Summary
 
-Quantum Curator is an automated news aggregation and curation platform that collects, filters, analyzes, and publishes daily quantum computing news. The system pulls from 19 authoritative sources, scores articles for relevance, generates AI-powered expert commentary using Claude, auto-generates images for articles without them, and publishes a beautiful static site to GitHub Pages—all automatically, twice daily.
+Quantum Curator is an automated news aggregation and curation platform that collects, filters, analyzes, and publishes daily quantum computing news. The system pulls from 19 authoritative sources, scores articles for relevance, generates AI-powered expert commentary using Claude, auto-generates images for articles without them, and publishes a beautiful static site to GitHub Pages—all automatically, once daily.
+
+The platform has two public faces:
+- **Quantum Crier** — the main editorial site with magazine-style layout, article pages, and daily digests
+- **Qrater** — an interactive dashboard where users can filter, sort, and explore all curated content by topic, date, source, and relevance
 
 The result: **Mark Eatherly** is positioned as a trusted curator and thought leader in the quantum computing space, with fresh, insightful content published consistently without manual effort.
 
@@ -49,7 +54,7 @@ quantum-curator/
 │   ├── image_extractor.py   # OG image extraction for article thumbnails
 │   ├── image_generator.py   # Unsplash image search for articles without images
 │   ├── publisher.py         # GitHub Pages deployment
-│   ├── cli.py               # Command-line interface (10 commands)
+│   ├── cli.py               # Command-line interface (13 commands)
 │   ├── config.py            # Configuration management with pydantic-settings
 │   ├── models.py            # Data models (Source, Article, Post, Digest)
 │   ├── db.py                # SQLite database layer
@@ -59,11 +64,13 @@ quantum-curator/
 │   │   ├── arxiv.py         # arXiv API integration
 │   │   └── news.py          # NewsAPI integration (extracts images)
 │   └── site/
-│       ├── builder.py       # Static site generator with tier-splitting logic
-│       ├── templates/       # Jinja2 HTML templates (9 templates)
-│       └── static/css/      # Magazine-style dark-theme stylesheet
+│       ├── builder.py       # Quantum Crier static site generator with tier-splitting logic
+│       ├── qrater_builder.py # Qrater interactive dashboard generator
+│       ├── templates/       # Jinja2 HTML templates (9 Crier + 1 Qrater)
+│       ├── static/css/      # Magazine-style dark-theme stylesheet (Crier)
+│       └── static/qrater/   # Qrater CSS and JS (client-side filtering)
 ├── .github/workflows/
-│   └── daily-curator.yml    # Automated twice-daily pipeline
+│   └── daily-curator.yml    # Automated daily pipeline (Crier + Qrater)
 ├── pyproject.toml           # Package configuration
 └── README.md                # Usage documentation
 ```
@@ -205,15 +212,47 @@ The system generates a complete static website with:
 - **About page**: Curator bio and site information
 - **RSS feed**: For subscribers
 
-### 8. Automated Deployment
+### 8. Qrater Interactive Dashboard
 
-GitHub Actions runs the full pipeline twice daily:
+**Live at**: https://subvurs.github.io/qrater/
+
+Qrater is a single-page dashboard that presents all curated content in a filterable, sortable interface. It is built from the same database as Quantum Crier but serves a different use case — interactive exploration rather than editorial presentation.
+
+**Architecture**:
+- `QraterBuilder` generates a static single-page app at build time
+- All article data is exported to `data/articles.json` (title, summary, topics, source, date, relevance score, commentary, URLs)
+- Client-side JavaScript handles all filtering and sorting — no server required
+- Deployed to its own GitHub repo (`subvurs/qrater`) on the `gh-pages` branch
+
+**Features**:
+- **Topic filtering**: Checkbox list with per-topic article counts; color-coded topic tags matching Quantum Crier's palette. Select All / Clear All buttons.
+- **Date range**: Preset buttons (Today, This Week, This Month, All Time) plus custom date range inputs
+- **Source filtering**: Dropdown menu listing all active sources
+- **Sort options**: Newest First (default), Oldest First, Relevance Score
+- **Article cards**: Image, topic tags, title (links to original article), summary, curator commentary (italic, bordered), source, date, and relevance badge
+- **Email signup**: Buttondown-powered form with topic checkboxes for personalized subscriptions (when configured)
+- **Mobile responsive**: Filter sidebar collapses to a slide-out panel with toggle button on mobile (<768px)
+
+**Content policy**: Qrater includes ALL published posts regardless of age (no freshness window), sorted newest first by default. This lets users explore the full archive while keeping fresh content prominent. The Quantum Crier editorial site uses the 60-day freshness window for its pages.
+
+**Cross-links**:
+- Quantum Crier header nav includes a "Qrater" link
+- Qrater header nav links back to "Quantum Crier"
+- Each article card in Qrater links to both the original source URL and the Quantum Crier post page
+
+**Footer**: "Powered by Quantum Crier — A Subvurs Project — Founded by Mark Eatherly"
+
+### 9. Automated Deployment
+
+GitHub Actions runs the full pipeline once daily:
 1. Fetch articles from all 19 sources
 2. Score and filter for relevance
 3. Generate AI commentary + fetch Unsplash images for articles without one
 4. Create daily digest
-5. Build static site (copies generated images into output)
-6. Deploy to GitHub Pages
+5. Build Quantum Crier static site
+6. Build Qrater dashboard
+7. Deploy Quantum Crier to `subvurs/quantum-curator` gh-pages
+8. Deploy Qrater to `subvurs/qrater` gh-pages (via `DEPLOY_TOKEN` PAT)
 
 ---
 
@@ -237,13 +276,15 @@ GitHub Actions runs the full pipeline twice daily:
 │                                                                  │
 │                           │                                      │
 │                           ▼                                      │
-│                    ┌──────────┐                                  │
-│                    │  DEPLOY  │                                  │
-│                    └──────────┘                                  │
-│                         │                                        │
-│                         ▼                                        │
-│                   GitHub Pages                                   │
-│            subvurs.github.io/quantum-curator                     │
+│                    ┌──────────┐    ┌──────────┐                  │
+│                    │  DEPLOY  │    │  DEPLOY  │                  │
+│                    │  CRIER   │    │  QRATER  │                  │
+│                    └──────────┘    └──────────┘                  │
+│                         │               │                        │
+│                         ▼               ▼                        │
+│                   GitHub Pages    GitHub Pages                   │
+│            subvurs.github.io/    subvurs.github.io/              │
+│              quantum-curator         qrater                      │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -271,15 +312,21 @@ quantum-curator build --output ./public
 quantum-curator deploy
 quantum-curator deploy --verify        # Verify after deployment
 
-# Run full pipeline
-quantum-curator run                    # fetch → curate → build
-quantum-curator run --deploy           # Include deployment
+# Qrater interactive dashboard
+quantum-curator build-qrater           # Build the Qrater dashboard
+quantum-curator build-qrater --output ./qrater_public
+quantum-curator deploy-qrater          # Deploy Qrater to its GitHub repo
+quantum-curator deploy-qrater --verify
+
+# Run full pipeline (builds both Crier and Qrater)
+quantum-curator run                    # fetch → curate → build both
+quantum-curator run --deploy           # Include deployment of both sites
 
 # Status and information
 quantum-curator status                 # Show statistics
 quantum-curator sources                # List configured sources
 quantum-curator posts                  # List curated posts
-quantum-curator config                 # Show configuration
+quantum-curator config                 # Show configuration (includes Qrater settings)
 quantum-curator insights               # Show Subvurs research connections
 quantum-curator insights --all         # Include posts with no connections
 ```
@@ -307,9 +354,12 @@ The GitHub Actions workflow runs once daily at:
 | Magazine-style front-end | ✅ Operational (hero, featured, topic sections) |
 | Static site generation | ✅ Operational |
 | GitHub Pages deployment | ✅ Operational |
-| Content freshness window | ✅ Operational (60-day default, configurable) |
+| Content freshness window | ✅ Operational (60-day default on Crier, no limit on Qrater) |
 | Subvurs research notes | ✅ Operational (Haiku-powered, file + DB storage) |
-| Automated pipeline | ✅ Configured (once daily at 6 AM UTC) |
+| Qrater dashboard | ✅ Live (topic/date/source filtering, client-side JS) |
+| Qrater deployment | ✅ Operational (separate repo, DEPLOY_TOKEN PAT) |
+| Cross-site links | ✅ Operational (Crier ↔ Qrater header nav) |
+| Automated pipeline | ✅ Configured (once daily at 6 AM UTC, deploys both sites) |
 
 ### Content Capacity
 
@@ -318,9 +368,11 @@ The GitHub Actions workflow runs once daily at:
 - Relevance filtering reduces to quantum-specific articles only
 - AI commentary generated per article, daily digest per day
 
-### Live Site
+### Live Sites
 
-The site is live at: **https://subvurs.github.io/quantum-curator/**
+- **Quantum Crier**: https://subvurs.github.io/quantum-curator/
+- **Qrater Dashboard**: https://subvurs.github.io/qrater/
+- **Qrater Repo**: https://github.com/subvurs/qrater
 
 ---
 
@@ -952,5 +1004,104 @@ No changes needed to `.github/workflows/daily-curator.yml` — the notes are gen
 
 ---
 
+## Qrater Interactive Dashboard (v1.4.0 — March 18, 2026)
+
+### What Is Qrater
+
+Qrater is an interactive single-page dashboard that presents all curated quantum computing content in a filterable, sortable interface. It complements Quantum Crier (the editorial site) by giving users full control over what they see — filter by topic, narrow by date range, choose a source, sort by relevance or recency.
+
+**Live at**: https://subvurs.github.io/qrater/
+**Repository**: https://github.com/subvurs/qrater
+
+### How It Works
+
+The `QraterBuilder` class generates a static single-page application at build time:
+
+1. Queries all published posts from the database (no freshness limit — content accumulates over time)
+2. Exports article data to `data/articles.json` (title, summary, topics, source, date, relevance score, commentary, URLs)
+3. Renders `index.html` from a Jinja2 template with server-side topic counts, source lists, and build timestamp
+4. Copies `qrater.css` and `qrater.js` as static assets
+5. Adds `.nojekyll` for GitHub Pages compatibility
+
+All filtering and sorting happens client-side in JavaScript — no server, no API, no database at runtime.
+
+### Content Strategy
+
+| Aspect | Quantum Crier | Qrater |
+|--------|--------------|--------|
+| Content window | 60-day freshness cutoff | All published posts, no limit |
+| Default sort | Editorial layout (hero → featured → topics) | Newest first |
+| User control | Browse by topic page or search | Filter by topic, date range, source; sort by date or relevance |
+| Growth | Rolling 60-day window | Accumulates all content over time |
+
+This means Qrater's article count will grow with every daily pipeline run. Users who want to explore older content can do so; users who want only the latest can use the date range presets.
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `quantum_curator/site/qrater_builder.py` | Static site generator (131 lines) — builds index.html, articles.json, copies assets |
+| `quantum_curator/site/templates/qrater/index.html` | Jinja2 template — header, filter sidebar, article grid, email signup, footer |
+| `quantum_curator/site/static/qrater/qrater.css` | Full stylesheet (579 lines) — dark theme, responsive grid, topic colors, card design |
+| `quantum_curator/site/static/qrater/qrater.js` | Client-side logic (292 lines) — fetch JSON, filter/sort/render, event binding |
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `quantum_curator/site/__init__.py` | Added `QraterBuilder` and `build_qrater` exports |
+| `quantum_curator/config.py` | Added Qrater settings: `qrater_output_dir`, `qrater_github_repo`, `qrater_site_url`, `buttondown_username` |
+| `quantum_curator/cli.py` | Added `build-qrater` and `deploy-qrater` commands; integrated Qrater into `run` pipeline and `config` output |
+| `quantum_curator/site/templates/base.html` | Added "Qrater" link in Quantum Crier header nav |
+| `.github/workflows/daily-curator.yml` | Added Qrater build step and cross-repo deploy step using `DEPLOY_TOKEN` |
+
+### Config Settings
+
+| Setting | Default | Env Var | Purpose |
+|---------|---------|---------|---------|
+| `qrater_output_dir` | `qrater_output` | `QRATER_OUTPUT_DIR` | Build output directory |
+| `qrater_github_repo` | `qrater` | `QRATER_GITHUB_REPO` | GitHub repo name for deployment |
+| `qrater_site_url` | `https://subvurs.github.io/qrater` | `QRATER_SITE_URL` | Published URL |
+| `buttondown_username` | `""` | `BUTTONDOWN_USERNAME` | Newsletter signup (optional) |
+
+### CLI Commands
+
+```bash
+quantum-curator build-qrater                 # Build dashboard to qrater_output/
+quantum-curator build-qrater --output ./dir  # Custom output directory
+quantum-curator build-qrater --no-clean      # Don't wipe output first
+quantum-curator deploy-qrater                # Deploy to subvurs/qrater gh-pages
+quantum-curator deploy-qrater --verify       # Verify deployment is accessible
+```
+
+Both commands are also integrated into the `run` pipeline — `quantum-curator run --deploy` builds and deploys both Quantum Crier and Qrater.
+
+### Deployment
+
+Qrater is deployed to a separate GitHub repository (`subvurs/qrater`) on its `gh-pages` branch.
+
+**CI deployment** uses a Personal Access Token stored as the `DEPLOY_TOKEN` secret on the `quantum-curator` repo. The workflow step:
+1. Builds Qrater to `./qrater_public`
+2. Initializes a git repo in the output directory
+3. Force-pushes to `subvurs/qrater` gh-pages using the PAT
+
+**Manual deployment**: `quantum-curator deploy-qrater` uses the `GitHubPagesPublisher` class, which clones the target repo, replaces content, commits, and pushes.
+
+### Design
+
+**Dark theme** matching Quantum Crier's palette:
+- Background: `#0f172a` (slate-900)
+- Cards: `#1e293b` (slate-800)
+- Primary: `#6366f1` (indigo)
+- Secondary: `#06b6d4` (cyan)
+
+**11 topic colors** for tags and sidebar labels: hardware (amber), algorithms (violet), error correction (red), cryptography (teal), machine learning (pink), simulation (blue), sensing (emerald), industry (orange), research (indigo), policy (slate), general (gray).
+
+**Responsive**: Desktop shows a 280px sticky sidebar + article grid. Mobile (<768px) collapses sidebar to a slide-out panel with a filter toggle button in the header.
+
+**Footer**: "Powered by Quantum Crier — A Subvurs Project — Founded by Mark Eatherly"
+
+---
+
 *Document updated: March 18, 2026*
-*Quantum Curator v1.3.0 — Subvurs research connection notes*
+*Quantum Curator v1.4.0 — Qrater interactive dashboard*
