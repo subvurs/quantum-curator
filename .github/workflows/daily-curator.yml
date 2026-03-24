@@ -38,18 +38,27 @@ jobs:
         uses: actions/cache@v4
         with:
           path: data/
-          key: curator-db-${{ github.run_number }}
+          key: curator-db-v1
           restore-keys: |
             curator-db-
 
       - name: Initialize database
         run: quantum-curator init
 
+      - name: Check database status
+        run: |
+          if [ -f data/curator.db ]; then
+            echo "✓ Database restored from cache"
+            sqlite3 data/curator.db "SELECT COUNT(*) || ' raw articles, ' || (SELECT COUNT(*) FROM curated_posts WHERE status='published') || ' published posts' FROM raw_articles;"
+          else
+            echo "✗ Fresh database - no cache found"
+          fi
+
       - name: Fetch articles
         run: quantum-curator fetch
 
       - name: Curate content
-        run: quantum-curator curate --auto-publish --create-digest
+        run: quantum-curator curate --limit 500 --auto-publish --create-digest
 
       - name: Build Quantum Crier site
         run: quantum-curator build --output ./public

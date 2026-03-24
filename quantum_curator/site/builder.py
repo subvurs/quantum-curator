@@ -131,7 +131,7 @@ class SiteBuilder:
     def _build_index(self, config: SiteConfig):
         """Build the home page with magazine-style layout."""
         # Get recent posts (within freshness window only)
-        posts = self._get_fresh_posts(limit=30)
+        posts = self._get_fresh_posts(limit=200)
 
         # Get latest digest
         digests = db.list_daily_digests(limit=1)

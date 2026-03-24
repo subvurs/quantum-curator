@@ -98,7 +98,7 @@ def fetch(force: bool, source: str | None):
 # --- Curation ---
 
 @cli.command()
-@click.option("--limit", "-l", default=20, help="Maximum articles to curate")
+@click.option("--limit", "-l", default=500, help="Maximum articles to curate")
 @click.option("--auto-publish", "-p", is_flag=True, default=True, help="Auto-publish high-quality posts")
 @click.option("--create-digest", "-d", is_flag=True, default=True, help="Create daily digest")
 def curate(limit: int, auto_publish: bool, create_digest: bool):
