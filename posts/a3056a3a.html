@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Optimization for Parametrized Quantum Circuits | Quantum Crier</title>
+    <meta name="description" content="In the absence of error correction, noisy intermediate-scale quantum devices are operated by training parametrized quantum circuits (PQCs) so as to minimize a s">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Global Optimization for Parametrized Quantum Circuits">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+        </div>
+        <h1>Global Optimization for Parametrized Quantum Circuits</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">March 23, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This work tackles one of the most fundamental challenges in near-term quantum computing: how to reliably train variational quantum circuits when noise and barren plateaus make optimization treacherous. The researchers demonstrate that for practically relevant circuit families like QAOA and hardware-efficient ansätze, there&#39;s actually a polynomial-time algorithm that can find globally optimal parameters with mathematical guarantees — a striking contrast to the typical trial-and-error approach of hybrid quantum-classical training loops. What makes this particularly clever is the two-stage approach that separates quantum data collection from classical optimization, potentially making training more robust and predictable. While the method requires circuits with a constant number of parameters (limiting depth), this theoretical breakthrough could inform the development of more reliable variational algorithms for NISQ devices.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>In the absence of error correction, noisy intermediate-scale quantum devices are operated by training parametrized quantum circuits (PQCs) so as to minimize a suitable loss function. Finding the optimal parameters of those circuits is a hard optimization problem, where global guarantees are known only for highly structured cases of limited practical relevance, and first-order methods can fail to find even local minima due to the presence of barren plateaus. In this work, we study the training of practical classes of PQCs, namely polynomial-depth circuits with a constant number of trainable parameters. This captures widely used PQC families, including fixed-depth QAOA, hardware-efficient ansätze, and Fixed Parameter Count QAOA. Our main technical result is a fully polynomial randomized approximation scheme (FPRAS), which, for every $ε&gt;0$, returns an $ε$-approximate solution to the problem&#39;s global optimum with high probability, and has runtime and query complexity polynomial in $1/ε$ and the number of qubits. Unlike the standard hybrid quantum-classical training loop in variational algorithms, where the quantum device is queried repeatedly throughout the training, our approach separates the computation into two distinct stages: (1) an initial quantum data-acquisition phase, followed by (2) a classical global-optimization phase based on the trigonometric moment/sum-of-squares hierarchies. Under a standard flat-extension condition, which can be checked numerically, the method also supports the extraction of optimal circuit parameters. The existence of an FPRAS implies that the promise problem associated with the optimization of poly-depth constant-parameter PQC is in BQP. This imposes a limitation on the expressive power of the class, namely, it cannot encode combinatorial optimization problems whose objective values are separated by an inverse-polynomial gap.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2603.21757v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Global%20Optimization%20for%20Parametrized%20Quantum%20Circuits&url=https://quantumcrier.com/posts/a3056a3a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a3056a3a.html&title=Global%20Optimization%20for%20Parametrized%20Quantum%20Circuits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
