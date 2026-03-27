@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision bounds for frequency estimation under collective dephasing and open-loop control | Quantum Crier</title>
-    <meta name="description" content="Dephasing noise is a ubiquitous source of decoherence in current atomic sensors. We address the problem of entanglement-assisted frequency estimation subject to">
+    <title>Maximizing Qubit Throughput under Buffer Decoherence and Variability in Generation | Quantum Crier</title>
+    <meta name="description" content="Quantum communication networks require transmission of high-fidelity, uncoded qubits for applications such as entanglement distribution and quantum key distribu">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Precision bounds for frequency estimation under collective dephasing and open-loop control">
+    <meta property="og:title" content="Maximizing Qubit Throughput under Buffer Decoherence and Variability in Generation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -56,15 +56,19 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
             
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            
         </div>
-        <h1>Precision bounds for frequency estimation under collective dephasing and open-loop control</h1>
+        <h1>Maximizing Qubit Throughput under Buffer Decoherence and Variability in Generation</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">March 25, 2026</span>
+            <span class="date">March 26, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -75,18 +79,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research tackles one of the most fundamental challenges in quantum sensing: understanding exactly how dephasing noise limits our ability to measure frequencies with quantum-enhanced precision. The authors provide definitive mathematical bounds showing that when dephasing affects all atoms collectively (as often happens in real atomic sensors), there are hard limits on achievable precision that can&#39;t be overcome with clever control schemes - a sobering &#34;no-go&#34; result for the field. However, they also demonstrate that existing experimental techniques like atomic squeezing can actually achieve these theoretical limits, meaning current lab setups are already operating optimally within the constraints of collective noise. This work is particularly valuable because it moves beyond idealized noise models to address the spatially correlated dephasing that dominates real-world atomic interferometers, providing both theoretical clarity and practical guidance for quantum sensing experiments.
+                This research tackles one of the most practical bottlenecks facing real-world quantum networks today: the delicate balance between generating qubits fast enough to maintain high throughput while preventing them from decohering while they wait in buffer storage. The work provides crucial mathematical frameworks for optimizing when to generate qubits in quantum communication systems, addressing the fundamental trade-off between keeping quantum processors busy and maintaining qubit quality. What makes this particularly valuable is the development of adaptive algorithms that can learn and optimize in real-time without knowing all system parameters beforehand, which is essential for deploying quantum networks in unpredictable real-world conditions. This type of practical optimization research is exactly what&#39;s needed to bridge the gap between quantum networking demonstrations in the lab and reliable quantum internet infrastructure.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Dephasing noise is a ubiquitous source of decoherence in current atomic sensors. We address the problem of entanglement-assisted frequency estimation subject to classical dephasing noise with full spatial correlations (collective) and arbitrary temporal correlations. Our contributions are threefold. (i) We derive rigorous, state-independent bounds on the achievable estimation precision, showing how they are entirely determined by the short-time behavior of the decoherence function. For temporally uncorrelated (Markovian) dephasing, precision is limited by a probe-independent constant. For temporally correlated stationary noise, the bound approaches the noiseless limit for classical states, precluding any asymptotic quantum advantage. (ii) We show that these scaling bounds are tight, by constructing generalized Ramsey protocols that saturate them. These optimal protocols use squeezing at the input and before readout, both of which are available in state-of-the-art atomic interferometers. Implementing a perfect-echo protocol, which reaches Heisenberg scaling in the absence of noise, remains optimal in this noisy setting, irrespective of the noise temporal correlations. (iii) We prove that arbitrary collective open-loop control cannot lift the no-go for super-classical precision scaling under either Markovian or colored stationary noise, highlighting the detrimental nature of full spatial correlations. In the latter case, temporal correlations may nonetheless enable constant-factor improvements over the standard quantum limit, which may still be important in practical metrological scenarios.</p>
+            <p>Quantum communication networks require transmission of high-fidelity, uncoded qubits for applications such as entanglement distribution and quantum key distribution. However, current implementations are constrained by limited buffer capacity and qubit decoherence, which degrades qubit quality while waiting in the buffer. A key challenge arises from the stochastic nature of qubit generation, there exists a random delay (D) between the initiation of a generation request and the availability of the qubit. This induces a fundamental trade off early initiation increases buffer waiting time and hence decoherence, whereas delayed initiation leads to server idling and reduced throughput. We model this system as an admission control problem in a finite buffer queue, where the reward associated with each job is a decreasing function of its sojourn time. We derive analytical conditions under which a simple &#34;no lag&#34; policy where a new qubit is generated immediately upon the availability of buffer space is optimal. To address scenarios with unknown system parameters, we further develop a Bayesian learning framework that adaptively optimizes the admission policy. In addition to quantum communication systems, the proposed model is applicable to delay sensitive IoT sensing and service systems.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2603.23804v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2603.25482v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -96,8 +100,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Precision%20bounds%20for%20frequency%20estimation%20under%20collective%20dephasing%20and%20open-loop%20control&url=https://quantumcrier.com/posts/f1e1b5bf.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f1e1b5bf.html&title=Precision%20bounds%20for%20frequency%20estimation%20under%20collective%20dephasing%20and%20open-loop%20control" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Maximizing%20Qubit%20Throughput%20under%20Buffer%20Decoherence%20and%20Variability%20in%20Generation&url=https://quantumcrier.com/posts/e870778b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e870778b.html&title=Maximizing%20Qubit%20Throughput%20under%20Buffer%20Decoherence%20and%20Variability%20in%20Generation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
