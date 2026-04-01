@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shor&#39;s algorithm is possible with as few as 10,000 reconfigurable atomic qubits | Quantum Crier</title>
-    <meta name="description" content="Quantum computers have the potential to perform computational tasks beyond the reach of classical machines. A prominent example is Shor&#39;s algorithm for integer ">
+    <title>Logical-to-Physical Compilation for Reducing Depth in Distributed Quantum Systems | Quantum Crier</title>
+    <meta name="description" content="Quantum computing is expected to become a foundational technology for solving problems that exceed the capabilities of classical systems. As quantum algorithms ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Shor&#39;s algorithm is possible with as few as 10,000 reconfigurable atomic qubits">
+    <meta property="og:title" content="Logical-to-Physical Compilation for Reducing Depth in Distributed Quantum Systems">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -60,15 +60,11 @@
             
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
-            
-            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
-            
         </div>
-        <h1>Shor&#39;s algorithm is possible with as few as 10,000 reconfigurable atomic qubits</h1>
+        <h1>Logical-to-Physical Compilation for Reducing Depth in Distributed Quantum Systems</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">March 30, 2026</span>
+            <span class="date">March 31, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -79,18 +75,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research represents a major breakthrough in making quantum cryptanalysis practically feasible, dramatically reducing the hardware requirements for running Shor&#39;s algorithm from millions of qubits down to just 10,000 reconfigurable atomic qubits. The work leverages recent advances in high-rate quantum error correction and efficient circuit design to show that cryptographically relevant problems like breaking RSA-2048 encryption could be solved in days or weeks rather than requiring impossibly large quantum computers. What makes this particularly significant is that neutral atom platforms have already demonstrated many of the key components needed, including fault-tolerant operations and arrays of thousands of qubits, suggesting this timeline for practical quantum cryptanalysis may be more realistic than previously thought. This analysis will likely accelerate discussions around post-quantum cryptography migration, as the gap between current quantum hardware capabilities and cryptographically dangerous quantum computers continues to narrow.
+                This article tackles one of the most pressing challenges in scaling up quantum computing: how to efficiently connect multiple quantum processors into larger, more powerful systems without drowning in communication overhead. The researchers developed a clever compiler that identifies opportunities to execute multiple quantum gates in parallel across distributed systems, rather than forcing them to run sequentially as previous approaches required. This work is particularly significant because it addresses the depth problem that has plagued distributed quantum computing - where the time needed for quantum processors to communicate and share entanglement often destroys the fragile quantum states before useful computation can complete. By keeping circuits shallow while maintaining logical correctness, this compiler brings us closer to practical large-scale quantum systems that could tackle problems beyond what today&#39;s isolated quantum processors can handle.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum computers have the potential to perform computational tasks beyond the reach of classical machines. A prominent example is Shor&#39;s algorithm for integer factorization and discrete logarithms, which is of both fundamental importance and practical relevance to cryptography. However, due to the high overhead of quantum error correction, optimized resource estimates for cryptographically relevant instances of Shor&#39;s algorithm require millions of physical qubits. Here, by leveraging advances in high-rate quantum error-correcting codes, efficient logical instruction sets, and circuit design, we show that Shor&#39;s algorithm can be executed at cryptographically relevant scales with as few as 10,000 reconfigurable atomic qubits. Increasing the number of physical qubits improves time efficiency by enabling greater parallelism; under plausible assumptions, the runtime for discrete logarithms on the P-256 elliptic curve could be just a few days for a system with 26,000 physical qubits, while the runtime for factoring RSA-2048 integers is one to two orders of magnitude longer. Recent neutral-atom experiments have demonstrated universal fault-tolerant operations below the error-correction threshold, computation on arrays of hundreds of qubits, and trapping arrays with more than 6,000 highly coherent qubits. Although substantial engineering challenges remain, our theoretical analysis indicates that an appropriately designed neutral-atom architecture could support quantum computation at cryptographically relevant scales. More broadly, these results highlight the capability of neutral atoms for fault-tolerant quantum computing with wide-ranging scientific and technological applications.</p>
+            <p>Quantum computing is expected to become a foundational technology for solving problems that exceed the capabilities of classical systems. As quantum algorithms and hardware technologies continue to advance, the need for scalable architectures becomes increasingly clear. Distributed quantum computing offers a promising path forward by interconnecting multiple smaller processors into a larger, more powerful system. However, distributed quantum computing introduces significant circuit depth overhead, as logical operations are typically decomposed into sequential physical procedures that require entanglement generation. These sequential operations limit the reliability of quantum algorithms in the NISQ era due to noise. In this work, we present a compiler that integrates logical-to-physical decomposition with depth-aware rescheduling to reduce the execution cost of distributed quantum circuits. The compiler identifies sequences of logical CNOT gates that share a control or target qubit, reschedules them into parallel instruction groups, and applies decompositions that allow multiple gates to be executed simultaneously using distributed shared entanglement resources. An algorithm is proposed that ensures parallelism is created when possible while keeping logical equivalence and that circuit depth is never increased. Benchmark results demonstrate that the compiler consistently reduces circuit depth for circuits containing inherently sequential CNOT structures, while leaving already-parallel circuits unchanged. These results highlight the value of combining scheduling and hardware-aware decomposition, and establish the compiler as a practical tool for improving the fidelity of distributed quantum computations.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2603.28627v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2603.29536v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -100,8 +96,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Shor%27s%20algorithm%20is%20possible%20with%20as%20few%20as%2010%2C000%20reconfigurable%20atomic%20qubits&url=https://quantumcrier.com/posts/d234289c.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d234289c.html&title=Shor%27s%20algorithm%20is%20possible%20with%20as%20few%20as%2010%2C000%20reconfigurable%20atomic%20qubits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Logical-to-Physical%20Compilation%20for%20Reducing%20Depth%20in%20Distributed%20Quantum%20Systems&url=https://quantumcrier.com/posts/25b04c41.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/25b04c41.html&title=Logical-to-Physical%20Compilation%20for%20Reducing%20Depth%20in%20Distributed%20Quantum%20Systems" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
