@@ -114,6 +114,25 @@ def init_db() -> None:
         CREATE INDEX IF NOT EXISTS idx_posts_status ON curated_posts(status);
         CREATE INDEX IF NOT EXISTS idx_posts_published ON curated_posts(published_to_site_at);
         CREATE INDEX IF NOT EXISTS idx_digests_date ON daily_digests(date);
+
+        CREATE TABLE IF NOT EXISTS bluesky_shares (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            post_id TEXT NOT NULL UNIQUE,
+            bsky_uri TEXT NOT NULL,
+            bsky_cid TEXT NOT NULL,
+            shared_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_bsky_post_id ON bluesky_shares(post_id);
+
+        CREATE TABLE IF NOT EXISTS twitter_shares (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            post_id TEXT NOT NULL UNIQUE,
+            tweet_id TEXT NOT NULL,
+            shared_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_twitter_post_id ON twitter_shares(post_id);
     """)
 
     # Migrate existing databases: add subvurs_notes column if missing

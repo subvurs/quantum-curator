@@ -359,7 +359,10 @@ The GitHub Actions workflow runs once daily at:
 | Qrater dashboard | ✅ Live (topic/date/source filtering, client-side JS) |
 | Qrater deployment | ✅ Operational (separate repo, DEPLOY_TOKEN PAT) |
 | Cross-site links | ✅ Operational (Crier ↔ Qrater header nav) |
-| Automated pipeline | ✅ Configured (once daily at 6 AM UTC, deploys both sites) |
+| Bluesky sharing | ✅ Live (@markeatherly.bsky.social, up to 5 posts/day) |
+| Twitter/X sharing | ✅ Live (@MarkEatherly, up to 5 posts/day) |
+| Daily insights email | ✅ Operational (Subvurs connections emailed to subvurs@gmail.com) |
+| Automated pipeline | ✅ Configured (once daily at 6 AM UTC, deploys both sites + social sharing + insights email) |
 
 ### Content Capacity
 
@@ -394,8 +397,8 @@ The GitHub Actions workflow runs once daily at:
 
 ### Phase 2: Feature Enhancements (1-2 Weeks)
 
-1. **Social Media Integration**
-   - Auto-post to Twitter/X with article highlights
+1. ~~**Social Media Integration**~~ (done — see Social Sharing section below)
+   - ~~Auto-post to Twitter/X with article highlights~~
    - LinkedIn posting for professional audience
    - Generate social-optimized images
 
@@ -1103,5 +1106,230 @@ Qrater is deployed to a separate GitHub repository (`subvurs/qrater`) on its `gh
 
 ---
 
-*Document updated: March 18, 2026*
-*Quantum Curator v1.4.0 — Qrater interactive dashboard*
+## Social Sharing — Bluesky & Twitter/X (v1.5.0 — April 2, 2026)
+
+### What Was Added
+
+Automated social media posting to Bluesky and Twitter/X. After each daily curation run, newly published articles are shared to both platforms as @markeatherly with title, commentary excerpt, hashtags, and a link card.
+
+### Architecture
+
+Two new modules follow the same pattern:
+
+| Module | Platform | Auth Method | Char Limit | Library |
+|--------|----------|-------------|------------|---------|
+| `bluesky.py` | Bluesky | AT Protocol (handle + app password) | 300 | `httpx` (raw AT Protocol API) |
+| `twitter.py` | Twitter/X | OAuth 1.0a (4 keys) | 280 | `tweepy` |
+
+Both modules include:
+- `*Sharer` class with `is_configured`, `share_post()`, `share_pending()`
+- Text builder that formats title + commentary excerpt + topic hashtags within platform limits
+- Database table to track which posts have been shared (prevents duplicates)
+- Graceful degradation — returns False/empty if not configured
+
+### Post Format
+
+**Bluesky** (300 chars + link card with thumbnail):
+```
+Probing many-body localization crossover in quasiperiodic Floquet circuits
+
+An interesting development in hardware.
+
+#QuantumHardware #QuantumSimulation #QuantumSensing
+
+[Link Card: title, description, thumbnail — outside char limit]
+```
+
+**Twitter/X** (280 chars, URL counts as 23):
+```
+Probing many-body localization crossover in quasiperiodic Floquet circuits
+
+An interesting development in hardware.
+
+#QuantumHardware #QuantumSimulation #QuantumSensing
+
+https://arxiv.org/abs/2603.12675v1
+```
+
+Twitter auto-generates a link card from the URL. Bluesky embeds are built explicitly with optional thumbnail upload (images >1MB are skipped).
+
+### CLI Commands
+
+```bash
+# Bluesky
+quantum-curator share                    # Share up to 5 pending posts
+quantum-curator share --limit 3          # Share up to 3
+quantum-curator share --dry-run          # Preview what would be shared
+
+# Twitter/X
+quantum-curator tweet                    # Tweet up to 5 pending posts
+quantum-curator tweet --limit 3          # Tweet up to 3
+quantum-curator tweet --dry-run          # Preview what would be tweeted
+```
+
+Both commands are also integrated into the `run` pipeline — `quantum-curator run --deploy` shares to both platforms after deployment (when configured).
+
+### Database
+
+Two new tables track share history:
+
+```sql
+-- Bluesky
+CREATE TABLE bluesky_shares (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id TEXT NOT NULL UNIQUE,
+    bsky_uri TEXT NOT NULL,
+    bsky_cid TEXT NOT NULL,
+    shared_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Twitter/X
+CREATE TABLE twitter_shares (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id TEXT NOT NULL UNIQUE,
+    tweet_id TEXT NOT NULL,
+    shared_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+Posts are queried via `LEFT JOIN` to find published posts not yet shared to each platform.
+
+### Configuration
+
+```bash
+# .env
+BLUESKY_HANDLE=markeatherly.bsky.social
+BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
+
+TWITTER_CONSUMER_KEY=...
+TWITTER_CONSUMER_SECRET=...
+TWITTER_ACCESS_TOKEN=...
+TWITTER_ACCESS_TOKEN_SECRET=...
+```
+
+Config properties `has_bluesky` and `has_twitter` gate all social features — if credentials are missing, the pipeline skips sharing silently.
+
+### GitHub Actions Integration
+
+The daily workflow (`.github/workflows/daily-curator.yml`) includes two share steps after deployment:
+
+```yaml
+- name: Share to Bluesky
+  continue-on-error: true
+  run: quantum-curator share --limit 5
+
+- name: Share to Twitter/X
+  continue-on-error: true
+  run: quantum-curator tweet --limit 5
+```
+
+Both use `continue-on-error: true` so social posting failures don't break the pipeline. All six secrets (`BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, `TWITTER_CONSUMER_KEY`, `TWITTER_CONSUMER_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_TOKEN_SECRET`) are configured as GitHub Actions secrets.
+
+### Posting Schedule
+
+Up to 5 posts per platform, once daily at 6:00 AM UTC (2 AM EST), in a single batch after the curation pipeline completes.
+
+### Cost
+
+- **Bluesky**: Free (no API fees)
+- **Twitter/X**: Pay-per-use credits (as of February 2026). ~$5 lasts months at 5 tweets/day
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `quantum_curator/bluesky.py` | Bluesky sharing module (BlueskySharer + DB helpers) |
+| `quantum_curator/twitter.py` | Twitter/X sharing module (TwitterSharer + DB helpers) |
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `quantum_curator/config.py` | Added Bluesky + Twitter settings and `has_bluesky` / `has_twitter` properties; added Bluesky to `social_links` |
+| `quantum_curator/db.py` | Added `bluesky_shares` and `twitter_shares` tables to schema |
+| `quantum_curator/cli.py` | Added `share` and `tweet` commands; added Step 5 (social sharing) to `run` pipeline |
+| `pyproject.toml` | Added `atproto>=0.0.46` and `tweepy>=4.14.0` dependencies |
+| `.github/workflows/daily-curator.yml` | Added 6 secrets to env block; added Bluesky and Twitter share steps |
+
+### Current Status
+
+| Platform | Status | Profile |
+|----------|--------|---------|
+| Bluesky | ✅ Live and posting | [@markeatherly.bsky.social](https://bsky.app/profile/markeatherly.bsky.social) |
+| Twitter/X | ✅ Live and posting | [@MarkEatherly](https://x.com/MarkEatherly) |
+
+---
+
+## Daily Insights Email & Subvurs Notes Fix (v1.5.1 — April 2, 2026)
+
+### Bug Fix: Subvurs Notes Not Generating
+
+The Subvurs research connection notes feature (v1.3.0) was silently failing since it was deployed. Two issues:
+
+1. **Invalid model ID**: The code referenced `claude-haiku-4-20250514`, a model that doesn't exist. Every API call returned a 404 error, which was caught and silently produced empty notes. Fixed to use `claude-3-haiku-20240307`.
+
+2. **Incomplete "None" filtering**: When the AI found no connection, it returned responses starting with "None" followed by an explanation (e.g., "None\n\nThis article does not..."). The code only checked `if notes.lower() == "none"`, missing these multi-line responses. Fixed to `if notes.lower().startswith("none")`.
+
+After fixing, a backfill of all 28 existing posts found **5 articles with genuine Subvurs connections** (noise-enhanced computation, T=0.857 time symmetry, Hamiltonian simulation, IQAS hybrid architectures, and inverse scaling).
+
+### Daily Insights Email
+
+A new daily email report sends Subvurs research connection findings to `subvurs@gmail.com` after each pipeline run. This ensures research connections are never missed.
+
+**Module**: `quantum_curator/email_report.py`
+
+**What the email contains**:
+- Header with date, article count, and connection count
+- Table of articles with Subvurs connections: article title (linked), source, date, and the connection notes
+- List of other curated articles with no connections (for reference)
+- Styled HTML matching the Quantum Crier dark theme
+
+**CLI Command**:
+
+```bash
+quantum-curator email-insights              # Send today's report
+quantum-curator email-insights --days 7     # Look back 7 days
+quantum-curator email-insights --dry-run    # Preview without sending
+```
+
+Also integrated into the `run` pipeline as Step 6 (after social sharing), gated on `settings.has_email`.
+
+### Configuration
+
+```bash
+# .env
+SMTP_EMAIL=subvurs@gmail.com
+SMTP_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx    # Gmail app password
+```
+
+Uses Python's built-in `smtplib` with Gmail SMTP over SSL (port 465). No additional dependencies.
+
+### GitHub Actions Integration
+
+```yaml
+- name: Email Subvurs insights report
+  continue-on-error: true
+  run: quantum-curator email-insights
+```
+
+Two secrets added: `SMTP_EMAIL`, `SMTP_APP_PASSWORD`.
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `quantum_curator/email_report.py` | HTML report builder + Gmail SMTP sender |
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `quantum_curator/curator.py` | Fixed model ID (`claude-3-haiku-20240307`); fixed "None" detection (`startswith`) |
+| `quantum_curator/config.py` | Added `smtp_email`, `smtp_app_password` settings and `has_email` property |
+| `quantum_curator/cli.py` | Added `email-insights` command; added Step 6 (email report) to `run` pipeline |
+| `.github/workflows/daily-curator.yml` | Added `SMTP_EMAIL` and `SMTP_APP_PASSWORD` to env block; added email step |
+
+---
+
+*Document updated: April 2, 2026*
+*Quantum Curator v1.5.1 — Daily insights email + Subvurs notes fix*

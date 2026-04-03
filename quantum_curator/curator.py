@@ -255,13 +255,13 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
 
         try:
             response = self.client.messages.create(
-                model="claude-haiku-4-20250514",
+                model="claude-3-haiku-20240307",
                 max_tokens=200,
                 system=SUBVURS_NOTES_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_prompt}],
             )
             notes = response.content[0].text.strip()
-            if notes.lower() == "none":
+            if notes.lower().startswith("none"):
                 return ""
             return notes
         except Exception as e:

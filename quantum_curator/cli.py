@@ -277,8 +277,187 @@ def run(force_fetch: bool, do_deploy: bool):
             else:
                 console.print("[red]Qrater deployment failed[/]")
 
+        # Step 5: Social sharing (optional)
+        if settings.has_bluesky or settings.has_twitter:
+            console.print(Panel("[bold blue]Step 5: Social sharing[/]"))
+
+            if settings.has_bluesky:
+                from .bluesky import BlueskySharer, init_bluesky_table
+                init_bluesky_table()
+                sharer = BlueskySharer()
+                shared = sharer.share_pending(limit=5)
+                if shared:
+                    console.print(f"[green]Shared {len(shared)} posts to Bluesky[/]")
+                else:
+                    console.print("[dim]No new posts to share to Bluesky[/]")
+
+            if settings.has_twitter:
+                from .twitter import TwitterSharer, init_twitter_table
+                init_twitter_table()
+                tweeter = TwitterSharer()
+                tweeted = tweeter.share_pending(limit=5)
+                if tweeted:
+                    console.print(f"[green]Tweeted {len(tweeted)} posts to Twitter/X[/]")
+                else:
+                    console.print("[dim]No new posts to tweet[/]")
+
+        # Step 6: Email insights report (optional)
+        if settings.has_email:
+            console.print(Panel("[bold blue]Step 6: Emailing insights report[/]"))
+            from .email_report import send_insights_email
+            if send_insights_email(days=1):
+                console.print("[green]Insights email sent[/]")
+            else:
+                console.print("[dim]Failed to send insights email[/]")
+
     asyncio.run(run_pipeline())
     console.print("\n[bold green]Pipeline complete![/]")
+
+
+# --- Bluesky Sharing ---
+
+@cli.command()
+@click.option("--limit", "-l", default=5, help="Maximum posts to share")
+@click.option("--dry-run", is_flag=True, help="Show what would be shared without posting")
+def share(limit: int, dry_run: bool):
+    """Share published posts to Bluesky."""
+    from .bluesky import BlueskySharer, init_bluesky_table, get_posts_not_shared_to_bluesky
+
+    init_bluesky_table()
+
+    if dry_run:
+        posts = get_posts_not_shared_to_bluesky(limit=limit)
+        if not posts:
+            console.print("[dim]No pending posts to share[/]")
+            return
+
+        console.print(Panel(f"[bold]Dry Run: {len(posts)} posts would be shared to Bluesky[/]"))
+
+        sharer = BlueskySharer()
+        table = Table(title="Pending Bluesky Shares")
+        table.add_column("Title", style="cyan", max_width=50)
+        table.add_column("Post Text", style="white", max_width=60)
+
+        for post in posts:
+            text = sharer._build_post_text(post)
+            table.add_row(
+                post.title[:50] + "..." if len(post.title) > 50 else post.title,
+                text,
+            )
+
+        console.print(table)
+        return
+
+    sharer = BlueskySharer()
+    if not sharer.is_configured:
+        console.print("[red]Bluesky not configured.[/]")
+        console.print("Set BLUESKY_HANDLE and BLUESKY_APP_PASSWORD in .env")
+        return
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Sharing to Bluesky...", total=None)
+        shared = sharer.share_pending(limit=limit)
+        progress.update(task, completed=True)
+
+    if shared:
+        console.print(f"[green]Shared {len(shared)} posts to Bluesky[/]")
+    else:
+        console.print("[dim]No new posts to share[/]")
+
+
+# --- Email Report ---
+
+@cli.command("email-insights")
+@click.option("--days", "-d", default=1, help="Look back this many days for articles")
+@click.option("--dry-run", is_flag=True, help="Show report without sending email")
+def email_insights(days: int, dry_run: bool):
+    """Email daily Subvurs research connection report."""
+    from .email_report import build_insights_report, send_insights_email
+
+    if dry_run:
+        subject, html, count = build_insights_report(days=days)
+        console.print(Panel(f"[bold]{subject}[/]"))
+        console.print(f"[dim]{count} connections found — email would be sent to configured address[/]")
+        return
+
+    settings = get_settings()
+    if not settings.has_email:
+        console.print("[red]Email not configured.[/]")
+        console.print("Set SMTP_EMAIL and SMTP_APP_PASSWORD in .env")
+        return
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Sending insights email...", total=None)
+        success = send_insights_email(days=days)
+        progress.update(task, completed=True)
+
+    if success:
+        console.print(f"[green]Insights email sent to {settings.smtp_email}[/]")
+    else:
+        console.print("[red]Failed to send insights email[/]")
+
+
+# --- Twitter/X Sharing ---
+
+@cli.command()
+@click.option("--limit", "-l", default=5, help="Maximum posts to tweet")
+@click.option("--dry-run", is_flag=True, help="Show what would be tweeted without posting")
+def tweet(limit: int, dry_run: bool):
+    """Share published posts to Twitter/X."""
+    from .twitter import TwitterSharer, init_twitter_table, get_posts_not_shared_to_twitter
+
+    init_twitter_table()
+
+    if dry_run:
+        posts = get_posts_not_shared_to_twitter(limit=limit)
+        if not posts:
+            console.print("[dim]No pending posts to tweet[/]")
+            return
+
+        console.print(Panel(f"[bold]Dry Run: {len(posts)} posts would be tweeted[/]"))
+
+        sharer = TwitterSharer()
+        table = Table(title="Pending Tweets")
+        table.add_column("Title", style="cyan", max_width=50)
+        table.add_column("Tweet Text", style="white", max_width=60)
+
+        for post in posts:
+            text = sharer._build_tweet_text(post)
+            table.add_row(
+                post.title[:50] + "..." if len(post.title) > 50 else post.title,
+                text,
+            )
+
+        console.print(table)
+        return
+
+    sharer = TwitterSharer()
+    if not sharer.is_configured:
+        console.print("[red]Twitter/X not configured.[/]")
+        console.print("Set TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_ACCESS_TOKEN, and TWITTER_ACCESS_TOKEN_SECRET in .env")
+        return
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Tweeting...", total=None)
+        shared = sharer.share_pending(limit=limit)
+        progress.update(task, completed=True)
+
+    if shared:
+        console.print(f"[green]Tweeted {len(shared)} posts to Twitter/X[/]")
+    else:
+        console.print("[dim]No new posts to tweet[/]")
 
 
 # --- Qrater ---

@@ -54,6 +54,8 @@ class Settings(BaseSettings):
             links["LinkedIn"] = self.curator_linkedin
         if self.curator_website:
             links["Website"] = self.curator_website
+        if self.bluesky_handle:
+            links["Bluesky"] = f"https://bsky.app/profile/{self.bluesky_handle}"
         return links
 
     # Paths
@@ -83,6 +85,20 @@ class Settings(BaseSettings):
     qrater_github_repo: str = Field(default="qrater", description="GitHub repo name for Qrater Pages")
     qrater_site_url: str = Field(default="https://qrater.org", description="Qrater published site URL")
     buttondown_username: str = Field(default="", description="Buttondown newsletter username for Qrater email signup")
+
+    # Bluesky settings
+    bluesky_handle: str = Field(default="", description="Bluesky handle (e.g. markeatherly.bsky.social)")
+    bluesky_app_password: str = Field(default="", description="Bluesky app password for posting")
+
+    # Twitter/X settings
+    twitter_consumer_key: str = Field(default="", description="Twitter API consumer key")
+    twitter_consumer_secret: str = Field(default="", description="Twitter API consumer secret")
+    twitter_access_token: str = Field(default="", description="Twitter API access token")
+    twitter_access_token_secret: str = Field(default="", description="Twitter API access token secret")
+
+    # Email report settings
+    smtp_email: str = Field(default="", description="Gmail address for sending/receiving daily insights report")
+    smtp_app_password: str = Field(default="", description="Gmail app password for SMTP")
 
     # Aggregation settings
     max_posts_per_day: int = Field(default=15, description="Maximum posts to curate per day")
@@ -118,6 +134,26 @@ class Settings(BaseSettings):
     def has_github(self) -> bool:
         """Check if GitHub deployment is configured."""
         return bool(self.github_token and self.github_username)
+
+    @property
+    def has_bluesky(self) -> bool:
+        """Check if Bluesky posting is configured."""
+        return bool(self.bluesky_handle and self.bluesky_app_password)
+
+    @property
+    def has_twitter(self) -> bool:
+        """Check if Twitter/X posting is configured."""
+        return bool(
+            self.twitter_consumer_key
+            and self.twitter_consumer_secret
+            and self.twitter_access_token
+            and self.twitter_access_token_secret
+        )
+
+    @property
+    def has_email(self) -> bool:
+        """Check if email reporting is configured."""
+        return bool(self.smtp_email and self.smtp_app_password)
 
 
 @lru_cache
