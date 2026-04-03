@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constrained Quantum Optimization via Iterative Warm-Start XY-Mixers | Quantum Crier</title>
+    <meta name="description" content="The Quantum Approximate Optimization Algorithm (QAOA) is a leading hybrid heuristic for combinatorial optimization, but efficiently handling hard constraints re">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Constrained Quantum Optimization via Iterative Warm-Start XY-Mixers">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            
+        </div>
+        <h1>Constrained Quantum Optimization via Iterative Warm-Start XY-Mixers</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 02, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This research tackles one of QAOA&#39;s most persistent headaches: how to efficiently handle hard constraints while still benefiting from warm-starting techniques that guide the algorithm toward promising solutions. The breakthrough here is developing a modified XY-mixer Hamiltonian that maintains mathematical rigor while allowing the algorithm to start from biased initial states, essentially letting QAOA have its cake and eat it too. The researchers demonstrate orders of magnitude improvement in finding optimal solutions for classic problems like Max-k-Cut and TSP, which could make QAOA far more practical for real-world constrained optimization problems that plague logistics, finance, and supply chain management. This work represents a significant step toward making near-term quantum algorithms genuinely competitive with classical methods for commercially relevant optimization challenges.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>The Quantum Approximate Optimization Algorithm (QAOA) is a leading hybrid heuristic for combinatorial optimization, but efficiently handling hard constraints remains a significant challenge. XY-mixers successfully confine quantum state evolution to a feasible subspace, such as the Hamming-weight-1 sector for one-hot constraints. On the contrary, warm-starting biases the search toward promising regions based on preliminary solutions. Combining these two techniques requires maintaining the essential alignment between the initial state and the mixer Hamiltonian to preserve convergence guarantees. Previous work demonstrated warm-starting with XY-mixers via a biased initial state, but relying only on standard mixer Hamiltonians. Consequently, the initial state is no longer a ground state of the mixer. In this work, we overcome these limitations by formulating a warm-started XY-mixer Hamiltonian for one-hot constraints and proving its ground-state properties. Furthermore, we provide a shallow circuit implementation suitable for NISQ implementations. We embed the warm-starting into a classical heuristic that iteratively updates the bias based on previous samples, called Iterative Warm-Starting (IWS). Extensive numerical simulations on Max-$k$-Cut and Traveling Salesperson Problem instances demonstrate that IWS-QAOA significantly accelerates the solution-finding process, increasing the probability of sampling optimal solutions by orders of magnitude compared to standard XY-QAOA. Finally, we validate our approach on the ibm_boston QPU using hardware-tailored 144-qubit problem instances. By coupling IWS-QAOA with a greedy steepest-descent post-processing strategy to repair infeasible measurements caused by hardware noise, we successfully identify optimal solutions on actual quantum devices.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.02083v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Constrained%20Quantum%20Optimization%20via%20Iterative%20Warm-Start%20XY-Mixers&url=https://quantumcrier.com/posts/3e84a970.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/3e84a970.html&title=Constrained%20Quantum%20Optimization%20via%20Iterative%20Warm-Start%20XY-Mixers" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
