@@ -43,10 +43,10 @@ jobs:
           pip install -e .
 
       - name: Restore database cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: data/
-          key: curator-db-v1
+          key: curator-db-${{ github.run_id }}
           restore-keys: |
             curator-db-
 
@@ -108,6 +108,13 @@ jobs:
       - name: Email Subvurs insights report
         continue-on-error: true
         run: quantum-curator email-insights
+
+      - name: Save database cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data/
+          key: curator-db-${{ github.run_id }}
 
       - name: Notify on success
         if: success()
