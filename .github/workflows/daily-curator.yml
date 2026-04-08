@@ -101,9 +101,10 @@ jobs:
         continue-on-error: true
         run: quantum-curator share --limit 5
 
-      - name: Share to Twitter/X
-        continue-on-error: true
-        run: quantum-curator tweet --limit 5
+      # Twitter/X disabled — account suspended (April 2026)
+      # - name: Share to Twitter/X
+      #   continue-on-error: true
+      #   run: quantum-curator tweet --limit 5
 
       - name: Email Subvurs insights report
         continue-on-error: true
