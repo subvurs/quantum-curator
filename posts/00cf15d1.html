@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficient Transpilation of OpenQASM 3.0 Dynamic Circuits to CUDA-Q: Performance and Expressiveness Advantages | Quantum Crier</title>
+    <meta name="description" content="Dynamic quantum circuits with mid-circuit measurement and classical feedforward are essential for near-term algorithms such as error mitigation, adaptive phase ">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Efficient Transpilation of OpenQASM 3.0 Dynamic Circuits to CUDA-Q: Performance and Expressiveness Advantages">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Efficient Transpilation of OpenQASM 3.0 Dynamic Circuits to CUDA-Q: Performance and Expressiveness Advantages</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 13, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article addresses a critical bottleneck in quantum computing: the challenge of efficiently translating dynamic quantum circuits between different programming frameworks. The researchers have developed a transpilation pipeline that converts OpenQASM 3.0 programs with mid-circuit measurements and classical control flow into optimized CUDA-Q kernels, eliminating the need for inefficient static circuit expansion that typically bloats circuit depth. This work is particularly significant for near-term quantum applications like error mitigation and variational algorithms, where dynamic feedback between quantum measurements and classical processing is essential for practical advantage. By bridging the gap between OpenQASM&#39;s portability and CUDA-Q&#39;s performance optimizations, this framework could accelerate the development and deployment of sophisticated quantum algorithms on NISQ devices.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Dynamic quantum circuits with mid-circuit measurement and classical feedforward are essential for near-term algorithms such as error mitigation, adaptive phase estimation, and Variational Quantum Eigensolvers (VQE), yet transpiling these programs across frameworks remains challenging due to inconsistent support for control flow and measurement semantics. We present a transpilation pipeline that converts OpenQASM 3.0 programs with classical control structures (conditionals and bounded loops) into optimized CUDA-Q C++ kernels, leveraging CUDA-Q&#39;s native mid-circuit measurement and host-language control flow to translate dynamic patterns without static circuit expansion. Our open-source framework is validated on comprehensive test suites derived from IBM Quantum&#39;s classical feedforward guide, including conditional reset, if-else branching, multi-bit predicates, and sequential feedforward, and on VQE-style parameterized circuits with runtime parameter optimization. Experiments show that the resulting CUDA-Q kernels reduce circuit depth by avoiding branch duplication, improve execution efficiency via low-latency classical feedback, and enhance code readability by directly mapping OpenQASM 3.0 control structures to C++ control flow, thereby bridging OpenQASM 3.0&#39;s portable circuit specification with CUDA-Q&#39;s performance-oriented execution model for NISQ-era applications requiring dynamic circuit capabilities.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.11599v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Efficient%20Transpilation%20of%20OpenQASM%203.0%20Dynamic%20Circuits%20to%20CUDA-Q%3A%20Performance%20and%20Expressiveness%20Advantages&url=https://quantumcrier.com/posts/00cf15d1.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/00cf15d1.html&title=Efficient%20Transpilation%20of%20OpenQASM%203.0%20Dynamic%20Circuits%20to%20CUDA-Q%3A%20Performance%20and%20Expressiveness%20Advantages" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
