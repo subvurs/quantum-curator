@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split-Evolution Quantum Phase Estimation for Particle-Conserving Hamiltonians | Quantum Crier</title>
+    <meta name="description" content="We present a hardware demonstration and resource analysis of split-evolution quantum phase estimation (SE-QPE) on a Quantinuum System Model H2 quantum computer.">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Split-Evolution Quantum Phase Estimation for Particle-Conserving Hamiltonians">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>Split-Evolution Quantum Phase Estimation for Particle-Conserving Hamiltonians</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 16, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article demonstrates a clever modification to quantum phase estimation that could significantly reduce the resource requirements for quantum chemistry simulations on near-term devices. By replacing expensive controlled time evolution operations with CSWAP-based interference between two registers, the split-evolution approach achieves substantial reductions in gate counts and circuit depth while maintaining compatibility with approximate eigenstates that arise in practical quantum simulations. The demonstration on Quantinuum&#39;s H2 system with ethylene molecules shows this isn&#39;t just theoretical - the method works on real hardware and includes built-in error detection capabilities through auxiliary registers. These resource savings become more pronounced at higher precision levels, making this technique particularly valuable for the complex molecular systems that represent quantum computing&#39;s most promising near-term applications in drug discovery and materials science.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>We present a hardware demonstration and resource analysis of split-evolution quantum phase estimation (SE-QPE) on a Quantinuum System Model H2 quantum computer. SE-QPE is a modification to canonical QPE for particle-conserving Hamiltonians in which controlled time evolution is replaced by CSWAP-based interference between a target register and a reference register. For factorizations of time evolution with a shared eigenbasis, SE-QPE preserves the phase-register outcome distribution of canonical QPE and, unlike with compute--uncompute substitutions, it remains compatible with non-exact eigenstates. The substitution removes controlled-simulation overhead and enables parallel evolution on two registers, reducing the depth of each phase-kickback block. Resource analysis for Trotterized double-factorized chemistry Hamiltonians shows that the substitution becomes increasingly favorable at higher phase powers, as such combining QPE and SE-QPE implementations can be a useful option. Over a range of FeMoco active spaces, SE-QPE reduces time evolution resources, with asymptotic reductions of about 33% in CX count, 25% in $T$ count, and an asymptotic depth ratio of $3/N$ for CX layers. On Quantinuum H2-2, a four-qubit model ethylene demonstration with explicit inverse QFT and repeated phase-kickback steps up to 6 phase bits yields distinct energies and shows the auxiliary registers provide useful error detection filters.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.14921v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Split-Evolution%20Quantum%20Phase%20Estimation%20for%20Particle-Conserving%20Hamiltonians&url=https://quantumcrier.com/posts/fd047d95.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/fd047d95.html&title=Split-Evolution%20Quantum%20Phase%20Estimation%20for%20Particle-Conserving%20Hamiltonians" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyQMA: A memory-efficient, symbolic and exact universal simulator for quantum error correction | Quantum Crier</title>
+    <meta name="description" content="The classical simulation of universal quantum circuits is crucial both fundamentally and practically for quantum computation. We propose SyQMA, a simulator with">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SyQMA: A memory-efficient, symbolic and exact universal simulator for quantum error correction">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>SyQMA: A memory-efficient, symbolic and exact universal simulator for quantum error correction</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 16, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article introduces SyQMA, a quantum simulator that tackles one of the most pressing challenges in quantum error correction research: efficiently analyzing fault-tolerant protocols without approximations. What makes this particularly exciting is the simulator&#39;s ability to provide exact symbolic expressions for logical error rates and perform circuit-level maximum-likelihood decoding, giving researchers unprecedented precision in evaluating quantum error correction schemes. The polynomial memory requirements combined with exact analysis capabilities could significantly accelerate the development and verification of fault-tolerant quantum computing protocols, especially for magic state preparation which is crucial for universal quantum computation. This represents a valuable new tool for the quantum computing community as we push toward practical fault-tolerant quantum computers.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>The classical simulation of universal quantum circuits is crucial both fundamentally and practically for quantum computation. We propose SyQMA, a simulator with several convenient features, particularly suited for quantum error correction (QEC). SyQMA simulates universal quantum circuits with incoherent Pauli noise and computes exact expectation values and measurement probabilities as symbolic functions of circuit parameters: rotation angles, measurement outcomes, and noise rates. This simulator can sample measurement outcomes, enabling the simulation of dynamic quantum programs where circuit composition depends on prior measurement outputs. For QEC, it performs circuit-level maximum-likelihood decoding, provides exact symbolic expressions for logical error rates, and verifies the fault distance of fault-tolerant (FT) stabiliser and magic state preparation protocols. These features are enabled by an intuitive extension of stabiliser simulators, where each non-Clifford Pauli rotation and incoherent Pauli channel is compactly represented via auxiliary qubits and a modified trace. Representing the state requires only polynomial memory and time, while computing expectation values and measurement probabilities takes exponential time in the number of non-Clifford rotations and deterministic measurements, but only polynomial memory. The FT preparation of stabiliser and magic states, including the first stage of magic state cultivation, is analysed without approximations. We also exactly convert the disjoint error probabilities of a general multi-qubit Pauli channel to independent ones, a key step for creating and sampling from detector error models. The code is publicly available and open-source.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.15043v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=SyQMA%3A%20A%20memory-efficient%2C%20symbolic%20and%20exact%20universal%20simulator%20for%20quantum%20error%20correction&url=https://quantumcrier.com/posts/d347760b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d347760b.html&title=SyQMA%3A%20A%20memory-efficient%2C%20symbolic%20and%20exact%20universal%20simulator%20for%20quantum%20error%20correction" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
