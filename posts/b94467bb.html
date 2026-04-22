@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qubit Routing for (Almost) Free | Quantum Crier</title>
+    <meta name="description" content="In this paper, we give a mathematical proof that bounds the number of CNOT gates required to synthesize an $n$ qubit phase polynomial with $g$ terms to be at le">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Qubit Routing for (Almost) Free">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Qubit Routing for (Almost) Free</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 21, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This research tackles one of quantum computing&#39;s most persistent practical challenges: the overhead cost of moving qubits around to perform operations on hardware with limited connectivity. The authors demonstrate that by synthesizing quantum circuits to directly use only the gates natively allowed by the hardware architecture, they can achieve near-constant routing overhead rather than the logarithmic to polynomial scaling typical of SWAP-based approaches. This &#34;routing for almost free&#34; approach could significantly reduce gate counts in real quantum algorithms, making better use of today&#39;s noisy intermediate-scale quantum devices where every extra gate matters. The work is particularly valuable because it applies to phase polynomials combined with Hadamard gates, which form a universal gate set capable of implementing any quantum algorithm.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>In this paper, we give a mathematical proof that bounds the number of CNOT gates required to synthesize an $n$ qubit phase polynomial with $g$ terms to be at least $O(\frac{gn}{\max (\log g, 1)})$ and at most $O(gn)$. However, when targeting restricted hardware, not all CNOTs are allowed. If we were to use SWAP-based methods to route the qubits on the architecture such that the earlier synthesized gates are natively allowed, we increase the number of CNOTs by a routing overhead factor of $O(\log n) \leq α\leq O(n \log^2 n)$. However, if we only synthesize allowed gates, we do not need to route any qubits. Moreover, in that case the routing overhead factor is $1 \leq α\leq 4 \simeq O(1)$. Additionally, since phase polynomials and Hadamard gates together form a universal gate set, we get qubit routing for almost free.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.19717v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Qubit%20Routing%20for%20%28Almost%29%20Free&url=https://quantumcrier.com/posts/b94467bb.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b94467bb.html&title=Qubit%20Routing%20for%20%28Almost%29%20Free" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>

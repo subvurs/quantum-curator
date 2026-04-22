@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Eigenvalue Transformations for Arbitrary Matrices | Quantum Crier</title>
+    <meta name="description" content="Quantum Signal Processing (QSP) and Quantum Singular Value Transformation (QSVT) provide an efficient framework for implementing polynomials of block-encoded ma">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Quantum Eigenvalue Transformations for Arbitrary Matrices">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Quantum Eigenvalue Transformations for Arbitrary Matrices</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 21, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article presents a significant breakthrough in quantum algorithm design by extending the powerful Quantum Signal Processing and Quantum Singular Value Transformation frameworks to work with arbitrary matrices, not just the special cases of unitary or Hermitian matrices they were previously limited to. The innovation lies in their &#34;n-regular block encoding&#34; technique, which cleverly transforms any matrix into a form where these established quantum algorithms can operate on its eigenvalues using only logarithmic overhead in ancillary qubits. This advancement could unlock new quantum algorithms for a much broader class of linear algebra problems, including those involving non-diagonalizable matrices that appear frequently in machine learning, differential equations, and network analysis. The work essentially removes a major bottleneck that has constrained quantum algorithm designers, potentially opening the door to quantum advantages in applications that were previously out of reach.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Quantum Signal Processing (QSP) and Quantum Singular Value Transformation (QSVT) provide an efficient framework for implementing polynomials of block-encoded matrices, and thus offer a systematic approach to quantum algorithm design. However, despite a number of recent advances, important limitations remain. In particular, QSP can only transform unitary matrices, by applying a polynomial to their eigenvalues, while QSVT is a singular-value transformation and thus one can only obtain the polynomial of Hermitian matrices. As a consequence, these techniques do not directly apply to an arbitrary non-Hermitian matrix that is not diagonalizable. In this work, we propose a simple yet powerful method to extend these ideas to arbitrary square matrices by acting on their eigenvalues. To this end, we introduce the notion of an $n$-regular block encoding, namely, a block encoding whose $k$-th power reproduces the $k$-th power of the encoded matrix for every $0 &lt; k &lt; n$. We show that applying QSP to any unitary with this property is equivalent to applying a polynomial of degree at most $n$ to the block-encoded matrix, independently of its internal structure. Moreover, we provide a simple construction that transforms any block encoding into an $n$-regular one using only $O(\log n)$ ancillary qubits and operations. Finally, we show that this construction induces the desired transformation on the eigenvalues associated with the Jordan normal form of the matrix.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.19688v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20Eigenvalue%20Transformations%20for%20Arbitrary%20Matrices&url=https://quantumcrier.com/posts/e455b2f5.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e455b2f5.html&title=Quantum%20Eigenvalue%20Transformations%20for%20Arbitrary%20Matrices" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
