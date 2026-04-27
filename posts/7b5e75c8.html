@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum analog-encoding for correlated Gaussian vectors and their exponentiation with application to rough volatility | Quantum Crier</title>
+    <meta name="description" content="Quantum computing may speed up numerical problems involving large matrices that are demanding for classical computers, and active research on this possibility i">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Quantum analog-encoding for correlated Gaussian vectors and their exponentiation with application to rough volatility">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Quantum analog-encoding for correlated Gaussian vectors and their exponentiation with application to rough volatility</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 24, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article tackles a fascinating intersection between quantum computing and financial modeling by developing quantum algorithms to simulate correlated Gaussian random processes - the mathematical foundation underlying many financial models including the cutting-edge &#34;rough volatility&#34; models used to price derivatives. What makes this work particularly noteworthy is its focus on practical implementation details, providing concrete complexity analyses for specific financial processes like fractional Brownian motion and rough Bergomi models that are notoriously computationally expensive on classical computers. The researchers demonstrate potential subcubic scaling advantages in problem size N under certain conditions, which could represent a meaningful speedup for large-scale financial simulations where classical Monte Carlo methods become prohibitively slow. This represents an important step toward making quantum advantage tangible in quantitative finance, moving beyond theoretical possibilities to concrete algorithmic frameworks with detailed resource requirements.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Quantum computing may speed up numerical problems involving large matrices that are demanding for classical computers, and active research on this possibility is ongoing. In this work, we propose quantum algorithms for the exact simulation of a normalised correlated Gaussian random vector $|x\rangle=\vec{x}/\lVert\vec{x}\rVert$, $\vec{x}\sim\mathcal{N}(0,Σ)$, and its exponentiation $|e^{\vec{x}} \rangle= e^{\vec{x}}/\lVert e^{\vec{x}}\rVert$. When an $O(\mathrm{polylog} N)$-gate-depth quantum data loader for the covariance matrix $Σ\in\mathbb{R}^{N\times N}$ is available, preparing $|x\rangle$ and $|e^{\vec{x}}\rangle$ require $\widetilde{O}\left(\frac{\lVertΣ\rVert_F}{λ_{\max}}κ^{1.5}\right)$ and $\widetilde{O}\left(\lVert\vec{x}\rVert\frac{\lVertΣ\rVert_F}{λ_{\max}}κ^{1.5}\right)$ elementary gate depth respectively, where $\lVertΣ\rVert_F$, $λ_{\max}$, $κ$ denote the Frobenius norm, maximal eigenvalue, and condition number of $Σ$. Motivated by financial applications, we provide an end-to-end resource analysis when $\vec{x}$ represents a sample path of a Riemann-Liouville or standard fractional Brownian motion, or of a stationary fractional Ornstein-Uhlenbeck process. As a concrete example, we construct the quantum state encoding the rough Bergomi variance process and analyse the extraction of the integrated variance via quantum amplitude estimation. Under specific conditions, the dependence of $\lVertΣ\rVert_F/λ_{\max}$ and $κ$ on $N$ is small, and subcubic complexity in $N$ is achieved, indicating a quantum advantage over classical Cholesky-based sampling methods. To our knowledge, this constitutes the first quantum algorithmic framework for the amplitude encoding of exponentiated Gaussian processes, providing foundational primitives for quantum-enhanced financial modelling.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.22463v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20analog-encoding%20for%20correlated%20Gaussian%20vectors%20and%20their%20exponentiation%20with%20application%20to%20rough%20volatility&url=https://quantumcrier.com/posts/7b5e75c8.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7b5e75c8.html&title=Quantum%20analog-encoding%20for%20correlated%20Gaussian%20vectors%20and%20their%20exponentiation%20with%20application%20to%20rough%20volatility" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
