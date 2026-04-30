@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Semantic Quantum Circuit Cache for Scalable and Distributed Quantum-Classical Workflows | Quantum Crier</title>
+    <meta name="description" content="Hybrid quantum--classical workflows often execute large ensembles of circuits that differ syntactically but implement identical operations, leading to substanti">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="A Semantic Quantum Circuit Cache for Scalable and Distributed Quantum-Classical Workflows">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>A Semantic Quantum Circuit Cache for Scalable and Distributed Quantum-Classical Workflows</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">April 29, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article tackles a critical but often overlooked bottleneck in quantum computing workflows: the massive computational waste that occurs when hybrid quantum-classical algorithms repeatedly execute circuits that look different but are mathematically identical. The researchers&#39; semantic caching system uses sophisticated graph theory techniques to recognize when circuits perform the same operations regardless of their surface appearance, then reuses previous results rather than recomputing from scratch. The demonstrated speedups of up to 11.2x on real quantum hardware and 7x on simulators represent substantial efficiency gains that could dramatically reduce both computational costs and queue times for quantum applications. This work addresses a fundamental scalability challenge as quantum algorithms grow more complex and resource-intensive, making it particularly relevant for near-term quantum advantage applications like QAOA optimization.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Hybrid quantum--classical workflows often execute large ensembles of circuits that differ syntactically but implement identical operations, leading to substantial redundant computation. To address this, we introduce the Quantum Circuit Cache, a content-addressable system that detects semantic equivalence and reuses previously computed results across executions, backends, and workflow stages. Our approach combines ZX-calculus reduction with isomorphism-invariant Weisfeiler--Leman graph hashing to generate deterministic circuit identifiers, enabling constant-time lookup in distributed caches supporting both lightweight LMDB and scalable Redis deployments. The system integrates transparently into hybrid HPC workflows and remains backend-agnostic across CPU, GPU, and QPU environments. We evaluate the system on MareNostrum 5 with two representative workloads: distributed wire cutting and Differential Evolution-based QAOA optimization. For wire cutting, caching eliminates up to 91.98% of redundant subcircuit simulations, yielding speedups up to 7.0 times on a single node and maintaining advantages at scale, with Redis-based caching achieving up to 1.6 times speedups under high parallelism. Validation on a 35-qubit superconducting QPU confirms these benefits, achieving an 11.2 times speedup on real hardware. In distributed QAOA optimization, equivalence-aware caching avoids up to 27.6% of circuit evaluations and consistently reduces execution cost without altering the optimization algorithm. In both cases, reuse grows with concurrency and circuit structure, highlighting redundancy as a major systems bottleneck and demonstrating the effectiveness of our Quantum Circuit Cache.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2604.26788v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=A%20Semantic%20Quantum%20Circuit%20Cache%20for%20Scalable%20and%20Distributed%20Quantum-Classical%20Workflows&url=https://quantumcrier.com/posts/89ae76e5.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/89ae76e5.html&title=A%20Semantic%20Quantum%20Circuit%20Cache%20for%20Scalable%20and%20Distributed%20Quantum-Classical%20Workflows" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
