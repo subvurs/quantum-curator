@@ -5,11 +5,27 @@
         <link>https://quantumcrier.com</link>
         <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Sat, 09 May 2026 07:57:31 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 10 May 2026 08:08:00 +0000</lastBuildDate>
         <atom:link href="https://quantumcrier.com/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
+        
+        <item>
+            <title>SkyWater Technology Stockholders Approve Merger Agreement with IonQ</title>
+            <link>https://quantumcrier.com/posts/dc5a2aac.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/dc5a2aac.html</guid>
+            <pubDate>Sat, 09 May 2026 09:06:00 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This merger represents a significant strategic consolidation in the quantum computing industry, as IonQ secures direct access to advanced semiconductor manufacturing capabilities through SkyWater&#39;s U.S.-based foundry operations. The acquisition positions IonQ to have greater control over its hardware supply chain and manufacturing processes, which could accelerate development of their trapped-ion quantum systems while reducing dependencies on external foundries. This vertical integration strategy mirrors moves by other major quantum players seeking to bring more manufacturing capabilities in-house, and could give IonQ competitive advantages in scaling production and customizing specialized components for their quantum computers. The deal also strengthens the U.S. quantum ecosystem by keeping critical manufacturing capabilities domestic, which aligns with national security considerations around quantum technology development.</p>
+                <p>Insider Brief PRESS RELEASE — SkyWater Technology, Inc. (NASDAQ: SKYT) (the “Company”), the largest exclusively U.S.-based, semiconductor foundry, today announced that its stockholders approved at a special meeting held earlier today, the Company’s previously announced merger agreement with IonQ, Inc. (“IonQ”) for the acquisition of the Company by IonQ. The final voting results will be […]</p>
+                <p><a href="https://thequantuminsider.com/2026/05/09/skywater-technology-stockholders-approve-merger-agreement-with-ionq/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
         
         <item>
             <title>Podcast with Scott Aaronson, Professor of Computer Science, UT Austin</title>
@@ -866,26 +882,6 @@
             <category>algorithms</category>
             
             <category>machine_learning</category>
-            
-        </item>
-        
-        <item>
-            <title>Distributed Quantum Error Correction with Bivariate Bicycle Codes in a Modular Architecture</title>
-            <link>https://quantumcrier.com/posts/19587065.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/19587065.html</guid>
-            <pubDate>Wed, 06 May 2026 09:10:28 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles one of quantum computing&#39;s most pressing architectural challenges by demonstrating how advanced error correction codes can work across multiple connected quantum processors rather than requiring massive single devices. Bivariate bicycle codes offer dramatically better encoding efficiency than standard surface codes, but their complex connectivity requirements have made them impractical for most current hardware - this work shows how to split them across networked quantum modules connected by shared entanglement. The findings are particularly relevant for trapped ion and neutral atom platforms that can achieve all-to-all connectivity within modules, potentially enabling fault-tolerant quantum computers with manageable hardware complexity. This distributed approach could be a game-changer for scaling quantum error correction beyond the limitations of monolithic architectures while maintaining the superior performance of advanced LDPC codes.</p>
-                <p>Quantum low density parity check (qLDPC) codes, particularly bivariate bicycle (BB) codes, achieve competitive fault tolerance thresholds while offering substantially higher encoding rates than planar surface codes. However, their intrinsically long-range stabilizer structure makes them difficult to implement on monolithic devices with nearest neighbor connectivity and limited qubit capacity. In this work, we study the realization of a BB code in a modular multiprocessor architecture, where quantum processors are interconnected through shared Bell pairs. We consider processors with all to all internal connectivity, which is feasible on trapped ion and neutral atom platforms, enabling flexible local gate execution while inter-processor (nonlocal) gates are mediated by shared entanglement. We describe a star network architecture that can realize this distributed setting. We partition the qubits of the [[144,12,12]] BB code across 4, 6, and 12 quantum processors and analyze the resulting logical error rates and pseudo-threshold performance under circuit level noise by varying the number of processors and a scaling factor that captures the additional noise associated with nonlocal operations. We use Monte Carlo simulations with BP+OSD decoding and extend the previously known BB code ansatz to the distributed setting. Our results provide architectural insight and design considerations for distributed BB codes in modular quantum computing architectures.</p>
-                <p><a href="https://arxiv.org/abs/2605.04663v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-            <category>simulation</category>
             
         </item>
         
