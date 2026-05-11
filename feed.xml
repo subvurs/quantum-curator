@@ -5,11 +5,27 @@
         <link>https://quantumcrier.com</link>
         <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 10 May 2026 08:08:00 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 11 May 2026 09:40:16 +0000</lastBuildDate>
         <atom:link href="https://quantumcrier.com/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
+        
+        <item>
+            <title>Guest Post: A Focus on The Quantum Computing Stack is Holding Commercialization Back</title>
+            <link>https://quantumcrier.com/posts/71074fc6.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/71074fc6.html</guid>
+            <pubDate>Mon, 11 May 2026 08:57:45 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article tackles a critical tension in today&#39;s quantum computing industry between technical advancement and commercial viability. Biercuk and Shih argue that the field&#39;s current obsession with hardware improvements and quantum stack development may be diverting attention from the fundamental question of delivering actual business value to customers. Their focus on ROI-driven quantum advantage represents a much-needed reality check for an industry that has sometimes prioritized theoretical milestones over practical applications. This perspective could reshape how quantum companies approach product development, potentially accelerating the transition from impressive lab demonstrations to solutions that businesses will actually pay for.</p>
+                <p>By Michael J. Biercuk and Alex Shih The relevance of quantum computing will ultimately hinge on one thing: whether a customer achieves a positive ROI from a quantum solution over an alternative computing tool for their problem. The point at which this is definitively achieved is known as quantum advantage. Quantum computing is progressing rapidly, […]</p>
+                <p><a href="https://thequantuminsider.com/2026/05/11/guest-post-a-focus-on-the-quantum-computing-stack-is-holding-commercialization-back/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>industry</category>
+            
+        </item>
         
         <item>
             <title>SkyWater Technology Stockholders Approve Merger Agreement with IonQ</title>
@@ -854,26 +870,6 @@
                 <p><strong>Curator's Take:</strong> This work represents a significant milestone in practical quantum machine learning, demonstrating that today&#39;s noisy intermediate-scale quantum devices can actually outperform classical methods on real-world problems. The researchers cleverly leveraged the unique architecture of neutral atom systems, where atoms can be positioned anywhere in 2D space using optical tweezers, making them naturally suited for graph problems unlike gate-based quantum computers that require complex graph embedding schemes. What&#39;s particularly noteworthy is that they achieved these results on the 256-qubit Aquila system available through AWS, showing that cloud-accessible quantum hardware is now powerful enough for meaningful machine learning applications beyond toy problems. The fact that their quantum approach slightly outperformed classical kernels on the PROTEINS dataset, despite hardware noise, suggests we may finally be entering an era where quantum advantage in machine learning becomes practically achievable.</p>
                 <p>Neutral atom platforms are analogue quantum simulators that offer the possibility to map graphs onto a 2D qubit register using programmable Rubidium atoms arrays, whose valence electrons&#39; energy state is used as qubits, using optical tweezers. This makes it possible to implement algorithms for solving graph combinatorial optimization and Quantum Machine Learning (QML) tasks, such as graph classification. However, the restrictions of real hardware, as well as the very low number of publicly available machines, make such implementation non-trivial. In this work, we manage to compute the Quantum Evolution Kernel (QEK) to extract the features from graphs of the PROTEINS dataset using the 256-qubits Aquila platform (available through AWS) and then we apply classical Machine Learning (ML) techniques for the final classification. The method is benchmarked against classical kernels, resulting in slightly better performance, proving the effectiveness of the method, even in the case of a noisy quantum simulator.</p>
                 <p><a href="https://arxiv.org/abs/2605.04737v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>machine_learning</category>
-            
-        </item>
-        
-        <item>
-            <title>Neural-powered unit disk graph embedding: qubits connectivity for some QUBO problems</title>
-            <link>https://quantumcrier.com/posts/4e8f3cb7.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/4e8f3cb7.html</guid>
-            <pubDate>Wed, 06 May 2026 10:34:52 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This work tackles a critical but often overlooked bottleneck in quantum computing: how to physically arrange qubits so their natural connectivity matches the structure of optimization problems we want to solve. While most quantum computing discussions focus on algorithms or error correction, this research addresses the fundamental challenge of mapping abstract mathematical problems onto real quantum hardware, specifically neutral Rydberg atom systems where qubit interactions are determined by their physical proximity. The neural network approach represents a clever solution to what is essentially a complex geometric puzzle - finding arrangements of atoms that create the right pattern of quantum interactions for a given optimization problem. This type of embedding work is crucial for making quantum optimization practical, as even the most sophisticated quantum algorithms are useless if you can&#39;t properly map your problem onto the available hardware connectivity.</p>
-                <p>Graph embedding is a recurrent problem in quantum computing, for instance, quantum annealers need to solve a minor graph embedding in order to map a given Quadratic Unconstrained Binary Optimization (QUBO) problem onto their internal connectivity pattern. This work presents a novel approach to constrained unit disk graph embedding, which is encountered when trying to solve combinatorial optimization problems in QUBO form, using quantum hardware based on neutral Rydberg atoms. The qubits, physically represented by the atoms, are excited to the Rydberg state through laser pulses. Whenever qubits pairs are closer together than the blockade radius, entanglement can be reached, thus preventing entangled qubits to be simultaneously in the excited state. Hence, the blockade radius determines the adjacency pattern among qubits, corresponding to a unit disk configuration. Although it is straightforward to compute the adjacency pattern given the qubit coordinates, identifying a feasible unit disk arrangement that matches the desired QUBO matrix is, on the other hand, a much harder task. In the context of quantum optimization, this issue translates into the physical placement of the qubits in the 2D/3D register to match the machine&#39;s Ising-like Hamiltonian with the QUBO formulation of the optimization problems. The proposed solution exploits the power of neural networks to transform an initial embedding configuration, which does not match the quantum hardware requirements or does not account for the unit disk property, into a feasible embedding properly representing the target optimization problems. Experimental results show that this new approach overcomes in performance Gurobi solver.</p>
-                <p><a href="https://arxiv.org/abs/2605.04736v1">Read original at arXiv Quantum Physics</a></p>
             ]]></description>
             <author>Mark Eatherly</author>
             
