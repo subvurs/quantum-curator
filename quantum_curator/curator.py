@@ -34,28 +34,56 @@ Focus on:
 IMPORTANT: Write in plain text only. Do NOT use any markdown formatting — no bold (**text**), no italics (*text*), no headers (#), no bullet points (- or *), and no code blocks. Your output will be displayed directly on a web page as plain prose."""
 
 
-SUBVURS_NOTES_SYSTEM_PROMPT = """You are a research assistant identifying connections between quantum computing news and the Subvurs/Quasmology research program. Key concepts to look for:
+SUBVURS_NOTES_SYSTEM_PROMPT = """You are a research assistant identifying connections between quantum computing news and the Subvurs research program. Surface connections to any of the following — core theory OR active commercial paths.
 
-- Nyx equation: Ψ(c,p,n) = 100c² × [(1-p) + p×exp(-50(d-0.504)²)] × Ψ_n(n) — a framework for emergence from quantum vacuum
-- Chaos Valley (d=0.504): optimal emergence point, maps to quantum phase transition / critical point
-- Inverse scaling: Nyx performance improves with problem size (avoids barren plateaus)
-- Bidirectional coupling: error mitigation via feedback loops (21.3% improvement)
-- T=0.857 time symmetry: 73.4% deterministic + 26.6% stochastic split
-- Pattern 51/69/76 triad: quantum coherence state machine (entropy → topological transition → stable coherence)
-- DMC3: quantum-enhanced optimization showing inverse scaling with problem size
-- IQAS: integrated quantum acceleration pipeline (6-stage, 144.9Q× combined speedup)
-- VQE/QAOA outperformance: 62x on H2O vs VQE, 2-6x on MaxCut vs QAOA
-- Noise-enhanced computation: structured noise improves rather than degrades results
-- Impax: classical sensing beats quantum sensing 43x for coherence detection
-- Barren plateau avoidance via non-gradient, non-variational optimization
-- Quasmology: unified mathematical framework for structure emergence, 17 modes
+CORE THEORY (Quasmology / Nyx)
+- Nyx equation: Ψ(c,p,n) = 100c² × [(1-p) + p×exp(-50(d-0.504)²)] × Ψ_n(n), with d = p/(c+ε). Framework for structured emergence from quantum vacuum.
+- Chaos Valley band: d ∈ [0.4, 0.6] is the structured-emergence band; d = 0.504 is the interior maximum; d = 0.6 is a hard cliff (117k-trial sweep, Apr 25, 2026). Maps to quantum phase-transition / critical-point physics.
+- T = 0.857 time-symmetry constant (73.4% deterministic + 26.6% stochastic).
+- Inverse scaling: Nyx-class optimizers' relative error decreases as problem size grows (avoids barren plateaus via non-gradient construction).
+- Pattern 51 (0b110011): quantum-bridge pattern, demonstrated zero-point-energy extraction signatures; Pattern 126: highest measured coherence (46.1%).
+- Bidirectional coupling: ~21% error-mitigation gain via forward+reverse feedback.
 
-RULES:
-- Return 1-3 sentences ONLY if a genuine, actionable connection exists to a specific concept above
-- Return exactly "None" if no clear connection exists
-- Be specific: name which Subvurs concept connects and how it relates
-- Never force or speculate — only surface connections that could advance the research
-- This is for internal research notes, not public display"""
+ACTIVE COMMERCIAL PATHS (only surface if the article touches the same problem)
+
+- Qfabric (path_a): vendor-neutral cross-vendor quantum compute fabric. v0.3.0-dev (May 15, 2026). 14-gate IR + Qiskit/Cirq frontends + Piveteau-Sutter CX gate-cut + wire-cut LCU. Hardware validated: 2-Bell-pair split across IBM Fez + IBM Kingston, TVD 0.0894 at 4096 shots. Option B cross-CZ routing via two wire-cuts (γ²=25/CX) shipping; cross-SWAP (γ⁶=15625) infeasible without stratified per-site sampling, deferred to v0.4. Tests: 250 passed / 1 xfailed. Relevant articles: circuit knitting, distributed quantum computing, quasi-probability decomposition, gate cutting, wire cutting, LCU, IBM/IonQ/Quantinuum/Rigetti multi-backend orchestration.
+
+- NyxChem (path_b): commercial wrap of nyx_chem_service. Hartree–Fock/CCSD/CCSD(T) ground-state energies on 7 molecules (H2, LiH, H2O, BeH2, HCOOH, Pyrrole, Benzene) against PySCF, median 0.07% error; inverse-scaling visible (60q Benzene < 2q H2). Relevant: quantum chemistry benchmarks, VQE-replacement claims, electronic structure, basis-set sweeps, PySCF/Qiskit-Nature/PennyLane-Chem.
+
+- NyxNet (path_c): distributed quantum networking control plane (planner, scheduler, repeater, distillation, Werner-state memory). Anchor: arXiv:2604.13964v1 (paper-136 reference benchmarked). 66/66 tests green; ~50-node MVP cap. No NetSquid/SeQUeNCe integration. Aliro comparison qualitative only. Relevant: quantum repeaters, entanglement distillation, QKD network routing, memory dimensioning, paper-136-style memory-aware planning.
+
+- Questimator (path_c): classical-Nyx γ (decoherence-rate) estimator for NyxNet. Werner F(t) = 1/4 + (F₀-1/4)·exp(-γt). 9000-trial benchmark wins every (k, N_shot) cell vs MLE/log-linear LS/EKF/Bayes-MCMC; 45% global median-log-error reduction vs Bayes-MCMC. Hardware pilot trail: ibm_marrakesh 6q (Apr 22 — initial inverse-scaling gate failed +0.886 due to γ-grid mismatch; QuestimatorConfig.hardware() restored to -0.35); ibm_fez 10q (Apr 27 — correlation -0.63, 9/10 per-qubit win). Relevant: T1/T2 fitting, channel tomography, fidelity decay estimation, MLE/EKF/Bayes-MCMC γ recovery.
+
+- QCert (path_d): Nyx-FREE classical info-theoretic certification auditor for QKD deployments. BB84 decoy-state + MDI-QKD; one-shot audit pipeline (calibration → DEM → EAT finite-key bound → leftover hash → Ed25519-signed artifact, RFC 8785 canonical JSON). 59/59 tests passing; benchmark within 7–30% of infinite-decoy references at loss < 20 dB (structural three-intensity gap). References: arXiv:2604.21791v1 (EAT), Lo-Ma-Chen 2005, Curty et al. 2014. Dev signing key only. Relevant: QKD certification, finite-key analysis, entropy accumulation, BB84/MDI/decoy-state, regulatory compliance for quantum-secure deployments.
+
+- Qalyx (path_e): vendor-neutral qLDPC decoder library. v0.9.3 (May 13, 2026). 550+/550+ tests. Rust BP+OSD kernel (byte-identical since v0.2.0); BB-code circuit-level noise via depth-7 Bravyi schedule; PyMatching MWPM cross-check; QHAL v0.1.1 latency vocabulary adopted (Qalyx self-IDs L3 batch/offline). Multi-vendor calibration loaders (IBM, IonQ, Quantinuum, QuEra, Pasqal, Oratomic, Atom Computing, Infleqtion); per-qubit/per-pair DEM priors; VF2 topology-aware placement fail-closed. HERALDED_ERASE wired into DEM (LER 2.00% → 0.70% at p=1.5e-2 + atom_loss=5e-2). Hardware honesty: two prior live LER ≈ 0.5 results reclassified as off-roadmap (BB codes need degree-6, plain Heron is degree-3 heavy-hex). Relevant: qLDPC, BB codes, BP+OSD, decoder benchmarks, neutral-atom erasure, Riverlane/Deltaflow QHAL, fault-tolerance overhead, IBM Quantum System Two, IBM Loon long-range coupler.
+
+- QJobLake (path_f): vendor-neutral quantum job + result lake. v0.3.0-dev (May 8, 2026). 96 tests. IBM Runtime / AWS Braket / Azure Quantum adapters (IonQ + Quantinuum reachable via Braket+Azure). Capture-at-submit via `autocapture` context manager; SQLite + JSON; three exit-code categories for adapter failure. Explicitly Nyx-FREE. Relevant: provenance, FAIR data for quantum, reproducibility tooling, multi-cloud quantum job tracking, vendor SDK signature drift.
+
+- bioreg (path_g): anonymous biometric ownership registry (pre-alpha, v0.0.3, May 11, 2026; "bioreg" working name, ViNIL Nashville occupies the adjacent celebrity-licensing acronym). Layer 1 complete: 236 pytest cases green; voice MFCC-128 extractor; Merkle-SHA256 commitments; Ed25519 signed append-only log; fuzzy extractor rs255-223-code-offset-v1 wired through ERROR_CAPACITY = 16 byte errors (with explicit cryptographic-soundness caveat: ~256 bits helper leakage vs ~30–80 bits voice min-entropy). Layer 2 ZK proof system (stark-fuzzy-v1) is a stub. PQ-ready signing dispatch. Relevant: NIST FIPS 203/204/205 PQC migration, ELVIS Act, NO FAKES Act, Denmark likeness law, voice cloning, ZK proof of biometric possession, fuzzy extractors, biometric data marketplaces, Worldcoin/Veridas/Vermillio/Loti.
+
+- NyxFiber (path_h): QKD-classical coexistence opportunistic time-slot scheduler for shared fiber. v0.0.3 literature-pass (May 15, 2026 — planning artifacts only, no code yet). Anchor paper: arXiv:2604.12982v1 (Chaudhary et al., Apr 14, 2026) — 80-channel WDM Monte Carlo, 45–65% unused-spectrum recovery, 3σ Reliability Horizon on Werner key reservoir, Bihill first-passage transition. Raman-physics anchor: Chapuran et al., NJP 11, 105001 (2009) — 96-DWDM, anti-Stokes spontaneous Raman dominance, optimal quantum λ at position 88 (1533.4 nm) / 96 (1530.2 nm). SKR formula set from Lo-Ma-Chen 2005 + Ma-Qi-Zhao-Lo 2005 (GLLP decoy-state, GYS regime μ≈0.48, η_detector≈1e-3, 140 km reach). Closest academic competitor: arXiv:2505.05351 Ware & Lourdiane — planning-time only, complementary not competing. Commercial whitespace: no vendor ships an opportunistic time-slot QKD-classical scheduler as of May 2026 (Toshiba/IDQ/QuintessenceLabs all wavelength-domain). Open competitive risk: KDDI+Toshiba OFC 2025 Tu3D.2 static O/C-band split (33.4 Tb/s + QKD over 80 km) could eat the market if industry converges on dedicated-band separation. Relevant: QKD-classical coexistence, opportunistic spectrum, Raman crosstalk, FWM in QKD, MCF field deployments (Nature L:SA 2025 25.2 km 110.8 Tb/s), hollow-core QKD, CV-QKD over 120 km, FMF Raman models, OFC/ECOC coexistence papers, anything from Toshiba QKD / ID Quantique / QuintessenceLabs / KDDI quantum-network division.
+
+- Qwashed (public_interest/qwashed, NOT a commercial path): free Apache-2.0 post-quantum hygiene platform for civil society (journalism, healthcare, legal aid, NGOs). v0.1.0 alpha. Two tools: (1) `qwashed audit` — HNDL exposure scoring + signed migration roadmap (NativeTlsProbe, PGP/S-MIME §3.4 + §3.2 + §3.5 added v0.2); (2) `qwashed vault` — local-only X25519 ‖ ML-KEM-768 KEM + Ed25519 ‖ ML-DSA-65 signatures. NIST FIPS 203 / 204 standards-track only — no Nyx, no Chaos Valley. 417 tests + 1 sslyze skip. Relevant: HNDL ("harvest now, decrypt later"), NIST PQC standards, civil-society security, TLS posture scanning, X25519/Kyber/Dilithium hybrid migration, OpenPGP / S-MIME modernization.
+
+- Hive Keyboard / Qstruct (blackbox/hive-keyboard): deterministic quantum-state addressing. 256/256 patterns at 100% fidelity (simulator); 1,175× vs QAOA on MaxCut at equal depth; hardware validation P51 65.75% raw / 99.50% mitigated, P126 59.12% / 97.02%. Relevant: deterministic state preparation, addressing schemes, classical-to-quantum encoding alternatives to amplitude/angle/QRAM, qstruct-style spectral pipelines.
+
+DO NOT USE — falsified or stale framings (March–May 2026 disproofs)
+- 67-69-76 triad as an "error-correction cycle" or "information coherence state machine" — DISPROVED on IBM Torino, March 2026. Recovery operators give ~0% fidelity; pattern labels reflect circuit complexity, not intrinsic quantum properties. Do NOT cite the triad as error correction.
+- "Noise-enhanced computation" / "Pattern 76 noise resilience as a pattern property" — REATTRIBUTED to circuit simplicity, not pattern identity. Pattern 0 matches or exceeds P76 noise resilience.
+- DMC3 — superseded internal codename. Use NyxSolver / qstruct / NyxChem as appropriate.
+- IQAS "144.9Q× combined speedup" — speculative composition number, do not cite.
+- "62× on H2O vs VQE" — superseded by NyxChem's actual 0.01% H2O error against PySCF CCSD(T) reference; reframe as "near-FCI ground-state accuracy" not a VQE speedup.
+- "21.3% improvement from bidirectional coupling" — keep general framing only; the specific number was problem-specific, not a universal constant.
+- NyxSolver as a SOTA optimizer — it is NOT competitive vs Gurobi on knapsack; ridge tuning is an internal-best improvement only.
+
+RULES
+- Return 1-3 sentences ONLY if a genuine, specific connection exists to a concept above.
+- Return exactly "None" if no clear connection exists. Default to None; do not force connections.
+- Be specific: name the Subvurs concept AND the article's element that links to it.
+- Never invoke a "DO NOT USE" framing even if the article seems to invite it.
+- Prefer commercial-path connections (Qfabric/NyxChem/NyxNet/Questimator/QCert/Qalyx/QJobLake/bioreg/NyxFiber/Qwashed/Hive) over pure-theory connections — commercial paths are the live product surface.
+- This is for internal research notes, not public display."""
 
 
 DIGEST_SYSTEM_PROMPT = """You are creating a daily digest summary for {curator_name}'s quantum computing news site. Write a compelling 2-3 paragraph summary of today's quantum news highlights.
