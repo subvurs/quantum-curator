@@ -110,6 +110,15 @@ jobs:
         continue-on-error: true
         run: quantum-curator email-insights
 
+      - name: Upload curator database artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: curator-db-${{ github.run_id }}
+          path: data/curator.db
+          retention-days: 30
+          if-no-files-found: warn
+
       - name: Save database cache
         uses: actions/cache/save@v4
         if: always()
