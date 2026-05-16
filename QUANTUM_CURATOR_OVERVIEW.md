@@ -1331,5 +1331,106 @@ Two secrets added: `SMTP_EMAIL`, `SMTP_APP_PASSWORD`.
 
 ---
 
-*Document updated: April 2, 2026*
-*Quantum Curator v1.5.1 — Daily insights email + Subvurs notes fix*
+## SUBVURS_NOTES Prompt Refresh — 11 Commercial Paths (v1.6.0 — May 15, 2026)
+
+### Why
+
+The Subvurs Notes prompt last touched in v1.5.1 (April 2, 2026) was frozen
+against the March 2026 snapshot of Subvurs research framing. Six weeks of
+project evolution and two falsification events later, an audit of the
+canonical CI-cached `data/curator.db` against the last 95 daily insights
+emails surfaced a quantified drift problem:
+
+| Framing in generated notes | Rate over last 95 emails | Status in Subvurs |
+|----------------------------|--------------------------|-------------------|
+| Pattern 67-69-76 triad as error-correction state machine | **38%** | Disproved March 2026 (5 hardware experiments on IBM Torino) |
+| "Noise-enhanced computation" / noise resilience claims | **52%** | Reattributed to circuit simplicity (Pattern 76 finding, April 2026) |
+| DMC3 / IQAS framing | **35%** | Stale codenames; superseded by Hive Keyboard + Qstruct + production paths |
+| Any reference to active commercial paths (a–h) | **0%** | None of the 8 paths nor public-interest Qwashed surfaced once |
+
+The prompt was producing notes that read as on-brand for legacy theory
+but didn't connect any article to a project Mark could actually ship.
+
+### What changed
+
+The `SUBVURS_NOTES_SYSTEM_PROMPT` constant in `quantum_curator/curator.py`
+(previously ~22 lines, March 18 vintage) was replaced with a ~70-line
+four-block structure:
+
+**Block 1 — CORE THEORY** (kept): Nyx equation, Chaos Valley as a band
+[0.4, 0.6] with the cliff at d=0.6 (April 25, 2026 117k-trial sweep), the
+T=0.857 73.4/26.6 split, inverse scaling, P51/P126, bidirectional
+84% advantage. Reframed away from "peak at d=0.504" toward
+"structured-emergence band with hard cliff at d=0.6."
+
+**Block 2 — ACTIVE COMMERCIAL PATHS** (new): 11 surfaces each with anchor
+papers, validation status (tests passing, backends used, hardware job
+IDs where applicable), competitive context, and a "Relevant articles:"
+trigger list to pattern-match incoming Curator articles:
+
+1. **Qfabric** (path_a) — cross-vendor compute fabric; v0.3.0-dev, 249/252 tests, IBM Fez+Kingston two-Bell hardware run, wire-cut LCU Option B routing (γ²=25 per CX)
+2. **NyxChem** (path_b) — quantum chemistry
+3. **NyxNet** (path_c) — distributed quantum networking control plane; Werner-state EPR memory, Planner+Repeater+Distillation+Scheduler
+4. **Questimator** (path_c sub) — γ-estimator; 9k-trial benchmark wins every cell, hardware pilot on ibm_marrakesh (job d7kn6ta8ui0s73b5fd30)
+5. **QCert** (path_d) — classical info-theoretic BB84+MDI-QKD certification auditor; v0.1.0, 59/59 tests, EAT finite-key + Ed25519 signing, Nyx-free
+6. **Qalyx** (path_e) — quantum hardware layer; v0.9.3, 550+ tests, QHAL v0.1.1 alignment, HERALDED_ERASE LER 2.00% → 0.70%
+7. **QJobLake** (path_f) — quantum job lakehouse
+8. **bioreg** (path_g) — biometric registry; v0.0.3, 236 tests, voice MFCC-128 + Merkle + Ed25519, fuzzy extractor through 16 byte errors
+9. **NyxFiber** (path_h) — QKD-classical fiber coexistence scheduler; v0.0.3 literature pass complete, all three gating PDFs read, no code yet
+10. **Qwashed** (public_interest) — HNDL auditor + hybrid-PQ vault; v0.1.0 alpha, 417 tests, X25519‖ML-KEM-768 + Ed25519‖ML-DSA-65, Apache-2.0, Nyx-free
+11. **Hive Keyboard / Qstruct** — deterministic state addressing; 256/256 patterns at 100% fidelity, +1175× vs QAOA on MaxCut
+
+**Block 3 — DO NOT USE** (new): explicit retirement list of 7 falsified
+or stale framings, each labeled with the falsification event and date:
+
+1. 67-69-76 triad as error-correction state machine — disproved March 2026
+2. "Noise-enhanced computation" as a quantum mechanism — reattributed to circuit simplicity April 2026
+3. DMC3 codename — stale, superseded by Hive/Qstruct
+4. IQAS 144.9Q× quantum advantage — speculative single-trial result
+5. "62× advantage of H2O ground-state vs VQE" — single-config result, not generalized
+6. "21.3% bidirectional error mitigation" as a universal constant — application-specific
+7. NyxSolver-as-SOTA on classical optimization — non-competitive vs Gurobi on knapsack despite the ridge tuning gain
+
+**Block 4 — RULES** (new):
+- Default to `None` when no genuine connection exists — false positives
+  are worse than misses
+- Prefer commercial-path connections over pure-theory connections when both apply
+- Never invoke any DO NOT USE framing, even if the article superficially echoes it
+- When connecting to a commercial path, name the specific module/test/job ID where possible
+
+### Quantified expectation
+
+If the next 95 emails show the same connection rate on legitimate
+articles (~5%) but reroute the framing distribution toward commercial
+paths and away from the DO NOT USE list, the refresh worked. The
+canonical DB lands as a CI artifact each morning
+(`actions/upload-artifact@v4` step added in commit b0612ee), so the
+post-refresh distribution is auditable on the same axes as the pre-
+refresh audit above.
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `quantum_curator/curator.py` | Replaced `SUBVURS_NOTES_SYSTEM_PROMPT` (lines 37–58) with four-block 11-path refresh |
+
+### Commits
+
+- **7149b74** — `Refresh SUBVURS_NOTES prompt: 11 commercial paths, drop falsified framings`
+- **b0612ee** — (previous) `daily-curator.yml: upload curator.db as artifact`
+
+### Out of scope (intentional)
+
+- No code changes outside `curator.py`. The note-generation loop, the
+  None-detection logic (fixed in v1.5.1), and the model ID
+  (`claude-3-haiku-20240307`, also fixed in v1.5.1) all remain.
+- No prompt-evaluation harness yet. Verification is by reading the
+  next ~2 weeks of daily insights emails plus an audit query against
+  the cached `subvurs_notes` column. If drift recurs, a regression
+  test that pattern-matches the DO NOT USE phrases against fresh
+  generations would be the next step.
+
+---
+
+*Document updated: May 15, 2026*
+*Quantum Curator v1.6.0 — SUBVURS_NOTES prompt refresh: 11 commercial paths, drop falsified framings*
