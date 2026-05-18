@@ -6,7 +6,9 @@ import json
 import sqlite3
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
+
+SaveOutcome = Literal["inserted", "updated", "fk_blocked", "other_error"]
 
 from .config import get_settings
 from .models import (
@@ -235,41 +237,125 @@ def _row_to_source(row: sqlite3.Row) -> Source:
 
 # --- RawArticle CRUD ---
 
-def save_article(article: RawArticle) -> RawArticle:
-    """Save a raw article to the database."""
+def save_article(article: RawArticle) -> tuple[SaveOutcome, RawArticle]:
+    """Save a raw article to the database.
+
+    Behaviour by URL state:
+      - URL is new           → INSERT, returns ("inserted", article)
+      - URL already present  → UPDATE in place, returns ("updated", article)
+                               (article.id is rewritten to the existing row's id
+                               so the caller sees a consistent identifier)
+
+    The UPDATE-on-collision design avoids SQLite's REPLACE conflict resolution,
+    which does DELETE-then-INSERT and triggers
+    `FOREIGN KEY constraint failed (19)` whenever a referencing
+    `curated_posts.article_id` exists. That FK violation was previously
+    swallowed silently by `except sqlite3.IntegrityError: pass`, which caused
+    every refetch of a curated URL to be reported as saved but actually be
+    dropped — the bug behind GH Actions runs that printed "Fetched 8 new
+    articles" while persisting zero rows.
+
+    `curated` is sticky-true on UPDATE: once an article has been marked
+    curated=1, subsequent fetch-path saves (which pass `article.curated=False`
+    by default) cannot un-curate it. The curator path
+    (`curator.py:188` setting `article.curated = True`) still flips
+    curated=0 → 1.
+    """
     conn = get_connection()
     try:
-        conn.execute("""
-            INSERT OR REPLACE INTO raw_articles
-            (id, source_id, source_name, source_type, title, url, summary, content,
-             author, image_url, published_at, fetched_at, arxiv_id, arxiv_categories,
-             arxiv_authors, relevance_score, detected_topics, curated)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
-            article.id,
-            article.source_id,
-            article.source_name,
-            article.source_type.value,
-            article.title,
-            article.url,
-            article.summary,
-            article.content,
-            article.author,
-            article.image_url,
-            article.published_at.isoformat() if article.published_at else None,
-            article.fetched_at.isoformat(),
-            article.arxiv_id,
-            json.dumps(article.arxiv_categories),
-            json.dumps(article.arxiv_authors),
-            article.relevance_score,
-            json.dumps([t.value for t in article.detected_topics]),
-            1 if article.curated else 0,
-        ))
-        conn.commit()
-    except sqlite3.IntegrityError:
-        pass  # Duplicate URL, ignore
-    conn.close()
-    return article
+        existing = conn.execute(
+            "SELECT id FROM raw_articles WHERE url = ?", (article.url,)
+        ).fetchone()
+
+        if existing is None:
+            conn.execute(
+                """
+                INSERT INTO raw_articles
+                (id, source_id, source_name, source_type, title, url, summary, content,
+                 author, image_url, published_at, fetched_at, arxiv_id, arxiv_categories,
+                 arxiv_authors, relevance_score, detected_topics, curated)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    article.id,
+                    article.source_id,
+                    article.source_name,
+                    article.source_type.value,
+                    article.title,
+                    article.url,
+                    article.summary,
+                    article.content,
+                    article.author,
+                    article.image_url,
+                    article.published_at.isoformat() if article.published_at else None,
+                    article.fetched_at.isoformat(),
+                    article.arxiv_id,
+                    json.dumps(article.arxiv_categories),
+                    json.dumps(article.arxiv_authors),
+                    article.relevance_score,
+                    json.dumps([t.value for t in article.detected_topics]),
+                    1 if article.curated else 0,
+                ),
+            )
+            conn.commit()
+            outcome: SaveOutcome = "inserted"
+        else:
+            article.id = existing["id"]
+            conn.execute(
+                """
+                UPDATE raw_articles SET
+                    source_id = ?,
+                    source_name = ?,
+                    source_type = ?,
+                    title = ?,
+                    summary = ?,
+                    content = ?,
+                    author = ?,
+                    image_url = ?,
+                    published_at = ?,
+                    fetched_at = ?,
+                    arxiv_id = ?,
+                    arxiv_categories = ?,
+                    arxiv_authors = ?,
+                    relevance_score = ?,
+                    detected_topics = ?,
+                    curated = CASE WHEN curated = 1 THEN 1 ELSE ? END
+                WHERE id = ?
+                """,
+                (
+                    article.source_id,
+                    article.source_name,
+                    article.source_type.value,
+                    article.title,
+                    article.summary,
+                    article.content,
+                    article.author,
+                    article.image_url,
+                    article.published_at.isoformat() if article.published_at else None,
+                    article.fetched_at.isoformat(),
+                    article.arxiv_id,
+                    json.dumps(article.arxiv_categories),
+                    json.dumps(article.arxiv_authors),
+                    article.relevance_score,
+                    json.dumps([t.value for t in article.detected_topics]),
+                    1 if article.curated else 0,
+                    article.id,
+                ),
+            )
+            conn.commit()
+            outcome = "updated"
+    except sqlite3.IntegrityError as exc:
+        # Defensive classifier: with the UPDATE-on-collision path above the
+        # curated_posts FK can no longer fire, but any future schema or call
+        # path that re-introduces a FOREIGN KEY violation will be visible
+        # rather than silently swallowed.
+        if "FOREIGN KEY" in str(exc):
+            outcome = "fk_blocked"
+        else:
+            outcome = "other_error"
+    finally:
+        conn.close()
+    return outcome, article
 
 
 def get_article(article_id: str) -> RawArticle | None:
@@ -330,7 +416,7 @@ def list_raw_articles(
     return list_articles(since=since, min_relevance=min_relevance, curated=curated, limit=limit)
 
 
-def save_raw_article(article: RawArticle) -> RawArticle:
+def save_raw_article(article: RawArticle) -> tuple[SaveOutcome, RawArticle]:
     """Alias for save_article."""
     return save_article(article)
 

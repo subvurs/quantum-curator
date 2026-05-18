@@ -72,10 +72,29 @@ def fetch(force: bool, source: str | None):
             console=console,
         ) as progress:
             task = progress.add_task("Fetching articles...", total=None)
-            articles = await aggregator.fetch_all_sources(sources=sources, force=force)
+            articles, counts = await aggregator.fetch_all_sources(sources=sources, force=force)
             progress.update(task, completed=True)
 
-        console.print(f"\n[green]Fetched {len(articles)} new articles[/]")
+        console.print(
+            f"\n[green]Fetched {len(articles)} articles:[/] "
+            f"{counts['inserted']} inserted, "
+            f"{counts['updated']} updated, "
+            f"{counts['fk_blocked']} fk_blocked, "
+            f"{counts['other_error']} other_errors"
+        )
+
+        # Make silent save failures loud — but NOT fatal. Non-zero exit
+        # here would cancel the downstream curate/build/deploy/email-insights
+        # steps in GH Actions, which is the exact "surprise breakage" rule
+        # this fetch instrumentation was meant to PREVENT, not cause. The
+        # WARNING line is still grep-able in the run log for monitoring.
+        if counts["fk_blocked"] > 0 or counts["other_error"] > 0:
+            console.print(
+                f"[bold red]WARNING:[/] {counts['fk_blocked']} fk_blocked + "
+                f"{counts['other_error']} other_errors during save. "
+                "These articles were NOT persisted to the database. "
+                "Continuing pipeline with the articles that did persist."
+            )
 
         if articles:
             table = Table(title="Recent Articles")
@@ -236,8 +255,19 @@ def run(force_fetch: bool, do_deploy: bool):
         # Step 1: Fetch
         console.print(Panel("[bold blue]Step 1: Fetching articles[/]"))
         aggregator = Aggregator()
-        articles = await aggregator.fetch_all_sources(force=force_fetch)
-        console.print(f"[green]Fetched {len(articles)} new articles[/]\n")
+        articles, counts = await aggregator.fetch_all_sources(force=force_fetch)
+        console.print(
+            f"[green]Fetched {len(articles)} new articles[/] "
+            f"({counts['inserted']} inserted, {counts['updated']} updated, "
+            f"{counts['fk_blocked']} fk_blocked, {counts['other_error']} other_errors)\n"
+        )
+        if counts["fk_blocked"] > 0 or counts["other_error"] > 0:
+            console.print(
+                f"[bold red]WARNING:[/] {counts['fk_blocked']} fk_blocked + "
+                f"{counts['other_error']} other_errors during save. "
+                "These articles were NOT persisted to the database. "
+                "Continuing pipeline with the articles that did persist."
+            )
 
         # Step 2: Curate
         console.print(Panel("[bold blue]Step 2: Curating content[/]"))

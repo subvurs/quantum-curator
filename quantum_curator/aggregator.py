@@ -25,7 +25,7 @@ class Aggregator:
         self,
         sources: list[Source] | None = None,
         force: bool = False,
-    ) -> list[RawArticle]:
+    ) -> tuple[list[RawArticle], dict[str, int]]:
         """Fetch articles from all sources.
 
         Args:
@@ -33,7 +33,10 @@ class Aggregator:
             force: Fetch even if within interval
 
         Returns:
-            List of new articles (deduplicated)
+            Tuple of (filtered articles, save outcome counts). The counts
+            dict has keys 'inserted', 'updated', 'fk_blocked', 'other_error'
+            so the CLI can report — and gate on — actual persistence rather
+            than the in-memory length of `filtered`.
         """
         if sources is None:
             sources = db.list_sources(enabled=True)
@@ -99,11 +102,19 @@ class Aggregator:
         if dropped:
             print(f"Dropped {dropped} articles older than {self.settings.max_article_age_days} days")
 
-        # Save to database
+        # Save to database, tracking per-outcome counts so the caller can
+        # distinguish "8 articles in memory" from "8 articles persisted".
+        counts: dict[str, int] = {
+            "inserted": 0,
+            "updated": 0,
+            "fk_blocked": 0,
+            "other_error": 0,
+        }
         for article in filtered:
-            db.save_raw_article(article)
+            outcome, _ = db.save_raw_article(article)
+            counts[outcome] += 1
 
-        return filtered
+        return filtered, counts
 
     async def _fetch_source(self, source: Source) -> list[RawArticle]:
         """Fetch articles from a single source."""
@@ -271,7 +282,7 @@ class Aggregator:
         return articles[:limit]
 
 
-async def fetch_and_score(force: bool = False) -> list[RawArticle]:
+async def fetch_and_score(force: bool = False) -> tuple[list[RawArticle], dict[str, int]]:
     """Convenience function to fetch and score all sources."""
     aggregator = Aggregator()
     return await aggregator.fetch_all_sources(force=force)
