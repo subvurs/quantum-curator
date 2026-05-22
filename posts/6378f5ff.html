@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systematic construction of digital autonomous quantum error correction for state preparation and error suppression via conditional Gaussian operations | Quantum Crier</title>
-    <meta name="description" content="In continuous-variable quantum computing, autonomous quantum error correction (QEC) can dissipatively steer a noisy quantum state into a target state or manifol">
+    <title>Concatenating Algebraic Codes over High-Rate Quantum LDPC Codes | Quantum Crier</title>
+    <meta name="description" content="Different quantum error correction schemes trade off overhead, error suppression, and hardware connectivity. Code concatenation can relax these tradeoffs by usi">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Systematic construction of digital autonomous quantum error correction for state preparation and error suppression via conditional Gaussian operations">
+    <meta property="og:title" content="Concatenating Algebraic Codes over High-Rate Quantum LDPC Codes">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,15 +58,17 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
             <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Systematic construction of digital autonomous quantum error correction for state preparation and error suppression via conditional Gaussian operations</h1>
+        <h1>Concatenating Algebraic Codes over High-Rate Quantum LDPC Codes</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">March 23, 2026</span>
+            <span class="date">May 21, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -77,18 +79,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This article presents a breakthrough approach to quantum error correction in continuous-variable systems by introducing &#34;digital autonomous QEC&#34; that can automatically steer quantum states toward target configurations without constant monitoring and feedback loops. The technique cleverly uses conditional Gaussian operations compiled into practical gate sequences, demonstrating how to prepare exotic non-Gaussian states needed for universal quantum computing while simultaneously suppressing errors in fragile quantum superposition states like Schrödinger cat states. What makes this particularly exciting is that the researchers provide explicit gate decompositions and realistic performance evaluations under real-world imperfections, bridging the gap between theoretical autonomous error correction concepts and implementable quantum circuits. This work could significantly reduce the overhead of error correction in photonic quantum computers by making the process more passive and efficient, potentially accelerating the path to fault-tolerant continuous-variable quantum computing.
+                This article tackles one of quantum computing&#39;s biggest challenges by cleverly combining two different error correction approaches to get the best of both worlds. The researchers show how to use high-rate quantum LDPC codes as a foundation layer, then stack algebraic codes on top to handle the complex correlated errors that emerge when you pack many logical qubits into single code blocks. What makes this particularly exciting is their demonstration that the concatenated system can reach the &#34;teraquop&#34; regime - a threshold where quantum computers become genuinely useful for practical applications - something the individual codes couldn&#39;t achieve alone. The work also reveals an intriguing insight that fault tolerance behaves very differently for high-dimensional quantum systems compared to traditional qubits, potentially opening new pathways for building more efficient quantum error correction schemes.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>In continuous-variable quantum computing, autonomous quantum error correction (QEC) can dissipatively steer a noisy quantum state into a target state or manifold, enabling robust quantum information processing without explicit syndrome measurements and feedback. Here, we propose a nullifier-based digital autonomous QEC enabled by conditional Gaussian operations. By designing jump operators for target nullifiers and compiling the resulting Lindbladian into a Trotterized sequence of elementary conditional Gaussian operations, we demonstrate two use cases: (i) deterministic preparation of non-Gaussian resource states for universal computation, including finitely squeezed cubic phase states and approximate trisqueezed states, and (ii) autonomous suppression of dephasing error for cat and squeezed cat states. We provide explicit gate decompositions for the required conditional Gaussian operations and numerically evaluate the performance under realistic imperfections, including photon loss in the bosonic mode and ancillary-qubit decoherence. Our results clarify the resource requirements and trade-offs, such as circuit depth, time-step choices, and the required set of conditional Gaussian operations, for scalable, gate-level implementations of autonomous state preparation and error suppression.</p>
+            <p>Different quantum error correction schemes trade off overhead, error suppression, and hardware connectivity. Code concatenation can relax these tradeoffs by using an outer code whose non-local connectivity is supplied by logical operations of an inner code rather than directly by hardware. Prior works showed that this can reduce memory overhead for local low-rate inner codes such as the surface code. Here, we study concatenation over non-local, high-rate inner codes. Such inner codes experience correlated errors among the many logical qubits in a single codeblock. We handle this by treating each block as a single logical Galois qudit, enabling concatenation with algebraic outer codes with excellent parameters and, crucially, list decoders. In particular, we consider a memory system formed by concatenating quantum Reed-Solomon outer codes over the gross code. For fault-tolerant syndrome extraction, we develop a Galois qudit Shor scheme using &#34;time-like&#34; Reed-Solomon protection against measurement errors. Interestingly, a lightweight fault tolerance scheme, that would fail for qubits, works well for large-alphabet qudits, suggesting a very different theory of fault tolerance for such qudits. The whole protocol is optimised via improved bicycle instruction logical error rates, novel compilation strategies, and recent decoder post-selection rules. At uniform $10^{-3}$ physical noise, the concatenated gross code reaches the teraquop regime, which it previously could not access, with a lower space overhead than the $288$-qubit two-gross code, while offering several advantages from the engineering standpoint. Beyond our main case study, we believe the core ideas of Galois qudits, quantum Reed-Solomon outer codes, and list decoding, will prove generically powerful and highly transferable ideas across high-rate quantum architectures.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2603.21598v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2605.21898v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -98,8 +100,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Systematic%20construction%20of%20digital%20autonomous%20quantum%20error%20correction%20for%20state%20preparation%20and%20error%20suppression%20via%20conditional%20Gaussian%20operations&url=https://quantumcrier.com/posts/3f77e450.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/3f77e450.html&title=Systematic%20construction%20of%20digital%20autonomous%20quantum%20error%20correction%20for%20state%20preparation%20and%20error%20suppression%20via%20conditional%20Gaussian%20operations" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Concatenating%20Algebraic%20Codes%20over%20High-Rate%20Quantum%20LDPC%20Codes&url=https://quantumcrier.com/posts/6378f5ff.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/6378f5ff.html&title=Concatenating%20Algebraic%20Codes%20over%20High-Rate%20Quantum%20LDPC%20Codes" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

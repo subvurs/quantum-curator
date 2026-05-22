@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural network approach to mitigating intra-gate crosstalk in superconducting CZ gates | Quantum Crier</title>
-    <meta name="description" content="The potential of quantum computing is fundamentally constrained by the inherent susceptibility of qubits to noise and crosstalk, particularly during multi-qubit">
+    <title>QuCtrl-BELL: A Compiler-Driven Sub-Microsecond Feedback Control Stack for Scalable Trapped-Ion Quantum Experiments | Quantum Crier</title>
+    <meta name="description" content="As trapped-ion quantum computing scales to larger qubit registers and more complex control protocols, classical control systems face a fundamental tradeoff: sub">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Neural network approach to mitigating intra-gate crosstalk in superconducting CZ gates">
+    <meta property="og:title" content="QuCtrl-BELL: A Compiler-Driven Sub-Microsecond Feedback Control Stack for Scalable Trapped-Ion Quantum Experiments">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,15 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
-            
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>Neural network approach to mitigating intra-gate crosstalk in superconducting CZ gates</h1>
+        <h1>QuCtrl-BELL: A Compiler-Driven Sub-Microsecond Feedback Control Stack for Scalable Trapped-Ion Quantum Experiments</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">March 23, 2026</span>
+            <span class="date">May 21, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -77,18 +75,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research tackles one of the most persistent challenges in superconducting quantum computers: crosstalk between qubits during two-qubit gate operations, which can severely degrade computational accuracy as systems scale up. The novel physics-guided neural control framework represents a promising fusion of machine learning with quantum control theory, automatically generating smoother, more robust control pulses that outperform traditional optimization methods like Krotov&#39;s approach. What makes this particularly compelling is the method&#39;s focus on practical constraints and real-world noise conditions, suggesting it could translate directly to improving gate fidelities in current superconducting quantum processors from IBM, Google, and others. The emphasis on worst-case performance improvements is especially valuable for near-term quantum applications where reliability under varying conditions remains a critical bottleneck.
+                This article addresses a critical bottleneck in scaling trapped-ion quantum computers: the classical control systems that manage qubits need to respond in sub-microsecond timeframes while remaining flexible enough for researchers to program complex experiments. The QuCtrl-BELL compiler represents a significant engineering breakthrough by automatically translating high-level Python code into optimized, real-time control programs that can execute feedback loops in under 700 nanoseconds without involving the host computer. This compiler-driven approach could be transformative for the trapped-ion quantum computing field, as it eliminates the traditional tradeoff between fast hardware control and programmable software interfaces that has historically limited experimental flexibility. The work demonstrates how sophisticated compiler techniques from classical computing can solve fundamental infrastructure challenges in quantum systems, potentially accelerating the development of larger, more capable trapped-ion quantum computers.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The potential of quantum computing is fundamentally constrained by the inherent susceptibility of qubits to noise and crosstalk, particularly during multi-qubit gate operations. Existing strategies, such as hardware isolation and dynamical decoupling, face limitations in scalability, experimental feasibility, and robustness against complex noise sources. In this manuscript, we propose a physics-guided neural control (PGNC) framework to generate robust control pulses for superconducting transmon qubit systems, specifically targeting crosstalk mitigation. By combining a hardware aware parameterization with a Hamiltonian-informed objective that accounts for condition-dependent crosstalk distortions, PGNC steers the search toward smooth and physically realizable pulses while efficiently exploring high dimensional control landscapes. Numerical simulations for the CZ gate demonstrate superior fidelity and pulse smoothness compared to a Krotov baseline under matched constraints. Taken together, the results show consistent and practically meaningful improvements in both nominal and perturbed conditions, with pronounced gains in worst-case fidelity, supporting PGNC as a viable route to robust control on near-term transmon devices.</p>
+            <p>As trapped-ion quantum computing scales to larger qubit registers and more complex control protocols, classical control systems face a fundamental tradeoff: sub-microsecond board-level feedback requires tight hardware coupling, whereas maintainability and extensibility require clean, modular software abstractions. This paper presents QuCtrl-BELL (Bell), a compiler-driven software stack for trapped-ion quantum control. The design resolves this tradeoff by decoupling control flow -- including loops, branches, and synchronization -- from hardware state data. A Python-embedded domain-specific language (DSL) is lowered through a six-stage transpilation pipeline covering control flow graph (CFG) construction, static single-assignment (SSA) conversion, liveness analysis, and graph-coloring register allocation. The compiler generates deterministic distributed board-level programs and compact step-table data. A cross-board synchronization protocol supports feedback loops with latency below 700~ns without host intervention. Bell is deployed and evaluated on the QuCtrl-BELL platform (RISC-V + PXIe), demonstrating that a compiler-based infrastructure can provide programmability, deterministic timing, and modularity for scalable trapped-ion quantum control.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2603.21631v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2605.22433v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -98,8 +96,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Neural%20network%20approach%20to%20mitigating%20intra-gate%20crosstalk%20in%20superconducting%20CZ%20gates&url=https://quantumcrier.com/posts/a12b602d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a12b602d.html&title=Neural%20network%20approach%20to%20mitigating%20intra-gate%20crosstalk%20in%20superconducting%20CZ%20gates" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=QuCtrl-BELL%3A%20A%20Compiler-Driven%20Sub-Microsecond%20Feedback%20Control%20Stack%20for%20Scalable%20Trapped-Ion%20Quantum%20Experiments&url=https://quantumcrier.com/posts/5e30d362.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5e30d362.html&title=QuCtrl-BELL%3A%20A%20Compiler-Driven%20Sub-Microsecond%20Feedback%20Control%20Stack%20for%20Scalable%20Trapped-Ion%20Quantum%20Experiments" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
