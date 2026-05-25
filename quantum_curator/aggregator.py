@@ -44,8 +44,26 @@ class Aggregator:
         now = datetime.utcnow()
         articles: list[RawArticle] = []
 
-        # Fetch from each source
-        tasks = []
+        # Per-source outcome tracking. Previously _fetch_source swallowed
+        # every exception with a bare print(), so the caller could not
+        # distinguish "feed returned []" from "feed raised TimeoutError"
+        # from "feed raised ParseError". That made it possible for 12 of
+        # 19 sources to silently return zero articles for a week (May
+        # 18-25 2026) while the fetch summary still reported a clean
+        # number. _fetch_source now lets exceptions propagate to
+        # asyncio.gather(return_exceptions=True), where we classify
+        # them per-source and roll them into `counts` for the CLI to
+        # warn on.
+        source_ok = 0
+        source_empty = 0
+        source_error = 0
+        source_skipped_interval = 0
+        source_failures: list[dict[str, str]] = []
+        empty_sources: list[str] = []
+
+        # Build (source, coro) pairs so we can attribute each gather
+        # result back to the source that produced it.
+        pending: list[tuple[Source, Any]] = []
         for source in sources:
             # Check if fetch is due
             if not force and source.last_fetched_at:
@@ -53,17 +71,45 @@ class Aggregator:
                     hours=source.fetch_interval_hours
                 )
                 if now < next_fetch:
+                    source_skipped_interval += 1
                     continue
 
-            tasks.append(self._fetch_source(source))
+            pending.append((source, self._fetch_source(source)))
 
-        if tasks:
-            results = await asyncio.gather(*tasks, return_exceptions=True)
-            for result in results:
-                if isinstance(result, list):
-                    articles.extend(result)
-                elif isinstance(result, Exception):
-                    print(f"Fetch error: {result}")
+        if pending:
+            results = await asyncio.gather(
+                *(coro for _, coro in pending),
+                return_exceptions=True,
+            )
+            for (source, _), result in zip(pending, results):
+                if isinstance(result, BaseException):
+                    source_error += 1
+                    source_failures.append({
+                        "source": source.name,
+                        "error_type": type(result).__name__,
+                        "error": str(result)[:200],
+                    })
+                    print(
+                        f"Fetch error from {source.name}: "
+                        f"{type(result).__name__}: {result}"
+                    )
+                elif isinstance(result, list):
+                    if result:
+                        source_ok += 1
+                        articles.extend(result)
+                    else:
+                        source_empty += 1
+                        empty_sources.append(source.name)
+                else:
+                    # Defensive: signature is list[RawArticle], but
+                    # classify anything else as an error so we don't
+                    # silently drop it like the old code path did.
+                    source_error += 1
+                    source_failures.append({
+                        "source": source.name,
+                        "error_type": "UnexpectedReturnType",
+                        "error": f"got {type(result).__name__}",
+                    })
 
         # Deduplicate
         unique_articles = self._deduplicate(articles)
@@ -104,11 +150,20 @@ class Aggregator:
 
         # Save to database, tracking per-outcome counts so the caller can
         # distinguish "8 articles in memory" from "8 articles persisted".
-        counts: dict[str, int] = {
+        # Source-fetch outcomes (ok / empty / error / skipped_interval)
+        # are folded into the same dict so existing 2-tuple callers
+        # (cli.fetch, fetch_and_score) don't need a signature change.
+        counts: dict[str, Any] = {
             "inserted": 0,
             "updated": 0,
             "fk_blocked": 0,
             "other_error": 0,
+            "sources_ok": source_ok,
+            "sources_empty": source_empty,
+            "sources_error": source_error,
+            "sources_skipped_interval": source_skipped_interval,
+            "source_failures": source_failures,
+            "empty_sources": empty_sources,
         }
         for article in filtered:
             outcome, _ = db.save_raw_article(article)
@@ -117,17 +172,22 @@ class Aggregator:
         return filtered, counts
 
     async def _fetch_source(self, source: Source) -> list[RawArticle]:
-        """Fetch articles from a single source."""
+        """Fetch articles from a single source.
+
+        Exceptions are deliberately allowed to propagate. The caller
+        (`fetch_all_sources`) wraps this in
+        `asyncio.gather(return_exceptions=True)` and classifies each
+        failure into `counts['source_failures']` so silent feed breakage
+        becomes visible in the run log instead of looking like an empty
+        feed. `last_fetched_at` is only updated on success — a source
+        that consistently errors will keep being retried each run, which
+        is the intended behavior.
+        """
         fetcher = get_source_fetcher(source)
-        try:
-            articles = await fetcher.fetch(source)
-            # Update last fetched time
-            source.last_fetched_at = datetime.utcnow()
-            db.save_source(source)
-            return articles
-        except Exception as e:
-            print(f"Error fetching {source.name}: {e}")
-            return []
+        articles = await fetcher.fetch(source)
+        source.last_fetched_at = datetime.utcnow()
+        db.save_source(source)
+        return articles
 
     def _deduplicate(self, articles: list[RawArticle]) -> list[RawArticle]:
         """Remove duplicate articles based on URL and content similarity."""

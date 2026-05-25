@@ -83,6 +83,19 @@ def fetch(force: bool, source: str | None):
             f"{counts['other_error']} other_errors"
         )
 
+        # Per-source fetch outcomes (instrumentation added 2026-05-25 to
+        # surface the silent fetcher-failure mode that hid 12 of 19
+        # zero-yield sources for a week). sources_ok / sources_empty /
+        # sources_error / sources_skipped_interval sum to the number of
+        # sources actually attempted this run.
+        console.print(
+            f"[cyan]Sources:[/] "
+            f"{counts['sources_ok']} ok, "
+            f"{counts['sources_empty']} empty, "
+            f"{counts['sources_error']} errored, "
+            f"{counts['sources_skipped_interval']} skipped (interval)"
+        )
+
         # Make silent save failures loud — but NOT fatal. Non-zero exit
         # here would cancel the downstream curate/build/deploy/email-insights
         # steps in GH Actions, which is the exact "surprise breakage" rule
@@ -94,6 +107,33 @@ def fetch(force: bool, source: str | None):
                 f"{counts['other_error']} other_errors during save. "
                 "These articles were NOT persisted to the database. "
                 "Continuing pipeline with the articles that did persist."
+            )
+
+        # Surface per-source failures and persistent empties. Both are
+        # warnings (not fatal) for the same GH-Actions-pipeline reason
+        # as the save-failure WARNING above — a flaky feed should not
+        # block curate/build/deploy/email-insights.
+        if counts["source_failures"]:
+            failures_table = Table(title="Source Fetch Errors")
+            failures_table.add_column("Source", style="yellow")
+            failures_table.add_column("Error Type", style="red")
+            failures_table.add_column("Message", style="dim")
+            for f in counts["source_failures"]:
+                failures_table.add_row(
+                    f["source"],
+                    f["error_type"],
+                    f["error"][:100] + ("..." if len(f["error"]) > 100 else ""),
+                )
+            console.print(failures_table)
+            console.print(
+                f"[bold red]WARNING:[/] {len(counts['source_failures'])} source(s) "
+                "failed to fetch this run. Continuing with the rest."
+            )
+
+        if counts["empty_sources"]:
+            console.print(
+                f"[yellow]Empty sources this run:[/] "
+                f"{', '.join(counts['empty_sources'])}"
             )
 
         if articles:
