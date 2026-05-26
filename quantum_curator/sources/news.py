@@ -38,6 +38,12 @@ class NewsAPIFetcher:
         Returns:
             List of RawArticle objects
         """
+        # Missing API key is a CONFIG state, not a runtime fetch error.
+        # Returning [] keeps the source classified as `sources_empty`
+        # rather than `sources_error` in the aggregator instrumentation —
+        # the operator's signal here is "set NEWS_API_KEY," not "fix the
+        # feed." Distinguished from HTTPError/NewsAPI-status below,
+        # which DO propagate as real errors (2026-05-25 patch).
         if not self.api_key:
             print("NewsAPI key not configured")
             return []
@@ -57,18 +63,22 @@ class NewsAPIFetcher:
             "apiKey": self.api_key,
         }
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                response = await client.get(NEWSAPI_URL, params=params)
-                response.raise_for_status()
-                data = response.json()
-        except httpx.HTTPError as e:
-            print(f"Error fetching NewsAPI: {e}")
-            return []
+        # HTTPError propagates (see arxiv.py / rss.py rationale).
+        async with httpx.AsyncClient(timeout=self.timeout) as client:
+            response = await client.get(NEWSAPI_URL, params=params)
+            response.raise_for_status()
+            data = response.json()
 
+        # NewsAPI signals application-level failure (quota exhausted,
+        # bad parameters, etc.) via 200 OK with status="error" in the
+        # body. Previously printed-and-returned-[], which collapsed to
+        # an "empty" reading in the aggregator. Raise so it surfaces as
+        # source_failures with the NewsAPI message.
         if data.get("status") != "ok":
-            print(f"NewsAPI error: {data.get('message', 'Unknown error')}")
-            return []
+            raise RuntimeError(
+                f"NewsAPI status={data.get('status')!r}: "
+                f"{data.get('message', 'unknown error')}"
+            )
 
         articles = []
         for item in data.get("articles", []):
@@ -96,6 +106,7 @@ class NewsAPIFetcher:
         Returns:
             List of RawArticle objects
         """
+        # Config-state vs runtime-error distinction — see fetch() above.
         if not self.api_key:
             print("NewsAPI key not configured")
             return []
@@ -111,17 +122,17 @@ class NewsAPIFetcher:
             "apiKey": self.api_key,
         }
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                response = await client.get(NEWSAPI_URL, params=params)
-                response.raise_for_status()
-                data = response.json()
-        except httpx.HTTPError as e:
-            print(f"Error fetching NewsAPI: {e}")
-            return []
+        # HTTPError propagates — see fetch() above.
+        async with httpx.AsyncClient(timeout=self.timeout) as client:
+            response = await client.get(NEWSAPI_URL, params=params)
+            response.raise_for_status()
+            data = response.json()
 
         if data.get("status") != "ok":
-            return []
+            raise RuntimeError(
+                f"NewsAPI status={data.get('status')!r}: "
+                f"{data.get('message', 'unknown error')}"
+            )
 
         articles = []
         for item in data.get("articles", []):

@@ -67,7 +67,7 @@ class Source(BaseModel):
     feed_url: str | None = None
 
     # For arXiv
-    arxiv_categories: list[str] = Field(default_factory=list)  # e.g., ["quant-ph", "cs.QI"]
+    arxiv_categories: list[str] = Field(default_factory=list)  # e.g., ["quant-ph"]
 
     # For NewsAPI
     news_query: str | None = None

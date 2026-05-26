@@ -55,14 +55,16 @@ class ArxivFetcher:
             "sortOrder": "descending",
         }
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                response = await client.get(ARXIV_API_URL, params=params)
-                response.raise_for_status()
-                content = response.text
-        except httpx.HTTPError as e:
-            print(f"Error fetching arXiv: {e}")
-            return []
+        # HTTPError (timeout, 4xx, 5xx, 429) is deliberately NOT caught
+        # here. The previous `except httpx.HTTPError: return []` made a
+        # rate-limited / down arXiv look identical to "feed is empty
+        # today" — the aggregator-level instrumentation could not
+        # distinguish them. Propagating to asyncio.gather lets it land
+        # in counts['source_failures'] with a real error type.
+        async with httpx.AsyncClient(timeout=self.timeout) as client:
+            response = await client.get(ARXIV_API_URL, params=params)
+            response.raise_for_status()
+            content = response.text
 
         return self._parse_response(content, source)
 
@@ -82,8 +84,11 @@ class ArxivFetcher:
         Returns:
             List of RawArticle objects
         """
-        # Combine query with quantum categories
-        categories = source.arxiv_categories or ["quant-ph", "cs.QI"]
+        # Combine query with quantum categories. Previously defaulted to
+        # ["quant-ph", "cs.QI"] but cs.QI is not a valid arXiv category
+        # (see registry.py note dated 2026-05-25). quant-ph alone now;
+        # cross-listed quantum info papers already surface via quant-ph.
+        categories = source.arxiv_categories or ["quant-ph"]
         cat_query = " OR ".join(f"cat:{cat}" for cat in categories)
         full_query = f"({query}) AND ({cat_query})"
 
@@ -95,26 +100,26 @@ class ArxivFetcher:
             "sortOrder": "descending",
         }
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                response = await client.get(ARXIV_API_URL, params=params)
-                response.raise_for_status()
-                content = response.text
-        except httpx.HTTPError as e:
-            print(f"Error fetching arXiv: {e}")
-            return []
+        # HTTPError propagates — see fetch() above for rationale.
+        async with httpx.AsyncClient(timeout=self.timeout) as client:
+            response = await client.get(ARXIV_API_URL, params=params)
+            response.raise_for_status()
+            content = response.text
 
         return self._parse_response(content, source)
 
     def _parse_response(self, xml_content: str, source: Source) -> list[RawArticle]:
-        """Parse arXiv API XML response."""
-        articles = []
+        """Parse arXiv API XML response.
 
-        try:
-            root = ET.fromstring(xml_content)
-        except ET.ParseError as e:
-            print(f"Error parsing arXiv XML: {e}")
-            return []
+        ParseError is NOT caught — malformed XML from arXiv is a real
+        failure (likely indicates the API returned an HTML error page
+        through a misconfigured proxy or similar). Per the 2026-05-25
+        instrumentation patch, feed-level failures must propagate to
+        the aggregator so they're classified as `source_failures`
+        rather than silently flattened to empty results.
+        """
+        articles = []
+        root = ET.fromstring(xml_content)
 
         for entry in root.findall(f"{ATOM_NS}entry"):
             article = self._parse_entry(entry, source)

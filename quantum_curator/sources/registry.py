@@ -28,13 +28,16 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         "arxiv_categories": ["quant-ph"],
         "fetch_interval_hours": 12,
     },
-    {
-        "name": "arXiv Quantum Information",
-        "source_type": SourceType.ARXIV,
-        "url": "https://arxiv.org",
-        "arxiv_categories": ["cs.QI"],
-        "fetch_interval_hours": 12,
-    },
+    # Note (2026-05-25): "arXiv Quantum Information" was previously seeded
+    # with arxiv_categories=["cs.QI"]. cs.QI is not a valid arXiv category
+    # (the actual cs.* taxonomy has no QI entry); the API silently returns
+    # totalResults=0 for invalid categories. The source produced zero
+    # articles for the ~70 days it was active. quant-ph already covers
+    # quantum information papers via cross-listing. Removed rather than
+    # repointed to cs.IT (classical info theory, would dilute relevance).
+    # Existing DB rows by this name are NOT auto-pruned by
+    # register_builtin_sources — drop manually with:
+    #   DELETE FROM sources WHERE name = 'arXiv Quantum Information';
 
     # --- Major Quantum Companies ---
     {

@@ -21,22 +21,26 @@ class RSSFetcher:
         self.timeout = timeout or settings.fetch_timeout
 
     async def fetch(self, source: Source) -> list[RawArticle]:
-        """Fetch articles from an RSS feed source."""
+        """Fetch articles from an RSS feed source.
+
+        HTTPError (timeout, 4xx, 5xx) is deliberately NOT caught here.
+        The previous `except httpx.HTTPError: return []` made a flaky
+        feed look identical to "no new posts today" — the
+        aggregator-level instrumentation could not distinguish them.
+        Propagating to asyncio.gather lets it land in
+        counts['source_failures'] (2026-05-25 patch).
+        """
         if not source.feed_url:
             return []
 
-        try:
-            async with httpx.AsyncClient(
-                timeout=self.timeout,
-                follow_redirects=True,
-                headers={"User-Agent": "QuantumCurator/1.0 (+https://quantum-pulse.github.io)"},
-            ) as client:
-                response = await client.get(source.feed_url)
-                response.raise_for_status()
-                content = response.text
-        except httpx.HTTPError as e:
-            print(f"Error fetching RSS feed {source.feed_url}: {e}")
-            return []
+        async with httpx.AsyncClient(
+            timeout=self.timeout,
+            follow_redirects=True,
+            headers={"User-Agent": "QuantumCurator/1.0 (+https://quantum-pulse.github.io)"},
+        ) as client:
+            response = await client.get(source.feed_url)
+            response.raise_for_status()
+            content = response.text
 
         feed = feedparser.parse(content)
         articles = []
