@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Logical Circuits: Hardware-Aware Analysis of Expressibility and Trainability in Variational Quantum Algorithms | Quantum Crier</title>
+    <meta name="description" content="Variational quantum algorithms (VQAs) rely on parameterized quantum circuits (PQCs), whose performance is governed by expressibility and trainability. Existing ">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Beyond Logical Circuits: Hardware-Aware Analysis of Expressibility and Trainability in Variational Quantum Algorithms">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Beyond Logical Circuits: Hardware-Aware Analysis of Expressibility and Trainability in Variational Quantum Algorithms</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">May 25, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This research exposes a critical blind spot in variational quantum algorithm development by revealing how real hardware constraints can dramatically alter circuit performance in ways that purely theoretical analysis misses. The finding that transpilation - the process of adapting circuits to run on actual quantum hardware - can change expressibility by over 125% and shift the fundamental trade-offs between a circuit&#39;s ability to represent quantum states versus its trainability is a wake-up call for the field. This work suggests that many VQA studies may be drawing conclusions from idealized circuits that don&#39;t reflect what actually runs on quantum processors, potentially explaining why some algorithms that look promising in simulation struggle when deployed on real hardware. The research provides essential guidance for developing more robust quantum algorithms by emphasizing the need to evaluate performance under realistic hardware constraints from the design stage.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Variational quantum algorithms (VQAs) rely on parameterized quantum circuits (PQCs), whose performance is governed by expressibility and trainability. Existing studies typically evaluate these properties at the logical circuit level, implicitly assuming that designed PQCs remain unchanged during hardware execution. In practice, however, hardware-aware transpilation modifies circuit structure through qubit mapping, routing, and basis decomposition, potentially altering PQC behavior. In this paper, we perform a systematic hardware-aware analysis of expressibility and trainability by comparing logical and transpiled PQCs across multiple ansatz families, qubit counts, and circuit depths. Expressibility is measured using fidelity-based KL divergence, while trainability is quantified through gradient variance. Our results show that transpilation acts as an implicit architectural perturbation, producing strongly ansatz-dependent effects. Expressibility deviations exceed upto 125% in some cases, while trainability variations reach up to 25%. Structured ansatzes are generally more robust, whereas highly entangled architectures are more sensitive to transpilation-induced transformations. We further show that transpilation can alter the commonly assumed expressibility-trainability trade-off, demonstrating that logical-level analyses may not reliably predict hardware-level behavior. These findings highlight the importance of hardware-aware evaluation for accurate characterization of VQAs.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2605.25552v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Beyond%20Logical%20Circuits%3A%20Hardware-Aware%20Analysis%20of%20Expressibility%20and%20Trainability%20in%20Variational%20Quantum%20Algorithms&url=https://quantumcrier.com/posts/9036a536.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/9036a536.html&title=Beyond%20Logical%20Circuits%3A%20Hardware-Aware%20Analysis%20of%20Expressibility%20and%20Trainability%20in%20Variational%20Quantum%20Algorithms" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
