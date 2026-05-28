@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Unitary Coupled Cluster Circuit Design via Differentiable Quantum Architecture Search | Quantum Crier</title>
+    <meta name="description" content="Designing compact and accurate circuits for the variational quantum eigensolver (VQE) is a central challenge in near-term quantum chemistry. Existing adaptive m">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Automated Unitary Coupled Cluster Circuit Design via Differentiable Quantum Architecture Search">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>Automated Unitary Coupled Cluster Circuit Design via Differentiable Quantum Architecture Search</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">May 27, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article tackles one of the most pressing challenges in near-term quantum computing: designing efficient quantum circuits for chemistry simulations that can actually run on today&#39;s noisy quantum devices. The researchers introduce a clever approach called differentiable quantum architecture search (DQAS) that treats circuit design as a continuous optimization problem rather than the traditional greedy, step-by-step methods, leading to circuits that are both more accurate and use significantly fewer quantum gates. The results are particularly impressive for water molecule simulations, achieving nearly 3x better accuracy while reducing gate counts by up to 17% compared to existing methods like ADAPT-VQE. This work represents a meaningful step toward making quantum chemistry applications practical on current quantum hardware, where every gate matters due to noise and limited coherence times.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Designing compact and accurate circuits for the variational quantum eigensolver (VQE) is a central challenge in near-term quantum chemistry. Existing adaptive methods such as ADAPT-VQE design circuits by iteratively selecting operators from a predefined pool guided by gradient information and greedy heuristics. In this work, we adopt differentiable quantum architecture search (DQAS) as a circuit design framework based on the UCCSD operator pool, and introduce two complementary strategies: a global mode that simultaneously optimizes all operator selections, and a layerwise mode that constructs circuits incrementally while preserving previously learned structure. By relaxing discrete operator selection into a continuous differentiable optimization, DQAS enables gradient-based exploration over the combinatorial space of UCC circuit architectures. Benchmarks on BeH2, H4, LiH, H6, and H2O (8-14 qubits) show that both strategies achieve higher accuracy and fewer CNOT gates than ADAPT-VQE in the compact circuit regime, with up to 2.7-fold accuracy improvement for H2O and CNOT reductions of 13-17% at equivalent circuit depths. Benchmarks on the qubit-excitation-based (QEB) operator pool confirm that both advantages generalize beyond UCCSD. These results demonstrate that differentiable architecture search provides an effective and generalizable framework for designing accurate and compact VQE circuits in near-term quantum chemistry.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2605.28049v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Automated%20Unitary%20Coupled%20Cluster%20Circuit%20Design%20via%20Differentiable%20Quantum%20Architecture%20Search&url=https://quantumcrier.com/posts/b4df42e1.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b4df42e1.html&title=Automated%20Unitary%20Coupled%20Cluster%20Circuit%20Design%20via%20Differentiable%20Quantum%20Architecture%20Search" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
