@@ -5,11 +5,33 @@
         <link>https://quantumcrier.com</link>
         <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 31 May 2026 08:46:42 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 01 Jun 2026 11:38:38 +0000</lastBuildDate>
         <atom:link href="https://quantumcrier.com/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
+        
+        <item>
+            <title>SEALSQ Deepens Partnership with Quantum Computing Startup EeroQ</title>
+            <link>https://quantumcrier.com/posts/f980d211.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/f980d211.html</guid>
+            <pubDate>Mon, 01 Jun 2026 07:41:23 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This partnership highlights the growing convergence between quantum computing hardware development and the urgent need for quantum-resistant cybersecurity solutions. SEALSQ&#39;s investment in EeroQ&#39;s electron-on-helium quantum architecture is particularly noteworthy because this CMOS-compatible approach could potentially offer a more practical path to scalable quantum processors compared to traditional superconducting or trapped-ion systems. The collaboration makes strategic sense as SEALSQ&#39;s expertise in post-quantum cryptography pairs naturally with EeroQ&#39;s novel quantum computing platform, potentially creating an integrated solution that addresses both sides of the quantum revolution. While electron-on-helium qubits remain relatively early-stage compared to other quantum technologies, this partnership signals serious industry investment in alternative quantum computing approaches that could prove more manufacturable using existing semiconductor infrastructure.</p>
+                <p>Insider Brief PRESS RELEASE — SEALSQ Corp (NASDAQ: LAES) (“SEALSQ” or the “Company”), a global leader in semiconductors, PKI, and post-quantum cybersecurity technologies, today announced a further strategic investment in EeroQ, the U.S.-based quantum chip design company pioneering a patented, breakthrough, and fully CMOS compatible quantum computing architecture based on electrons on helium (eHe). Building on the […]</p>
+                <p><a href="https://thequantuminsider.com/2026/06/01/sealsq-deepens-strategic-commitment-to-eeroq-with-additional-investment-and-lead-role-in-upcoming-financing-round/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>cryptography</category>
+            
+            <category>industry</category>
+            
+            <category>research</category>
+            
+        </item>
         
         <item>
             <title>French National Quantum Update: May 2026</title>
@@ -138,6 +160,102 @@
         </item>
         
         <item>
+            <title>Entanglement in quantum channel discrimination: sometimes less is more</title>
+            <link>https://quantumcrier.com/posts/d378c903.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/d378c903.html</guid>
+            <pubDate>Fri, 29 May 2026 16:36:17 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article challenges a fundamental assumption in quantum information theory by demonstrating that entanglement isn&#39;t always beneficial for quantum channel discrimination tasks. The researchers present concrete examples where maximally entangled states perform no better than random guessing, while separable (non-entangled) states can achieve perfect discrimination between certain quantum channels. This counterintuitive finding has significant implications for quantum sensing and metrology applications, where practitioners typically assume that more entanglement leads to better performance. The work provides a systematic framework for identifying when entanglement helps versus hurts, offering practical guidance for optimizing quantum protocols in sensing and communication systems.</p>
+                <p>Entanglement is known to be a powerful resource that improves performance in various quantum information and computational tasks. A standard example of such a phenomenon is the possibility of perfectly discriminating all four Pauli operations in a single shot via the superdense coding protocol. While entanglement is often a powerful resource for quantum channel discrimination, this is not necessarily the case. In this work, we identify scenarios in which the maximally entangled state is a bad choice of input state and, more generally, show that excessive entanglement can reduce channel discriminability dramatically. To do so, we present an explicit pair of unitary channels which are perfectly discriminable without entanglement, but for which any strategy with maximally entangled input states is $ε$-close to a blind uniform guessing strategy. To develop a systematic approach, we introduce the concepts of Maximal Entanglement Worst Case (MEWC) and Maximal Entanglement Best Case (MEBC) pairs of channels, and present conditions for a pair of channels to be MEWC or MEBC. With these conditions, we show that the optimal input states for discriminating MEWC pairs of channels are necessarily separable, and provide non-trivial examples of measurement channels for which entanglement necessarily reduces the maximum probability of discrimination.</p>
+                <p><a href="https://arxiv.org/abs/2605.31519v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>sensing</category>
+            
+            <category>policy</category>
+            
+        </item>
+        
+        <item>
+            <title>Experimental demonstration of quantum advantage in communication complexity for Euclidean distance problem</title>
+            <link>https://quantumcrier.com/posts/bc2c7afc.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/bc2c7afc.html</guid>
+            <pubDate>Fri, 29 May 2026 16:34:34 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This work represents a significant milestone in quantum communication by demonstrating the first practical quantum advantage for a real-world data analysis task - calculating distances between large datasets like images. The researchers cleverly used coherent light pulses instead of complex entangled qubits to achieve exponential communication savings for inputs as large as 100 million elements, making this one of the most scalable quantum advantage demonstrations to date. What makes this particularly exciting is that it solves an actual problem that appears frequently in machine learning and data science, showing how quantum protocols could eventually reduce bandwidth requirements for distributed computing tasks. The fact that they achieved this advantage with relatively simple optical components and real image data suggests this approach could bridge the gap between quantum theory and practical applications much sooner than previously expected.</p>
+                <p>When considering the complexity of communication protocols, the aim is to perform a certain task with the minimum amount of communication resources, such as time and transmitted information. The use of quantum states may lead to an exponential advantage in the use of such resources. Here, we are interested in the task of calculating the Euclidean distance between two vectors representing real data sets. It has been previously shown that it is possible to obtain an advantage for this task based on quantum fingerprinting. This protocol is defined in the simultaneous message passing model of communication complexity, where the two parties do not communicate with each other but send data to a third party, and exploits practical fingerprints generated using trains of coherent state pulses instead of highly entangled qubit states that are hard to generate for large input sizes needed to demonstrate an exponential advantage. We perform a proof-of-principle experimental demonstration of the Euclidean distance protocol using amplitude modulation techniques for encoding non-binary data sets and high-performance superconducting nanowire single-photon detectors required to increase the accessible input size. We show a quantum advantage in transmitted information surpassing the best classical protocol for an input size of $10^8$, for diverse types of data sets, including those corresponding to real grayscale images, and with reasonable precision and error bounds. Our results highlight the potential of quantum communication complexity for use in a broad set of applications.</p>
+                <p><a href="https://arxiv.org/abs/2605.31516v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>An efficient Progressive Swapping to the Middle distribution protocol adapted to imperfect quantum memories in quantum networks</title>
+            <link>https://quantumcrier.com/posts/2bd8d82b.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/2bd8d82b.html</guid>
+            <pubDate>Fri, 29 May 2026 16:15:01 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This research tackles one of quantum networking&#39;s most fundamental challenges: how to efficiently distribute entanglement across long distances when quantum memories inevitably degrade over time. The proposed Progressive Swapping to the Middle protocol cleverly combines the best aspects of existing approaches by having entanglement swapping operations work from both ends of a network path toward the center, significantly improving success rates while maintaining reasonable fidelity levels. This work is particularly valuable because it explicitly accounts for the imperfections that plague real quantum hardware, making it more practically relevant than theoretical protocols that assume perfect conditions. As quantum networks begin transitioning from laboratory demonstrations to real-world deployments, optimization strategies like PSM will be essential for making these systems viable for applications like quantum key distribution and distributed quantum computing.</p>
+                <p>The distribution of entangled pairs of photons on the links composing a quantum network, combined with Bell state measurements and teleportation, is the basic apparatus to transfer quantum bits (qubits) over long distances. Entanglement distribution establishes an end-to-end entangled pair while consuming intermediate pairs on links and holding them for a certain time period. The technical literature identifies two main kinds of protocols, parallel and sequential ones, the latter having an advantage in resource consumption over the former. In this paper, we introduce an efficient swapping protocol called Progressive Swapping to the Middle (PSM) as it combines the existing Progressive Swapping (PS) protocol from both extremities of a path that meet in the middle where the received pairs are swapped. We compare PSM with two parallel protocols and PS; in our evaluation, we take into account imperfect memories and fidelity degradation. We demonstrate that PSM yields a much better link probability than PS while keeping a reasonable link fidelity, and shows an advantage in resource consumption over other protocols.</p>
+                <p><a href="https://arxiv.org/abs/2605.31493v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>sensing</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>Support Vector Machine with a Scalable Quantum Kernel</title>
+            <link>https://quantumcrier.com/posts/497ef645.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/497ef645.html</guid>
+            <pubDate>Fri, 29 May 2026 15:43:05 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article tackles one of the most persistent challenges in quantum machine learning: the &#34;barren plateau&#34; problem where quantum advantage disappears as systems scale up. The researchers&#39; Hamming quantum kernel cleverly sidesteps the exponential concentration issue that plagues traditional fidelity-based quantum kernels by utilizing the full measurement statistics rather than relying on a single fidelity value. Their demonstration of superior performance on systems with 15-27 qubits represents a significant step toward making quantum support vector machines practically viable at meaningful scales. This work is particularly exciting because it achieves better scaling without requiring additional quantum resources, suggesting a path forward for quantum machine learning algorithms that can actually outperform classical methods on real-world problems.</p>
+                <p>Quantum support vector machines are classification algorithms that rely on quantum-generated kernels. The fidelity quantum kernel commonly used in quantum support vector machines suffers from exponential concentration as system size increases, preventing an efficient scaling beyond fewqubit systems. We introduce the Hamming quantum kernel, a classical post-processing method that is based on the same measurement outcomes as the fidelity quantum kernel. However, it avoids the exponential concentration problem by using the full measurement statistics rather than a single fidelity value. We evaluate the approach on both classical data (MNIST) and synthetic data generated from quantum circuits, using systems ranging from 2 to 27 qubits. Throughout the simulations, the Hamming quantum kernel outperforms the fidelity quantum kernel whenever 15 or more qubits are used. Furthermore, for synthetic quantum data, our method consistently outperforms the classical Gaussian kernel. This demonstrates that the Hamming quantum kernel improves the expressivity and robustness at larger qubit scales without requiring any additional quantum ressources.</p>
+                <p><a href="https://arxiv.org/abs/2605.31449v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>simulation</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>Intrinsic locality dimension of quantum codes</title>
+            <link>https://quantumcrier.com/posts/6a6e6ed0.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/6a6e6ed0.html</guid>
+            <pubDate>Fri, 29 May 2026 15:38:50 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article introduces a powerful new mathematical framework for understanding quantum error-correcting codes by defining their &#34;intrinsic locality dimension&#34; - a measure that captures how codes behave geometrically without being tied to specific physical layouts. The breakthrough extends fundamental theoretical limits on quantum codes beyond traditional topological codes to include promising new families like bivariate bicycle codes, which are generating excitement for their potential in near-term quantum computers. By unifying different types of codes under one mathematical umbrella, this work provides theorists and engineers with new tools to understand the fundamental trade-offs between error protection, gate operations, and hardware constraints. The research also delivers sobering news for self-correcting quantum memories, effectively ruling out certain approaches in three-dimensional systems that had been hoped to naturally resist errors without active correction.</p>
+                <p>Quantum error-correcting codes are a cornerstone of quantum computing, with broad and profound connections to physics and mathematics. In this work, we introduce the notion of intrinsic locality dimension of stabilizer codes that is independent of any background geometry and naturally incorporates flexible architectures and accommodates noninteger values, drawing on mathematical machinery from fractal geometry and geometric measure theory. Important scenarios include topological codes and algebraic codes such as bivariate-bicycle-type codes. We show how the intrinsic dimension serves as a fundamental organizing parameter that unifies code properties. In particular, we prove general limitations on code parameters and compatible fault-tolerant logical gates induced by the intrinsic dimension, generalizing the Bravyi--Poulin--Terhal and Bravyi--König bounds for regular topological codes, respectively. Furthermore, we discuss implications on thermal properties, presenting a conditional no-go result for self-correcting quantum memories in dimension $3-ε$ for any $ε&gt;0$. Our theory lays a versatile and unifying mathematical foundation for studying the fundamental capabilities and geometric implementations of quantum error correction and fault tolerance.</p>
+                <p><a href="https://arxiv.org/abs/2605.31441v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>error_correction</category>
+            
+        </item>
+        
+        <item>
             <title>UT Launches Knoxville Quantum Accelerator To Advance Tennessee’s Future</title>
             <link>https://quantumcrier.com/posts/e8a76c65.html</link>
             <guid isPermaLink="true">https://quantumcrier.com/posts/e8a76c65.html</guid>
@@ -150,6 +268,26 @@
             <author>Mark Eatherly</author>
             
             <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Fidelity bounds for spin-dependent kicks with pulsed lasers</title>
+            <link>https://quantumcrier.com/posts/53347a21.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/53347a21.html</guid>
+            <pubDate>Fri, 29 May 2026 15:13:17 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This research tackles one of the most critical bottlenecks in trapped-ion quantum computing: achieving ultra-fast, high-fidelity two-qubit gates that could dramatically accelerate quantum computations. The authors demonstrate that spin-dependent kicks using picosecond laser pulses can achieve gate fidelities below 0.1% error rates in nanosecond timescales, which is orders of magnitude faster than traditional trapped-ion gates that typically operate on microsecond timescales. What makes this particularly significant is the identification that finite pulse duration, not ion motion, is the primary error source—a finding that provides clear engineering targets for laser system designers. These results could bring trapped-ion systems much closer to the speed requirements needed for practical fault-tolerant quantum computing, where gate times must be much shorter than qubit coherence times.</p>
+                <p>Excitation of trapped-ion hyperfine qubits with fast optical Raman pulses enables faster-than-trap-period entangling gates with qubits of long coherence time for practical quantum computation. Achieving high-fidelity fast two-qubit gates requires high-quality spin-dependent kicks (SDKs), which form their fundamental building blocks. Here, we characterize the control parameters (including Raman frequency difference, pulse arrival times, Lamb--Dicke parameter, temperature, pulse width, and SDK time) that maximize the performance of single-ion SDKs for protocols compatible with performed experiments involving a small number of fast pulses. We demonstrate through analytical methods and numerical simulations that, within the model commonly used for infidelity optimization, finite pulse duration is the dominant source of error, exceeding the contribution of secular motion by orders of magnitude for nanosecond-scale SDKs. Low infidelities -- below $10^{-3}$ for schemes with $\gtrsim10$ fixed-amplitude, equispaced, picosecond pulses -- are achievable in SDK times on the order of nanoseconds. These results provide quantitative design rules for achieving competitive SDK fidelities with current pulsed-laser technology, laying the foundation for sub-microsecond trapped-ion quantum entangling operations.</p>
+                <p><a href="https://arxiv.org/abs/2605.31409v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>simulation</category>
             
         </item>
         
@@ -186,6 +324,22 @@
         </item>
         
         <item>
+            <title>A charge qubit on solid neon in a spin-qubit compatible circuit QED platform</title>
+            <link>https://quantumcrier.com/posts/9471e25a.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/9471e25a.html</guid>
+            <pubDate>Fri, 29 May 2026 11:54:34 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article represents a significant step toward realizing spin qubits on solid neon, a platform that could potentially offer exceptionally long coherence times by isolating electrons from the material defects that plague conventional semiconductor qubits. The researchers achieved an impressive order-of-magnitude improvement in Rabi frequencies compared to previous work, demonstrating much stronger coupling between the electron and microwave control fields - a crucial requirement for fast, high-fidelity quantum operations. While challenges remain in precisely positioning electrons on the neon surface, the successful integration with a magnetic-field-compatible superconducting resonator brings this exotic qubit platform closer to practical quantum computing applications. The work highlights how exploring unconventional qubit platforms beyond silicon and superconducting circuits could unlock new pathways to more coherent quantum processors.</p>
+                <p>Electrons floating in vacuum provide a clean platform for quantum information processing due to their isolation from material defects; electrons on solid neon have emerged as a promising qubit platform for its long coherence times. Here, toward spin-qubit realization, we couple a single electron on solid neon to a magnetic-field-compatible superconducting NbTiN nanowire resonator. We realize a charge qubit and demonstrate microwave readout and coherent control, with Rabi frequencies up to 76 MHz, an order of magnitude larger than in previous studies. Under strong driving, we observe a qubit frequency shift from nonlinear interactions with the intense microwave field. Deterministic electron trapping at an intended position remains challenging due to solid neon surface roughness; we characterize the electron&#39;s position from its differential coupling to distinct electrodes. Although not trapped at an intended position, our estimates indicate that spin-qubit demonstrations remain feasible.</p>
+                <p><a href="https://arxiv.org/abs/2605.31185v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+        </item>
+        
+        <item>
             <title>Massachusetts Invests $25 Million in MIT Quantum Lab</title>
             <link>https://quantumcrier.com/posts/9de99548.html</link>
             <guid isPermaLink="true">https://quantumcrier.com/posts/9de99548.html</guid>
@@ -198,6 +352,26 @@
             <author>Mark Eatherly</author>
             
             <category>policy</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum State Preparation via Neural Network Encoding in Quantum Machine Learning</title>
+            <link>https://quantumcrier.com/posts/b5286e4e.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/b5286e4e.html</guid>
+            <pubDate>Fri, 29 May 2026 08:39:24 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article tackles one of quantum machine learning&#39;s most fundamental bottlenecks - the prohibitively expensive process of loading classical data into quantum states, which typically requires optimizing a new quantum circuit for every single data point. The researchers&#39; clever solution trains a classical neural network once to directly predict the quantum circuit parameters needed for any input, eliminating the need for iterative optimization during inference and achieving a remarkable 5000-fold speedup. This breakthrough could finally make quantum machine learning practical for real applications, as the method maintains high fidelity while transforming state preparation from a per-instance optimization problem into a simple forward pass through a pre-trained network. The validation on standard image datasets like MNIST demonstrates the approach works on realistic data, potentially unlocking quantum advantages for machine learning tasks that were previously computationally infeasible due to the state preparation overhead.</p>
+                <p>A central challenge in quantum machine learning is the state preparation bottleneck that describes the prohibitive computational cost of loading high-dimensional classical data into a quantum state. Although amplitude encoding can represent $2^n$-dimensional data using only $n$ qubits in principle, preparing arbitrary states remains computationally expensive, typically requiring variational optimization of a parameterized quantum circuit for each individual data instance. In this work, we propose a method that avoids iterative optimization by training a classical neural network to map input data directly to the continuous parameters of a fixed quantum circuit. We demonstrate the generation of quantum image states with high fidelity on data not seen during training. Since all optimization is performed once during training, the resulting model encodes new inputs in a single inference step, providing a scalable pathway for data loading in near-term quantum algorithms. We validate our method on the MNIST and Fashion-MNIST datasets, achieving fidelities up to 0.992 on unseen images and reducing the per-data-instance runtime by more than 5000-fold.</p>
+                <p><a href="https://arxiv.org/abs/2605.31006v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>machine_learning</category>
             
         </item>
         
@@ -270,6 +444,104 @@
         </item>
         
         <item>
+            <title>Real-Time Quantum Error Correction System Stack: Architecture, Algorithms, and Engineering Practice</title>
+            <link>https://quantumcrier.com/posts/20843c5e.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/20843c5e.html</guid>
+            <pubDate>Fri, 29 May 2026 02:51:46 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This comprehensive white paper tackles quantum computing&#39;s most pressing engineering challenge: building real-time quantum error correction systems that can actually scale beyond laboratory demonstrations. While recent breakthroughs from Google, Riverlane, and Rigetti have proven that quantum error correction works in principle, this research reveals that the real bottlenecks lie not in decoder algorithms themselves but in system-level engineering challenges like end-to-end latency coordination and tail performance optimization. The proposed six-layer reference architecture provides the quantum computing field with its first systematic framework for building production-ready error correction systems, essentially serving as a blueprint for the transition from experimental quantum computers to fault-tolerant machines that can run meaningful algorithms. This work represents a crucial shift from proving quantum error correction is possible to actually engineering systems that can deliver it reliably at scale.</p>
+                <p>Quantum error correction (QEC) is transitioning from physical feasibility demonstrations to systems engineering challenges. Google has achieved below-threshold performance on distance-5/7 surface codes, while Riverlane and Rigetti have demonstrated hardware-integrated low-latency feedback loops. These milestones indicate that the core challenge of real-time decoding has shifted from algorithmic capability to system-level engineering. However, a substantial engineering gap remains between laboratory demonstrations and scalable fault-tolerant quantum computing (FTQC). This white paper addresses three questions: (1) Where are the real bottlenecks in real-time QEC: beyond average decoder speed, the constraints lie in QEC round time, tail latency, and end-to-end data path coordination; (2) How mature are mainstream decoder algorithms: we benchmark the major decoders for both surface codes and quantum low-density parity-check (qLDPC) codes, evaluating their real-time readiness; (3) What system stack do we propose: a six-layer reference architecture from syndrome acquisition to logical operations, with interface definitions and latency budget models. Our results quantify the gap between current decoder performance and real-time requirements, and identify the architectural choices needed to close it.</p>
+                <p><a href="https://arxiv.org/abs/2605.30765v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>algorithms</category>
+            
+            <category>error_correction</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>How To Track Qubits Through Space and Time (Or: Sailing in a Quantum Boat)</title>
+            <link>https://quantumcrier.com/posts/fc079b70.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/fc079b70.html</guid>
+            <pubDate>Fri, 29 May 2026 01:51:11 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This work tackles a fascinating loophole in quantum cryptography: existing position verification protocols can&#39;t actually prove a quantum device is physically at a specific location, since distributed attackers could potentially fool the system by working together across multiple locations. The researchers introduce &#34;quantum localization&#34; protocols that ensure a unique, unclonable quantum state exists at a verified spacetime point and nowhere else, opening the door to tracking quantum information as it moves through space and time like following a quantum breadcrumb trail. Beyond the obvious applications in secure communications and quantum key distribution, the concept of &#34;functionality localization&#34; could enable revolutionary scenarios where sensitive computations can only be performed at specific physical locations, potentially transforming how we think about secure distributed computing in a quantum world.</p>
+                <p>While quantum position verification aims to certify a prover&#39;s location using quantum information, existing security definitions only guarantee that part of the successful adversarial party is in the claimed location. This leaves open the possibility that a distributed team of adversaries can jointly simulate a prover in a way that defeats the intended meaning of ``being at a location&#39;&#39; in position-based cryptography. We introduce stronger notions of position verification that we call quantum localization, which requires that there is a specified, unclonable state at the verified spacetime point -- and that this state can be found nowhere else. We show that quantum localization leads naturally to a meaningful notion of trajectory verification, in which quantum information is verifiably tracked through space and time. We construct quantum localization and trajectory verification protocols using quantum anchor states, which generalize coset states from unclonable cryptography. The security of our schemes is proven in the classical oracle (i.e. ideal obfuscation) model, which can be heuristically instantiated in the plain model using post-quantum indistinguishability obfuscation. We also introduce and instantiate the concept of functionality localization, which guarantees that the adversary has the ability to compute a secret function at the verified spacetime point, and this function cannot be computed anywhere else. This raises the intriguing possibility of localizing computational capabilities in space and time. More broadly, we believe our notions of quantum localization and our feasibility results provide stronger foundations for position-based cryptography.</p>
+                <p><a href="https://arxiv.org/abs/2605.30732v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>cryptography</category>
+            
+        </item>
+        
+        <item>
+            <title>Research progress on quantum neural networks and quantum machine learning</title>
+            <link>https://quantumcrier.com/posts/602f17ce.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/602f17ce.html</guid>
+            <pubDate>Fri, 29 May 2026 01:39:36 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This comprehensive survey arrives at a crucial moment when quantum machine learning is transitioning from theoretical promise to practical experimentation, offering researchers a much-needed roadmap through the rapidly expanding landscape of quantum neural network architectures. The paper&#39;s systematic comparison of performance metrics across different QNN types - from quantum convolutional networks to quantum Boltzmann machines - provides valuable guidance for practitioners trying to navigate which quantum approaches might actually deliver advantages for specific machine learning tasks. What makes this particularly timely is that major quantum computing companies are actively developing quantum machine learning platforms, making the practical insights about training time and resource requirements increasingly relevant for near-term quantum applications. The survey effectively captures how quantum neural networks are evolving beyond simple proof-of-concept demonstrations toward architectures that could potentially handle real-world data analysis challenges.</p>
+                <p>Machine learning holds fundamental computational significance due to the increasing demand for efficient solutions to complex tasks in data analysis, pattern recognition, and optimization, which are essential for addressing the multifaceted challenges of modern society. As the volume of data proliferates at an unprecedented rate, the need for more powerful machine learning strategies becomes increasingly evident. Quantum neural networks (QNNs) represent an emerging and transformative research field that seeks to harness the unique principles of quantum mechanics to enhance the capabilities of machine learning algorithms. This survey examines various QNN approaches, including fully connected QNNs, quantum convolutional neural networks, equivariant QNNs, quantum Hopfield networks, quantum Boltzmann machines, quantum reservoir computing, and composite networks for quantum reinforcement learning, quantum generative learning, and quantum transfer learning. We summarize the relevant investigations on their performance, including learning accuracy, training time, and resource requirements, etc. Each QNN type has unique strengths and weaknesses, offering diverse solutions for different applications.</p>
+                <p><a href="https://arxiv.org/abs/2605.30724v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>algorithms</category>
+            
+            <category>machine_learning</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>Multiparameter quantum estimation and entanglement in top--antitop quark production</title>
+            <link>https://quantumcrier.com/posts/e4afa5ac.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/e4afa5ac.html</guid>
+            <pubDate>Fri, 29 May 2026 00:32:19 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This fascinating study reveals how particle physics experiments at the Large Hadron Collider could serve as unexpected quantum sensing platforms, using entangled top-antitop quark pairs to simultaneously measure multiple relativistic parameters with quantum-enhanced precision. The work demonstrates that the spin correlations naturally produced in high-energy particle collisions create genuine quantum entanglement that can be leveraged for multiparameter estimation tasks, potentially opening entirely new applications for quantum metrology beyond traditional quantum computing hardware. What makes this particularly intriguing is the proposal to extract quantum information from particle collision data that&#39;s already being collected at CERN, suggesting we might be sitting on a goldmine of quantum sensing data without realizing it. This bridges fundamental physics research with quantum information science in a way that could inform both our understanding of quantum correlations in nature and the development of new quantum sensing protocols.</p>
+                <p>We investigate the interplay between quantum correlations and multiparameter quantum estimation in top--antitop quark pair production through the gluon-fusion channel. Using the spin density matrix formalism, we construct an effective two-qubit quantum state governed by the relativistic parameters associated with the scattering process. Within the framework of quantum metrology, we derive the quantum Fisher information matrix for the simultaneous estimation of the relativistic velocity parameter and the production angle, and we analyze the corresponding quantum precision bounds. Our results reveal highly nontrivial estimation regimes strongly controlled by relativistic spin correlations and scattering geometry. We further characterize the produced state through the concurrence and demonstrate the existence of strong connections between entanglement structures and multiparameter estimation sensitivity. Finally, we discuss the experimental feasibility of probing these effects at the Large Hadron Collider through spin-correlation observables and reconstructed top--antitop density matrices. Our results identify top--antitop production as a unique relativistic platform for exploring quantum information theory and multiparameter quantum metrology in high-energy physics.</p>
+                <p><a href="https://arxiv.org/abs/2605.30688v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>Experimental Implementation of the Quantum Volunteer&#39;s Dilemma on NISQ Hardware: Noise Analysis and Digital-Twin Validation</title>
+            <link>https://quantumcrier.com/posts/66188213.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/66188213.html</guid>
+            <pubDate>Fri, 29 May 2026 00:10:35 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article demonstrates a significant milestone for quantum game theory by successfully implementing a complex multiplayer quantum game on real NISQ hardware with up to 9 players, showing that quantum advantages in strategic scenarios can survive the harsh realities of current quantum computers. The researchers achieved remarkable resilience to noise, maintaining quantum advantages over classical strategies even as fidelity degraded, which suggests that certain quantum algorithms may be more robust to errors than previously thought. Particularly intriguing is their finding that single-qubit errors dominate at smaller scales while multi-qubit correlations become problematic only at larger system sizes, providing valuable insights for designing noise-resilient quantum protocols. The work also exposes critical limitations in current quantum simulation methods, as their digital twin model failed to capture the true hardware behavior at scale, highlighting the ongoing need for better noise characterization tools in the NISQ era.</p>
+                <p>We present an experimental implementation of the multiplayer Quantum Volunteer&#39;s Dilemma on noisy intermediate-scale quantum (NISQ) hardware, executed on the ibm_kingston backend via Qiskit Runtime. The game is evaluated for N = 2 to 9 players under four transpiler optimization levels, with 20 independent repetitions per configuration and 2048 shots per circuit, including post-processing readout error correction via mthree. Target-state fidelity decays with system size but remains above 70% (corrected) through N = 9. With readout correction, the global average payoff reproduces the quantum theoretical benchmark exactly for N &lt;= 6 and exceeds the classical Nash equilibrium across the full tested range. Optimization level 2 is selected as the reference configuration after gate count analysis reveals that levels 2 and 3 produce identical transpiled circuits, with level 2 achieving superior fidelity stability. A Hamming distance analysis of raw measurement counts shows that single-qubit errors dominate at small N, with multi-qubit contributions growing beyond N = 6. A calibration-based digital twin captures global payoff trends but exhibits a linear fidelity decay profile that diverges from the hardware behavior at large N, exposing the limits of first-order independent per-qubit noise models. These results demonstrate that aggregate quantum advantage in multiplayer games is robust to NISQ noise conditions across the full tested range, while the practical observability of state-level advantage is constrained to N &lt;= 8 under post-processed readout correction.</p>
+                <p><a href="https://arxiv.org/abs/2605.30676v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>error_correction</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
             <title>Beyond a Single Quantum Chip: Why the Future of Quantum Computing is Modular</title>
             <link>https://quantumcrier.com/posts/b69c3c37.html</link>
             <guid isPermaLink="true">https://quantumcrier.com/posts/b69c3c37.html</guid>
@@ -314,6 +586,44 @@
             <author>Mark Eatherly</author>
             
             <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Metasurfaces for neutral-atom trapping</title>
+            <link>https://quantumcrier.com/posts/0211aa4b.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/0211aa4b.html</guid>
+            <pubDate>Thu, 28 May 2026 19:27:31 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article highlights a potential game-changer for scaling neutral-atom quantum computers, which currently face significant engineering bottlenecks in creating the massive arrays needed for practical quantum applications. Optical metasurfaces offer a compelling solution by providing vastly superior pixel counts compared to traditional spatial light modulators, enabling researchers to create hundreds of thousands of optical traps for individual atoms rather than the hundreds typically achieved today. The ability to precisely control light at this scale could finally unlock the path toward utility-scale neutral-atom quantum processors, while also enabling more compact and integrated quantum systems. This represents a crucial intersection of photonics and quantum computing that could accelerate the timeline for building fault-tolerant quantum computers with the atom counts needed for real-world applications.</p>
+                <p>Trapped neutral atoms are one of the leading platforms for quantum information technologies, in particular for quantum computing, but scaling them to array sizes needed for utility-scale quantum computing is a major engineering challenge. Here we review optical metasurfaces as an enabling technology that provides fine control over the phase, amplitude, and polarization of light, with pixel counts far exceeding what is available with spatial light modulators (SLMs) and other active devices. The large pixel counts have recently led to demonstrations of arrays of optical tweezers with hundreds of thousands of sites and arrays of optical bottle-beams with complex three-dimensional trapping profiles. The flexibility and scalability of optical metasurfaces provides a route towards miniaturized, integrated, and highly scalable atomic experiments and instruments.</p>
+                <p><a href="https://arxiv.org/abs/2605.30498v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>A Denser Planar Surface Code</title>
+            <link>https://quantumcrier.com/posts/717bb413.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/717bb413.html</guid>
+            <pubDate>Thu, 28 May 2026 18:27:34 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This research represents a major breakthrough in quantum error correction efficiency, demonstrating how clever geometric arrangements of surface code defects on a hexagonal lattice can pack 4.5 times more logical qubits into the same physical space compared to standard approaches. The work bridges theory and practice by showing these dense codes can enable practical quantum chemistry simulations, specifically calculating the electronic structure of the FeMoco nitrogen-fixation catalyst using 89,000 superconducting qubits in under a month. What makes this particularly exciting is the 36-fold reduction in physical qubit requirements compared to previous estimates, bringing utility-scale quantum chemistry applications significantly closer to reality with near-term hardware capabilities. The researchers have essentially found a way to get much more computational power from the same quantum hardware footprint, which could accelerate the timeline for achieving quantum advantage in molecular simulation.</p>
+                <p>We present a quantum code implementable on a regular $2$D hex grid with an estimated encoding rate up to $4.5\times$ of that of a rotated surface code patch using circuit-level noise in a one- and two-qubit $10^{-3}$ error uniform depolarizing model. Our approach is based on yoking a dense packing of surface code twist defects, enabled by new stabilizer measurement cycles with an optimal four layers of nearest-neighbor two-qubit gates, almost no distance-reducing hook errors, and efficient decoding. We demonstrate a space-efficient architecture for computing on densely packed logical qubits, including new padding-free lattice surgery protocols in an optimal bounding box of $2d^2$ data and measurement qubits per patch. Assuming a $1μ$s surface code cycle time and a $10μ$s reaction time, these developments enable chemically accurate ground state phase estimation of a broad class of `utility-scale&#39; electronic structure simulation problems such as the $108$ spin-orbital FeMoco-based nitrogen fixation catalyst in under a month with $89$k noisy superconducting qubits. We elucidate a Pareto frontier of space-time trade-offs and find a minimum physical quantum volume of $1.3$ mega-qubit-hours. These correspond to a $36\times$ space and $6.6\times$ spacetime improvement, respectively, over our previous state-of-the-art minimum-Toffoli resource estimates (Phys. Rev. X 15, 041016).</p>
+                <p><a href="https://arxiv.org/abs/2605.30455v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>error_correction</category>
+            
+            <category>simulation</category>
+            
+            <category>sensing</category>
             
         </item>
         
@@ -604,290 +914,6 @@
             <category>hardware</category>
             
             <category>algorithms</category>
-            
-        </item>
-        
-        <item>
-            <title>King’s College London Awarded Access to Google’s Willow Processor Through NQCC Initiative</title>
-            <link>https://quantumcrier.com/posts/9e55912c.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/9e55912c.html</guid>
-            <pubDate>Thu, 28 May 2026 11:09:34 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This partnership represents a significant step in democratizing access to Google&#39;s cutting-edge Willow quantum processor, which recently demonstrated breakthrough error correction capabilities that could pave the way toward fault-tolerant quantum computing. By providing King&#39;s College London with direct access through the NQCC initiative, Google is fostering academic research that could uncover novel quantum applications beyond the typical focus areas of cryptography and optimization. The collaboration signals a maturing quantum ecosystem where leading tech companies are strategically partnering with universities to accelerate practical quantum algorithm development, potentially bridging the gap between today&#39;s noisy intermediate-scale quantum devices and tomorrow&#39;s fault-tolerant quantum computers.</p>
-                <p>Insider Brief PRESS RELEASE — The National Quantum Computing Centre (NQCC) and Google Quantum AI today announced King’s College London (King’s) has been awarded access to the Willow processor as the named recipient of a joint initiative to explore novel applications for quantum computing. Launched in December 2025, the call for proposals was created through […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/28/kings-college-london-awarded-access-to-googles-willow-processor-through-nqcc-initiative/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>QUDORA Announces Operational Launch of QUDORA Japan K.K.</title>
-            <link>https://quantumcrier.com/posts/956f3a2e.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/956f3a2e.html</guid>
-            <pubDate>Thu, 28 May 2026 10:59:34 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article highlights the continued internationalization of the quantum computing industry as European companies establish stronger footholds in Asia&#39;s rapidly growing quantum market. QUDORA&#39;s expansion into Japan is particularly strategic given the country&#39;s substantial government investments in quantum research and its growing ecosystem of quantum startups and corporate initiatives. The move reflects how quantum computing companies are recognizing that success requires global presence to tap into diverse talent pools, research collaborations, and customer bases across different regions. This geographic expansion trend suggests the quantum industry is maturing beyond its early Silicon Valley and European origins into a truly global technology race.</p>
-                <p>Insider Brief PRESS RELEASE — QUDORA, a Germany-based full-stack quantum computing company, today announced the launch of Qudora Japan K.K., marking a major milestone in the company’s international expansion strategy and strengthening its presence in the Asia-Pacific region Headquartered in Tokyo with an office in Chiyoda-ku, Qudora Japan K.K. will support regional partnerships, customer growth, and […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/28/qudora-announces-operational-launch-of-qudora-japan-k-k/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>industry</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>Discrete and Continuous Wigner Functions in Open Quantum Systems: Non-Markovian and Thermodynamic Effects</title>
-            <link>https://quantumcrier.com/posts/1b41d264.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/1b41d264.html</guid>
-            <pubDate>Thu, 28 May 2026 10:13:58 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This comprehensive study tackles one of quantum computing&#39;s most pressing challenges: how to maintain and protect quantum advantages in real-world noisy environments. The research is particularly significant for its experimental validation on IBM&#39;s superconducting quantum hardware, demonstrating that specially crafted &#34;negative&#34; quantum states can actually outperform traditional Bell states when subjected to realistic noise conditions. The work bridges theoretical quantum foundations with practical implementation by showing how discrete Wigner functions can guide the development of more robust quantum protocols for sensing and communication applications. These findings could lead to more resilient quantum sensing devices and communication protocols that maintain their quantum advantages even in the presence of environmental interference.</p>
-                <p>The central aim of the thesis is to examine how non-classical resources in finite-dimensional quantum systems can be identified, characterized, and protected for practical use in the presence of realistic noise. Using the discrete Wigner functions (DWFs) framework, we introduce negative quantum states and examine how their Wigner negativity, mana, coherence, and teleportation fidelity evolve under unital and non-unital channels, with particular attention to non-Markovian random-telegraph and amplitude-damping dynamics. We also analyze protection strategies based on weak measurement and quantum measurement reversal, showing that these methods can enhance quantum correlations, reduce fidelity deviation, and improve teleportation performance for two-qubit negative states in memory-bearing environments. Moreover, we demonstrate that certain negative states, derived from phase-space point operators, exhibit greater resilience than Bell states in measures of entanglement under non-Markovian noise. Further, this thesis focuses on developing and implementing quantum circuits for generating these states on superconducting hardware and realizing them for the first time on IBM&#39;s ibm-Brisbane device. Their preparation is verified using quantum state tomography, demonstrating high fidelity under realistic noise conditions. We propose a teleportation scheme that leverages one of the two-qubit negative quantum states as a resource. Moreover, these two-qubit negative quantum states are also found to perform better than the Bell states for maximal CHSH violation and Fisher information in noisy conditions. We believe that these negative quantum states have the potential to be used in place of the traditional Bell states in scenarios where non-Markovian errors are prevalent. (continued in the PDF)</p>
-                <p><a href="https://arxiv.org/abs/2605.29717v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Finite-key feasibility of geostationary quantum key distribution</title>
-            <link>https://quantumcrier.com/posts/c1f7bc38.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/c1f7bc38.html</guid>
-            <pubDate>Thu, 28 May 2026 10:04:37 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This comprehensive feasibility study tackles one of quantum cryptography&#39;s most ambitious challenges: establishing secure quantum key distribution from satellites in geostationary orbit 36,000 kilometers above Earth. The research addresses critical real-world constraints including extreme signal loss, daylight interference, and varying atmospheric conditions across different geographical regions, providing the first rigorous analysis of whether continental-scale quantum-secured communications are actually achievable with current technology. By incorporating finite-key security analysis and modeling performance across European locations using historical weather data, the study moves beyond theoretical possibilities to practical implementation roadmaps. The findings will be crucial for space agencies and telecommunications companies considering major investments in satellite-based quantum infrastructure, as GEO satellites could potentially provide 24/7 quantum-secured communications coverage across entire continents.</p>
-                <p>Quantum key distribution (QKD) via geostationary Earth orbit (GEO) satellites offers a compelling route to continuous, continental-scale secure communications. However, operation in this regime entails extreme channel loss and significant background noise, particularly if daylight operation is desired. We present a comprehensive end-to-end feasibility study of a decoy-state BB84 protocol in a GEO downlink configuration, incorporating variable-length finite-key security and tight statistical bounds to expand the achievable positive-key regime. Our analysis encompasses the principal receiver architectures relevant to downlink QKD and employs a physically realistic channel model that captures the dominant loss and noise mechanisms. We evaluate performance across rural, urban, and coastal environments at multiple wavelengths, including visible Fraunhofer absorption minima and the telecom band. Using historical cloud data across Europe, we forecast the annual secret-key yield across the continent. Through a systematic exploration of the high-dimensional parameter space, we identify key trade-offs and performance bottlenecks that determine feasibility. These results establish practical operating thresholds and provide actionable design guidelines for future GEO-QKD missions.</p>
-                <p><a href="https://arxiv.org/abs/2605.29706v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>cryptography</category>
-            
-        </item>
-        
-        <item>
-            <title>Error-corrected phase estimation averaged over variable grids on a trapped-ion quantum computer: hyperacuity spectra of a CO molecule adsorbed onto $χ$-Fe$_5$C$_2$</title>
-            <link>https://quantumcrier.com/posts/2d57c01a.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/2d57c01a.html</guid>
-            <pubDate>Thu, 28 May 2026 09:33:24 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article demonstrates a clever &#34;vernier-type&#34; approach that overcomes fundamental resolution limits in quantum phase estimation, a critical algorithm for extracting molecular spectra from quantum simulations. By combining multiple low-resolution measurements with smart averaging techniques, the researchers achieved spectral accuracy far beyond what individual quantum circuits could deliver on Quantinuum&#39;s H2-2 trapped-ion system. The work is particularly significant because it tackles a real chemistry problem - modeling CO adsorption on an iron carbide surface - while showing how error correction and algorithmic innovation can work together to extract useful scientific results from current noisy quantum hardware. This represents exactly the kind of hybrid classical-quantum approach that could bridge today&#39;s limited devices toward the fault-tolerant era needed for practical quantum chemistry simulations.</p>
-                <p>Quantum phase estimation (QPE) is an underlying technology for extracting the excitation spectra of many-electron systems, yet its practical use on current hardware is hindered by low grid resolution and environmental noises. Here we propose QPE averaged over variable grids (QAVG), a vernier-type approach that combines low-resolution QPE with multiple origin shifts and physically motivated continuous parametrization to reconstruct the spectra accurately. We introduce this approach into an end-to-end workflow for the {\it ab initio}-based model system for a CO molecule adsorbed onto the $χ$-Fe$_5$C$_2$ surface. We perform experiments on Quantinuum H2-2 using both physical QPE circuits and logical QPE circuits encoded in the Steane code with offline bit-flip correction. We demonstrate that QAVG accurately reconstructs the spectra with deviations much smaller than the nominal QPE resolution, even when the noisy histograms are used. The cost landscapes averaged over the shifted grids substantially suppress the local minima arising from the spectral leakage, thereby stabilizing the optimization of trial parameters. These results indicate that QAVG provides a robust route to quantum simulations of correlated spectra toward the era of early-fault-tolerant quantum computers.</p>
-                <p><a href="https://arxiv.org/abs/2605.29674v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Quantum Research Could Open Up New Energy And Computing Technologies</title>
-            <link>https://quantumcrier.com/posts/f4cbb145.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/f4cbb145.html</guid>
-            <pubDate>Thu, 28 May 2026 08:34:53 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research into quantum wave function behavior in ultra-thin materials represents an intriguing intersection between fundamental quantum physics and practical applications that could benefit both renewable energy and computing. The focus on quantum vibronics — the study of how quantum states interact with molecular vibrations — opens potential pathways for more efficient solar cells through better understanding of energy transfer at the quantum level. While the practical applications may be years away, this type of foundational research is essential for developing the next generation of quantum technologies that could operate more efficiently by harnessing quantum effects in engineered materials. The dual potential for advancing both quantum computing architectures and solar energy conversion makes this work particularly valuable for the broader quantum technology ecosystem.</p>
-                <p>Insider Brief PRESS RELEASE — Scientists at the University of California, Riverside are making breakthroughs in understanding how quantum wave functions move across ultra-thin materials — research that could eventually improve solar energy technologies and help lay the groundwork for new forms of quantum computing. The researchers are part of UCR’s Center for Quantum Vibronics […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/28/quantum-research-could-open-up-new-energy-and-computing-technologies/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>simulation</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Infleqtion Expands UK Quantum Operations With New Oxford Innovation Centre And Manufacturing Hub</title>
-            <link>https://quantumcrier.com/posts/254fc8cb.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/254fc8cb.html</guid>
-            <pubDate>Thu, 28 May 2026 08:19:06 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This expansion represents a significant vote of confidence in the UK&#39;s quantum ecosystem, with Infleqtion establishing a dedicated manufacturing hub that bridges the critical gap between quantum research and commercial production. The Oxford location is strategically chosen, tapping into the region&#39;s rich quantum talent pipeline and research infrastructure while positioning the company closer to European markets and collaborators. What makes this particularly noteworthy is the focus on systems integration and manufacturing - essential capabilities for scaling quantum technologies beyond laboratory demonstrations toward practical applications. This move signals that quantum computing is maturing from a pure research endeavor into an industry requiring robust manufacturing and engineering capabilities.</p>
-                <p>Insider Brief PRESS RELEASE — Infleqtion (NYSE: INFQ) today announced a major expansion of its UK quantum operations with the launch of a new Quantum Innovation Centre in Oxford. The Centre will serve as a hub for quantum research, manufacturing, and systems integration, supporting the company’s next phase of growth in the UK. Scheduled to […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/28/infleqtion-expands-uk-quantum-operations-with-new-oxford-innovation-centre-and-manufacturing-hub/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Indian Institute of Science (IISc) and Yaqumo Inc. Sign Letter of Intent for Strategic Collaboration in Quantum Technologies</title>
-            <link>https://quantumcrier.com/posts/1ebc209a.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/1ebc209a.html</guid>
-            <pubDate>Thu, 28 May 2026 07:40:00 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This partnership between Japan&#39;s Yaqumo and India&#39;s prestigious IISc represents a significant expansion of international quantum collaboration, particularly noteworthy as India rapidly emerges as a major player in quantum research with substantial government backing through its National Mission on Quantum Technologies. The collaboration taps into IISc&#39;s strong theoretical foundations and growing experimental capabilities while leveraging Yaqumo&#39;s quantum technology development expertise, potentially accelerating quantum innovation across both nations. Such cross-border partnerships are becoming increasingly crucial in quantum computing, where the technical challenges are so immense that pooling international talent and resources often produces breakthroughs that isolated efforts cannot achieve. This agreement also signals the maturation of quantum technology ecosystems beyond the traditional US-Europe-China triangle, with Japan-India cooperation potentially creating new pathways for quantum commercialization in Asia.</p>
-                <p>Insider Brief PRESS RELEASE — Yaqumo Inc. (“Yaqumo”), a Japan-based quantum technology company, today announced that it has signed a Letter of Intent (LoI) with the Indian Institute of Science (IISc), Bengaluru, India, to explore strategic collaboration in the field of quantum technologies. This LoI aligns with the growing momentum of quantum cooperation between Japan and India, including […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/28/indian-institute-of-science-iisc-and-yaqumo-inc-sign-letter-of-intent-for-strategic-collaboration-in-quantum-technologies/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>general</category>
-            
-        </item>
-        
-        <item>
-            <title>Q-CTRL Defines The Path to Quantum Battlefield Information Dominance for Core Military Problems in Promising New Outlook</title>
-            <link>https://quantumcrier.com/posts/98df965d.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/98df965d.html</guid>
-            <pubDate>Thu, 28 May 2026 07:33:36 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This white paper from Q-CTRL represents a significant shift toward concrete military applications for quantum computing, moving beyond theoretical discussions to project specific timelines for quantum advantage in defense logistics by 2027. The company&#39;s focus on performance-management software highlights a crucial but often overlooked aspect of making quantum computers practically useful - the infrastructure layer that makes these temperamental machines actually work reliably. While quantum computing has long been discussed in military contexts for cryptography and communications, Q-CTRL&#39;s emphasis on logistics optimization suggests near-term quantum applications may first emerge in surprisingly practical areas like supply chain management and resource allocation. The aggressive 2027 timeline for quantum advantage in military applications, if achievable, would represent one of the earliest real-world demonstrations of quantum computers outperforming classical systems on operationally relevant problems.</p>
-                <p>Insider Brief PRESS RELEASE — Q-CTRL, the global leader in quantum infrastructure software, today released a white paper demonstrating the near-term capability for quantum computers, powered by its industry-leading performance-management software, to solve complex computational problems for the military. Q-CTRL projects quantum advantage for certain high-value defense logistics applications to arrive as soon as 2027, signaling a […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/28/q-ctrl-defines-the-path-to-quantum-battlefield-information-dominance-for-core-military-problems-in-promising-new-outlook/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Guest Post: Four Quantum Unicorns, One Country — Inside Canada’s Quantum Computing Triumph</title>
-            <link>https://quantumcrier.com/posts/38273688.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/38273688.html</guid>
-            <pubDate>Wed, 27 May 2026 17:42:28 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article highlights Canada&#39;s remarkable achievement in quantum commercialization, having produced four quantum unicorns (companies valued over $1 billion) in just two decades - a feat unmatched by any other nation. The success story demonstrates how strategic government investment, academic excellence, and early ecosystem development can create a thriving quantum industry from the ground up. This matters because it provides a blueprint for other countries looking to build competitive quantum sectors, while also showing how Canada has positioned itself as a global leader in translating quantum research into valuable commercial applications. The perspective from quantum-focused VCs offers valuable insights into what makes quantum startups succeed at scale in today&#39;s market.</p>
-                <p>Guest Post by Dr. Kris Naudts and Zeynep Kortuturk, both Founding &amp; Managing Partners and Donald Harmitt, Associate, all at Firgun Ventures, a global quantum-first VC firm investing in Series A/B scale-ups. Few countries have managed to build a quantum industry. Canada has built four billion-dollar quantum companies in roughly two decades, a record no […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/27/guest-post-four-quantum-unicorns-one-country-inside-canadas-quantum-computing-triumph/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>general</category>
-            
-        </item>
-        
-        <item>
-            <title>Variational Quantum Models for Knowledge Graph Embeddings on NISQ Devices</title>
-            <link>https://quantumcrier.com/posts/bf25dfa2.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/bf25dfa2.html</guid>
-            <pubDate>Wed, 27 May 2026 16:40:27 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article tackles a practical challenge for near-term quantum computing by streamlining quantum algorithms for knowledge graph embeddings, which are crucial for AI systems that need to understand relationships between entities like those powering search engines and recommendation systems. The researchers developed a more efficient approach that eliminates the need for ancillary qubits and complex entangled measurements, making these quantum machine learning models more viable on today&#39;s noisy intermediate-scale quantum (NISQ) devices. This work represents the kind of algorithmic optimization that&#39;s essential for bridging the gap between quantum computing theory and practical applications, particularly as companies explore quantum advantages in data processing and AI. The unified framework they propose could accelerate development of other quantum machine learning algorithms by providing clearer design principles for NISQ-era implementations.</p>
-                <p>Variational Quantum Algorithms (VQAs) combine quantum circuits with classical optimization to tackle problems that may benefit from the capabilities of near-term quantum hardware. In knowledge graph embedding, recent proposals based on this approach follow a similar overall architecture but differ in the way they compute the score function and in the number of qubits they require. One design uses $n+1$ qubits and obtains the score through a switch test on an ancillary qubit, while another employs $2n+1$ qubits and applies a swap test between two registers. In both cases, entities and relations are represented in a Hilbert space of dimension $d = 2^n$, with comparable computational cost and the same mean squared error loss. This work introduces a unified framework that captures the two schemes and makes it possible to explore new variants. Within this setting, we propose an alternative that keeps the intuitive meaning of the score function while dispensing with ancillary qubits and entangled measurements. The result is a model better suited to current NISQ devices, reducing hardware demands without sacrificing interpretability.</p>
-                <p><a href="https://arxiv.org/abs/2605.28723v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Latent-Conditioned Parameterized Quantum Circuits as Universal Approximators for Distributions over Quantum States</title>
-            <link>https://quantumcrier.com/posts/9894398e.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/9894398e.html</guid>
-            <pubDate>Wed, 27 May 2026 16:19:10 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This work tackles a fundamental challenge in quantum computing: how to efficiently generate diverse collections of quantum states rather than optimizing for just one target state at a time. The researchers prove that their hybrid approach, which uses classical neural networks to control quantum circuits, can theoretically approximate any distribution of quantum states - a powerful universality result that extends classical machine learning guarantees into the quantum realm. Perhaps most practically significant, their method appears to sidestep the notorious barren plateau problem that has plagued quantum machine learning, while demonstrating competitive performance on molecular simulation tasks that are directly relevant to quantum chemistry applications. This represents an important step toward making quantum generative models viable for real-world problems where you need to capture the full statistical diversity of quantum systems, not just find their ground states.</p>
-                <p>Many applications in quantum simulation, quantum chemistry, and quantum machine learning require not a single quantum state but an ensemble of states characterizing the heterogeneity of a target system. Preparing such ensembles state-by-state is prohibitive in both variational and fault-tolerant settings, motivating a generative-modeling approach. We introduce latent-conditioned parameterized quantum circuits (LPQCs), a hybrid quantum-classical framework in which classical neural networks map a latent variable sampled from a prior distribution to the parameters of a parameterized quantum circuit. We prove that LPQCs are universal approximators for probability measures over density operators in the $1$-Wasserstein distance, extending classical universal approximation theorems to the quantum-distribution setting. We additionally introduce a multimodal latent prior and a mixture-of-experts circuit architecture, and show that it empirically alleviates the barren plateau problem during optimization. Numerical experiments validate the framework on a synthetic multi-cluster ensemble of mixed quantum states and on a QM9-derived ensemble of 3-D molecular structures. In these tasks, LPQC outperforms recent quantum generative baselines while remaining competitive with typical classical baselines at substantially reduced output dimensionality. By leveraging classical expressivity in the latent space, LPQCs offer a tractable route to quantum generative modeling.</p>
-                <p><a href="https://arxiv.org/abs/2605.28690v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-            <category>machine_learning</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Researchers Say They’ve Achieved Perfect Randomness</title>
-            <link>https://quantumcrier.com/posts/3a0b2865.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/3a0b2865.html</guid>
-            <pubDate>Wed, 27 May 2026 15:45:11 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research addresses one of quantum cryptography&#39;s most fundamental challenges - generating truly random numbers that are mathematically provable rather than just statistically random. Perfect randomness is the bedrock of unbreakable quantum cryptographic protocols, where even microscopic biases in random number generation can create exploitable vulnerabilities that undermine security guarantees. The breakthrough likely leverages quantum mechanical properties like measurement uncertainty to achieve this mathematical perfection, representing a significant step toward quantum-secured communications that can withstand even theoretical attacks. While the practical implementation details matter enormously, this development could strengthen the foundation for quantum key distribution and other cryptographic applications where absolute security is paramount.</p>
-                <p>Insider Brief PRESS RELEASE — Creating perfect randomness is surprisingly difficult. Even modern random number generators never generate completely ideal random numbers: small systematic errors can result in some numbers appearing slightly more frequently than others. For many applications, this does not matter. In cryptography, however, even the tiniest deviations can be problematic. Now, researchers […]</p>
-                <p><a href="https://thequantuminsider.com/2026/05/27/researchers-say-theyve-achieved-perfect-randomness/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>cryptography</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Thermodynamic-limit dispersion relations on trapped-ion quantum hardware</title>
-            <link>https://quantumcrier.com/posts/114bc70a.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/114bc70a.html</guid>
-            <pubDate>Wed, 27 May 2026 15:16:30 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This work represents a significant step toward using near-term quantum computers for complex many-body physics problems that are classically intractable in the thermodynamic limit. The researchers cleverly combine quantum algorithms with numerical linked-cluster expansion techniques to extract infinite-system properties from small quantum calculations, demonstrating the approach on IonQ&#39;s 20-qubit trapped-ion system across multiple challenging models including the transverse-field Ising model. What makes this particularly noteworthy is their development of the &#34;CX-test&#34; as an alternative to traditional measurement schemes, and their honest assessment of current hardware limitations when dealing with the noise amplification that comes from classical post-processing steps like matrix inversions. This hybrid quantum-classical framework could become a powerful tool for studying quantum many-body systems once quantum hardware improves enough to provide the requisite measurement precision.</p>
-                <p>We run a numerical linked-cluster expansion with a quantum algorithm (NLCE+QA), computing ground-state energies and one quasi-particle dispersions in the thermodynamic limit using a 20-qubit trapped-ion quantum processing unit (QPU). The NLCE+QA framework extracts thermodynamic-limit properties from small-cluster calculations, making it naturally suited for near-term quantum devices. Projector-based block-diagonalization schemes such as projective cluster-additive transformation (PCAT) are essential to NLCE+QA, and they involve matrix inversion and square root operations that amplify measurement noise. A central question is therefore whether current hardware can provide expectation values that are accurate enough to withstand non-linear classical post-processing. We explore this challenge for the transverse-field Ising model (TFIM) in one dimension, on a ladder geometry, as well as in a longitudinal field in one dimension. For the quantum algorithm, we consider adiabatic state preparation (ASP), as well as a variational quantum eigensolver (VQE) trained on a classical device. The final expectation values are obtained from the QPU, using a novel alternative to the Hadamard test that we name the CX-test. We explore the regimes currently attainable on quantum devices and comment on the improvements needed for quantum computers to achieve results beyond classical reach.</p>
-                <p><a href="https://arxiv.org/abs/2605.28599v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Stabilizer rank bounds for magic-state orbits</title>
-            <link>https://quantumcrier.com/posts/339383b1.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/339383b1.html</guid>
-            <pubDate>Wed, 27 May 2026 15:09:25 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles a fundamental question in quantum computing: how efficiently can we simulate &#34;magical&#34; quantum states using classical resources, specifically through stabilizer decompositions. The authors make significant progress on qutrit systems (three-level quantum systems), establishing tight bounds on how the computational complexity of simulating these magic states scales - with some orbits requiring dramatically fewer classical resources than previously thought. Most practically relevant is their discovery of efficient conversion circuits that can transform pairs of these magic states into useful phase gates with constant success probability, potentially offering new pathways for implementing non-Clifford operations in fault-tolerant quantum computers. The inclusion of formally verified proofs in Lean 4 demonstrates a growing trend toward mathematical rigor in quantum algorithm development, which could accelerate the field&#39;s theoretical foundations.</p>
-                <p>Distinct Clifford orbits of magic states can exhibit different stabilizer ranks at small tensor powers. We establish this for qutrits, where the single-qutrit Clifford group has four inequivalent orbits of magic states: Strange, Norrell, Hadamard-eigenstate, and the qutrit T-state, but a nontrivial upper bound on the asymptotic exponent had been pinned down for only the qutrit T-state. For the other three orbits we give explicit stabilizer decompositions, yielding upper bounds on the per-copy asymptotic stabilizer-rank exponent: $γ_S \le \log_3(2)/2 \approx 0.316$ for the Strange state, and $γ_{H_3}, γ_N \le \log_3(4)/3 \approx 0.421$ for the Hadamard-eigenstate and Norrell orbits, all strictly below the prior $γ_{T_3} \le 1/2$ baseline. We also prove the first nontrivial $Ω(m / \log m)$ asymptotic lower bounds for the Hadamard-eigenstate and Norrell orbits, and exhibit two-qutrit Clifford circuits that convert two copies of these states into an injectable phase state with constant success probability, enabling constant-overhead injection of one non-Clifford diagonal gate per orbit. In the case of qubits, we give a closed-form decomposition of the qubit T-type orbit at four copies matching the existing $γ_T \le \log_2(3)/4 \approx 0.396$ exponent via a direct algebraic identity rather than an entangled cat-state construction. An open-source library stabrank accompanies the paper, with Lean 4 proof formalizations of all the decompositions.</p>
-                <p><a href="https://arxiv.org/abs/2605.28586v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>Trapped-Ion Multiqubit Gates are Compatible with Scalable Quantum Error Correction</title>
-            <link>https://quantumcrier.com/posts/be558df6.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/be558df6.html</guid>
-            <pubDate>Wed, 27 May 2026 14:31:22 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This research tackles one of the most critical questions in quantum computing: whether multi-qubit gates in trapped ion systems can maintain low enough error rates to enable practical quantum error correction. The team&#39;s detailed noise modeling reveals that while errors can theoretically spread between any qubits due to trapped ions&#39; all-to-all connectivity, the actual error rates between non-participating qubits remain manageable - a crucial finding for scaling up these systems. By directly connecting device-level physics to quantum error correction performance using the surface code, this work provides a concrete roadmap for determining how large trapped ion quantum computers can realistically become before noise overwhelms the error correction benefits. This represents exactly the kind of rigorous, end-to-end analysis needed to bridge the gap between today&#39;s noisy intermediate-scale quantum devices and tomorrow&#39;s fault-tolerant quantum computers.</p>
-                <p>We construct a detailed microscopic noise model for multi-qubit (MQ) gate operations in the context of trapped ion architecture with all-to-all connectivity. We find that phonon heating and motional dephasing are well captured by effective single- and two-qubit error channels that can, in principle, act between arbitrary pairs of qubits. Nevertheless, the median magnitude of two-qubit errors between uncoupled qubits is substantially smaller than that of errors between gate-coupled qubits. Errors associated with photon scattering are shown to solely propagate to qubits participating in gate operations. Lastly, we combine all noise sources, assigned with experimentally relevant parameters, and explore the scalability of a quantum error correction (QEC) scheme based on the rotated surface code, as a function of error rates and code size. Our analysis bridges device-level physics and QEC performance for MQ gates in trapped-ion architectures.</p>
-                <p><a href="https://arxiv.org/abs/2605.28536v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
             
         </item>
         

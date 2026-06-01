@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Implementation of the Quantum Volunteer&#39;s Dilemma on NISQ Hardware: Noise Analysis and Digital-Twin Validation | Quantum Crier</title>
+    <meta name="description" content="We present an experimental implementation of the multiplayer Quantum Volunteer&#39;s Dilemma on noisy intermediate-scale quantum (NISQ) hardware, executed on the ib">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Experimental Implementation of the Quantum Volunteer&#39;s Dilemma on NISQ Hardware: Noise Analysis and Digital-Twin Validation">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Experimental Implementation of the Quantum Volunteer&#39;s Dilemma on NISQ Hardware: Noise Analysis and Digital-Twin Validation</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">May 29, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article demonstrates a significant milestone for quantum game theory by successfully implementing a complex multiplayer quantum game on real NISQ hardware with up to 9 players, showing that quantum advantages in strategic scenarios can survive the harsh realities of current quantum computers. The researchers achieved remarkable resilience to noise, maintaining quantum advantages over classical strategies even as fidelity degraded, which suggests that certain quantum algorithms may be more robust to errors than previously thought. Particularly intriguing is their finding that single-qubit errors dominate at smaller scales while multi-qubit correlations become problematic only at larger system sizes, providing valuable insights for designing noise-resilient quantum protocols. The work also exposes critical limitations in current quantum simulation methods, as their digital twin model failed to capture the true hardware behavior at scale, highlighting the ongoing need for better noise characterization tools in the NISQ era.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>We present an experimental implementation of the multiplayer Quantum Volunteer&#39;s Dilemma on noisy intermediate-scale quantum (NISQ) hardware, executed on the ibm_kingston backend via Qiskit Runtime. The game is evaluated for N = 2 to 9 players under four transpiler optimization levels, with 20 independent repetitions per configuration and 2048 shots per circuit, including post-processing readout error correction via mthree. Target-state fidelity decays with system size but remains above 70% (corrected) through N = 9. With readout correction, the global average payoff reproduces the quantum theoretical benchmark exactly for N &lt;= 6 and exceeds the classical Nash equilibrium across the full tested range. Optimization level 2 is selected as the reference configuration after gate count analysis reveals that levels 2 and 3 produce identical transpiled circuits, with level 2 achieving superior fidelity stability. A Hamming distance analysis of raw measurement counts shows that single-qubit errors dominate at small N, with multi-qubit contributions growing beyond N = 6. A calibration-based digital twin captures global payoff trends but exhibits a linear fidelity decay profile that diverges from the hardware behavior at large N, exposing the limits of first-order independent per-qubit noise models. These results demonstrate that aggregate quantum advantage in multiplayer games is robust to NISQ noise conditions across the full tested range, while the practical observability of state-level advantage is constrained to N &lt;= 8 under post-processed readout correction.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2605.30676v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Experimental%20Implementation%20of%20the%20Quantum%20Volunteer%27s%20Dilemma%20on%20NISQ%20Hardware%3A%20Noise%20Analysis%20and%20Digital-Twin%20Validation&url=https://quantumcrier.com/posts/66188213.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/66188213.html&title=Experimental%20Implementation%20of%20the%20Quantum%20Volunteer%27s%20Dilemma%20on%20NISQ%20Hardware%3A%20Noise%20Analysis%20and%20Digital-Twin%20Validation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
