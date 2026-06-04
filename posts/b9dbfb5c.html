@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osaka University and Fixstars Break 40-Qubit Barrier in Quantum Chemistry Simulation | Quantum Crier</title>
-    <meta name="description" content="Large-scale classical simulation of IQPE quantum circuits demonstrated in this work. Larger qubit counts and more Hamiltonian terms result in deeper circuits an">
+    <title>Circuit-Level Noise Estimation via Shuttling in Plaquette Circuits | Quantum Crier</title>
+    <meta name="description" content="We present a method for estimating QEC circuit-level noise levels assuming that only single-shot measurements are available (e.g. measurements are slow and perf">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Osaka University and Fixstars Break 40-Qubit Barrier in Quantum Chemistry Simulation">
+    <meta property="og:title" content="Circuit-Level Noise Estimation via Shuttling in Plaquette Circuits">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -25,10 +25,6 @@
     <link rel="stylesheet" href="/static/css/style.css">
 
     
-
-<meta property="og:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/04/image-27.png">
-<meta name="twitter:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/04/image-27.png">
-<meta name="twitter:card" content="summary_large_image">
 
 
 </head>
@@ -62,41 +58,38 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Osaka University and Fixstars Break 40-Qubit Barrier in Quantum Chemistry Simulation</h1>
+        <h1>Circuit-Level Noise Estimation via Shuttling in Plaquette Circuits</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">April 05, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 03, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/04/image-27.png" alt="Osaka University and Fixstars Break 40-Qubit Barrier in Quantum Chemistry Simulation" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This collaboration between Osaka University and Fixstars represents a significant milestone in classical quantum simulation, demonstrating that sophisticated quantum algorithms can be efficiently emulated on classical hardware at unprecedented scales. Breaking the 40-qubit barrier for quantum chemistry simulations using Iterative Quantum Phase Estimation (IQPE) circuits showcases the continued importance of classical simulation in validating quantum algorithms before they run on actual quantum computers. While this achievement highlights the power of advanced classical computing, it also provides crucial benchmarks for near-term quantum devices to eventually surpass, helping define the boundary where quantum advantage becomes tangible. The work is particularly valuable for quantum chemistry applications, where understanding molecular systems at this scale could accelerate drug discovery and materials science research.
+                This article tackles a critical challenge in scaling quantum error correction: how to estimate noise levels in quantum circuits when you can only take single measurements and don&#39;t have full control over the hardware calibration. The researchers cleverly use surface code plaquette experiments with two different qubit management strategies to extract noise information from limited data, which is especially valuable for cloud-based quantum computing where users lack low-level hardware access. By testing their approach on both ion-trap and superconducting systems, they demonstrate a practical method for characterizing error correction performance that could help researchers optimize QEC protocols even with restricted hardware access. This work addresses a real bottleneck in quantum error correction development, where understanding your noise landscape is essential but often requires privileged access to quantum hardware that most users simply don&#39;t have.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Large-scale classical simulation of IQPE quantum circuits demonstrated in this work. Larger qubit counts and more Hamiltonian terms result in deeper circuits and longer simulation times. Credit: QIQB, The University of Osaka Osaka University’s Center for Quantum Information and Quantum Biology (QIQB) and Fixstars Corporation have established a new benchmark in classical quantum simulation, utilizing [...] The post Osaka University and Fixstars Break 40-Qubit Barrier in Quantum Chemistry Simulation appeared first on Quantum Computing Report .</p>
+            <p>We present a method for estimating QEC circuit-level noise levels assuming that only single-shot measurements are available (e.g. measurements are slow and performed in a zoned/parallel fashion), and that lower level quantum hardware calibration is not possible (e.g. cloud access) or not feasible (e.g. large scale computing). We develop and run surface code plaquette experiments using two syndrome qubit configurations: FRESH, involving fresh qubits for each plaquette repetition, and RECYCLE, reusing qubits. To validate our approach, we compile plaquettes to ion-trap (IonQ Aria1) native gate set and apply hardware-aware rewrite templates to reduce circuit depth and execution time. We also run the experiments on a non-shuttling, superconducting processor (IBM Torino). We estimate circuit-level noise rates from the resulting single-shot plaquette measurement statistics, and conclude numerically about the viability of low-depth QEC experiments.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/osaka-university-and-fixstars-break-40-qubit-barrier-in-quantum-chemistry-simulation/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2606.04629v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -105,8 +98,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Osaka%20University%20and%20Fixstars%20Break%2040-Qubit%20Barrier%20in%20Quantum%20Chemistry%20Simulation&url=https://quantumcrier.com/posts/724b1279.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/724b1279.html&title=Osaka%20University%20and%20Fixstars%20Break%2040-Qubit%20Barrier%20in%20Quantum%20Chemistry%20Simulation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Circuit-Level%20Noise%20Estimation%20via%20Shuttling%20in%20Plaquette%20Circuits&url=https://quantumcrier.com/posts/b9dbfb5c.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b9dbfb5c.html&title=Circuit-Level%20Noise%20Estimation%20via%20Shuttling%20in%20Plaquette%20Circuits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

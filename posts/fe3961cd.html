@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Variational Quantum Optimisation by Entanglement-Selective Transport | Quantum Crier</title>
+    <meta name="description" content="Distributed quantum optimisation is challenging because computing the problem cost function across multiple quantum processors requires non-local gates, which c">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Distributed Variational Quantum Optimisation by Entanglement-Selective Transport">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Distributed Variational Quantum Optimisation by Entanglement-Selective Transport</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 03, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article introduces a clever approach to one of quantum computing&#39;s most pressing scalability challenges: how to run optimization algorithms across multiple quantum processors without constantly shuttling quantum information between them. QESTO sidesteps the usual bottleneck of expensive non-local gates by using pre-shared Bell pairs as &#34;quantum communication channels&#34; that persist throughout the computation, allowing local operations on each processor to collectively solve global optimization problems. The results showing QESTO outperforming both distributed and monolithic QAOA on tile-matching problems suggest this could be a practical pathway for scaling variational algorithms to larger problem sizes using near-term quantum hardware. This work represents an important step toward distributed quantum computing architectures that could unlock optimization capabilities beyond what single quantum processors can achieve.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Distributed quantum optimisation is challenging because computing the problem cost function across multiple quantum processors requires non-local gates, which can incur overhead in latency and fidelity. Here we introduce QESTO, a distributed variational ansatz for graph-based discrete optimisation that requires only persistent pre-shared Bell pairs for remote operations. Using local operations, it encodes local constraint information in the Bell pairs that is leveraged to produce amplitude transfer towards globally valid distributed solution states. QESTO requires one Bell pair per distributed edge of the problem graph and, after initialisation of the Bell states, uses no non-local gates. On two bounded weighted Wang tile-matching problem ensembles, QESTO achieves stronger convergence to low-cost tilings than equivalently partitioned QAOA with no distributed gates at ansatz depths of two or higher, and exceeds the mean performance of monolithic QAOA at the deepest studied depth in both ensembles. These results suggest that persistent entanglement can support useful variational communication while reducing per-layer non-local gate overhead.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2606.04548v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Distributed%20Variational%20Quantum%20Optimisation%20by%20Entanglement-Selective%20Transport&url=https://quantumcrier.com/posts/fe3961cd.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/fe3961cd.html&title=Distributed%20Variational%20Quantum%20Optimisation%20by%20Entanglement-Selective%20Transport" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
