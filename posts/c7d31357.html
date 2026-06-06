@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resource Implications of Different Encodings for Quantum Computational Fluid Dynamics | Quantum Crier</title>
-    <meta name="description" content="For quantum algorithms for problems in which the task is to compute an entire field of values, like e.g. computational fluid dynamics (CFD), it is often propose">
+    <title>Symmetry-adapted qubit encoding with complete active space and Bravyi--Kitaev mapping for quantum chemistry on a quantum computer | Quantum Crier</title>
+    <meta name="description" content="We present a symmetry-adapted qubit encoding with complete active space (SAE-CAS) for quantum chemistry on fault-tolerant and near-term quantum processors. Buil">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Resource Implications of Different Encodings for Quantum Computational Fluid Dynamics">
+    <meta property="og:title" content="Symmetry-adapted qubit encoding with complete active space and Bravyi--Kitaev mapping for quantum chemistry on a quantum computer">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -63,10 +63,10 @@
             <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>Resource Implications of Different Encodings for Quantum Computational Fluid Dynamics</h1>
+        <h1>Symmetry-adapted qubit encoding with complete active space and Bravyi--Kitaev mapping for quantum chemistry on a quantum computer</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 07, 2026</span>
+            <span class="date">June 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -77,18 +77,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research tackles a critical but often overlooked challenge in quantum computational fluid dynamics: while amplitude encoding can theoretically store exponentially more data in quantum states, the practical costs of getting that data in and out of the quantum computer may be prohibitively expensive. The authors provide concrete resource estimates showing that initialization and readout procedures scale poorly with problem size, potentially undermining the quantum advantage that makes these algorithms attractive in the first place. This kind of end-to-end resource analysis is essential for determining whether quantum CFD approaches will actually outperform classical methods in realistic scenarios, rather than just in idealized theoretical comparisons. The work serves as an important reality check for the quantum simulation community, highlighting that computational complexity extends far beyond just the core algorithm runtime.
+                This article tackles one of quantum computing&#39;s most promising applications—molecular simulation—by introducing a clever encoding scheme that dramatically reduces the number of qubits needed without sacrificing accuracy. The SAE-CAS method exploits molecular symmetries to compress quantum chemistry problems into smaller, more manageable forms, potentially making complex molecular simulations feasible on near-term quantum devices that have limited qubit counts. What makes this particularly exciting is that the researchers demonstrate their approach not only uses fewer qubits but also creates shallower quantum circuits that converge faster, addressing multiple bottlenecks that currently limit quantum advantage in chemistry. With an open-source implementation already available, this could accelerate the timeline for quantum computers to tackle real-world drug discovery and materials science problems.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>For quantum algorithms for problems in which the task is to compute an entire field of values, like e.g. computational fluid dynamics (CFD), it is often proposed amplitude encoding w.r.t. multiple qubits; however, the efforts implied by it for initialization and read-out are not addressed. This work is devoted specifically to this issue: It reviews different encoding schemes in quantum computing, discussing their computational costs for initialization and read-out as well as resulting aspects for their usage via minimal examples. The considerations in previous literature on the required computational resources for amplitude encoding w.r.t. multiple qubits are extended in the presented quantification by explicitly deducing the circuit depth that results for the decomposed initialization procedure of V. V. Shende et al. [1, 2] and deriving an upper bound for the necessary number of executions of a quantum algorithm to extract the encoded values with a specific accuracy. For these two results, an empirical verification via the means provided by IBM&#39;s quantum computing simulation framework $\textit{Qiskit}$ [3] is given. In the framework of the study on the required number of runs to achieve a desired accuracy, it is however found that the derived upper bound, scaling like $ {\tilde{n}^2} ~ {\ln( {\tilde{n}} )} $ with the number of encoded values $ {\tilde{n}} $, is too conservative to be used for precise estimations. Therefore, a corresponding study of the required runs for the reference distribution of equal probabilities for all basis states is done in particular, which suggests $ {\tilde{n}} ~ { \ln( {\tilde{n}} ) } $ as an empirical scaling law. Since the view regarding CFD applications is taken here, it is presented in particular that the insights from this work lead to a new encoding approach, which is proposed specifically for a quantum algorithm for the lattice Boltzmann method.</p>
+            <p>We present a symmetry-adapted qubit encoding with complete active space (SAE-CAS) for quantum chemistry on fault-tolerant and near-term quantum processors. Building on exact-symmetry encodings, we extend symmetry-adapted mappings to approximate $Z$-symmetries corresponding to frozen-core and virtual orbitals, thereby reducing qubit requirements without significant loss of accuracy. We derive the mapping from the second-quantised Hamiltonian to active-space qubit Hamiltonians, prove its equivalence to the canonical CAS Hamiltonian with frozen-core and virtual-orbital projection, and integrate it with point-group and spin-parity symmetry encodings via affine Clifford transformations to maximise qubit reduction while preserving the target symmetry sector. The same framework also accommodates the Bravyi--Kitaev mapping, yielding an SAE-CAS-BK variant that is unitarily equivalent to SAE-CAS. Numerical benchmarking on nine small molecules using UCCSD and a hardware-efficient shifted-circular-alternating (HE-SCA) ansatz shows that SAE-CAS reduces qubit counts and Pauli-operator weight, yields shallower circuits with fewer parameters, and often accelerates VQE convergence; with HE-SCA it consistently reaches CAS reference energies in cases where JW-CAS does not converge within the tested budgets. We provide an open-source implementation in the Python package QuantumSymmetry. SAE-CAS offers a route to resource-efficient molecular simulations on fault-tolerant and near-term quantum processors.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.05577v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.05865v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -98,8 +98,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Resource%20Implications%20of%20Different%20Encodings%20for%20Quantum%20Computational%20Fluid%20Dynamics&url=https://quantumcrier.com/posts/bace5084.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/bace5084.html&title=Resource%20Implications%20of%20Different%20Encodings%20for%20Quantum%20Computational%20Fluid%20Dynamics" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Symmetry-adapted%20qubit%20encoding%20with%20complete%20active%20space%20and%20Bravyi--Kitaev%20mapping%20for%20quantum%20chemistry%20on%20a%20quantum%20computer&url=https://quantumcrier.com/posts/c7d31357.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/c7d31357.html&title=Symmetry-adapted%20qubit%20encoding%20with%20complete%20active%20space%20and%20Bravyi--Kitaev%20mapping%20for%20quantum%20chemistry%20on%20a%20quantum%20computer" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phase-Fidelity-Aware Truncated Quantum Fourier Transform for Scalable Phase Estimation on NISQ Hardware | Quantum Crier</title>
-    <meta name="description" content="Quantum phase estimation~(QPE) is central to numerous quantum algorithms, yet its standard implementation demands an $\calO(m^{2})$-gate quantum Fourier transfo">
+    <title>Breakeven demonstration of quantum low-density parity-check codes | Quantum Crier</title>
+    <meta name="description" content="High-rate quantum low-density parity-check (qLDPC) codes are a leading candidate for fault-tolerant quantum computing. They feature higher encoding rates than p">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Phase-Fidelity-Aware Truncated Quantum Fourier Transform for Scalable Phase Estimation on NISQ Hardware">
+    <meta property="og:title" content="Breakeven demonstration of quantum low-density parity-check codes">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,13 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Phase-Fidelity-Aware Truncated Quantum Fourier Transform for Scalable Phase Estimation on NISQ Hardware</h1>
+        <h1>Breakeven demonstration of quantum low-density parity-check codes</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 07, 2026</span>
+            <span class="date">June 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -75,18 +77,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This breakthrough tackles one of the most fundamental bottlenecks in quantum computing: the prohibitively expensive quantum Fourier transform that sits at the heart of phase estimation algorithms. The researchers have developed a clever truncation strategy that reduces circuit complexity from quadratic to nearly linear scaling while maintaining accuracy, achieving over 30% gate reduction on current IBM and IonQ hardware with minimal performance loss. What&#39;s particularly exciting is their discovery of a &#34;noise-truncation synergy&#34; where their simplified approach actually outperforms the full algorithm on today&#39;s noisy quantum devices, turning NISQ limitations into an advantage. This work could unlock practical implementations of phase estimation for applications ranging from quantum chemistry to optimization on near-term quantum computers.
+                This research marks a crucial milestone in quantum error correction by demonstrating breakeven performance with quantum low-density parity-check codes, where logical qubits actually live as long as the underlying physical qubits - a key threshold for practical quantum computing. The team&#39;s achievement of encoding 4 logical qubits into just 18 physical qubits while maintaining error rates 9 times better than previous demonstrations shows the promise of qLDPC codes as more efficient alternatives to the widely-studied surface code. What makes this particularly impressive is the use of trapped-ion hardware&#39;s inherent flexibility to test nine different error correction schemes on the same device, proving these codes can work without exotic hardware modifications like long-range couplers that other platforms might require. The novel OMG architecture implementation that eliminates the need for ion shuttling could significantly streamline future trapped-ion quantum computers while making sophisticated error correction more practical.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum phase estimation~(QPE) is central to numerous quantum algorithms, yet its standard implementation demands an $\calO(m^{2})$-gate quantum Fourier transform~(QFT) on $m$ control qubits-a prohibitive overhead on near-term noisy intermediate-scale quantum (NISQ) devices. We introduce the \emph{Phase-Fidelity-Aware Truncated QFT} (PFA-TQFT), a family of approximate QFT circuits parameterised by a truncation depth~$d$ that omits controlled-phase rotations below a hardware-calibrated fidelity threshold~$\eps$. Our central result establishes $\TV(P_{\varphi},P_{\varphi}^{d})\leqπ(m{-}d)/2^{d}$, showing that for $d=\calO(\log m)$ circuit size collapses from $\calO(m^{2})$ to $\calO(m\log m)$ while estimation error grows by at most $\calO(2^{-d})$. We characterise $\dstar=\Floor{\log_{2}(2π/\eps_{2q})}$ directly from native gate fidelities, demonstrating 31.3 -43.7\% at m = 30, gate-count reduction on IBM Eagle/Heron and IonQ~Aria with negligible accuracy loss. Numerical experiments on the transverse-field Ising model confirm all theoretical predictions and reveal a \emph{noise-truncation synergy}: PFA-TQFT outperforms full QFT under NISQ noise $\eps_{2q}\gtrsim 2\times10^{-3}$.</p>
+            <p>High-rate quantum low-density parity-check (qLDPC) codes are a leading candidate for fault-tolerant quantum computing. They feature higher encoding rates than planar alternatives such as the surface code, but their implementation often entails significant hardware hurdles like the need for long-range couplers. We leverage the flexibility of a trapped-ion quantum computer to demonstrate nine quantum error-correcting codes with starkly different qubit connectivity requirements on a single device without any hardware reconfiguration. These experiments span three families of quantum error-correcting codes: qLDPC codes, topological codes, and concatenated codes. With a qLDPC code encoding 4 logical qubits into 18 physical qubits, we achieve a logical error rate up to $9\times$ better than a previous demonstration of a similar code on superconducting solid-state qubits. Moreover, our implementation exhibits breakeven performance, with some instances achieving qubit lifetimes comparable to or slightly exceeding that of our trapped-ion qubits. We use a novel implementation of the optical-metastable-ground (OMG) architecture for addressable mid-circuit measurement and reset, which enables us to perform these experiments without any ion transport or dedicated coolant ions, requirements that typically consume a large fraction of the runtime or ion count of trapped-ion quantum computers.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.05456v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.06455v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -96,8 +98,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Phase-Fidelity-Aware%20Truncated%20Quantum%20Fourier%20Transform%20for%20Scalable%20Phase%20Estimation%20on%20NISQ%20Hardware&url=https://quantumcrier.com/posts/26d19bb4.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/26d19bb4.html&title=Phase-Fidelity-Aware%20Truncated%20Quantum%20Fourier%20Transform%20for%20Scalable%20Phase%20Estimation%20on%20NISQ%20Hardware" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Breakeven%20demonstration%20of%20quantum%20low-density%20parity-check%20codes&url=https://quantumcrier.com/posts/0dd6cd5e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0dd6cd5e.html&title=Breakeven%20demonstration%20of%20quantum%20low-density%20parity-check%20codes" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
