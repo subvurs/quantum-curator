@@ -155,6 +155,11 @@ class CuratedPost(BaseModel):
     meta_description: str = ""
     subvurs_notes: str = ""  # Internal Subvurs research connection notes
 
+    # Subvurs-Impact scoring (Phase B — see SUBVURS_IMPACT_SCORING_PROPOSAL_20260602.txt)
+    subvurs_impact_score: float = 0.0           # final score 0.0..1.0
+    subvurs_impact_report: str | None = None    # JSON-serialized ScoreReport
+    subvurs_impact_version: str | None = None   # e.g. "subvurs_impact_v0.1"
+
     # Aliases for backward compatibility
     @property
     def original_title(self) -> str:

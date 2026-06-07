@@ -96,6 +96,9 @@ def init_db() -> None:
             slug TEXT DEFAULT '',
             meta_description TEXT DEFAULT '',
             subvurs_notes TEXT DEFAULT '',
+            subvurs_impact_score REAL DEFAULT 0.0,
+            subvurs_impact_report TEXT DEFAULT NULL,
+            subvurs_impact_version TEXT DEFAULT NULL,
             FOREIGN KEY (article_id) REFERENCES raw_articles(id)
         );
 
@@ -143,6 +146,18 @@ def init_db() -> None:
         conn.commit()
     except sqlite3.OperationalError:
         pass  # Column already exists
+
+    # Migrate: add subvurs_impact_* columns (Phase B — proposal §8)
+    for ddl in (
+        "ALTER TABLE curated_posts ADD COLUMN subvurs_impact_score REAL DEFAULT 0.0",
+        "ALTER TABLE curated_posts ADD COLUMN subvurs_impact_report TEXT DEFAULT NULL",
+        "ALTER TABLE curated_posts ADD COLUMN subvurs_impact_version TEXT DEFAULT NULL",
+    ):
+        try:
+            conn.execute(ddl)
+            conn.commit()
+        except sqlite3.OperationalError:
+            pass  # Column already exists
 
     conn.commit()
     conn.close()
@@ -455,8 +470,9 @@ def save_post(post: CuratedPost) -> CuratedPost:
         (id, article_id, title, original_url, summary, author,
          source_name, image_url, published_at, curator_commentary, curator_name, curator_headline,
          topics, tags, relevance_score, status, curated_at, published_to_site_at, slug, meta_description,
-         subvurs_notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         subvurs_notes,
+         subvurs_impact_score, subvurs_impact_report, subvurs_impact_version)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         post.id,
         post.article_id,
@@ -479,6 +495,9 @@ def save_post(post: CuratedPost) -> CuratedPost:
         post.slug,
         post.meta_description,
         post.subvurs_notes,
+        post.subvurs_impact_score,
+        post.subvurs_impact_report,
+        post.subvurs_impact_version,
     ))
     conn.commit()
     conn.close()
@@ -591,6 +610,21 @@ def _row_to_post(row: sqlite3.Row) -> CuratedPost:
         slug=row["slug"],
         meta_description=row["meta_description"],
         subvurs_notes=row["subvurs_notes"] if "subvurs_notes" in row.keys() else "",
+        subvurs_impact_score=(
+            row["subvurs_impact_score"]
+            if "subvurs_impact_score" in row.keys() and row["subvurs_impact_score"] is not None
+            else 0.0
+        ),
+        subvurs_impact_report=(
+            row["subvurs_impact_report"]
+            if "subvurs_impact_report" in row.keys()
+            else None
+        ),
+        subvurs_impact_version=(
+            row["subvurs_impact_version"]
+            if "subvurs_impact_version" in row.keys()
+            else None
+        ),
     )
 
 

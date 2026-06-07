@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import json as _json
 import re
 from datetime import datetime
 from pathlib import Path
@@ -13,6 +14,29 @@ import anthropic
 from .config import get_settings
 from .models import ContentTopic, CuratedPost, DailyDigest, PostStatus, RawArticle
 from . import db
+
+# --- subvurs_impact (Phase B per proposal §8) ---------------------------
+# The shared scorer is vendored into `quantum_curator._vendor.subvurs_impact`
+# so the Curator stays self-contained — the previous sys.path bootstrap
+# pointed at /Users/mvm/Desktop/subvurs/, which is absent on the GitHub
+# Actions runner that publishes the site. Provenance + re-vendoring
+# procedure: `quantum_curator/_vendor/subvurs_impact/VENDORED.md`.
+#
+# Fail-closed: any import failure downgrades to "scoring disabled" and
+# downstream curation continues without touching the impact fields.
+try:
+    from ._vendor.subvurs_impact import (  # type: ignore
+        SCORER_VERSION as _IMPACT_VERSION,
+        ScoreReport as _ImpactScoreReport,
+        score_item as _impact_score_item,
+    )
+    _IMPACT_AVAILABLE = True
+except Exception as _impact_err:  # noqa: BLE001 — fail-closed import
+    print(f"subvurs_impact unavailable, scoring disabled: {_impact_err}")
+    _IMPACT_AVAILABLE = False
+    _IMPACT_VERSION = None  # type: ignore[assignment]
+    _ImpactScoreReport = None  # type: ignore[assignment,misc]
+    _impact_score_item = None  # type: ignore[assignment]
 
 
 CURATOR_SYSTEM_PROMPT = """You are a quantum computing expert and science communicator who curates and comments on quantum computing news. You write engaging, accessible commentary that:
@@ -162,6 +186,24 @@ class Curator:
             if subvurs_notes:
                 self._save_subvurs_notes_file(article, subvurs_notes)
 
+        # Phase B: deterministic Subvurs-impact score via shared scorer.
+        # Independent of notes generation — even when notes is empty the
+        # rubric still produces an interpretive band ("RELATED" data is
+        # exactly the case proposal §1 says must not be silently dropped).
+        impact_score = 0.0
+        impact_report_json: str | None = None
+        impact_version: str | None = None
+        if (
+            self.settings.subvurs_impact_scoring_enabled
+            and _IMPACT_AVAILABLE
+        ):
+            report = await self._score_subvurs_impact(article)
+            if report is not None:
+                impact_score = float(report.score)
+                # Pydantic v2 model_dump_json handles datetime + nested models.
+                impact_report_json = report.model_dump_json()
+                impact_version = report.version
+
         # Create curated post
         post = CuratedPost(
             article_id=article.id,
@@ -172,6 +214,9 @@ class Curator:
             image_url=image_url,
             curator_commentary=commentary,
             subvurs_notes=subvurs_notes,
+            subvurs_impact_score=impact_score,
+            subvurs_impact_report=impact_report_json,
+            subvurs_impact_version=impact_version,
             topics=article.topics,
             relevance_score=article.relevance_score,
             curator_name=self.settings.curator_name,
@@ -295,6 +340,36 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
         except Exception as e:
             print(f"Subvurs notes generation error: {e}")
             return ""
+
+    async def _score_subvurs_impact(self, article: RawArticle):
+        """Run the shared subvurs_impact scorer on an article.
+
+        Returns the ScoreReport or None if scoring is unavailable.
+        score_item() is already fail-closed (any failure returns a
+        ScoreReport with score=0.0 + fail_reason set), so this wrapper
+        only has to handle the "module not loaded" / "no API key" case.
+        """
+        if not _IMPACT_AVAILABLE or _impact_score_item is None:
+            return None
+        if not self.settings.anthropic_api_key:
+            return None
+
+        # Match the shape score_item expects (proposal §3.2 / §5.2).
+        item = {
+            "title": article.title,
+            "source": article.source_name,
+            "summary": article.summary[:1500],
+        }
+
+        # score_item is sync (single LLM call); offload to thread to
+        # avoid blocking the event loop in batch curation.
+        try:
+            return await asyncio.to_thread(_impact_score_item, item)
+        except Exception as exc:  # noqa: BLE001 — final safety net
+            # score_item is fail-closed internally; anything reaching
+            # here is a library-level bug. Log and degrade gracefully.
+            print(f"subvurs_impact scoring crashed: {exc!r}")
+            return None
 
     def _save_subvurs_notes_file(self, article: RawArticle, notes: str) -> Path:
         """Save subvurs notes to a text file in data/subvurs_notes/."""

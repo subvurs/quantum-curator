@@ -114,6 +114,10 @@ class Settings(BaseSettings):
     )
     claude_model: str = Field(default="claude-sonnet-4-20250514", description="Claude model for commentary")
     generate_subvurs_notes: bool = Field(default=True, description="Generate internal Subvurs research connection notes during curation")
+    subvurs_impact_scoring_enabled: bool = Field(
+        default=True,
+        description="Apply shared subvurs_impact scorer + gates during curation (Phase B; proposal §8)",
+    )
 
     @property
     def database_path(self) -> Path:
