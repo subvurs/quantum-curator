@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware-Aware Quantum Support Vector Machines | Quantum Crier</title>
-    <meta name="description" content="Deploying quantum machine learning algorithms on near-term quantum hardware requires circuits that respect device-specific gate sets, connectivity constraints, ">
+    <title>Fun with Graph States: Nonlocal Bell Pairs and the Arf Invariant | Quantum Crier</title>
+    <meta name="description" content="We study inner products and partial amplitudes of graph states--a commonly employed class of quantum states, which are specified by graphs. We find that the mag">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Hardware-Aware Quantum Support Vector Machines">
+    <meta property="og:title" content="Fun with Graph States: Nonlocal Bell Pairs and the Arf Invariant">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,15 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Hardware-Aware Quantum Support Vector Machines</h1>
+        <h1>Fun with Graph States: Nonlocal Bell Pairs and the Arf Invariant</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 09, 2026</span>
+            <span class="date">June 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -77,18 +75,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This article tackles one of the most pressing challenges in quantum machine learning: the gap between theoretical algorithms and what actually runs well on real quantum hardware. By using genetic algorithms to automatically design quantum Support Vector Machine circuits that are perfectly matched to IBM&#39;s native gate set, the researchers eliminated the transpilation overhead that typically degrades performance when universal quantum circuits are compiled for specific devices. The 27 percentage point improvement over hand-crafted approaches demonstrates that hardware-aware automated design can unlock significantly better performance from near-term quantum processors. This work represents an important step toward making quantum machine learning algorithms genuinely practical rather than just academically interesting, showing how to bridge the theory-to-hardware gap that has limited real-world quantum ML applications.
+                This research unveils a surprisingly elegant mathematical structure underlying graph states, revealing that these widely-used quantum states can be decomposed into collections of nonlocal Bell pairs paired with unentangled ancillary qubits. The discovery that graph state properties are governed by fundamental algebraic concepts like the Arf invariant and adjacency matrix rank over finite fields provides new theoretical tools for understanding why measurement-based quantum computation works so effectively. This mathematical insight could lead to more efficient ways to prepare and manipulate graph states in quantum hardware, potentially streamlining protocols for quantum sensing and distributed quantum computing where graph states serve as essential resources. The work bridges quantum information theory with algebraic topology in a way that may unlock new perspectives on quantum advantage and inspire novel quantum algorithms.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Deploying quantum machine learning algorithms on near-term quantum hardware requires circuits that respect device-specific gate sets, connectivity constraints, and noise characteristics. We present a hardware-aware Neural Architecture Search (NAS) approach for designing quantum feature maps that are natively executable on IBM quantum processors without transpilation overhead. Using genetic algorithms to evolve circuit architectures constrained to IBM Torino native gates (ECR, RZ, SX, X), we demonstrate that automated architecture search can discover quantum Support Vector Machine (QSVM) feature maps achieving competitive performance while guaranteeing hardware compatibility. Evaluated on the UCI Breast Cancer Wisconsin dataset, our hardware-aware NAS discovers a 12-gate circuit using exclusively IBM native gates (6 ECR, 3 SX, 3 RZ) that achieves 91.23 % accuracy on 10 qubits-matching unconstrained gate search while requiring zero transpilation. This represents a 27 percentage point improvement over hand-crafted quantum feature maps (64 % accuracy) and approaches the classical RBF SVM baseline (93 %). We show that removing architectural constraints (fixed RZ placement) within hardware-aware search yields 3.5 percentage point gains, and that 100 % native gate usage eliminates decomposition errors that plague universal gate compilations. Our work demonstrates that hardware-aware NAS makes quantum kernel methods practically deployable on current noisy intermediate-scale quantum (NISQ) devices, with circuit architectures ready for immediate execution without modification.</p>
+            <p>We study inner products and partial amplitudes of graph states--a commonly employed class of quantum states, which are specified by graphs. We find that the magnitudes of these quantities are simply related to the rank of the adjacency matrix of the graph over F_2 while the phase is determined by the Arf invariant of its quadratic refinement. These facts motivate a nonlocal tensor factorization of the Hilbert space, with respect to which all graph states are products of Bell pairs with unentangled ancillae. These results may illuminate the quantum advantage in the framework of Measurement-Based Quantum Computation and suggest that graph states can be usefully visualized in the language of algebraic topology. In addition, we develop a specialized technique for computing expectation values of qubit-wise permutations in graph states, which is useful for calculating multi-invariants.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.07856v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.06582v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -98,8 +96,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Hardware-Aware%20Quantum%20Support%20Vector%20Machines&url=https://quantumcrier.com/posts/9f4a2138.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/9f4a2138.html&title=Hardware-Aware%20Quantum%20Support%20Vector%20Machines" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Fun%20with%20Graph%20States%3A%20Nonlocal%20Bell%20Pairs%20and%20the%20Arf%20Invariant&url=https://quantumcrier.com/posts/f89af085.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f89af085.html&title=Fun%20with%20Graph%20States%3A%20Nonlocal%20Bell%20Pairs%20and%20the%20Arf%20Invariant" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

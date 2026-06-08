@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trotterization with Many-body Coulomb Interactions: Convergence for General Initial Conditions and State-Dependent Improvements | Quantum Crier</title>
-    <meta name="description" content="Efficiently simulating many-body quantum systems with Coulomb interactions is a fundamental question in quantum physics, quantum chemistry, and quantum computin">
+    <title>Solution of the Equation-of-Motion Phonon Method eigenvalue problems on the D-Wave quantum annealer | Quantum Crier</title>
+    <meta name="description" content="The solution of large-scale eigenvalue problems is crucial in nuclear many-body theory, where Hamiltonian matrices often reach extremely large dimensions. Quant">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Trotterization with Many-body Coulomb Interactions: Convergence for General Initial Conditions and State-Dependent Improvements">
+    <meta property="og:title" content="Solution of the Equation-of-Motion Phonon Method eigenvalue problems on the D-Wave quantum annealer">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -56,15 +56,19 @@
     <header class="post-header">
         <div class="post-topics">
             
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
             
         </div>
-        <h1>Trotterization with Many-body Coulomb Interactions: Convergence for General Initial Conditions and State-Dependent Improvements</h1>
+        <h1>Solution of the Equation-of-Motion Phonon Method eigenvalue problems on the D-Wave quantum annealer</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 09, 2026</span>
+            <span class="date">June 05, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -75,18 +79,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research tackles one of the most challenging problems in quantum simulation: efficiently handling the notorious Coulomb interactions that govern electrons in atoms and molecules. The authors prove that Trotterization, a fundamental quantum algorithm for time evolution, can achieve rigorous convergence guarantees even when dealing with the mathematically unruly Coulomb potential - which is singular, long-ranged, and violates many standard assumptions used in quantum simulation analysis. Most importantly, they show the algorithm remains &#34;quantumly efficient&#34; with polynomial scaling in system size, suggesting that quantum computers could eventually simulate realistic chemical and materials systems without needing artificial smoothing of the problematic Coulomb singularities. This represents a crucial theoretical foundation for quantum chemistry applications, providing the mathematical rigor needed to confidently apply Trotterization to real molecular systems where Coulomb interactions dominate.
+                This research demonstrates a clever workaround for one of quantum computing&#39;s most promising but currently impractical applications - solving the massive eigenvalue problems that arise in nuclear physics simulations. While the theoretically optimal Quantum Phase Estimation algorithm remains out of reach for today&#39;s noisy quantum hardware, these researchers successfully adapted D-Wave&#39;s quantum annealer to tackle real nuclear many-body calculations by reformulating eigenvalue problems as optimization tasks. The hybrid approach, which combines quantum annealing with classical deflation techniques to extract complete eigenspectra, represents exactly the kind of near-term quantum advantage we need to see - taking quantum hardware as it exists today and finding meaningful scientific applications. This work could open doors for quantum-assisted materials science and nuclear engineering calculations well before fault-tolerant quantum computers become available.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Efficiently simulating many-body quantum systems with Coulomb interactions is a fundamental question in quantum physics, quantum chemistry, and quantum computing, yet it presents unique challenges: the Hamiltonian is an unbounded operator (both kinetic and potential parts are unbounded); its Hilbert space dimension grows exponentially with particle number; and the Coulomb potential is singular, long-ranged, non-smooth, and unbounded, violating the regularity assumptions of many prior state-of-the-art many-body simulation analyses. In this work, we establish rigorous error bounds for Trotter formulas applied to many-body quantum systems with Coulomb interactions. Our first main result shows that for general initial conditions in the domain of the Hamiltonian, second-order Trotter achieves a sharp $1/4$ convergence rate with explicit polynomial dependence of the error prefactor on the particle number. The polynomial dependence on system size suggests that the algorithm remains quantumly efficient, even without introducing any regularization of the Coulomb singularity. Notably, although the result under general conditions constitutes a worst-case bound, this rate has been observed in prior work for the hydrogen ground state, demonstrating its relevance to physically and practically important initial conditions. Our second main result identifies a set of physically meaningful conditions on the initial state under which the convergence rate improves to first and second order. For hydrogenic systems, these conditions are connected to excited states with sufficiently high angular momentum. Our theoretical findings are consistent with prior numerical observations.</p>
+            <p>The solution of large-scale eigenvalue problems is crucial in nuclear many-body theory, where Hamiltonian matrices often reach extremely large dimensions. Quantum computing opens new perspectives for addressing such demanding problems. Although the Quantum Phase Estimation algorithm offers, in principle, a systematic route to matrix diagonalization, its practical deployment demands levels of coherence and error correction that current quantum hardware cannot yet support. A viable near-term strategy is instead to exploit quantum annealing, which enables the recasting of eigenvalue problems into quadratic unconstrained binary optimization formulations that can be addressed by existing annealing-based processors. Here, we propose a hybrid quantum-classical algorithm that combines quantum annealing and classical deflation to iteratively extract the full eigenspectrum of both standard and generalized eigenvalue problems. We benchmark this method on eigenvalue problems arising from the Equation of Motion Phonon Method performing calculations on real quantum hardware. Our approach illustrates the capabilities and limitations of near-term quantum devices in addressing nuclear eigenvalue problems.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.07704v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.07035v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -96,8 +100,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Trotterization%20with%20Many-body%20Coulomb%20Interactions%3A%20Convergence%20for%20General%20Initial%20Conditions%20and%20State-Dependent%20Improvements&url=https://quantumcrier.com/posts/6e2b5266.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/6e2b5266.html&title=Trotterization%20with%20Many-body%20Coulomb%20Interactions%3A%20Convergence%20for%20General%20Initial%20Conditions%20and%20State-Dependent%20Improvements" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Solution%20of%20the%20Equation-of-Motion%20Phonon%20Method%20eigenvalue%20problems%20on%20the%20D-Wave%20quantum%20annealer&url=https://quantumcrier.com/posts/f22e61ea.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f22e61ea.html&title=Solution%20of%20the%20Equation-of-Motion%20Phonon%20Method%20eigenvalue%20problems%20on%20the%20D-Wave%20quantum%20annealer" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

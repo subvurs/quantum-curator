@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robust and High-Fidelity Controlled Two-Qubit Gates via Asymmetric Parallel Resonant Excitation | Quantum Crier</title>
-    <meta name="description" content="Implementing high-fidelity controlled two-qubit gates in dipole-dipole interacting systems, such as rare-earth-ion crystals, in hindered by spectral inhomogenei">
+    <title>Projector Quantum Variational Ansatz | Quantum Crier</title>
+    <meta name="description" content="Quantum computing offers several algorithms to compute the ground state of a problem Hamiltonian. The most desirable algorithms belong to the Fault Tolerant Qua">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Robust and High-Fidelity Controlled Two-Qubit Gates via Asymmetric Parallel Resonant Excitation">
+    <meta property="og:title" content="Projector Quantum Variational Ansatz">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,13 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>Robust and High-Fidelity Controlled Two-Qubit Gates via Asymmetric Parallel Resonant Excitation</h1>
+        <h1>Projector Quantum Variational Ansatz</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 08, 2026</span>
+            <span class="date">June 05, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -75,18 +77,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research tackles one of the most persistent challenges in quantum computing hardware: achieving high-fidelity two-qubit gates in systems plagued by spectral inhomogeneity, where qubits don&#39;t all operate at exactly the same frequencies. The proposed asymmetric parallel resonant excitation scheme is particularly significant for rare-earth-ion quantum processors, which have shown promise for quantum memory applications but have struggled with gate fidelities due to their inherently &#34;messy&#34; spectral properties. By demonstrating over 99% gate fidelity across a substantial 170 kHz detuning range, this work provides a practical pathway for scaling up these exotic quantum systems that could eventually offer advantages in quantum networking and distributed computing applications. The robustness to frequency errors addresses a real bottleneck that has limited the practical deployment of dipole-dipole coupled quantum processors.
+                This research bridges a crucial gap between near-term NISQ algorithms and future fault-tolerant quantum computing by developing a variational ansatz that mimics the projector-based approach used in powerful FTQC algorithms like Quantum Phase Estimation. The work is particularly significant because it offers a potential pathway to access some benefits of fault-tolerant algorithms within current noisy quantum hardware limitations, while maintaining the shallow circuit depths that ADAPT-VQE provides. By creating a hybrid approach that can switch between ISQ-QSP and ADAPT-VQE structures depending on parametrization, this could help quantum computing researchers better prepare for the eventual transition from NISQ to fault-tolerant systems. This represents an important step toward making quantum algorithms more robust and scalable across different hardware generations.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Implementing high-fidelity controlled two-qubit gates in dipole-dipole interacting systems, such as rare-earth-ion crystals, in hindered by spectral inhomogeneity and weak coupling. Existing method often rely on detuned pulses, making them susceptible to frequency errors and AC Stark shifts. We propose a robust resonant scheme for arbitrary controlled two-qubit gates that utilizes asymmetric excitation and pulse engineering to achieve decoupled, parallel qubit control. Simulations on rare-earth-ion ensemble qubits demonstrate gate fidelities exceeding 99% within a 170 kHz detuning range with off-resonant excitation below 0.2%. This approach offers a robust, scalable route for quantum computing in spectrally crowded systems.</p>
+            <p>Quantum computing offers several algorithms to compute the ground state of a problem Hamiltonian. The most desirable algorithms belong to the Fault Tolerant QuantumComputing (FTQC) regime, such as quantum algorithms with repetitive structure like Quantum Phase Estimation (QPE) and Quantum Signal Processing (QSP). However, in the Noisy In-termediate Scale Quantum (NISQ) regime, the most realistic approaches involve Variational Quantum Eigensolver (VQE) algorithms and their variants. VQE is an algorithm that searches for a parametrized unitary matrix called an ansatz whose purposeis to transform an easily prepared initial state into the groundstate of a given Hamiltonian. Adaptive Derivative-AssembledPseudo-Trotter (ADAPT)-VQE is a variant of VQE that im-proves this approach by constructing the ansatz iteratively so that the associated quantum circuit is as shallow as possible. A major difference between FTQC (i.e. not variational) algorithms and VQE is that FTQC algorithms do not construct a state transitiondirectly. Instead, they construct a projector that identifies the ground state using ancillary qubits that flag the good solution. The desired state is then obtained via amplitude amplification orpost-selection. In this work, we propose a VQE ansatz whose structure is more similar to that of an FTQC algorithm. Depending on its parametrization, this ansatz can be equivalent to either an Intermediate Scale Quantum (ISQ)-QSP or to an ADAPT-VQE quantum circuit structure. Our experimental results show that this first proposal of Projector Variational Ansatz (PVA) converges with a shallower ansatz than the usual ADAPT-VQE.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.07163v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.07084v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -96,8 +98,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Robust%20and%20High-Fidelity%20Controlled%20Two-Qubit%20Gates%20via%20Asymmetric%20Parallel%20Resonant%20Excitation&url=https://quantumcrier.com/posts/85700d2f.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/85700d2f.html&title=Robust%20and%20High-Fidelity%20Controlled%20Two-Qubit%20Gates%20via%20Asymmetric%20Parallel%20Resonant%20Excitation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Projector%20Quantum%20Variational%20Ansatz&url=https://quantumcrier.com/posts/0919945f.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0919945f.html&title=Projector%20Quantum%20Variational%20Ansatz" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
