@@ -22,6 +22,32 @@ CONNECTIONS_TABLE_HEADER = (
     '</tr></thead><tbody>'
 )
 
+# Phase 3b: surface the top-scored Subvurs-Impact posts at the head of
+# the email. subvurs_notes (qualitative) and subvurs_impact_score
+# (quantitative, 0.0–1.0) are complementary — notes catch hand-tagged
+# connections, impact_score catches what the scorer ranks highly. The
+# block only renders when at least one post has a non-zero score, so
+# pre-Phase-B emails (all zeros) keep their current layout.
+IMPACT_TABLE_HEADER = (
+    '<div style="margin-top: 24px;">'
+    '<h2 style="color: #06b6d4; font-size: 18px; margin-bottom: 6px;">Top Subvurs-Impact Posts</h2>'
+    '<p style="color: #94a3b8; font-size: 12px; margin: 0 0 12px 0;">'
+    'Ranked by ``subvurs_impact_score`` (0.0–1.0). Quantitative scorer output, '
+    'separate from the qualitative Research Connections below.</p>'
+    '<table style="width: 100%; border-collapse: collapse;"><thead><tr>'
+    '<th style="text-align: left; padding: 8px 12px; color: #94a3b8; border-bottom: 2px solid #334155; width: 60%;">Article</th>'
+    '<th style="text-align: right; padding: 8px 12px; color: #94a3b8; border-bottom: 2px solid #334155;">Impact</th>'
+    '<th style="text-align: left; padding: 8px 12px; color: #94a3b8; border-bottom: 2px solid #334155;">Scorer</th>'
+    '</tr></thead><tbody>'
+)
+# Show this many top-scored entries (rest are still summarized in the
+# Research Connections / Other Articles sections below).
+IMPACT_TOP_N = 5
+# Floor — entries below this don't make the cut even if they're in
+# the top N. Matches the "noise floor" pattern from gh_eval (fail-closed
+# default).
+IMPACT_MIN_SCORE = 0.05
+
 NO_CONNECTIONS_MSG = (
     '<div style="margin-top: 24px; padding: 20px; background: #1e293b; border-radius: 8px; '
     'text-align: center; color: #94a3b8;">No Subvurs research connections found in today\'s articles.</div>'
@@ -58,6 +84,14 @@ def build_insights_report(days: int = 1) -> tuple[str, str, int]:
     num_connections = len(with_notes)
     num_posts = len(posts)
 
+    # Phase 3b: top-N by quantitative impact score, gated by IMPACT_MIN_SCORE.
+    impact_ranked = sorted(
+        [p for p in posts if (p.subvurs_impact_score or 0.0) >= IMPACT_MIN_SCORE],
+        key=lambda p: p.subvurs_impact_score or 0.0,
+        reverse=True,
+    )[:IMPACT_TOP_N]
+    num_impact = len(impact_ranked)
+
     subject = "Quantum Curator: {} Subvurs connections found — {}".format(num_connections, today_str)
 
     # Build connection rows
@@ -75,6 +109,42 @@ def build_insights_report(days: int = 1) -> tuple[str, str, int]:
             "</td>"
             "</tr>"
         ).format(url=p.original_url, title=p.title, source=p.source_name, date=date_str, notes=p.subvurs_notes)
+
+    # Build impact-score rows (Phase 3b)
+    impact_rows = ""
+    for p in impact_ranked:
+        score = p.subvurs_impact_score or 0.0
+        version = p.subvurs_impact_version or "unversioned"
+        # Color gradient: cyan above 0.5, slate below
+        score_color = "#06b6d4" if score >= 0.5 else "#64748b"
+        impact_rows += (
+            "<tr>"
+            '<td style="padding: 12px; border-bottom: 1px solid #334155; vertical-align: top;">'
+            '<a href="{url}" style="color: #67e8f9; text-decoration: none; font-weight: 600;">{title}</a>'
+            '<br><span style="color: #94a3b8; font-size: 13px;">{source}</span>'
+            "</td>"
+            '<td style="padding: 12px; border-bottom: 1px solid #334155; color: {score_color}; '
+            'font-family: monospace; font-size: 16px; font-weight: 700; text-align: right; vertical-align: top;">'
+            "{score:.2f}"
+            "</td>"
+            '<td style="padding: 12px; border-bottom: 1px solid #334155; color: #94a3b8; '
+            'font-size: 12px; vertical-align: top;">'
+            "{version}"
+            "</td>"
+            "</tr>"
+        ).format(
+            url=p.original_url,
+            title=p.title,
+            source=p.source_name,
+            score_color=score_color,
+            score=score,
+            version=version,
+        )
+
+    if impact_ranked:
+        impact_section = IMPACT_TABLE_HEADER + impact_rows + "</tbody></table></div>"
+    else:
+        impact_section = ""
 
     # Build no-connection rows
     no_connection_rows = ""
@@ -113,8 +183,9 @@ def build_insights_report(days: int = 1) -> tuple[str, str, int]:
         '<div style="max-width: 800px; margin: 0 auto;">\n'
         '<div style="text-align: center; padding: 20px 0; border-bottom: 2px solid #6366f1;">\n'
         '<h1 style="color: #6366f1; margin: 0; font-size: 24px;">Quantum Curator &mdash; Subvurs Insights</h1>\n'
-        '<p style="color: #94a3b8; margin: 8px 0 0 0;">{today} &middot; {total} articles curated &middot; {connections} connections found</p>\n'
+        '<p style="color: #94a3b8; margin: 8px 0 0 0;">{today} &middot; {total} articles curated &middot; {connections} connections &middot; {impact} scored</p>\n'
         "</div>\n"
+        "{impact_section}\n"
         "{connections_section}\n"
         "{other_section}\n"
         '<div style="margin-top: 30px; padding-top: 16px; border-top: 1px solid #334155; text-align: center; color: #475569; font-size: 12px;">\n'
@@ -127,6 +198,8 @@ def build_insights_report(days: int = 1) -> tuple[str, str, int]:
         today=today_str,
         total=num_posts,
         connections=num_connections,
+        impact=num_impact,
+        impact_section=impact_section,
         connections_section=connections_section,
         other_section=other_section,
     )

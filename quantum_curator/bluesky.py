@@ -124,6 +124,91 @@ class BlueskySharer:
                 logger.exception("Failed to share post to Bluesky: %s", post.title)
                 return False
 
+    def share_daily_summary(
+        self,
+        text: str,
+        link: str = "https://qrater.org",
+        *,
+        summary_date: str | None = None,
+    ) -> bool:
+        """Share the daily Quantum Intel summary as a single Bluesky post.
+
+        Distinct from ``share_post`` (which pushes individual CuratedPost
+        rows). This is the once-per-day Intel digest path: the post text
+        comes from ``intel.daily_summary.render_bluesky`` and the link
+        is a single CTA (default qrater.org). Idempotent via the
+        ``bluesky_daily_summaries`` table — the UNIQUE constraint on
+        ``summary_date`` means re-running on the same date is a no-op
+        after the first successful share.
+
+        Mark called out the Quantum Crier per-post format as too long
+        for a daily digest; this path uses pre-rendered short text
+        (<= 280 chars from ``render_bluesky``) and skips embeds.
+
+        Returns True on success, False on failure (including the
+        "already shared today" idempotency case).
+        """
+        if not self.is_configured:
+            logger.warning("Bluesky not configured, skipping daily summary")
+            return False
+
+        date_key = summary_date or datetime.utcnow().strftime("%Y-%m-%d")
+        if is_daily_summary_shared(date_key):
+            logger.info("Daily summary for %s already shared, skipping", date_key)
+            return False
+
+        # Append the link if not already in the text (render_bluesky already
+        # appends qrater.org; this guards custom callers).
+        if link and link not in text:
+            text = f"{text} {link}".strip()
+        if len(text) > 300:
+            text = text[:299] + "…"
+
+        with httpx.Client(timeout=30) as client:
+            if not self._login(client):
+                return False
+
+            record: dict = {
+                "$type": "app.bsky.feed.post",
+                "text": text,
+                "createdAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+            }
+
+            # Link facet (byte-offset on the link's location in text)
+            if link and link in text:
+                start = text.index(link)
+                record["facets"] = [{
+                    "index": {
+                        "byteStart": len(text[:start].encode("utf-8")),
+                        "byteEnd": len(text[:start].encode("utf-8")) + len(link.encode("utf-8")),
+                    },
+                    "features": [{
+                        "$type": "app.bsky.richtext.facet#link",
+                        "uri": link,
+                    }],
+                }]
+
+            try:
+                resp = client.post(
+                    "https://bsky.social/xrpc/com.atproto.repo.createRecord",
+                    headers=self._auth_headers(),
+                    json={
+                        "repo": self._session["did"],
+                        "collection": "app.bsky.feed.post",
+                        "record": record,
+                    },
+                )
+                resp.raise_for_status()
+                result = resp.json()
+                bsky_uri = result.get("uri", "")
+                bsky_cid = result.get("cid", "")
+                record_daily_summary_share(date_key, bsky_uri, bsky_cid, text)
+                logger.info("Shared daily summary for %s to Bluesky", date_key)
+                return True
+            except httpx.HTTPError:
+                logger.exception("Failed to share daily summary for %s", date_key)
+                return False
+
     def share_pending(self, limit: int = 5) -> list[str]:
         """Share published posts that haven't been shared to Bluesky yet.
 
@@ -296,6 +381,42 @@ def is_post_shared_to_bluesky(post_id: str) -> bool:
     conn = get_connection()
     row = conn.execute(
         "SELECT 1 FROM bluesky_shares WHERE post_id = ?", (post_id,)
+    ).fetchone()
+    conn.close()
+    return row is not None
+
+
+def record_daily_summary_share(
+    summary_date: str,
+    bsky_uri: str,
+    bsky_cid: str,
+    post_text: str,
+) -> None:
+    """Record a successful daily-summary share keyed by date.
+
+    ``summary_date`` is YYYY-MM-DD (caller decides timezone). UNIQUE
+    on ``summary_date`` enforces "one summary per day"; INSERT OR
+    REPLACE means a manual re-share with the same date overwrites
+    the row (useful for testing — the idempotency check happens
+    upstream in ``share_daily_summary``).
+    """
+    conn = get_connection()
+    conn.execute(
+        "INSERT OR REPLACE INTO bluesky_daily_summaries "
+        "(summary_date, bsky_uri, bsky_cid, post_text, shared_at) "
+        "VALUES (?, ?, ?, ?, ?)",
+        (summary_date, bsky_uri, bsky_cid, post_text, datetime.utcnow().isoformat()),
+    )
+    conn.commit()
+    conn.close()
+
+
+def is_daily_summary_shared(summary_date: str) -> bool:
+    """Check whether a daily summary has already been posted for the given date."""
+    conn = get_connection()
+    row = conn.execute(
+        "SELECT 1 FROM bluesky_daily_summaries WHERE summary_date = ?",
+        (summary_date,),
     ).fetchone()
     conn.close()
     return row is not None

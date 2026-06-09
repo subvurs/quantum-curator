@@ -947,6 +947,79 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
         console.print("[red]Intel email failed (see [intel.emailer] log line)[/]")
 
 
+@cli.command("share-intel-summary")
+@click.option("--days", "-d", default=1, show_default=True,
+              help="'Today' window for the summary.")
+@click.option("--prior-days", default=7, show_default=True,
+              help="Prior corpus window for implications.")
+@click.option("--link", default="https://qrater.org", show_default=True,
+              help="CTA link appended to the Bluesky post.")
+@click.option("--dry-run", is_flag=True,
+              help="Render the post text but do NOT publish to Bluesky.")
+def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool):
+    """Publish today's Intel daily summary as a single Bluesky post (decision D5).
+
+    Uses ``intel.daily_summary.render_bluesky`` to render <=300 chars and
+    posts via ``BlueskySharer.share_daily_summary``. Idempotent — the
+    ``bluesky_daily_summaries`` table enforces one post per UTC date.
+    """
+    from .intel import inventory_view, daily_summary
+    from .bluesky import BlueskySharer, is_daily_summary_shared
+    from datetime import datetime as _dt
+
+    settings = get_settings()
+    if not settings.has_anthropic:
+        console.print("[red]ANTHROPIC_API_KEY not set — cannot build summary.[/]")
+        return
+
+    new_entries = inventory_view.today_entries(days=days)
+    console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Building daily summary...", total=None)
+        payload = daily_summary.build_daily_summary(
+            new_entries=new_entries, prior_days=prior_days
+        )
+        progress.update(task, completed=True)
+
+    if payload is None:
+        console.print("[red]Summary unavailable — aborting share.[/]")
+        return
+
+    post_text = daily_summary.render_bluesky(payload)
+    today_key = _dt.utcnow().strftime("%Y-%m-%d")
+
+    console.print(Panel(
+        f"[bold]Date:[/] {today_key}\n"
+        f"[bold]Length:[/] {len(post_text)} chars\n"
+        f"[bold]Link:[/] {link}\n\n{post_text}",
+        title="Bluesky daily summary",
+    ))
+
+    if is_daily_summary_shared(today_key):
+        console.print(f"[yellow]Already shared for {today_key} — skipping.[/]")
+        return
+
+    if dry_run:
+        console.print("[blue]Dry-run: not posting to Bluesky.[/]")
+        return
+
+    sharer = BlueskySharer()
+    if not sharer.is_configured:
+        console.print("[red]BLUESKY_HANDLE / BLUESKY_APP_PASSWORD not configured.[/]")
+        return
+
+    ok = sharer.share_daily_summary(post_text, link=link, summary_date=today_key)
+    if ok:
+        console.print(f"[green]Posted daily summary to Bluesky for {today_key}[/]")
+    else:
+        console.print("[red]Bluesky share failed (see log)[/]")
+
+
 # --- Q-day Clock export ---
 
 @cli.command("qday-export")

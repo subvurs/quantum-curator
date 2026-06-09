@@ -4,7 +4,7 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
 
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
-  Status:     Phase 2 complete; Phase 3 pending
+  Status:     Phase 3 complete; Phase 4 pending
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -237,13 +237,32 @@ AFTER (target)
               commands, inventory_view.load_inventory() → 1216 rows,
               today_entries(days=7) → 86 rows.
 
-  [TODO]  Phase 3 — Bluesky daily summary + Curator email scoring
-              (3a) BlueskySharer.share_daily_summary(text, link) using
-                   bluesky_daily_summaries table; link → qrater.org
-                   (Quantum Crier daily summary too long per Mark)
-              (3b) Add subvurs_impact_score block to email_report.py
-                   (currently shows subvurs_notes only — confirmed by
-                    direct read Jun 9 2026)
+  [DONE]  Phase 3 — Bluesky daily summary + Curator email scoring
+              (3a) bluesky.py — added:
+                   * BlueskySharer.share_daily_summary(text, link,
+                     summary_date=None) — idempotent via UNIQUE
+                     summary_date; auto-truncates at 300 chars; appends
+                     link if missing; adds link facet via byte offset.
+                   * record_daily_summary_share(summary_date, uri, cid,
+                     post_text) — INSERT OR REPLACE keyed by date.
+                   * is_daily_summary_shared(summary_date) — UTC YYYY-MM-DD.
+              (3b) email_report.py — added IMPACT_TABLE_HEADER + top-N
+                   block (IMPACT_TOP_N=5, IMPACT_MIN_SCORE=0.05 floor).
+                   Section auto-suppressed when no posts meet the
+                   threshold, so pre-Phase-B emails are unchanged.
+                   Header line now shows "{connections} connections ·
+                   {impact} scored".
+              (3c) cli.py — added `share-intel-summary` command:
+                   builds daily_summary, renders via render_bluesky,
+                   posts via BlueskySharer.share_daily_summary.
+                   Honors --dry-run; skips if already shared today.
+              Smoke-tested Jun 9 2026:
+                * imports clean (bluesky + email_report)
+                * share-intel-summary --help registers
+                * build_insights_report renders w/ 0 scored (no posts
+                  scored yet in DB)
+                * synthetic-post test: 0.87 + 0.42 included, 0.02
+                  excluded by floor, header shows "2 scored"
 
   [TODO]  Phase 4 — Workflow wiring + Intel retirement
               (4a) daily-curator.yml — add synthesize-intel step after
@@ -349,6 +368,11 @@ AFTER (target)
               synthesizer, daily_summary, emailer}.py shipped; CLI
               commands synthesize-intel / intel-summary / intel-email
               registered; smoke-tested against live 1216-entry DB.
+  Jun 9 2026  Phase 3 complete — bluesky.py share_daily_summary +
+              record/is_daily_summary_shared helpers; email_report.py
+              IMPACT_TABLE block (top-N, 0.05 floor); cli.py
+              share-intel-summary command. Synthetic-post test
+              verified floor + ranking + header count.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
