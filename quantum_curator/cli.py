@@ -759,5 +759,259 @@ def insights(limit: int, show_all: bool):
     console.print(table)
 
 
+# --- Intel Migration (Phase 2) ---
+
+@cli.command("synthesize-intel")
+@click.option("--days", "-d", default=1, show_default=True,
+              help="Use entries cataloged in the last N days as 'today'.")
+@click.option("--max-briefs", default=5, show_default=True,
+              help="Cap on briefs delivered in this run.")
+@click.option("--model", default=None,
+              help="Override the Anthropic model (defaults to synthesizer default).")
+@click.option("--dry-run", is_flag=True,
+              help="Run synth but do NOT write briefs to disk or stamp first_brief_at.")
+def synthesize_intel(days: int, max_briefs: int, model: str | None, dry_run: bool):
+    """Run the migrated Intel combinatorial-product synthesizer over Curator's intel entries."""
+    from .intel import synthesizer
+
+    settings = get_settings()
+    if not settings.has_anthropic:
+        console.print("[red]ANTHROPIC_API_KEY not configured — synth requires it.[/]")
+        return
+
+    from .intel import inventory_view
+    new_entries = inventory_view.today_entries(days=days)
+    inventory = inventory_view.load_inventory()
+
+    if not new_entries:
+        console.print(f"[yellow]No entries in the last {days}d — nothing to synthesize.[/]")
+        return
+
+    console.print(
+        f"[blue]Synthesizing over {len(new_entries)} new entries "
+        f"(inventory total: {len(inventory)})...[/]"
+    )
+
+    kwargs = {"max_briefs": max_briefs}
+    if model:
+        kwargs["model"] = model
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+    ) as progress:
+        task = progress.add_task("Generating concept briefs...", total=None)
+        concepts = synthesizer.synthesize(new_entries, inventory=inventory, **kwargs)
+        progress.update(task, completed=True)
+
+    if not concepts:
+        console.print("[yellow]Synthesis returned 0 concepts (LLM failure or no JSON).[/]")
+        return
+
+    console.print(f"[green]Synthesizer produced {len(concepts)} concepts[/]")
+
+    if dry_run:
+        console.print("[dim]--dry-run: briefs NOT delivered to disk.[/]")
+        for c in concepts:
+            title = c.get("product_name") or c.get("concept_title") or "untitled"
+            conf = c.get("confidence", "?")
+            console.print(f"  • {title}  (confidence: {conf})")
+        return
+
+    briefs = synthesizer.deliver(concepts)
+    console.print(f"[green]Delivered {len(briefs)} briefs to disk[/]")
+    for bp in briefs:
+        console.print(f"  • {bp}")
+
+
+@cli.command("intel-summary")
+@click.option("--days", "-d", default=1, show_default=True,
+              help="'Today' window for the summary.")
+@click.option("--prior-days", default=7, show_default=True,
+              help="Prior-window comparison length.")
+@click.option("--format", "fmt",
+              type=click.Choice(["text", "bluesky", "json"]), default="text",
+              show_default=True,
+              help="Render format.")
+def intel_summary(days: int, prior_days: int, fmt: str):
+    """Build today's structured Intel summary (TL;DR + implications + attention)."""
+    from .intel import daily_summary, inventory_view
+
+    settings = get_settings()
+    if not settings.has_anthropic:
+        console.print("[red]ANTHROPIC_API_KEY not configured.[/]")
+        return
+
+    new_entries = inventory_view.today_entries(days=days)
+    payload = daily_summary.build_daily_summary(
+        new_entries=new_entries,
+        prior_days=prior_days,
+    )
+
+    if payload is None:
+        console.print("[red]Daily summary unavailable (LLM failure or bad JSON).[/]")
+        return
+
+    if fmt == "json":
+        import json as _json
+        console.print(_json.dumps(payload, indent=2))
+    elif fmt == "bluesky":
+        console.print(daily_summary.render_bluesky(payload))
+    else:
+        console.print(daily_summary.render_text(payload))
+
+
+@cli.command("intel-email")
+@click.option("--days", "-d", default=1, show_default=True,
+              help="'Today' window for entries + summary.")
+@click.option("--no-synth", is_flag=True,
+              help="Skip the synthesis step; email entries + summary only.")
+@click.option("--max-briefs", default=5, show_default=True,
+              help="Cap on briefs included when synth runs.")
+@click.option("--dry-run", is_flag=True,
+              help="Build everything, render HTML, but do NOT send the email.")
+def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
+    """Send the daily Intel email (separate SMTP body, decision D6)."""
+    import time as _time
+    from .intel import inventory_view, daily_summary, synthesizer, emailer
+
+    settings = get_settings()
+    if not settings.has_email:
+        console.print("[red]SMTP_EMAIL / SMTP_APP_PASSWORD not configured.[/]")
+        return
+
+    t0 = _time.monotonic()
+    new_entries = inventory_view.today_entries(days=days)
+    console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
+
+    summary = None
+    if settings.has_anthropic:
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console,
+        ) as progress:
+            task = progress.add_task("Building daily summary...", total=None)
+            summary = daily_summary.build_daily_summary(new_entries=new_entries)
+            progress.update(task, completed=True)
+        if summary is None:
+            console.print("[yellow]Summary unavailable — email will show stub.[/]")
+    else:
+        console.print("[yellow]No ANTHROPIC_API_KEY — skipping summary.[/]")
+
+    briefs: list[Path] = []
+    if not no_synth and settings.has_anthropic and new_entries:
+        inventory = inventory_view.load_inventory()
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console,
+        ) as progress:
+            task = progress.add_task("Running synthesizer...", total=None)
+            concepts = synthesizer.synthesize(
+                new_entries, inventory=inventory, max_briefs=max_briefs
+            )
+            progress.update(task, completed=True)
+        if concepts:
+            briefs = synthesizer.deliver(concepts)
+            console.print(f"[green]Synthesizer delivered {len(briefs)} briefs[/]")
+
+    elapsed = _time.monotonic() - t0
+
+    if dry_run:
+        html = emailer.build_html(
+            new_entries=new_entries,
+            briefs=briefs,
+            summary=summary,
+            inventory_total=len(inventory_view.load_inventory()),
+            elapsed_seconds=elapsed,
+        )
+        console.print(Panel(
+            f"[bold]Dry-run:[/] would send email to {settings.smtp_email}\n"
+            f"entries={len(new_entries)}  briefs={len(briefs)}  "
+            f"summary={'yes' if summary else 'no'}  elapsed={elapsed:.1f}s\n"
+            f"html length: {len(html)} chars"
+        ))
+        return
+
+    ok = emailer.send_intel_email(
+        new_entries=new_entries,
+        briefs=briefs,
+        summary=summary,
+        elapsed_seconds=elapsed,
+    )
+    if ok:
+        console.print(f"[green]Intel email sent to {settings.smtp_email}[/]")
+    else:
+        console.print("[red]Intel email failed (see [intel.emailer] log line)[/]")
+
+
+# --- Q-day Clock export ---
+
+@cli.command("qday-export")
+@click.option(
+    "--output", "-o",
+    type=click.Path(dir_okay=False, path_type=Path),
+    required=True,
+    help="Output JSON path for the signed manifest.",
+)
+@click.option(
+    "--signing-key",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=None,
+    help=(
+        "Path to a base64-encoded 32-byte Ed25519 private key. "
+        "If omitted the manifest is written unsigned (Q-day Clock will "
+        "refuse to ingest unsigned input)."
+    ),
+)
+@click.option(
+    "--min-relevance",
+    type=float,
+    default=0.0,
+    show_default=True,
+    help="Drop articles with relevance_score below this threshold.",
+)
+@click.option(
+    "--limit",
+    type=int,
+    default=5000,
+    show_default=True,
+    help="Cap on number of articles considered.",
+)
+def qday_export(
+    output: Path,
+    signing_key: Path | None,
+    min_relevance: float,
+    limit: int,
+):
+    """Export a signed Curator manifest for the Q-day Clock.
+
+    The output JSON matches the CuratorManifest schema in
+    qday_clock.core.schemas. The Q-day Clock package must be importable
+    for signing to work.
+    """
+    from .qday_export import write_manifest
+
+    final = write_manifest(
+        output_path=output,
+        signing_key_path=signing_key,
+        min_relevance=min_relevance,
+        limit=limit,
+    )
+
+    n_articles = len(final.get("articles", []))
+    signed = "signing_pubkey" in final
+    console.print(
+        f"[green]Wrote manifest:[/] {output} "
+        f"({n_articles} articles, "
+        f"{'signed' if signed else '[red]UNSIGNED[/]'})"
+    )
+    if signed:
+        fingerprint = final["signing_pubkey"][:16]
+        console.print(f"[dim]Signing pubkey (first 16): {fingerprint}…[/]")
+
+
 if __name__ == "__main__":
     cli()

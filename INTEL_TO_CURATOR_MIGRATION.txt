@@ -4,7 +4,7 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
 
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
-  Status:     Phase 1 complete; Phase 2 in progress
+  Status:     Phase 2 complete; Phase 3 pending
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -201,21 +201,41 @@ AFTER (target)
                 * max(entry_id) preserved: 1215
                 * Idempotence verified:    re-run skipped 1216 + 38
 
-  [TODO]  Phase 2 — Curator-side intel synthesizer
-              Files to create under quantum_curator/intel/:
-                * synthesizer.py      — port from Intel synthesizer.py
-                                        but using anthropic SDK directly
-                                        and Curator db, NOT inventory.json
+  [DONE]  Phase 2 — Curator-side intel synthesizer
+              Files added under quantum_curator/intel/:
+                * inventory_view.py   — SQLite read-side, mirrors
+                                        inventory.json shape; JSON-decodes
+                                        enabling_capabilities + domain_tags
+                * brief_history.py    — disk-scan anti-recurrence counter
+                                        (Intel-original semantics preserved)
+                * synthesizer.py      — combinatorial-product synthesis;
+                                        Anthropic SDK direct (max_retries=2),
+                                        SQLite-backed inventory,
+                                        DEFAULT_MODEL = claude-sonnet-4-5,
+                                        fail-closed on LLM failure / non-JSON
                 * daily_summary.py    — TL;DR + implications-vs-prior +
-                                        where-to-pay-attention recs
-                                        (Goodhart guardrail: structured
-                                         JSON output, fail-closed on
-                                         non-JSON)
-                * emailer.py          — separate SMTP delivery for Intel
-                                        briefs (untouched Curator email)
-              CLI wiring: new "synthesize-intel" subcommand in cli.py
-              Anti-recurrence: read from quantum_intel_entries.first_brief_at
-                                + previous daily_summaries (new table TBD)
+                                        attention recs; FORBIDDEN_PHRASES
+                                        soft-mask, fail-closed on missing
+                                        required keys, deterministic
+                                        no-new-content payload (no LLM call)
+                * emailer.py          — separate SMTP_SSL with 30s socket
+                                        timeout (Jun 7 SMTP hang fix), HTML
+                                        aesthetic mirrors legacy Intel email,
+                                        uses Curator's settings.smtp_email /
+                                        smtp_app_password
+              CLI wiring (cli.py):
+                * synthesize-intel  [--days N] [--max-briefs N] [--model M]
+                                     [--dry-run]
+                * intel-summary     [--days N] [--prior-days N]
+                                     [--format text|bluesky|json]
+                * intel-email       [--days N] [--no-synth] [--max-briefs N]
+                                     [--dry-run]
+              Anti-recurrence: brief_history.recent_brief_citations()
+                + inventory_view.mark_first_brief_at() stamp on delivery.
+              Briefs land in settings.data_dir / "intel_briefs".
+              Smoke-tested Jun 9 2026: imports clean, CLI registers all 3
+              commands, inventory_view.load_inventory() → 1216 rows,
+              today_entries(days=7) → 86 rows.
 
   [TODO]  Phase 3 — Bluesky daily summary + Curator email scoring
               (3a) BlueskySharer.share_daily_summary(text, link) using
@@ -325,6 +345,10 @@ AFTER (target)
                idempotence verified, max(entry_id) preserved)
   Jun 9 2026  Migration doc created (this file)
   Jun 9 2026  Phase 2 started
+  Jun 9 2026  Phase 2 complete — intel/{inventory_view, brief_history,
+              synthesizer, daily_summary, emailer}.py shipped; CLI
+              commands synthesize-intel / intel-summary / intel-email
+              registered; smoke-tested against live 1216-entry DB.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
