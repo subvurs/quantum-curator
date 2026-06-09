@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infleqtion and NASA Deploy Upgraded Quantum Hardware to International Space Station | Quantum Crier</title>
-    <meta name="description" content="Infleqtion (NYSE: INFQ), in collaboration with NASA’s Jet Propulsion Laboratory (JPL), has provided an upgraded physics package to the International Space Stati">
+    <title>Graph Neural Networks for Fast Operator Selection in Adaptive VQE | Quantum Crier</title>
+    <meta name="description" content="Adaptive variational quantum algorithms like ADAPT-VQE construct tailored ansätze by iteratively selecting operators from a pool using gradient-based criteria. ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Infleqtion and NASA Deploy Upgraded Quantum Hardware to International Space Station">
+    <meta property="og:title" content="Graph Neural Networks for Fast Operator Selection in Adaptive VQE">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -25,10 +25,6 @@
     <link rel="stylesheet" href="/static/css/style.css">
 
     
-
-<meta property="og:image" content="https://www.nasa.gov/wp-content/uploads/2026/04/ntv-ng-crs-24-falcon9-cygnus-overview-2160-dark.png?resize=2000,1125">
-<meta name="twitter:image" content="https://www.nasa.gov/wp-content/uploads/2026/04/ntv-ng-crs-24-falcon9-cygnus-overview-2160-dark.png?resize=2000,1125">
-<meta name="twitter:card" content="summary_large_image">
 
 
 </head>
@@ -60,43 +56,42 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
             <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
             
         </div>
-        <h1>Infleqtion and NASA Deploy Upgraded Quantum Hardware to International Space Station</h1>
+        <h1>Graph Neural Networks for Fast Operator Selection in Adaptive VQE</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">April 09, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 07, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://www.nasa.gov/wp-content/uploads/2026/04/ntv-ng-crs-24-falcon9-cygnus-overview-2160-dark.png?resize=2000,1125" alt="Infleqtion and NASA Deploy Upgraded Quantum Hardware to International Space Station" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This collaboration between Infleqtion and NASA represents a fascinating convergence of quantum physics and space exploration, as the upgraded hardware will enable more sophisticated cold atom experiments in the unique microgravity environment of the ISS. The Cold Atom Laboratory&#39;s ability to create and study quantum states that are impossible to achieve on Earth due to gravitational interference makes it an invaluable testbed for fundamental quantum research. These space-based quantum experiments could yield insights that advance both our understanding of quantum mechanics and the development of quantum sensors for future space missions, potentially leading to breakthroughs in precision navigation and gravitational wave detection. The partnership also highlights how commercial quantum companies are increasingly collaborating with government agencies to push the boundaries of what&#39;s possible in quantum science.
+                This research tackles one of the most computationally expensive bottlenecks in adaptive variational quantum algorithms - the need to evaluate gradients across entire operator pools at each iteration, which becomes prohibitively costly for complex quantum systems. By reformulating operator selection as a graph learning problem, the authors developed a neural network that can predict which quantum operators to add next based on the system&#39;s interaction structure and current quantum state, dramatically reducing the classical overhead that often dominates these hybrid algorithms. The approach shows promising transferability from spin systems to molecular problems, suggesting it could accelerate quantum chemistry simulations where ADAPT-VQE has shown great promise but suffered from scalability issues. This work represents a compelling fusion of classical machine learning and quantum algorithm design that could make adaptive quantum algorithms practical for larger, more realistic quantum systems.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Infleqtion (NYSE: INFQ), in collaboration with NASA’s Jet Propulsion Laboratory (JPL), has provided an upgraded physics package to the International Space Station (ISS) via the Northrop Grumman-24 (NG-24) cargo mission. This hardware update is designed for the Cold Atom Laboratory (CAL), the first continuously functioning quantum research facility in orbit. The new package aims to [...] The post Infleqtion and NASA Deploy Upgraded Quantum Hardware to International Space Station appeared first on Quantum Computing Report .</p>
+            <p>Adaptive variational quantum algorithms like ADAPT-VQE construct tailored ansätze by iteratively selecting operators from a pool using gradient-based criteria. While this avoids oversized parameter spaces, repeatedly scanning the full pool incurs a classical cost that scales linearly with pool size-a major bottleneck for systems with long-range interactions or large operator sets. Here, we reformulate adaptive operator selection as a graph-based decision problem and introduce a graph neural network (GNN) policy that predicts the next entangling operator directly from the interaction graph and state-dependent observables. Training data are generated from exact simulations of disordered long-range spin chains, using gradient magnitudes as supervision signals. The learned policy accurately reproduces the dominant structure of the greedy gradient-based selection rule, significantly outperforming heuristics based solely on interaction strength. Integrated into a variational quantum eigensolver (VQE) workflow, this GNN-VQE approach achieves energy errors close to standard ADAPT-VQE while drastically reducing full-pool gradient evaluations. To test transferability beyond spin models, we evaluate the policy on small active-space molecular benchmarks (LiH and BeH_$2$). We find the GNN is highly effective as a shortlist generator: exact rescoring over just a few GNN-proposed candidates recovers near-oracle rollout behavior while searching only a small fraction of the pool. These results demonstrate that adaptive circuit construction contains learnable structure that can be exploited to accelerate variational quantum algorithms.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/infleqtion-and-nasa-deploy-upgraded-quantum-hardware-to-international-space-station/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2606.08794v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -105,8 +100,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Infleqtion%20and%20NASA%20Deploy%20Upgraded%20Quantum%20Hardware%20to%20International%20Space%20Station&url=https://quantumcrier.com/posts/27307adf.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/27307adf.html&title=Infleqtion%20and%20NASA%20Deploy%20Upgraded%20Quantum%20Hardware%20to%20International%20Space%20Station" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Graph%20Neural%20Networks%20for%20Fast%20Operator%20Selection%20in%20Adaptive%20VQE&url=https://quantumcrier.com/posts/02c991ed.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/02c991ed.html&title=Graph%20Neural%20Networks%20for%20Fast%20Operator%20Selection%20in%20Adaptive%20VQE" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

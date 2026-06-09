@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizon Quantum To Acquire IonQ 256-Qubit Trapped-Ion System | Quantum Crier</title>
-    <meta name="description" content="Insider Brief PRESS RELEASE — Horizon Quantum Holdings Ltd. (“Horizon Quantum”), a pioneer of software infrastructure for quantum applications and IonQ — the wo">
+    <title>Impact of gate-voltage noise on silicon spin-qubit variational quantum eigensolvers | Quantum Crier</title>
+    <meta name="description" content="Quantum computers offer a route to outperform classical methods in tasks such as molecular simulation, motivating hybrid algorithms like the Variational Quantum">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Horizon Quantum To Acquire IonQ 256-Qubit Trapped-Ion System">
+    <meta property="og:title" content="Impact of gate-voltage noise on silicon spin-qubit variational quantum eigensolvers">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -25,10 +25,6 @@
     <link rel="stylesheet" href="/static/css/style.css">
 
     
-
-<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/04/Screenshot-2026-04-09-at-8.57.20-AM-1.png">
-<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/04/Screenshot-2026-04-09-at-8.57.20-AM-1.png">
-<meta name="twitter:card" content="summary_large_image">
 
 
 </head>
@@ -62,39 +58,38 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
         </div>
-        <h1>Horizon Quantum To Acquire IonQ 256-Qubit Trapped-Ion System</h1>
+        <h1>Impact of gate-voltage noise on silicon spin-qubit variational quantum eigensolvers</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>The Quantum Insider</strong></span>
-            <span class="date">April 09, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 07, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://thequantuminsider.com/wp-content/uploads/2026/04/Screenshot-2026-04-09-at-8.57.20-AM-1.png" alt="Horizon Quantum To Acquire IonQ 256-Qubit Trapped-Ion System" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This acquisition marks a significant milestone in the commercialization of quantum computing hardware, as Horizon Quantum becomes an early adopter of IonQ&#39;s ambitious 256-qubit trapped-ion system. The deal highlights the growing confidence in IonQ&#39;s chip-based architecture, which promises better scalability and integration compared to traditional trapped-ion setups that rely on complex laser systems. What&#39;s particularly noteworthy is that this represents one of IonQ&#39;s first 6th-generation systems, suggesting the quantum hardware market is maturing enough to support strategic partnerships between software infrastructure companies and hardware manufacturers. This transaction signals a crucial shift toward practical quantum deployments, where companies are willing to make substantial investments in cutting-edge quantum systems for real-world applications.
+                This research tackles a critical challenge for silicon spin qubits by developing the first comprehensive simulation framework that connects real-world voltage noise all the way through to algorithmic performance in quantum chemistry applications. The findings reveal that two-qubit exchange gates are about ten times more vulnerable to charge noise than single-qubit operations, providing crucial guidance for hardware designers working to scale up silicon quantum processors. By using the Variational Quantum Eigensolver as a testbed, the authors bridge the gap between low-level hardware imperfections and high-level algorithm accuracy, offering a roadmap for co-optimizing silicon qubit control systems and quantum algorithms. This work is particularly timely as silicon spin qubits emerge as strong contenders for large-scale quantum computers, since understanding and mitigating charge noise will be essential for achieving quantum advantage in practical applications.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Insider Brief PRESS RELEASE — Horizon Quantum Holdings Ltd. (“Horizon Quantum”), a pioneer of software infrastructure for quantum applications and IonQ — the world’s leading quantum platform company — today announced a strategic agreement. Horizon Quantum will purchase one of IonQ’s first 6th-generation, chip-based 256-qubit trapped-ion systems, in furtherance of Horizon Quantum’s mission to unlock […]</p>
+            <p>Quantum computers offer a route to outperform classical methods in tasks such as molecular simulation, motivating hybrid algorithms like the Variational Quantum Eigensolver (VQE) for near-term devices. Silicon spin qubits are a promising platform for scalable quantum computation, but their performance is limited by hardware imperfections -- most notably charge-noise-induced potential fluctuations and static miscalibration of gate-electrode voltages -- which degrade quantum gate fidelities and, ultimately, algorithmic accuracy. Here we develop a hardware-algorithm co-simulation framework for silicon quantum-dot processors that links 3D electrostatics to effective $g$-factors and exchange couplings, and propagates voltage-level noise through realistic control pulses. Using VQE for $\mathrm{H}_2$ ground-state energy estimation as a circuit-level testbed, we study both static scaling/offset errors on the gate-electrode voltages and stochastic fluctuations modeled as random-telegraph noise with tunable amplitudes and switching times. At the gate level, we show that exchange-based two-qubit gates are roughly an order of magnitude more sensitive to these types of noise than ESR-driven single-qubit rotations. Quantum process tomography and Kraus-operator analysis further distinguish coherent and incoherent contributions and quantify the fraction of error that is, in principle, correctable by a compensating unitary. Embedding these noise models into the VQE circuit, we identify regimes of miscalibration strength and noise switching time compatible with chemically accurate energy estimates, and discuss how statistical post-processing based on the full distribution of noisy energy estimates could further improve accuracy.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://thequantuminsider.com/2026/04/09/horizon-quantum-to-acquire-ionq-256-qubit-trapped-ion-system/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at The Quantum Insider &rarr;
+            <a href="https://arxiv.org/abs/2606.08874v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -103,8 +98,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Horizon%20Quantum%20To%20Acquire%20IonQ%20256-Qubit%20Trapped-Ion%20System&url=https://quantumcrier.com/posts/cb317268.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/cb317268.html&title=Horizon%20Quantum%20To%20Acquire%20IonQ%20256-Qubit%20Trapped-Ion%20System" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Impact%20of%20gate-voltage%20noise%20on%20silicon%20spin-qubit%20variational%20quantum%20eigensolvers&url=https://quantumcrier.com/posts/ea502175.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/ea502175.html&title=Impact%20of%20gate-voltage%20noise%20on%20silicon%20spin-qubit%20variational%20quantum%20eigensolvers" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
