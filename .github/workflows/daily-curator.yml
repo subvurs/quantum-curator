@@ -106,6 +106,28 @@ jobs:
       #   continue-on-error: true
       #   run: quantum-curator tweet --limit 5
 
+      # --- Quantum Intel pipeline (migrated from legacy launchd cron, Jun 2026)
+      # Phase 4a: run inside the daily-curator workflow rather than the
+      # macOS launchd plist that kept hanging on SIGALRM deadlines.
+      # Each step is continue-on-error so a single LLM hiccup can't take
+      # down the rest of the daily run.
+      #
+      # intel-email runs synth + summary + send in one pass; we don't
+      # call synthesize-intel separately because intel-email would do
+      # its own synth anyway and reading briefs from disk between
+      # steps is added wiring for no LLM savings (one call per day).
+      # share-intel-summary computes its own (small) summary for the
+      # Bluesky post and is idempotent on summary_date so re-runs in
+      # the same UTC day are no-ops after the first success.
+
+      - name: Send Intel daily email
+        continue-on-error: true
+        run: quantum-curator intel-email --days 1 --max-briefs 5
+
+      - name: Share Intel summary to Bluesky
+        continue-on-error: true
+        run: quantum-curator share-intel-summary --days 1 --link https://qrater.org
+
       - name: Email Subvurs insights report
         continue-on-error: true
         run: quantum-curator email-insights

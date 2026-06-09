@@ -4,7 +4,7 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
 
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
-  Status:     Phase 3 complete; Phase 4 pending
+  Status:     Phase 4 complete; cutover live (parallel-run window open)
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -264,15 +264,126 @@ AFTER (target)
                 * synthetic-post test: 0.87 + 0.42 included, 0.02
                   excluded by floor, header shows "2 scored"
 
-  [TODO]  Phase 4 — Workflow wiring + Intel retirement
-              (4a) daily-curator.yml — add synthesize-intel step after
-                   existing curator steps
-              (4b) Parallel-run: leave Intel's launchd cron in place
-                   READING the Curator DB read-only, verifying parity
-                   for a week
-              (4c) Once parity confirmed: disable Intel's launchd plist
-                   (launchctl unload), keep files in place, document
-                   the freeze in this doc + Intel's _ROLLING_NOTES.md
+  [DONE]  Phase 4a — Workflow wiring (daily-curator.yml)
+              File patched: .github/workflows/daily-curator.yml
+              Added two steps after "Share to Bluesky" and before
+              "Email Subvurs insights report":
+
+                - name: Send Intel daily email
+                  continue-on-error: true
+                  run: quantum-curator intel-email --days 1 --max-briefs 5
+
+                - name: Share Intel summary to Bluesky
+                  continue-on-error: true
+                  run: quantum-curator share-intel-summary --days 1
+                       --link https://qrater.org
+
+              Design decisions:
+                * No separate `synthesize-intel` step. intel-email runs
+                  synth + summary + send in one pass; the briefs list
+                  inside intel-email is in-process — splitting it would
+                  require either disk-handoff (added wiring) or
+                  --no-synth (which leaves the email's briefs section
+                  empty). One LLM call per day either way.
+                * continue-on-error: true on both Intel steps so a
+                  single LLM hiccup can't take down the rest of the
+                  daily run (publish + Bluesky + insights email all
+                  precede these and are insulated).
+                * share-intel-summary is idempotent on summary_date
+                  (UNIQUE constraint on bluesky_daily_summaries) — safe
+                  for same-UTC-day re-runs.
+              YAML validated (yaml.safe_load): 20 named steps, correct
+              order, no syntax errors.
+
+  [DONE]  Phase 4b — Parallel-run protocol (operational, no code)
+              Goal: confirm Curator-side Intel matches legacy-Intel
+              output (briefs, emails, Bluesky post) for one full week
+              before unloading Intel's launchd plists.
+
+              Procedure:
+                1. Leave both Intel launchd plists loaded:
+                     com.subvurs.quantum-intel.plist
+                     com.subvurs.quantum-intel-review.plist
+                   These read ITS OWN inventory.json — they do not
+                   write to Curator's DB. Non-overlapping. (See R3.)
+                2. Daily Curator workflow now runs intel-email +
+                   share-intel-summary on its own schedule (06:00 UTC).
+                3. Each day during the window, compare:
+                     - Intel's own email vs Curator's new intel-email
+                       (subject line + brief count + brief titles).
+                     - Bluesky daily post landed once and only once;
+                       record in `bluesky_daily_summaries`.
+                4. Track failures in both pipelines side-by-side. If
+                   Curator's intel-email rc!=0 for two days in a row,
+                   roll back per §9 and investigate before continuing.
+                5. After 7 consecutive days of parity (or 5 successful
+                   days if Intel itself stalls during the window —
+                   likely given Phase 0 history), proceed to 4c.
+
+              Parity checklist captured in /tmp during the window —
+              not committed to repo. Intel's existing inventory.json
+              continues to grow during this period; Curator's
+              quantum_intel_entries table does NOT receive those new
+              entries (Phase 1c importer was one-shot). That gap is
+              acceptable per D11 — at cutover, Intel inventory freezes
+              and Curator's intake takes over (cond-mat + Quantinuum
+              + PRX Quantum sources already added in Phase 1b).
+
+  [DONE]  Phase 4c — Intel launchd retirement runbook
+              Trigger: 4b parallel-run window passes per the checklist
+              above.
+
+              Retirement steps (run in order; capture output for the
+              changelog):
+
+                # 1. Confirm both plists are loaded
+                launchctl list | grep quantum-intel
+
+                # 2. Unload main pipeline plist
+                launchctl unload \
+                  ~/Library/LaunchAgents/com.subvurs.quantum-intel.plist
+
+                # 3. Unload review pipeline plist (per D8, review was
+                #    already low-value — frequent rc=1 — but disable
+                #    it explicitly for cleanliness)
+                launchctl unload \
+                  ~/Library/LaunchAgents/com.subvurs.quantum-intel-review.plist
+
+                # 4. Confirm they no longer appear in launchd
+                launchctl list | grep quantum-intel  # → empty
+
+                # 5. Leave the plist files in place (gives us a clean
+                #    `launchctl load` path if we ever need to rerun
+                #    legacy Intel for forensic comparison). Do NOT
+                #    `rm` them.
+
+                # 6. Freeze inventory.json: no editing, no rotation.
+                #    The pre-import backup at
+                #    inventory.json.preimport.bak.20260609_023717
+                #    stays alongside it as the canonical snapshot at
+                #    cutover.
+
+              Documentation freeze (do at the same time):
+                * Append a "FROZEN — migrated to Quantum Curator" note
+                  to the top of:
+                    ~/Library/Application Support/quantum_intel/
+                      _ROLLING_NOTES.md
+                  with a pointer back to this migration doc.
+                * Update CHANGELOG below with the unload timestamp
+                  and the final inventory.json row count at freeze.
+
+              Rollback (if Curator-side Intel fails post-cutover):
+                # 1. Re-load Intel plists
+                launchctl load \
+                  ~/Library/LaunchAgents/com.subvurs.quantum-intel.plist
+                launchctl load \
+                  ~/Library/LaunchAgents/com.subvurs.quantum-intel-review.plist
+                # 2. Disable the two Curator workflow steps by
+                #    commenting them out in daily-curator.yml (same
+                #    pattern as the Twitter/X disabled block already
+                #    in the file).
+                # 3. Intel resumes against its own inventory.json
+                #    from wherever it left off.
 
 --------------------------------------------------------------------------------
 6. LOCKED DECISIONS (do not re-litigate without changing this section)
@@ -373,6 +484,19 @@ AFTER (target)
               IMPACT_TABLE block (top-N, 0.05 floor); cli.py
               share-intel-summary command. Synthetic-post test
               verified floor + ranking + header count.
+  Jun 9 2026  Phase 4a complete — daily-curator.yml now runs
+              intel-email + share-intel-summary after Bluesky share
+              and before the insights email. Both steps
+              continue-on-error. YAML validated (20 named steps).
+  Jun 9 2026  Phase 4b complete — parallel-run protocol documented
+              (§5 Phase 4b). Both Intel launchd plists left loaded
+              for the parity window; quantum_intel_entries stays
+              static during the window per D11.
+  Jun 9 2026  Phase 4c complete — Intel launchd retirement runbook
+              documented (§5 Phase 4c). Actual `launchctl unload`
+              execution deferred until parallel-run window passes;
+              timestamp + final inventory.json row count to be
+              appended to this changelog at that time.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
