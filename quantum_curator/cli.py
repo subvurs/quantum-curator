@@ -37,6 +37,26 @@ def init():
     db.init_db()
     console.print("[green]Database initialized[/]")
 
+    # Phase 5g: seed quantum_intel_entries from the bundled archive on a
+    # cache-miss / fresh-clone init. Without this, the synthesizer's
+    # historical co-source pass runs against an empty table and only
+    # cites today's curated_posts seeds — losing the whole 1216-entry
+    # archive Curator inherited from Quantum Intel's Phase 1d. The call
+    # is idempotent: if the table already has rows (cache-hit, repeated
+    # init), it returns immediately without touching the DB.
+    from .intel.import_inventory import import_seed_inventory
+    seed_counts = import_seed_inventory()
+    if seed_counts["table_was_empty"] and seed_counts["entries_inserted"]:
+        console.print(
+            f"[green]Seeded {seed_counts['entries_inserted']} historical "
+            f"intel entries + {seed_counts['dedup_inserted']} dedup sentinels[/]"
+        )
+    elif not seed_counts["seed_present"]:
+        console.print(
+            "[yellow]No bundled intel seed found — synthesizer history "
+            "pass will run against empty archive.[/]"
+        )
+
     # Register built-in sources
     from .sources import register_builtin_sources
     sources = register_builtin_sources()

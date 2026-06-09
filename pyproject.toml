@@ -55,6 +55,13 @@ Repository = "https://github.com/meathe/quantum-curator"
 [tool.hatch.build.targets.wheel]
 packages = ["quantum_curator"]
 
+# Ensure the bundled Quantum Intel archive seed ships in the wheel.
+# Hatchling's default file inclusion follows .gitignore, and the seed
+# file is not gitignored, so this is belt-and-suspenders against future
+# .gitignore additions or build-backend behaviour changes.
+[tool.hatch.build.targets.wheel.force-include]
+"quantum_curator/intel/_seed_data/seed_inventory.json.gz" = "quantum_curator/intel/_seed_data/seed_inventory.json.gz"
+
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
