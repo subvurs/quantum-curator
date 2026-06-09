@@ -38,6 +38,18 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
     # Existing DB rows by this name are NOT auto-pruned by
     # register_builtin_sources — drop manually with:
     #   DELETE FROM sources WHERE name = 'arXiv Quantum Information';
+    {
+        # Added 2026-06-09 as part of Intel → Curator source consolidation.
+        # Intel was pulling cond-mat at the same 48h window as quant-ph
+        # (config.py ARXIV_CATEGORIES = ["quant-ph", "cond-mat"]). Hardware
+        # / materials-physics papers (superconducting qubits, neutral-atom
+        # array physics, topological matter) land in cond-mat, not quant-ph.
+        "name": "arXiv Condensed Matter",
+        "source_type": SourceType.ARXIV,
+        "url": "https://arxiv.org",
+        "arxiv_categories": ["cond-mat"],
+        "fetch_interval_hours": 12,
+    },
 
     # --- Major Quantum Companies ---
     {
@@ -73,6 +85,20 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         "source_type": SourceType.RSS,
         "url": "https://ionq.com/news",
         "feed_url": "https://ionq.com/news/rss.xml",
+        "fetch_interval_hours": 12,
+    },
+    {
+        # Added 2026-06-09. Intel was scraping Quantinuum via DDG
+        # ("Quantinuum quantum 2026") because Curator's vendor blog set
+        # didn't include it. They publish hardware (H-Series ion trap),
+        # logical-qubit demos, and QEC results — all in scope.
+        # Feed verified to exist at /resources/rss; if it 404s the
+        # RSSFetcher's existing error-classification path (per 2026-05-25
+        # patch) will surface it rather than silently degrade.
+        "name": "Quantinuum Blog",
+        "source_type": SourceType.RSS,
+        "url": "https://www.quantinuum.com/news",
+        "feed_url": "https://www.quantinuum.com/resources/rss",
         "fetch_interval_hours": 12,
     },
 
@@ -112,6 +138,19 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         "source_type": SourceType.RSS,
         "url": "https://www.nature.com/nphys/",
         "feed_url": "https://www.nature.com/nphys.rss",
+        "fetch_interval_hours": 12,
+    },
+    {
+        # Added 2026-06-09. Intel was scraping APS via DDG
+        # ("journals.aps.org quantum 2026"); replacing with a direct
+        # feed for the highest-signal APS journal. PRX Quantum is
+        # quantum-focused, peer-reviewed, lower volume than PRL.
+        # Deliberately NOT adding PRL — too high-volume / noisy
+        # for a daily intake. Reassess if a gap surfaces.
+        "name": "PRX Quantum",
+        "source_type": SourceType.RSS,
+        "url": "https://journals.aps.org/prxquantum/",
+        "feed_url": "http://feeds.aps.org/rss/recent/prxquantum.xml",
         "fetch_interval_hours": 12,
     },
     {

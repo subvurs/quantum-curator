@@ -1,0 +1,351 @@
+================================================================================
+QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
+================================================================================
+
+  Author:     Mark Eatherly + Claude (claude-opus-4-7)
+  Started:    June 9, 2026
+  Status:     Phase 1 complete; Phase 2 in progress
+  Owner:      Mark Eatherly
+  Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
+
+  This document is the single source of truth for the migration. It is
+  updated at the end of every phase. Do not let the work jump phases
+  without amending this file first.
+
+--------------------------------------------------------------------------------
+1. WHAT WE ARE DOING
+--------------------------------------------------------------------------------
+
+Migrating the Quantum Intel synthesis pipeline (today living at
+~/Library/Application Support/quantum_intel/) into the Quantum Curator
+backend (~/Desktop/quantum-curator/) as a post-processing step that
+runs after Curator's existing daily intake.
+
+After migration:
+  - Curator runs once per day as today (intake + curate + post to
+    Quantum Crier + Qrater + email + per-article Bluesky)
+  - As a NEW last step, Curator runs the (re-implemented) Intel
+    synthesis pipeline over its own articles + the migrated history
+  - Intel sends ITS OWN email (separate SMTP, separate body) with
+    daily briefs + day-over-day summary
+  - Curator's email gets a NEW subvurs_impact_score section
+  - Curator posts a NEW daily Bluesky summary (less detailed than email,
+    links to qrater.org)
+  - Intel's standalone launchd cron is retired
+  - Intel's briefs/ directory is preserved as a read-only historical
+    archive
+
+--------------------------------------------------------------------------------
+2. WHY
+--------------------------------------------------------------------------------
+
+The Intel pipeline has stalled chronically since at least April 2026.
+Documented multi-hour hangs from review.log + run_log.json:
+
+  - Apr 24 2026  review file not created (claude rc=0)
+  - May 2  2026  review file not created (claude rc=1)
+  - May 16-28    multiple rc=1 review failures
+  - May 20 2026  single doc consumed 4h35m wall clock (catalog deadline
+                 exception was being swallowed by chat_with_retry's
+                 except RuntimeError, sleeping, then re-attempting)
+  - May 21 2026  1h18m stall in collectors (DuckDuckGo CAPTCHA scrape)
+  - Jun 7  2026  5h25m hang in SMTP (no socket timeout)
+  - Jun 8  2026  synthesize 6h 8m, collect 57m, traced to PEP 475
+                 EINTR-restart silently defeating signal.SIGALRM
+                 contextmanagers in synthesizer/cataloger/collectors
+
+Root causes consolidated into four classes:
+
+  (a) PEP 475 EINTR auto-retry defeating SIGALRM-based deadlines.
+      The alarm fires, the handler runs, but the very next syscall
+      picks up where it left off (recv() inside resp.read(), or
+      Popen.communicate() pipe reads) and the deadline does nothing.
+  (b) llm_client falling back to Ollama Cloud when ANTHROPIC_API_KEY
+      and NVIDIA_API_KEY are missing from the launchd environment.
+      Ollama Cloud slow-drips bytes on a 600s urlopen timeout — the
+      socket never goes idle, the per-socket timeout never fires.
+  (c) Multi-provider fallback chain (Anthropic → NIM → Ollama local →
+      Ollama Cloud) compounding any single provider's failure into
+      cascading retries.
+  (d) Duplicate scoring infrastructure: Intel has its own (recently
+      added, Jun 2026) Stage 2.5 subvurs_impact scorer that fails
+      closed when ANTHROPIC_API_KEY isn't set. Curator ALREADY has
+      working Subvurs-impact scoring (loads .env via pydantic-settings,
+      writes to curated_posts.subvurs_impact_score).
+
+Migrating into Curator escapes all four:
+
+  (a) Curator is async-native (httpx, not urllib). No PEP 475 issue.
+  (b) Curator's pydantic-settings loads .env at startup — keys are
+      reliably present.
+  (c) Curator already uses the Anthropic SDK directly. No fallback
+      chain to compound.
+  (d) Move scoring to a single place that already works.
+
+--------------------------------------------------------------------------------
+3. PRESERVATION GUARANTEES (non-negotiable per Mark, Jun 9 2026)
+--------------------------------------------------------------------------------
+
+The migration MUST preserve:
+  - All 1216 cataloged inventory entries (entry_ids 0..1215)
+  - All 38 dedup-only fingerprint sentinels
+  - The 9 Stage 2.5-scored entries' subvurs_impact_* fields
+  - entry_id continuity (next synth call resumes at 1216)
+  - Intel's briefs/ directory (kept read-only, no rewrite)
+
+Already done in Phase 1 (see §5 below). One-time backup taken:
+  ~/Library/Application Support/quantum_intel/inventory.json.preimport.bak.20260609_023717
+
+--------------------------------------------------------------------------------
+4. ARCHITECTURE — BEFORE vs AFTER
+--------------------------------------------------------------------------------
+
+BEFORE (today)
+
+  Curator (cron via .github/workflows/daily-curator.yml)
+    └── intake (arXiv quant-ph, ~17 RSS, NewsAPI if key)
+    └── curate (LLM commentary + Phase A subvurs_notes string +
+                Phase B subvurs_impact_score on curated_posts)
+    └── publish (Quantum Crier site + Qrater site)
+    └── email (insights_report — subvurs_notes only)
+    └── Bluesky (per-article share)
+
+  Intel (launchd cron, separate venv, separate .env)
+    └── COLLECT (curator feed @ qrater.org, arXiv quant-ph + cond-mat,
+                 DDG Lite 13 queries)
+    └── CATALOG (LLM structured extraction, SHA-256 dedup)
+    └── SUBVURS_SCORE (Stage 2.5, recently added, ~0.7% coverage so far)
+    └── SYNTHESIZE (combinatorial-product brief generation)
+    └── DELIVER (writes .md briefs to ~/Library/.../briefs/)
+    └── SCAFFOLD (off by default since v1.6)
+    └── EMAIL (SMTP brief delivery to Mark)
+    └── REVIEW (separate claude CLI subprocess, frequently rc=1)
+
+AFTER (target)
+
+  Curator (cron, same workflow file, ONE workflow)
+    └── intake (arXiv quant-ph + cond-mat, ~18 RSS + Quantinuum + PRX
+                Quantum, NewsAPI if key)
+    └── curate (unchanged — LLM commentary + Phase A + Phase B scoring)
+    └── publish (Quantum Crier + Qrater — unchanged)
+    └── email (insights_report + NEW subvurs_impact_score section)
+    └── Bluesky (per-article share + NEW daily summary post linking
+                 qrater.org)
+    └── INTEL SYNTH (new last step)
+        ├── pull from quantum_intel_entries (1216 historical + new)
+        ├── combinatorial synthesis over entries (anti-recurrence via
+            recent brief citations)
+        ├── daily summary (TL;DR + implications-vs-prior + attention
+            recommendations, Goodhart-guarded)
+        ├── SEPARATE email (own SMTP body, distinct from Curator email)
+        └── (no scaffold, no review — both dropped per Mark Jun 9 2026)
+
+  Intel (~/Library/Application Support/quantum_intel/)
+    └── launchd cron disabled
+    └── inventory.json kept frozen as historical artifact (already
+        backed up Jun 9 2026)
+    └── briefs/ kept read-only
+    └── COLLECT / CATALOG / SUBVURS_SCORE / SYNTHESIZE / DELIVER /
+        EMAIL — all deprecated; module files left in place but unused
+    └── pipeline_deadline.py retained (good engineering reference)
+
+--------------------------------------------------------------------------------
+5. PHASES
+--------------------------------------------------------------------------------
+
+  [DONE]  Phase 0 — SIGALRM patches (pre-migration triage)
+              File added:    ~/Library/Application Support/quantum_intel/
+                             pipeline_deadline.py
+              Files patched: synthesizer.py, cataloger.py, collectors.py
+              Helper:        run_with_deadline(seconds, fn, ...)
+                             daemon thread + Thread.join(timeout=)
+                             EINTR-immune (uses condition variable)
+              Rationale:     keeps Intel from continuing to stall during
+                             the build-out of the Curator-side replacement
+              Committed:     Jun 9 2026 (see §8)
+
+  [DONE]  Phase 1a — Curator db.py schema additions
+              Tables added: quantum_intel_entries, quantum_intel_dedup,
+                            bluesky_daily_summaries
+              Indexes:      fingerprint, date_collected,
+                            subvurs_impact_score, summary_date
+              Idempotent:   CREATE IF NOT EXISTS only
+
+  [DONE]  Phase 1b — Source additions to BUILTIN_SOURCES
+              Added:
+                * arXiv cond-mat (Intel had this; Curator didn't —
+                  5.8% of Intel pulls verified post-import)
+                * Quantinuum Blog RSS (Intel scraped via DDG; not in
+                  Curator's vendor blog set)
+                * PRX Quantum RSS (highest-signal APS journal; PRL
+                  deliberately skipped for noise reasons)
+              register_builtin_sources() is already idempotent
+              (updates existing by name)
+
+  [DONE]  Phase 1c — One-time inventory.json importer
+              Module: quantum_curator/intel/import_inventory.py
+              Behavior:
+                * Backs up inventory.json to inventory.json.preimport.bak.<TS>
+                * INSERT OR IGNORE — re-runs are no-ops
+                * Folds the 9 Stage 2.5-scored entries' fields into
+                  subvurs_impact_score + subvurs_impact_report JSON
+                * Verifies row counts and max(entry_id) against source
+              CLI: python -m quantum_curator.intel.import_inventory [--dry-run]
+
+  [DONE]  Phase 1d — Run the importer
+              Live import Jun 9 2026 02:37:17 UTC.
+              Result:
+                * entries_inserted:        1216 / 1216
+                * dedup_inserted:          38 / 38
+                * scored_carried:          9
+                * max(entry_id) preserved: 1215
+                * Idempotence verified:    re-run skipped 1216 + 38
+
+  [TODO]  Phase 2 — Curator-side intel synthesizer
+              Files to create under quantum_curator/intel/:
+                * synthesizer.py      — port from Intel synthesizer.py
+                                        but using anthropic SDK directly
+                                        and Curator db, NOT inventory.json
+                * daily_summary.py    — TL;DR + implications-vs-prior +
+                                        where-to-pay-attention recs
+                                        (Goodhart guardrail: structured
+                                         JSON output, fail-closed on
+                                         non-JSON)
+                * emailer.py          — separate SMTP delivery for Intel
+                                        briefs (untouched Curator email)
+              CLI wiring: new "synthesize-intel" subcommand in cli.py
+              Anti-recurrence: read from quantum_intel_entries.first_brief_at
+                                + previous daily_summaries (new table TBD)
+
+  [TODO]  Phase 3 — Bluesky daily summary + Curator email scoring
+              (3a) BlueskySharer.share_daily_summary(text, link) using
+                   bluesky_daily_summaries table; link → qrater.org
+                   (Quantum Crier daily summary too long per Mark)
+              (3b) Add subvurs_impact_score block to email_report.py
+                   (currently shows subvurs_notes only — confirmed by
+                    direct read Jun 9 2026)
+
+  [TODO]  Phase 4 — Workflow wiring + Intel retirement
+              (4a) daily-curator.yml — add synthesize-intel step after
+                   existing curator steps
+              (4b) Parallel-run: leave Intel's launchd cron in place
+                   READING the Curator DB read-only, verifying parity
+                   for a week
+              (4c) Once parity confirmed: disable Intel's launchd plist
+                   (launchctl unload), keep files in place, document
+                   the freeze in this doc + Intel's _ROLLING_NOTES.md
+
+--------------------------------------------------------------------------------
+6. LOCKED DECISIONS (do not re-litigate without changing this section)
+--------------------------------------------------------------------------------
+
+  D1. Schema model:               SQLite table in Curator (Mark answer Jun 9)
+                                  NOT keeping inventory.json as canonical
+  D2. APS journals:                PRX Quantum only — PRL too noisy
+                                  (Mark: "whatever seems best")
+  D3. NewsAPI:                     If key present in env, fires; if not,
+                                  logged-and-continues. No change to
+                                  default behavior.
+  D4. Bluesky daily link target:   qrater.org root
+                                  (Mark: "Quantum Crier daily summary is
+                                   pretty long")
+  D5. Curator email:               Add subvurs_impact_score section
+                                  (Mark confirmed it was never added)
+  D6. Intel email:                 Stays separate — own SMTP body
+                                  (Mark: "either email is already full")
+  D7. SCAFFOLD:                    Dropped entirely
+                                  (Mark: "we stopped it a while back")
+  D8. REVIEW:                      Dropped — it's not a Python stage,
+                                  it's a separate claude CLI that
+                                  frequently rc=1's anyway
+  D9. Cutover shape:                Parallel-run, then disable Intel cron
+  D10. Preservation:               All 1216 entries + 38 dedup sentinels
+                                  + 9 scored entries' fields preserved
+                                  exactly; entry_ids verbatim
+  D11. Intel inventory.json:       Frozen as historical artifact post-cutover.
+                                  Pre-import backup retained.
+  D12. Synthesizer LLM:            Anthropic SDK direct via Curator's
+                                  settings.claude_model; NO multi-provider
+                                  fallback chain
+
+--------------------------------------------------------------------------------
+7. RISKS + MITIGATIONS
+--------------------------------------------------------------------------------
+
+  R1. Curator DB corruption during import.
+      Mitigation: backup of inventory.json before any write; SQLite
+      INSERT OR IGNORE idempotence; pre-import row counts captured
+      for parity check (sources=18, raw_articles=448, curated_posts=28,
+      etc.). Re-running the importer is a no-op. (Verified Jun 9.)
+
+  R2. Curator publication path breakage.
+      Mitigation: Phase 1 touched ONLY new tables and additive source
+      entries. Existing tables unchanged. Existing publish path
+      (publisher.py, site/, qrater_builder.py, email_report.py,
+      bluesky.py) not touched in Phase 1.
+
+  R3. Intel cron continues running and double-writes during parallel-run.
+      Mitigation: Intel's cron writes to ITS OWN inventory.json — no
+      shared writer. Curator-side synth reads quantum_intel_entries
+      from Curator DB. The two pipelines are non-overlapping.
+
+  R4. Anti-recurrence breakage in the new synthesizer.
+      Mitigation: Phase 2 implementation preserves
+      recent_brief_citations() semantics by reading from the new
+      first_brief_at column on quantum_intel_entries. Golden-replay
+      test against a small sample of Intel's existing briefs before
+      cutover.
+
+  R5. Goodhart on the daily summary LLM call.
+      Mitigation: structured JSON output with explicit
+      "no novel claims" constraint, fail-closed if response is not
+      parseable JSON. Track wall-clock vs token count to detect
+      slow-drift.
+
+  R6. Schema drift between Intel inventory.json and the SQLite table.
+      Mitigation: imported_from audit column records provenance;
+      INSERT OR IGNORE means new fields in future Intel-format
+      documents are silently dropped — log a warning if any.
+
+--------------------------------------------------------------------------------
+8. CHANGELOG
+--------------------------------------------------------------------------------
+
+  Jun 9 2026  Phase 0 SIGALRM patches landed in Intel repo
+              (commit pending — see Phase 0 row)
+  Jun 9 2026  Phase 1a — db.py schema additions landed
+              (quantum_intel_entries, quantum_intel_dedup,
+              bluesky_daily_summaries)
+  Jun 9 2026  Phase 1b — BUILTIN_SOURCES additions landed
+              (cond-mat, Quantinuum, PRX Quantum)
+  Jun 9 2026  Phase 1c — importer module written
+              (quantum_curator/intel/import_inventory.py)
+  Jun 9 2026  Phase 1d — live import succeeded
+              (1216 entries + 38 dedup sentinels + 9 scored,
+               idempotence verified, max(entry_id) preserved)
+  Jun 9 2026  Migration doc created (this file)
+  Jun 9 2026  Phase 2 started
+
+--------------------------------------------------------------------------------
+9. ROLLBACK
+--------------------------------------------------------------------------------
+
+  If Phase 2+ goes wrong:
+    1. Disable the new synthesize-intel CLI step in daily-curator.yml
+    2. Re-enable Intel's launchd plist if it was disabled
+    3. Inventory file is unchanged (we only ever read it); the live
+       Intel cron resumes against it
+    4. quantum_intel_entries / quantum_intel_dedup /
+       bluesky_daily_summaries are inert without the new CLI step —
+       leaving them in place harms nothing
+
+  If Phase 1 import itself needs to be undone (unlikely):
+       DROP TABLE quantum_intel_entries;
+       DROP TABLE quantum_intel_dedup;
+       DROP TABLE bluesky_daily_summaries;
+    Then re-run init_db() to recreate the (now empty) tables, or
+    restore from backup at inventory.json.preimport.bak.20260609_023717.
+
+================================================================================
+END OF DOCUMENT — update at the END of each phase, never mid-phase.
+================================================================================

@@ -138,6 +138,78 @@ def init_db() -> None:
         );
 
         CREATE INDEX IF NOT EXISTS idx_twitter_post_id ON twitter_shares(post_id);
+
+        -- Quantum Intel inventory (migrated from ~/Library/Application
+        -- Support/quantum_intel/inventory.json in June 2026 as part of the
+        -- Intel → Curator backend consolidation). entry_id is the same
+        -- integer Intel's synthesizer.py emits in its SYNTH_PROMPT entry tags,
+        -- so existing briefs that cite "entry_id=N" remain resolvable after
+        -- migration. fingerprint is SHA-256(title|source)[:16] (cataloger.py
+        -- _fingerprint), used as the dedup key.
+        CREATE TABLE IF NOT EXISTS quantum_intel_entries (
+            entry_id INTEGER PRIMARY KEY,
+            fingerprint TEXT NOT NULL UNIQUE,
+            title TEXT NOT NULL,
+            source TEXT NOT NULL,
+            url TEXT DEFAULT '',
+            date_collected TEXT NOT NULL,
+            date_published TEXT DEFAULT '',
+            entry_type TEXT DEFAULT '',
+            summary TEXT DEFAULT '',
+            technical_detail TEXT DEFAULT '',
+            enabling_capabilities TEXT DEFAULT '[]',
+            domain_tags TEXT DEFAULT '[]',
+            maturity TEXT DEFAULT '',
+            -- subvurs_impact_* columns mirror curated_posts naming for
+            -- cross-table consistency. subvurs_impact_report carries a
+            -- JSON object {paths, evidence, fail_reason}; the 9
+            -- already-scored entries in the Jun 2026 import have those
+            -- three fields nested under this column.
+            subvurs_impact_score REAL DEFAULT 0.0,
+            subvurs_impact_report TEXT DEFAULT NULL,
+            subvurs_impact_version TEXT DEFAULT NULL,
+            first_brief_at TEXT DEFAULT NULL,
+            imported_from TEXT DEFAULT '',
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_intel_fingerprint
+            ON quantum_intel_entries(fingerprint);
+        CREATE INDEX IF NOT EXISTS idx_intel_date_collected
+            ON quantum_intel_entries(date_collected);
+        CREATE INDEX IF NOT EXISTS idx_intel_subvurs_impact_score
+            ON quantum_intel_entries(subvurs_impact_score);
+
+        -- Dedup-only fingerprints: title|source SHA-256[:16] values that
+        -- were seen by Intel but never made it into inventory (e.g.
+        -- LLM extraction failed, content was off-topic, or the catalog
+        -- pre-filter rejected them). Intel's dedup_index.json stores
+        -- these alongside the inventory fingerprints; preserving them
+        -- here keeps the dedup contract intact so the Curator-side
+        -- synth pipeline doesn't re-pay LLM cost on already-rejected
+        -- items. No PK FK — these are pure sentinels.
+        CREATE TABLE IF NOT EXISTS quantum_intel_dedup (
+            fingerprint TEXT PRIMARY KEY,
+            first_seen TEXT NOT NULL,
+            imported_from TEXT DEFAULT '',
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+
+        -- Daily Bluesky digest tracking. Mirrors the bluesky_shares
+        -- per-post pattern but keyed by date for idempotent
+        -- "one summary per day" semantics. summary_date is YYYY-MM-DD
+        -- in the local publication timezone.
+        CREATE TABLE IF NOT EXISTS bluesky_daily_summaries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            summary_date TEXT NOT NULL UNIQUE,
+            bsky_uri TEXT NOT NULL,
+            bsky_cid TEXT NOT NULL,
+            post_text TEXT NOT NULL,
+            shared_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_bsky_daily_date
+            ON bluesky_daily_summaries(summary_date);
     """)
 
     # Migrate existing databases: add subvurs_notes column if missing
