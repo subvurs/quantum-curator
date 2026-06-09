@@ -949,7 +949,7 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
             new_entries=new_entries,
             briefs=briefs,
             summary=summary,
-            inventory_total=len(inventory_view.load_inventory()),
+            inventory_total=inventory_view.count_published_posts(),
             elapsed_seconds=elapsed,
         )
         console.print(Panel(

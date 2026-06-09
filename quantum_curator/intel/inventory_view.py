@@ -86,6 +86,27 @@ def load_inventory() -> list[dict]:
     return [_row_to_dict(r) for r in rows]
 
 
+def count_published_posts() -> int:
+    """Return the number of published curated_posts.
+
+    Phase 5g: the email header's "Total Inventory" stat used to read
+    ``len(quantum_intel_entries)``. Post-Phase-4c that table is frozen
+    at the Phase 1d historical archive (1216 entries locally; 0 in CI
+    because the import was a one-shot local procedure and ``data/`` is
+    gitignored). Curator's actively-growing archive is ``curated_posts
+    WHERE status='published'`` — that's what the header should reflect
+    going forward.
+    """
+    conn = db.get_connection()
+    try:
+        row = conn.execute(
+            "SELECT COUNT(*) FROM curated_posts WHERE status = 'published'"
+        ).fetchone()
+    finally:
+        conn.close()
+    return int(row[0]) if row else 0
+
+
 def today_entries(days: int = 1) -> list[dict]:
     """Entries with ``date_collected`` within the last ``days`` days.
 

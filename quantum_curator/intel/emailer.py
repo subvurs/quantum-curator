@@ -241,7 +241,7 @@ def send_intel_email(
     # this branch is defensive; left for direct send_intel_email() callers.
     new_entries = new_entries if new_entries is not None else inventory_view.today_curated_seeds(days=1)
     briefs = briefs or []
-    inventory_total = len(inventory_view.load_inventory())
+    inventory_total = inventory_view.count_published_posts()
     today_str = datetime.now(timezone.utc).strftime("%B %d, %Y")
 
     html = build_html(
