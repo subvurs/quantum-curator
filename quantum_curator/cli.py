@@ -780,11 +780,13 @@ def synthesize_intel(days: int, max_briefs: int, model: str | None, dry_run: boo
         return
 
     from .intel import inventory_view
-    new_entries = inventory_view.today_entries(days=days)
+    # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
+    # Phase 1d import) to curated_posts (Plan B pivot, parity with 5a/5d).
+    new_entries = inventory_view.today_curated_seeds(days=days)
     inventory = inventory_view.load_inventory()
 
     if not new_entries:
-        console.print(f"[yellow]No entries in the last {days}d — nothing to synthesize.[/]")
+        console.print(f"[yellow]No curated_posts seeds in the last {days}d — nothing to synthesize.[/]")
         return
 
     console.print(
@@ -819,7 +821,15 @@ def synthesize_intel(days: int, max_briefs: int, model: str | None, dry_run: boo
             console.print(f"  • {title}  (confidence: {conf})")
         return
 
-    briefs = synthesizer.deliver(concepts)
+    # Phase 5c parity: thread the synthetic-id → curated_posts UUID map
+    # through deliver() so seed-side citations land on
+    # curated_posts.intel_first_brief_at instead of being dropped.
+    seed_id_to_uuid = {
+        int(s["entry_id"]): s["_curated_post_id"]
+        for s in new_entries
+        if s.get("_curated_post_id") and isinstance(s.get("entry_id"), int)
+    }
+    briefs = synthesizer.deliver(concepts, seed_id_to_uuid=seed_id_to_uuid)
     console.print(f"[green]Delivered {len(briefs)} briefs to disk[/]")
     for bp in briefs:
         console.print(f"  • {bp}")
@@ -843,7 +853,10 @@ def intel_summary(days: int, prior_days: int, fmt: str):
         console.print("[red]ANTHROPIC_API_KEY not configured.[/]")
         return
 
-    new_entries = inventory_view.today_entries(days=days)
+    # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
+    # Phase 1d import) to curated_posts (same intake as Crier/Qrater).
+    # Matches the Plan B pivot landed in 5a/5d.
+    new_entries = inventory_view.today_curated_seeds(days=days)
     payload = daily_summary.build_daily_summary(
         new_entries=new_entries,
         prior_days=prior_days,
@@ -882,7 +895,9 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
         return
 
     t0 = _time.monotonic()
-    new_entries = inventory_view.today_entries(days=days)
+    # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
+    # Phase 1d import) to curated_posts (Plan B pivot, parity with 5a/5d).
+    new_entries = inventory_view.today_curated_seeds(days=days)
     console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
 
     summary = None
@@ -914,7 +929,17 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
             )
             progress.update(task, completed=True)
         if concepts:
-            briefs = synthesizer.deliver(concepts)
+            # Phase 5c parity: thread the synthetic-id → curated_posts UUID
+            # map through deliver() so seed-side citations land on
+            # curated_posts.intel_first_brief_at instead of being dropped
+            # (synthetic ids >= SEED_ID_OFFSET have no row in
+            # quantum_intel_entries).
+            seed_id_to_uuid = {
+                int(s["entry_id"]): s["_curated_post_id"]
+                for s in new_entries
+                if s.get("_curated_post_id") and isinstance(s.get("entry_id"), int)
+            }
+            briefs = synthesizer.deliver(concepts, seed_id_to_uuid=seed_id_to_uuid)
             console.print(f"[green]Synthesizer delivered {len(briefs)} briefs[/]")
 
     elapsed = _time.monotonic() - t0
@@ -972,7 +997,9 @@ def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool):
         console.print("[red]ANTHROPIC_API_KEY not set — cannot build summary.[/]")
         return
 
-    new_entries = inventory_view.today_entries(days=days)
+    # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
+    # Phase 1d import) to curated_posts (Plan B pivot, parity with 5a/5d).
+    new_entries = inventory_view.today_curated_seeds(days=days)
     console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
 
     with Progress(

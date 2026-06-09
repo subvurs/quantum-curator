@@ -99,6 +99,13 @@ def init_db() -> None:
             subvurs_impact_score REAL DEFAULT 0.0,
             subvurs_impact_report TEXT DEFAULT NULL,
             subvurs_impact_version TEXT DEFAULT NULL,
+            -- Phase 5c (Intel→Curator migration, Plan B): anti-recurrence
+            -- parity with quantum_intel_entries.first_brief_at. Stamped
+            -- by intel.synthesizer.deliver() the first time a seed-side
+            -- curated_post is cited in a brief. UPDATE ... WHERE
+            -- intel_first_brief_at IS NULL gives idempotent "first cite
+            -- wins" semantics. NULL = never cited.
+            intel_first_brief_at TEXT DEFAULT NULL,
             FOREIGN KEY (article_id) REFERENCES raw_articles(id)
         );
 
@@ -230,6 +237,21 @@ def init_db() -> None:
             conn.commit()
         except sqlite3.OperationalError:
             pass  # Column already exists
+
+    # Migrate: add intel_first_brief_at (Phase 5c, Intel→Curator migration)
+    # Existing rows get NULL (correct — none have been cited as Intel
+    # seeds yet because the seed pivot itself just landed in Phase 5a).
+    try:
+        conn.execute(
+            "ALTER TABLE curated_posts ADD COLUMN intel_first_brief_at TEXT DEFAULT NULL"
+        )
+        conn.commit()
+    except sqlite3.OperationalError:
+        # Column already exists — the only OperationalError the SQLite
+        # ALTER TABLE ADD COLUMN path raises here. Anything else (DB
+        # locked, disk full) should propagate, but sqlite3 raises those
+        # later from .commit() / .execute() on the real call sites.
+        pass
 
     conn.commit()
     conn.close()

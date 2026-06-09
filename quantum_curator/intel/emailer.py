@@ -235,7 +235,11 @@ def send_intel_email(
         print("[intel.emailer] smtp_email / smtp_app_password not configured")
         return False
 
-    new_entries = new_entries if new_entries is not None else inventory_view.today_entries(days=1)
+    # Phase 5e: fallback source pivot from quantum_intel_entries (frozen
+    # Phase 1d import) to curated_posts seeds (Plan B parity with 5a/5d/5e).
+    # In the workflow path the CLI always passes new_entries explicitly so
+    # this branch is defensive; left for direct send_intel_email() callers.
+    new_entries = new_entries if new_entries is not None else inventory_view.today_curated_seeds(days=1)
     briefs = briefs or []
     inventory_total = len(inventory_view.load_inventory())
     today_str = datetime.now(timezone.utc).strftime("%B %d, %Y")

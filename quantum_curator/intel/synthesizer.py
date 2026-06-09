@@ -383,14 +383,28 @@ def _format_brief(concept: dict) -> str:
     return "\n".join(lines)
 
 
-def deliver(concepts: list[dict], briefs_dir: Path | None = None) -> list[Path]:
+def deliver(
+    concepts: list[dict],
+    briefs_dir: Path | None = None,
+    seed_id_to_uuid: dict[int, str] | None = None,
+) -> list[Path]:
     """Write briefs to disk and stamp ``first_brief_at`` on cited entries.
+
+    ``seed_id_to_uuid`` maps synthetic seed entry_ids
+    (>= ``inventory_view.SEED_ID_OFFSET``) back to their curated_posts.id
+    UUID so seed-side citations get stamped on
+    ``curated_posts.intel_first_brief_at`` (Phase 5c parity with the
+    Intel-side ``first_brief_at`` column). ``None`` is treated as an
+    empty map — seed-side citations become silent no-ops in that case,
+    same posture as before 5c.
 
     Returns the list of paths written. No-op (returns ``[]``) if
     ``concepts`` is empty.
     """
     if not concepts:
         return []
+
+    seed_id_to_uuid = seed_id_to_uuid or {}
 
     settings = get_settings()
     briefs_dir = briefs_dir or (settings.data_dir / "intel_briefs")
@@ -409,26 +423,62 @@ def deliver(concepts: list[dict], briefs_dir: Path | None = None) -> list[Path]:
         # Stamp first_brief_at on every cited entry that hasn't been
         # cited before. UPDATE ... WHERE first_brief_at IS NULL gives us
         # idempotence — repeat citations are silent no-ops.
+        #
+        # Phase 5a/5c routing:
+        #   * eid <  SEED_ID_OFFSET → real quantum_intel_entries.entry_id,
+        #     stamp Intel-side first_brief_at.
+        #   * eid >= SEED_ID_OFFSET → synthetic curated_posts seed ID,
+        #     stamp curated_posts.intel_first_brief_at via UUID lookup.
+        #     A cited synthetic ID with no UUID in the map (shouldn't
+        #     happen — would mean the LLM hallucinated a high entry_id)
+        #     silently no-ops rather than stamping the wrong row.
         for eid in concept.get("entry_ids_combined", []):
             try:
-                inventory_view.mark_first_brief_at(int(eid), now_iso)
+                eid_int = int(eid)
             except (TypeError, ValueError):
                 continue
+            if eid_int >= inventory_view.SEED_ID_OFFSET:
+                uuid = seed_id_to_uuid.get(eid_int)
+                if uuid:
+                    inventory_view.mark_curated_seed_first_brief_at(uuid, now_iso)
+                continue
+            inventory_view.mark_first_brief_at(eid_int, now_iso)
 
     return written
 
 
 def run_intel_synthesis(days: int = 1, **kwargs: Any) -> tuple[list[dict], list[Path]]:
-    """One-shot: today's entries → synthesize → deliver.
+    """One-shot: today's curated_posts seeds → synthesize → deliver.
 
-    ``days`` controls the "today" window over ``date_collected``.
+    Phase 5a (Plan B): the "new" side of the combinatorial product is
+    now today's curated_posts (the same articles the Curator just
+    published to Quantum Crier + Qrater), not quantum_intel_entries.
+    Phase 1d's import of 1216 quantum_intel_entries was one-shot; nothing
+    populates that table daily, so today_entries(days=1) returned 0 for
+    every workflow run and the synthesizer produced 0 briefs. The
+    historical 1216 entries remain the inventory-side co-source via
+    load_inventory() — so today's curated_posts get paired against the
+    full 1216-entry corpus exactly as the migration plan §4 intended.
+
+    ``days`` controls the "today" window over published_at.
     Keyword args are forwarded to ``synthesize`` (model, max_briefs, …).
     """
-    new = inventory_view.today_entries(days=days)
+    new = inventory_view.today_curated_seeds(days=days)
     if not new:
-        print(f"[intel.synth] no entries in the last {days}d — nothing to synthesize")
+        print(f"[intel.synth] no curated_posts seeds in the last {days}d — nothing to synthesize")
         return [], []
     inventory = inventory_view.load_inventory()
     concepts = synthesize(new, inventory=inventory, **kwargs)
-    paths = deliver(concepts)
+
+    # Phase 5c: build synthetic-int → UUID map so deliver() can stamp
+    # intel_first_brief_at on the right curated_posts row when the LLM
+    # cites a seed-side entry_id. Seeds that lack a _curated_post_id
+    # (shouldn't happen — today_curated_seeds always sets it) are
+    # skipped silently rather than stamped wrong.
+    seed_id_to_uuid = {
+        int(s["entry_id"]): s["_curated_post_id"]
+        for s in new
+        if s.get("_curated_post_id") and isinstance(s.get("entry_id"), int)
+    }
+    paths = deliver(concepts, seed_id_to_uuid=seed_id_to_uuid)
     return concepts, paths

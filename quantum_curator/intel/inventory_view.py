@@ -38,6 +38,15 @@ from .. import db
 
 _LIST_COLS = ("enabling_capabilities", "domain_tags")
 
+# Phase 5a: curated_posts seeds get synthetic int entry_ids in a high
+# range so they cannot collide with quantum_intel_entries (max 1215
+# at Phase 1d import; ceiling grows as Intel-format entries accrete).
+# IDs above this offset reference curated_posts by their offset; the
+# synthesizer's mark_first_brief_at call must NOT try to write them
+# back into quantum_intel_entries (Phase 5c will add the parallel
+# intel_first_brief_at column on curated_posts).
+SEED_ID_OFFSET = 2_000_000
+
 
 def _row_to_dict(row: Any) -> dict[str, Any]:
     """sqlite3.Row → JSON-shaped inventory dict."""
@@ -106,6 +115,96 @@ def today_entries(days: int = 1) -> list[dict]:
     return [_row_to_dict(r) for r in rows]
 
 
+def today_curated_seeds(days: int = 1) -> list[dict]:
+    """Today's curated_posts projected into InventoryEntry shape.
+
+    Phase 5 / Plan B: the synthesizer's "today's new entries" used to
+    come from quantum_intel_entries.date_collected, but Phase 1d was a
+    one-shot import — nothing populates new rows daily. The same daily
+    intake that already feeds Quantum Crier + Qrater is the right
+    source for "today" — those are the articles Curator just curated.
+
+    Mapping (curated_posts → InventoryEntry shape):
+        entry_id          = SEED_ID_OFFSET + index_in_returned_list
+        fingerprint       = original_url
+        title             = title
+        source            = source_name
+        url               = original_url
+        date_collected    = curated_at          (when Curator published it)
+        date_published    = published_at        (article's original date)
+        entry_type        = "curated_post"      (new value; LLM ignores)
+        summary           = curator_commentary  if present else summary
+        technical_detail  = summary             (raw article summary)
+        enabling_capabilities = []              (no analog; empty OK)
+        domain_tags       = topics              (JSON list, already a list-typed col)
+        maturity          = "unknown"           (no analog)
+        subvurs_impact_score   = subvurs_impact_score
+        subvurs_impact_version = subvurs_impact_version
+        first_brief_at    = None  (5c will add intel_first_brief_at)
+        _curated_post_id  = curated_posts.id    (UUID, for 5c routing)
+
+    The "today" window filters on ``curated_at`` (the timestamp when
+    Curator created the post), NOT ``published_at`` (which is the
+    article's original publication date — can be months old for older
+    arXiv papers re-surfaced by today's fetch). ``date_collected`` is
+    the inventory analog of "this was new to us today" and now carries
+    ``curated_at`` so downstream "today's entries" semantics work.
+
+    Only ``status='published'`` posts are seeds — drafts don't go to
+    the user-facing site so they shouldn't seed Intel either.
+    """
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+    conn = db.get_connection()
+    try:
+        rows = conn.execute(
+            """
+            SELECT id, title, original_url, summary, source_name,
+                   published_at, curated_at, curator_commentary, topics,
+                   subvurs_impact_score, subvurs_impact_version
+              FROM curated_posts
+             WHERE status = 'published'
+               AND curated_at >= ?
+             ORDER BY curated_at DESC
+            """,
+            (cutoff,),
+        ).fetchall()
+    finally:
+        conn.close()
+
+    seeds: list[dict] = []
+    for idx, row in enumerate(rows):
+        topics_raw = row["topics"]
+        try:
+            topics_list = json.loads(topics_raw) if topics_raw else []
+            if not isinstance(topics_list, list):
+                topics_list = []
+        except (json.JSONDecodeError, TypeError):
+            topics_list = []
+
+        commentary = row["curator_commentary"]
+        summary_raw = row["summary"]
+        seeds.append({
+            "entry_id": SEED_ID_OFFSET + idx,
+            "fingerprint": row["original_url"],
+            "title": row["title"],
+            "source": row["source_name"],
+            "url": row["original_url"],
+            "date_collected": row["curated_at"],
+            "date_published": row["published_at"],
+            "entry_type": "curated_post",
+            "summary": commentary if commentary else summary_raw,
+            "technical_detail": summary_raw or "",
+            "enabling_capabilities": [],
+            "domain_tags": topics_list,
+            "maturity": "unknown",
+            "subvurs_impact_score": row["subvurs_impact_score"],
+            "subvurs_impact_version": row["subvurs_impact_version"],
+            "first_brief_at": None,
+            "_curated_post_id": row["id"],
+        })
+    return seeds
+
+
 def entries_by_ids(entry_ids: list[int]) -> list[dict]:
     """Look up entries by entry_id (preserves caller-supplied ordering)."""
     if not entry_ids:
@@ -149,6 +248,38 @@ def mark_first_brief_at(entry_id: int, ts: str | None = None) -> bool:
                AND first_brief_at IS NULL
             """,
             (ts, entry_id),
+        )
+        conn.commit()
+        return cur.rowcount == 1
+    finally:
+        conn.close()
+
+
+def mark_curated_seed_first_brief_at(
+    curated_post_id: str, ts: str | None = None
+) -> bool:
+    """Set ``intel_first_brief_at`` on a curated_post iff currently NULL.
+
+    Phase 5c parallel to ``mark_first_brief_at``. Keyed by curated_posts.id
+    (UUID, str) rather than entry_id (int) because seed-side citations come
+    from synthetic IDs (SEED_ID_OFFSET + idx) that don't map to any real
+    quantum_intel_entries row. The synthesizer recovers the UUID via the
+    ``seed_id_to_uuid`` map it builds from ``today_curated_seeds()``.
+
+    Returns True if the row was updated, False if it was already set
+    (this curated_post was cited in an earlier brief) or doesn't exist.
+    """
+    ts = ts or datetime.now(timezone.utc).isoformat()
+    conn = db.get_connection()
+    try:
+        cur = conn.execute(
+            """
+            UPDATE curated_posts
+               SET intel_first_brief_at = ?
+             WHERE id = ?
+               AND intel_first_brief_at IS NULL
+            """,
+            (ts, curated_post_id),
         )
         conn.commit()
         return cur.rowcount == 1

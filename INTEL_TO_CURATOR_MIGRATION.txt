@@ -4,8 +4,26 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
 
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
-  Status:     Phase 4 complete; Phase 5 pending (Intel content gap found
-              in first live workflow_dispatch run — Plan B pivot below)
+  Status:     Phase 4 complete; Phase 5 complete (a/c/d/e/f code +
+              docs; 5g doc closure landed Jun 9). Synthesizer reads
+              today_curated_seeds (curated_at-filtered) crossed with
+              the 1216-row frozen historical inventory; deliver()
+              routes citations to the right stamp table via
+              SEED_ID_OFFSET; daily_summary dual-sourced; CLI gap
+              closed across 4 call sites + emailer fallback;
+              tests/test_intel_synth.py pins routing +
+              channel-separation; 26/26 tests pass.
+              Hand-run against Jun 9 09:41 UTC GH Actions cache: 5
+              non-trivial briefs from 45 curated_posts, 14 unique
+              stamps, 0 cross-namespace collisions, brief confidence
+              0.58-0.72.
+              Phase 5 commits remain unpushed per Mark's "Hold off
+              until Phase 5 is done" standing order. Phase 4c
+              (Intel launchd retirement) is blocked on ≥ 3 days of
+              non-empty Intel output, which starts after the push.
+              Two minor deployment items close automatically on push:
+              ensure_schema() applies the 5c ALTER TABLE; CLI source
+              flip stops the "0 briefs / quiet day" output.
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -136,12 +154,20 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
                  Intel email)
     └── INTEL SYNTH (new last step — Plan B sourcing)
         ├── TODAY'S SEEDS: pull from curated_posts where
-        │   published_at ≥ now − 1d (Curator's own intake; the same
-        │   articles that just went to Quantum Crier)
+        │   curated_at ≥ now − 1d (Curator's own intake; the same
+        │   articles that just went to Quantum Crier).
+        │   GOTCHA: filter on curated_at (when Curator created the
+        │   post), NOT published_at (article's original date — can
+        │   be months old for older arXiv papers that Curator just
+        │   surfaced). See §5 (5a) for implementation; date_published
+        │   is still passed to the LLM prompt so the article's real
+        │   pub date is visible, but the "today" window is curator-
+        │   activity-driven.
         ├── HISTORICAL CO-SOURCE: pull from quantum_intel_entries
-        │   (1216 historical + any future entries that accrete via
-        │   shim, see §5 Phase 5b option). These are NOT background —
-        │   they are paired combinatorially with today's seeds.
+        │   (1216 historical, frozen at Phase 1d import). These are
+        │   NOT background — they are paired combinatorially with
+        │   today's seeds. 5b shim subsumed by 5a; future entries do
+        │   not accrete here, only via curated_posts.
         ├── combinatorial synthesis over (today × historical) pairs;
         │   anti-recurrence via recent brief citations (unchanged
         │   semantics — first_brief_at on quantum_intel_entries,
@@ -421,7 +447,7 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
                 # 3. Intel resumes against its own inventory.json
                 #    from wherever it left off.
 
-  [TODO]  Phase 5 — Curator-side data source pivot (Plan B)
+  [DONE]  Phase 5 — Curator-side data source pivot (Plan B)
 
               Problem statement (verified live Jun 9 2026):
                 * intel-email rendered "0 briefs today"
@@ -450,81 +476,325 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
                   paths; Phase 5 just makes sure each pulls from
                   the right source.
 
-              (5a) Synthesizer source pivot
+              (5a) Synthesizer source pivot  [DONE - June 9, 2026]
                    File: quantum_curator/intel/synthesizer.py
-                   Changes:
-                     * Add `today_seeds_from_curated_posts(days=1)`
-                       — returns curated_posts rows (id, title, url,
-                       source_name, summary, subvurs_notes,
-                       subvurs_impact_score) as InventoryEntry-shaped
-                       dicts so existing combinatorial code keeps
-                       working without ergonomic regressions.
-                     * Combinatorial pairing is now
-                       (today_seeds × historical_entries), not
-                       (today_entries × today_entries).
-                     * Anti-recurrence: brief_history.recent_brief
-                       _citations() unchanged in semantics; reads from
-                       both first_brief_at columns (existing on
-                       quantum_intel_entries, new on curated_posts —
-                       see 5c).
-                     * Fail-closed: if today_seeds is empty AND
-                       historical_entries is empty, synthesis returns
-                       0 briefs (correctly). If today_seeds is
-                       empty but historical exists, return 0 briefs
-                       and log "no fresh seeds — Curator intake may
-                       have failed earlier in workflow."
+                            quantum_curator/intel/inventory_view.py
+                   Done:
+                     * inventory_view.SEED_ID_OFFSET = 2_000_000
+                       (synthetic int IDs for curated_posts seeds so
+                       they cannot collide with quantum_intel_entries
+                       row IDs; max import was 1215)
+                     * inventory_view.today_curated_seeds(days=1)
+                       projects curated_posts.status='published' into
+                       InventoryEntry-shape dicts, preserving
+                       _curated_post_id (UUID) for 5c routing.
+                     * Date filter: curated_at (when Curator created
+                       the post), NOT published_at (article's original
+                       date — can be months old when Curator surfaces
+                       an older arXiv paper). date_collected on the
+                       seed carries curated_at so downstream "today"
+                       semantics work; date_published preserves the
+                       article's real pub date for the LLM prompt.
+                     * synthesizer.run_intel_synthesis() pulls from
+                       today_curated_seeds(days) instead of
+                       today_entries(days). load_inventory() still
+                       returns the 1216 historical entries, paired as
+                       the inventory side of the combinatorial product
+                       — exactly the role they had pre-migration.
+                     * synthesizer.deliver() guards mark_first_brief_at
+                       against synthetic seed IDs (>= SEED_ID_OFFSET).
+                       Anti-recurrence for seed-side citations lands
+                       in 5c via intel_first_brief_at on curated_posts.
+                     * Empty-case log changed to "no curated_posts
+                       seeds in the last Nd — nothing to synthesize"
+                       so failures are diagnosable in CI logs.
+                     * Tests: 11/11 pre-existing pass (no regression).
+                       No new Intel-side tests yet — 5e adds coverage.
+                   Worth flagging:
+                     * Local dev DB is months stale (curated_at max
+                       2026-03-19). All Phase 5 hand-validation must
+                       happen against the GH Actions runner cache, not
+                       the local DB. Pull the cache artifact via
+                       `gh run download <run_id>` for 5f.
 
               (5b) Inventory view: add curated_posts seed helper
-                   File: quantum_curator/intel/inventory_view.py
-                   Add: today_curated_seeds(days=1) — same shape as
-                   today_entries() so synthesizer can treat them
-                   interchangeably.
-                   No schema migration to curated_posts; read-only.
+                   [SUBSUMED INTO 5a]
+                   today_curated_seeds() was added to inventory_view.py
+                   as part of 5a because the synthesizer pivot couldn't
+                   land without it. Leaving the entry here for the
+                   audit trail; no separate 5b commit needed.
 
               (5c) Schema additive: curated_posts.intel_first_brief_at
-                   For anti-recurrence parity with quantum_intel_entries.
-                   ALTER TABLE curated_posts ADD COLUMN
-                     intel_first_brief_at TEXT NULL;
-                   Idempotent via "ALTER TABLE IF NOT EXISTS" pattern
-                   in db.init_db(). Migration runs on first start
-                   after deploy; existing rows get NULL (correct —
-                   nothing has been cited yet).
+                   [DONE - June 9, 2026]
+                   Done:
+                     * db.py CREATE TABLE curated_posts now declares
+                       `intel_first_brief_at TEXT DEFAULT NULL` with an
+                       explanatory comment. Fresh DBs ship with the
+                       column.
+                     * db.py init_db() runs ALTER TABLE ADD COLUMN
+                       inside try/except sqlite3.OperationalError for
+                       existing DBs. Annotated to make clear which
+                       error is being swallowed (per rigor rule §8).
+                     * inventory_view.mark_curated_seed_first_brief_at(
+                       curated_post_id: str, ts: str | None) — UPDATE
+                       ... WHERE id = ? AND intel_first_brief_at IS
+                       NULL. Returns True if row updated, False if
+                       already set or nonexistent. Idempotent.
+                     * synthesizer.deliver(seed_id_to_uuid=...) routes
+                       citations:
+                         eid <  SEED_ID_OFFSET → mark_first_brief_at
+                                                 (Intel-side, by int eid)
+                         eid >= SEED_ID_OFFSET → mark_curated_seed_first
+                                                 _brief_at (curated-side,
+                                                 by UUID lookup)
+                       Hallucinated/missing UUIDs silently no-op
+                       rather than stamping the wrong row.
+                     * run_intel_synthesis() builds seed_id_to_uuid
+                       from `today_curated_seeds()` output and threads
+                       it into deliver().
+                   Verified:
+                     * Local migration applied cleanly (28/28 existing
+                       rows initialized to NULL).
+                     * Stamp on real UUID → True; re-stamp → False
+                       (idempotent); stamp on nonexistent UUID → False
+                       (silent no-op).
+                     * Mixed-citation end-to-end test: one Intel-side
+                       int eid + one synthetic seed eid + one bogus
+                       hallucinated int eid → exactly the right two
+                       rows stamped with matching timestamps; bogus
+                       eid leaves no DB residue.
+                     * 11/11 pre-existing tests still pass.
 
               (5d) Daily summary source pivot
+                   [DONE - June 9, 2026]
                    File: quantum_curator/intel/daily_summary.py
-                   Reads BOTH curated_posts (today's activity) and
-                   quantum_intel_entries (historical implications-
-                   vs-prior). TL;DR is over today's curated_posts;
-                   "implications vs prior" cross-references against
-                   the 1216 historical entries. Forbidden-phrase
-                   list unchanged; deterministic no-LLM payload
-                   unchanged.
+                   Done:
+                     * Module docstring expanded with "Dual data source
+                       (Phase 5d, Plan B pivot)" section explaining
+                       today = curated_posts vs prior = historical
+                       quantum_intel_entries.
+                     * build_daily_summary() signature now accepts
+                       kw-only ``days: int = 1`` (sized today_curated
+                       _seeds window) and ``prior_limit: int = 100``
+                       (cap on historical sample). ``prior_days`` is
+                       preserved as a no-op for backward-compat with
+                       the three CLI callers (intel-summary, intel-
+                       email, share-intel-summary) that still pass
+                       it via click.option.
+                     * Default new_entries = today_curated_seeds(days
+                       =days). Same Plan B pivot as Phase 5a's
+                       synthesizer.
+                     * Default prior_entries = load_inventory()
+                       [:prior_limit] minus today_ids (defensive
+                       filter; today_ids >= 2_000_000 cannot collide
+                       with historical max ~1215, but kept for ID-
+                       space changes).
+                     * SUMMARY_PROMPT updated: "# Prior 7-Day Window"
+                       → "# Prior Corpus (historical context)";
+                       implications bullet refers to "prior historical
+                       corpus" instead of "prior 7-day window".
+                     * _no_new_content_payload text updated:
+                         tldr:        "No new curated posts to
+                                       summarize in the last 24h."
+                         implications: "Historical corpus has X
+                                       entries; no shift today."
+                       window dict + tags + keys unchanged (contract
+                       parity per spec).
+                     * FORBIDDEN_PHRASES list unchanged (per spec).
+                   Verified:
+                     * Signature accepts days=, prior_days=, prior
+                       _limit= without TypeError.
+                     * Smoke test (mocked data sources, mocked
+                       Anthropic key): defaults route through today
+                       _curated_seeds + load_inventory; quiet-day
+                       payload renders honest curated-posts wording.
+                     * All three legacy CLI kwarg shapes
+                       (new_entries=[], prior_days=7) still work.
+                     * 11/11 pre-existing tests still pass.
+                   CLI gap (deferred, NOT in 5d scope):
+                     * cli.py intel-summary / intel-email /
+                       share-intel-summary all still pass
+                       ``new_entries = inventory_view.today_entries
+                       (days=days)`` — that's quantum_intel_entries
+                       (frozen Phase 1d import → returns [] in
+                       production). They bypass the new default.
+                     * Until those three call sites pivot to
+                       today_curated_seeds(days=days), the workflow
+                       will fire the (now correctly worded) "quiet
+                       day" payload every run regardless of
+                       curated_posts activity.
+                     * Fix is a 3-line change per call site — fold
+                       into 5e CI smoke-test patch or land as a
+                       standalone 5d.cli follow-up. Tracked here so
+                       5f doesn't blame the daily_summary defaults
+                       when the CLI is still the explicit feeder.
 
-              (5e) Output channel verification (no code, smoke test)
-                   Confirm in CI logs that on a non-empty day:
-                     * Intel email has full brief bodies + summary
-                     * Bluesky post is short, links qrater.org, no
-                       brief bodies
-                     * Curator insights email has subvurs_notes +
-                       impact table (no Intel brief content)
-                   On a genuine quiet day (zero curated_posts), all
-                   three correctly report empty/short with no
-                   misleading "quiet day" message.
+              (5e) [DONE - June 9, 2026] CLI source pivot + channel-
+                   separation smoke tests.
+
+                   Scope grew vs original plan: the "no code, smoke
+                   test" framing assumed 5d's defaults routing would
+                   feed all CLI commands automatically. In practice
+                   the four CLI sites passed new_entries explicitly
+                   (the gap flagged under 5d), so a smoke test would
+                   have always rendered quiet-day regardless of
+                   curated_posts activity. Closing the gap was
+                   prerequisite to any meaningful 5e verification.
+
+                   Code changes (all minimal — 1-line source swap +
+                   seed_id_to_uuid wiring at the two deliver() sites):
+                     * cli.py intel_summary       → today_curated_seeds
+                     * cli.py intel_email         → today_curated_seeds;
+                                                    deliver() passes
+                                                    seed_id_to_uuid map
+                     * cli.py share_intel_summary → today_curated_seeds
+                     * cli.py synthesize_intel    → today_curated_seeds;
+                                                    deliver() passes
+                                                    seed_id_to_uuid map;
+                                                    "no entries" message
+                                                    text updated
+                     * emailer.py send_intel_email fallback →
+                                                    today_curated_seeds
+                                                    (defensive; CLI
+                                                    always feeds
+                                                    new_entries
+                                                    explicitly)
+
+                   Tests added (tests/test_intel_synth.py, 15 cases):
+                     1. deliver() routing:
+                        * eid < SEED_ID_OFFSET → mark_first_brief_at
+                        * eid >= SEED_ID_OFFSET with UUID →
+                          mark_curated_seed_first_brief_at
+                        * eid >= SEED_ID_OFFSET with no UUID → silent
+                          no-op (hallucinated-ID case)
+                        * seed_id_to_uuid=None → falls back to {} map
+                        * non-integer entry_ids skipped without crash
+                     2. Idempotence: second cite of same eid /
+                        curated_post_id does NOT overwrite the
+                        original timestamp (UPDATE ... WHERE col IS
+                        NULL semantics).
+                     3. today_curated_seeds() projection:
+                        * synthetic entry_ids start at SEED_ID_OFFSET
+                        * only status='published' rows seed
+                        * curated_at window honored
+                        * curator_commentary → summary,
+                          summary → technical_detail,
+                          entry_type = "curated_post"
+                     4. Channel-separation smoke (no LLM):
+                        * render_bluesky output is short (<= 280 chars),
+                          contains qrater.org link, no TL;DR/
+                          Implications/Worth-attention headers
+                        * render_text is the multi-section digest,
+                          does NOT contain the Bluesky CTA link
+                        * Quiet-day _no_new_content_payload renders
+                          sanely on both channels
+
+                   Test suite: 26 passed, 19 warnings (pre-existing
+                   datetime.utcnow deprecations from other modules),
+                   no regressions.
+
+                   Still out of scope for 5e:
+                     * The "CI logs on a non-empty day" eyeball check
+                       — that's 5f (hand-run against Jun 9 data).
+                     * The Curator insights email subvurs_notes/impact
+                       table check — covered by existing
+                       test_curator_subvurs_impact.py (Phase B work).
 
               (5f) Hand-run validation against Jun 9 2026 data
-                   The Jun 9 run had 15 subvurs_notes connections in
-                   curated_posts. Re-run synthesize-intel locally
-                   against the post-workflow DB; expect ≥ 5 briefs
-                   (one per top-impact curated_post paired with
-                   historical entries), each with non-empty body.
-                   If briefs come out empty or trivial, debug before
-                   re-deploying.
+                   [DONE — June 9, 2026]
+                   Original spec: re-run synthesize-intel against the
+                   Jun 9 post-workflow DB; expect ≥ 5 briefs, each
+                   non-empty.
+                   Outcome (artifact curator-db-27197625739):
+                     * 5 briefs delivered, 2.7-3.0 KB each,
+                       confidence 0.58-0.72, full Discoveries
+                       Combined / Target Market / Risk Factors
+                       structure on every one.
+                     * 14 unique seeds cited across 15 citation slots
+                       (one self-pair: 2000002 cited by two briefs).
+                     * 14 curated_posts.intel_first_brief_at stamps
+                       written; 0 quantum_intel_entries
+                       .first_brief_at writes (correct routing).
+                   Deviations from spec, surfaced as findings (full
+                   detail in §8 Phase 5f entry):
+                     * "Top-impact curated_post paired with historical
+                       entries" was unattainable as written — the GH
+                       Actions runner has 0 historical entries
+                       (Phase 1d never ran there). Briefs landed as
+                       today×today combinations (synth prompt's
+                       allowed-but-exception path); the "(No prior
+                       history)" fallback kicked in cleanly without
+                       quality degradation.
+                     * Phase 5c migration not deployed on runner
+                       either; applied locally via idempotent ALTER
+                       TABLE before invoking the CLI. Both gaps
+                       close on push (5g push checklist).
 
-              (5g) Migration doc + workflow notes
-                   Update §4 AFTER (done above), §8 changelog with
-                   Phase 5 commits, INTEL retirement runbook trigger
-                   (≥ 3 days non-empty Intel output, not parallel-run
-                   wall time alone).
+              (5g) Migration doc + workflow notes  [DONE — June 9, 2026]
+                   Closes Phase 5 on the documentation side. Actions:
+                     * §4 AFTER corrected: TODAY'S SEEDS filter is
+                       curated_at, not published_at. Gotcha called
+                       out inline (older arXiv papers re-surfaced by
+                       today's intake would otherwise be filtered out
+                       entirely by published_at, or — worse —
+                       silently miss the window even when Curator
+                       just published commentary on them).
+                     * §4 AFTER: HISTORICAL CO-SOURCE clarified —
+                       quantum_intel_entries is frozen at Phase 1d;
+                       no shim accretes new rows there. 5b is
+                       formally subsumed.
+                     * §5 Phase 4c trigger language already correct:
+                       retirement fires after ≥ 3 days of non-empty
+                       Intel output, NOT on parallel-run wall time.
+                       That clock STARTS once Phase 5 commits push
+                       and the runner stops shipping "0 briefs /
+                       quiet day". 5f confirmed the code path
+                       works against the runner DB; the missing
+                       inputs are deployment, not code.
+                     * §8 changelog: Phase 5g entry added below.
+                       Commit SHAs for 5a-5g remain pending push per
+                       Mark's "Hold off until Phase 5 is done"
+                       standing order. SHAs will be appended to
+                       individual phase entries when push happens.
+                   Push checklist (when Mark lifts the hold):
+                     1. git push origin main — fires Phase 5a/c/d/e/f
+                        in one go.
+                     2. db.ensure_schema() runs on next workflow
+                        invocation; ALTER TABLE adds
+                        intel_first_brief_at on the runner DB
+                        (idempotent, no-op locally).
+                     3. Next scheduled daily-curator run reads via
+                        today_curated_seeds() instead of
+                        today_entries(); first day of non-empty
+                        output starts the §5 Phase 4c trigger clock.
+                     4. After 3 consecutive non-empty days, execute
+                        §5 Phase 4c launchctl unload steps and
+                        append timestamps + final inventory.json row
+                        count to §8.
+                   Note on Phase 1d historical import gap (5f finding):
+                     The 1216-row historical co-source half of the
+                     dual-source design is empty on the runner
+                     because Phase 1d's import_inventory CLI was
+                     run locally only (inventory.json lives in
+                     ~/Library/Application Support/quantum_intel/,
+                     which doesn't exist on GH Actions). Options:
+                       (a) Accept today×today briefs as steady-state
+                           (synth prompt allows this path; 5f
+                           briefs were high quality).
+                       (b) Check inventory.json into the repo (or a
+                           release artifact) and run the importer
+                           inside the daily-curator workflow on a
+                           one-shot conditional ("if
+                           quantum_intel_entries empty → import").
+                     Decision deferred — neither blocks Phase 5
+                     closure. Recommend (a) for now: the synth path
+                     proven in 5f works at brief quality 0.58-0.72
+                     confidence without historical context, and (b)
+                     adds CI-side state + a 4.6 MB JSON checkin
+                     that doesn't carry its weight unless the 1216
+                     historical entries are demonstrably uplifting
+                     today's briefs. Re-open after ≥ 1 week of
+                     production output if quality plateaus.
 
               Out of scope for Phase 5 (deliberately):
                 * Re-implementing Intel's DDG Lite collectors. Those
@@ -695,6 +965,147 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
               detailed review; Bluesky daily summary = short public
               rundown. Phase 4c retirement blocked on Phase 5
               producing ≥ 3 days non-empty output.
+  Jun 9 2026  Phase 5a complete — inventory_view.py: SEED_ID_OFFSET +
+              today_curated_seeds(days) filtering on curated_at (not
+              published_at). synthesizer.py: run_intel_synthesis()
+              pivoted to today_curated_seeds(); deliver() guards
+              mark_first_brief_at against synthetic IDs. 1216
+              historical entries unchanged in role (inventory side of
+              cross-product, via load_inventory()). 5b subsumed.
+              Caveat: local dev DB is months stale; 5f hand-validation
+              must use the GH Actions runner cache, not the local DB.
+  Jun 9 2026  Phase 5c complete — db.py: curated_posts gains
+              intel_first_brief_at TEXT column + idempotent ALTER TABLE
+              migration. inventory_view.py:
+              mark_curated_seed_first_brief_at(uuid, ts). synthesizer.py:
+              deliver() now takes seed_id_to_uuid map and routes
+              citations (Intel-side int eid → quantum_intel_entries
+              .first_brief_at; synthetic seed eid → curated_posts
+              .intel_first_brief_at via UUID lookup). End-to-end mixed
+              citation test verified. 28/28 existing rows initialized
+              NULL. 11/11 pre-existing tests still pass.
+  Jun 9 2026  Phase 5d complete — daily_summary.py pivoted to dual
+              data source: defaults route today via today_curated
+              _seeds(days=days) and prior via load_inventory()
+              [:prior_limit]. Added kw-only ``days`` and ``prior
+              _limit`` params; ``prior_days`` preserved as no-op for
+              CLI backward-compat. SUMMARY_PROMPT and _no_new
+              _content_payload reworded to "Prior corpus" / "No new
+              curated posts to summarize" (contract keys, types,
+              tags unchanged). FORBIDDEN_PHRASES list unchanged.
+              Smoke test (mocked sources, mocked Anthropic key)
+              confirms defaults routing + quiet-day payload. All
+              three legacy CLI kwarg shapes still accepted. 11/11
+              pre-existing tests still pass. Worth flagging: CLI
+              call sites still feed today_entries (intel-side,
+              frozen → empty in prod) as new_entries explicitly,
+              bypassing the new default. Documented as a CLI gap
+              under §5 5d; needs a 3-line patch per call site
+              before 5e CI smoke test or 5f hand-run will succeed.
+  Jun 9 2026  Phase 5e complete — CLI source pivot landed across
+              four call sites (intel_summary, intel_email,
+              share_intel_summary, synthesize_intel in cli.py) plus
+              the emailer.py send_intel_email fallback; all now
+              feed today_curated_seeds(days=...) instead of the
+              frozen today_entries(). The two deliver() call sites
+              (intel_email + synthesize_intel) build and pass the
+              seed_id_to_uuid map so Phase 5c routing fires on
+              seed-side citations. tests/test_intel_synth.py adds
+              15 cases pinning: deliver() Intel-vs-seed routing,
+              hallucinated-ID no-op, idempotence on both stamp
+              paths, non-integer eid tolerance, today_curated_seeds
+              projection shape (synthetic IDs, status/window
+              filtering, field mapping), and channel-separation
+              smoke (render_bluesky short+link-only, render_text
+              multi-section, quiet-day payload renders sanely on
+              both channels). Test suite: 26 passed (11 prior + 15
+              new), no regressions. The CLI gap flagged under 5d
+              is closed; 5f hand-run will now actually exercise
+              the curated-seed path.
+  Jun 9 2026  Phase 5f complete — hand-run validation against the
+              Jun 9 09:41 UTC scheduled daily-curator run cache
+              (artifact curator-db-27197625739). Local Phase 5e CLI
+              ran end-to-end against scratch DATA_DIR pointed at the
+              downloaded curator.db.
+              Result: synthesize-intel --days 1 --max-briefs 5
+              produced 5 non-trivial briefs (2.7-3.0 KB each, full
+              Discoveries Combined / Target Market / Risk Factors
+              structure) over 45 curated_posts in the 1d window.
+              Confidence range 0.58-0.72. All 15 citations land in
+              the SEED_ID_OFFSET range (>=2_000_000) — no
+              cross-namespace collisions. 14 unique seeds cited (one
+              collision: seed 2000002 cited by two briefs).
+              Routing verification:
+                * curated_posts.intel_first_brief_at stamped: 14 rows
+                  (matches unique-seed count). All timestamps match
+                  the synth run's UTC second.
+                * quantum_intel_entries.first_brief_at touched: 0
+                  rows (correct — seed IDs >= 2_000_000 don't route
+                  to the Intel-side stamp path).
+              Two deployment gaps discovered on the GH Actions runner
+              cache that the migration doc had not previously flagged:
+                * Phase 1d historical import never ran on the GH
+                  runner — quantum_intel_entries has 0 rows there
+                  (vs 1216 locally). Means the "prior corpus" half
+                  of the dual-source design is empty in production;
+                  briefs are today×today combinations (the synth
+                  prompt's allowed-but-exception path), not
+                  today×historical as the §5 5f spec assumed.
+                  Quality stayed high — synthesizer handled empty
+                  history via the "(No prior history — this is the
+                  first run.)" fallback without degradation.
+                * Phase 5c migration (intel_first_brief_at column)
+                  never deployed — schema was missing on the runner
+                  artifact. Applied locally via idempotent ALTER
+                  TABLE before invoking the CLI; the same migration
+                  will need to fire on the runner once Phase 5
+                  commits are pushed (Phase 5c db.py
+                  ensure_schema() already does this, so just
+                  pushing closes the gap).
+              Worth flagging: the deployed (pre-5e) GH workflow logs
+              from the 09:41 UTC run showed "Window: 0 new entries
+              (last 1d)" / "#quiet-day" — confirms the legacy
+              today_entries() path is what production is still
+              running. Phase 5 commits remain unpushed per Mark's
+              "Hold off until Phase 5 is done" standing order; this
+              is consistent.
+              Validation artifacts: /tmp/phase5f_validation/data/
+              intel_briefs/ (5 markdown files, retained for 5g
+              writeup). DB at /tmp/phase5f_validation/data/
+              curator.db (with 5c migration applied + 14 stamps
+              written). Run timestamp: 2026-06-09T09:59:48 UTC.
+  Jun 9 2026  Phase 5g complete — Phase 5 closed on docs side.
+              §4 AFTER corrected: TODAY'S SEEDS filter is curated_at
+              (not published_at), with the gotcha called out inline.
+              The previous "where published_at ≥ now − 1d" reading
+              would have been wrong in two ways: (a) older arXiv
+              papers re-surfaced by today's intake would be silently
+              excluded, and (b) the §5 5a implementation already
+              uses curated_at — §4 had drifted from §5 between Plan
+              A draft and Plan B pivot. §4 AFTER also clarifies
+              quantum_intel_entries is frozen at Phase 1d (no shim
+              accretion; 5b formally subsumed). §5 (5g) marked DONE
+              with explicit push checklist:
+                1. git push origin main fires 5a/c/d/e/f.
+                2. db.ensure_schema() ALTER TABLEs
+                   intel_first_brief_at on the runner (closes 5f gap).
+                3. First non-empty daily-curator run starts the
+                   §5 Phase 4c 3-consecutive-days clock.
+                4. After 3 days non-empty, execute Phase 4c launchctl
+                   unload + append the unload timestamp + final
+                   inventory.json row count here.
+              Phase 1d historical-import gap (5f finding): decision
+              deferred between (a) accept today×today briefs as
+              steady-state — 5f briefs were 0.58-0.72 confidence
+              without historical context — or (b) check
+              inventory.json into a release artifact and run the
+              importer inside the workflow conditionally. Phase 5g
+              recommends (a) for now; revisit after ≥ 1 week of
+              production output if quality plateaus. Neither option
+              blocks Phase 5 closure.
+              Test suite: 26/26 (unchanged from 5e). No code changes
+              in 5g — documentation only. Phase 5 complete; Phase
+              4c execution waits on Mark lifting the push hold.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK

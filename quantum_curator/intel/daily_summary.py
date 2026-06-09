@@ -5,6 +5,22 @@ Migration doc decision D5: each daily run produces a structured
 summary intended for (a) the Curator email body, (b) the qrater.org
 front page, and (c) the truncated Bluesky link-post (Phase 3).
 
+Dual data source (Phase 5d, Plan B pivot)
+-----------------------------------------
+The first live workflow run exposed that ``quantum_intel_entries`` is
+a one-shot Phase 1d import (1216 historical rows, no daily refresh),
+so "today's new entries" came up empty every run. Post-pivot:
+
+* "Today" source     = ``curated_posts`` via ``today_curated_seeds()``
+                       (same intake that drives Quantum Crier + Qrater).
+* "Prior corpus"     = ``quantum_intel_entries`` via ``load_inventory()``
+                       — historical context (the 1216 frozen rows).
+
+The TL;DR is over today's curated_posts; "implications" cross-
+references against the historical corpus. The "quiet day" branch
+now correctly fires only when today's curated_posts window is empty
+(NOT when quantum_intel_entries is empty, which is the steady state).
+
 Goodhart guardrails
 -------------------
 The summary LLM call returns structured JSON with a fail-closed
@@ -33,6 +49,10 @@ Public surface
           tags: list[str]               # 1-5 short topic tags
           window: dict                  # bookkeeping: n_today, n_prior
         Or ``None`` on hard LLM failure.
+
+        Defaults (when ``new_entries`` / ``prior_entries`` are None):
+          new_entries   = today_curated_seeds(days=days)  (curated_posts)
+          prior_entries = load_inventory()[:prior_limit]  (historical)
 """
 
 from __future__ import annotations
@@ -76,7 +96,7 @@ SUMMARY_PROMPT = """\
 # Today's New Quantum Intel ({today_count} entries)
 {todays_entries}
 
-# Prior 7-Day Window ({prior_count} entries, condensed)
+# Prior Corpus ({prior_count} entries, historical context, condensed)
 {prior_entries}
 
 # Task
@@ -89,8 +109,8 @@ Produce a calibrated daily summary as a single JSON object with these keys:
 
 * "implications" (2-4 strings): each one bullet (<= 35 words) on how \
   today's entries shift, confirm, or contradict patterns visible in the \
-  prior 7-day window. If nothing in today's entries materially changes \
-  the prior picture, say so explicitly (one bullet).
+  prior historical corpus. If nothing in today's entries materially \
+  changes the prior picture, say so explicitly (one bullet).
 
 * "attention" (1-3 strings): each one bullet (<= 30 words) recommending \
   what the researcher should actually look at next. Be concrete \
@@ -146,11 +166,16 @@ def _scrub_payload(payload: dict) -> dict:
 
 
 def _no_new_content_payload(prior_count: int) -> dict:
-    """Deterministic payload for the "no new entries" case — no LLM call."""
+    """Deterministic payload for the "no new entries" case — no LLM call.
+
+    Phase 5d: "no new entries" now means zero curated_posts in the
+    last-N-day window (today_curated_seeds), NOT zero
+    quantum_intel_entries (which is frozen at the Phase 1d import).
+    """
     return {
-        "tldr": ["No new Quantum Intel entries cataloged in the last 24h."],
+        "tldr": ["No new curated posts to summarize in the last 24h."],
         "implications": [
-            "Prior 7-day window has " + str(prior_count) + " entries; no shift today."
+            "Historical corpus has " + str(prior_count) + " entries; no shift today."
         ],
         "attention": [],
         "tags": ["quiet-day"],
@@ -165,21 +190,43 @@ def build_daily_summary(
     model: str = "claude-sonnet-4-5",
     max_tokens: int = 1200,
     temperature: float = 0.3,
-    prior_days: int = 7,
+    days: int = 1,
+    prior_days: int = 7,  # noqa: ARG001 — accepted for backward-compat, see below
+    prior_limit: int = 100,
 ) -> dict | None:
-    """Build today's structured Intel summary. Returns None on hard LLM failure."""
+    """Build today's structured Intel summary. Returns None on hard LLM failure.
+
+    Phase 5d (Plan B pivot):
+      * Default ``new_entries``   → today_curated_seeds(days=days)
+                                    (curated_posts; same intake as Crier/Qrater)
+      * Default ``prior_entries`` → most-recent ``prior_limit`` rows from
+                                    load_inventory() (historical quantum_intel
+                                    _entries, all 1216 frozen rows).
+    The ``prior_days`` parameter is preserved in the signature for
+    backward-compat with existing CLI callers (``intel-summary``,
+    ``share-intel-summary``) but is no longer used: the historical corpus
+    is static, not a moving window. We size the prior view by
+    ``prior_limit`` (count) instead. Removing ``prior_days`` would break
+    the three CLI commands that still pass it via ``click.option``.
+    """
     settings = get_settings()
     if not settings.has_anthropic:
         print("[intel.daily_summary] anthropic_api_key not set — skipping")
         return None
 
     if new_entries is None:
-        new_entries = inventory_view.today_entries(days=1)
+        new_entries = inventory_view.today_curated_seeds(days=days)
     if prior_entries is None:
-        # Pull a 7d window ending yesterday (we exclude today's IDs from prior).
-        recent_window = inventory_view.today_entries(days=prior_days + 1)
+        # Historical corpus is static (Phase 1d frozen import). Take the
+        # most-recent slice by entry_id DESC so the LLM sees the most
+        # recently catalogued historical context first.
+        historical = inventory_view.load_inventory()[:prior_limit]
+        # Today's IDs cannot collide with historical entry_ids (seeds use
+        # SEED_ID_OFFSET = 2_000_000+, historical max is ~1215), but keep
+        # the defensive filter so a future ID-space change doesn't double
+        # count an entry in both windows.
         today_ids = {e.get("entry_id") for e in new_entries}
-        prior_entries = [e for e in recent_window if e.get("entry_id") not in today_ids]
+        prior_entries = [e for e in historical if e.get("entry_id") not in today_ids]
 
     if not new_entries:
         return _no_new_content_payload(len(prior_entries))
