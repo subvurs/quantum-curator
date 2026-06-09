@@ -4,7 +4,8 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
 
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
-  Status:     Phase 4 complete; cutover live (parallel-run window open)
+  Status:     Phase 4 complete; Phase 5 pending (Intel content gap found
+              in first live workflow_dispatch run — Plan B pivot below)
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -121,24 +122,46 @@ BEFORE (today)
     └── EMAIL (SMTP brief delivery to Mark)
     └── REVIEW (separate claude CLI subprocess, frequently rc=1)
 
-AFTER (target)
+AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
 
   Curator (cron, same workflow file, ONE workflow)
     └── intake (arXiv quant-ph + cond-mat, ~18 RSS + Quantinuum + PRX
-                Quantum, NewsAPI if key)
+                Quantum, NewsAPI if key)  → raw_articles
     └── curate (unchanged — LLM commentary + Phase A + Phase B scoring)
+                                          → curated_posts
     └── publish (Quantum Crier + Qrater — unchanged)
     └── email (insights_report + NEW subvurs_impact_score section)
     └── Bluesky (per-article share + NEW daily summary post linking
-                 qrater.org)
-    └── INTEL SYNTH (new last step)
-        ├── pull from quantum_intel_entries (1216 historical + new)
-        ├── combinatorial synthesis over entries (anti-recurrence via
-            recent brief citations)
+                 qrater.org — SHORT public rundown, distinct from
+                 Intel email)
+    └── INTEL SYNTH (new last step — Plan B sourcing)
+        ├── TODAY'S SEEDS: pull from curated_posts where
+        │   published_at ≥ now − 1d (Curator's own intake; the same
+        │   articles that just went to Quantum Crier)
+        ├── HISTORICAL CO-SOURCE: pull from quantum_intel_entries
+        │   (1216 historical + any future entries that accrete via
+        │   shim, see §5 Phase 5b option). These are NOT background —
+        │   they are paired combinatorially with today's seeds.
+        ├── combinatorial synthesis over (today × historical) pairs;
+        │   anti-recurrence via recent brief citations (unchanged
+        │   semantics — first_brief_at on quantum_intel_entries,
+        │   plus parallel tracking on curated_posts.intel_first_brief_at)
         ├── daily summary (TL;DR + implications-vs-prior + attention
-            recommendations, Goodhart-guarded)
-        ├── SEPARATE email (own SMTP body, distinct from Curator email)
+        │   recommendations, Goodhart-guarded; reads BOTH sources)
+        ├── SEPARATE Intel email (own SMTP body — detailed internal
+        │   review, distinct from Curator insights email AND distinct
+        │   from Bluesky daily summary post)
         └── (no scaffold, no review — both dropped per Mark Jun 9 2026)
+
+  Output channel separation (clarification Jun 9 2026):
+    - Curator insights email = subvurs_notes + top-N subvurs_impact
+                               table (on curated_posts only)
+    - Intel email             = full brief content from synthesis
+                                (curated_posts × quantum_intel_entries)
+    - Bluesky daily summary   = short public rundown
+                                (links → qrater.org)
+    Three distinct outputs, three different shapes, three different
+    audiences. None of them duplicate each other's content.
 
   Intel (~/Library/Application Support/quantum_intel/)
     └── launchd cron disabled
@@ -333,6 +356,19 @@ AFTER (target)
               Trigger: 4b parallel-run window passes per the checklist
               above.
 
+              **Phase 5 dependency (added Jun 9 2026):** runbook is
+              documented but execution is BLOCKED until Phase 5
+              produces non-empty Intel briefs + daily summary
+              for ≥ 3 consecutive days. First workflow_dispatch run
+              (Jun 9 2026, run id 27193404135) exposed the content
+              gap — intel-email and share-intel-summary fired
+              successfully but read from the post-import-frozen
+              quantum_intel_entries table (0 entries in last 24h),
+              so they shipped "0 briefs" and "quiet day" respectively
+              while Curator's insights email simultaneously found 15
+              subvurs_notes connections on curated_posts. Empty
+              output is not parity. See Phase 5 below.
+
               Retirement steps (run in order; capture output for the
               changelog):
 
@@ -384,6 +420,132 @@ AFTER (target)
                 #    in the file).
                 # 3. Intel resumes against its own inventory.json
                 #    from wherever it left off.
+
+  [TODO]  Phase 5 — Curator-side data source pivot (Plan B)
+
+              Problem statement (verified live Jun 9 2026):
+                * intel-email rendered "0 briefs today"
+                * share-intel-summary posted "quiet day"
+                * Same daily run: 2 articles published, 15
+                  subvurs_notes connections in curated_posts
+                * Root cause: synthesizer + daily_summary read from
+                  quantum_intel_entries.date_collected over last N
+                  days; Phase 1d was a one-shot import (max
+                  date_collected = 2026-06-08); nothing populates
+                  new rows day-to-day. The "+ new" arrow in §4
+                  AFTER was never wired.
+
+              Decision (Mark, Jun 9 2026): Plan B
+                * NEW seeds come from Curator's own intake
+                  (curated_posts) — the same articles already
+                  going to Quantum Crier / Qrater / insights email
+                * The 1216 historical quantum_intel_entries stay
+                  ACTIVE as combinatorial co-source — paired with
+                  today's seeds in the cross-product, not just
+                  background. Same role they had pre-migration.
+                * Email vs Bluesky output channels separated
+                  explicitly: Intel email = detailed internal
+                  review; Bluesky daily summary = short public
+                  rundown linking qrater.org. Already two code
+                  paths; Phase 5 just makes sure each pulls from
+                  the right source.
+
+              (5a) Synthesizer source pivot
+                   File: quantum_curator/intel/synthesizer.py
+                   Changes:
+                     * Add `today_seeds_from_curated_posts(days=1)`
+                       — returns curated_posts rows (id, title, url,
+                       source_name, summary, subvurs_notes,
+                       subvurs_impact_score) as InventoryEntry-shaped
+                       dicts so existing combinatorial code keeps
+                       working without ergonomic regressions.
+                     * Combinatorial pairing is now
+                       (today_seeds × historical_entries), not
+                       (today_entries × today_entries).
+                     * Anti-recurrence: brief_history.recent_brief
+                       _citations() unchanged in semantics; reads from
+                       both first_brief_at columns (existing on
+                       quantum_intel_entries, new on curated_posts —
+                       see 5c).
+                     * Fail-closed: if today_seeds is empty AND
+                       historical_entries is empty, synthesis returns
+                       0 briefs (correctly). If today_seeds is
+                       empty but historical exists, return 0 briefs
+                       and log "no fresh seeds — Curator intake may
+                       have failed earlier in workflow."
+
+              (5b) Inventory view: add curated_posts seed helper
+                   File: quantum_curator/intel/inventory_view.py
+                   Add: today_curated_seeds(days=1) — same shape as
+                   today_entries() so synthesizer can treat them
+                   interchangeably.
+                   No schema migration to curated_posts; read-only.
+
+              (5c) Schema additive: curated_posts.intel_first_brief_at
+                   For anti-recurrence parity with quantum_intel_entries.
+                   ALTER TABLE curated_posts ADD COLUMN
+                     intel_first_brief_at TEXT NULL;
+                   Idempotent via "ALTER TABLE IF NOT EXISTS" pattern
+                   in db.init_db(). Migration runs on first start
+                   after deploy; existing rows get NULL (correct —
+                   nothing has been cited yet).
+
+              (5d) Daily summary source pivot
+                   File: quantum_curator/intel/daily_summary.py
+                   Reads BOTH curated_posts (today's activity) and
+                   quantum_intel_entries (historical implications-
+                   vs-prior). TL;DR is over today's curated_posts;
+                   "implications vs prior" cross-references against
+                   the 1216 historical entries. Forbidden-phrase
+                   list unchanged; deterministic no-LLM payload
+                   unchanged.
+
+              (5e) Output channel verification (no code, smoke test)
+                   Confirm in CI logs that on a non-empty day:
+                     * Intel email has full brief bodies + summary
+                     * Bluesky post is short, links qrater.org, no
+                       brief bodies
+                     * Curator insights email has subvurs_notes +
+                       impact table (no Intel brief content)
+                   On a genuine quiet day (zero curated_posts), all
+                   three correctly report empty/short with no
+                   misleading "quiet day" message.
+
+              (5f) Hand-run validation against Jun 9 2026 data
+                   The Jun 9 run had 15 subvurs_notes connections in
+                   curated_posts. Re-run synthesize-intel locally
+                   against the post-workflow DB; expect ≥ 5 briefs
+                   (one per top-impact curated_post paired with
+                   historical entries), each with non-empty body.
+                   If briefs come out empty or trivial, debug before
+                   re-deploying.
+
+              (5g) Migration doc + workflow notes
+                   Update §4 AFTER (done above), §8 changelog with
+                   Phase 5 commits, INTEL retirement runbook trigger
+                   (≥ 3 days non-empty Intel output, not parallel-run
+                   wall time alone).
+
+              Out of scope for Phase 5 (deliberately):
+                * Re-implementing Intel's DDG Lite collectors. Those
+                  were heavily duplicated with Curator's RSS intake
+                  and prone to CAPTCHA stalls. Drop them.
+                * Re-implementing Intel's separate dedup table.
+                  Curator's raw_articles_url_unique already covers
+                  the same surface for new intake. quantum_intel_dedup
+                  stays as the historical fingerprint set, never
+                  written to again.
+                * Backfilling quantum_intel_entries from new
+                  curated_posts. Plan B explicitly keeps the two
+                  tables separate by role (historical vs today's
+                  seeds); no shim needed.
+
+              Rollback (if Phase 5 regresses):
+                Comment out intel-email + share-intel-summary in
+                daily-curator.yml (same pattern as Twitter/X). The
+                rest of Curator (publish, Bluesky per-article,
+                insights email) is unaffected — Phase 5 only
+                changes intel/*.py.
 
 --------------------------------------------------------------------------------
 6. LOCKED DECISIONS (do not re-litigate without changing this section)
@@ -457,6 +619,28 @@ AFTER (target)
       INSERT OR IGNORE means new fields in future Intel-format
       documents are silently dropped — log a warning if any.
 
+  R7. (Phase 5) Output channel cross-contamination — Intel brief
+      bodies leaking into Bluesky (300-char limit, gets truncated
+      and looks broken) or into the Curator insights email
+      (duplicates content).
+      Mitigation: 5e smoke test in CI logs. Bluesky payload is
+      built ONLY from daily_summary.render_bluesky(), which is
+      explicitly short-form. Intel email payload is built ONLY
+      from emailer.render_intel_email(). Curator insights email
+      payload is built ONLY from email_report.build_insights
+      _report() (reads curated_posts.subvurs_notes /
+      subvurs_impact_score; never reads briefs). No shared
+      string concatenation across these three.
+
+  R8. (Phase 5) Goodhart on "non-empty for 3 days" cutover gate.
+      If the synthesizer produces low-quality briefs to clear the
+      gate, we cut Intel over to a worse pipeline.
+      Mitigation: gate is "≥ 5 briefs/day with non-empty body
+      AND at least one ≥ 0.3 subvurs_impact_score reference in
+      either the seed or the paired historical entry" — not just
+      brief count. Mark eyeballs the first 3 days' Intel emails
+      before authorizing 4c unload.
+
 --------------------------------------------------------------------------------
 8. CHANGELOG
 --------------------------------------------------------------------------------
@@ -497,6 +681,20 @@ AFTER (target)
               execution deferred until parallel-run window passes;
               timestamp + final inventory.json row count to be
               appended to this changelog at that time.
+  Jun 9 2026  First workflow_dispatch run (id 27193404135) exposed
+              Intel content gap: intel-email rendered "0 briefs",
+              share-intel-summary posted "quiet day", while Curator
+              insights email simultaneously found 15 subvurs_notes
+              connections. Root cause: synthesizer reads
+              quantum_intel_entries.date_collected over last N
+              days, but Phase 1d was a one-shot import — nothing
+              populates new rows. Phase 5 plan landed below.
+  Jun 9 2026  Phase 5 plan landed — Plan B (curated_posts as seeds,
+              1216 quantum_intel_entries kept as combinatorial
+              co-source). Explicit channel separation: Intel email =
+              detailed review; Bluesky daily summary = short public
+              rundown. Phase 4c retirement blocked on Phase 5
+              producing ≥ 3 days non-empty output.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
