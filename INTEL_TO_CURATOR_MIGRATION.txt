@@ -5,25 +5,34 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
   Status:     Phase 4 complete; Phase 5 complete (a/c/d/e/f code +
-              docs; 5g doc closure landed Jun 9). Synthesizer reads
-              today_curated_seeds (curated_at-filtered) crossed with
-              the 1216-row frozen historical inventory; deliver()
-              routes citations to the right stamp table via
-              SEED_ID_OFFSET; daily_summary dual-sourced; CLI gap
-              closed across 4 call sites + emailer fallback;
-              tests/test_intel_synth.py pins routing +
+              docs; 5g doc closure landed Jun 9). Phase 4c executed
+              Jun 9 2026 10:55 UTC — Intel launchd agents
+              (com.subvurs.quantum-intel + com.subvurs.quantum-intel
+              -review) unloaded; both confirmed gone from
+              `launchctl list`. Inventory frozen at 1216 entries.
+              Phase 4c retirement triggered EARLY by Mark's call —
+              the 3-consecutive-non-empty-days criterion was NOT
+              satisfied (Phase 5 commits pushed ≈1 h prior in commit
+              396b97f; Jun 9 09:41 UTC scheduled run was first
+              non-empty production run; clock had not elapsed).
+              Justification: Curator's daily-curator.yml has been
+              green on GH Actions for 7 consecutive days, the local
+              Intel launchd was actively malfunctioning (Stage 2
+              CATALOG hangs Jun 6 + Jun 8 producing 0 briefs), and
+              keeping a failing local pipeline running during the
+              parity window adds no signal. Retirement is reversible
+              per §5 Phase 4c (plists left on disk).
+              Synthesizer reads today_curated_seeds (curated_at-
+              filtered) crossed with the 1216-row frozen historical
+              inventory; deliver() routes citations to the right
+              stamp table via SEED_ID_OFFSET; daily_summary dual-
+              sourced; CLI gap closed across 4 call sites + emailer
+              fallback; tests/test_intel_synth.py pins routing +
               channel-separation; 26/26 tests pass.
               Hand-run against Jun 9 09:41 UTC GH Actions cache: 5
               non-trivial briefs from 45 curated_posts, 14 unique
               stamps, 0 cross-namespace collisions, brief confidence
               0.58-0.72.
-              Phase 5 commits remain unpushed per Mark's "Hold off
-              until Phase 5 is done" standing order. Phase 4c
-              (Intel launchd retirement) is blocked on ≥ 3 days of
-              non-empty Intel output, which starts after the push.
-              Two minor deployment items close automatically on push:
-              ensure_schema() applies the 5c ALTER TABLE; CLI source
-              flip stops the "0 briefs / quiet day" output.
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -1106,6 +1115,51 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
               Test suite: 26/26 (unchanged from 5e). No code changes
               in 5g — documentation only. Phase 5 complete; Phase
               4c execution waits on Mark lifting the push hold.
+  Jun 9 2026  Cataloger fix landed in dormant Intel repo (commit
+              3777853 at ~/Library/Application Support/quantum_intel/).
+              Local-only — no remote configured. Tightened per-doc
+              deadline from LLM_TIMEOUT_HARD*1.5 (135s) to
+              LLM_TIMEOUT_HARD (90s) to match the documented
+              "absolute ceiling per doc" in config.py:28, and added
+              a [DEADLINE] cron-log line so per-doc timeout fires
+              are visible at a glance. Addresses the Jun 6/Jun 8
+              symptom (single doc burning the 600s stage budget,
+              71/72 docs budget-skipped, 0 briefs emailed). Layered
+              on top of the Jun 8 17:20 deploy (commit 250a888,
+              run_with_deadline thread-join replacing SIGALRM). Not
+              strictly required given the Phase 4c retirement that
+              followed; retained for forensic-rerun completeness
+              and because the file already shipped.
+  Jun 9 2026  Phase 4c EXECUTED — 10:55 UTC. Mark elected to
+              retire Intel launchd early rather than wait the
+              3-consecutive-non-empty-days criterion. Rationale:
+              Curator GH Actions green 7/7 days (Jun 4 - Jun 9),
+              local Intel actively producing 0-brief mornings
+              from the Stage 2 CATALOG hang, no diagnostic value
+              in running a failing local pipeline alongside a
+              healthy CI one. Executed runbook §5 Phase 4c steps:
+                * `launchctl unload ~/Library/LaunchAgents/
+                   com.subvurs.quantum-intel.plist` → ok
+                * `launchctl unload ~/Library/LaunchAgents/
+                   com.subvurs.quantum-intel-review.plist` → ok
+                * `launchctl list | grep quantum-intel` → empty
+              Plists LEFT IN PLACE (reversible via `launchctl
+              load`). Inventory.json frozen at 1216 entries,
+              pre-import backup at
+              inventory.json.preimport.bak.20260609_023717 retained
+              as canonical snapshot. _ROLLING_NOTES.md update
+              deferred (separate Mark action — file is in the dirty
+              working tree of the now-dormant Intel repo).
+              Worth flagging:
+                * Tomorrow morning (Jun 10 06:00 UTC) is the first
+                  scheduled run where Curator is the sole producer
+                  of the morning briefing. If the email doesn't
+                  arrive, diagnostic chain is GH Actions run log →
+                  Curator's intel-email step, NOT local cron.log.
+                * Early-retirement deviation is logged here as the
+                  audit trail; per §5 Phase 4c rollback path, the
+                  reversal is two `launchctl load` commands if
+                  Curator regresses.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
