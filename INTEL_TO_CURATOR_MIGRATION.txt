@@ -5,11 +5,13 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
   Author:     Mark Eatherly + Claude (claude-opus-4-7)
   Started:    June 9, 2026
   Status:     Phase 4 complete; Phase 5 complete (a/c/d/e/f code +
-              docs; 5g doc closure landed Jun 9). Phase 4c executed
-              Jun 9 2026 10:55 UTC — Intel launchd agents
-              (com.subvurs.quantum-intel + com.subvurs.quantum-intel
-              -review) unloaded; both confirmed gone from
-              `launchctl list`. Inventory frozen at 1216 entries.
+              docs; 5g doc closure landed Jun 9; 5h bundled archive
+              seed import landed Jun 9, commit 2aaeffb pushed to
+              origin/main). Phase 4c executed Jun 9 2026 10:55 UTC —
+              Intel launchd agents (com.subvurs.quantum-intel +
+              com.subvurs.quantum-intel-review) unloaded; both
+              confirmed gone from `launchctl list`. Inventory frozen
+              at 1216 entries.
               Phase 4c retirement triggered EARLY by Mark's call —
               the 3-consecutive-non-empty-days criterion was NOT
               satisfied (Phase 5 commits pushed ≈1 h prior in commit
@@ -33,6 +35,17 @@ QUANTUM INTEL → QUANTUM CURATOR MIGRATION PLAN
               non-trivial briefs from 45 curated_posts, 14 unique
               stamps, 0 cross-namespace collisions, brief confidence
               0.58-0.72.
+              Phase 5h shipped the 1216-entry archive as a bundled
+              gzipped seed file (`quantum_curator/intel/_seed_data/
+              seed_inventory.json.gz`, 358 KB) plus an idempotent
+              `import_seed_inventory()` wired into `quantum-curator
+              init`. The 5f historical-import gap on the GH runner
+              (the dual-source design's "prior corpus" half was empty
+              there because Phase 1d ran locally only) is now closed
+              by design — the next CI cache-miss will populate
+              quantum_intel_entries from the bundle on init. 32/32
+              tests pass (26 prior + 6 new in test_intel_seed
+              _import.py).
   Owner:      Mark Eatherly
   Doc path:   /Users/mvm/Desktop/quantum-curator/INTEL_TO_CURATOR_MIGRATION.txt
 
@@ -123,6 +136,16 @@ The migration MUST preserve:
 
 Already done in Phase 1 (see §5 below). One-time backup taken:
   ~/Library/Application Support/quantum_intel/inventory.json.preimport.bak.20260609_023717
+
+Phase 5h (Jun 9 2026) layers a second preservation guarantee on
+top: the same 1216 entries + 38 dedup sentinels are now bundled in
+the package itself at quantum_curator/intel/_seed_data/seed
+_inventory.json.gz (358 KB gzipped, 1.49 MB raw). The CI runner's
+ephemeral curator.db gets seeded from this bundle on every
+`quantum-curator init` cache-miss — so the dual-source design's
+"prior corpus" half is no longer dependent on the local inventory
+.json snapshot or on a one-time import that only ever happened on
+Mark's machine.
 
 --------------------------------------------------------------------------------
 4. ARCHITECTURE — BEFORE vs AFTER
@@ -805,6 +828,149 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
                      today's briefs. Re-open after ≥ 1 week of
                      production output if quality plateaus.
 
+              (5h) Bundled Phase 1d archive seed import
+                   [DONE — June 9, 2026; commit 2aaeffb pushed]
+                   Closes the deferred decision from 5g by choosing
+                   option (b) — but in a tighter shape than the 5g
+                   note proposed: instead of checking the raw 4.6 MB
+                   inventory.json into the repo and running the
+                   one-shot CLI importer inside the workflow, the
+                   1216-entry archive is exported once, gzipped, and
+                   bundled inside the package.
+
+                   Rationale for the shape change vs 5g option (b):
+                     * Raw inventory.json is 4.6 MB and contains
+                       fields the seed doesn't need (created_at is
+                       DB-set; imported_from is regenerated; first
+                       _brief_at is running-DB state). Gzip + field
+                       prune lands at 358 KB.
+                     * Putting the seed inside the package means the
+                       wheel/sdist carries it — no separate release-
+                       artifact upload step, no "did the conditional
+                       fire correctly" failure mode in CI.
+                     * The importer becomes part of `init`, not a
+                       separate workflow step, so the contract is
+                       "every cache-miss init starts with the
+                       archive populated" without anyone having to
+                       remember to wire it.
+
+                   Files added:
+                     * scripts/export_intel_seed.py — standalone
+                       export tool. Run locally any time the archive
+                       grows. Reads quantum_intel_entries +
+                       quantum_intel_dedup from the local curator.db,
+                       writes gzipped JSON to _seed_data/seed
+                       _inventory.json.gz. Excludes created_at,
+                       imported_from (regenerated at seed-import
+                       time as "seed:seed_inventory.json.gz"), and
+                       first_brief_at (anti-recurrence state that
+                       belongs to the running DB, not the seed —
+                       seeds are a clean starting point; CI starts
+                       every brief uncited).
+                     * quantum_curator/intel/_seed_data/seed
+                       _inventory.json.gz — 358 KB; 1216 entries +
+                       38 dedup sentinels; max(entry_id)=1215; 9
+                       scored entries' subvurs_impact_* fields
+                       preserved.
+
+                   Files modified:
+                     * quantum_curator/intel/import_inventory.py —
+                       added SEED_INVENTORY_PATH constant and
+                       import_seed_inventory(seed_path=...,
+                       force=False) function. Returns a counts
+                       dict (seed_present, table_was_empty,
+                       entries_inserted, entries_skipped_existing,
+                       dedup_inserted, dedup_skipped_existing,
+                       scored_carried). Three behavioral branches:
+                         (i)   missing seed file → zero counts, no
+                               exception (graceful degrade for
+                               older installs pre-dating the .gz)
+                         (ii)  populated table + force=False →
+                               return immediately (cache-hit path
+                               in CI must not re-INSERT)
+                         (iii) otherwise → INSERT OR IGNORE rows +
+                               dedup sentinels, with imported_from
+                               = f"seed:{seed_path.name}"
+                     * quantum_curator/cli.py — `init` calls
+                       import_seed_inventory() after db.init_db();
+                       prints "Seeded N historical intel entries..."
+                       on successful empty-table seed; prints "No
+                       bundled intel seed found — synthesizer
+                       history pass will run against empty archive"
+                       on graceful degrade.
+                     * pyproject.toml — added [tool.hatch.build
+                       .targets.wheel.force-include] entry for the
+                       .gz. Belt-and-suspenders: Hatchling's
+                       default file inclusion already follows
+                       .gitignore (which doesn't exclude _seed
+                       _data/), but force-include locks the wheel
+                       contract against future .gitignore or
+                       backend behavior changes.
+
+                   Tests (tests/test_intel_seed_import.py, 6 cases):
+                     1. test_seed_file_ships_with_package —
+                        SEED_INVENTORY_PATH exists, non-empty.
+                        Catches "the export script wasn't re-run
+                        before commit" and "the file got
+                        gitignored / wheel-excluded" silently.
+                     2. test_seed_into_empty_table_populates
+                        _archive — empty table → full seed (1216+
+                        entries, 38+ dedup, 1+ scored).
+                        Asserts max(entry_id) == n_entries - 1, so
+                        future cataloger inserts continue at
+                        max+1 — preserves Phase 1d contiguity.
+                     3. test_seed_is_idempotent_on_populated_table
+                        — second call returns immediately, no
+                        inserts, no duplicates. Pins the CI cache-
+                        hit path.
+                     4. test_seed_force_replays_insert_or_ignore —
+                        force=True bypasses the empty-table guard;
+                        every row skips as existing (UNIQUE
+                        constraint hold). Used for local re-seeding
+                        diagnostics.
+                     5. test_seed_missing_file_degrades_gracefully
+                        — returns zero counts, no exception, table
+                        stays empty.
+                     6. test_seeded_rows_are_visible_to_inventory
+                        _view — load_inventory() returns JSON-shape
+                        dicts with decoded list columns, preserving
+                        the synthesizer's _condense_entry() contract.
+
+                   Test suite: 32 passed (26 pre-existing + 6 new).
+
+                   Worth flagging:
+                     * The seed snapshot is frozen at the Jun 9 2026
+                       Phase 1d archive (1216 entries / 38 dedup /
+                       max_id 1215 / 9 scored). It does NOT auto-
+                       update when new entries land in the local
+                       DB. The maintenance loop is: when Mark
+                       eventually re-scores or re-imports entries
+                       locally, run scripts/export_intel_seed.py
+                       and commit the regenerated .gz. The
+                       __version__ doesn't need to change; the .gz
+                       is its own "version" via the exported_at
+                       timestamp inside.
+                     * Cataloger inserts in CI (when Curator
+                       eventually adds new entries to the seeded
+                       quantum_intel_entries via curated_posts
+                       harvesting) will start at entry_id=1216 and
+                       go up. They'll carry the cataloger's own
+                       imported_from value, not the seed name —
+                       so the audit trail stays honest.
+                     * Push happened in same commit as the test +
+                       packaging changes (2aaeffb). Next CI run
+                       picks it up automatically; no separate
+                       deploy step.
+
+                   This closes both 5f gaps in one push:
+                     * Phase 1d historical import gap → seed
+                       bundle populates 1216 entries on first
+                       init.
+                     * Phase 5c intel_first_brief_at migration gap
+                       → db.init_db() already idempotently
+                       ALTER TABLEs the column; the bundled init
+                       step fires it before any synth run.
+
               Out of scope for Phase 5 (deliberately):
                 * Re-implementing Intel's DDG Lite collectors. Those
                   were heavily duplicated with Curator's RSS intake
@@ -1160,6 +1326,57 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
                   audit trail; per §5 Phase 4c rollback path, the
                   reversal is two `launchctl load` commands if
                   Curator regresses.
+  Jun 9 2026  Phase 5h complete — bundled Phase 1d archive seed
+              import landed in commit 2aaeffb and pushed to
+              origin/main. Closes the deferred 5g decision in
+              favor of option (b), via a tighter shape than the
+              5g spec proposed: instead of checking inventory.json
+              into the repo and adding a workflow step, the 1216-
+              entry archive ships as a 358 KB gzipped JSON inside
+              the package (quantum_curator/intel/_seed_data/
+              seed_inventory.json.gz) and `quantum-curator init`
+              idempotently imports it on first run. Closes the
+              two 5f deployment gaps in one push: (1) the
+              historical co-source half of the dual-source
+              design is now populated on the CI runner instead
+              of empty (today×today fallback no longer the
+              steady state); (2) Phase 5c intel_first_brief_at
+              ALTER TABLE migration fires via the same
+              db.init_db() call.
+              Files added: scripts/export_intel_seed.py (local
+              re-export tool, run when archive grows);
+              quantum_curator/intel/_seed_data/seed_inventory
+              .json.gz (358 KB / 1216 entries / 38 dedup / 9
+              scored / max_id 1215); tests/test_intel_seed
+              _import.py (6 cases).
+              Files modified: import_inventory.py (added
+              SEED_INVENTORY_PATH + import_seed_inventory(seed
+              _path, force=False) with three branches: graceful-
+              degrade on missing file, fast no-op on populated
+              table, INSERT OR IGNORE otherwise); cli.py (init
+              wires import_seed_inventory after init_db);
+              pyproject.toml (force-include for the .gz, belt-
+              and-suspenders against future .gitignore drift).
+              Test suite: 32/32 passing (26 prior + 6 new).
+              Verification gate per Mark's standing directive
+              ("this is the whole reason CI exists"): the next
+              CI run should produce briefs citing entry_ids in
+              the 0-1215 archive range alongside the
+              SEED_ID_OFFSET (2_000_000+) curated_posts seeds.
+              If history context still comes back empty after
+              this commit, the failure is downstream of the
+              import (loader, condenser, or prompt assembly) —
+              not the empty-table starvation 5h fixed.
+              Worth flagging:
+                * Seed snapshot is frozen; maintenance loop when
+                  local archive grows is "re-run scripts/export
+                  _intel_seed.py and commit the .gz". No version
+                  bump needed — the exported_at timestamp inside
+                  the file is the version.
+                * Cataloger inserts in CI will start at entry_id
+                  = 1216 (next after the seed's max) and carry
+                  the cataloger's own imported_from value, not
+                  the seed's — audit trail stays honest.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
