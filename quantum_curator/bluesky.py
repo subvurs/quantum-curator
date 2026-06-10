@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from datetime import datetime
 
 import httpx
@@ -130,6 +131,9 @@ class BlueskySharer:
         link: str = "https://qrater.org",
         *,
         summary_date: str | None = None,
+        image_bytes: bytes | None = None,
+        image_alt: str | None = None,
+        image_mime: str = "image/png",
     ) -> bool:
         """Share the daily Quantum Intel summary as a single Bluesky post.
 
@@ -141,9 +145,12 @@ class BlueskySharer:
         ``summary_date`` means re-running on the same date is a no-op
         after the first successful share.
 
-        Mark called out the Quantum Crier per-post format as too long
-        for a daily digest; this path uses pre-rendered short text
-        (<= 280 chars from ``render_bluesky``) and skips embeds.
+        If ``image_bytes`` is provided the post carries an
+        ``app.bsky.embed.images`` embed in addition to the text. The
+        text path is the screen-reader-friendly version; the image
+        carries the full structured summary (TL;DR + Implications +
+        Attention + Tags) for sighted readers. The image is a
+        redundancy, not a replacement — text-only callers still work.
 
         Returns True on success, False on failure (including the
         "already shared today" idempotency case).
@@ -162,7 +169,13 @@ class BlueskySharer:
         if link and link not in text:
             text = f"{text} {link}".strip()
         if len(text) > 300:
-            text = text[:299] + "…"
+            # Safety net for custom callers that bypassed render_bluesky.
+            # Cut at the last word boundary that fits (no ellipsis — the
+            # image embed and qrater.org CTA carry the rest).
+            cut = text[:300]
+            if " " in cut:
+                cut = cut.rsplit(" ", 1)[0]
+            text = cut
 
         with httpx.Client(timeout=30) as client:
             if not self._login(client):
@@ -173,6 +186,21 @@ class BlueskySharer:
                 "text": text,
                 "createdAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"),
             }
+
+            # Optional image embed. Upload the blob first; only attach
+            # the embed if the upload succeeded (text-only fallback).
+            if image_bytes:
+                blob_ref = self._upload_image_blob(
+                    client, image_bytes, mime=image_mime
+                )
+                if blob_ref:
+                    alt = image_alt or f"Quantum Intel daily summary — {date_key}"
+                    record["embed"] = self._build_images_embed(blob_ref, alt)
+                else:
+                    logger.info(
+                        "Image blob upload failed for %s; falling back to text-only",
+                        date_key,
+                    )
 
             # Link facet (byte-offset on the link's location in text)
             if link and link in text:
@@ -227,54 +255,73 @@ class BlueskySharer:
     def _build_post_text(self, post: CuratedPost) -> str:
         """Format post text within 300 character limit.
 
-        Format: Title + commentary excerpt + hashtags.
+        Format: Title + packed-sentence commentary + hashtags.
+
+        Pack as many complete commentary sentences as fit in the budget
+        rather than chopping mid-sentence with "..." — the truncated
+        ellipsis form is what users complained about ("many posts ending
+        in '...'"). If even the title-plus-hashtags doesn't fit, drop
+        commentary first, then word-wrap the title at the last word
+        boundary that fits (still no ellipsis).
         """
+        max_chars = 300
         hashtags = self._get_hashtags(post)
         hashtag_str = " ".join(hashtags) if hashtags else "#QuantumComputing"
+        title = post.title.strip()
 
-        # Extract first 1-2 sentences of commentary
+        # Budget for commentary = total - title - hashtags - separators ("\n\n" * 2).
+        # If even the no-commentary frame doesn't fit, fall through to
+        # the degraded paths below.
+        frame_overhead = len(title) + len(hashtag_str) + 4  # two "\n\n"
+        commentary_budget = max_chars - frame_overhead
+
         commentary_excerpt = ""
-        if post.curator_commentary:
-            sentences = post.curator_commentary.replace("\n", " ").split(". ")
-            excerpt_parts: list[str] = []
+        if post.curator_commentary and commentary_budget > 20:
+            # Split into sentences; keep the period attached. The regex
+            # tolerates ?! as terminators and collapses whitespace from
+            # the multi-paragraph commentary the curator emits.
+            normalized = re.sub(r"\s+", " ", post.curator_commentary).strip()
+            sentences = re.split(r"(?<=[.!?])\s+", normalized)
+            packed: list[str] = []
+            running = 0
             for s in sentences:
                 s = s.strip()
                 if not s:
                     continue
-                candidate = s if s.endswith(".") else s + "."
-                if not excerpt_parts:
-                    excerpt_parts.append(candidate)
-                elif len(". ".join(excerpt_parts) + " " + candidate) <= 200:
-                    excerpt_parts.append(candidate)
+                # Width when appended to packed (join with single space)
+                added = (1 if packed else 0) + len(s)
+                if running + added <= commentary_budget:
+                    packed.append(s)
+                    running += added
                 else:
                     break
-            commentary_excerpt = " ".join(excerpt_parts)
+            commentary_excerpt = " ".join(packed)
 
-        # Build text and truncate to 300 chars
-        parts = [post.title]
+        # Assemble. No-commentary case yields "title\n\nhashtags".
         if commentary_excerpt:
-            parts.append("")
-            parts.append(commentary_excerpt)
-        parts.append("")
-        parts.append(hashtag_str)
+            text = f"{title}\n\n{commentary_excerpt}\n\n{hashtag_str}"
+        else:
+            text = f"{title}\n\n{hashtag_str}"
 
-        text = "\n".join(parts)
+        if len(text) <= max_chars:
+            return text
 
-        if len(text) > 300:
-            # Trim commentary to fit
-            available = 300 - len(post.title) - len(hashtag_str) - 4  # newlines
-            if available > 20 and commentary_excerpt:
-                commentary_excerpt = commentary_excerpt[: available - 3].rsplit(" ", 1)[0] + "..."
-                text = f"{post.title}\n\n{commentary_excerpt}\n\n{hashtag_str}"
-            else:
-                text = f"{post.title}\n\n{hashtag_str}"
-
-        if len(text) > 300:
-            # Title itself too long, truncate it
-            max_title = 300 - len(hashtag_str) - 4
-            text = f"{post.title[:max_title - 3]}...\n\n{hashtag_str}"
-
-        return text[:300]
+        # Title + hashtags alone overflows. Word-wrap the title at the
+        # last whitespace boundary that fits; no ellipsis. If the title
+        # is one long unbroken token, fall back to a hard slice (rare
+        # — but still preferable to dropping the share entirely).
+        title_budget = max_chars - len(hashtag_str) - 4  # "\n\n" * 2
+        if title_budget <= 0:
+            # Hashtags alone exceed the budget — degrade to title only.
+            return title[:max_chars]
+        truncated_title = title[:title_budget]
+        # Cut at last word boundary if one exists in the window.
+        if " " in truncated_title:
+            truncated_title = truncated_title.rsplit(" ", 1)[0]
+        text = f"{truncated_title}\n\n{hashtag_str}"
+        # Safety clamp — shouldn't fire after word-boundary cut, but
+        # protects callers from a malformed result if it ever does.
+        return text[:max_chars]
 
     def _get_hashtags(self, post: CuratedPost) -> list[str]:
         """Get hashtags from post topics (max 3)."""
@@ -308,6 +355,62 @@ class BlueskySharer:
                 embed["external"]["thumb"] = thumb_blob
 
         return embed
+
+    def _upload_image_blob(
+        self,
+        client: httpx.Client,
+        image_bytes: bytes,
+        *,
+        mime: str = "image/png",
+    ) -> dict | None:
+        """Upload raw image bytes to Bluesky and return the blob ref.
+
+        Mirrors ``_upload_thumbnail`` but takes bytes directly (no URL
+        fetch) so the daily-summary card renderer can hand us its
+        Pillow output without a round trip through disk. Returns the
+        ``blob`` dict from ``com.atproto.repo.uploadBlob`` or None on
+        any failure (size, content-type sanity check, HTTP error).
+        """
+        if not self._session:
+            return None
+        if not image_bytes:
+            return None
+        if len(image_bytes) > 1_000_000:
+            logger.info(
+                "Daily-summary image too large (%d bytes), skipping embed",
+                len(image_bytes),
+            )
+            return None
+        if not mime.startswith("image/"):
+            logger.info("Refusing non-image MIME %r for blob upload", mime)
+            return None
+
+        try:
+            resp = client.post(
+                "https://bsky.social/xrpc/com.atproto.repo.uploadBlob",
+                headers={
+                    **self._auth_headers(),
+                    "Content-Type": mime,
+                },
+                content=image_bytes,
+            )
+            resp.raise_for_status()
+            return resp.json().get("blob")
+        except httpx.HTTPError:
+            logger.exception("Failed to upload image blob")
+            return None
+
+    def _build_images_embed(self, blob_ref: dict, alt_text: str) -> dict:
+        """Build the ``app.bsky.embed.images`` embed payload."""
+        return {
+            "$type": "app.bsky.embed.images",
+            "images": [
+                {
+                    "alt": alt_text,
+                    "image": blob_ref,
+                }
+            ],
+        }
 
     def _upload_thumbnail(self, image_url: str) -> dict | None:
         """Download an image and upload as a blob to Bluesky.

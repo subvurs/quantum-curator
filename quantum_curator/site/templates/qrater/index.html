@@ -83,6 +83,44 @@
         </aside>
 
         <div class="main-content">
+            {% if intel_summary %}
+            <section class="intel-summary" aria-labelledby="intel-summary-heading">
+                <header class="intel-summary-header">
+                    <h2 id="intel-summary-heading">Quantum Intel &mdash; {{ intel_summary.date }}</h2>
+                    <p class="intel-summary-window">{{ intel_summary.window }}</p>
+                </header>
+                {% if intel_summary.tldr %}
+                <div class="intel-summary-block intel-summary-tldr">
+                    <h3>TL;DR</h3>
+                    <ul>
+                        {% for b in intel_summary.tldr %}<li>{{ b }}</li>{% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if intel_summary.implications %}
+                <details class="intel-summary-block intel-summary-implications">
+                    <summary>Implications</summary>
+                    <ul>
+                        {% for b in intel_summary.implications %}<li>{{ b }}</li>{% endfor %}
+                    </ul>
+                </details>
+                {% endif %}
+                {% if intel_summary.attention %}
+                <details class="intel-summary-block intel-summary-attention">
+                    <summary>Attention</summary>
+                    <ul>
+                        {% for b in intel_summary.attention %}<li>{{ b }}</li>{% endfor %}
+                    </ul>
+                </details>
+                {% endif %}
+                {% if intel_summary.tags %}
+                <p class="intel-summary-tags">
+                    {% for t in intel_summary.tags %}<span class="intel-summary-tag">#{{ t }}</span>{% endfor %}
+                </p>
+                {% endif %}
+            </section>
+            {% endif %}
+
             <div class="results-bar">
                 <span id="results-count">{{ article_count }} articles</span>
                 <span class="build-time">Updated {{ build_time }}</span>

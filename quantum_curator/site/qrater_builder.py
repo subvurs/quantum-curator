@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import shutil
 from datetime import datetime
 from pathlib import Path
@@ -12,6 +13,9 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from ..config import get_settings
 from ..models import CuratedPost, PostStatus
 from .. import db
+
+
+logger = logging.getLogger(__name__)
 
 
 class QraterBuilder:
@@ -103,6 +107,46 @@ class QraterBuilder:
 
         return articles
 
+    def _get_intel_summary(self) -> dict | None:
+        """Build today's Intel daily summary for the Qrater front page.
+
+        Calls ``daily_summary.build_daily_summary()`` directly. Returns
+        None on any failure (no Anthropic key, LLM error, etc.) — the
+        template guards on truthiness so the panel just doesn't render.
+        Never raises; this is a non-blocking enhancement to the static
+        build.
+        """
+        try:
+            from ..intel import daily_summary
+        except Exception:  # noqa: BLE001 — import-level guard
+            logger.warning("intel.daily_summary import failed; no panel", exc_info=True)
+            return None
+
+        if not self.settings.has_anthropic:
+            return None
+
+        try:
+            payload = daily_summary.build_daily_summary()
+        except Exception:  # noqa: BLE001 — never block the site build
+            logger.warning("build_daily_summary failed for Qrater panel", exc_info=True)
+            return None
+
+        if not payload:
+            return None
+
+        # Shape the dict for the template — flat keys, no nesting.
+        window = payload.get("window") or {}
+        n_today = window.get("n_today", 0)
+        n_prior = window.get("n_prior", 0)
+        return {
+            "date": datetime.utcnow().strftime("%B %d, %Y"),
+            "tldr": payload.get("tldr") or [],
+            "implications": payload.get("implications") or [],
+            "attention": payload.get("attention") or [],
+            "tags": payload.get("tags") or [],
+            "window": f"{n_today} new today, {n_prior} prior",
+        }
+
     def _build_index(self, articles_data: list[dict]):
         """Render the main dashboard page."""
         # Compute topic counts
@@ -112,6 +156,8 @@ class QraterBuilder:
             for topic in article["topics"]:
                 topic_counts[topic] = topic_counts.get(topic, 0) + 1
             sources.add(article["source"])
+
+        intel_summary = self._get_intel_summary()
 
         template = self.env.get_template("index.html")
         html = template.render(
@@ -123,6 +169,7 @@ class QraterBuilder:
             topic_counts=dict(sorted(topic_counts.items(), key=lambda x: x[1], reverse=True)),
             sources=sorted(sources),
             build_time=datetime.utcnow().strftime("%B %d, %Y at %H:%M UTC"),
+            intel_summary=intel_summary,
         )
 
         (self.output_dir / "index.html").write_text(html)

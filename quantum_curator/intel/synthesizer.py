@@ -42,6 +42,7 @@ Public surface
 from __future__ import annotations
 
 import json
+import logging
 import random
 import re
 from collections import defaultdict
@@ -54,6 +55,9 @@ import anthropic
 from ..config import get_settings
 from . import inventory_view
 from .brief_history import recent_brief_citations
+
+
+logger = logging.getLogger(__name__)
 
 
 # --- Tunables (kept in module-scope so the CLI can override per-run) ---
@@ -247,6 +251,62 @@ def _extract_json(text: str) -> Any:
     raise ValueError("No JSON array or object found in model reply")
 
 
+# --- Citation validation ---
+#
+# The synth prompt requires "Each concept MUST combine at least 2 distinct
+# entry_ids from the inventory." Live runs have observed the LLM citing
+# entry_ids that exist in neither today's curated_posts seeds (>=
+# SEED_ID_OFFSET) nor the historical inventory — same root cause as the
+# daily_summary [#2000007] hallucination. ``deliver()`` already silently
+# no-ops a synthetic ID with no UUID mapping (line ~430 comment), but
+# that means a concept whose entire citation set is bogus still gets
+# written to disk with a junk Entry IDs line. _validate_concept_citations
+# filters the bad IDs out before delivery; concepts that fall below the
+# 2-ID floor after filtering are dropped entirely.
+
+
+def _validate_concept_citations(
+    concepts: list[dict], valid_ids: set[int]
+) -> tuple[list[dict], dict[str, int]]:
+    """Filter each concept's ``entry_ids_combined`` to valid IDs only.
+
+    Concepts that retain fewer than 2 distinct valid IDs after filtering
+    are dropped (the prompt's hard rule for what makes a "combination").
+
+    Returns ``(kept_concepts, counts)`` where ``counts`` has keys
+    ``stripped_ids``, ``dropped_concepts``, and ``kept_concepts``.
+    """
+    counts = {"stripped_ids": 0, "dropped_concepts": 0, "kept_concepts": 0}
+    kept: list[dict] = []
+    for c in concepts:
+        raw = c.get("entry_ids_combined") or []
+        cleaned: list[int] = []
+        seen: set[int] = set()
+        for eid in raw:
+            try:
+                eid_int = int(eid)
+            except (TypeError, ValueError):
+                counts["stripped_ids"] += 1
+                continue
+            if eid_int not in valid_ids:
+                counts["stripped_ids"] += 1
+                continue
+            if eid_int in seen:
+                continue
+            seen.add(eid_int)
+            cleaned.append(eid_int)
+
+        if len(cleaned) < 2:
+            counts["dropped_concepts"] += 1
+            continue
+
+        c = dict(c)
+        c["entry_ids_combined"] = cleaned
+        kept.append(c)
+        counts["kept_concepts"] += 1
+    return kept, counts
+
+
 # --- Main entry point ---
 
 
@@ -332,6 +392,30 @@ def synthesize(
         c for c in concepts
         if isinstance(c, dict) and float(c.get("confidence", 0)) >= min_confidence
     ]
+
+    # Strip hallucinated entry_ids before the max_briefs cap so we don't
+    # waste a slot on a concept whose citations are all bogus. valid_ids
+    # spans both the new (seed) side and the historical inventory — both
+    # are legitimate citation sources per the prompt.
+    valid_ids: set[int] = set()
+    for e in new_entries:
+        eid = e.get("entry_id")
+        if isinstance(eid, int):
+            valid_ids.add(eid)
+    for e in inventory:
+        eid = e.get("entry_id")
+        if isinstance(eid, int):
+            valid_ids.add(eid)
+
+    viable, citation_counts = _validate_concept_citations(viable, valid_ids)
+    if citation_counts["stripped_ids"] or citation_counts["dropped_concepts"]:
+        logger.info(
+            "Citation validation: stripped %d bogus IDs, dropped %d concepts, kept %d",
+            citation_counts["stripped_ids"],
+            citation_counts["dropped_concepts"],
+            citation_counts["kept_concepts"],
+        )
+
     viable = viable[:max_briefs]
     return viable
 

@@ -503,6 +503,92 @@ def test_render_text_is_multisection_digest():
     assert "qrater.org" not in text
 
 
+# --- 5. Citation validation ---------------------------------------
+#
+# The synth prompt requires "Each concept MUST combine at least 2
+# distinct entry_ids from the inventory." Live runs have observed the
+# LLM citing entry_ids that don't exist in either today's seed batch
+# or the historical inventory — same hallucination root cause as the
+# daily_summary [#2000007] bug. _validate_concept_citations() strips
+# bogus IDs and drops concepts that fall below the 2-ID floor.
+
+
+def test_validate_concept_citations_passes_all_valid():
+    concept = _make_concept([1, 2, 3])
+    kept, counts = synthesizer._validate_concept_citations([concept], {1, 2, 3})
+    assert len(kept) == 1
+    assert kept[0]["entry_ids_combined"] == [1, 2, 3]
+    assert counts["stripped_ids"] == 0
+    assert counts["dropped_concepts"] == 0
+
+
+def test_validate_concept_citations_strips_invalid_ids():
+    concept = _make_concept([1, 9999, 2, 8888])
+    kept, counts = synthesizer._validate_concept_citations([concept], {1, 2})
+    assert len(kept) == 1
+    assert kept[0]["entry_ids_combined"] == [1, 2]
+    assert counts["stripped_ids"] == 2
+    assert counts["dropped_concepts"] == 0
+
+
+def test_validate_concept_citations_drops_concept_below_two_ids():
+    """Concept whose surviving valid IDs < 2 must be dropped entirely."""
+    concept = _make_concept([1, 9999, 8888])
+    kept, counts = synthesizer._validate_concept_citations([concept], {1, 2, 3})
+    assert kept == []
+    assert counts["stripped_ids"] == 2
+    assert counts["dropped_concepts"] == 1
+
+
+def test_validate_concept_citations_reproduces_seed_hallucination():
+    """The actual failure mode: synth cites a high seed ID we never handed it.
+
+    Mirrors the 2026-06-10 daily_summary [#2000007] case in the synth's
+    integer-list shape. valid_ids spans SEED_ID_OFFSET..+4; the LLM
+    cites +7. The bogus ID is stripped; if the remaining IDs still meet
+    the 2-ID floor the concept survives.
+    """
+    SEED = inventory_view.SEED_ID_OFFSET
+    valid = {SEED + 0, SEED + 1, SEED + 2, SEED + 3, SEED + 4}
+    concept = _make_concept([SEED + 0, SEED + 7, SEED + 1])
+    kept, counts = synthesizer._validate_concept_citations([concept], valid)
+    assert len(kept) == 1
+    assert SEED + 7 not in kept[0]["entry_ids_combined"]
+    assert kept[0]["entry_ids_combined"] == [SEED + 0, SEED + 1]
+    assert counts["stripped_ids"] == 1
+
+
+def test_validate_concept_citations_dedupes_and_handles_garbage():
+    """Duplicate IDs collapse; non-integer values count as stripped."""
+    concept = _make_concept([1, "abc", 1, None, 2, 2.5])
+    kept, counts = synthesizer._validate_concept_citations([concept], {1, 2})
+    assert len(kept) == 1
+    # 1 kept once (dedup), 2 kept once, the rest stripped or deduped.
+    assert kept[0]["entry_ids_combined"] == [1, 2]
+    # "abc" + None = 2 non-int strips. 2.5 coerces via int() to 2, which
+    # is in valid_ids and already seen, so it dedupes silently (not a
+    # strip). Duplicate 1 also dedupes, not strips.
+    assert counts["stripped_ids"] == 2
+
+
+def test_validate_concept_citations_handles_empty_concepts_list():
+    kept, counts = synthesizer._validate_concept_citations([], {1, 2})
+    assert kept == []
+    assert counts == {"stripped_ids": 0, "dropped_concepts": 0, "kept_concepts": 0}
+
+
+def test_validate_concept_citations_preserves_other_fields():
+    """Filtering entry_ids_combined must not mutate other concept fields."""
+    concept = _make_concept([1, 9999, 2], name="cross-domain-A")
+    concept["combination_insight"] = "Specific insight here."
+    kept, _ = synthesizer._validate_concept_citations([concept], {1, 2})
+    assert kept[0]["product_name"] == "cross-domain-A"
+    assert kept[0]["combination_insight"] == "Specific insight here."
+    assert kept[0]["confidence"] == 0.9
+    # Source concept is not mutated in-place.
+    assert concept["entry_ids_combined"] == [1, 9999, 2]
+
+
 def test_no_new_content_payload_is_deterministic_and_channel_safe():
     """Quiet-day payload renders sanely on both channels with no LLM call.
 

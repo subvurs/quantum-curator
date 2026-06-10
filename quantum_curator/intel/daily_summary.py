@@ -58,6 +58,7 @@ Public surface
 from __future__ import annotations
 
 import json
+import logging
 import re
 from typing import Any
 
@@ -66,6 +67,19 @@ import anthropic
 from ..config import get_settings
 from . import inventory_view
 from .synthesizer import _condense_entry, _extract_json
+
+
+logger = logging.getLogger(__name__)
+
+
+# Hallucinated-citation guard. The summary prompt teaches the [#N]
+# format by example but the LLM has been observed to invent IDs that
+# never appeared in either today's seed batch or the historical
+# corpus (e.g. [#2000007] on 2026-06-10 when the seed batch only
+# went up to 2000004). _validate_citations() soft-strips invalid
+# tokens while preserving the surrounding prose — same posture as
+# _mask_forbidden() for marketing phrases.
+_CITATION_RE = re.compile(r"\[#(\d+)\]")
 
 
 # Marketing language we don't want bleeding into qrater.org / Bluesky.
@@ -163,6 +177,72 @@ def _scrub_payload(payload: dict) -> dict:
         if isinstance(vals, list):
             payload[key] = [_mask_forbidden(str(v)) for v in vals]
     return payload
+
+
+def _strip_invalid_citations(text: str, valid_ids: set[int]) -> tuple[str, int, int]:
+    """Strip [#N] tokens whose N is not in valid_ids; keep valid ones.
+
+    Returns (cleaned_text, kept_count, stripped_count). Tries to be
+    cosmetic about whitespace — a stripped token also consumes one
+    trailing space if present, and double spaces are collapsed once.
+    Leading/trailing whitespace on the bullet is then stripped so a
+    bullet that starts/ends with a stripped token reads cleanly.
+    """
+    kept = 0
+    stripped = 0
+
+    def _sub(match: re.Match) -> str:
+        nonlocal kept, stripped
+        try:
+            entry_id = int(match.group(1))
+        except (TypeError, ValueError):
+            stripped += 1
+            return ""
+        if entry_id in valid_ids:
+            kept += 1
+            return match.group(0)
+        stripped += 1
+        return ""
+
+    if not _CITATION_RE.search(text):
+        return text, 0, 0
+
+    # Replace tokens. The post-pass collapses any double spaces or
+    # " ." / " ," artifacts the strip leaves behind.
+    out = _CITATION_RE.sub(_sub, text)
+    # Collapse double whitespace introduced by a token+space removal,
+    # then trim space before common punctuation.
+    out = re.sub(r"  +", " ", out)
+    out = re.sub(r"\s+([.,;:!?])", r"\1", out)
+    out = out.strip()
+    return out, kept, stripped
+
+
+def _validate_citations(payload: dict, valid_ids: set[int]) -> tuple[dict, dict]:
+    """Soft-mask any [#N] token whose N is not in valid_ids.
+
+    Mirrors _scrub_payload()'s traversal so every string in tldr,
+    implications, and attention gets scanned. Returns the modified
+    payload (mutated in place for consistency with _scrub_payload) plus
+    a {"kept": k, "stripped": s} counter for logging. Fast path: if no
+    tokens at all appear in any string, the payload is returned
+    unchanged.
+    """
+    total_kept = 0
+    total_stripped = 0
+    for key in ("tldr", "implications", "attention"):
+        vals = payload.get(key, [])
+        if not isinstance(vals, list):
+            continue
+        cleaned: list[str] = []
+        for v in vals:
+            text = str(v)
+            new_text, kept, stripped = _strip_invalid_citations(text, valid_ids)
+            total_kept += kept
+            total_stripped += stripped
+            cleaned.append(new_text)
+        payload[key] = cleaned
+    return payload, {"kept": total_kept, "stripped": total_stripped}
 
 
 def _no_new_content_payload(prior_count: int) -> dict:
@@ -280,6 +360,28 @@ def build_daily_summary(
             payload[k] = []
 
     payload = _scrub_payload(payload)
+
+    # Hallucinated-citation guard. Build the set of entry_ids the LLM
+    # was actually shown (both windows) and strip any [#N] token that
+    # falls outside it. Decision: strip-and-keep — the bullet prose is
+    # still factually useful even when the attribution was invented.
+    valid_ids: set[int] = set()
+    for e in new_entries:
+        eid = e.get("entry_id")
+        if isinstance(eid, int):
+            valid_ids.add(eid)
+    for e in prior_entries:
+        eid = e.get("entry_id")
+        if isinstance(eid, int):
+            valid_ids.add(eid)
+    payload, citation_counts = _validate_citations(payload, valid_ids)
+    if citation_counts["stripped"]:
+        logger.info(
+            "daily_summary: stripped %d hallucinated citation(s); kept %d valid",
+            citation_counts["stripped"],
+            citation_counts["kept"],
+        )
+
     payload["window"] = {"n_today": len(new_entries), "n_prior": len(prior_entries)}
     return payload
 
@@ -315,23 +417,52 @@ def render_text(payload: dict) -> str:
     return "\n".join(lines)
 
 
-def render_bluesky(payload: dict, max_chars: int = 280) -> str:
-    """One-line summary suitable for the Bluesky daily post (Phase 3).
+def render_bluesky(payload: dict, max_chars: int = 300) -> str:
+    """Multi-bullet summary suitable for the Bluesky daily post.
 
-    Lead bullet + tag chunk + link CTA; truncated to ``max_chars``.
+    Packs as many full TL;DR bullets as fit before the tag+CTA suffix.
+    The image card (see ``intel.image_card.render_summary_card``)
+    carries any overflow — Bluesky's hard limit is 300 graphemes, so
+    this just gets the most into the text post for screen-reader and
+    quote-preview surfaces.
+
+    Falls back to truncated ``tldr[0]`` + suffix when not even one full
+    bullet fits inside the budget.
     """
     if not payload:
         return "Quantum Intel: summary unavailable today. https://qrater.org"
-    lead = (payload.get("tldr") or ["Quantum Intel daily."])[0]
+
+    bullets = [str(b) for b in (payload.get("tldr") or []) if b]
     tags = " ".join(f"#{t}" for t in (payload.get("tags") or [])[:3])
     cta = "https://qrater.org"
-    parts = [lead, tags, cta] if tags else [lead, cta]
-    body = " ".join(p for p in parts if p)
-    if len(body) <= max_chars:
-        return body
-    # Truncate the lead, keep tags + cta intact.
-    suffix = f" {tags} {cta}".strip() if tags else f" {cta}"
-    keep = max_chars - len(suffix) - 1
+
+    suffix = ""
+    if tags:
+        suffix = f"\n\n{tags} {cta}"
+    else:
+        suffix = f"\n\n{cta}"
+    budget = max_chars - len(suffix)
+
+    # Pack as many full bullets as fit.
+    body = ""
+    packed = 0
+    for b in bullets:
+        candidate_line = f"• {b}"
+        candidate_body = candidate_line if not body else f"{body}\n{candidate_line}"
+        if len(candidate_body) <= budget:
+            body = candidate_body
+            packed += 1
+        else:
+            break
+
+    if packed >= 1:
+        return body + suffix
+
+    # Fallback: truncate the lead bullet to fit within budget.
+    lead = bullets[0] if bullets else "Quantum Intel daily."
+    # Reserve room for "• " prefix + ellipsis.
+    keep = budget - len("• ") - 1
     if keep < 20:
         return cta  # degrade to just the link
-    return lead[:keep].rstrip() + "…" + suffix
+    truncated = lead[:keep].rstrip() + "…"
+    return f"• {truncated}{suffix}"

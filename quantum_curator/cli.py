@@ -1060,7 +1060,30 @@ def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool):
         console.print("[red]BLUESKY_HANDLE / BLUESKY_APP_PASSWORD not configured.[/]")
         return
 
-    ok = sharer.share_daily_summary(post_text, link=link, summary_date=today_key)
+    # Render the structured image card. Best-effort — if Pillow is
+    # missing or rendering raises we fall back to text-only.
+    image_bytes: bytes | None = None
+    try:
+        from .intel.image_card import render_summary_card
+
+        image_bytes = render_summary_card(payload, today_key)
+        console.print(f"[blue]Image card: {len(image_bytes)} bytes[/]")
+    except ImportError:
+        console.print("[yellow]Pillow not installed — posting text-only.[/]")
+    except Exception as exc:  # noqa: BLE001 — never block the share
+        console.print(f"[yellow]Image card render failed ({exc}); posting text-only.[/]")
+
+    image_alt: str | None = None
+    if image_bytes and payload.get("tldr"):
+        image_alt = f"Quantum Intel {today_key}: {payload['tldr'][0]}"[:1000]
+
+    ok = sharer.share_daily_summary(
+        post_text,
+        link=link,
+        summary_date=today_key,
+        image_bytes=image_bytes,
+        image_alt=image_alt,
+    )
     if ok:
         console.print(f"[green]Posted daily summary to Bluesky for {today_key}[/]")
     else:
