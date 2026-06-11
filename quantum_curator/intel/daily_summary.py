@@ -466,3 +466,128 @@ def render_bluesky(payload: dict, max_chars: int = 300) -> str:
         return cta  # degrade to just the link
     truncated = lead[:keep].rstrip() + "…"
     return f"• {truncated}{suffix}"
+
+
+def render_bluesky_thread(
+    payload: dict, link: str = "https://qrater.org", max_chars: int = 300
+) -> list[str]:
+    """Render the daily summary as a list of Bluesky post texts.
+
+    Returns a single-element list when everything fits in one post —
+    byte-identical to ``render_bluesky(payload, max_chars)`` for the
+    short path so the fast case stays observable.
+
+    Returns 2-3 posts when overflow:
+
+    - Post 1: TL;DR header + as many tldr bullets as fit
+    - Post 2: Implications header + bullets that fit
+    - Post 3: Attention bullets + tags + link
+
+    The link goes on the LAST post only. Posts 2+ get a "(N/M)" suffix
+    so readers see the thread structure even if Bluesky's client
+    collapses replies.
+
+    The short-path branch calls render_bluesky() directly to preserve
+    byte-identity; do not duplicate its logic here.
+    """
+    if not payload:
+        return [f"Quantum Intel: summary unavailable today. {link}"]
+
+    # Fast path: try the single-post renderer first. If the result
+    # already contains every TL;DR bullet, every implication that fits,
+    # and every attention bullet, we're done.
+    single = render_bluesky(payload, max_chars=max_chars)
+
+    tldr = [str(b) for b in (payload.get("tldr") or []) if b]
+    implications = [str(b) for b in (payload.get("implications") or []) if b]
+    attention = [str(b) for b in (payload.get("attention") or []) if b]
+    tags_list = list((payload.get("tags") or [])[:3])
+
+    # If no overflow content (no implications, no attention) AND every
+    # tldr bullet made it into the single-post render, return single.
+    all_tldr_fit = all((f"• {b}" in single) or (b in single) for b in tldr)
+    has_overflow = bool(implications or attention)
+    if not has_overflow and all_tldr_fit:
+        return [single]
+    if not has_overflow and not tldr:
+        return [single]
+
+    # Threaded path. Build 2-3 posts, link only on the last.
+    posts: list[str] = []
+    tags_str = " ".join(f"#{t}" for t in tags_list)
+
+    # Post 1: TL;DR header + tldr bullets that fit (no link, no tags).
+    # Reserve room for the "(1/M)" suffix added at the end; we don't
+    # know M yet, so reserve 6 chars conservatively ("(1/3) ").
+    reserve = 8
+    p1_budget = max_chars - reserve
+    p1_lines = ["TL;DR"]
+    p1_text = "TL;DR"
+    for b in tldr:
+        candidate = p1_text + f"\n• {b}"
+        if len(candidate) <= p1_budget:
+            p1_text = candidate
+            p1_lines.append(f"• {b}")
+        else:
+            # Carry the rest to the implications post.
+            implications = [b] + implications
+            # And every subsequent tldr bullet too.
+            idx = tldr.index(b) + 1
+            implications = tldr[idx:] + implications
+            break
+    posts.append(p1_text)
+
+    # Post 2: Implications header + bullets that fit (no link, no tags).
+    if implications:
+        p2_budget = max_chars - reserve
+        p2_text = "Implications"
+        for b in implications:
+            candidate = p2_text + f"\n• {b}"
+            if len(candidate) <= p2_budget:
+                p2_text = candidate
+            else:
+                break
+        posts.append(p2_text)
+
+    # Final post: Attention bullets (if any) + tags + link.
+    final_suffix = f"\n\n{tags_str} {link}" if tags_str else f"\n\n{link}"
+    final_budget = max_chars - reserve - len(final_suffix)
+    if attention:
+        p_final_text = "Worth attention"
+        for b in attention:
+            candidate = p_final_text + f"\n• {b}"
+            if len(candidate) <= final_budget:
+                p_final_text = candidate
+            else:
+                break
+        p_final_text += final_suffix
+    else:
+        # No attention bullets — final post is just link + tags.
+        # If there's only post 1 so far and no implications, no need to
+        # ship a 2nd post for just a link; instead, attach link to post 1.
+        if len(posts) == 1:
+            attached = posts[0] + f"\n\n{tags_str} {link}" if tags_str else posts[0] + f"\n\n{link}"
+            if len(attached) <= max_chars:
+                posts[0] = attached
+                # Add (1/1) suffix below? No — single post means no suffix.
+                return [posts[0]]
+        p_final_text = (tags_str + " " + link).strip() if tags_str else link
+    posts.append(p_final_text)
+
+    # Append (N/M) position suffixes to posts 2..M.
+    M = len(posts)
+    if M == 1:
+        return posts
+    finalized: list[str] = []
+    for i, body in enumerate(posts, start=1):
+        if i == 1:
+            finalized.append(body)
+        else:
+            tag = f"({i}/{M})"
+            candidate = f"{body}\n{tag}"
+            if len(candidate) > max_chars:
+                # Trim body to fit the position tag.
+                keep = max_chars - len(tag) - 1
+                candidate = body[:keep].rstrip() + "\n" + tag
+            finalized.append(candidate)
+    return finalized

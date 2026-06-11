@@ -5,9 +5,11 @@ from __future__ import annotations
 import logging
 import re
 from datetime import datetime
+from typing import Optional
 
 import httpx
 
+from .bluesky_handles import find_mentions_in_text, find_source_attribution
 from .config import get_settings
 from .db import get_connection
 from .models import CuratedPost
@@ -28,6 +30,161 @@ TOPIC_HASHTAGS: dict[str, str] = {
     "policy": "#QuantumPolicy",
     "general": "#QuantumComputing",
 }
+
+
+# --- Facet helpers ---
+
+# Hashtag pattern: '#' followed by 1+ word chars. Matches what users
+# type in posts (e.g., "#QuantumHardware"). The captured group excludes
+# the leading '#' because Bluesky's facet#tag.tag value must NOT contain
+# the '#'.
+_TAG_RE = re.compile(r"#(\w+)")
+
+# Module-level DID resolution cache. Handles do not change in a single
+# run; this avoids repeat hits to public.api.bsky.app for the ~6
+# unique handles we use per post.
+_DID_CACHE: dict[str, Optional[str]] = {}
+
+
+def _byte_offset(text: str, char_idx: int) -> int:
+    """Return the UTF-8 byte offset of the char at ``char_idx``."""
+    return len(text[:char_idx].encode("utf-8"))
+
+
+def _build_tag_facets(text: str) -> list[dict]:
+    """Build app.bsky.richtext.facet#tag facets for every #word in text.
+
+    Byte offsets cover the full ``#word`` span. The facet ``tag`` value
+    excludes the leading '#' per the facet schema.
+    """
+    facets: list[dict] = []
+    for m in _TAG_RE.finditer(text):
+        start_b = _byte_offset(text, m.start())
+        end_b = _byte_offset(text, m.end())
+        facets.append({
+            "index": {"byteStart": start_b, "byteEnd": end_b},
+            "features": [{
+                "$type": "app.bsky.richtext.facet#tag",
+                "tag": m.group(1),
+            }],
+        })
+    return facets
+
+
+def _resolve_handle(client: httpx.Client, handle: str) -> Optional[str]:
+    """Resolve a bsky handle to a DID via the public unauthenticated API.
+
+    Returns the DID string on success, None on any failure. Cached
+    per-process — handles do not change mid-run, and failed lookups are
+    cached as None so we don't retry on every mention scan.
+    """
+    if not handle:
+        return None
+    if handle in _DID_CACHE:
+        return _DID_CACHE[handle]
+    try:
+        resp = client.get(
+            "https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle",
+            params={"handle": handle},
+            timeout=5.0,
+        )
+        resp.raise_for_status()
+        did = resp.json().get("did")
+        _DID_CACHE[handle] = did if isinstance(did, str) and did else None
+        return _DID_CACHE[handle]
+    except (httpx.HTTPError, ValueError, KeyError):
+        # Cache the None too — don't retry a failed lookup mid-run.
+        _DID_CACHE[handle] = None
+        return None
+
+
+def _build_mention_facets(
+    client: httpx.Client,
+    text: str,
+    *,
+    exclude_spans: Optional[set[tuple[int, int]]] = None,
+) -> list[dict]:
+    """Build app.bsky.richtext.facet#mention facets for alias hits in text.
+
+    ``exclude_spans`` is a set of ``(byte_start, byte_end)`` pairs that
+    have already been emitted as facets elsewhere (e.g. the explicit
+    "via @handle" attribution facet). Those byte ranges are skipped to
+    avoid duplicate facets covering the same span.
+    """
+    excluded = exclude_spans or set()
+    facets: list[dict] = []
+    seen: set[tuple[int, int]] = set(excluded)
+    for start_b, end_b, handle in find_mentions_in_text(text):
+        key = (start_b, end_b)
+        if key in seen:
+            continue
+        seen.add(key)
+        did = _resolve_handle(client, handle)
+        if not did:
+            # Silent fail — no facet rather than a broken mention.
+            continue
+        facets.append({
+            "index": {"byteStart": start_b, "byteEnd": end_b},
+            "features": [{
+                "$type": "app.bsky.richtext.facet#mention",
+                "did": did,
+            }],
+        })
+    return facets
+
+
+_VIA_HANDLE_RE = re.compile(r"via @([a-zA-Z0-9.\-_]+)$", re.MULTILINE)
+
+
+def _maybe_append_attribution(
+    text: str, source_name: str, max_chars: int
+) -> str:
+    """Append "\\nvia @handle" if source maps and the budget allows.
+
+    Silently no-ops on (a) unknown source, (b) attribute_source=false
+    row, or (c) insufficient remaining budget. Never truncates ``text``
+    to make the suffix fit — the prose post is more important than the
+    attribution.
+    """
+    handle = find_source_attribution(source_name)
+    if not handle:
+        return text
+    suffix = f"\nvia @{handle}"
+    if len(text) + len(suffix) <= max_chars:
+        return text + suffix
+    return text
+
+
+def _build_attribution_facet(
+    client: httpx.Client, text: str
+) -> tuple[Optional[dict], Optional[tuple[int, int]]]:
+    """Build the explicit mention facet for a "via @handle" suffix.
+
+    Returns ``(facet, (byte_start, byte_end))`` or ``(None, None)`` if
+    no attribution suffix is present or DID resolution fails. The
+    returned byte span lets the caller dedup against
+    ``_build_mention_facets`` output.
+    """
+    m = _VIA_HANDLE_RE.search(text)
+    if not m:
+        return None, None
+    handle = m.group(1)
+    did = _resolve_handle(client, handle)
+    if not did:
+        return None, None
+    # Cover just the "@handle" portion (skip the "via " prefix).
+    at_start_char = m.start() + len("via ")
+    end_char = m.end()
+    start_b = _byte_offset(text, at_start_char)
+    end_b = _byte_offset(text, end_char)
+    facet = {
+        "index": {"byteStart": start_b, "byteEnd": end_b},
+        "features": [{
+            "$type": "app.bsky.richtext.facet#mention",
+            "did": did,
+        }],
+    }
+    return facet, (start_b, end_b)
 
 
 class BlueskySharer:
@@ -90,19 +247,41 @@ class BlueskySharer:
             if embed:
                 record["embed"] = embed
 
-            # Detect link facet so the URL is clickable
+            facets: list[dict] = []
+
+            # Link facet so the URL is clickable.
             if post.original_url and post.original_url in text:
                 start = text.index(post.original_url)
-                record["facets"] = [{
+                facets.append({
                     "index": {
-                        "byteStart": len(text[:start].encode("utf-8")),
-                        "byteEnd": len(text[:start].encode("utf-8")) + len(post.original_url.encode("utf-8")),
+                        "byteStart": _byte_offset(text, start),
+                        "byteEnd": _byte_offset(text, start) + len(post.original_url.encode("utf-8")),
                     },
                     "features": [{
                         "$type": "app.bsky.richtext.facet#link",
                         "uri": post.original_url,
                     }],
-                }]
+                })
+
+            # Tag facets — make every #word clickable as a tag feed entry.
+            facets.extend(_build_tag_facets(text))
+
+            # Explicit "via @handle" attribution facet. Track its byte
+            # span so the alias-based mention scan below doesn't emit
+            # a duplicate facet on the same range.
+            attribution_facet, attribution_span = _build_attribution_facet(client, text)
+            exclude_spans: set[tuple[int, int]] = set()
+            if attribution_facet is not None and attribution_span is not None:
+                facets.append(attribution_facet)
+                exclude_spans.add(attribution_span)
+
+            # Mention facets — scan the prose for known aliases.
+            facets.extend(
+                _build_mention_facets(client, text, exclude_spans=exclude_spans)
+            )
+
+            if facets:
+                record["facets"] = facets
 
             try:
                 resp = client.post(
@@ -134,23 +313,33 @@ class BlueskySharer:
         image_bytes: bytes | None = None,
         image_alt: str | None = None,
         image_mime: str = "image/png",
+        thread: bool = True,
+        payload: dict | None = None,
     ) -> bool:
-        """Share the daily Quantum Intel summary as a single Bluesky post.
+        """Share the daily Quantum Intel summary to Bluesky.
 
         Distinct from ``share_post`` (which pushes individual CuratedPost
-        rows). This is the once-per-day Intel digest path: the post text
-        comes from ``intel.daily_summary.render_bluesky`` and the link
-        is a single CTA (default qrater.org). Idempotent via the
-        ``bluesky_daily_summaries`` table — the UNIQUE constraint on
-        ``summary_date`` means re-running on the same date is a no-op
-        after the first successful share.
+        rows). This is the once-per-day Intel digest path. Idempotent
+        via the ``bluesky_daily_summaries`` table — the UNIQUE
+        constraint on ``summary_date`` means re-running on the same
+        date is a no-op after the first successful share.
 
-        If ``image_bytes`` is provided the post carries an
+        If ``image_bytes`` is provided the (root) post carries an
         ``app.bsky.embed.images`` embed in addition to the text. The
-        text path is the screen-reader-friendly version; the image
-        carries the full structured summary (TL;DR + Implications +
-        Attention + Tags) for sighted readers. The image is a
-        redundancy, not a replacement — text-only callers still work.
+        text path is screen-reader-friendly; the image carries the full
+        structured summary for sighted readers.
+
+        Threading
+        ---------
+        When ``thread=True`` (default) and ``payload`` is provided,
+        ``render_bluesky_thread`` is used to produce a 1-3 post list.
+        A length-1 list takes the single-post fast path (byte-identical
+        to the old behavior). A length>1 list is posted as a reply
+        chain — image embed on the root only, "(N/M)" suffix already
+        included by the renderer.
+
+        When ``thread=False`` or ``payload=None``, the legacy
+        single-post path is taken using ``text`` as-is.
 
         Returns True on success, False on failure (including the
         "already shared today" idempotency case).
@@ -164,78 +353,180 @@ class BlueskySharer:
             logger.info("Daily summary for %s already shared, skipping", date_key)
             return False
 
-        # Append the link if not already in the text (render_bluesky already
-        # appends qrater.org; this guards custom callers).
-        if link and link not in text:
-            text = f"{text} {link}".strip()
-        if len(text) > 300:
-            # Safety net for custom callers that bypassed render_bluesky.
-            # Cut at the last word boundary that fits (no ellipsis — the
-            # image embed and qrater.org CTA carry the rest).
-            cut = text[:300]
-            if " " in cut:
-                cut = cut.rsplit(" ", 1)[0]
-            text = cut
+        # Decide single vs threaded path.
+        posts: list[str]
+        if thread and payload is not None:
+            from .intel.daily_summary import render_bluesky_thread
+
+            posts = render_bluesky_thread(payload, link)
+        else:
+            # Append the link if not already in the text (render_bluesky
+            # already appends qrater.org; this guards custom callers).
+            if link and link not in text:
+                text = f"{text} {link}".strip()
+            if len(text) > 300:
+                # Safety net for custom callers that bypassed render_bluesky.
+                cut = text[:300]
+                if " " in cut:
+                    cut = cut.rsplit(" ", 1)[0]
+                text = cut
+            posts = [text]
 
         with httpx.Client(timeout=30) as client:
             if not self._login(client):
                 return False
 
-            record: dict = {
-                "$type": "app.bsky.feed.post",
-                "text": text,
-                "createdAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-            }
-
-            # Optional image embed. Upload the blob first; only attach
-            # the embed if the upload succeeded (text-only fallback).
+            # Upload the image once — it goes on the root post only.
+            image_embed: dict | None = None
             if image_bytes:
                 blob_ref = self._upload_image_blob(
                     client, image_bytes, mime=image_mime
                 )
                 if blob_ref:
                     alt = image_alt or f"Quantum Intel daily summary — {date_key}"
-                    record["embed"] = self._build_images_embed(blob_ref, alt)
+                    image_embed = self._build_images_embed(blob_ref, alt)
                 else:
                     logger.info(
                         "Image blob upload failed for %s; falling back to text-only",
                         date_key,
                     )
 
-            # Link facet (byte-offset on the link's location in text)
-            if link and link in text:
-                start = text.index(link)
-                record["facets"] = [{
-                    "index": {
-                        "byteStart": len(text[:start].encode("utf-8")),
-                        "byteEnd": len(text[:start].encode("utf-8")) + len(link.encode("utf-8")),
-                    },
-                    "features": [{
-                        "$type": "app.bsky.richtext.facet#link",
-                        "uri": link,
-                    }],
-                }]
-
-            try:
-                resp = client.post(
-                    "https://bsky.social/xrpc/com.atproto.repo.createRecord",
-                    headers=self._auth_headers(),
-                    json={
-                        "repo": self._session["did"],
-                        "collection": "app.bsky.feed.post",
-                        "record": record,
-                    },
+            # Single-post fast path.
+            if len(posts) == 1:
+                root_uri = self._post_one(
+                    client,
+                    posts[0],
+                    link=link,
+                    embed=image_embed,
+                    reply=None,
                 )
-                resp.raise_for_status()
-                result = resp.json()
-                bsky_uri = result.get("uri", "")
-                bsky_cid = result.get("cid", "")
-                record_daily_summary_share(date_key, bsky_uri, bsky_cid, text)
-                logger.info("Shared daily summary for %s to Bluesky", date_key)
+                if root_uri is None:
+                    return False
                 return True
-            except httpx.HTTPError:
-                logger.exception("Failed to share daily summary for %s", date_key)
+
+            # Threaded path. Post root, then chain replies. Image embed
+            # on the root only. All thread posts get tag/mention facets
+            # like any other post.
+            root_uri, root_cid = self._post_one(
+                client,
+                posts[0],
+                link=link,
+                embed=image_embed,
+                reply=None,
+                return_cid=True,
+            ) or (None, None)
+            if root_uri is None:
                 return False
+
+            parent_uri, parent_cid = root_uri, root_cid
+            thread_uris: list[str] = [root_uri]
+            for body in posts[1:]:
+                reply_block = {
+                    "root": {"uri": root_uri, "cid": root_cid},
+                    "parent": {"uri": parent_uri, "cid": parent_cid},
+                }
+                result = self._post_one(
+                    client,
+                    body,
+                    link=link,
+                    embed=None,
+                    reply=reply_block,
+                    return_cid=True,
+                )
+                if result is None:
+                    # Partial-failure: persist what we have so it's
+                    # visible in the DB; caller treats as failure.
+                    record_daily_summary_share(
+                        date_key, root_uri, root_cid or "", posts[0]
+                    )
+                    return False
+                uri, cid = result
+                thread_uris.append(uri)
+                parent_uri, parent_cid = uri, cid
+
+            # Persist root + each thread post.
+            record_daily_summary_share(
+                date_key, root_uri, root_cid or "", posts[0], is_thread=True
+            )
+            record_thread_posts(date_key, thread_uris, posts)
+            logger.info(
+                "Shared daily summary thread (%d posts) for %s to Bluesky",
+                len(posts),
+                date_key,
+            )
+            return True
+
+    def _post_one(
+        self,
+        client: httpx.Client,
+        text: str,
+        *,
+        link: str | None = None,
+        embed: dict | None = None,
+        reply: dict | None = None,
+        return_cid: bool = False,
+    ):
+        """Post a single record. Returns URI (or (URI, CID)) or None on failure.
+
+        Adds link / tag / mention facets automatically. Used by both
+        the single-post and threaded paths so they share one facet
+        pipeline.
+        """
+        record: dict = {
+            "$type": "app.bsky.feed.post",
+            "text": text,
+            "createdAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+        }
+        if embed is not None:
+            record["embed"] = embed
+        if reply is not None:
+            record["reply"] = reply
+
+        facets: list[dict] = []
+
+        # Link facet (first occurrence of the link in text).
+        if link and link in text:
+            start = text.index(link)
+            facets.append({
+                "index": {
+                    "byteStart": _byte_offset(text, start),
+                    "byteEnd": _byte_offset(text, start) + len(link.encode("utf-8")),
+                },
+                "features": [{
+                    "$type": "app.bsky.richtext.facet#link",
+                    "uri": link,
+                }],
+            })
+
+        # Tag facets — every #word becomes clickable.
+        facets.extend(_build_tag_facets(text))
+
+        # Mention facets — alias hits in the prose.
+        facets.extend(_build_mention_facets(client, text))
+
+        if facets:
+            record["facets"] = facets
+
+        try:
+            resp = client.post(
+                "https://bsky.social/xrpc/com.atproto.repo.createRecord",
+                headers=self._auth_headers(),
+                json={
+                    "repo": self._session["did"],
+                    "collection": "app.bsky.feed.post",
+                    "record": record,
+                },
+            )
+            resp.raise_for_status()
+            result = resp.json()
+            bsky_uri = result.get("uri", "")
+            bsky_cid = result.get("cid", "")
+            if return_cid:
+                return bsky_uri, bsky_cid
+            return bsky_uri
+        except httpx.HTTPError:
+            logger.exception("Failed to post Bluesky record")
+            return None
 
     def share_pending(self, limit: int = 5) -> list[str]:
         """Share published posts that haven't been shared to Bluesky yet.
@@ -304,7 +595,7 @@ class BlueskySharer:
             text = f"{title}\n\n{hashtag_str}"
 
         if len(text) <= max_chars:
-            return text
+            return _maybe_append_attribution(text, post.source_name, max_chars)
 
         # Title + hashtags alone overflows. Word-wrap the title at the
         # last whitespace boundary that fits; no ellipsis. If the title
@@ -321,7 +612,8 @@ class BlueskySharer:
         text = f"{truncated_title}\n\n{hashtag_str}"
         # Safety clamp — shouldn't fire after word-boundary cut, but
         # protects callers from a malformed result if it ever does.
-        return text[:max_chars]
+        text = text[:max_chars]
+        return _maybe_append_attribution(text, post.source_name, max_chars)
 
     def _get_hashtags(self, post: CuratedPost) -> list[str]:
         """Get hashtags from post topics (max 3)."""
@@ -494,6 +786,7 @@ def record_daily_summary_share(
     bsky_uri: str,
     bsky_cid: str,
     post_text: str,
+    is_thread: bool = False,
 ) -> None:
     """Record a successful daily-summary share keyed by date.
 
@@ -502,13 +795,64 @@ def record_daily_summary_share(
     REPLACE means a manual re-share with the same date overwrites
     the row (useful for testing — the idempotency check happens
     upstream in ``share_daily_summary``).
+
+    When ``is_thread=True``, ``root_uri`` / ``root_cid`` are populated
+    alongside the legacy ``bsky_uri`` / ``bsky_cid`` (same values —
+    the duplication is intentional so downstream readers can use
+    either column without thread-awareness). Per-post rows for the
+    thread chain live in ``bluesky_thread_posts``; insert them via
+    ``record_thread_posts`` after this call.
     """
     conn = get_connection()
     conn.execute(
         "INSERT OR REPLACE INTO bluesky_daily_summaries "
-        "(summary_date, bsky_uri, bsky_cid, post_text, shared_at) "
+        "(summary_date, bsky_uri, bsky_cid, post_text, shared_at, "
+        " root_uri, root_cid, is_thread) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        (
+            summary_date,
+            bsky_uri,
+            bsky_cid,
+            post_text,
+            datetime.utcnow().isoformat(),
+            bsky_uri if is_thread else None,
+            bsky_cid if is_thread else None,
+            1 if is_thread else 0,
+        ),
+    )
+    conn.commit()
+    conn.close()
+
+
+def record_thread_posts(
+    summary_date: str,
+    thread_uris: list[str],
+    posts: list[str],
+) -> None:
+    """Persist per-post rows for a threaded daily-summary share.
+
+    ``thread_uris[i]`` corresponds to ``posts[i]`` (root is position 0).
+    The (summary_date, position) tuple is UNIQUE so a re-share on the
+    same date replaces prior rows cleanly.
+    """
+    if not thread_uris:
+        return
+    conn = get_connection()
+    rows = [
+        (
+            summary_date,
+            i,
+            uri,
+            posts[i] if i < len(posts) else "",
+            datetime.utcnow().isoformat(),
+        )
+        for i, uri in enumerate(thread_uris)
+    ]
+    conn.executemany(
+        "INSERT OR REPLACE INTO bluesky_thread_posts "
+        "(summary_date, position, bsky_uri, post_text, posted_at) "
         "VALUES (?, ?, ?, ?, ?)",
-        (summary_date, bsky_uri, bsky_cid, post_text, datetime.utcnow().isoformat()),
+        rows,
     )
     conn.commit()
     conn.close()

@@ -217,7 +217,40 @@ def init_db() -> None:
 
         CREATE INDEX IF NOT EXISTS idx_bsky_daily_date
             ON bluesky_daily_summaries(summary_date);
+
+        -- Per-post rows for threaded daily summaries. Created only
+        -- when share_daily_summary takes the threaded path. The
+        -- summary_date FK is the natural join key into
+        -- bluesky_daily_summaries (which has UNIQUE on summary_date).
+        CREATE TABLE IF NOT EXISTS bluesky_thread_posts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            summary_date TEXT NOT NULL,
+            position INTEGER NOT NULL,
+            bsky_uri TEXT NOT NULL,
+            post_text TEXT NOT NULL,
+            posted_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(summary_date, position)
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_bsky_thread_date
+            ON bluesky_thread_posts(summary_date);
     """)
+
+    # Migrate: add threading-tracking columns to bluesky_daily_summaries.
+    # root_uri / root_cid duplicate the legacy bsky_uri / bsky_cid for
+    # single-post rows so the threaded code path doesn't have to special-
+    # case the schema. is_thread flags rows produced by the threaded
+    # path so downstream consumers can fan out into bluesky_thread_posts.
+    for ddl in (
+        "ALTER TABLE bluesky_daily_summaries ADD COLUMN root_uri TEXT DEFAULT NULL",
+        "ALTER TABLE bluesky_daily_summaries ADD COLUMN root_cid TEXT DEFAULT NULL",
+        "ALTER TABLE bluesky_daily_summaries ADD COLUMN is_thread INTEGER DEFAULT 0",
+    ):
+        try:
+            conn.execute(ddl)
+            conn.commit()
+        except sqlite3.OperationalError:
+            pass  # Column already exists
 
     # Migrate existing databases: add subvurs_notes column if missing
     try:

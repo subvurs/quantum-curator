@@ -1001,7 +1001,9 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
               help="CTA link appended to the Bluesky post.")
 @click.option("--dry-run", is_flag=True,
               help="Render the post text but do NOT publish to Bluesky.")
-def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool):
+@click.option("--no-thread", is_flag=True,
+              help="Disable threading even when the summary would overflow 300 chars.")
+def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool, no_thread: bool):
     """Publish today's Intel daily summary as a single Bluesky post (decision D5).
 
     Uses ``intel.daily_summary.render_bluesky`` to render <=300 chars and
@@ -1083,6 +1085,8 @@ def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool):
         summary_date=today_key,
         image_bytes=image_bytes,
         image_alt=image_alt,
+        thread=not no_thread,
+        payload=payload,
     )
     if ok:
         console.print(f"[green]Posted daily summary to Bluesky for {today_key}[/]")

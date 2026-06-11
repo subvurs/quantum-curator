@@ -1,0 +1,67 @@
+# Bluesky handle allowlist for mention facets + source attribution.
+#
+# Conservative whole-word alias matching only. Add new entries by hand
+# after verifying the handle on bsky.app — the failure mode of a missed
+# mention is silence, the failure mode of a wrong mention is spam.
+#
+# Schema (per entry):
+#   handle:           required — the verified bsky handle (no leading @)
+#   aliases:          required — display-case strings to match in post text;
+#                     whole-word, case-insensitive at match time
+#   source_names:     optional — exact source_name values to match for
+#                     "via @handle" attribution suffix
+#   attribute_source: optional (default false) — must be true for the
+#                     suffix to fire even on a source_names hit
+#
+# Entries below are gated on the handle being verified at YAML write
+# time. Prefer to ship 6 entries that work over 20 that 404.
+
+handles:
+  - handle: ibm.bsky.social
+    aliases:
+      - "IBM"
+      - "IBM Quantum"
+      - "IBM Research"
+    source_names:
+      - "Qiskit Blog (IBM)"
+    attribute_source: true
+
+  - handle: google.bsky.social
+    aliases:
+      - "Google Quantum AI"
+      - "Google Research"
+      - "Google"
+    source_names:
+      - "Google Research Blog"
+    attribute_source: true
+
+  - handle: quantinuum.bsky.social
+    aliases:
+      - "Quantinuum"
+      - "Honeywell Quantum"
+    source_names:
+      - "Quantinuum Blog"
+    attribute_source: true
+
+  - handle: ionq.bsky.social
+    aliases:
+      - "IonQ"
+    source_names:
+      - "IonQ Blog"
+    attribute_source: true
+
+  - handle: microsoft.bsky.social
+    aliases:
+      - "Microsoft Quantum"
+      - "Azure Quantum"
+    source_names:
+      - "Microsoft Quantum Blog"
+    attribute_source: true
+
+  - handle: aws.bsky.social
+    aliases:
+      - "AWS Braket"
+      - "Amazon Braket"
+    source_names:
+      - "AWS Quantum Computing"
+    attribute_source: true

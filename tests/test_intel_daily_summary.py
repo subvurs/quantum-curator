@@ -24,6 +24,7 @@ from quantum_curator.intel.daily_summary import (
     _strip_invalid_citations,
     _validate_citations,
     render_bluesky,
+    render_bluesky_thread,
 )
 
 
@@ -181,3 +182,25 @@ def test_render_bluesky_stops_packing_before_overflow():
     # The 280-char second bullet must not appear in full.
     assert "X" * 280 not in out
     assert len(out) <= 300
+
+
+# ---------- render_bluesky vs render_bluesky_thread byte-identity ----------
+
+
+def test_render_bluesky_thread_short_path_byte_identical_to_render_bluesky():
+    """For a payload that fits in a single 300-char post, the thread
+    renderer's first (and only) element must match render_bluesky()
+    byte-for-byte. This locks the byte-identity contract: the
+    threading code path must not perturb the single-post output for
+    the common short-payload case.
+    """
+    payload = {
+        "tldr": ["Bullet one short.", "Bullet two short."],
+        "implications": [],
+        "attention": [],
+        "tags": ["quantum"],
+    }
+    single = render_bluesky(payload)
+    thread = render_bluesky_thread(payload, link="https://qrater.org")
+    assert len(thread) == 1
+    assert thread[0] == single
