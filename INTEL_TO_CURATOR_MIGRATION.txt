@@ -1377,6 +1377,155 @@ AFTER (target — REVISED Jun 9 2026 per Phase 5 plan)
                   = 1216 (next after the seed's max) and carry
                   the cataloger's own imported_from value, not
                   the seed's — audit trail stays honest.
+  Jun 10 2026 Intel daily-summary hardening shipped — commit
+              e284952 pushed to origin/main. Goodhart-resistant
+              fixes for the Intel → Bluesky path, triggered by
+              the Jun 10 06:00 UTC scheduled run that surfaced
+              two regressions: (a) the summary LLM emitted
+              [#2000007] — an entry_id that exists in neither
+              today's curated seeds (2_000_000..2_000_004) nor
+              the 0..1215 historical archive — and the post
+              rendered the hallucinated citation as-is; (b) the
+              per-article Bluesky text path chopped titles at
+              280 chars with a trailing "…" instead of packing
+              at the actual 300-grapheme cap.
+              Fixes landed:
+                * daily_summary._strip_invalid_citations +
+                  _validate_citations strip [#N] tokens whose
+                  IDs don't appear in the combined new+prior
+                  set, preserving surrounding prose. Counts
+                  logged via standard logger.
+                * synthesizer.py drops bogus integer entry_ids
+                  from concept citation lists; drops whole
+                  concepts that fall below the 2-ID floor after
+                  filtering (no fabricated minority-cited
+                  concepts surfacing).
+                * bluesky.py — character-chop truncation
+                  replaced with sentence-packing for commentary;
+                  word-boundary fallback for oversized titles.
+                  No path emits a trailing "..." or "…" any
+                  longer.
+                * daily_summary.render_bluesky packs as many
+                  TL;DR bullets as fit in 300 chars (was 280;
+                  matches Bluesky's actual grapheme cap).
+                * NEW intel/image_card.py — Pillow renderer for
+                  a 1000x1000 PNG summary card attached as
+                  embed.images on the daily Bluesky post.
+                * Qrater front page (qrater_builder.py +
+                  qrater/index.html + qrater.css) gained an
+                  intel daily-summary panel rendered from the
+                  same payload.
+              Tests: 70 passed (added test_bluesky_post_text.py,
+              test_intel_daily_summary.py, test_intel_image
+              _card.py, +7 citation-validator tests in test
+              _intel_synth.py). Files: 13 changed, 1391 ins / 52
+              del.
+              Worth flagging:
+                * The [#2000007] hallucination is the first
+                  citation-Goodhart we've caught on the Intel
+                  pipeline — the synth prompt cleanly enumerated
+                  valid IDs to the LLM and the LLM still
+                  invented one outside the set. _validate
+                  _citations is the right defense-in-depth
+                  layer; the prompt-side enumeration is not
+                  load-bearing. Fail-closed on unknown IDs.
+                * 280→300 budget change unblocked the next-day
+                  threading work (Jun 11 entry below) —
+                  sentence-packing produced posts that bumped
+                  into the cap and exposed overflow as a real
+                  steady-state problem, not a once-a-month edge.
+  Jun 11 2026 Bluesky enhancements shipped — commit 6088a1b
+              pushed to origin/main. Four richtext / publication
+              enhancements layered on top of the Jun 10 daily-
+              summary hardening, addressing the "post renders as
+              plain text in tag feeds + no org tagging + no
+              source attribution + overflow vanishes" gap
+              surfaced by the Jun 10 reflow run.
+              Shipped:
+                1. Tag facets — #word strings get app.bsky
+                   .richtext.facet#tag with correct UTF-8 byte
+                   offsets, making hashtags clickable in Bluesky
+                   tag feeds. No API call required.
+                2. Mention facets — conservative whole-word
+                   alias scan against a YAML allowlist
+                   (quantum_curator/data/bluesky_handles.yaml,
+                   6 verified orgs: IBM, Google, Quantinuum,
+                   IonQ, Microsoft, AWS) → DID resolution via
+                   public.api.bsky.app (cached per-process,
+                   fail-closed on resolution failure) → facet
+                   #mention emission with longest-alias-first
+                   overlap resolution. New module quantum
+                   _curator/bluesky_handles.py owns the loader +
+                   matcher (Pydantic models, lru_cache, \b word
+                   boundaries).
+                3. Source attribution — when post.source_name
+                   maps to an attribute_source=true entry,
+                   append "\nvia @handle" within the 300-char
+                   budget; an explicit facet covers only the
+                   @handle portion (skips "via "). Silently
+                   skipped when budget is tight rather than
+                   truncating to fit.
+                4. Threading on overflow — render_bluesky
+                   _thread returns list[str]; single-post path
+                   is byte-identical to render_bluesky() for the
+                   common short payload (regression test locks
+                   this). Overflow path posts a reply chain with
+                   reply.root / reply.parent blocks, image embed
+                   on root only, "(N/M)" suffix on replies, link
+                   on last post only. Per-post rows persisted to
+                   new bluesky_thread_posts table; is_thread /
+                   root_uri / root_cid added to bluesky_daily
+                   _summaries via idempotent ALTER TABLE
+                   migrations. CLI gained --no-thread flag on
+                   share-intel-summary (default on).
+              Tests: 112 passed (was 67). 45 new tests across
+              test_bluesky_handles.py (14), test_bluesky_facets
+              .py (15), test_bluesky_thread.py (12), plus a
+              byte-identity regression in test_intel_daily
+              _summary.py. Files: 12 changed, 1613 ins / 75 del.
+              Deviation from plan:
+                * The /Users/mvm/.claude/plans/quirky-cooking
+                  -liskov.md plan called for waiting on the Jun
+                  11 06:00 UTC scheduled run to confirm the Jun
+                  10 push was healthy before merging the
+                  enhancements branch. Mark elected to push
+                  immediately instead — the Jun 10 reflow run
+                  had already validated the citation + image
+                  card + Qrater changes by hand, so the 06:00
+                  UTC gate would be redundant. Risk: if the Jun
+                  10 push has a defect that surfaces only on a
+                  fresh CI runner (cache-miss path), it rides
+                  into Jun 11 06:00 UTC piggybacked on the
+                  threading commit; rollback would isolate both
+                  together rather than one at a time. Accepted.
+              Worth flagging:
+                * .gitignore now carries a "!quantum_curator
+                  /data/" negation rule so the packaged YAML
+                  allowlist ships while runtime data/ (the
+                  sqlite db, image cache) stays gitignored. Be
+                  careful adding new packaged data files — the
+                  negation is path-scoped, not glob-scoped.
+                * DID resolution uses the unauthenticated
+                  public.api.bsky.app endpoint (no session
+                  token at risk). No documented rate limit but
+                  cache + small allowlist (~6 handles) keeps
+                  unique calls per run trivial.
+                * Mention spam guard: conservative whole-word
+                  + small allowlist keeps false positives near
+                  zero. Failure mode is over-tagging IBM/Google
+                  — visible immediately, fixable by tightening
+                  aliases. No fuzzy or LLM extraction by
+                  design.
+                * Source-attribution + mention dedup: a Qiskit
+                  Blog article that says "IBM" in the title
+                  would mention-tag @ibm.bsky.social AND
+                  source-attribute @ibm.bsky.social. Bluesky's
+                  UI collapses redundant mentions; no special
+                  handling needed.
+                * Goodhart watch: if the alias list grows past
+                  ~20 orgs, the whole-word regex scan becomes
+                  noticeable on per-post latency. Defer
+                  optimization until measured.
 
 --------------------------------------------------------------------------------
 9. ROLLBACK
