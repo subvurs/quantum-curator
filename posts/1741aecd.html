@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuMod: Parallel Quantum Job Scheduling on Modular QPUs using Circuit Cutting | Quantum Crier</title>
-    <meta name="description" content="The quantum computing community is increasingly positioning quantum processors as accelerators within classical HPC workflows, analogous to GPUs and TPUs. Howev">
+    <title>QuBE/Qubex: an integrated hardware-software system for superconducting qubit experiments with broadband control | Quantum Crier</title>
+    <meta name="description" content="Achieving high-fidelity operation in large-scale superconducting qubit systems requires not only control hardware with broad frequency coverage, low crosstalk, ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="QuMod: Parallel Quantum Job Scheduling on Modular QPUs using Circuit Cutting">
+    <meta property="og:title" content="QuBE/Qubex: an integrated hardware-software system for superconducting qubit experiments with broadband control">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,15 +58,11 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
-            
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-            
         </div>
-        <h1>QuMod: Parallel Quantum Job Scheduling on Modular QPUs using Circuit Cutting</h1>
+        <h1>QuBE/Qubex: an integrated hardware-software system for superconducting qubit experiments with broadband control</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 13, 2026</span>
+            <span class="date">June 11, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -77,18 +73,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This research tackles one of quantum computing&#39;s most pressing infrastructure challenges: how to efficiently schedule and execute quantum jobs across multiple connected quantum processors as the field scales beyond single-chip limitations. The work addresses a critical gap as hardware vendors like IBM and IonQ move toward modular architectures where large quantum circuits must be split and coordinated across separate QPUs connected through classical or quantum links. The proposed QuMod scheduler is particularly significant because it considers the complex interplay of circuit cutting, teleportation operations, and measurement synchronization that become essential when quantum workloads span multiple processors. As quantum cloud services mature and support multiple users sharing modular quantum systems, this type of intelligent resource management will be crucial for making large-scale quantum computing practical and economically viable.
+                An interesting development in hardware. This article from arXiv Quantum Physics covers recent progress that may have implications for the broader quantum computing field.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The quantum computing community is increasingly positioning quantum processors as accelerators within classical HPC workflows, analogous to GPUs and TPUs. However, many real-world applications require scaling to hundreds or thousands of physical qubits to realize logical qubits via error correction. To reach these scales, hardware vendors employing diverse technologies -- such as trapped ions, photonics, neutral atoms, and superconducting circuits -- are moving beyond single, monolithic QPUs toward modular architectures connected via interconnects. For example, IonQ has proposed photonic links for scaling, while IBM has demonstrated a modular QPU architecture by classically linking two 127-qubit devices. Using dynamic circuits, Bell-pair-based teleportation, and circuit cutting, they have shown how to execute a large quantum circuit that cannot fit on a single QPU. As interest in quantum computing grows, cloud providers must ensure fair and efficient resource allocation for multiple users sharing such modular systems. Classical interconnection of QPUs introduces new scheduling challenges, particularly when multiple jobs execute in parallel. In this work, we develop a multi-programmable scheduler for modular quantum systems that jointly considers qubit mapping, parallel circuit execution, measurement synchronization across subcircuits, and teleportation operations between QPUs using dynamic circuits.</p>
+            <p>Achieving high-fidelity operation in large-scale superconducting qubit systems requires not only control hardware with broad frequency coverage, low crosstalk, and tight synchronization but also software that coordinates system configuration, experiment execution, and data analysis. Here we present an integrated qubit-control system that combines broadband microwave hardware with a pulse-level software stack for scalable superconducting qubit experiments. The hardware provides broadband microwave coverage, including an instantaneous span of up to 1.6 GHz from a control output, while the software reduces setup and calibration overhead through automated configuration and built-in experiment workflows. We validate the system on a 64-qubit fixed-frequency transmon chip through full-chip frequency identification and representative demonstrations, including multi-unit far-detuned cross-resonance calibration and benchmarking that yields a measured two-qubit gate fidelity of 98.34%, and multilevel readout beyond the computational subspace. By disclosing the hardware architecture and releasing the software stack as open source, this work provides an inspectable hardware-software foundation for scalable superconducting qubit control experiments.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.11013v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.13010v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -98,8 +94,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=QuMod%3A%20Parallel%20Quantum%20Job%20Scheduling%20on%20Modular%20QPUs%20using%20Circuit%20Cutting&url=https://quantumcrier.com/posts/a588738a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a588738a.html&title=QuMod%3A%20Parallel%20Quantum%20Job%20Scheduling%20on%20Modular%20QPUs%20using%20Circuit%20Cutting" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=QuBE/Qubex%3A%20an%20integrated%20hardware-software%20system%20for%20superconducting%20qubit%20experiments%20with%20broadband%20control&url=https://quantumcrier.com/posts/1741aecd.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/1741aecd.html&title=QuBE/Qubex%3A%20an%20integrated%20hardware-software%20system%20for%20superconducting%20qubit%20experiments%20with%20broadband%20control" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
