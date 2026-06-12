@@ -1,0 +1,134 @@
+name: Recurate Degraded Posts
+
+# One-off repair workflow. Regenerates curator_commentary + Subvurs notes
+# for posts that were saved on the template-fallback path during a Claude
+# API outage (e.g. the June 11-12 2026 credit-exhaustion runs), then
+# rebuilds and redeploys both sites. It operates on the SAME cached DB the
+# daily workflow uses and saves the repaired DB back to cache, so the fix
+# is durable — the next scheduled run restores the repaired DB via the
+# `curator-db-` restore-key prefix and rebuilds from corrected data.
+#
+# It deliberately omits the share / intel-email / share-intel-summary /
+# email-insights steps so repairing old posts never re-posts to Bluesky or
+# re-sends email.
+
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: 'Inclusive start date (YYYY-MM-DD), matched on curated_at'
+        required: true
+        default: '2026-06-11'
+      until:
+        description: 'Inclusive end date (YYYY-MM-DD), matched on curated_at'
+        required: true
+        default: '2026-06-12'
+      dry_run:
+        description: 'List degraded posts without regenerating (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  SITE_URL: https://quantumcrier.com
+  SITE_NAME: Quantum Crier
+  SITE_DESCRIPTION: "Daily curated quantum computing news and insights by Mark Eatherly"
+
+jobs:
+  recurate-and-redeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Restore database cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/
+          key: curator-db-${{ github.run_id }}
+          restore-keys: |
+            curator-db-
+
+      - name: Initialize database
+        run: quantum-curator init
+
+      - name: Check database status
+        run: |
+          if [ -f data/curator.db ]; then
+            echo "✓ Database restored from cache"
+            sqlite3 data/curator.db "SELECT COUNT(*) || ' raw articles, ' || (SELECT COUNT(*) FROM curated_posts WHERE status='published') || ' published posts' FROM raw_articles;"
+          else
+            echo "✗ No cache found — nothing to recurate. Aborting."
+            exit 1
+          fi
+
+      - name: Recurate degraded posts
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            quantum-curator recurate --since "${{ github.event.inputs.since }}" --until "${{ github.event.inputs.until }}" --dry-run
+          else
+            quantum-curator recurate --since "${{ github.event.inputs.since }}" --until "${{ github.event.inputs.until }}"
+          fi
+
+      - name: Build Quantum Crier site
+        if: github.event.inputs.dry_run != 'true'
+        run: quantum-curator build --output ./public
+
+      - name: Build Qrater dashboard
+        if: github.event.inputs.dry_run != 'true'
+        run: quantum-curator build-qrater --output ./qrater_public
+
+      - name: Deploy Quantum Crier to GitHub Pages
+        if: github.event.inputs.dry_run != 'true'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          user_name: 'Quantum Curator Bot'
+          user_email: 'curator@quantum-curator.com'
+          commit_message: 'Recurate June 11-12 degraded posts'
+
+      - name: Deploy Qrater to GitHub Pages
+        if: github.event.inputs.dry_run != 'true'
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          cd qrater_public
+          git init
+          git checkout -b gh-pages
+          git config user.name "Quantum Curator Bot"
+          git config user.email "curator@quantum-curator.com"
+          git add -A
+          git commit -m "Recurate June 11-12 degraded posts"
+          git push --force https://x-access-token:${DEPLOY_TOKEN}@github.com/subvurs/qrater.git gh-pages
+
+      - name: Upload curator database artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: curator-db-${{ github.run_id }}
+          path: data/curator.db
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Save database cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/
+          key: curator-db-${{ github.run_id }}

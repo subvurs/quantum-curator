@@ -764,6 +764,47 @@ def list_curated_posts(
     return list_posts(status=status, since=since, limit=limit)
 
 
+# The exact tail of curator._generate_fallback_commentary(). Posts whose
+# curator_commentary ends with this string were generated on the template
+# fallback path (Claude API unavailable), not by the model — they are the
+# recurate selector's signal. Kept here as the single source of truth so a
+# template change forces both sites to update together.
+FALLBACK_COMMENTARY_SIGNATURE = (
+    "may have implications for the broader quantum computing field"
+)
+
+
+def list_fallback_commentary_posts(
+    start_date: str,
+    end_date: str,
+) -> list[CuratedPost]:
+    """List posts whose commentary is the template fallback, by curated_at.
+
+    Args:
+        start_date: inclusive lower bound, ``YYYY-MM-DD`` (matched against
+            ``date(curated_at)``).
+        end_date: inclusive upper bound, ``YYYY-MM-DD``.
+
+    Returns every ``curated_posts`` row in ``[start_date, end_date]`` whose
+    ``curator_commentary`` contains :data:`FALLBACK_COMMENTARY_SIGNATURE`,
+    regardless of status (draft and published both degrade the site). Order
+    is by ``curated_at`` so the caller sees a stable, day-grouped sequence.
+    """
+    conn = get_connection()
+    rows = conn.execute(
+        """
+        SELECT * FROM curated_posts
+        WHERE curator_commentary LIKE '%' || ? || '%'
+          AND date(curated_at) >= ?
+          AND date(curated_at) <= ?
+        ORDER BY curated_at
+        """,
+        (FALLBACK_COMMENTARY_SIGNATURE, start_date, end_date),
+    ).fetchall()
+    conn.close()
+    return [_row_to_post(r) for r in rows]
+
+
 # --- DailyDigest CRUD ---
 
 def save_digest(digest: DailyDigest) -> DailyDigest:

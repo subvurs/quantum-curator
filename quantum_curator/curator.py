@@ -234,6 +234,94 @@ class Curator:
 
         return post
 
+    async def recurate_post(self, post: CuratedPost) -> tuple[str, CuratedPost]:
+        """Regenerate AI commentary + Subvurs notes for an existing post.
+
+        Repairs posts saved on the template-fallback path (e.g. a Claude
+        API outage). Loads the post's source RawArticle and re-runs the
+        same generation the curate path uses, mutating ONLY the
+        LLM-derived fields. Identity and lifecycle fields (id, status,
+        published_to_site_at, slug, curated_at, article_id) are preserved
+        so the post keeps its place and publish history on the site.
+
+        Returns ``(outcome, post)`` where outcome is one of:
+          - ``"regenerated"``  — real commentary produced and saved
+          - ``"no_article"``   — source raw_articles row missing
+          - ``"still_fallback"`` — regeneration returned the template again
+            (API still down); NOT saved, so a failed repair never
+            overwrites the post with the same degraded text.
+        """
+        article = db.get_article(post.article_id)
+        if article is None:
+            return "no_article", post
+
+        commentary = await self._generate_commentary(article)
+
+        # Fail-loud: if the API is still unavailable, _generate_commentary
+        # returns the template. Refuse to "repair" with the same degraded
+        # text rather than silently re-saving the fallback.
+        if db.FALLBACK_COMMENTARY_SIGNATURE in commentary:
+            return "still_fallback", post
+
+        subvurs_notes = ""
+        if self.settings.generate_subvurs_notes:
+            subvurs_notes = await self._generate_subvurs_notes(article)
+            if subvurs_notes:
+                self._save_subvurs_notes_file(article, subvurs_notes)
+
+        # Refresh the deterministic impact score too — it was very likely
+        # fail-closed to 0.0 during the same outage that triggered the
+        # commentary fallback. Only reached once commentary succeeded, so
+        # the API is back up and this call should resolve cleanly.
+        if (
+            self.settings.subvurs_impact_scoring_enabled
+            and _IMPACT_AVAILABLE
+        ):
+            report = await self._score_subvurs_impact(article)
+            if report is not None:
+                post.subvurs_impact_score = float(report.score)
+                post.subvurs_impact_report = report.model_dump_json()
+                post.subvurs_impact_version = report.version
+
+        post.curator_commentary = commentary
+        post.subvurs_notes = subvurs_notes
+        db.save_curated_post(post)
+        return "regenerated", post
+
+    async def recurate_batch(
+        self,
+        posts: list[CuratedPost],
+        max_concurrent: int = 3,
+    ) -> dict[str, list[CuratedPost]]:
+        """Recurate multiple posts with rate limiting.
+
+        Mirrors ``curate_batch``'s semaphore-bounded concurrency. Returns
+        the posts bucketed by outcome: ``{"regenerated": [...],
+        "still_fallback": [...], "no_article": [...], "error": [...]}``.
+        """
+        buckets: dict[str, list[CuratedPost]] = {
+            "regenerated": [],
+            "still_fallback": [],
+            "no_article": [],
+            "error": [],
+        }
+        semaphore = asyncio.Semaphore(max_concurrent)
+
+        async def recurate_with_limit(post: CuratedPost) -> tuple[str, CuratedPost]:
+            async with semaphore:
+                try:
+                    return await self.recurate_post(post)
+                except Exception as e:  # noqa: BLE001 — report, don't abort batch
+                    print(f"Error recurating '{post.title}': {e}")
+                    return "error", post
+
+        results = await asyncio.gather(
+            *(recurate_with_limit(p) for p in posts)
+        )
+        for outcome, post in results:
+            buckets[outcome].append(post)
+        return buckets
+
     async def curate_batch(
         self,
         articles: list[RawArticle],

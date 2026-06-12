@@ -234,6 +234,104 @@ def curate(limit: int, auto_publish: bool, create_digest: bool):
     asyncio.run(run_curate())
 
 
+@cli.command()
+@click.option("--since", default="2026-06-11", help="Inclusive start date (YYYY-MM-DD), matched on curated_at")
+@click.option("--until", default="2026-06-12", help="Inclusive end date (YYYY-MM-DD), matched on curated_at")
+@click.option("--limit", default=0, help="Cap on posts to recurate (0 = no cap)")
+@click.option("--dry-run", is_flag=True, help="List the degraded posts but don't regenerate or write")
+def recurate(since: str, until: str, limit: int, dry_run: bool):
+    """Regenerate commentary + Subvurs notes for template-fallback posts.
+
+    Selects already-curated posts whose curator_commentary is the
+    template fallback (Claude API was down at curate time) within the
+    curated_at date range, and re-runs the same generation the curate
+    path uses. Preserves each post's id, status, publish history, and
+    slug. Does NOT share to Bluesky.
+    """
+    from .curator import Curator
+
+    settings = get_settings()
+
+    posts = db.list_fallback_commentary_posts(since, until)
+    if limit and len(posts) > limit:
+        posts = posts[:limit]
+
+    if not posts:
+        console.print(
+            f"[green]No template-fallback posts found in {since}..{until}[/]"
+        )
+        return
+
+    # Day breakdown for an at-a-glance sanity check before we spend tokens.
+    by_day: dict[str, int] = {}
+    for p in posts:
+        day = p.curated_at.strftime("%Y-%m-%d") if p.curated_at else "unknown"
+        by_day[day] = by_day.get(day, 0) + 1
+    breakdown = ", ".join(f"{d}: {n}" for d, n in sorted(by_day.items()))
+    console.print(
+        f"[blue]Found {len(posts)} template-fallback posts[/] ({breakdown})"
+    )
+
+    if dry_run:
+        table = Table(title=f"Degraded posts {since}..{until} (dry run)")
+        table.add_column("curated_at", style="cyan", no_wrap=True)
+        table.add_column("status", style="magenta")
+        table.add_column("title")
+        for p in posts:
+            table.add_row(
+                p.curated_at.strftime("%Y-%m-%d %H:%M") if p.curated_at else "?",
+                p.status.value,
+                (p.title[:70] + "…") if len(p.title) > 70 else p.title,
+            )
+        console.print(table)
+        console.print("[yellow]Dry run — nothing regenerated or written.[/]")
+        return
+
+    if not settings.anthropic_api_key:
+        console.print(
+            "[red]No Anthropic API key configured — regeneration would "
+            "re-emit the same fallback. Aborting.[/]"
+        )
+        return
+
+    async def run_recurate():
+        curator = Curator()
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console,
+        ) as progress:
+            task = progress.add_task(
+                f"Regenerating {len(posts)} posts...", total=None
+            )
+            buckets = await curator.recurate_batch(posts)
+            progress.update(task, completed=True)
+        return buckets
+
+    buckets = asyncio.run(run_recurate())
+
+    console.print(
+        f"[green]Regenerated {len(buckets['regenerated'])}[/]  "
+        f"[yellow]still-fallback {len(buckets['still_fallback'])}[/]  "
+        f"[red]no-article {len(buckets['no_article'])}[/]  "
+        f"[red]errors {len(buckets['error'])}[/]"
+    )
+
+    # Fail-loud per rigor §1: surface any post that did NOT get repaired so
+    # a partial run is never mistaken for a clean one.
+    unrepaired = (
+        buckets["still_fallback"] + buckets["no_article"] + buckets["error"]
+    )
+    if unrepaired:
+        console.print(
+            f"[red]{len(unrepaired)} post(s) were NOT repaired "
+            f"(API still down or source article missing):[/]"
+        )
+        for p in unrepaired[:10]:
+            console.print(f"  - {p.id}  {p.title[:70]}")
+        raise SystemExit(1)
+
+
 # --- Site Building ---
 
 @cli.command()
