@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Split-Evolution Quantum Phase Estimation for Particle-Conserving Hamiltonians | Quantum Crier</title>
-    <meta name="description" content="We present a hardware demonstration and resource analysis of split-evolution quantum phase estimation (SE-QPE) on a Quantinuum System Model H2 quantum computer.">
+    <title>Quantum gates with parametrically driven multi-qubit couplers | Quantum Crier</title>
+    <meta name="description" content="Superconducting quantum processors could significantly profit from enhanced connectivity together with precise control of interactions and gates between qubits.">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Split-Evolution Quantum Phase Estimation for Particle-Conserving Hamiltonians">
+    <meta property="og:title" content="Quantum gates with parametrically driven multi-qubit couplers">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -58,13 +58,11 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-            
         </div>
-        <h1>Split-Evolution Quantum Phase Estimation for Particle-Conserving Hamiltonians</h1>
+        <h1>Quantum gates with parametrically driven multi-qubit couplers</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 16, 2026</span>
+            <span class="date">June 12, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -75,18 +73,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This article demonstrates a clever modification to quantum phase estimation that could significantly reduce the resource requirements for quantum chemistry simulations on near-term devices. By replacing expensive controlled time evolution operations with CSWAP-based interference between two registers, the split-evolution approach achieves substantial reductions in gate counts and circuit depth while maintaining compatibility with approximate eigenstates that arise in practical quantum simulations. The demonstration on Quantinuum&#39;s H2 system with ethylene molecules shows this isn&#39;t just theoretical - the method works on real hardware and includes built-in error detection capabilities through auxiliary registers. These resource savings become more pronounced at higher precision levels, making this technique particularly valuable for the complex molecular systems that represent quantum computing&#39;s most promising near-term applications in drug discovery and materials science.
+                This research tackles one of the most pressing challenges in scaling up quantum computers: how to efficiently connect qubits that aren&#39;t physically adjacent to each other. The proposed four-qubit plaquette design with a central tunable coupler is particularly clever because it enables high-fidelity gates between diagonal qubits without requiring additional physical connections, potentially reducing the routing overhead that plagues current quantum processors. The demonstrated 99.9% fidelity for 50-nanosecond gates, even when running multiple gates in parallel, suggests this architecture could significantly improve both the connectivity and operational efficiency of superconducting quantum devices. Most intriguingly, the ability to perform native three-qubit gates opens up new possibilities for implementing quantum algorithms more directly, rather than decomposing everything into two-qubit operations.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We present a hardware demonstration and resource analysis of split-evolution quantum phase estimation (SE-QPE) on a Quantinuum System Model H2 quantum computer. SE-QPE is a modification to canonical QPE for particle-conserving Hamiltonians in which controlled time evolution is replaced by CSWAP-based interference between a target register and a reference register. For factorizations of time evolution with a shared eigenbasis, SE-QPE preserves the phase-register outcome distribution of canonical QPE and, unlike with compute--uncompute substitutions, it remains compatible with non-exact eigenstates. The substitution removes controlled-simulation overhead and enables parallel evolution on two registers, reducing the depth of each phase-kickback block. Resource analysis for Trotterized double-factorized chemistry Hamiltonians shows that the substitution becomes increasingly favorable at higher phase powers, as such combining QPE and SE-QPE implementations can be a useful option. Over a range of FeMoco active spaces, SE-QPE reduces time evolution resources, with asymptotic reductions of about 33% in CX count, 25% in $T$ count, and an asymptotic depth ratio of $3/N$ for CX layers. On Quantinuum H2-2, a four-qubit model ethylene demonstration with explicit inverse QFT and repeated phase-kickback steps up to 6 phase bits yields distinct energies and shows the auxiliary registers provide useful error detection filters.</p>
+            <p>Superconducting quantum processors could significantly profit from enhanced connectivity together with precise control of interactions and gates between qubits. Here we investigate plaquettes of four qubits that are coupled via a central tunable coupling circuit, so that not only gates between qubits connected by an edge of the plaquette can be executed but also between qubits across the diagonal. By numerically and analytically analyzing parametrically driven processes, we explore $\sqrt{\text{iSWAP}}$-gates between any pair of qubits, also across the diagonal, as well as three-qubit interactions and gates. For experimentally available circuit parameters, we for example find $\sqrt{\text{iSWAP}}$-gates with a gate time of 50 ns and 99.9\% fidelity, which is decreased to 99.4\% if two such gates are executed in parallel on disjoint qubit pairs in the plaquette. For three-qubit gates we find fidelities of 95\% fidelity at a gate time of 200 ns.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.14921v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.14522v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -96,8 +94,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Split-Evolution%20Quantum%20Phase%20Estimation%20for%20Particle-Conserving%20Hamiltonians&url=https://quantumcrier.com/posts/fd047d95.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/fd047d95.html&title=Split-Evolution%20Quantum%20Phase%20Estimation%20for%20Particle-Conserving%20Hamiltonians" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20gates%20with%20parametrically%20driven%20multi-qubit%20couplers&url=https://quantumcrier.com/posts/5a28f4a3.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5a28f4a3.html&title=Quantum%20gates%20with%20parametrically%20driven%20multi-qubit%20couplers" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

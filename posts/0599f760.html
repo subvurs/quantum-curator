@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlphaCNOT: Learning CNOT Minimization with Model-Based Planning | Quantum Crier</title>
-    <meta name="description" content="Quantum circuit optimization is a central task in Quantum Computing, as current Noisy Intermediate Scale Quantum devices suffer from error propagation that ofte">
+    <title>Note on the local calculation of decoherence of quantum superposition in the static black holes | Quantum Crier</title>
+    <meta name="description" content="We investigate the decoherence of a quantum spatial superposition of a static particle in Schwarzschild and Reissner-Nordström black holes. By treating the part">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="AlphaCNOT: Learning CNOT Minimization with Model-Based Planning">
+    <meta property="og:title" content="Note on the local calculation of decoherence of quantum superposition in the static black holes">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -56,15 +56,13 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
             
         </div>
-        <h1>AlphaCNOT: Learning CNOT Minimization with Model-Based Planning</h1>
+        <h1>Note on the local calculation of decoherence of quantum superposition in the static black holes</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">April 15, 2026</span>
+            <span class="date">June 12, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -75,18 +73,18 @@
         <section class="curator-take">
             <h2>Curator's Take</h2>
             <blockquote class="commentary">
-                This article presents AlphaCNOT, a reinforcement learning framework that tackles one of quantum computing&#39;s most practical optimization challenges: minimizing CNOT gates in quantum circuits. Since CNOT gates are particularly error-prone and slow on current quantum hardware, reducing their count directly translates to better circuit fidelity and shorter execution times. The researchers achieved impressive results with up to 32% reduction in CNOT gates compared to existing methods by combining Monte Carlo Tree Search with reinforcement learning, essentially teaching an AI to &#34;think ahead&#34; when optimizing circuits. This work represents a significant step toward making quantum algorithms more viable on today&#39;s noisy quantum devices, where every gate reduction matters for maintaining quantum coherence.
+                This theoretical work provides crucial insights into how quantum superpositions would behave near black holes, directly addressing one of the most fundamental challenges in quantum computing: environmental decoherence. The research reveals that the choice of quantum vacuum state around a black hole dramatically affects decoherence rates, with Hawking radiation creating thermal noise that destroys quantum coherence while certain vacuum states preserve it. This has profound implications for understanding the fundamental limits of quantum information processing in curved spacetime and could inform future quantum technologies that must operate in extreme gravitational environments. The mathematical framework developed here also advances our theoretical toolkit for analyzing decoherence in complex quantum field environments, which remains one of the biggest obstacles to scaling quantum computers.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum circuit optimization is a central task in Quantum Computing, as current Noisy Intermediate Scale Quantum devices suffer from error propagation that often scales with the number of operations. Among quantum operations, the CNOT gate is of fundamental importance, being the only 2-qubit gate in the universal Clifford+T set. The problem of CNOT gates minimization has been addressed by heuristic algorithms such as the well-known Patel-Markov-Hayes (PMH) for linear reversible synthesis (i.e., CNOT minimization with no topological constraints), and more recently by Reinforcement Learning (RL) based strategies in the more complex case of topology-aware synthesis, where each CNOT can act on a subset of all qubits pairs. In this work we introduce AlphaCNOT, a RL framework based on Monte Carlo Tree Search (MCTS) that address effectively the CNOT minimization problem by modeling it as a planning problem. In contrast to other RL- based solution, our method is model-based, i.e. it can leverage lookahead search to evaluate future trajectories, thus finding more efficient sequences of CNOTs. Our method achieves a reduction of up to 32% in CNOT gate count compared to PMH baseline on linear reversible synthesis, while in the constraint version we report a consistent gate count reduction on a variety of topologies with up to 8 qubits, with respect to state-of-the-art RL-based solutions. Our results suggest the combination of RL with search-based strategies can be applied to different circuit optimization tasks, such as Clifford minimization, thus fostering the transition toward the &#34;quantum utility&#34; era.</p>
+            <p>We investigate the decoherence of a quantum spatial superposition of a static particle in Schwarzschild and Reissner-Nordström black holes. By treating the particle as a localized classical source coupled to a quantum scalar field, we reformulate the decoherence process in the Danielson-Satishchandran-Wald (DSW) gedankenexperiment through coherent state generation and derive the local expression for the decoherence functional in terms of the Wightman function. In the long-time limit, the decoherence rate is shown to be characterized by the low-frequency behavior of the Wightman function. We then employ the asymptotic matching method to calculate the analytical expressions of the Wightman functions in the Boulware, Unruh, and Hartle-Hawking vacua. We show that the decoherence behavior depends on the quantum state of the environmental field. While the Boulware vacuum gives vanishing decoherence for a static superposition, the thermal effects associated with Hawking radiation in the Unruh and Hartle-Hawking vacua can induce nonvanishing decoherence.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2604.13812v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2606.14178v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -96,8 +94,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=AlphaCNOT%3A%20Learning%20CNOT%20Minimization%20with%20Model-Based%20Planning&url=https://quantumcrier.com/posts/5b395038.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5b395038.html&title=AlphaCNOT%3A%20Learning%20CNOT%20Minimization%20with%20Model-Based%20Planning" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Note%20on%20the%20local%20calculation%20of%20decoherence%20of%20quantum%20superposition%20in%20the%20static%20black%20holes&url=https://quantumcrier.com/posts/0599f760.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0599f760.html&title=Note%20on%20the%20local%20calculation%20of%20decoherence%20of%20quantum%20superposition%20in%20the%20static%20black%20holes" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
