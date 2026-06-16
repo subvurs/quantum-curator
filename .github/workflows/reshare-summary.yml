@@ -1,0 +1,124 @@
+name: Reshare Intel Daily Summary
+
+# One-off repair workflow. Re-posts the Quantum Intel daily summary to
+# Bluesky for a given UTC date, sourcing from the SAME cached DB the
+# daily workflow uses. Use this after the daily summary was posted from
+# degraded (template-fallback) curated_posts and then corrected via the
+# `recurate` workflow — the original summary is idempotency-locked on
+# `summary_date`, so this workflow first clears that lock for the target
+# date, then rebuilds the summary from the (now-repaired) curated_posts
+# seeds and posts a single fresh summary.
+#
+# It deliberately runs ONLY the summary share — no fetch, no curate, no
+# per-article `share`, no intel-email, no email-insights, no site
+# rebuild — so it cannot create new posts or re-post article cards.
+#
+# The repaired DB is saved back to cache (curator-db-<run_id>) so the
+# cleared/re-recorded idempotency row is durable for the next run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'UTC date to re-share (YYYY-MM-DD), matched on summary_date'
+        required: true
+        default: '2026-06-16'
+      days:
+        description: "today_curated_seeds window in days (summary 'today' source)"
+        required: false
+        default: '1'
+      dry_run:
+        description: 'Render the post + show idempotency state without clearing or posting (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+  BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+  SITE_URL: https://quantumcrier.com
+  SITE_NAME: Quantum Crier
+  SITE_DESCRIPTION: "Daily curated quantum computing news and insights by Mark Eatherly"
+
+jobs:
+  reshare-summary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Restore database cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/
+          key: curator-db-${{ github.run_id }}
+          restore-keys: |
+            curator-db-
+
+      - name: Initialize database
+        run: quantum-curator init
+
+      - name: Check database status
+        run: |
+          if [ -f data/curator.db ]; then
+            echo "✓ Database restored from cache"
+            sqlite3 data/curator.db "SELECT COUNT(*) || ' raw articles, ' || (SELECT COUNT(*) FROM curated_posts WHERE status='published') || ' published posts' FROM raw_articles;"
+          else
+            echo "✗ No cache found — nothing to re-share. Aborting."
+            exit 1
+          fi
+
+      - name: Show idempotency state for target date
+        run: |
+          DATE="${{ github.event.inputs.date }}"
+          echo "Existing daily-summary rows for $DATE:"
+          sqlite3 data/curator.db "SELECT summary_date, substr(bsky_uri,1,60), shared_at FROM bluesky_daily_summaries WHERE summary_date='$DATE';" || echo "  (table absent)"
+          echo "Existing thread-post rows for $DATE:"
+          sqlite3 data/curator.db "SELECT summary_date, position, substr(bsky_uri,1,60) FROM bluesky_thread_posts WHERE summary_date='$DATE';" || echo "  (table absent)"
+
+      - name: Clear idempotency lock for target date
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          DATE="${{ github.event.inputs.date }}"
+          BEFORE=$(sqlite3 data/curator.db "SELECT COUNT(*) FROM bluesky_daily_summaries WHERE summary_date='$DATE';" 2>/dev/null || echo "0")
+          sqlite3 data/curator.db "DELETE FROM bluesky_daily_summaries WHERE summary_date='$DATE';" 2>/dev/null || echo "  bluesky_daily_summaries absent — nothing to clear"
+          sqlite3 data/curator.db "DELETE FROM bluesky_thread_posts WHERE summary_date='$DATE';" 2>/dev/null || echo "  bluesky_thread_posts absent — nothing to clear"
+          echo "Cleared $BEFORE daily-summary row(s) for $DATE; re-share now permitted."
+
+      - name: Re-share Intel summary to Bluesky
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            quantum-curator share-intel-summary --days "${{ github.event.inputs.days }}" --link https://qrater.org --dry-run
+          else
+            quantum-curator share-intel-summary --days "${{ github.event.inputs.days }}" --link https://qrater.org
+          fi
+
+      - name: Upload curator database artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: curator-db-${{ github.run_id }}
+          path: data/curator.db
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Save database cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/
+          key: curator-db-${{ github.run_id }}
