@@ -112,7 +112,7 @@ class Settings(BaseSettings):
         default="insightful",
         description="Commentary style: insightful, technical, accessible, brief",
     )
-    claude_model: str = Field(default="claude-sonnet-4-20250514", description="Claude model for commentary")
+    claude_model: str = Field(default="claude-sonnet-4-5", description="Claude model for commentary")
     generate_subvurs_notes: bool = Field(default=True, description="Generate internal Subvurs research connection notes during curation")
     subvurs_impact_scoring_enabled: bool = Field(
         default=True,
