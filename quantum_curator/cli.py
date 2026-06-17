@@ -1101,44 +1101,72 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
               help="Render the post text but do NOT publish to Bluesky.")
 @click.option("--no-thread", is_flag=True,
               help="Disable threading even when the summary would overflow 300 chars.")
-def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool, no_thread: bool):
+@click.option("--payload-file",
+              type=click.Path(exists=True, dir_okay=False, path_type=Path),
+              default=None,
+              help="Load a hand-authored summary payload JSON instead of "
+                   "calling the LLM. Bypasses build_daily_summary and the "
+                   "ANTHROPIC_API_KEY guard (manual-takeover mode).")
+@click.option("--summary-date", default=None,
+              help="Override the recorded summary_date (YYYY-MM-DD). "
+                   "Defaults to today's UTC date.")
+def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool,
+                        no_thread: bool, payload_file: "Path | None",
+                        summary_date: "str | None"):
     """Publish today's Intel daily summary as a single Bluesky post (decision D5).
 
     Uses ``intel.daily_summary.render_bluesky`` to render <=300 chars and
     posts via ``BlueskySharer.share_daily_summary``. Idempotent — the
     ``bluesky_daily_summaries`` table enforces one post per UTC date.
+
+    Manual-takeover mode: pass ``--payload-file`` with a hand-authored
+    payload (``{tldr, implications, attention, tags, window}``) to skip the
+    LLM ``build_daily_summary`` step entirely. The payload is rendered and
+    posted through the same path as the LLM output. ``--summary-date``
+    overrides the idempotency/record date so a corrected back-dated summary
+    does not collide with a same-day scheduled run.
     """
+    import json as _json
     from .intel import inventory_view, daily_summary
     from .bluesky import BlueskySharer, is_daily_summary_shared
     from datetime import datetime as _dt
 
     settings = get_settings()
-    if not settings.has_anthropic:
-        console.print("[red]ANTHROPIC_API_KEY not set — cannot build summary.[/]")
-        return
 
-    # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
-    # Phase 1d import) to curated_posts (Plan B pivot, parity with 5a/5d).
-    new_entries = inventory_view.today_curated_seeds(days=days)
-    console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
+    if payload_file is not None:
+        # Manual-takeover mode: a human (or Claude session) has authored the
+        # payload that build_daily_summary would normally produce. Skip the
+        # LLM call and the has_anthropic guard.
+        payload = _json.loads(Path(payload_file).read_text())
+        console.print(f"[blue]Loaded payload from {payload_file} "
+                      f"(manual-takeover mode — no LLM call)[/]")
+    else:
+        if not settings.has_anthropic:
+            console.print("[red]ANTHROPIC_API_KEY not set — cannot build summary.[/]")
+            return
 
-    with Progress(
-        SpinnerColumn(),
-        TextColumn("[progress.description]{task.description}"),
-        console=console,
-    ) as progress:
-        task = progress.add_task("Building daily summary...", total=None)
-        payload = daily_summary.build_daily_summary(
-            new_entries=new_entries, prior_days=prior_days
-        )
-        progress.update(task, completed=True)
+        # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
+        # Phase 1d import) to curated_posts (Plan B pivot, parity with 5a/5d).
+        new_entries = inventory_view.today_curated_seeds(days=days)
+        console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
+
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console,
+        ) as progress:
+            task = progress.add_task("Building daily summary...", total=None)
+            payload = daily_summary.build_daily_summary(
+                new_entries=new_entries, prior_days=prior_days
+            )
+            progress.update(task, completed=True)
 
     if payload is None:
         console.print("[red]Summary unavailable — aborting share.[/]")
         return
 
     post_text = daily_summary.render_bluesky(payload)
-    today_key = _dt.utcnow().strftime("%Y-%m-%d")
+    today_key = summary_date or _dt.utcnow().strftime("%Y-%m-%d")
 
     console.print(Panel(
         f"[bold]Date:[/] {today_key}\n"
