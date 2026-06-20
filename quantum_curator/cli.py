@@ -186,8 +186,8 @@ def curate(limit: int, auto_publish: bool, create_digest: bool):
     from .aggregator import Aggregator
 
     settings = get_settings()
-    if not settings.anthropic_api_key:
-        console.print("[yellow]Warning: No Anthropic API key configured. Using fallback commentary.[/]")
+    if not settings.llm_available:
+        console.print("[yellow]Warning: No LLM backend configured (no Anthropic key and LLM_BACKEND != router). Using fallback commentary.[/]")
 
     async def run_curate():
         # Get top articles
@@ -287,10 +287,11 @@ def recurate(since: str, until: str, limit: int, dry_run: bool):
         console.print("[yellow]Dry run — nothing regenerated or written.[/]")
         return
 
-    if not settings.anthropic_api_key:
+    if not settings.llm_available:
         console.print(
-            "[red]No Anthropic API key configured — regeneration would "
-            "re-emit the same fallback. Aborting.[/]"
+            "[red]No LLM backend configured (no Anthropic key and "
+            "LLM_BACKEND != router) — regeneration would re-emit the same "
+            "fallback. Aborting.[/]"
         )
         return
 
@@ -893,8 +894,8 @@ def synthesize_intel(days: int, max_briefs: int, model: str | None, dry_run: boo
     from .intel import synthesizer
 
     settings = get_settings()
-    if not settings.has_anthropic:
-        console.print("[red]ANTHROPIC_API_KEY not configured — synth requires it.[/]")
+    if not settings.llm_available:
+        console.print("[red]No LLM backend configured (no Anthropic key and LLM_BACKEND != router) — synth requires it.[/]")
         return
 
     from .intel import inventory_view
@@ -967,8 +968,8 @@ def intel_summary(days: int, prior_days: int, fmt: str):
     from .intel import daily_summary, inventory_view
 
     settings = get_settings()
-    if not settings.has_anthropic:
-        console.print("[red]ANTHROPIC_API_KEY not configured.[/]")
+    if not settings.llm_available:
+        console.print("[red]No LLM backend configured (no Anthropic key and LLM_BACKEND != router).[/]")
         return
 
     # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
@@ -1019,7 +1020,7 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
     console.print(f"[blue]Window: {len(new_entries)} new entries (last {days}d)[/]")
 
     summary = None
-    if settings.has_anthropic:
+    if settings.llm_available:
         with Progress(
             SpinnerColumn(),
             TextColumn("[progress.description]{task.description}"),
@@ -1031,10 +1032,10 @@ def intel_email(days: int, no_synth: bool, max_briefs: int, dry_run: bool):
         if summary is None:
             console.print("[yellow]Summary unavailable — email will show stub.[/]")
     else:
-        console.print("[yellow]No ANTHROPIC_API_KEY — skipping summary.[/]")
+        console.print("[yellow]No LLM backend configured — skipping summary.[/]")
 
     briefs: list[Path] = []
-    if not no_synth and settings.has_anthropic and new_entries:
+    if not no_synth and settings.llm_available and new_entries:
         inventory = inventory_view.load_inventory()
         with Progress(
             SpinnerColumn(),
@@ -1136,13 +1137,13 @@ def share_intel_summary(days: int, prior_days: int, link: str, dry_run: bool,
     if payload_file is not None:
         # Manual-takeover mode: a human (or Claude session) has authored the
         # payload that build_daily_summary would normally produce. Skip the
-        # LLM call and the has_anthropic guard.
+        # LLM call and the llm_available guard.
         payload = _json.loads(Path(payload_file).read_text())
         console.print(f"[blue]Loaded payload from {payload_file} "
                       f"(manual-takeover mode — no LLM call)[/]")
     else:
-        if not settings.has_anthropic:
-            console.print("[red]ANTHROPIC_API_KEY not set — cannot build summary.[/]")
+        if not settings.llm_available:
+            console.print("[red]No LLM backend configured (no Anthropic key and LLM_BACKEND != router) — cannot build summary.[/]")
             return
 
         # Phase 5e: pivot "today" source from quantum_intel_entries (frozen
