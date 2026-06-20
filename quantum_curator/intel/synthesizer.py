@@ -50,9 +50,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import anthropic
-
 from ..config import get_settings
+from ..llm_client import llm_complete
 from . import inventory_view
 from .brief_history import recent_brief_citations
 
@@ -333,8 +332,8 @@ def synthesize(
         return []
 
     settings = get_settings()
-    if not settings.has_anthropic:
-        print("[intel.synthesize] anthropic_api_key not set — skipping")
+    if not settings.llm_available:
+        print("[intel.synthesize] no LLM backend configured — skipping")
         return []
 
     briefs_dir = briefs_dir or (settings.data_dir / "intel_briefs")
@@ -362,20 +361,19 @@ def synthesize(
         max_briefs=max_briefs,
     )
 
-    client = anthropic.Anthropic(api_key=settings.anthropic_api_key, max_retries=2)
     try:
-        response = client.messages.create(
+        raw = llm_complete(
+            system=SYNTH_SYSTEM,
+            user=prompt,
             model=model,
             max_tokens=max_tokens,
             temperature=temperature,
-            system=SYNTH_SYSTEM,
-            messages=[{"role": "user", "content": prompt}],
+            allow_escalation=True,
+            settings=settings,
         )
-    except Exception as exc:  # noqa: BLE001 — Anthropic SDK raises a wide tree; fail-closed
+    except Exception as exc:  # noqa: BLE001 — backend raises a wide tree; fail-closed
         print(f"[intel.synthesize] LLM call failed: {exc}")
         return []
-
-    raw = response.content[0].text if response.content else ""
     try:
         concepts = _extract_json(raw)
     except (ValueError, json.JSONDecodeError) as exc:

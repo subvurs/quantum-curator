@@ -62,9 +62,8 @@ import logging
 import re
 from typing import Any
 
-import anthropic
-
 from ..config import get_settings
+from ..llm_client import llm_complete
 from . import inventory_view
 from .synthesizer import _condense_entry, _extract_json
 
@@ -290,8 +289,8 @@ def build_daily_summary(
     the three CLI commands that still pass it via ``click.option``.
     """
     settings = get_settings()
-    if not settings.has_anthropic:
-        print("[intel.daily_summary] anthropic_api_key not set — skipping")
+    if not settings.llm_available:
+        print("[intel.daily_summary] no LLM backend configured — skipping")
         return None
 
     if new_entries is None:
@@ -325,20 +324,19 @@ def build_daily_summary(
         prior_entries=prior_text,
     )
 
-    client = anthropic.Anthropic(api_key=settings.anthropic_api_key, max_retries=2)
     try:
-        response = client.messages.create(
+        raw = llm_complete(
+            system=SUMMARY_SYSTEM,
+            user=prompt,
             model=model,
             max_tokens=max_tokens,
             temperature=temperature,
-            system=SUMMARY_SYSTEM,
-            messages=[{"role": "user", "content": prompt}],
+            allow_escalation=True,
+            settings=settings,
         )
     except Exception as exc:  # noqa: BLE001 — fail-closed
         print(f"[intel.daily_summary] LLM call failed: {exc}")
         return None
-
-    raw = response.content[0].text if response.content else ""
     try:
         payload = _extract_json(raw)
     except (ValueError, json.JSONDecodeError) as exc:

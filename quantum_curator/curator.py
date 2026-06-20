@@ -12,6 +12,7 @@ from typing import Any
 import anthropic
 
 from .config import get_settings
+from .llm_client import llm_complete, make_router_llm_call
 from .models import ContentTopic, CuratedPost, DailyDigest, PostStatus, RawArticle
 from . import db
 
@@ -154,7 +155,20 @@ class Curator:
 
     def __init__(self):
         self.settings = get_settings()
-        self.client = anthropic.Anthropic(api_key=self.settings.anthropic_api_key)
+        # Anthropic client is constructed lazily and only for the anthropic
+        # backend. Under the router backend the box has no ANTHROPIC_API_KEY
+        # (all cloud spend flows through the router's capped Tier 2), so eager
+        # construction would be wasteful and could mislead. All LLM calls now
+        # flow through `llm_complete(...)`; `self.client` is retained only for
+        # any anthropic-backend code path that still references it directly.
+        self._client: anthropic.Anthropic | None = None
+
+    @property
+    def client(self) -> "anthropic.Anthropic":
+        """Lazily construct the direct Anthropic client (anthropic backend)."""
+        if self._client is None:
+            self._client = anthropic.Anthropic(api_key=self.settings.anthropic_api_key)
+        return self._client
 
     async def curate_article(self, article: RawArticle) -> CuratedPost:
         """Generate commentary for an article and create a curated post.
@@ -358,7 +372,7 @@ class Curator:
 
     async def _generate_commentary(self, article: RawArticle) -> str:
         """Generate AI commentary for an article."""
-        if not self.settings.anthropic_api_key:
+        if not self.settings.llm_available:
             return self._generate_fallback_commentary(article)
 
         system_prompt = CURATOR_SYSTEM_PROMPT.format(
@@ -377,16 +391,22 @@ Summary:
 Write 2-4 sentences of engaging commentary explaining why this matters."""
 
         try:
-            # Use sync client in async context (anthropic handles this)
-            response = self.client.messages.create(
+            # Public-content path: escalation to capped cloud allowed on local
+            # failure (router backend) / direct API (anthropic backend). Offload
+            # the (sync) llm_complete to a thread so batch curation's event loop
+            # isn't blocked by the router subprocess / API round-trip.
+            text = await asyncio.to_thread(
+                llm_complete,
+                system=system_prompt,
+                user=user_prompt,
                 model=self.settings.claude_model,
                 max_tokens=300,
-                system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}],
+                allow_escalation=True,
+                settings=self.settings,
             )
-            return _strip_markdown(response.content[0].text.strip())
+            return _strip_markdown(text.strip())
         except Exception as e:
-            print(f"Claude API error: {e}")
+            print(f"Commentary generation error: {e}")
             return self._generate_fallback_commentary(article)
 
     def _generate_fallback_commentary(self, article: RawArticle) -> str:
@@ -400,7 +420,7 @@ Write 2-4 sentences of engaging commentary explaining why this matters."""
 
     async def _generate_subvurs_notes(self, article: RawArticle) -> str:
         """Generate internal Subvurs research connection notes for an article."""
-        if not self.settings.anthropic_api_key:
+        if not self.settings.llm_available:
             return ""
 
         user_prompt = f"""Analyze this quantum computing article for connections to Subvurs/Quasmology research:
@@ -415,13 +435,18 @@ Summary:
 Return 1-3 sentences identifying a specific connection, or exactly "None" if no genuine connection exists."""
 
         try:
-            response = self.client.messages.create(
+            # Model stays hardcoded to "claude-sonnet-4-5" to preserve prior
+            # behavior (anthropic backend); the router backend ignores `model`.
+            notes = await asyncio.to_thread(
+                llm_complete,
+                system=SUBVURS_NOTES_SYSTEM_PROMPT,
+                user=user_prompt,
                 model="claude-sonnet-4-5",
                 max_tokens=200,
-                system=SUBVURS_NOTES_SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": user_prompt}],
+                allow_escalation=True,
+                settings=self.settings,
             )
-            notes = response.content[0].text.strip()
+            notes = notes.strip()
             if notes.lower().startswith("none"):
                 return ""
             return notes
@@ -439,7 +464,7 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
         """
         if not _IMPACT_AVAILABLE or _impact_score_item is None:
             return None
-        if not self.settings.anthropic_api_key:
+        if not self.settings.llm_available:
             return None
 
         # Match the shape score_item expects (proposal §3.2 / §5.2).
@@ -449,10 +474,23 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
             "summary": article.summary[:1500],
         }
 
+        # Scorer is the highest-volume, local-only / fail-closed call: on the
+        # router backend inject a NON-escalating router llm_call so a local
+        # failure yields the documented degraded 0.0 (never cloud spend). On the
+        # anthropic backend leave llm_call=None → score_item's _default_llm_call
+        # (direct Anthropic API), preserving prior behavior byte-for-byte.
+        score_kwargs: dict[str, Any] = {}
+        if self.settings.uses_router:
+            score_kwargs["llm_call"] = make_router_llm_call(
+                self.settings, allow_escalation=False
+            )
+
         # score_item is sync (single LLM call); offload to thread to
         # avoid blocking the event loop in batch curation.
         try:
-            return await asyncio.to_thread(_impact_score_item, item)
+            return await asyncio.to_thread(
+                lambda: _impact_score_item(item, **score_kwargs)
+            )
         except Exception as exc:  # noqa: BLE001 — final safety net
             # score_item is fail-closed internally; anything reaching
             # here is a library-level bug. Log and degrade gracefully.
@@ -537,7 +575,7 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
         if not posts:
             return "No quantum computing news to report today."
 
-        if not self.settings.anthropic_api_key:
+        if not self.settings.llm_available:
             return self._generate_fallback_digest(posts, date)
 
         system_prompt = DIGEST_SYSTEM_PROMPT.format(
@@ -559,15 +597,18 @@ Today's quantum computing articles:
 Write a 2-3 paragraph digest summary highlighting the key developments."""
 
         try:
-            response = self.client.messages.create(
+            text = await asyncio.to_thread(
+                llm_complete,
+                system=system_prompt,
+                user=user_prompt,
                 model=self.settings.claude_model,
                 max_tokens=500,
-                system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}],
+                allow_escalation=True,
+                settings=self.settings,
             )
-            return _strip_markdown(response.content[0].text.strip())
+            return _strip_markdown(text.strip())
         except Exception as e:
-            print(f"Claude API error for digest: {e}")
+            print(f"Digest summary generation error: {e}")
             return self._generate_fallback_digest(posts, date)
 
     def _generate_fallback_digest(

@@ -1,9 +1,14 @@
 name: Daily Quantum Curation
 
 on:
-  schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:  # Allow manual triggers
+  # Daily schedule DISABLED (Jun 2026): the daily run was relocated to the
+  # K11 box (LLM_BACKEND=router, local-first gpt-oss with capped cloud
+  # fallback) via deploy/curator/quantum-curator.timer. See
+  # subvurs_export/deploy/K11_DEPLOYMENT_STATUS.txt § "Quantum Curator on K11".
+  # workflow_dispatch is retained as a cloud-API backup if the box is down.
+  # schedule:
+  #   - cron: '0 6 * * *'
+  workflow_dispatch:  # Allow manual triggers (cloud-API backup path)
 
 permissions:
   contents: write

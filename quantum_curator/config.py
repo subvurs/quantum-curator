@@ -114,6 +114,28 @@ class Settings(BaseSettings):
     )
     claude_model: str = Field(default="claude-sonnet-4-5", description="Claude model for commentary")
     generate_subvurs_notes: bool = Field(default=True, description="Generate internal Subvurs research connection notes during curation")
+
+    # LLM backend routing (K11 relocation: local gpt-oss PRIMARY, cloud CAPPED FALLBACK)
+    llm_backend: str = Field(
+        default="anthropic",
+        description='LLM backend: "anthropic" (default, direct API) or "router" '
+        "(K11 local-first router with capped cloud fallback). Box sets LLM_BACKEND=router.",
+    )
+    router_cli_cwd: str = Field(
+        default="~/subvurs_deploy",
+        description="Working dir from which `python -m router.cli` resolves "
+        "(the parent of the router package). Env: ROUTER_CLI_CWD.",
+    )
+    router_python: str = Field(
+        default="python",
+        description="Python interpreter used to launch the router CLI (the router "
+        "venv's python on the box). Env: ROUTER_PYTHON.",
+    )
+    router_timeout_sec: float = Field(
+        default=700.0,
+        description="Subprocess timeout for a single router call. gpt-oss cold "
+        "load (~86s) + long generation can be slow. Env: ROUTER_TIMEOUT_SEC.",
+    )
     subvurs_impact_scoring_enabled: bool = Field(
         default=True,
         description="Apply shared subvurs_impact scorer + gates during curation (Phase B; proposal §8)",
@@ -128,6 +150,23 @@ class Settings(BaseSettings):
     def has_anthropic(self) -> bool:
         """Check if Anthropic API is configured."""
         return bool(self.anthropic_api_key)
+
+    @property
+    def uses_router(self) -> bool:
+        """True when LLM calls are routed through the K11 local-first router."""
+        return self.llm_backend == "router"
+
+    @property
+    def llm_available(self) -> bool:
+        """Check if some LLM backend is usable for commentary/synthesis/etc.
+
+        Under the default anthropic backend this is exactly `has_anthropic`. Under
+        the router backend, the router itself owns its (local + capped-cloud)
+        credentials, so Curator does not require ANTHROPIC_API_KEY — being on the
+        router backend is sufficient. Call sites that previously guarded on
+        `has_anthropic` should guard on this instead so the router path runs.
+        """
+        return self.has_anthropic or self.uses_router
 
     @property
     def has_news_api(self) -> bool:
