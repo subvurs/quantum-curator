@@ -75,20 +75,26 @@ def _router_complete(
 ) -> str:
     """Run one completion through the K11 router CLI in task-mode.
 
-    Writes ``system`` to a temp file (``--system-file`` avoids arg-length limits
-    for the multi-KB curator prompts), invokes ``python -m router.cli --task
-    --system-file <f> [--no-escalate] --json <user>``, parses the JSON, and
-    returns the ``answer`` field. Raises RouterError on any failure so the
-    caller's existing fallback fires.
+    Writes BOTH ``system`` and ``user`` to temp files (``--system-file`` /
+    ``--task-file``), invokes ``python -m router.cli --task --system-file <f>
+    --task-file <g> [--no-escalate] --json``, parses the JSON, and returns the
+    ``answer`` field. Passing the user message via a file (rather than inline on
+    argv) is required: the bulk-inventory synthesizer prompt packs >1000
+    catalogue entries into a single user message that overflows ARG_MAX
+    (``OSError: [Errno 7] Argument list too long``) when passed as a CLI arg.
+    Raises RouterError on any failure so the caller's existing fallback fires.
     """
     router_python = os.path.expanduser(settings.router_python)
     router_cwd = os.path.expanduser(settings.router_cli_cwd)
     timeout = float(settings.router_timeout_sec)
 
     sys_fd, sys_path = tempfile.mkstemp(prefix="curator_sys_", suffix=".txt")
+    usr_fd, usr_path = tempfile.mkstemp(prefix="curator_usr_", suffix=".txt")
     try:
         with os.fdopen(sys_fd, "w", encoding="utf-8") as f:
             f.write(system)
+        with os.fdopen(usr_fd, "w", encoding="utf-8") as f:
+            f.write(user)
 
         cmd = [
             router_python,
@@ -97,10 +103,12 @@ def _router_complete(
             "--task",
             "--system-file",
             sys_path,
+            "--task-file",
+            usr_path,
         ]
         if not allow_escalation:
             cmd.append("--no-escalate")
-        cmd += ["--json", user]
+        cmd.append("--json")
 
         try:
             proc = subprocess.run(
@@ -133,12 +141,13 @@ def _router_complete(
             raise RouterError(f"router returned empty answer (tier={tier})")
         return answer
     finally:
-        try:
-            os.unlink(sys_path)
-        except OSError:
-            # Temp file already gone / unlinkable — nothing actionable; the
-            # tempdir is cleaned by the OS regardless.
-            pass
+        for path in (sys_path, usr_path):
+            try:
+                os.unlink(path)
+            except OSError:
+                # Temp file already gone / unlinkable — nothing actionable; the
+                # tempdir is cleaned by the OS regardless.
+                pass
 
 
 def llm_complete(

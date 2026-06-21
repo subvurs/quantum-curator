@@ -135,10 +135,30 @@ class _RunRecorder:
     calls: list = field(default_factory=list)
 
 
+def _read_flag_file(cmd, flag):
+    """Read the file path that follows ``flag`` in ``cmd`` (e.g. --task-file),
+    returning its contents. The caller's ``finally`` unlinks these temp files
+    right after subprocess.run returns, so they must be read here — at call
+    time — to assert on the prompt contents."""
+    if flag not in cmd:
+        return None
+    path = cmd[cmd.index(flag) + 1]
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
+
+
 def _patch_subprocess_run(monkeypatch, *, proc=None, raise_exc=None, recorder=None):
     def _fake_run(cmd, **kwargs):
         if recorder is not None:
-            recorder.calls.append({"cmd": cmd, "kwargs": kwargs})
+            recorder.calls.append(
+                {
+                    "cmd": cmd,
+                    "kwargs": kwargs,
+                    # Capture file-passed prompts before the caller unlinks them.
+                    "system_file_content": _read_flag_file(cmd, "--system-file"),
+                    "task_file_content": _read_flag_file(cmd, "--task-file"),
+                }
+            )
         if raise_exc is not None:
             raise raise_exc
         return proc
@@ -169,7 +189,12 @@ def test_router_backend_returns_answer_and_omits_no_escalate_when_allowed(
     cmd = rec.calls[0]["cmd"]
     # Task-mode CLI shape; model/max_tokens NOT forwarded (router owns them).
     assert "--task" in cmd and "--system-file" in cmd and "--json" in cmd
-    assert cmd[-1] == "USER PROMPT"
+    # User prompt is passed via --task-file (not inline on argv), to avoid the
+    # ARG_MAX overflow the bulk-inventory synthesizer prompt triggers.
+    assert "--task-file" in cmd
+    assert "USER PROMPT" not in cmd
+    assert rec.calls[0]["task_file_content"] == "USER PROMPT"
+    assert rec.calls[0]["system_file_content"] == "SYS PROMPT"
     # allow_escalation=True → no --no-escalate flag.
     assert "--no-escalate" not in cmd
     assert rec.calls[0]["kwargs"]["cwd"] == "/tmp/router-cwd"
@@ -261,7 +286,10 @@ def test_make_router_llm_call_returns_three_arg_adapter(monkeypatch):
     assert out == "scorer json blob"
     cmd = rec.calls[0]["cmd"]
     assert "--no-escalate" in cmd  # local-only / fail-closed bulk
-    assert cmd[-1] == "SCORER USER"
+    assert "--task-file" in cmd
+    assert "SCORER USER" not in cmd
+    assert rec.calls[0]["task_file_content"] == "SCORER USER"
+    assert rec.calls[0]["system_file_content"] == "SCORER SYS"
 
 
 def test_make_router_llm_call_propagates_escalation_true(monkeypatch):
