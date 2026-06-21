@@ -2,12 +2,30 @@
 
 from __future__ import annotations
 
+import re
 import subprocess
 import tempfile
 from datetime import datetime
 from pathlib import Path
 
 from .config import get_settings
+
+# Strip userinfo (user:token@ / x-access-token:<PAT>@) from any URL before it
+# is printed. Deploy URLs are passed as
+# https://x-access-token:<TOKEN>@github.com/owner/repo.git; without this the
+# success line and git error output would leak the PAT into stdout -> journald.
+_URL_CRED_RE = re.compile(r"(?P<scheme>[a-zA-Z][a-zA-Z0-9+.\-]*://)[^/@\s]+@")
+
+
+def _redact_url_creds(text: str) -> str:
+    """Replace ``scheme://userinfo@`` with ``scheme://***@`` in *text*.
+
+    Operates on arbitrary strings (not just bare URLs) so it can scrub git
+    error output that embeds the token-bearing clone URL.
+    """
+    if not text:
+        return text
+    return _URL_CRED_RE.sub(r"\g<scheme>***@", text)
 
 
 class GitHubPagesPublisher:
@@ -138,16 +156,16 @@ class GitHubPagesPublisher:
                     check=True,
                 )
 
-                print(f"Successfully deployed to {repo_url} ({branch})")
+                print(f"Successfully deployed to {_redact_url_creds(repo_url)} ({branch})")
                 return True
 
         except subprocess.CalledProcessError as e:
-            print(f"Deployment error: {e}")
-            print(f"stdout: {e.stdout}")
-            print(f"stderr: {e.stderr}")
+            print(f"Deployment error: {_redact_url_creds(str(e))}")
+            print(f"stdout: {_redact_url_creds(e.stdout or '')}")
+            print(f"stderr: {_redact_url_creds(e.stderr or '')}")
             return False
         except Exception as e:
-            print(f"Deployment failed: {e}")
+            print(f"Deployment failed: {_redact_url_creds(str(e))}")
             return False
 
     def verify_deployment(self, site_url: str | None = None) -> bool:
