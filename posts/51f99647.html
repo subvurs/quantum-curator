@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adversarial Reinforcement Learning for Adaptive Eavesdropping in BB84 Quantum Key Distribution | Quantum Crier</title>
+    <meta name="description" content="BB84 quantum key distribution derives its security from a physical guarantee that any eavesdropper disturbs the channel in a statistically detectable way. Prior">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Adversarial Reinforcement Learning for Adaptive Eavesdropping in BB84 Quantum Key Distribution">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
+            
+        </div>
+        <h1>Adversarial Reinforcement Learning for Adaptive Eavesdropping in BB84 Quantum Key Distribution</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 22, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article shows for the first time that a classical reinforcement‑learning agent can turn BB84’s static security analysis on its head by learning to adapt its interception strategy in real time, slashing detection rates from essentially certain to near‑zero under realistic channel noise. By framing eavesdropping as a Markov decision process and demonstrating dramatic gains across Q‑Learning, SARSA and Double Q‑Learning, the work highlights a concrete gap between theoretical security proofs and practical adversaries that can evolve during a key exchange. The findings urge protocol designers to incorporate adaptive‑adversary baselines into security models and to explore countermeasures such as randomized checkpointing before deploying BB84 in real‑world networks.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>BB84 quantum key distribution derives its security from a physical guarantee that any eavesdropper disturbs the channel in a statistically detectable way. Prior work evaluates this by assuming Eve attacks at a fixed, analytically optimized rate. We examine what happens when Eve is modeled instead as a learning agent. Classical reinforcement learning is used, specifically tabular Q-Learning, SARSA, and Double Q-Learning, to adaptive BB84 eavesdropping. This formulates the attacker&#39;s decision as a Markov Decision Process where the agent observes Quantum Bit Error Rate (QBER) feedback and decides, qubit by qubit, whether to intercept or pass. Experiments span three channel noise levels ($μ_{ch}\in\{1\%,3\%,5\%\}$) and are validated across five independent random seeds (45 training runs per condition, 10,000 episodes each). Against the best non-adaptive analytical baseline, Q-Learning reduces detection from $99.4\%$ to $0.28\%\pm0.27\%$ at $μ_{ch}=1\%$ while extracting approximately 10.5 correct bits per episode. This is a 355-fold reduction that is statistically significant ($p=0.020$, Mann-Whitney $U$ test). We also report the spontaneous emergence of an end-game burst, where agents independently learn to surge their attack rate at the final block. This exploit vanishes under randomized checkpoint intervals while stealth performance remains statistically indistinguishable. These results motivate the inclusion of adaptive adversary baselines in quantum cryptographic security evaluations.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2606.22962v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Adversarial%20Reinforcement%20Learning%20for%20Adaptive%20Eavesdropping%20in%20BB84%20Quantum%20Key%20Distribution&url=https://quantumcrier.com/posts/51f99647.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/51f99647.html&title=Adversarial%20Reinforcement%20Learning%20for%20Adaptive%20Eavesdropping%20in%20BB84%20Quantum%20Key%20Distribution" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
