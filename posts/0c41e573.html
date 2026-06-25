@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolving Quantum Error-Correcting Encodings for Molecular Simulation | Quantum Crier</title>
+    <meta name="description" content="Useful quantum algorithms require many coupled discrete design choices. We study LLM-driven evolutionary program synthesis -- a language model edits a program, ">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Evolving Quantum Error-Correcting Encodings for Molecular Simulation">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Evolving Quantum Error-Correcting Encodings for Molecular Simulation</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 24, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article shows that automated program synthesis can push fermion‑to‑qubit encodings well beyond the long‑standing distance‑3 barrier, delivering GSE constructions with exact code distances of five and even six for realistic molecular Hamiltonians. By achieving up to a five‑qubits‑per‑mode overhead while cutting required data qubits by a factor of four to five compared with Jordan–Wigner plus surface‑code tricks, the work promises more compact error‑protected simulations on near‑term devices. It also demonstrates how large language models can serve as productive “design assistants” for quantum algorithm engineering, though the gains are currently limited to code‑capacity metrics and do not yet translate into full fault‑tolerant circuit or Trotter‑cost improvements. Readers should watch this approach as a prototype for scaling up error‑corrected chemistry simulations once hardware error rates continue to fall.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Useful quantum algorithms require many coupled discrete design choices. We study LLM-driven evolutionary program synthesis -- a language model edits a program, an external verifier scores the result, and high-scoring programs are retained and re-mutated -- as a tool for quantum-computing research. As a case study, we apply this loop to the Generalized Superfast Encoding (GSE), a fermion-to-qubit encoding whose prior molecular constructions reach code distance $3$. The search discovered interpretable constructor programs whose codes have \emph{exact} distance $5$ on the molecular instances tested, and distance $6$ on one $20$-mode instance, under strict stabilizer-coset semantics. To our knowledge these are the first GSE/superfast encodings beyond distance $3$ for dense molecular Hamiltonians. A second search, guided by verifier analysis of the first artifact, found a circulant constructor that reaches a five-qubits-per-mode floor on the tested $12$-, $14$-, $16$-, and $20$-mode instances, with certified dense-rule fallback at the failing $18$-mode case. As secondary resource descriptors, in a code-capacity \emph{memory} comparison at $p=10^{-3}$ the resulting encodings use $4.2$--$5.0\times$ fewer data qubits than a scoped per-mode Jordan--Wigner $+$ $[[25,1,5]]$ surface route and have $3.4$--$8.2\times$ lower logical-failure rates under finite-weight decoding tables with explicit truncation brackets; we claim no circuit-level fault-tolerance or Trotter-cost advantage. The search trajectory illustrates a general operating lesson: rewarding distance alone selects trivial dense graphs, whereas holding verified distance fixed and rewarding compression selects structured rules.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2606.25870v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Evolving%20Quantum%20Error-Correcting%20Encodings%20for%20Molecular%20Simulation&url=https://quantumcrier.com/posts/0c41e573.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0c41e573.html&title=Evolving%20Quantum%20Error-Correcting%20Encodings%20for%20Molecular%20Simulation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
