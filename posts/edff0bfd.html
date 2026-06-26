@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultivating logical catalysts for fault-tolerant dyadic phase rotations | Quantum Crier</title>
+    <meta name="description" content="We introduce a surface-code cultivation protocol for reusable logical catalyst states that implement exact fine dyadic phase gates $Z^{2^{-b}}$ by phase kickbac">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cultivating logical catalysts for fault-tolerant dyadic phase rotations">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>Cultivating logical catalysts for fault-tolerant dyadic phase rotations</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">June 25, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article shows how a surface‑code “catalyst” can supply exact dyadic phase gates such as \(Z^{1/8}\) without the approximation error that normally accumulates from Clifford+T synthesis, making the non‑Clifford depth of an algorithm independent of its target precision. By reusing a high‑period Clifford eigenstate cultivated on a modest number of logical qubits, the protocol sidesteps repeated magic‑state distillation cycles and achieves fault‑tolerant phase kickback with only a single verification round, a striking contrast to existing overhead‑heavy approaches. If the technique scales, it could dramatically lower resource costs for chemistry or simulation workloads that rely on many small‑angle rotations, although the current construction still demands \(O(2^{b})\) logical qubits and postselection overhead that must be managed in practice.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>We introduce a surface-code cultivation protocol for reusable logical catalyst states that implement exact fine dyadic phase gates $Z^{2^{-b}}$ by phase kickback. The catalyst is an eigenstate of a high-period Clifford circuit $U$, with a direct construction supported on $O(2^b)$ logical qubits. Once cultivated, each invocation implements the target phase through a controlled-$U$ gadget, removing Clifford+$T$ synthesis approximation error from the online gate and making the online non-Clifford depth independent of the target logical accuracy. As a concrete demonstration, we construct a catalyst for $\sqrt{T}=Z^{1/8}$, where $U$ is a nine-qubit brickwork Clifford circuit and controlled-$U$ consists of eight controlled-CNOTs. Starting from nine distance-three rotated-surface-code blocks, we cultivate the catalyst through logical-$U$ checks, syndrome extraction and postselection, code growth, and complementary-gap decoding. Due to the intrinsic fault tolerance of the phase read-out, a \emph{single} verification round already reaches the leading error-corrected scaling, in contrast to the repeated logical checks required when cultivating single-qubit magic states. A hybrid tensor-network and stabilizer simulation shows that, at physical error rate $p=10^{-3}$, the postselected catalyst can be grown to distance-seven rotated-surface-code blocks with logical leakage rate $\sim 10^{-6}$ using around seven expected attempts, and can be suppressed further with stronger postselection. Compared with existing protocols, our approach trades offline, phase-specific catalyst cultivation for exactness, reusability, and constant-depth online implementation of fixed fine dyadic phases in codes with restricted transversal gate sets.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2606.27358v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Cultivating%20logical%20catalysts%20for%20fault-tolerant%20dyadic%20phase%20rotations&url=https://quantumcrier.com/posts/edff0bfd.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/edff0bfd.html&title=Cultivating%20logical%20catalysts%20for%20fault-tolerant%20dyadic%20phase%20rotations" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
