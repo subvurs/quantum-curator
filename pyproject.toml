@@ -38,6 +38,11 @@ dependencies = [
     "tweepy>=4.14.0",
     "pillow>=10.0.0",
     "pyyaml>=6.0.0",
+    # Q-day Clock — required by `quantum-curator qday-export` to sign the
+    # CuratorManifest (imports `qday_clock.core.signing`). Tag-pinned so a
+    # signing-API bump on the qday-clock side can't silently break the
+    # daily export. Bump tag deliberately when the API changes.
+    "qday-clock @ git+https://github.com/subvurs/qday-clock.git@v0.2.5",
 ]
 
 [project.optional-dependencies]
