@@ -59,6 +59,15 @@ quantum-curator = "quantum_curator.cli:cli"
 Homepage = "https://github.com/meathe/quantum-curator"
 Repository = "https://github.com/meathe/quantum-curator"
 
+[tool.hatch.metadata]
+# Required so the `qday-clock @ git+https://...` direct-URL dependency in
+# [project.dependencies] is accepted by hatchling. Without this, every
+# `pip install -e .` (including the one inside run_curator_daily.sh:90)
+# aborts with "cannot be a direct reference unless ... allow-direct-references
+# is set to true". Scope is intentionally narrow — only the qday-clock pin
+# needs it today; the rest of the deps remain PyPI-resolved.
+allow-direct-references = true
+
 [tool.hatch.build.targets.wheel]
 packages = ["quantum_curator"]
 
