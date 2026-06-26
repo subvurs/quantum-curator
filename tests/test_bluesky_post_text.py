@@ -114,6 +114,42 @@ def test_post_never_ends_in_ellipsis():
         assert not text.endswith("…"), f"trailing … for title={title!r}"
 
 
+def test_over_budget_first_sentence_word_wraps_not_title_only():
+    """A first sentence longer than the budget must still surface a
+    word-wrapped excerpt — not collapse to title-only.
+
+    Regression for the gpt-oss commentary drop (2026-06-26): the local
+    curator opens with long comma-spliced sentences that overflow the
+    ~200-char budget; the sentence-packer fit zero full sentences and
+    posted title + hashtags only, even though the full commentary was
+    stored in the DB and rendered fine on the site.
+    """
+    sharer = _make_sharer()
+    commentary = (
+        "This article highlights a rare convergence of quantum computing, "
+        "artificial intelligence, and oncology, showing how university-level "
+        "grant programs are now seeding cross-disciplinary teams that aim to "
+        "accelerate cancer biomarker discovery with emerging quantum algorithms. "
+        "It builds on recent demonstrations of hybrid workflows."
+    )
+    post = _post(
+        title="University Grant Targets Quantum and AI Tools for Cancer Research",
+        commentary=commentary,
+    )
+    text = sharer._build_post_text(post)
+    assert len(text) <= 300
+    assert not text.endswith("...")
+    assert not text.endswith("…")
+    # Commentary must be present — the opening of the first sentence survives.
+    assert "This article highlights a rare convergence" in text
+    # It is a body paragraph between title and hashtags, not title-only.
+    parts = text.split("\n\n")
+    assert len(parts) == 3, f"expected title/body/hashtags, got {parts!r}"
+    # No whole word is split at the wrap boundary (last token is intact).
+    body_last = parts[1].rsplit(" ", 1)[-1]
+    assert body_last in commentary.split()
+
+
 def test_overflow_drops_next_sentence_rather_than_chopping():
     """Mid-sentence chop is forbidden — pack stops at the last full sentence."""
     sharer = _make_sharer()

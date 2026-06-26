@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time
 from datetime import datetime
 from typing import Optional
 
@@ -421,6 +422,16 @@ class BlueskySharer:
             parent_uri, parent_cid = root_uri, root_cid
             thread_uris: list[str] = [root_uri]
             for body in posts[1:]:
+                # Space each reply ≥1 whole second after the previous post.
+                # createdAt is recorded at whole-second precision (_post_one),
+                # and Bluesky's getAuthorFeed collapses a self-thread whose
+                # root and first reply share the same createdAt second —
+                # suppressing the "TL;DR" root from the profile feed (the post
+                # is still live by URL, just invisible in the feed). Observed
+                # 2026-06-24: a 0-second root/reply gap hid the root; the three
+                # prior days (≥1 s gap) all showed it. The delay guarantees a
+                # distinct whole second so the root stays the thread anchor.
+                time.sleep(1.1)
                 reply_block = {
                     "root": {"uri": root_uri, "cid": root_cid},
                     "parent": {"uri": parent_uri, "cid": parent_cid},
@@ -587,6 +598,19 @@ class BlueskySharer:
                 else:
                     break
             commentary_excerpt = " ".join(packed)
+
+            # If not one full sentence fit (e.g. the local gpt-oss curator
+            # opens with a long comma-spliced sentence that overflows the
+            # budget), word-wrap the first sentence at the last word boundary
+            # within budget rather than dropping all commentary and posting
+            # title-only. No ellipsis — same no-"..." philosophy as the title
+            # word-wrap below.
+            if not packed:
+                first = re.split(r"(?<=[.!?])\s+", normalized)[0].strip()
+                wrapped = first[:commentary_budget]
+                if " " in wrapped:
+                    wrapped = wrapped.rsplit(" ", 1)[0]
+                commentary_excerpt = wrapped.rstrip()
 
         # Assemble. No-commentary case yields "title\n\nhashtags".
         if commentary_excerpt:

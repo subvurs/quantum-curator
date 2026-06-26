@@ -73,6 +73,19 @@ def _clear_caches():
     reset_caches()
 
 
+@pytest.fixture(autouse=True)
+def _no_sleep(monkeypatch):
+    """Skip the real inter-post delay in the threaded share path.
+
+    ``share_daily_summary`` sleeps ≥1 s before each reply so the root and
+    reply land on distinct ``createdAt`` whole seconds (Bluesky collapses a
+    same-second self-thread root out of the author feed). The delay is
+    irrelevant to these structural assertions, so stub it to keep the suite
+    fast.
+    """
+    monkeypatch.setattr(bsky_module.time, "sleep", lambda *_a, **_k: None)
+
+
 @pytest.fixture
 def tmp_db(tmp_path, monkeypatch):
     """Route DB writes through a tmp SQLite file via settings.data_dir."""
