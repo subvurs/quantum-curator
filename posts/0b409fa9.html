@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQGen: Structured Quantum Image Generation with Latent-Modulated Quantized Tensor Trains | Quantum Crier</title>
+    <meta name="description" content="Generating images directly from quantum systems is an attractive but unresolved goal on NISQ hardware. Existing quantum generators face several coupled obstacle">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SQGen: Structured Quantum Image Generation with Latent-Modulated Quantized Tensor Trains">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+        </div>
+        <h1>SQGen: Structured Quantum Image Generation with Latent-Modulated Quantized Tensor Trains</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">July 07, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article matters because it delivers the first fully‑quantum image generator that sidesteps three of NISQ’s biggest roadblocks—barren‑plateau gradients, deep circuit overhead, and the need for a classical decoder—by embedding a quantized tensor‑train directly into native gate operations. By promoting the tensor‑train bond index to ancilla qubits and introducing latent‑modulated rotation re‑uploading, SQGen achieves compact circuits that can be trained classically yet deployed end‑to‑end on quantum hardware, pushing generative modeling closer to a genuine quantum advantage. While the approach is still demonstrated on modest‑size datasets and will face scaling challenges as noise persists, it establishes a concrete blueprint for scalable quantum image synthesis that could accelerate applications in quantum graphics and data compression.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Generating images directly from quantum systems is an attractive but unresolved goal on NISQ hardware. Existing quantum generators face several coupled obstacles: barren plateaus that block trainability, expensive quantum circuit preparation, and hardware noise that erodes quantum information with depth. A further difficulty is producing image-scale output without a classical decoder, whose use would otherwise break the end-to-end quantum advantage. We propose SQGen, a full quantum generator built on a quantized tensor train (QTT) with a latent modulation architecture. Specifically, SQGen promotes the QTT bond index of the target pixel distribution to ancilla bond qubits, so that each circuit site operates locally on a bond register plus the two physical qubits that carry the row- and column-bit of one image scale. We further introduce latent modulation: each re-uploading rotation is factorized at the angle level into a trainable main path plus an additive latent term, reducing to the trainable main path when the latent term is disabled. During training, we create a differentiable model in the classical system under gate-compatibility constraints, with a torus prior as the latent distribution. After training, every operator maps one-to-one to a native quantum gate, yielding a compact, deployable quantum circuit with no classical decoder in the inference path. Together, these design choices address the obstacles raised above. Extensive experiments on image datasets and synthetic data demonstrate that SQGen trains stably, generates images end-to-end from a shallow circuit with no classical decoder, and shows promising feasibility on real quantum hardware.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2607.06058v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=SQGen%3A%20Structured%20Quantum%20Image%20Generation%20with%20Latent-Modulated%20Quantized%20Tensor%20Trains&url=https://quantumcrier.com/posts/0b409fa9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0b409fa9.html&title=SQGen%3A%20Structured%20Quantum%20Image%20Generation%20with%20Latent-Modulated%20Quantized%20Tensor%20Trains" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>

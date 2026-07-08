@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latency-Constrained Hardware-Aware Quantum Error Correction Co-Design with Adaptive Confidence-Gated Neural Decoding for the Rotated Surface Code | Quantum Crier</title>
+    <meta name="description" content="Real-time decoding is a major bottleneck in scaling quantum error correction (QEC) from noisy intermediate-scale quantum (NISQ) devices to fault-tolerant quantu">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Latency-Constrained Hardware-Aware Quantum Error Correction Co-Design with Adaptive Confidence-Gated Neural Decoding for the Rotated Surface Code">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9883;</span>
+                    <span class="logo-text">Quantum Crier</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Latency-Constrained Hardware-Aware Quantum Error Correction Co-Design with Adaptive Confidence-Gated Neural Decoding for the Rotated Surface Code</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">July 07, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <blockquote class="commentary">
+                This article tackles one of the thorniest hurdles on the road to fault‑tolerant quantum computers—real‑time decoding of surface‑code syndromes—by marrying a lightweight neural network with traditional minimum‑weight perfect matching only when confidence is low. By routing just a few percent of measurements to the more expensive MWPM step, the authors achieve near‑optimal logical error rates while keeping per‑shot latency and CPU throughput well within the limits of commodity hardware, a result that directly addresses scalability concerns raised by recent demonstrations of larger surface codes. The work builds on the growing trend of hybrid classical‑quantum co‑design and shows how adaptive machine‑learning pipelines can deliver practical decoding performance without exotic accelerators, though its efficacy beyond distance 11 and under more realistic noise models remains to be validated experimentally.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Real-time decoding is a major bottleneck in scaling quantum error correction (QEC) from noisy intermediate-scale quantum (NISQ) devices to fault-tolerant quantum computing. We present an adaptive confidence-gated decoding framework for the rotated surface code that treats decoding as a two-stage inference problem. A lightweight feed-forward neural network performs fast-path decoding for the majority of syndrome measurements, while only low-confidence predictions are escalated to a minimum-weight perfect matching (MWPM) refinement stage. We benchmark the framework on rotated surface codes with distances $d \in \{3,5,7,9,11\}$ under circuit-level depolarising noise using the Stim stabiliser simulator. The evaluation characterises logical accuracy, confidence-controlled accuracy-latency trade-offs, decoding throughput, per-shot latency, and decoding-graph resource scaling. Routing only 3.3%-6.2% of syndromes to the refinement stage improves logical accuracy from 99.21% for the neural-only baseline to 99.81% at a confidence threshold of 0.95 while incurring only a bounded increase in average decoding cost. Neural-decoder throughput saturates near $4.6 \times 10^{5}$ samples s$^{-1}$ at batch size 512 on commodity CPU hardware, indicating that the neural fast path is not the dominant throughput bottleneck beyond code distance $d=7$. We release the complete benchmarking pipeline, trained models, raw benchmark data, and source code, and explicitly distinguish the experimentally validated contributions from the broader hardware-aware QEC co-design roadmap, including hardware-constrained code discovery, GPU-accelerated inference, and multi-noise optimisation, which remain directions for future work.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2607.05814v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Latency-Constrained%20Hardware-Aware%20Quantum%20Error%20Correction%20Co-Design%20with%20Adaptive%20Confidence-Gated%20Neural%20Decoding%20for%20the%20Rotated%20Surface%20Code&url=https://quantumcrier.com/posts/07e4eec6.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/07e4eec6.html&title=Latency-Constrained%20Hardware-Aware%20Quantum%20Error%20Correction%20Co-Design%20with%20Adaptive%20Confidence-Gated%20Neural%20Decoding%20for%20the%20Rotated%20Surface%20Code" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                this.parentElement.classList.add('image-fallback');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
