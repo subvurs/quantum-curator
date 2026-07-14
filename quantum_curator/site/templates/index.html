@@ -35,6 +35,7 @@
             </h1>
             <p class="hero-summary">{{ hero_post.summary[:250] }}{% if hero_post.summary|length > 250 %}...{% endif %}</p>
             <div class="hero-commentary">
+                <p class="ai-kicker">AI Commentary</p>
                 <blockquote>{{ hero_post.curator_commentary }}</blockquote>
             </div>
             <div class="post-meta">

@@ -11,6 +11,24 @@
     </header>
 
     <div class="archive-list">
+        {% if months and months|length <= 2 %}
+        {# Sparse archive: while the site spans <= 2 months, show one flowing list instead of a month grid #}
+        {% set oldest = months[-1] %}
+        {% set total = month_posts.values() | map('length') | sum %}
+        <div class="archive-month">
+            <p class="archive-flat-heading">Since {{ month_posts[oldest][0].published_at.strftime('%B %Y') }} &mdash; {{ total }} article{{ 's' if total != 1 }}</p>
+            <ul class="month-articles">
+                {% for month in months %}
+                {% for post in month_posts[month] %}
+                <li>
+                    <a href="{{ base_path }}/posts/{{ post.id[:8] }}.html">{{ post.title }}</a>
+                    <span class="article-source">{{ post.source_name }}</span>
+                </li>
+                {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
         {% for month in months %}
         {% set month_date = month_posts[month][0].published_at %}
         <div class="archive-month">
@@ -37,6 +55,7 @@
         {% else %}
         <p class="no-articles">No archived articles yet.</p>
         {% endfor %}
+        {% endif %}
     </div>
 </section>
 {% endblock %}
