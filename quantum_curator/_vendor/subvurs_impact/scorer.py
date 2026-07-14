@@ -174,7 +174,8 @@ Return ONLY a single JSON object with EXACTLY these keys:
 - match (per §2.4 MatchScore):
   1.0 = same exact problem AND technique as one path's current sprint
   0.7 = same problem class as a path
-  0.4 = touches a core-theory hook
+  0.4 = touches a historical/falsified core-theory topic (retracted
+        July 2026); score the intersection, not the claim
   0.2 = domain-adjacent but no specific path
   0.0 = no match
 - evidence_class: pick the highest-tier evidence the item supports.

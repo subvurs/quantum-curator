@@ -11,45 +11,130 @@ the `version` / status snapshot, the `summary` block, and the
 
 The CORE_THEORY block stays distinct from commercial paths because
 matching the core-theory section earns MatchScore = 0.4 (per §2.4)
-not 0.7 / 1.0.
+not 0.7 / 1.0. As of v0.2.0 the block is HISTORICAL: the July 2026
+falsification series (out-of-sample landmark test, CV_MAX audit,
+matched-noise re-run, Impax mechanism reattribution) retired the
+headline claims. Core-theory matches now score the *intersection*
+(shared problem domain / methodology), never the claim itself.
 """
 
 from __future__ import annotations
 
 from typing import Iterable
 
-PATH_CATALOG_VERSION = "v0.1.0-20260605"
+PATH_CATALOG_VERSION = "v0.2.0-20260714"
 
 
+# HISTORICAL CORE THEORY — falsified / retracted, do not cite as findings.
+# Retained so the scorer can recognize when an external item touches the
+# same problem space; the 0.4 match tier scores that intersection, not
+# the (retired) claim. Every entry names its falsification record.
 CORE_THEORY: dict[str, str] = {
     "nyx_equation": (
         "Ψ(c,p,n) = 100c² × [(1-p) + p×exp(-50(d-0.504)²)] × Ψ_n(n), "
-        "with d = p/(c+ε). Framework for structured emergence from "
-        "quantum vacuum."
+        "with d = p/(c+ε). HISTORICAL: the d=0.504 peak is a chosen "
+        "Gaussian centre in the equation, not a discovered landmark — "
+        "the Jul 9, 2026 out-of-sample landmark test (BUILT_IN_CONFIRMED, "
+        "OUT_OF_SAMPLE_LANDMARK_FINDINGS.md) found zero of eight "
+        "classifier-independent observables peaking near d≈0.5."
     ),
     "chaos_valley_band": (
-        "d ∈ [0.4, 0.6] is the structured-emergence band; d = 0.504 is "
-        "the interior maximum; d = 0.6 is a hard cliff (117k-trial "
-        "sweep, Apr 25, 2026). Maps to quantum phase-transition / "
-        "critical-point physics."
+        "HISTORICAL: the Apr 25, 2026 117k-trial 'structured-emergence "
+        "band' claim is retracted/reduced. Cross-c uniformity retracted "
+        "Jun 16, 2026 (matched-noise re-run, LOOPHOLE_CONFIRMED: c=0.5 "
+        "band 70.5%→0.0%). The strict classifier's coherence/attractor "
+        "gates are decorative (Jul 9, 2026 CV_MAX audit, "
+        "DECORATIVE_GATE_CONFIRMED: cond 5 fires on 0.13% of "
+        "rejections). The d=0.6 'cliff' is tautological in static "
+        "dynamics (d_eff ≡ p/c is constant per trial). Do not cite the "
+        "band, the 0.504 peak, or the cliff as discovered findings."
     ),
     "time_symmetry": (
         "T = 0.857 time-symmetry constant (73.4% deterministic + 26.6% "
-        "stochastic)."
+        "stochastic). Retained as an operating parameter / context "
+        "only — not a validated physical constant."
     ),
     "inverse_scaling": (
-        "Nyx-class optimizers' relative error decreases as problem size "
-        "grows (avoids barren plateaus via non-gradient construction)."
+        "HISTORICAL framing: 'Nyx-class optimizers avoid barren "
+        "plateaus via non-gradient construction.' NyxSolver is NOT "
+        "competitive vs classical baselines (Gurobi) on knapsack; "
+        "treat inverse-scaling as a per-benchmark observation, not a "
+        "general property."
     ),
     "pattern_51_126": (
-        "Pattern 51 (0b110011): quantum-bridge pattern, demonstrated "
-        "zero-point-energy extraction signatures. Pattern 126: highest "
-        "measured coherence (46.1%)."
+        "HISTORICAL: Pattern 51 'zero-point-energy extraction "
+        "signatures' are unsupported — do not cite. Pattern 126's "
+        "46.1% coherence stands only as a raw hardware measurement. "
+        "The 67-69-76 triad error-correction hypothesis was disproved "
+        "Mar 2026."
+    ),
+    "impax_sensing": (
+        "HISTORICAL: the Impax '43x vs quantum sensing' figure is NOT "
+        "a sensing advantage (mixed evidence class; denominator ≈ NISQ "
+        "decoherence noise floor). Jul 2026 mechanism finding: the real "
+        "sensing primitive is the tanh saturating nonlinearity in "
+        "impulsive/non-Gaussian noise (textbook robust detection, "
+        "Kassam 1988); the consensus-coupling architecture is "
+        "statistically null for detection. Robust-detection "
+        "intersections are live; the 43x claim is not."
     ),
     "bidirectional_coupling": (
         "~21% error-mitigation gain via forward+reverse feedback "
         "(general framing only — problem-specific, not a universal "
         "constant)."
+    ),
+}
+
+
+# Cross-corpus intersection surfaces — the LIVE way to connect an
+# external item to Subvurs beyond a single commercial path. When an item
+# touches one of these, the note should state what the intersection
+# OPENS UP (an experiment to run, a claim to audit, a transferable
+# technique) against the 310k+ document corpus — never what it
+# "validates".
+CROSS_CORPUS_INTERSECTIONS: dict[str, str] = {
+    "wirecut_variance_reduction": (
+        "wire-cutting / quasi-probability variance reduction (Qfabric "
+        "v0.4-v0.5: stratified sampling, control variates, "
+        "Rao-Blackwellization; γ⁶ realization-weight floor is the open "
+        "bottleneck) — new estimator or IS techniques are directly "
+        "transferable."
+    ),
+    "qkd_finite_key_coexistence": (
+        "QKD finite-key analysis and classical coexistence (QCert EAT "
+        "pipeline; NyxFiber SKR-gated scheduling on shared fiber) — "
+        "new finite-key bounds, Raman/FWM models, or coexistence field "
+        "data feed both audits and schedulers."
+    ),
+    "gamma_estimation": (
+        "decoherence-rate (γ) / T1-T2 estimation under shot noise "
+        "(Questimator: 9000-trial benchmark + ibm_marrakesh/ibm_fez "
+        "pilots) — new estimators are benchmarkable against the "
+        "existing (k, N_shot) grid."
+    ),
+    "qldpc_decoding": (
+        "qLDPC / BB-code decoding and erasure conversion (Qalyx BP+OSD "
+        "kernel, HERALDED_ERASE DEM wiring) — decoder or noise-model "
+        "advances are testable in the existing harness."
+    ),
+    "robust_detection": (
+        "robust detection in non-Gaussian / impulsive noise (the real "
+        "Impax primitive: tanh saturating nonlinearity, Kassam 1988 "
+        "lineage) — locally-optimal detector literature and ε-mixture "
+        "noise models extend the Jul 2026 mechanism finding."
+    ),
+    "goodhart_evaluation": (
+        "Goodhart-resistant evaluation of optimizers/agents (gh_eval: "
+        "fail-closed gates, static-point/stiffness/saturation guards, "
+        "judge-veto patterns in nyx_discovery) — new reward-hacking or "
+        "eval-gaming results map onto the gate catalog."
+    ),
+    "benchmark_classifier_audit": (
+        "benchmark / classifier-audit methodology (the July 2026 "
+        "falsification series: fail_reason decomposition, out-of-sample "
+        "landmark tests, matched-noise controls, decorative-gate "
+        "detection) — auditing techniques from external work are "
+        "reusable on Subvurs classifiers, and vice versa."
     ),
 }
 
@@ -312,10 +397,13 @@ def build_prompt() -> str:
     lines = [
         "You are a research assistant identifying connections between "
         "quantum computing news and the Subvurs research program. "
-        "Surface connections to any of the following — core theory OR "
-        "active commercial paths.",
+        "Surface connections to active commercial paths first, "
+        "cross-corpus intersections second. Core theory below is "
+        "HISTORICAL context only.",
         "",
-        "CORE THEORY (Quasmology / Nyx)",
+        "HISTORICAL CORE THEORY (Quasmology / Nyx) — falsified or "
+        "retracted July 2026; do NOT cite these as findings. Use only "
+        "to recognize when an article touches the same problem space:",
     ]
     for label, body in CORE_THEORY.items():
         lines.append(f"- {label}: {body}")
@@ -331,6 +419,16 @@ def build_prompt() -> str:
             f"{path['summary']} Relevant: {path['relevant']}"
         )
     lines.append("")
+    lines.append(
+        "CROSS-CORPUS INTERSECTIONS (when an article touches one of "
+        "these, connect it to the 310k+ document corpus and state what "
+        "the intersection OPENS UP — an experiment to run, a claim to "
+        "audit, a transferable technique — never what it \"validates\")"
+    )
+    lines.append("")
+    for label, body in CROSS_CORPUS_INTERSECTIONS.items():
+        lines.append(f"- {label}: {body}")
+    lines.append("")
     # DO-NOT-USE block is injected at prompt-build time from donotuse.py
     # to keep a single source of truth. Imported lazily to avoid a
     # circular import at module load.
@@ -339,6 +437,13 @@ def build_prompt() -> str:
     lines.append("")
     lines.extend([
         "RULES",
+        "- Connect to a commercial path FIRST when one applies; a "
+        "cross-corpus intersection angle SECOND.",
+        "- Core theory may be referenced only as falsified/historical "
+        "context (e.g. \"same problem space as the retired chaos-valley "
+        "band\"), never as a live finding.",
+        "- State the evidence class of the article's claim where "
+        "discernible (theory / simulation / hardware).",
         "- Return 1-3 sentences ONLY if a genuine, specific connection "
         "exists to a concept above.",
         "- Return exactly \"None\" if no clear connection exists. "
@@ -347,8 +452,6 @@ def build_prompt() -> str:
         "element that links to it.",
         "- Never invoke a \"DO NOT USE\" framing even if the article "
         "seems to invite it.",
-        "- Prefer commercial-path connections over pure-theory "
-        "connections — commercial paths are the live product surface.",
         "- This is for internal research notes, not public display.",
     ])
     return "\n".join(lines)

@@ -314,6 +314,50 @@ def test_curate_article_handles_scorer_crash_fail_closed(
     assert post.subvurs_impact_version is None
 
 
+# --- 5. Prompt-lock: notes prompt comes from the shared catalog ----
+
+def test_subvurs_notes_prompt_is_built_from_shared_catalog():
+    """Lock for the v1.8.0 prompt dedup (2026-07-14).
+
+    The inline ``SUBVURS_NOTES_SYSTEM_PROMPT`` duplicate in curator.py
+    was deleted; the prompt must now be composed from the vendored
+    ``path_catalog.build_prompt()`` plus the curator output-format
+    preamble. This test prevents a silent return of the inline
+    duplicate: the catalog-only sections (CROSS-CORPUS INTERSECTIONS,
+    the DO-NOT-USE block, the July 2026 historical core-theory
+    re-scope) must all be present, alongside the preamble marker.
+    """
+    if not curator_mod._IMPACT_AVAILABLE:
+        pytest.skip("subvurs_impact vendored package unavailable")
+
+    prompt = curator_mod.SUBVURS_NOTES_SYSTEM_PROMPT
+    assert prompt is not None, (
+        "notes prompt is None despite vendored catalog being importable"
+    )
+    # Curator-specific preamble.
+    assert "OUTPUT FORMAT" in prompt
+    # Catalog-only sections — the deleted inline duplicate had none of
+    # these, so their presence proves the prompt is catalog-built.
+    assert "CROSS-CORPUS INTERSECTIONS" in prompt
+    assert "DO NOT USE" in prompt
+    assert "HISTORICAL CORE THEORY" in prompt
+
+    # The catalog powering the prompt is the July 2026 re-scope.
+    from quantum_curator._vendor.subvurs_impact import path_catalog  # type: ignore
+
+    assert path_catalog.PATH_CATALOG_VERSION == "v0.2.0-20260714"
+
+
+def test_subvurs_notes_prompt_is_none_when_catalog_unavailable(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    """Fail-closed: with the vendored catalog unavailable the builder
+    returns None (note generation skipped) rather than falling back to
+    any inline prompt text."""
+    monkeypatch.setattr(curator_mod, "_IMPACT_AVAILABLE", False)
+    assert curator_mod._build_subvurs_notes_system_prompt() is None
+
+
 # --- helpers ------------------------------------------------------
 
 def _boom_if_called(*_args, **_kwargs):

@@ -30,7 +30,7 @@ CONNECTIONS_TABLE_HEADER = (
 # pre-Phase-B emails (all zeros) keep their current layout.
 IMPACT_TABLE_HEADER = (
     '<div style="margin-top: 24px;">'
-    '<h2 style="color: #06b6d4; font-size: 18px; margin-bottom: 6px;">Top Subvurs-Impact Posts</h2>'
+    '<h2 style="color: #06b6d4; font-size: 18px; margin-bottom: 6px;">Top Corpus Intersections (commercial-path relevance)</h2>'
     '<p style="color: #94a3b8; font-size: 12px; margin: 0 0 12px 0;">'
     'Ranked by ``subvurs_impact_score`` (0.0–1.0). Quantitative scorer output, '
     'separate from the qualitative Research Connections below.</p>'
@@ -92,7 +92,7 @@ def build_insights_report(days: int = 1) -> tuple[str, str, int]:
     )[:IMPACT_TOP_N]
     num_impact = len(impact_ranked)
 
-    subject = "Quantum Curator: {} Subvurs connections found — {}".format(num_connections, today_str)
+    subject = "Quantum Curator: {} corpus intersections worth a look — {}".format(num_connections, today_str)
 
     # Build connection rows
     rows = ""
@@ -189,7 +189,8 @@ def build_insights_report(days: int = 1) -> tuple[str, str, int]:
         "{connections_section}\n"
         "{other_section}\n"
         '<div style="margin-top: 30px; padding-top: 16px; border-top: 1px solid #334155; text-align: center; color: #475569; font-size: 12px;">\n'
-        'Quantum Curator &middot; Automated daily report &middot; <a href="https://quantumcrier.com" style="color: #6366f1;">quantumcrier.com</a>\n'
+        'Quantum Curator &middot; Automated daily report &middot; <a href="https://quantumcrier.com" style="color: #6366f1;">quantumcrier.com</a><br>\n'
+        'Notes generated against shared catalog v0.2.0-20260714 (core theory re-scoped as historical, July 2026)\n'
         "</div>\n"
         "</div>\n"
         "</body>\n"

@@ -25,7 +25,7 @@ a duplicate-of-falsified-framing finding can still be useful as
 
 from __future__ import annotations
 
-DONOTUSE_VERSION = "v0.1.0-20260605"
+DONOTUSE_VERSION = "v0.2.0-20260714"
 
 
 PHRASES: list[str] = [
@@ -58,6 +58,22 @@ PHRASES: list[str] = [
     "nyxsolver as a sota optimizer",
     "nyxsolver state of the art optimizer",
     "nyxsolver beats gurobi",
+    # July 2026 falsification series — chaos valley / cliff / band
+    "chaos valley discovered",
+    "d=0.504 discovered",
+    "0.504 landmark discovered",
+    "emergence peak at 0.504",
+    "death threshold cliff confirmed",
+    "structured emergence band across c",
+    # Impax 43x sensing claim — NOT a sensing advantage (Jul 2026)
+    "43x sensing",
+    "43x quantum sensing advantage",
+    "impax beats quantum sensing",
+    # Pattern 51 zero-point energy — unsupported
+    "zero-point energy extraction",
+    "pattern 51 energy extraction",
+    # Consensus coupling — statistically null for detection (Jul 2026)
+    "consensus coupling advantage",
 ]
 
 
@@ -69,6 +85,12 @@ CONCEPT_TAGS: list[str] = [
     "h2o_vqe_speedup",
     "bidirectional_21_3",
     "nyxsolver_sota",
+    # July 2026 additions
+    "chaos_valley_discovered",
+    "death_cliff_static",
+    "impax_43x_sensing",
+    "p51_zpe",
+    "emergence_classifier_validated",
 ]
 
 
@@ -111,7 +133,7 @@ def build_donotuse_block() -> str:
     still recognizes the existing in-context guardrail.
     """
     return (
-        "DO NOT USE — falsified or stale framings (March–May 2026 "
+        "DO NOT USE — falsified or stale framings (March–July 2026 "
         "disproofs)\n"
         "- 67-69-76 triad as an \"error-correction cycle\" or "
         "\"information coherence state machine\" — DISPROVED on IBM "
@@ -134,5 +156,21 @@ def build_donotuse_block() -> str:
         "not a universal constant.\n"
         "- NyxSolver as a SOTA optimizer — it is NOT competitive vs "
         "Gurobi on knapsack; ridge tuning is an internal-best "
-        "improvement only."
+        "improvement only.\n"
+        "- Chaos Valley d=0.504 as a \"discovered\" landmark — the peak "
+        "is BUILT IN (a chosen Gaussian centre in the Master Equation), "
+        "per the Jul 9, 2026 out-of-sample landmark test. Do NOT frame "
+        "0.504 as discovered or the d=0.6 cliff as \"confirmed\" (it is "
+        "tautological in static dynamics).\n"
+        "- \"Structured emergence band across c\" — cross-c uniformity "
+        "RETRACTED Jun 16, 2026 (matched-noise re-run); the strict "
+        "classifier's coherence/attractor gates are decorative (CV_MAX "
+        "audit, Jul 9, 2026).\n"
+        "- Impax \"43x sensing\" / \"beats quantum sensing\" — NOT a "
+        "sensing advantage (mixed evidence class; NISQ-decoherence "
+        "denominator). The real primitive is the tanh nonlinearity in "
+        "impulsive noise (Kassam 1988); consensus coupling is null for "
+        "detection.\n"
+        "- Pattern 51 \"zero-point energy extraction\" — unsupported; "
+        "do not cite."
     )

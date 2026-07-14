@@ -12,9 +12,9 @@ GitHub Actions Linux runners (and any other host that does not have
 |-------|-------|
 | Upstream repo | `subvurs` (private) |
 | Upstream path | `blackbox/shared/subvurs_impact/` |
-| Upstream commit | `8b106f8706f07f4612746c952bfdf186b205dce7` |
-| Vendored at | 2026-06-06 |
-| Vendored version | `subvurs_impact_v0.1` (see `scorer.SCORER_VERSION`) |
+| Upstream commit | `ea32c965f88a79e513390bc8ccecbb5a9302cfd3` |
+| Vendored at | 2026-07-14 |
+| Vendored version | `subvurs_impact_v0.1` scorer / catalog `v0.2.0-20260714` (July 2026 core-theory re-scope) |
 | Vendored by | Mark Eatherly |
 
 ## Design reference
