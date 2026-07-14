@@ -1432,5 +1432,264 @@ refresh audit above.
 
 ---
 
-*Document updated: May 15, 2026*
-*Quantum Curator v1.6.0 — SUBVURS_NOTES prompt refresh: 11 commercial paths, drop falsified framings*
+## Q-day Clock Manifest Export (v1.7.0 — June 19–27, 2026)
+
+### What was added
+
+Each daily Curator run now produces a **signed Ed25519 CuratorManifest**
+and force-pushes it to a dedicated `manifest` branch on
+`subvurs/quantum-curator`. Downstream, the Q-day Clock
+(`subvurs/qday-clock`) workflow pulls that manifest, verifies the
+signature against a pinned public key, and feeds the classified
+articles into its 5-axis clock-score computation. This wires Curator's
+accumulated quantum-computing corpus into Q-day Clock's
+"how close are we to a cryptographically-relevant quantum computer"
+reading.
+
+### Components shipped
+
+1. **`quantum_curator/qday_export.py` + `qday-export` CLI subcommand**
+   (commits `7847250`, `55efcfa`). Filters `raw_articles` to the four
+   Q-day-relevant `ContentTopic` values (HARDWARE, ALGORITHMS,
+   ERROR_CORRECTION, CRYPTOGRAPHY), builds a `CuratorManifest`
+   (Q-day Clock's pydantic schema imported directly so the signed
+   shape cannot silently drift), signs with
+   `qday_clock.core.signing.SigningKey.sign_payload()`.
+
+2. **`qday-clock` dependency pin** in `pyproject.toml`:
+   ```
+   qday-clock @ git+https://github.com/subvurs/qday-clock.git@v0.2.5
+   ```
+   Tag-pinned so a signing-API bump can't silently break the daily
+   export. `[tool.hatch.metadata] allow-direct-references = true`
+   scoped narrowly to the qday-clock pin.
+
+3. **K11 daily-pipeline wiring** (`subvurs_export/deploy/curator/`):
+   - `env.daily.template`: `QDAY_SIGNING_KEY_PATH`,
+     `QDAY_MANIFEST_PUSH_URL`, `QDAY_MANIFEST_BRANCH=manifest`.
+   - `run_curator_daily.sh`: appended a qday-export step
+     after the regular daily run that signs and force-pushes the
+     manifest. If either the key path or push URL is unset, the
+     step logs a skip and the rest of the daily run is unaffected.
+   - Orphan-style force-push (single file `curator_manifest.json`
+     on a single-commit branch — no history, no `.git` pollution
+     of `gh-pages`).
+
+4. **Server-side Ed25519 keygen on K11** (no key material left the
+   box): generated via `SigningKey.generate()` inside the curator
+   venv, written to `~/quantum-curator/.qday_signing_key` (mode
+   0600). Public key
+   `w2jrKwsAQoSBOq8wgqEVIQd0gzs56/KmMBLFuXUy+d0=` registered as
+   `QDAY_CURATOR_PUBKEY_B64` GitHub repo secret on
+   `subvurs/qday-clock`.
+
+### End-to-end smoke (2026-06-27)
+
+Verified live, all steps captured in
+`subvurs_export/deploy/K11_DEPLOYMENT_STATUS.txt` items 8–9:
+
+| Stage | Evidence |
+|---|---|
+| K11 `qday-export` | 167 articles, 240801 bytes, local `verify_payload=True` |
+| Force-push → manifest branch | commit `33152bb` on `subvurs/quantum-curator` |
+| `raw.githubusercontent.com` | HTTP 200, byte-identical 240801 bytes |
+| Q-day Clock workflow | run [28272654436](https://github.com/subvurs/qday-clock/actions/runs/28272654436) — Install + Fetch + Recompute + Diff all green in 23s |
+| Signature verified | log: `refresh: ingested manifest with 167 articles, commit=55efcfa5c591` |
+| Clock state | `clock_score=0.4153 clock_hours=14.03` |
+| Refresh PR | not opened — recomputed JSON byte-identical to current `main` (deterministic, expected) |
+
+### Pre-existing bug found during smoke
+
+The first workflow_dispatch attempt (run `28272363714`) failed at
+`Install Q-day Clock` because `subvurs/qday-clock/.github/workflows/refresh.yml`
+still had a `defaults: run: working-directory: public_interest/qday_clock`
+block left over from when `qday-clock` was a subdirectory of the
+Subvurs monorepo. The standalone repo has `qday_clock/` at the root.
+PR CI had never caught this because PR CI only runs the tests job,
+not the refresh job. Fixed in
+[qday-clock PR #2](https://github.com/subvurs/qday-clock/pull/2)
+(squash-merged as commit `cc320f8`); the re-run succeeded.
+
+### What this changes for Curator's daily run
+
+- Adds one new step at the end of `run_curator_daily.sh` (qday-export
+  + force-push); skipped cleanly if either env var is unset.
+- No Curator schema changes, no impact on the existing Crier or
+  Qrater publish paths.
+- Adds one repo-side dependency (`qday-clock`) pulled from GitHub at
+  tag `v0.2.5`.
+- No new cloud spend — the qday-export step runs entirely on K11
+  with the local signing key; no LLM or API calls.
+
+### What is intentionally NOT yet done
+
+The Q-day Clock daily cron (08:00 UTC on
+`subvurs/qday-clock` via `refresh.yml`) is enabled
+([PR #1](https://github.com/subvurs/qday-clock/pull/1) merged
+2026-06-27 as commit `d1bd6b6a`) but currently runs in **seeds-only
+mode** because `inputs.curator_manifest_url` is empty under cron.
+A follow-on PR will default that input to
+`https://raw.githubusercontent.com/subvurs/quantum-curator/manifest/curator_manifest.json`
+so the cron path actually consumes today's wiring. Two-PR split is
+intentional per rigor §1 — each behavior change reviewable on its
+own; the URL default waited until after the smoke proved the URL
+is serving content.
+
+### Distribution rationale (one repo, one secret, one auth boundary)
+
+The manifest is published to the **manifest** branch of
+`subvurs/quantum-curator` rather than to a new repo because:
+1. one auth token (the curator deploy token) already has push rights
+   to the curator repo;
+2. `gh-pages` deploy is unaffected — different branch, different
+   workflow, no contention;
+3. `raw.githubusercontent.com` serves the JSON immediately on push,
+   no Pages build delay; and
+4. force-pushing a single-file orphan branch keeps the manifest
+   branch's history at exactly one commit, which is what the
+   pubkey-pinned consumer expects.
+
+---
+
+## Context Realignment, Site Redesign & Bluesky Fixes (v1.8.0 — July 14, 2026)
+
+Three independent workstreams shipped as three separately revertible
+commits (context realignment / site redesign / Bluesky fixes), plus a
+production diagnostic on K11 that preceded any code change.
+
+### Phase 0 — TL;DR-post outage root cause (K11, diagnosed first)
+
+The daily Bluesky TL;DR summary had stopped appearing. Journal +
+`bluesky_daily_summaries` inspection on K11 confirmed the root cause
+was **router failure, not the share path**: `LLM call failed: router
+returned empty answer (tier=unavailable)` → `build_daily_summary()`
+returns None → CLI logs "Summary unavailable — aborting share" and the
+`soft()` wrapper keeps the rest of the pipeline green. Fix applied to
+`~/quantum-curator/.env.daily` on K11 (backup
+`.env.daily.bak-20260714`): `ROUTER_TIMEOUT_SEC=1500`,
+`ROUTER_OLLAMA_READ_TIMEOUT=1200`, `ROUTER_OLLAMA_CLOUD_ENABLED=true`,
+`ROUTER_CLOUD_PRIMARY=ollama`. Verification dry-run on K11
+(`share-intel-summary --days 1 --dry-run`, commit state `b40ff7f`)
+completed exit 0 with a rendered summary. The latent recording bug on
+the single-post share path (Bug A below) was fixed regardless.
+
+### Workstream 1 — Subvurs context realignment (prompt truth restored)
+
+The Subvurs notes prompt had drifted from the research record: it
+still presented pre-July-2026 core-theory claims as live findings.
+Root cause was a **drifted inline duplicate** of the shared catalog
+prompt in `curator.py`.
+
+Canonical scorer first (`subvurs/blackbox/shared/subvurs_impact/`,
+commit `ea32c96`, 64/64 tests green), then re-vendored to
+`quantum_curator/_vendor/subvurs_impact/`:
+
+- **`path_catalog.py` → `v0.2.0-20260714`**: `CORE_THEORY` rewritten
+  as a "HISTORICAL CORE THEORY — falsified/retracted, do not cite as
+  findings" block (0.504 BUILT_IN per the Jul 2026 out-of-sample test;
+  d=0.6 cliff tautological in static dynamics; decorative classifier
+  gates per CV_MAX; Apr 25 cross-c band retracted Jun 16; Impax 43x ≠
+  sensing advantage — real primitive is the tanh nonlinearity in
+  impulsive noise, Kassam 1988; Pattern 51 ZPE unsupported; T=0.857
+  retained as parameter/context only). New `CROSS_CORPUS_INTERSECTIONS`
+  block rendered by `build_prompt()`: notes now connect items to what
+  the intersection *opens up* (experiment, audit, transferable
+  technique), not what it "validates". RULES updated: commercial-path
+  connection first, corpus-intersection second, core theory only as
+  historical context, evidence class stated.
+- **`donotuse.py` → `v0.2.0-20260714`**: July 2026 phrases added
+  ("chaos valley discovered", "d=0.504 discovered", "43x sensing",
+  "zero-point energy extraction", "consensus coupling advantage",
+  etc.) with new concept tags (`chaos_valley_discovered`,
+  `death_cliff_static`, `impax_43x_sensing`, `p51_zpe`,
+  `emergence_classifier_validated`).
+- **`scorer.py`**: core_theory 0.4 match tier reframed — "score the
+  intersection, not the claim". Weights unchanged (frozen, sum=1.0).
+- **`curator.py`**: inline `SUBVURS_NOTES_SYSTEM_PROMPT` (49 lines)
+  deleted; the prompt is now `_SUBVURS_NOTES_FORMAT_PREAMBLE +
+  path_catalog.build_prompt()` — single source of truth with the
+  impact scorer. Fail-closed: if the vendored import fails the prompt
+  is None and note generation is skipped (no notes beats stale-theory
+  notes). Locked by two new tests in
+  `tests/test_curator_subvurs_impact.py`.
+- **`email_report.py`**: subject → "Quantum Curator: {n} corpus
+  intersections worth a look — {date}"; table header → "Top Corpus
+  Intersections (commercial-path relevance)"; footer notes catalog
+  v0.2.0 + the July 2026 core-theory re-scope.
+
+### Workstream 2 — Editorial site redesign + honest copy
+
+Full visual overhaul of both the news site and the Qrater dashboard
+to an editorial/newspaper direction: paper background `#faf9f6`, ink
+`#1a1a1a`, single brick-red accent `#8b2e2e`, serif masthead and
+headlines, thin rules. Removed: all gradients, glassmorphism
+(`backdrop-filter`), pastel topic pills, the ⚛ emoji logo, dark-slate
+panels.
+
+- `site/static/css/style.css` and `site/static/qrater/qrater.css`
+  rewritten on the new token set; topic tags are now small-caps
+  thin-ruled text labels; Qrater tables restyled dense/agate.
+- `base.html`: serif text masthead with rules + dateline; nav as a
+  thin rule bar; typographic ruled placeholder replaces the
+  gear-emoji image fallback.
+- **`about.html` honesty fix**: replaced the false "hand-selected…
+  expert commentary" copy. The page now states plainly that articles
+  are gathered and scored by an automated pipeline, commentary is
+  AI-generated against a documented rubric, and the site is an
+  experiment in transparent automated curation.
+- `post.html` / `index.html`: explicit small-caps "AI Commentary"
+  kicker above every `curator_commentary` block.
+- `archive.html`: while the site spans ≤ 2 distinct months the
+  archive renders one flowing list ("Since {month} — N articles")
+  instead of a near-empty month grid.
+- Verified: `quantum-curator build` + `build-qrater` render clean.
+
+### Workstream 3 — Bluesky share fixes (Bugs A & B)
+
+**Bug A — single-post fast path never recorded the share.**
+`share_daily_summary`'s single-post path posted and returned True
+without calling `record_daily_summary_share()`, so
+`is_daily_summary_shared()` never fired and a same-day re-run could
+double-post. The fast path now posts with `return_cid=True` and
+records `(date_key, root_uri, root_cid, text)` before returning —
+mirroring the threaded path. Regression test:
+`test_share_daily_summary_single_post_records_share` (row persisted,
+`is_thread=0`, second same-day invocation is a no-op).
+
+**Bug B — mid-sentence commentary fragments.** `_build_post_text`'s
+fallback word-wrapped the first sentence mid-sentence when no full
+sentence fit alongside the hashtags — the same class of artifact the
+earlier no-ellipsis fix removed. New policy (module docstring, dated
+2026-07-14): **a post body never contains a partial sentence.**
+Degradation order when zero full sentences fit: (i) drop hashtags and
+re-pack into the freed budget; (ii) else drop commentary entirely
+(title + hashtags only). Title word-wrap exception stands (a title is
+not a sentence stream). The legacy custom-caller `[:300]` hard slice
+is routed through the same `_pack_sentences` helper (word-boundary
+wrap survives only as the last resort for text with no sentence
+structure at all — unreachable from the production renderer).
+
+**Accepted trade-off (user-visible)**: some posts will now be
+hashtag-less and some title+hashtags-only where the old code posted a
+dangling fragment. `test_over_budget_first_sentence_word_wraps_not_title_only`
+is superseded by `test_over_budget_first_sentence_drops_hashtags_then_commentary`
+(docstring documents the policy change per rigor §7 — documented
+supersession, not silent weakening).
+
+### Test status
+
+`tests/` suite: **132 passed** (129 baseline − 1 superseded + 2
+Bluesky regressions + 2 prompt-lock). Canonical
+`subvurs_impact` suite: 64/64. Golden fixtures unchanged beyond
+version strings.
+
+### Deployment
+
+K11 picks up the three commits via `git pull --ff-only` on the next
+timer run. Rollback: each workstream is a single revertible commit;
+the K11 env fix is independent (restore `.env.daily.bak-20260714`).
+
+---
+
+*Document updated: July 14, 2026*
+*Quantum Curator v1.8.0 — Subvurs prompt realigned to the July 2026 research record; editorial site redesign with honest curation copy; Bluesky single-post recording + sentence-safe packing fixes; K11 router env repaired*
