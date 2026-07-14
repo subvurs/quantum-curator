@@ -1,4 +1,24 @@
-"""Bluesky social sharing for Quantum Curator."""
+"""Bluesky social sharing for Quantum Curator.
+
+Post-text packing policy (v1.8.0, 2026-07-14)
+---------------------------------------------
+All prose destined for a post body is packed at *sentence* granularity:
+as many complete sentences as fit the 300-char budget, never a
+mid-sentence fragment and never an ellipsis. When zero full sentences
+fit alongside the hashtags, degradation order is:
+
+  1. drop hashtags and re-pack — if the first full sentence now fits,
+     post title + sentence(s) with no hashtags;
+  2. else drop commentary entirely — title + hashtags only.
+
+Exception: a *title* is not a sentence stream, so an oversized title is
+word-wrapped at the last whitespace boundary that fits (still no
+ellipsis). The same word-boundary wrap is the last-resort safety net
+for custom ``share_daily_summary`` callers whose text has no sentence
+structure at all — posting a word-wrapped fragment beats dropping the
+share, and that path is unreachable from the production renderer
+(``render_bluesky_thread`` already budgets its output).
+"""
 
 from __future__ import annotations
 
@@ -188,6 +208,32 @@ def _build_attribution_facet(
     return facet, (start_b, end_b)
 
 
+def _pack_sentences(text: str, budget: int) -> str:
+    """Pack as many complete sentences of ``text`` as fit in ``budget``.
+
+    Whitespace-normalizes, splits on sentence terminators (. ! ?), and
+    greedily accumulates whole sentences joined by single spaces.
+    Returns "" when not even the first sentence fits — callers decide
+    the degradation from there (see module docstring for the policy).
+    """
+    normalized = re.sub(r"\s+", " ", text).strip()
+    sentences = re.split(r"(?<=[.!?])\s+", normalized)
+    packed: list[str] = []
+    running = 0
+    for s in sentences:
+        s = s.strip()
+        if not s:
+            continue
+        # Width when appended to packed (join with single space).
+        added = (1 if packed else 0) + len(s)
+        if running + added <= budget:
+            packed.append(s)
+            running += added
+        else:
+            break
+    return " ".join(packed)
+
+
 class BlueskySharer:
     """Share curated posts to Bluesky."""
 
@@ -366,11 +412,18 @@ class BlueskySharer:
             if link and link not in text:
                 text = f"{text} {link}".strip()
             if len(text) > 300:
-                # Safety net for custom callers that bypassed render_bluesky.
-                cut = text[:300]
-                if " " in cut:
-                    cut = cut.rsplit(" ", 1)[0]
-                text = cut
+                # Safety net for custom callers that bypassed render_bluesky:
+                # pack complete sentences into the budget (no mid-sentence
+                # fragment). Word-boundary wrap only as the last resort for
+                # text with no sentence structure at all (module docstring).
+                packed = _pack_sentences(text, 300)
+                if packed:
+                    text = packed
+                else:
+                    cut = text[:300]
+                    if " " in cut:
+                        cut = cut.rsplit(" ", 1)[0]
+                    text = cut
             posts = [text]
 
         with httpx.Client(timeout=30) as client:
@@ -394,15 +447,27 @@ class BlueskySharer:
 
             # Single-post fast path.
             if len(posts) == 1:
-                root_uri = self._post_one(
+                result = self._post_one(
                     client,
                     posts[0],
                     link=link,
                     embed=image_embed,
                     reply=None,
+                    return_cid=True,
                 )
-                if root_uri is None:
+                if result is None:
                     return False
+                root_uri, root_cid = result
+                # Record the share so the summary_date idempotency check
+                # fires on re-runs (previously this path returned without
+                # recording — the same day could double-post).
+                record_daily_summary_share(
+                    date_key, root_uri, root_cid or "", posts[0]
+                )
+                logger.info(
+                    "Shared daily summary (single post) for %s to Bluesky",
+                    date_key,
+                )
                 return True
 
             # Threaded path. Post root, then chain replies. Image embed
@@ -562,9 +627,11 @@ class BlueskySharer:
         Pack as many complete commentary sentences as fit in the budget
         rather than chopping mid-sentence with "..." — the truncated
         ellipsis form is what users complained about ("many posts ending
-        in '...'"). If even the title-plus-hashtags doesn't fit, drop
-        commentary first, then word-wrap the title at the last word
-        boundary that fits (still no ellipsis).
+        in '...'"). When zero full sentences fit alongside the hashtags,
+        degrade per the module-docstring policy: drop hashtags and
+        re-pack; else drop commentary entirely (title + hashtags). If
+        even the title-plus-hashtags frame doesn't fit, word-wrap the
+        title at the last word boundary that fits (still no ellipsis).
         """
         max_chars = 300
         hashtags = self._get_hashtags(post)
@@ -578,42 +645,31 @@ class BlueskySharer:
         commentary_budget = max_chars - frame_overhead
 
         commentary_excerpt = ""
+        drop_hashtags = False
         if post.curator_commentary and commentary_budget > 20:
-            # Split into sentences; keep the period attached. The regex
-            # tolerates ?! as terminators and collapses whitespace from
-            # the multi-paragraph commentary the curator emits.
-            normalized = re.sub(r"\s+", " ", post.curator_commentary).strip()
-            sentences = re.split(r"(?<=[.!?])\s+", normalized)
-            packed: list[str] = []
-            running = 0
-            for s in sentences:
-                s = s.strip()
-                if not s:
-                    continue
-                # Width when appended to packed (join with single space)
-                added = (1 if packed else 0) + len(s)
-                if running + added <= commentary_budget:
-                    packed.append(s)
-                    running += added
-                else:
-                    break
-            commentary_excerpt = " ".join(packed)
+            commentary_excerpt = _pack_sentences(
+                post.curator_commentary, commentary_budget
+            )
 
-            # If not one full sentence fit (e.g. the local gpt-oss curator
-            # opens with a long comma-spliced sentence that overflows the
-            # budget), word-wrap the first sentence at the last word boundary
-            # within budget rather than dropping all commentary and posting
-            # title-only. No ellipsis — same no-"..." philosophy as the title
-            # word-wrap below.
-            if not packed:
-                first = re.split(r"(?<=[.!?])\s+", normalized)[0].strip()
-                wrapped = first[:commentary_budget]
-                if " " in wrapped:
-                    wrapped = wrapped.rsplit(" ", 1)[0]
-                commentary_excerpt = wrapped.rstrip()
+            # Zero full sentences fit alongside the hashtags (e.g. the
+            # local gpt-oss curator opens with a long comma-spliced
+            # sentence). Policy (2026-07-14, module docstring): never
+            # post a mid-sentence fragment. Degrade by dropping the
+            # hashtags and re-packing into the freed budget; if a full
+            # sentence still doesn't fit, drop commentary entirely and
+            # post title + hashtags.
+            if not commentary_excerpt:
+                no_tag_budget = max_chars - len(title) - 2  # one "\n\n"
+                if no_tag_budget > 20:
+                    commentary_excerpt = _pack_sentences(
+                        post.curator_commentary, no_tag_budget
+                    )
+                    drop_hashtags = bool(commentary_excerpt)
 
         # Assemble. No-commentary case yields "title\n\nhashtags".
-        if commentary_excerpt:
+        if commentary_excerpt and drop_hashtags:
+            text = f"{title}\n\n{commentary_excerpt}"
+        elif commentary_excerpt:
             text = f"{title}\n\n{commentary_excerpt}\n\n{hashtag_str}"
         else:
             text = f"{title}\n\n{hashtag_str}"

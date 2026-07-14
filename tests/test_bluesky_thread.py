@@ -381,3 +381,74 @@ def test_share_daily_summary_no_thread_flag_uses_single_post(
     assert ok is True
     # thread=False → only one post regardless of payload.
     assert call_count == 1
+
+
+def test_share_daily_summary_single_post_records_share(
+    short_payload, tmp_db, monkeypatch
+):
+    """Bug A regression (2026-07-14): the single-post fast path must
+    record the share in ``bluesky_daily_summaries``.
+
+    Previously it posted and returned True without calling
+    ``record_daily_summary_share``, so ``is_daily_summary_shared`` never
+    fired and a same-day re-run could double-post the daily summary.
+    """
+    sharer = _make_sharer_with_mocked_api()
+    if not sharer.is_configured:
+        pytest.skip("BlueskySharer not configured for tests")
+
+    call_count = 0
+
+    def fake_post_one(self, client, text, *, link=None, embed=None,
+                     reply=None, return_cid=False):
+        nonlocal call_count
+        call_count += 1
+        uri = f"at://did:plc:test/post/{call_count}"
+        cid = f"cid-{call_count}"
+        if return_cid:
+            return (uri, cid)
+        return uri
+
+    monkeypatch.setattr(
+        bsky_module.BlueskySharer, "_post_one", fake_post_one
+    )
+    monkeypatch.setattr(
+        bsky_module.BlueskySharer, "_login", lambda self, c: True
+    )
+
+    ok = sharer.share_daily_summary(
+        text="ignored when payload provided",
+        link="https://qrater.org",
+        summary_date="2026-07-14",
+        payload=short_payload,
+        thread=True,
+    )
+    assert ok is True
+    assert call_count == 1  # short payload → single-post fast path
+
+    # Row persisted with is_thread == 0 and the CID captured.
+    conn = sqlite3.connect(tmp_db)
+    try:
+        row = conn.execute(
+            "SELECT bsky_uri, bsky_cid, is_thread FROM bluesky_daily_summaries "
+            "WHERE summary_date = ?",
+            ("2026-07-14",),
+        ).fetchone()
+    finally:
+        conn.close()
+    assert row is not None, "single-post share was not recorded"
+    assert row[0] == "at://did:plc:test/post/1"
+    assert row[1] == "cid-1"
+    assert row[2] == 0
+
+    # Idempotency: a second same-date invocation is a no-op — returns
+    # False and posts nothing further.
+    ok2 = sharer.share_daily_summary(
+        text="ignored",
+        link="https://qrater.org",
+        summary_date="2026-07-14",
+        payload=short_payload,
+        thread=True,
+    )
+    assert ok2 is False
+    assert call_count == 1
