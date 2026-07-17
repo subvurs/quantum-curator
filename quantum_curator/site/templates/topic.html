@@ -15,14 +15,12 @@
 
     {# Featured first article #}
     {% if featured_post %}
-    <article class="featured-card featured-card--wide" style="margin-bottom: var(--space-xl);">
+    <article class="featured-card featured-card--wide{% if not featured_post.image_url %} no-image{% endif %}" style="margin-bottom: var(--space-xl);">
         {% if featured_post.image_url %}
         <div class="featured-image">
             <img src="{{ featured_post.image_url }}" alt="" loading="eager"
-                 onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+                 onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
         </div>
-        {% else %}
-        <div class="featured-image image-fallback topic-bg-{{ topic | topic_class }}"></div>
         {% endif %}
         <div class="featured-content">
             <h3 class="post-title">
@@ -49,10 +47,8 @@
             {% if post.image_url %}
             <div class="compact-thumbnail">
                 <img src="{{ post.image_url }}" alt="" loading="lazy"
-                     onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+                     onerror="this.parentElement.style.display='none'">
             </div>
-            {% else %}
-            <div class="compact-thumbnail image-fallback topic-bg-{{ topic | topic_class }}"></div>
             {% endif %}
             <div class="compact-content">
                 <h4 class="compact-title">

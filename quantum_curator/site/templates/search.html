@@ -64,11 +64,8 @@
             html += '<article class="compact-article">';
             if (p.image_url) {
                 html += '<div class="compact-thumbnail">';
-                html += '<img src="' + escapeHtml(p.image_url) + '" alt="" loading="lazy" onerror="this.parentElement.classList.add(\'image-fallback\');this.style.display=\'none\'">';
+                html += '<img src="' + escapeHtml(p.image_url) + '" alt="" loading="lazy" onerror="this.parentElement.style.display=\'none\'">';
                 html += '</div>';
-            } else {
-                var bgClass = p.topics.length > 0 ? 'topic-bg-' + topicClass(p.topics[0]) : '';
-                html += '<div class="compact-thumbnail image-fallback ' + bgClass + '"></div>';
             }
             html += '<div class="compact-content">';
             html += '<h4 class="compact-title"><a href="' + basePath + '/posts/' + escapeHtml(p.id) + '.html">' + escapeHtml(p.title) + '</a></h4>';

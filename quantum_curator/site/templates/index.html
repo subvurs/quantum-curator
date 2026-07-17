@@ -47,7 +47,7 @@
         {% if hero_post.image_url %}
         <div class="hero-image">
             <img src="{{ hero_post.image_url }}" alt="" loading="eager"
-                 onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+                 onerror="this.closest('.hero-article').classList.remove('has-image');this.parentElement.style.display='none'">
         </div>
         {% endif %}
     </article>
@@ -67,7 +67,7 @@
             {% if post.image_url %}
             <div class="featured-image">
                 <img src="{{ post.image_url }}" alt="" loading="lazy"
-                     onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
             </div>
             {% endif %}
             <div class="featured-content">
@@ -109,7 +109,7 @@
             {% if post.image_url %}
             <div class="compact-thumbnail">
                 <img src="{{ post.image_url }}" alt="" loading="lazy"
-                     onerror="this.parentElement.classList.add('image-fallback');this.style.display='none'">
+                     onerror="this.parentElement.style.display='none'">
             </div>
             {% else %}
             <div class="compact-dot topic-accent-{{ topic_name | topic_class }}"></div>

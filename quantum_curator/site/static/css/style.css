@@ -1025,33 +1025,11 @@ h1, h2, h3, h4 {
    MAGAZINE LAYOUT — Hero, Featured, Compact
    ============================================ */
 
-/* --- Image Fallback — typographic ruled placeholder, no gear emoji --- */
-.image-fallback {
-    background: var(--bg-elevated);
-    box-shadow: inset 0 0 0 1px var(--border);
-    position: relative;
-}
-.image-fallback::after {
-    content: "Q";
-    font-family: var(--font-serif);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2.5rem;
-    opacity: 0.14;
-    color: var(--text);
-}
-.image-fallback img { display: none; }
-
-/* Topic background classes retained for template compatibility —
-   all flattened to the paper-shade placeholder. */
-.topic-bg-hardware, .topic-bg-algorithms, .topic-bg-error_correction,
-.topic-bg-cryptography, .topic-bg-simulation, .topic-bg-sensing,
-.topic-bg-research, .topic-bg-industry, .topic-bg-machine_learning,
-.topic-bg-policy, .topic-bg-general {
-    background: var(--bg-elevated);
-}
+/* --- Image Fallback — collapse entirely (2026-07-17): posts without a
+   usable photo get no reserved photo space at all. Templates and the
+   base.html error listener remove/adjust layout classes so text takes
+   the full width. --- */
+.image-fallback { display: none; }
 
 /* --- Magazine Hero --- */
 .magazine-hero {
@@ -1215,6 +1193,10 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr 2fr;
 }
 
+.featured-card--wide.no-image {
+    grid-template-columns: 1fr;
+}
+
 .featured-card--wide .featured-image {
     height: auto;
     min-height: 250px;
@@ -1306,10 +1288,6 @@ h1, h2, h3, h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.compact-thumbnail.image-fallback::after {
-    font-size: 1.25rem;
 }
 
 .compact-content {
