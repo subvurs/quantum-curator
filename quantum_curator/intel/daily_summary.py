@@ -60,6 +60,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 from typing import Any
 
 from ..config import get_settings
@@ -69,6 +70,19 @@ from .synthesizer import _condense_entry, _extract_json
 
 
 logger = logging.getLogger(__name__)
+
+# LLM retry policy. The K11 router fails intermittently ("router
+# returned empty answer (tier=unavailable)" — observed 2026-07-14 and
+# 2026-07-16, killing the TL;DR share for those days), while a second
+# call later in the same run succeeds (2026-07-15/17 journals show the
+# intel-email attempt failing or succeeding independently of the
+# share-intel-summary attempt ~30-40 min later). Retry with backoff
+# inside build_daily_summary so a single transient router hiccup no
+# longer drops the whole daily summary. ``_sleep`` is module-level so
+# tests can stub it out.
+LLM_RETRY_ATTEMPTS = 3
+LLM_RETRY_WAIT_SEC = 90.0  # doubles per retry: 90s, then 180s
+_sleep = time.sleep
 
 
 # Hallucinated-citation guard. The summary prompt teaches the [#N]
@@ -324,32 +338,54 @@ def build_daily_summary(
         prior_entries=prior_text,
     )
 
-    try:
-        raw = llm_complete(
-            system=SUMMARY_SYSTEM,
-            user=prompt,
-            model=model,
-            max_tokens=max_tokens,
-            temperature=temperature,
-            allow_escalation=True,
-            settings=settings,
+    # Retry loop: covers transient router failures AND malformed/
+    # incomplete LLM replies (a fresh completion usually parses).
+    # Fail-closed contract preserved — return None only after the
+    # final attempt fails.
+    payload: dict | None = None
+    for attempt in range(1, LLM_RETRY_ATTEMPTS + 1):
+        if attempt > 1:
+            wait = LLM_RETRY_WAIT_SEC * (2 ** (attempt - 2))
+            print(
+                f"[intel.daily_summary] retrying in {wait:.0f}s "
+                f"(attempt {attempt}/{LLM_RETRY_ATTEMPTS})"
+            )
+            _sleep(wait)
+        try:
+            raw = llm_complete(
+                system=SUMMARY_SYSTEM,
+                user=prompt,
+                model=model,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                allow_escalation=True,
+                settings=settings,
+            )
+        except Exception as exc:  # noqa: BLE001 — fail-closed
+            print(f"[intel.daily_summary] LLM call failed: {exc}")
+            continue
+        try:
+            candidate = _extract_json(raw)
+        except (ValueError, json.JSONDecodeError) as exc:
+            print(f"[intel.daily_summary] could not parse JSON reply: {exc}")
+            continue
+        if not isinstance(candidate, dict):
+            print(
+                "[intel.daily_summary] expected object, got "
+                f"{type(candidate).__name__}"
+            )
+            continue
+        missing = [k for k in REQUIRED_KEYS if k not in candidate]
+        if missing:
+            print(f"[intel.daily_summary] missing required keys: {missing}")
+            continue
+        payload = candidate
+        break
+
+    if payload is None:
+        print(
+            f"[intel.daily_summary] giving up after {LLM_RETRY_ATTEMPTS} attempts"
         )
-    except Exception as exc:  # noqa: BLE001 — fail-closed
-        print(f"[intel.daily_summary] LLM call failed: {exc}")
-        return None
-    try:
-        payload = _extract_json(raw)
-    except (ValueError, json.JSONDecodeError) as exc:
-        print(f"[intel.daily_summary] could not parse JSON reply: {exc}")
-        return None
-
-    if not isinstance(payload, dict):
-        print(f"[intel.daily_summary] expected object, got {type(payload).__name__}")
-        return None
-
-    missing = [k for k in REQUIRED_KEYS if k not in payload]
-    if missing:
-        print(f"[intel.daily_summary] missing required keys: {missing}")
         return None
 
     # Type-normalize: every required key must be a list of strings.
