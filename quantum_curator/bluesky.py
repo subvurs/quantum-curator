@@ -9,7 +9,13 @@ fit alongside the hashtags, degradation order is:
 
   1. drop hashtags and re-pack — if the first full sentence now fits,
      post title + sentence(s) with no hashtags;
-  2. else drop commentary entirely — title + hashtags only.
+  2. else fall back to the article *summary* as the body source and
+     repeat steps 0-1 (2026-07-17: the local gpt-oss curator's
+     commentary routinely opens with a 200-280 char first sentence
+     that overflows every budget, which degraded nearly every share
+     to a bare title-restating post; summary first sentences are
+     short and fit);
+  3. else drop the body entirely — title + hashtags only.
 
 Exception: a *title* is not a sentence stream, so an oversized title is
 word-wrapped at the last whitespace boundary that fits (still no
@@ -629,9 +635,11 @@ class BlueskySharer:
         ellipsis form is what users complained about ("many posts ending
         in '...'"). When zero full sentences fit alongside the hashtags,
         degrade per the module-docstring policy: drop hashtags and
-        re-pack; else drop commentary entirely (title + hashtags). If
-        even the title-plus-hashtags frame doesn't fit, word-wrap the
-        title at the last word boundary that fits (still no ellipsis).
+        re-pack; else fall back to the article summary as the body
+        source and repeat; else drop the body entirely (title +
+        hashtags). If even the title-plus-hashtags frame doesn't fit,
+        word-wrap the title at the last word boundary that fits (still
+        no ellipsis).
         """
         max_chars = 300
         hashtags = self._get_hashtags(post)
@@ -646,25 +654,28 @@ class BlueskySharer:
 
         commentary_excerpt = ""
         drop_hashtags = False
-        if post.curator_commentary and commentary_budget > 20:
-            commentary_excerpt = _pack_sentences(
-                post.curator_commentary, commentary_budget
-            )
-
-            # Zero full sentences fit alongside the hashtags (e.g. the
-            # local gpt-oss curator opens with a long comma-spliced
-            # sentence). Policy (2026-07-14, module docstring): never
-            # post a mid-sentence fragment. Degrade by dropping the
-            # hashtags and re-packing into the freed budget; if a full
-            # sentence still doesn't fit, drop commentary entirely and
-            # post title + hashtags.
-            if not commentary_excerpt:
-                no_tag_budget = max_chars - len(title) - 2  # one "\n\n"
-                if no_tag_budget > 20:
-                    commentary_excerpt = _pack_sentences(
-                        post.curator_commentary, no_tag_budget
-                    )
-                    drop_hashtags = bool(commentary_excerpt)
+        no_tag_budget = max_chars - len(title) - 2  # one "\n\n"
+        # Body candidates in preference order: curator commentary first,
+        # then the article summary. For each source, prefer keeping the
+        # hashtags; drop them only when zero full sentences fit
+        # (2026-07-14 policy: never post a mid-sentence fragment).
+        # Summary fallback added 2026-07-17: measured production data
+        # showed commentary first sentences of 196-286 chars against
+        # budgets of ~190-240, so the drop-body branch fired on nearly
+        # every post, yielding bare title-restating shares — while
+        # every measured summary first sentence fit.
+        for body_source in (post.curator_commentary, post.summary):
+            if not body_source:
+                continue
+            if commentary_budget > 20:
+                commentary_excerpt = _pack_sentences(body_source, commentary_budget)
+                if commentary_excerpt:
+                    break
+            if no_tag_budget > 20:
+                commentary_excerpt = _pack_sentences(body_source, no_tag_budget)
+                if commentary_excerpt:
+                    drop_hashtags = True
+                    break
 
         # Assemble. No-commentary case yields "title\n\nhashtags".
         if commentary_excerpt and drop_hashtags:

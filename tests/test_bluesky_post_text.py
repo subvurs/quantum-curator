@@ -14,7 +14,9 @@ Contract:
   * No mid-sentence commentary fragments (2026-07-14 policy): when zero
     full sentences fit alongside the hashtags, the hashtags are dropped
     and the commentary re-packed; if a full sentence still doesn't fit,
-    the commentary is dropped entirely (title + hashtags)
+    the article summary becomes the body source and the same ladder
+    repeats (2026-07-17 fallback); only when neither source yields a
+    full sentence is the body dropped entirely (title + hashtags)
   * Title always present; hashtags present except in the drop-hashtags
     degradation branch; commentary is optional
   * If even title + hashtags overflows, the title is word-wrapped at
@@ -45,6 +47,7 @@ def _post(
     *,
     title: str = "IBM ships new 1000-qubit chip with improved coherence",
     commentary: str = "",
+    summary: str = "",
     topics: list[ContentTopic] | None = None,
 ) -> CuratedPost:
     # Empty list is a meaningful caller intent (test "no topics" path);
@@ -54,7 +57,7 @@ def _post(
         article_id="art-1",
         title=title,
         original_url="https://example.com/article",
-        summary="",
+        summary=summary,
         source_name="Test Source",
         curator_commentary=commentary,
         topics=effective_topics,
@@ -177,6 +180,66 @@ def test_overflow_drops_next_sentence_rather_than_chopping():
     assert short_first in text
     # Second sentence is not chopped — it's dropped entirely.
     assert "XXX" not in text
+
+
+# ---------- Summary fallback (2026-07-17) ----------
+
+
+def test_overlong_commentary_falls_back_to_summary():
+    """Production regression (2026-07-17): gpt-oss commentary opens with
+    a 196-286 char first sentence that fits no budget, so nearly every
+    share degraded to a bare title+hashtags post that just restated the
+    title. New behavior: the article summary becomes the body source.
+    """
+    sharer = _make_sharer()
+    commentary = ("word " * 60).strip() + "."  # 300 chars — fits nowhere
+    summary = "A short factual summary sentence. Plus extra detail on the result."
+    post = _post(title="Title", commentary=commentary, summary=summary)
+    text = sharer._build_post_text(post)
+    assert len(text) <= 300
+    assert "A short factual summary sentence." in text
+    assert "#QuantumHardware" in text  # summary fits WITH hashtags
+    assert "word" not in text  # no commentary fragment leaks
+
+
+def test_commentary_preferred_over_summary_when_it_fits():
+    sharer = _make_sharer()
+    post = _post(
+        title="Title",
+        commentary="Commentary sentence that fits.",
+        summary="Summary sentence.",
+    )
+    text = sharer._build_post_text(post)
+    assert "Commentary sentence that fits." in text
+    assert "Summary sentence." not in text
+
+
+def test_summary_fallback_drops_hashtags_when_needed():
+    """The full ladder: commentary fits nowhere, summary fits only when
+    the hashtags are dropped."""
+    sharer = _make_sharer()
+    title = "University Grant Targets Quantum and AI Tools"  # 45 chars
+    # commentary_budget = 300-45-16-4 = 235; no_tag_budget = 300-45-2 = 253
+    long_commentary = ("word " * 60).strip() + "."  # 300 chars > 253
+    summary_sentence = ("summ " * 48).strip() + "."  # 240: 235 < 240 <= 253
+    post = _post(title=title, commentary=long_commentary, summary=summary_sentence)
+    text = sharer._build_post_text(post)
+    assert len(text) <= 300
+    parts = text.split("\n\n")
+    assert parts == [title, summary_sentence], f"got {parts!r}"
+    assert "#" not in text
+
+
+def test_neither_source_fits_yields_title_plus_hashtags():
+    sharer = _make_sharer()
+    title = "University Grant Targets Quantum and AI Tools"
+    giant = ("word " * 60).strip() + "."  # 300 chars — fits nowhere
+    post = _post(title=title, commentary=giant, summary=giant)
+    text = sharer._build_post_text(post)
+    assert len(text) <= 300
+    parts = text.split("\n\n")
+    assert parts == [title, "#QuantumHardware"]
+    assert "word" not in text and "summ" not in text
 
 
 # ---------- Title-overflow path ----------
