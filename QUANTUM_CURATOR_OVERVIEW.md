@@ -1691,5 +1691,78 @@ the K11 env fix is independent (restore `.env.daily.bak-20260714`).
 
 ---
 
-*Document updated: July 14, 2026*
-*Quantum Curator v1.8.0 — Subvurs prompt realigned to the July 2026 research record; editorial site redesign with honest curation copy; Bluesky single-post recording + sentence-safe packing fixes; K11 router env repaired*
+## TL;DR Retry, Summary-Fallback Posts & Photo-Space Collapse (v1.8.1 — July 17, 2026)
+
+Three production issues observed after the v1.8.0 deploy, each
+diagnosed from K11 journal + `curator.db` evidence and fixed with a
+separately revertible commit.
+
+### 1. TL;DR daily summary intermittently dropped (LLM retry)
+
+**Symptom**: TL;DR Bluesky thread posted 07-13/15/17 but not
+07-14/16. **Root cause** (K11 journal): the local router intermittently
+returns `RouterError: router returned empty answer (tier=unavailable)`;
+`build_daily_summary()` caught it once, returned None, and the CLI
+aborted the share ("Summary unavailable — aborting share"). On success
+days a *second* invocation ~30–40 min later succeeded — the failure is
+transient.
+
+**Fix** (`quantum_curator/intel/daily_summary.py`): the LLM call +
+JSON parse + required-keys validation now run inside a retry loop —
+`LLM_RETRY_ATTEMPTS = 3` with doubling backoff (`LLM_RETRY_WAIT_SEC =
+90`: 90 s, then 180 s). All bad-output modes (raised exception,
+unparseable reply, non-dict, missing keys) retry with a fresh
+completion. Fail-closed contract preserved: None only after the final
+attempt; the "no new entries" branch still makes zero LLM calls.
+`_sleep` is module-level so tests stub it. New
+`tests/test_daily_summary_retry.py` (6 tests).
+
+### 2. Bluesky posts restating the title with no description (summary fallback)
+
+**Symptom**: most per-article posts were bare "title + hashtags".
+**Root cause** (measured on production rows): gpt-oss:120b commentary
+opens with 196–286-char first sentences against packing budgets of
+~190–240, so the v1.8.0 no-mid-sentence policy's drop-commentary
+branch fired on nearly every post. Meanwhile every sampled article
+*summary* first sentence (71–204 chars) fit.
+
+**Fix** (`quantum_curator/bluesky.py` `_build_post_text`): body-source
+ladder — try `curator_commentary`, then fall back to `post.summary`;
+for each source prefer keeping hashtags, drop hashtags only if no full
+sentence fits; title+hashtags only when neither source yields a full
+sentence. All v1.8.0 invariants preserved (≤300 chars, no ellipsis,
+no mid-sentence fragments). 4 new tests in
+`tests/test_bluesky_post_text.py`.
+
+### 3. Empty photo spaces on Quantum Crier (collapse, not stock photos)
+
+**Symptom**: posts without images rendered a reserved placeholder box
+(faint serif "Q" watermark) on index, topic, and search pages.
+**Fix**: collapse the space entirely. `.image-fallback` is now
+`display: none` (kept as a safety net); the "Q" watermark rules,
+`.topic-bg-*` compatibility block, and explicit fallback `<div>`s in
+`topic.html`/`search.html` are removed. Broken-image `onerror`
+handlers (and the generic `base.html` listener) now hide the image
+container *and* repair layout classes so text reflows full-width:
+hero loses `has-image` (grid 3fr/2fr → 1fr), featured cards gain
+`no-image`, and a new `.featured-card--wide.no-image
+{ grid-template-columns: 1fr; }` rule covers topic-page featured
+cards. `post.html` and Qrater already collapsed correctly — untouched.
+
+### Verification
+
+`tests/` suite: **142 passed** (132 baseline + 6 retry + 4
+summary-fallback). Local `build` renders clean; zero `image-fallback`
+markup in generated pages; Jinja parse check green on all four edited
+templates.
+
+### Deployment
+
+Three commits (one per fix); K11 picks them up via `git pull
+--ff-only` on the next timer run. Rollback: revert the individual
+commit.
+
+---
+
+*Document updated: July 17, 2026*
+*Quantum Curator v1.8.1 — TL;DR LLM retry with backoff; Bluesky summary-fallback body ladder; empty photo spaces collapsed site-wide*
