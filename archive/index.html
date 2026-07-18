@@ -32,7 +32,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; July 17, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; July 18, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -65,38 +65,38 @@
                 <a href="/archive/2026-07.html">
                     July 2026
                 </a>
-                <span class="article-count">(297 articles)</span>
+                <span class="article-count">(307 articles)</span>
             </h2>
             <ul class="month-articles">
                 
                 <li>
-                    <a href="/posts/ef03db6a.html">Quantum entanglement explains why strange metals are so strange</a>
-                    <span class="article-source">Physics World - Quantum</span>
+                    <a href="/posts/b9d05b94.html">Who’s News: Strategic Appointments at Pasqal, PsiQuantum, and Haiqu</a>
+                    <span class="article-source">Quantum Computing Report</span>
                 </li>
                 
                 <li>
-                    <a href="/posts/9ee4522d.html">pQCee Raises US$3.9 Million in Latest Seed Funding Round</a>
-                    <span class="article-source">The Quantum Insider</span>
+                    <a href="/posts/c8a6e73c.html">Singapore’s pQCee Raises $3.9M Seed Round to Accelerate Global Crypto-Agility Deployment</a>
+                    <span class="article-source">Quantum Computing Report</span>
                 </li>
                 
                 <li>
-                    <a href="/posts/ac58409c.html">Entanglement Detection for Two-Qubit and Three-Qubit Pure States via Unitary Transformations and Ancilla State Measurements</a>
-                    <span class="article-source">arXiv Quantum Physics</span>
+                    <a href="/posts/e212f6f7.html">Tennessee Launces Comprehensive K–12 Quantum Education and Career Initiative</a>
+                    <span class="article-source">Quantum Computing Report</span>
                 </li>
                 
                 <li>
-                    <a href="/posts/9a92f48b.html">Quantum Source and Israel’s DDR&amp;D Demonstrate Robust Single-Atom Source for Real-World Quantum Communication</a>
-                    <span class="article-source">The Quantum Insider</span>
+                    <a href="/posts/f1747b97.html">Quantinuum and Academic Partners Demonstrate First Universal Topological Gate Set via Non-Abelian Anyons</a>
+                    <span class="article-source">Quantum Computing Report</span>
                 </li>
                 
                 <li>
-                    <a href="/posts/6764ac1f.html">Bloq Quantum Partners with MIUUL to Expand Quantum Machine Learning in Turkey</a>
+                    <a href="/posts/10f5b7ab.html">Digital Catapult and NQCC Launch Third QTAP Cohort, Introducing Banking and Healthcare Streams</a>
                     <span class="article-source">Quantum Computing Report</span>
                 </li>
                 
                 
                 <li class="more-link">
-                    <a href="/archive/2026-07.html">View all 297 articles &rarr;</a>
+                    <a href="/archive/2026-07.html">View all 307 articles &rarr;</a>
                 </li>
                 
             </ul>
@@ -210,10 +210,16 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
         document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
             img.addEventListener('error', function() {
-                this.style.display = 'none';
-                this.parentElement.classList.add('image-fallback');
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
             });
         });
     });
