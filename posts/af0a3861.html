@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Above 99.9% Fidelity Single-Qubit Gates, Two-Qubit Gates, and Readout in a Single Superconducting Quantum Device | Quantum Crier</title>
-    <meta name="description" content="Author(s): Fabian Marxer et al. Careful tuning of qubit-coupler interactions and a new calibration protocol enable simultaneous high-fidelity single-qubit gates">
+    <title>The Fourier Wall: Why Public Tabular Datasets Refuse Quantum Advantage, and a Certified Recipe for Where It Lives | Quantum Crier</title>
+    <meta name="description" content="Across public tabular benchmarks, quantum machine-learning (QML) models usually lose to carefully tuned classical baselines. We argue that this is a structural ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Above 99.9% Fidelity Single-Qubit Gates, Two-Qubit Gates, and Readout in a Single Superconducting Quantum Device">
+    <meta property="og:title" content="The Fourier Wall: Why Public Tabular Datasets Refuse Quantum Advantage, and a Certified Recipe for Where It Lives">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; July 19, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; July 20, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,13 +56,13 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
             
         </div>
-        <h1>Above 99.9% Fidelity Single-Qubit Gates, Two-Qubit Gates, and Readout in a Single Superconducting Quantum Device</h1>
+        <h1>The Fourier Wall: Why Public Tabular Datasets Refuse Quantum Advantage, and a Certified Recipe for Where It Lives</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>PRX Quantum</strong></span>
-            <span class="date">May 20, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">July 17, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,19 +74,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that a single superconducting chip can now deliver &gt;99.9 % fidelity for both single‑qubit rotations, controlled‑Z two‑qubit gates and simultaneous readout, a milestone that closes the performance gap between isolated gate demonstrations and fully integrated processors. By fine‑tuning qubit‑coupler interactions and introducing a new calibration routine, the authors push error rates into the regime required for surface‑code error correction without sacrificing parallel operation—a key step toward scalable architectures. The result validates that high‑fidelity control can be maintained in realistic multi‑qubit layouts, though further work will be needed to preserve these numbers as device counts grow and crosstalk becomes more complex.
+                This article pinpoints a structural “Fourier wall” that explains why quantum‑machine‑learning models have consistently lagged behind well‑tuned classical baselines on public tabular benchmarks, showing that the limitation is rooted in the data’s spectral properties rather than current hardware or algorithms. By formalising the SPECTRA certificate—an easy‑to‑run structural screen followed by a rigorous paired‑bootstrap comparison—the authors not only identify the precise conditions (off‑grid, high‑order, high‑frequency spectra) under which a quantum advantage can emerge, but also demonstrate it on an industrial energy dataset with quantum‑generated labels, where a matched quantum network outperforms classical twins by a large margin. The work gives researchers a practical roadmap for engineering or selecting problems that truly leverage quantum interference, and it clarifies that many everyday tabular tasks will remain “Fourier‑blocked” regardless of future qubit improvements.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Author(s): Fabian Marxer et al. Careful tuning of qubit-coupler interactions and a new calibration protocol enable simultaneous high-fidelity single-qubit gates, controlled- Z gates, and readout in superconducting circuits, advancing scalable quantum computing. [PRX Quantum 7, 020333] Published Wed May 20, 2026</p>
+            <p>Across public tabular benchmarks, quantum machine-learning (QML) models usually lose to carefully tuned classical baselines. We argue that this is a structural property of the datasets rather than merely a limitation of current models. Because an angle-encoded quantum neural network is a partial Fourier series, a genuine advantage can arise only when the target spectrum is simultaneously off-grid, of interaction order at least three, high-frequency, supported by near-independent features, and dense beyond practical enumeration. We call the failure to satisfy these conditions the Fourier wall. We operationalize the conditions as SPECTRA, a two-tier certificate: a simulator-free structural screen followed by a decisive comparison between a matched quantum model and five tuned classical twins using paired-bootstrap confidence bounds. On industrial smart-meter data, SPECTRA correctly refuses the real peak-load target, for which gradient-boosted trees reach a held-out ROC-AUC of 0.999. On the same real energy phases with labels generated by an interacting quantum process, the dynamics-matched quantum model reaches 0.994 versus 0.699 for the best generic classical baseline, and collapses to chance when its interaction couplings are ablated. An exact classical simulator ties the quantum model at small width but incurs measured exponential evaluation cost, with an estimated hardware crossover near 13-19 sites. These results provide a practical recipe for identifying, engineering, and deploying quantum-advantage candidates in tabular data.</p>
         </section>
 
         <div class="read-original">
-            <a href="http://link.aps.org/doi/10.1103/n86s-2b88" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at PRX Quantum &rarr;
+            <a href="https://arxiv.org/abs/2607.15815v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -95,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Above%2099.9%25%20Fidelity%20Single-Qubit%20Gates%2C%20Two-Qubit%20Gates%2C%20and%20Readout%20in%20a%20Single%20Superconducting%20Quantum%20Device&url=https://quantumcrier.com/posts/c2d33596.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/c2d33596.html&title=Above%2099.9%25%20Fidelity%20Single-Qubit%20Gates%2C%20Two-Qubit%20Gates%2C%20and%20Readout%20in%20a%20Single%20Superconducting%20Quantum%20Device" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=The%20Fourier%20Wall%3A%20Why%20Public%20Tabular%20Datasets%20Refuse%20Quantum%20Advantage%2C%20and%20a%20Certified%20Recipe%20for%20Where%20It%20Lives&url=https://quantumcrier.com/posts/af0a3861.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/af0a3861.html&title=The%20Fourier%20Wall%3A%20Why%20Public%20Tabular%20Datasets%20Refuse%20Quantum%20Advantage%2C%20and%20a%20Certified%20Recipe%20for%20Where%20It%20Lives" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
