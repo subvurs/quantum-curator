@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Side Channel Analysis of Protocol Stages in Quantum Identity Authentication | Quantum Crier</title>
+    <meta name="description" content="Quantum networks can enable distributed computing and sensing. To realize these capabilities securely, quantum identity authentication is essential. Without aut">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Experimental Side Channel Analysis of Protocol Stages in Quantum Identity Authentication">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; July 28, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Experimental Side Channel Analysis of Protocol Stages in Quantum Identity Authentication</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">July 27, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that even a modest passive tap on a quantum communication link can reveal which stage of a quantum identity‑authentication protocol is being executed, allowing an adversary to sidestep embedded authentication qubits and compromise security. By combining timing and power side‑channel data with machine‑learning classifiers, the authors demonstrate successful stage inference at 10 %–30 % signal diversion, exposing a practical attack vector that complements earlier theoretical analyses of man‑in‑the‑middle threats. The work underscores the need for hardware‑level countermeasures and protocol randomisation in emerging quantum networks, echoing recent concerns about side‑channel leaks in QKD systems. Nonetheless, the results stem from a controlled laboratory testbed with high‑efficiency detectors, so further investigation is required to gauge real‑world vulnerability.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Quantum networks can enable distributed computing and sensing. To realize these capabilities securely, quantum identity authentication is essential. Without authentication at the quantum layer, malicious repeaters may retain entanglement instead of performing swapping, enabling man-in-the-middle attacks (MitM) between communicating parties. Authentication mitigates this threat by embedding authentication qubits within data qubits at positions and bases based on a secret key shared a priori. While prior work analyzes security and MitM detection guarantees, physical layer side channel analysis remains unexplored. If an attacker infers protocol stages, it can avoid authentication qubits and extract data qubits, rendering authentication ineffective. To this end, we carry out experimental studies using a quantum communication testbed. A beam splitter is used to tap a portion of the optical signal, allowing the observer to collect side channel data without disrupting the quantum state. We evaluate two sampling settings, where 30% or 10% of the signal is diverted. The collected side channel data includes photon arrival timing and optical power data obtained using a single-photon detector and a power meter. Using this dataset, we extract and engineer features that capture both timing dynamics and signal intensity variations. We then train machine learning models to classify protocol stages based solely on side channel observations. Our results show that protocol-stage inference is feasible with high accuracy, reaching 98% (F1-score 97%) at 30% sampling and 96% (F1-score 94%) at 10% sampling. These findings reveal an overlooked vulnerability and highlight the need for robust designs against side channel inference attacks.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2607.24639v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Experimental%20Side%20Channel%20Analysis%20of%20Protocol%20Stages%20in%20Quantum%20Identity%20Authentication&url=https://quantumcrier.com/posts/43a7c3ea.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/43a7c3ea.html&title=Experimental%20Side%20Channel%20Analysis%20of%20Protocol%20Stages%20in%20Quantum%20Identity%20Authentication" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
