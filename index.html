@@ -32,7 +32,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,14 +56,14 @@
     <div class="digest-card">
         <h3>Daily Summary</h3>
         <div class="digest-summary digest-expandable" id="digest-text">
-            <p>The headline of today’s quantum roundup is IonQ’s completion of its acquisition of SkyWater Technology, a move that gives the U.S.‑based quantum leader the only vertically integrated full‑stack platform from wafer to cloud. By bringing semiconductor manufacturing in‑house, IonQ can accelerate hardware cycles, tighten control over qubit fidelity and push commercial services out of the lab faster than any competitor. The deal underscores how the race for scalable quantum advantage is now being fought on both the scientific front and the supply‑chain battlefield.</p>
-<p>Across the ecosystem, a clear pattern is emerging: mature companies are moving from proof‑of‑concept to production‑grade deployments while governments double down on strategic support. France’s July national update highlighted expanding public‑private partnerships and an intensified focus on industrial scaling amid fierce global competition. In parallel, SEALSQ has launched the commercial phase of Miraex’s quantum photonics technology, signaling that optical approaches are finally reaching market readiness. Meanwhile, two independent studies in semiconductor spin qubits demonstrate new wiring schemes that could link distant qubits, and Ars Technica reports progress on verifiable quantum results—both steps toward trustworthy, large‑scale machines. At the same time, voices like mathematician Gil Kalai remind the community that correlated noise and complexity limits may still threaten scalability, while a fresh post‑quantum cryptography brief stresses “crypto‑agility” as the real hurdle for migration.</p>
-<p>Looking ahead, readers should watch how IonQ leverages its new foundry capabilities to deliver measurable performance gains and whether other players will follow with similar vertical integrations. The next wave of announcements from European quantum ministries could reshape funding priorities, especially in photonics and silicon spin qubits. Finally, the dialogue between skeptics and optimists—centered on error correction, verification protocols, and agile cryptographic frameworks—will shape both the technical roadmap and the regulatory landscape as quantum computers inch closer to practical deployment.</p>
+            <p>The headline of the day is IBM’s joint breakthrough with the University of Chicago: a quantum computer performed a verified computation that lies beyond the practical reach of even the most powerful classical simulators, marking the first widely accepted demonstration of true quantum advantage on a trusted task. The result, announced in Phys.org, not only settles lingering debates about “quantum supremacy” but also showcases a fully error‑corrected workflow that can be reproduced by other research groups, setting a new benchmark for what quantum hardware can reliably achieve.</p>
+<p>Across the sector, the news is dominated by real‑world deployments and strategic consolidation. IQM’s partnership with Deutsche Bahn proved that hybrid quantum‑classical algorithms can optimize live railway schedules, while IBM and Cleveland Clinic unveiled a quantum machine‑learning model to predict cancer neoantigens, highlighting healthcare’s growing appetite for quantum insights. At the same time, IonQ closed its acquisition of SkyWater Technology, creating a vertically integrated trapped‑ion platform that could lower costs and accelerate scaling. EY’s new on‑site quantum hub in Canada, the NSF’s $18 million grant to UC San Diego for quantum materials, Vexlum’s UK R&D lab, and Two Hands Corporation’s beta launch of the EntangleX simulator all point to an expanding ecosystem where academia, industry giants, and specialized startups are converging on practical applications.</p>
+<p>Looking ahead, readers should keep an eye on three fronts. First, the verification protocols used in IBM’s advantage experiment will likely be applied to other problem classes, testing whether quantum speedups can be demonstrated in finance, chemistry or logistics. Second, IonQ’s integrated supply chain may set a new standard for hardware‑software co‑design, potentially reshaping the trapped‑ion market and influencing rival platforms. Finally, the surge of corporate quantum hubs—exemplified by EY—and government‑funded materials programs suggest that the next wave of breakthroughs will emerge from tightly coupled collaborations that move quantum prototypes into production‑grade services within the next 12 to 24 months.</p>
         </div>
         <button class="digest-toggle" id="digest-toggle" onclick="(function(){var t=document.getElementById('digest-text'),b=document.getElementById('digest-toggle');t.classList.toggle('digest-expanded');b.textContent=t.classList.contains('digest-expanded')?'Show less':'Read more'})()">Read more</button>
         <div class="digest-meta">
-            <span class="digest-date">August 01, 2026</span>
-            <span class="digest-count">8 articles</span>
+            <span class="digest-date">August 02, 2026</span>
+            <span class="digest-count">10 articles</span>
         </div>
     </div>
 </section>
@@ -77,27 +77,33 @@
         <div class="hero-content">
             <div class="post-topics">
                 
-                <a href="/topics/error_correction.html"
-                   class="topic-tag topic-error_correction">error_correction</a>
+                <a href="/topics/hardware.html"
+                   class="topic-tag topic-hardware">hardware</a>
+                
+                <a href="/topics/algorithms.html"
+                   class="topic-tag topic-algorithms">algorithms</a>
+                
+                <a href="/topics/research.html"
+                   class="topic-tag topic-research">research</a>
                 
             </div>
             <h1 class="hero-title">
-                <a href="/posts/0a46cd2d.html">Gil Kalai (Hebrew University / Reichman University): Why noise may doom quantum computers</a>
+                <a href="/posts/ff915f8e.html">IQM and Deutsche Bahn Execute Hybrid Quantum Algorithm for Railway Scheduling</a>
             </h1>
-            <p class="hero-summary">Yuval Boger interviews mathematician Gil Kalai about his long-standing skepticism regarding scalable quantum computing. Kalai explains two main arguments behind his theory: correlated noise that may defeat quantum error correction and complexity-base...</p>
+            <p class="hero-summary">Superconducting quantum computer developer IQM Quantum Computers (Nasdaq: IQMX) and European rail operator Deutsche Bahn have published joint research demonstrating the execution of a hybrid quantum-classical optimization algorithm on real-world oper...</p>
             <div class="hero-commentary">
                 <p class="ai-kicker">AI Commentary</p>
-                <blockquote>This article spotlights Gil Kalai’s persistent challenge to the prevailing optimism that fault‑tolerant quantum computers can be built by simply scaling up noisy qubits, arguing that correlated errors could fundamentally undermine error‑correction protocols. By juxtaposing Kalai’s theoretical objections with recent “quantum supremacy” claims from Google and others, it forces the community to confront whether current NISQ devices are merely clever statistical tricks or truly approaching a regime where quantum advantage is robust. Readers should care because any experimental validation of Kalai’s conjectures would reshape research priorities, pushing developers toward radically new architectures or error‑mitigation strategies rather than relying on conventional surface‑code scaling.</blockquote>
+                <blockquote>This article marks one of the first end‑to‑end demonstrations of a hybrid quantum‑classical optimizer tackling a genuine railway‑scheduling problem on a superconducting processor, showing that NISQ hardware can now be integrated into real operational pipelines. By leveraging IQM’s Emerald chip to improve rolling‑stock allocation for Deutsche Bahn, the work builds on earlier industry pilots (e.g., Volkswagen’s traffic routing) and pushes quantum‑enhanced logistics toward practical relevance. The result suggests modest but measurable gains in solution quality or time-to‑solution, hinting at a near‑term niche where quantum resources complement classical solvers for large combinatorial tasks. Nonetheless, the study remains a proof‑of‑concept; scaling to network‑wide timetables will require larger qubit counts and more robust error mitigation.</blockquote>
             </div>
             <div class="post-meta">
-                <span class="post-source">The Quantum Insider</span>
+                <span class="post-source">Quantum Computing Report</span>
                 <span class="post-date">August 01, 2026</span>
-                <a href="https://thequantuminsider.com/2026/08/01/gil-kalai-hebrew-university-reichman-university-why-noise-may-doom-quantum-computers/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <a href="https://quantumcomputingreport.com/iqm-and-deutsche-bahn-execute-hybrid-quantum-algorithm-for-railway-scheduling/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </div>
         
         <div class="hero-image">
-            <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Gil-Kalai.jpg" alt="" loading="eager"
+            <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/08/image-7.png" alt="" loading="eager"
                  onerror="this.closest('.hero-article').classList.remove('has-image');this.parentElement.style.display='none'">
         </div>
         
@@ -117,7 +123,63 @@
         <article class="featured-card">
             
             <div class="featured-image">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-31_19-57.png" alt="" loading="lazy"
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/08/image-4.png" alt="" loading="lazy"
+                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/industry.html"
+                       class="topic-tag topic-industry">industry</a>
+                    
+                    <a href="/topics/policy.html"
+                       class="topic-tag topic-policy">policy</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/fd1043a4.html">EY Expands In-House Capabilities with On-Site Quantum Computer Hub in Canada</a>
+                </h3>
+                <p class="post-summary">Global professional services firm Ernst &amp; Young (EY) has announced the addition of an on-site quantum computer to its in-house technology stack. Led b...</p>
+                <div class="post-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">August 01, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="featured-card">
+            
+            <div class="featured-image">
+                <img src="https://scx1.b-cdn.net/csz/news/tmb/2026/researchers-demonstrat-10.jpg" alt="" loading="lazy"
+                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/simulation.html"
+                       class="topic-tag topic-simulation">simulation</a>
+                    
+                    <a href="/topics/research.html"
+                       class="topic-tag topic-research">research</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/56b5e9f9.html">Quantum computer completes verified task beyond practical reach of classical simulations</a>
+                </h3>
+                <p class="post-summary">IBM and researchers from the University of Chicago announced a demonstration in quantum computing that meets the fundamental criteria for &#34;quantum adv...</p>
+                <div class="post-meta">
+                    <span class="post-source">Phys.org Quantum</span>
+                    <span class="post-date">August 01, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="featured-card">
+            
+            <div class="featured-image">
+                <img src="https://www.science.org/cms/10.1126/sciadv.aec3824/asset/5a0ccdec-b942-435c-b016-5e9a17c654cc/assets/images/large/sciadv.aec3824-f1.jpg" alt="" loading="lazy"
                      onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
             </div>
             
@@ -127,70 +189,20 @@
                     <a href="/topics/hardware.html"
                        class="topic-tag topic-hardware">hardware</a>
                     
-                    <a href="/topics/cryptography.html"
-                       class="topic-tag topic-cryptography">cryptography</a>
+                    <a href="/topics/machine_learning.html"
+                       class="topic-tag topic-machine_learning">machine_learning</a>
                     
-                    <a href="/topics/industry.html"
-                       class="topic-tag topic-industry">industry</a>
-                    
-                </div>
-                <h3 class="post-title">
-                    <a href="/posts/bc97fdfe.html">SEALSQ Begins Commercial Deployment of Miraex Quantum Photonics Technology</a>
-                </h3>
-                <p class="post-summary">Insider Brief Press release – SEALSQ Corp (NASDAQ: LAES), (“SEALSQ” or “Company”), a company focused on semiconductors, PKI, and post-quantum technolo...</p>
-                <div class="post-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 31, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="featured-card">
-            
-            <div class="featured-image">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-31_18-31.png" alt="" loading="lazy"
-                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="featured-content">
-                <div class="post-topics">
-                    
-                    <a href="/topics/general.html"
-                       class="topic-tag topic-general">general</a>
+                    <a href="/topics/research.html"
+                       class="topic-tag topic-research">research</a>
                     
                 </div>
                 <h3 class="post-title">
-                    <a href="/posts/66155daf.html">IonQ Completes Acquisition of SkyWater Technology</a>
+                    <a href="/posts/9cd4c11e.html">Cleveland Clinic and IBM Develop Quantum Machine Learning Model for Cancer Neoantigen Prediction</a>
                 </h3>
-                <p class="post-summary">Insider Brief Press release – IonQ (NYSE: IONQ), the world’s leading quantum platform company, today completed its acquisition of SkyWater Technology ...</p>
+                <p class="post-summary">Researchers from the Cleveland Clinic and IBM Research have developed a quantum machine learning framework to predict which tumor gene mutations gener...</p>
                 <div class="post-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 31, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="featured-card">
-            
-            <div class="featured-image">
-                <img src="https://cdn.prod.website-files.com/68836cf9cff21bf9efa61419/693ac0977541e2da439e7454_OG%20Image%20(5).jpg" alt="" loading="lazy"
-                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="featured-content">
-                <div class="post-topics">
-                    
-                    <a href="/topics/general.html"
-                       class="topic-tag topic-general">general</a>
-                    
-                </div>
-                <h3 class="post-title">
-                    <a href="/posts/f37db9ba.html">IonQ | IonQ Completes Acquisition of SkyWater Technology</a>
-                </h3>
-                <p class="post-summary">IonQ completes its acquisition of SkyWater Technology, creating the only vertically integrated full-stack quantum platform to accelerate quantum compu...</p>
-                <div class="post-meta">
-                    <span class="post-source">IonQ Blog</span>
-                    <span class="post-date">July 31, 2026</span>
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">August 01, 2026</span>
                 </div>
             </div>
         </article>
@@ -211,6 +223,24 @@
         <a href="/topics/hardware.html" class="view-all">View All &rarr;</a>
     </div>
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-31_19-57.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/bc97fdfe.html">SEALSQ Begins Commercial Deployment of Miraex Quantum Photonics Technology</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">July 31, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
@@ -538,18 +568,15 @@
         
         <article class="compact-article">
             
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Screenshot-2026-07-21-at-9.20.56-AM.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
+            <div class="compact-dot topic-accent-hardware"></div>
             
             <div class="compact-content">
                 <h4 class="compact-title">
-                    <a href="/posts/2c700dac.html">Researchers Demonstrate New Superconducting Circuit Design That Could Advance Topological Quantum Computing</a>
+                    <a href="/posts/f2766b5c.html">Fast Design and Scaling of Multiqubit Gates in Large-Scale Trapped-Ion Quantum Computers</a>
                 </h4>
                 <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 21, 2026</span>
+                    <span class="post-source">PRX Quantum</span>
+                    <span class="post-date">July 31, 2026</span>
                 </div>
             </div>
         </article>
@@ -1589,21 +1616,6 @@
             </div>
         </article>
         
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/4e4f12ee.html">Teleportation Game: Quantum Teleportation in Multi-Agent Systems for Interactive Music</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">July 21, 2026</span>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </section>
 
@@ -1616,6 +1628,60 @@
         <a href="/topics/general.html" class="view-all">View All &rarr;</a>
     </div>
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/07/image-308.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/d985b45b.html">IonQ Completes Acquisition of SkyWater Technology, Establishing Vertically Integrated Quantum Platform</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">July 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-31_18-31.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/66155daf.html">IonQ Completes Acquisition of SkyWater Technology</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">July 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://cdn.prod.website-files.com/68836cf9cff21bf9efa61419/693ac0977541e2da439e7454_OG%20Image%20(5).jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f37db9ba.html">IonQ | IonQ Completes Acquisition of SkyWater Technology</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">IonQ Blog</span>
+                    <span class="post-date">July 31, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
@@ -1775,24 +1841,6 @@
                 <div class="compact-meta">
                     <span class="post-source">The Quantum Insider</span>
                     <span class="post-date">July 22, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-21_20-05.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/82849631.html">Singapore Defence Agencies Partner With IBM to Explore Quantum Computing Applications</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 21, 2026</span>
                 </div>
             </div>
         </article>
@@ -2265,24 +2313,6 @@
         
         <article class="compact-article">
             
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Photon-Queue-1.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/a63378f3.html">Photon Queue Raises $4 Million Oversubscribed Seed Round</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 21, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
             <div class="compact-dot topic-accent-industry"></div>
             
             <div class="compact-content">
@@ -2584,21 +2614,6 @@
                 <div class="compact-meta">
                     <span class="post-source">arXiv Quantum Physics</span>
                     <span class="post-date">July 23, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/02dc7b11.html">Experimental quantum cryptography with single photons and imperfect devices</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">July 21, 2026</span>
                 </div>
             </div>
         </article>
@@ -3306,6 +3321,85 @@
 <section class="topic-section">
     <div class="section-header">
         <h2 class="topic-section-title">
+            <span class="topic-accent topic-accent-error_correction"></span>
+            Error Correction
+        </h2>
+        <a href="/topics/error_correction.html" class="view-all">View All &rarr;</a>
+    </div>
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Gil-Kalai.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/0a46cd2d.html">Gil Kalai (Hebrew University / Reichman University): Why noise may doom quantum computers</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">August 01, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-28_18-51.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/39e56282.html">Riverlane and Unitary Foundation Launch ‘Deltakit Community Fund’ to Accelerate Open-Source Quantum Error Correction</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">July 28, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-error_correction"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/b54b4ee6.html">Riverlane and Unitary Foundation Launch Deltakit Community Fund for Open-Source QEC</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">July 29, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-error_correction"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/216162cf.html">Rice University Joins DOE Quantum Science Center to Advance Real-Time Quantum Error Correction</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">July 23, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+<section class="topic-section">
+    <div class="section-header">
+        <h2 class="topic-section-title">
             <span class="topic-accent topic-accent-policy"></span>
             Policy
         </h2>
@@ -3380,85 +3474,6 @@
                 </h4>
                 <div class="compact-meta">
                     <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 23, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/UK-1.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/670778f0.html">UK Government Puts AI at Cabinet Level as DSIT Is Dissolved, Raising Questions For Quantum Strategy</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 21, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</section>
-
-<section class="topic-section">
-    <div class="section-header">
-        <h2 class="topic-section-title">
-            <span class="topic-accent topic-accent-error_correction"></span>
-            Error Correction
-        </h2>
-        <a href="/topics/error_correction.html" class="view-all">View All &rarr;</a>
-    </div>
-    <div class="compact-list">
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-28_18-51.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/39e56282.html">Riverlane and Unitary Foundation Launch ‘Deltakit Community Fund’ to Accelerate Open-Source Quantum Error Correction</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">July 28, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-error_correction"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/b54b4ee6.html">Riverlane and Unitary Foundation Launch Deltakit Community Fund for Open-Source QEC</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">July 29, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-error_correction"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/216162cf.html">Rice University Joins DOE Quantum Science Center to Advance Real-Time Quantum Error Correction</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
                     <span class="post-date">July 23, 2026</span>
                 </div>
             </div>
@@ -3543,19 +3558,19 @@
     <div class="topic-cloud">
         
         <a href="/topics/hardware.html" class="topic-pill topic-hardware">
-            hardware <span class="count">(392)</span>
+            hardware <span class="count">(394)</span>
         </a>
         
         <a href="/topics/research.html" class="topic-pill topic-research">
-            research <span class="count">(174)</span>
+            research <span class="count">(177)</span>
         </a>
         
         <a href="/topics/algorithms.html" class="topic-pill topic-algorithms">
-            algorithms <span class="count">(168)</span>
+            algorithms <span class="count">(169)</span>
         </a>
         
         <a href="/topics/simulation.html" class="topic-pill topic-simulation">
-            simulation <span class="count">(158)</span>
+            simulation <span class="count">(159)</span>
         </a>
         
         <a href="/topics/sensing.html" class="topic-pill topic-sensing">
@@ -3563,11 +3578,11 @@
         </a>
         
         <a href="/topics/policy.html" class="topic-pill topic-policy">
-            policy <span class="count">(116)</span>
+            policy <span class="count">(117)</span>
         </a>
         
         <a href="/topics/industry.html" class="topic-pill topic-industry">
-            industry <span class="count">(112)</span>
+            industry <span class="count">(113)</span>
         </a>
         
         <a href="/topics/cryptography.html" class="topic-pill topic-cryptography">
@@ -3579,11 +3594,11 @@
         </a>
         
         <a href="/topics/general.html" class="topic-pill topic-general">
-            general <span class="count">(68)</span>
+            general <span class="count">(69)</span>
         </a>
         
         <a href="/topics/machine_learning.html" class="topic-pill topic-machine_learning">
-            machine_learning <span class="count">(56)</span>
+            machine_learning <span class="count">(57)</span>
         </a>
         
     </div>
