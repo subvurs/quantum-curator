@@ -5,7 +5,7 @@
         <link>https://quantumcrier.com</link>
         <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 02 Aug 2026 09:37:07 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 03 Aug 2026 10:47:17 +0000</lastBuildDate>
         <atom:link href="https://quantumcrier.com/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
@@ -104,6 +104,82 @@
         </item>
         
         <item>
+            <title>Release-free phononic crystal with strong microwave coupling</title>
+            <link>https://quantumcrier.com/posts/c0fa3b85.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/c0fa3b85.html</guid>
+            <pubDate>Fri, 31 Jul 2026 17:50:46 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article demonstrates for the first time that a release‑free phononic crystal cavity can reach strong electromechanical coupling with a high‑impedance microwave resonator, achieving g ≈ 30 MHz and cooperativity near 180 while maintaining Q &gt; 10⁴ at millikelvin temperatures. By eliminating the need for suspended structures, the platform offers robust thermal anchoring and straightforward integration on silicon or sapphire, addressing a key bottleneck that has limited the scalability of mechanical quantum interconnects. The result paves the way for compact microwave‑to‑phonon interfaces useful in quantum transduction, sensing, and modular superconducting processors, although further work will be needed to push coherence times into the regime required for error‑corrected operations.</p>
+                <p>Phonons hold promise for storing and transferring quantum information, including in mechanically-mediated quantum interconnects between superconducting qubits and light. Phononic crystal cavities confine gigahertz sound to micron-scale volumes well matched to near-infrared light. So far, these devices have typically been suspended to suppress phononic radiation loss into the substrate, but suspension limits thermal anchoring leading to excess noise. Release-free phononic crystals have emerged as a way to address this challenge -- but had yet to be shown compatible with strong electromechanical interactions. Here, we demonstrate a release-free phononic crystal cavity strongly coupled to a high-impedance microwave resonator, with an electromechanical coupling rate $g_\mathrm{em}/(2π) \approx 30\,\text{MHz}$ that exceeds both the mechanical and microwave loss rates, leading to a cooperativity up to $\mathcal{C} \approx 180$ on resonance. In addition, our lithium niobate phononic crystals reach quality factors above $10^4$ at millikelvin temperature on both silicon and sapphire substrates. Our results establish release-free phononic crystals as compact, scalable interfaces between microwaves and gigahertz sound for emerging sensing, communication, and computing systems.</p>
+                <p><a href="https://arxiv.org/abs/2607.29666v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>Telecom-compatible polarization-to-time-bin conversion of atom-photon entanglement for heterogeneous quantum networks</title>
+            <link>https://quantumcrier.com/posts/18d41065.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/18d41065.html</guid>
+            <pubDate>Fri, 31 Jul 2026 16:45:13 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article marks the first demonstration of converting polarization‑encoded atom‑photon entanglement into a time‑bin qubit that lives in the telecom C‑band, showing that trapped‑ion memories can be linked directly to fiber networks without losing their quantum correlations (96 % fidelity). By pairing quantum frequency conversion with a fiber‑based Mach–Zehnder encoder, the work bridges two major incompatibilities—wavelength and encoding—that have long limited heterogeneous quantum architectures. The result paves the way for robust, long‑distance ion‑based nodes to interoperate with existing telecom infrastructure, a crucial step toward scalable quantum repeaters and multi‑platform networks.</p>
+                <p>A key enabling feature of future quantum networks is interoperability between platforms that operate at different wavelengths and with different qubit encodings. We demonstrate an interface that converts atom-photon entanglement from polarization encoding at an atomic wavelength to time-bin encoding in the telecom C-band. Atom-entangled photons at 854 nm are generated from a single $^{40}$Ca$^+$ ion. After quantum frequency conversion to 1550 nm, the photonic polarization qubit is converted into a time-bin qubit using a fiber-based Mach--Zehnder-like encoder. Full quantum tomography of the final state verifies that the process preserves entanglement with 96.3(4.2)% fidelity. Together with the independent work of Ferrari et al. [arXiv:2607.07805 (2026)], this is the first demonstration of polarization-to-time-bin conversion of photons entangled with a single atomic quantum memory. The telecom-compatible interface enables robust qubit transmission over optical fibers and provides a key building block for heterogeneous quantum networking architectures.</p>
+                <p><a href="https://arxiv.org/abs/2607.29609v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>Qubit Loss Inference with Stabilizer Codes without Leakage Detection Units</title>
+            <link>https://quantumcrier.com/posts/cea76c7f.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/cea76c7f.html</guid>
+            <pubDate>Fri, 31 Jul 2026 16:34:49 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows that qubit‑loss events can be identified directly from ordinary stabilizer syndromes, eliminating the need for dedicated leakage‑detection hardware that currently adds significant space‑time overhead on photonic, neutral‑atom and trapped‑ion processors. By proving a general detectability condition and turning loss inference into a tractable set‑cover problem, the authors demonstrate—via circuit‑level simulations of the rotated surface code—that logical error rates can be lowered compared with noisy LDU baselines across realistic ion‑trap and atom‑array platforms. The result opens a path toward leaner fault‑tolerant architectures, though its effectiveness hinges on the assumed non‑entangling loss model and may diminish at very high loss probabilities.</p>
+                <p>Qubit loss occurs when the physical carrier of a qubit leaves the computational system without directly revealing the event&#39;s location. Such errors are a major obstacle to fault-tolerant quantum computation on platforms including photonic, neutral-atom, and trapped-ion systems. Loss locations are commonly identified using additional hardware operations such as leakage-detection units (LDUs), which introduce space-time overhead and may themselves become a source of error. We investigate whether qubit loss on stabilizer codes can instead be inferred from syndrome data obtained through standard repeated stabilizer measurements. Under a non-entangling model for gates involving a lost qubit, we derive a sufficient condition for loss detectability in general stabilizer codes. The condition is based on the emergence of anticommutation between stabilizer checks after their support on the lost qubits is removed. By using that condition, we formulate the exact loss-inference problem using the observed set of non-deterministic checks together with its maximum-likelihood formulation. We then relax the problem to the minimum set cover problem with a greedy heuristic algorithm. We evaluate the resulting inference and loss-correction protocols on the rotated surface code via circuit-level noise simulations for trapped-ion and neutral-atom platforms. On both platforms, inference-based and adaptive protocols reduce the logical error rate relative to a noisy-LDU baseline in the low-to-moderate loss-rate regime relevant to near-term hardware, while requiring fewer space-time overheads.</p>
+                <p><a href="https://arxiv.org/abs/2607.29603v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>error_correction</category>
+            
+            <category>simulation</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum computing-based solver for interacting power grids</title>
+            <link>https://quantumcrier.com/posts/ca174420.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/ca174420.html</guid>
+            <pubDate>Fri, 31 Jul 2026 16:07:07 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows how a quantum‑classical hybrid can tackle the notoriously hard problem of diagonalising huge non‑Hermitian admittance matrices that arise in modern multi‑terminal power grids, a task that quickly overwhelms conventional CPUs and memory. By adapting the Real Variance‑based VQE to extract complex eigenvalues, the authors demonstrate near‑exact resonance mode predictions on a 5‑bus test case while exploiting the logarithmic scaling of quantum registers. If the approach scales to realistic transmission networks, it could open a new pathway for real‑time stability analysis and harmonic mitigation in increasingly electrified grids—though practical deployment will still depend on larger, lower‑error QPUs and efficient encoding strategies.</p>
+                <p>The proliferation of power electronics in multi-terminal transmission grids has increasingly led to harmonic distortions and dynamic instabilities. While Resonance Mode Analysis (RMA) provides deep insights into these system resonances, evaluating the critical modes of large-scale grids presents a severe computational bottleneck. Classical iterative techniques must continuously diagonalize massively high-dimensional, non-Hermitian admittance matrices across a wide frequency spectrum, a process that rapidly exhausts classical memory and processing limits. To overcome this scaling barrier, we propose a novel quantum-classical hybrid methodology that natively maps the transmission grid&#39;s admittance matrix onto a Quantum Processing Unit (QPU). Because the grid&#39;s matrix is non-Hermitian, standard quantum eigensolvers are insufficient; thus, we employ the Real Variance-based Variational Quantum Eigensolver (RVVQE) algorithm to accurately extract the complex eigenvalues that represent the system&#39;s modes. Validated against a standard 5-bus transmission system, the quantum-derived critical-resonance modal impedances demonstrate near-perfect alignment with the exact classical frequency responses. Crucially, by encoding the grid&#39;s state logarithmically into quantum memory, this methodology bypasses classical RAM limitations. The successful implementation of the RVVQE framework not only bridges the mathematical topologies of dissipative electrical grids and open quantum systems but also provides a profoundly scalable architecture capable of diagnosing resonance instabilities in massive, continental-scale networks that currently exceed classical computational boundaries.</p>
+                <p><a href="https://arxiv.org/abs/2607.29582v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>algorithms</category>
+            
+        </item>
+        
+        <item>
             <title>IonQ Completes Acquisition of SkyWater Technology, Establishing Vertically Integrated Quantum Platform</title>
             <link>https://quantumcrier.com/posts/d985b45b.html</link>
             <guid isPermaLink="true">https://quantumcrier.com/posts/d985b45b.html</guid>
@@ -136,6 +212,28 @@
             <category>cryptography</category>
             
             <category>industry</category>
+            
+        </item>
+        
+        <item>
+            <title>Erasure surface code circuit without mid-circuit erasure checks</title>
+            <link>https://quantumcrier.com/posts/6ac0c3a6.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/6ac0c3a6.html</guid>
+            <pubDate>Fri, 31 Jul 2026 14:08:54 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows that the surface‑code’s theoretical advantage against erasures can be realized without costly mid‑circuit erasure checks by using a three‑state readout together with the newly proposed “moonwalking” surface‑code circuit. By treating leaked qubits as skipped two‑qubit gates and feeding that structure into a branch‑and‑bound decoder, the authors recover the doubled error‑correction capacity of erasures while eliminating extra hardware overhead. If the approach scales to larger lattices, it could simplify fault‑tolerant architectures on platforms where mid‑circuit measurements are expensive or unreliable, though its performance still depends on precise leakage detection and decoder implementation.</p>
+                <p>Quantum error correction (QEC) codes can correct twice as many erasure errors as Pauli errors. Because of this scaling advantage, there is significant interest in developing qubits whose dominant error channel can be converted into erasures via mid-circuit erasure checks. However, such erasure checks come with hardware overhead in practice. End-of-the-line three-state readout, in which one simultaneously measures a qubit&#39;s erasure status and computational state, is an alternative to mid-circuit erasure checks that is generally simpler to implement. In this work, we systematically study the conditions required to enable erasure performance---the doubled error-correction capacity---in the surface code with and without mid-circuit erasure checks. We introduce the moonwalking surface code, the time-reversal of the walking surface code, as a zero-overhead circuit with superior handling of leakage and erasure. Specifically, we show that it enables erasure-like logical error rate scaling when combined with three-state measurement if leaked qubits cause two-qubit gates to be skipped and an appropriate decoder is used. Our decoder, based on a branch-and-bound algorithm, specifically incorporates the noise structure of the skip-gate leaked-qubit effect.</p>
+                <p><a href="https://arxiv.org/abs/2607.29443v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>error_correction</category>
+            
+            <category>sensing</category>
             
         </item>
         
@@ -240,6 +338,22 @@
         </item>
         
         <item>
+            <title>Chiral magnons for spin-qubit state transfer</title>
+            <link>https://quantumcrier.com/posts/87ea14d3.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/87ea14d3.html</guid>
+            <pubDate>Fri, 31 Jul 2026 09:25:36 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article demonstrates a practical protocol that uses chiral magnons in a YIG waveguide to shuttle quantum states between distant NV‑center spin qubits while keeping the joint system in a dark state of the magnon bath, thereby sidestepping decoherence from the magnetic environment. By showing that realistic modulation of the NV–magnon coupling can achieve &gt;95 % fidelity over several microns, it adds a concrete building block to the emerging toolbox of magnonic quantum interconnects and complements recent work on magnon‑mediated entanglement and transduction. The result points toward scalable solid‑state networks where spin qubits are linked via nonreciprocal magnon channels, provided that temperature and dephasing constraints can be met in experiment.</p>
+                <p>We propose a protocol where chiral magnons mediate a state transfer between two distant spin qubits. The protocol is implemented by varying the coupling between the spin qubits and the magnons in time, such that an arbitrary state is transferred from one qubit to the other. The modulation of the coupling is performed such that the two-spin-qubit state is kept as a dark state of the magnon bath, bypassing the associated losses. We show that the protocol can be realized on a hybrid system composed of two nitrogen-vacancy (NV) centers coupled to the nonreciprocal and chiral magnon modes of an yttrium iron garnet (YIG) stripe. We propose two methods to achieve the time modulation of the NV-magnon coupling: i) the NV-magnet distance of both NV centers is varied; ii) the external magnetic field and the NV-magnet distance of one NV center are varied. We evaluate the implementability of both methods numerically, including the constraints on the temperature, and the dephasing time and minimal lifetime of the spin qubits required for high-fidelity state transfer. We find that using realistic experimental parameters, a state transfer between NV centers at a distance of several microns can be achieved with a fidelity $\gtrsim 0.95$. Our findings expand the toolbox of magnonics for quantum information purposes.</p>
+                <p><a href="https://arxiv.org/abs/2607.29206v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+        </item>
+        
+        <item>
             <title>IBM CEO Expects Quantum Computing to Drive Revenue by 2020s, Trillion-Dollar Value by End of 2030s</title>
             <link>https://quantumcrier.com/posts/4973d85d.html</link>
             <guid isPermaLink="true">https://quantumcrier.com/posts/4973d85d.html</guid>
@@ -252,6 +366,26 @@
             <author>Mark Eatherly</author>
             
             <category>industry</category>
+            
+        </item>
+        
+        <item>
+            <title>Numerical Optimization of Two-Qubit Gates in Silicon Flip-Flop Qubit Arrays under Electrical Control</title>
+            <link>https://quantumcrier.com/posts/65c298f5.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/65c298f5.html</guid>
+            <pubDate>Fri, 31 Jul 2026 07:52:26 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows that electrically driven dipole‑dipole interactions in silicon flip‑flop qubits can be tuned to produce high‑fidelity two‑qubit gates such as √iSWAP, a milestone for a platform that promises long nuclear‑spin coherence together with fast, fully electrical control. By introducing the FlipFlopQSim framework and using Makhlin invariants to map out leakage‑free operating regions while compensating spectator‑induced distortions, the authors bridge a gap between theoretical gate designs and realistic pulse engineering for multi‑qubit arrays. The results bring silicon donor qubits closer to the error‑rates needed for fault‑tolerant architectures and provide a practical roadmap that complements recent advances in CMOS‑compatible quantum hardware.</p>
+                <p>Silicon-based donor flip-flop qubits offer a promising path toward scalable, fault-tolerant quantum computing by combining the long coherence times of nuclear spins with fast, fully electrical control and long-range dipole-dipole coupling between qubits. However, realizing high-fidelity entangling operations in this platform remains challenging. The entangling interaction is intrinsically coupled to electron orbital dynamics, which can lead to leakage into non-computational states and unwanted phase accumulation. Furthermore, in multi-qubit architectures, residual dipolar couplings from spectator qubits distort the effective interaction landscape. In this work, we employ a numerical simulation framework, FlipFlopQSim, that models the spin-orbital dynamics of interacting flip-flop qubits to extract effective logical operations from realistic electrical control pulses. Using Makhlin invariants, we map the entangling landscape generated by electrically controlled dipole-dipole interactions and identify operating regions locally equivalent to canonical two-qubit gates, such as $\sqrt{iSWAP}$ and $iSWAP$. We then optimize the control parameters of physically realizable, electrically driven $R_z$ rotations to implement the necessary local corrections and maximize composite gate fidelity. Finally, we scale our analysis to multi-qubit registers with various geometries and connectivity patterns to evaluate spectator-induced distortions. Our results demonstrate that high-fidelity entangling operations cannot be optimized in isolation; rather, they require a co-design approach that simultaneously optimizes pulse control, local phase compensation, and physical device geometry. This work provides a robust numerical framework for assessing the scalability of electrically controlled silicon quantum processors and outlines key design principles for robust multi-qubit gate implementation.</p>
+                <p><a href="https://arxiv.org/abs/2607.29123v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>simulation</category>
             
         </item>
         
@@ -292,6 +426,40 @@
         </item>
         
         <item>
+            <title>On the Origin of Beyond-Classical Advantage in the Parity-Permutation Problem</title>
+            <link>https://quantumcrier.com/posts/87a1ddbc.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/87a1ddbc.html</guid>
+            <pubDate>Fri, 31 Jul 2026 06:51:06 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article overturns the common assumption that entanglement is the essential ingredient for quantum speed‑ups by showing that, in the parity‑permutation problem, merely increasing the local Hilbert‑space dimension can already yield a beyond‑classical advantage. By proving that product‑state preparations achieve perfect success in locally quantum GPTs and that no amount of entanglement helps below a dimensional threshold, the work clarifies which physical resources truly power probabilistic gains in permutation‑based sensing tasks. The result sharpens our theoretical toolkit for designing low‑entanglement quantum protocols and sets clear limits on what can be achieved with higher‑dimensional but separable systems.</p>
+                <p>We investigate the task of identifying the parity (odd vs even) of an unknown permutation applied to $n$ particles. Classically, using fewer than $n$ distinct labels per particle limits the success probability to random guessing, whereas quantum mechanics, exploiting entanglement in both preparation and measurement, accomplishes the task perfectly with as few as $\big\lceil \sqrt{n}\big\rceil$ levels per particle [\href{https://doi.org/10.1103/yhyv-xnwq}{PRL {\bf 135}, 260603 (2025)}]. We show that even without entangled preparation, quantum theory still offers a probabilistic advantage over classical strategies. Moreover, such product preparations yield perfect success in locally quantum theories, where elementary systems are quantum but their composition follows the minimal tensor product structure of generalized probabilistic theories (GPTs). We further identify GPT models that accomplish the task with certainty without requiring entanglement either at the preparation stage or at the measurement stage. Our central result establishes that the linear dimension of the elementary systems, rather than entanglement, is the fundamental resource governing the existence of probabilistic advantage in the permutation parity problem. In particular, below the required dimension threshold, no amount of entanglement can improve upon the random-guessing limit.</p>
+                <p><a href="https://arxiv.org/abs/2607.29073v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
+            <title>Optically Resolved Excited State Hyperfine Structure of a Silicon Colour Centre in the Telecom Bands</title>
+            <link>https://quantumcrier.com/posts/66d9b399.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/66d9b399.html</guid>
+            <pubDate>Fri, 31 Jul 2026 01:54:04 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article marks the first optical resolution of hyperfine structure in a telecom‑band silicon colour centre, demonstrating that the Al i⁺ defect hosts a long‑lived, exchange‑split triplet excited state with narrow linewidths suitable for coherent spin–photon interfaces. By confirming bright emission and measurable excited‑state lifetimes in isotopically purified ²⁸Si, the work provides a concrete pathway to couple nuclear‑spin memories—renowned for millisecond coherence—to fiber‑compatible photons without the decoherence typically introduced by magnetic ground states. If these properties can be harnessed in scalable devices, they could accelerate quantum networking and distributed computing architectures that rely on silicon’s mature fabrication ecosystem.</p>
+                <p>Nuclear spin qubits in silicon offer exceptionally coherent quantum memory, and optically-interfaced spins are a promising platform for both quantum networking and distributed quantum computing. It has been proposed that emitters with diamagnetic ground states may permit an optical interface to nuclear spin memories via metastable, hyperfine-coupled excited states while suppressing key sources of decoherence. Until now, direct optical observation of suitable transitions in silicon colour centres has remained elusive. Here we characterize the singly-ionized interstitial aluminum donor (Al$_\mathrm{i}^+$) in isotopically purified $^{28}$Si and find several novel features of this little-studied defect. We measure bright emission and strong optical transitions and, in contrast to previous studies of this centre, attribute its emission to an exchange-split spin triplet and singlet level of the lowest-energy 1s:T$_2$ excited state. We measure the excited-state lifetimes and, as a consequence of its narrow emission linewidth, observe the fine and hyperfine structure of the long-lived triplet state. This constitutes the first measurement of an optically-resolved hyperfine structure in the excited state of a telecommunications-band silicon colour centre.</p>
+                <p><a href="https://arxiv.org/abs/2607.28943v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>sensing</category>
+            
+        </item>
+        
+        <item>
             <title>U.S. Naval Research Laboratory Outlines Strategic Quantum Research Priorities</title>
             <link>https://quantumcrier.com/posts/7ccf3f92.html</link>
             <guid isPermaLink="true">https://quantumcrier.com/posts/7ccf3f92.html</guid>
@@ -326,6 +494,26 @@
             <category>hardware</category>
             
             <category>algorithms</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>FedQML-Edge: Compact Quantum Feature Sketches for Communication-Constrained Roadside Federated Learning</title>
+            <link>https://quantumcrier.com/posts/9e573239.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/9e573239.html</guid>
+            <pubDate>Thu, 30 Jul 2026 19:46:44 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article demonstrates how a tiny quantum‑generated feature sketch can replace bulky raw sensor streams in roadside federated learning, cutting the per‑round bandwidth by an order of magnitude while preserving predictive power. By leveraging Pauli expectation values as a nonlinear compression layer, FedQML‑Edge outperforms the best classical sketches and rivals much larger neural nets, marking one of the first practical quantum‑enhanced pipelines tested on real traffic data and IBM hardware. The work signals that near‑term quantum processors may already provide tangible gains for privacy‑sensitive edge AI, though scaling to larger fleets will still depend on more reliable qubit counts and error mitigation.</p>
+                <p>Roadside units (RSUs) supporting connected and autonomous vehicle corridors need compact models to decide when cooperative maneuvers should be rewarded, deferred, or disabled. Raw sensor streams and neural network weight checkpoints are poorly suited to bandwidth-limited, privacy-sensitive roadside learning. This paper presents $\texttt{FedQML-Edge}$, a federated quantum feature-sketching pipeline for traffic-stability gating. Each RSU constructs a traffic-state summary and sends circuit inputs to a quantum computer; Pauli expectations form a nonlinear sketch processed by a logistic classifier. Only classifier updates are shared with an aggregator, whose head supports reward gating. Raw observations, vehicle records, event traces, and quantum sketches remain private. We evaluate the method using NGSIM trajectories, SUMO predictive gating with sensing noise, and IBM Quantum hardware. On NGSIM, the Pauli sketch reduces test log loss by $14.4\%$ relative to the strongest matched classical sketch. On SUMO, it approaches larger MLPs in stable-window recall while using $7-28$ times less communication per round.</p>
+                <p><a href="https://arxiv.org/abs/2607.28799v1">Read original at arXiv Quantum Physics</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>machine_learning</category>
+            
+            <category>sensing</category>
             
             <category>research</category>
             
@@ -728,178 +916,6 @@
             <author>Mark Eatherly</author>
             
             <category>general</category>
-            
-        </item>
-        
-        <item>
-            <title>Reconfigurable Optical Platform for One-way Quantum Communication Complexity</title>
-            <link>https://quantumcrier.com/posts/d5c20362.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/d5c20362.html</guid>
-            <pubDate>Wed, 29 Jul 2026 17:51:41 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article demonstrates that multimode‑fiber wavefront shaping can serve as a reconfigurable hardware platform for one‑way quantum communication complexity, experimentally achieving the exponential quantum‑classical separation predicted for a benchmark problem. By showing how the same decoding architecture scales to higher‑dimensional tasks without added optical components, it builds on recent photonic advantage experiments and points toward more ambitious protocols that could deliver practical quantum‑advantage demonstrations in communication rather than full‑scale computation. The work highlights a realistic pathway forward, though further engineering will be needed to manage loss and scaling before such advantages can be deployed outside the laboratory.</p>
-                <p>Demonstrating a practical quantum advantage remains a central goal in quantum information science. While quantum computational supremacy is still technologically demanding, communication complexity offers a promising route to showcase quantum advantage with current photonic platforms. Here we introduce a reconfigurable optical platform for one-way quantum communication complexity based on multimode fibers and wavefront shaping. We experimentally validate it by implementing a genuine one-way quantum communication complexity problem for which an exponential quantum--classical communication separation is known. Complementary numerical simulations show that the same reconfigurable decoding architecture can support more general one-way communication tasks with comparable performance, while also offering a route to higher-dimensional implementations without increasing hardware complexity. Together, these results establish multimode-fiber wavefront shaping as a versatile hardware platform for one-way quantum communication complexity and provide a concrete roadmap toward more demanding protocols, where stronger quantum--classical separations could enable practical demonstrations of quantum advantage.</p>
-                <p><a href="https://arxiv.org/abs/2607.27181v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Training Quantum Dragons</title>
-            <link>https://quantumcrier.com/posts/865699d0.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/865699d0.html</guid>
-            <pubDate>Wed, 29 Jul 2026 17:44:03 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article marks the first time the non‑equilibrium Green’s function formalism—a workhorse for nanoscale electron transport—has been mapped onto a quantum linear‑solver workflow, showing that both HHL and variational QLS algorithms can extract transmission spectra of “quantum dragon” devices. By compressing the problem to circuits with only three or four physical qubits and validating the approach on an IBM processor, the work demonstrates a concrete pathway for quantum computers to tackle realistic transport calculations that are hard for classical methods. It connects directly to the broader push toward quantum‑accelerated materials simulation, suggesting that as hardware scales, quantum‑enabled NEGF could become a powerful tool for designing disorder‑robust nanoelectronics. The results remain proof‑of‑concept, with noise mitigation and larger system sizes still posing significant challenges.</p>
-                <p>The Non-Equilibrium Green&#39;s Function (NEGF) is the standard formalism for nano-scale electron transport. By recasting the NEGF scattering problem as a linear system of equations whose solution encodes the transmission and reflection amplitudes, we present the first quantum computerized implementation of NEGF. We apply both the Harrow--Hassidim--Lloyd and Variational Quantum Linear Solver algorithms to compute the transmission coefficient $T(E)$ of quantum dragon nanodevices within the single-band tight-binding model. Quantum dragon devices exhibit perfect transmission across the full conducting band regardless of internal disorder. The problem maps onto compact circuits of 3 and 4 total physical qubits for the 2-site and 6-site dragon devices, respectively. A similarity transformation block-diagonalizes the NEGF linear system reducing the Pauli decomposition of the block-encoded matrix. We demonstrate the feasibility of quantum computation by performing ideal and noise-aware simulations and computations on physical IBM quantum processor.</p>
-                <p><a href="https://arxiv.org/abs/2607.27168v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Yet more qubit tech: New quantum dot options, diamond vacancies</title>
-            <link>https://quantumcrier.com/posts/b04beaa2.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/b04beaa2.html</guid>
-            <pubDate>Wed, 29 Jul 2026 17:37:47 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article highlights the expanding toolbox of solid‑state qubits, showing that quantum dots and diamond nitrogen‑vacancy centers are moving from niche experiments toward commercially viable platforms. By diversifying beyond superconducting circuits and trapped ions, these approaches could offer longer coherence times or easier integration with existing semiconductor manufacturing, addressing two of the biggest bottlenecks in scaling quantum processors. The coverage also underscores how multiple companies are racing to mature each technology, meaning the field will benefit from healthy competition and a broader set of engineering trade‑offs for future applications.</p>
-                <p>Companies are making sure we have a surplus of options for building qubits.</p>
-                <p><a href="https://arstechnica.com/science/2026/07/quantum-computing-roundup-still-more-technologies-making-waves/">Read original at Ars Technica - Science</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Parity-Based Time-Bin Encoding Enabling SWAP Between Polarization and Time-Bin Qubits</title>
-            <link>https://quantumcrier.com/posts/b4e85807.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/b4e85807.html</guid>
-            <pubDate>Wed, 29 Jul 2026 17:20:41 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article introduces a parity‑based time‑bin encoding that turns a simple Δt delay into a logical X gate, allowing polarization‑controlled CNOTs and their reverse to be chained into a deterministic SWAP between polarization and time‑bin qubits on a single photon. By overcoming the one‑way limitation of conventional early/late bins, the scheme opens a practical route to multi‑degree‑of‑freedom photonic processors that can flexibly reroute information without bulky interferometers—a capability increasingly needed for scalable quantum networking and integrated photonic chips. The authors also quantify realistic error sources such as electro‑optic modulation fidelity and detector timing jitter, highlighting both the promise and the engineering challenges of bringing this primitive into near‑term hardware platforms.</p>
-                <p>Multi-degree-of-freedom photonic quantum processing requires routing between degree-of-freedom (DOF) qubit encodings on a single photon. A SWAP between polarization and time-bin qubits is Multi-degree-of-freedom photonic quantum processing requires routing between degree-of-freedom (DOF) qubit encodings on a single photon. A SWAP between polarization and time-bin qubits is an advantageous primitive for such architectures, however conventional early/late time-bin encoding does not support bidirectional logical time-bin flips from late to early which limits the ability to implement certain quantum operations. We introduce a parity-based time-bin encoding in which logical $\vert 0 \rangle_T$ and $\vert 1 \rangle_T$ correspond to even and odd multiples of a spacing $Δt$, so that a physical delay of $Δt$ implements $\vert 0 \rangle_T \leftrightarrow \vert 1 \rangle_T$. This encoding is the enabling ingredient that makes a polarization-controlled delay line implement $\mathrm{CNOT}_{P \rightarrow T}$ and aligns naturally with periodic refractive index modulation for $\mathrm{CNOT}_{T \rightarrow P}$. Composing three such CNOT operations sequentially results in a deterministic SWAP between polarization and time-bin degrees of freedom. We analyze field-based modulation polarization-rotation error probability and timing-resolution constraints set by both EOM drive electronics and photon detection.</p>
-                <p><a href="https://arxiv.org/abs/2607.27144v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Hardware-efficient erasure-error detection with an integer fluxonium</title>
-            <link>https://quantumcrier.com/posts/b9148f4c.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/b9148f4c.html</guid>
-            <pubDate>Wed, 29 Jul 2026 16:49:25 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article shows that an integer‑fluxonium circuit can turn the dominant decay channel of its |f⟩ state into a detectable erasure, allowing mid‑circuit checks without extra ancilla qubits and dramatically extending coherence times. By leveraging the suppressed |f⟩→|g⟩ transition and using the same readout resonator for erasure detection, the authors achieve an 8.4× boost in |f⟩ lifetime and halve single‑qubit gate error—metrics that directly translate into lower overhead for surface‑code or other fault‑tolerant schemes. The work builds on recent bias‑preserving qubits and erasure‑conversion proposals, positioning integer fluxonium as a promising hardware‑efficient route toward scalable quantum error correction, provided the identified design refinements can be realized in larger processor arrays.</p>
-                <p>Erasure-error detection can improve the efficiency of quantum error correction by revealing the times and locations of their error events. In this work, we demonstrate erasure conversions and mid-circuit erasure detections in a single integer fluxonium, in which the states $\mathrm{|g\rangle, |f\rangle}$ encode the logical states and $\mathrm{|e\rangle}$ encodes the erasure state. The integer fluxonium suppresses direct $|\mathrm{f} \rangle \rightarrow |\mathrm{g} \rangle$ transitions and allows the dominant $|\mathrm{f} \rangle \rightarrow |\mathrm{e}\rangle$ transitions to be converted into detectable erasures. Furthermore, we identified a design space that nullifies the resonant-frequency shift between the two logical states, enabling ancilla-free mid-circuit erasure checks using the same resonator employed for final readout. By discarding the detected erasure events, we achieved an 8.4-fold increase in the $|\mathrm{f}\rangle$ state lifetime, a 1.38-fold increase in the Hahn-echo time, and a reduction of single-qubit gate error from 0.061(2)% to 0.030(5)%. Our results establish integer fluxonium as a hardware-efficient platform for erasure-error detection and conversion, while identifying the improvements required to realize an effective erasure qubit with high erasure bias.</p>
-                <p><a href="https://arxiv.org/abs/2607.27123v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-        </item>
-        
-        <item>
-            <title>HRL Laboratories Demonstrates Self-Running Silicon QPU in Nature Benchmark</title>
-            <link>https://quantumcrier.com/posts/870d3f3a.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/870d3f3a.html</guid>
-            <pubDate>Wed, 29 Jul 2026 16:26:31 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article marks a pivotal step toward truly scalable quantum hardware by showing that an 18‑qubit silicon spin processor can run entirely on a cryogenic CMOS control chip, eliminating the bulky room‑temperature instrument rack that has limited integration density. The self‑running architecture builds on recent advances in silicon qubits and low‑power cryo‑electronics, bringing quantum processors closer to the system‑on‑chip model needed for large‑scale error‑corrected machines. If the approach can be extended to higher qubit counts while maintaining fidelity, it could dramatically reduce cooling overhead and simplify packaging, accelerating the path from laboratory prototypes to commercial quantum accelerators.</p>
-                <p>In a study published today in Nature, hardware developer HRL Laboratories—jointly owned by Boeing and General Motors—demonstrated an 18-qubit silicon spin quantum processing unit (QPU) that operates autonomously without real-time direction from room-temperature electronics. The integrated architecture replaces traditional racks of external control instruments with a custom cryogenic CMOS control chip operating at 4 K [...] The post HRL Laboratories Demonstrates Self-Running Silicon QPU in Nature Benchmark appeared first on Quantum Computing Report .</p>
-                <p><a href="https://quantumcomputingreport.com/hrl-laboratories-demonstrates-self-running-silicon-qpu-in-nature-benchmark/">Read original at Quantum Computing Report</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Native CCZ Gate with Fluxonium Qubits and a Microwave-Driven Coupler</title>
-            <link>https://quantumcrier.com/posts/dfb993dd.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/dfb993dd.html</guid>
-            <pubDate>Wed, 29 Jul 2026 16:23:50 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article demonstrates that a three‑fluxonium processor can execute a native CCZ (Toffoli‑equivalent) gate in just 65 ns with a measured fidelity of 99.39 %, a performance that would demand near‑perfect two‑qubit CZ gates if the operation were decomposed. By using a microwave‑driven transmon coupler and a single, easily calibrated pulse, the work shows how multi‑qubit primitives can be made coherence‑limited while keeping parasitic cross‑talk low enough for 2‑D scaling. The result cuts gate depth dramatically for algorithms that rely on Toffoli‑type logic, offering a clear path to reduce error‑correction overhead in superconducting processors. However, the demonstrated fidelity still falls short of the sub‑99.9 % thresholds needed for fault‑tolerant logical qubits, so further improvements in coherence and control will be essential for full scalability.</p>
-                <p>Native multi-qubit gates could reduce the overhead associated with decompositions into single- and two-qubit operations, but whether they can simultaneously provide high fidelity, simple control and robustness against parasitic interactions in scalable architectures remains unclear. Here we experimentally realize a 65-ns native controlled-controlled-phase operation, locally equivalent to the Toffoli gate, with a fidelity of 99.39(5)% in a three-qubit processor unit based on fluxonium qubits coupled via a microwave-driven transmon coupler. The implemented operation would require CZ fidelities of approximately 99.94% if realized through a conventional decomposition. The gate is implemented with a single control pulse, that relies on a simple calibration procedure yielding coherence-limited performance. This processor unit naturally extends to scalable two-dimensional layouts with low parasitic interactions. Altogether, these results establish native multi-qubit gates as a viable hardware-efficient primitive for scalable superconducting quantum processors.</p>
-                <p><a href="https://arxiv.org/abs/2607.27094v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>A Degenerate Singlet-Triplet Qubit with All-Electrical Orthogonal Control</title>
-            <link>https://quantumcrier.com/posts/98a4f0f1.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/98a4f0f1.html</guid>
-            <pubDate>Wed, 29 Jul 2026 15:54:51 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article demonstrates the first all‑electrical orthogonal control of a degenerate singlet‑triplet qubit in germanium hole spins, eliminating the always‑on Zeeman gradient that has limited idle‑time fidelity in previous ST qubits. By exploiting tunable anisotropic g‑factors to bring both exchange J and ΔE_Z to zero at the idle point, the authors achieve fully independent X‑ and Z‑axis rotations with a 99.53 % single‑qubit gate fidelity in ~100 ns—on par with the best semiconductor spin qubits today. The ability to shift the degenerate operating point electrically across magnetic‑field orientations paves the way for multi‑qubit scaling under a shared global field, reducing the need for local micromagnets. Maintaining the precise g‑factor balance in larger arrays will be a key engineering challenge moving forward.</p>
-                <p>Singlet-triplet qubits offer an attractive encoding for semiconductor quantum computing, combining ancilla-free readout, reduced sensitivity to common-mode noise, and baseband voltage control. However, the Zeeman energy difference $ΔE_\mathrm{Z}$ is typically fixed by local magnetic field gradients or $g$-factor inhomogeneities, leaving the exchange interaction $J$ as the only dynamically tunable parameter. This always-on $ΔE_\mathrm{Z}$ precludes orthogonal control of the qubit&#39;s rotation axes and introduces unwanted state rotations during idling. Here we demonstrate all-electrical orthogonal control of a degenerate singlet-triplet (DST) qubit formed by two hole spins in a germanium double quantum dot. Exploiting the electrically tunable anisotropic $g$-factors of the two spins, we identify a regime where both $ΔE_\mathrm{Z}$ and $J$ vanish, making the $S$ and $T_0$ states degenerate at the idle point. By applying only baseband voltage pulses, we independently control both $J$ and $ΔE_\mathrm{Z}$, enabling fully orthogonal $Z$- and $X$-axis rotations. Randomized benchmarking yields an average physical single-qubit gate fidelity of 99.53\% for a gate duration of approximately 100 ns. Finally, we electrically tune the degenerate point across a wide range of magnetic field orientations, enabling operation in a regime of enhanced coherence time and offering a route towards multi-qubit scaling under a shared global magnetic field.</p>
-                <p><a href="https://arxiv.org/abs/2607.27067v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Unconventional Thermalization of a Three-Wave-Mixing Model</title>
-            <link>https://quantumcrier.com/posts/f9b61f40.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/f9b61f40.html</guid>
-            <pubDate>Wed, 29 Jul 2026 15:23:42 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article shows that a microwave cavity‑qubit system with long‑range three‑wave mixing can exhibit strong Hilbert‑space fragmentation even though its level statistics look integrable, revealing a new route to ergodic yet kinetically constrained dynamics that sits between conventional thermalization and many‑body localization. By linking the fragmented sectors to rapid scrambling in out‑of‑time‑ordered correlators while global transport relaxes only logarithmically, the work connects to recent observations of fragmentation in Rydberg‑atom arrays and dipolar spin models, suggesting a broader class of hardware platforms where hidden kinematic constraints dominate thermalization. The authors also point out that the late‑time OTOC scaling with system size is experimentally measurable, offering a concrete diagnostic for future superconducting‑circuit quantum simulators.</p>
-                <p>Understanding the boundaries between quantum thermalization and localization in many-body systems remains a central frontier of condensed matter and quantum information science. In this work, we investigate the dynamics and spectral properties of a generic model with long-range three-body-interaction, namely, a system with non-local three-wave-mixing. This model has been realized recently with a microwave Fabry-Perot cavity terminated on one end by a superconducting qubit mirror. Utilizing exact diagonalization techniques, we uncover a striking paradox: the global energy level spacing statistics show integrability, even though all dynamic observables and inverse participation ratios of the eigenstates indicate ergodicity and delocalization. We show that this behavior is a hallmark of strong Hilbert space fragmentation driven by kinematic constraints rather than an explicit global symmetry. Inside these sectors, dynamics scramble rapidly, as evidenced by the out-of-time-ordered correlator (OTOC), while global transport is heavily bottlenecked, resulting in a logarithmic relaxation to equilibrium. This picture is further confirmed by fluctuations in eigenstate entanglement entropy at the same energy. Finally, we demonstrate that the late time OTOC average scales with system size, providing a distinct experimentally accessible signature of the underlying three-body kinetic bottlenecks.</p>
-                <p><a href="https://arxiv.org/abs/2607.27028v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Embedded quantum computing for many-body surface reaction</title>
-            <link>https://quantumcrier.com/posts/658db58b.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/658db58b.html</guid>
-            <pubDate>Wed, 29 Jul 2026 15:05:48 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article demonstrates the first practical embedding of a quantum‑computing workflow into density‑functional theory to treat correlated active spaces on realistic metal surfaces, scaling up to 28 qubits on the Zuchongzhi superconducting processor. By preserving orbital continuity along reaction coordinates and combining quantum‑selected configuration interaction with perturbative corrections, QC‑DFET reproduces experimental barriers for H₂ dissociation, CO adsorption, and formate hydrogenation—tasks that have long challenged conventional DFT alone. The work signals a concrete step toward using near‑term quantum hardware to accelerate catalyst design, while still highlighting the need for further error mitigation and larger qubit counts before routine industrial deployment.</p>
-                <p>Predictive simulations of catalytic interfaces require correlated electronic-structure treatments that describe localized chemical transformations while retaining the influence of the extended metallic environment. We introduce QC-DFET, a quantum-computing density-functional embedding framework that maps surface-reaction active spaces to compact, environment-aware qubit Hamiltonians. A reaction-consistent active-space protocol preserves orbital continuity along reaction coordinates, while quantum-selected configuration interaction based on measurements from the Zuchongzhi superconducting quantum processor and strongly contracted perturbation theory capture static and dynamic correlation. On Cu(111), QC-DFET treats active spaces up to 28 qubits and is validated through a hierarchy of experimentally constrained surface-chemistry challenges. H2 dissociation/desorption tests balanced bond breaking and recombination barriers, CO adsorption tests site selectivity and metal-adsorbate bonding, and formate hydrogenation tests competing hydrogenation branches with different kinetic and thermodynamic signatures. Across these cases, QC-DFET reproduces bidirectional H2 barriers, recovers the observed top-site preference and adsorption strength of CO, and reconciles the experimentally benchmarked H2COO* reverse barrier with the lower forward barrier to HCOOH*. These results establish embedded quantum computing as a practical route to correlated surface-reaction energetics.</p>
-                <p><a href="https://arxiv.org/abs/2607.27009v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>sensing</category>
             
         </item>
         
