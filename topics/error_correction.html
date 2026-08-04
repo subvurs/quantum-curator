@@ -32,7 +32,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 03, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 04, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,30 +56,25 @@
             <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
         </nav>
         <h1>error_correction</h1>
-        <p class="page-subtitle">74 curated articles</p>
+        <p class="page-subtitle">77 curated articles</p>
     </header>
 
     
     
-    <article class="featured-card featured-card--wide" style="margin-bottom: var(--space-xl);">
-        
-        <div class="featured-image">
-            <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Gil-Kalai.jpg" alt="" loading="eager"
-                 onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
-        </div>
+    <article class="featured-card featured-card--wide no-image" style="margin-bottom: var(--space-xl);">
         
         <div class="featured-content">
             <h3 class="post-title">
-                <a href="/posts/0a46cd2d.html">Gil Kalai (Hebrew University / Reichman University): Why noise may doom quantum computers</a>
+                <a href="/posts/66fa96dd.html">Zero-G: A Pre-Decoder-Aware Decoder for Quantum Error Correction</a>
             </h3>
-            <p class="post-summary">Yuval Boger interviews mathematician Gil Kalai about his long-standing skepticism regarding scalable quantum computing. Kalai explains two main arguments behind his theory: correlated noise that may defeat quantum error correction and complexity-based limits on NISQ devices achieving quantum suprema...</p>
+            <p class="post-summary">Fault-tolerant quantum computing requires classical decoders that keep pace with the underlying hardware, translating syndrome measurements into corrections fast enough to avoid an exponential backlog. To meet this real-time constraint, pre-decoders have emerged as part of a hierarchical decoding ap...</p>
             <div class="post-commentary">
-                <blockquote>This article spotlights Gil Kalai’s persistent challenge to the prevailing optimism that fault‑tolerant quantum computers can be built by simply scaling up noisy qubits, arguing that correlated errors could fundamentally undermine error‑correction protocols. By juxtaposing Kalai’s theoretical objections with recent “quantum supremacy” claims from Google and others, it forces the community to confront whether current NISQ devices are merely clever statistical tricks or truly approaching a regime where quantum advantage is robust. Readers should care because any experimental validation of Kalai’s conjectures would reshape research priorities, pushing developers toward radically new architectures or error‑mitigation strategies rather than relying on conventional surface‑code scaling.</blockquote>
+                <blockquote>This article introduces Zero‑G, a strong decoder built specifically to exploit the sparsity left by pre‑decoders, turning a theoretical speedup into a practical tenfold latency reduction while preserving matching accuracy. By offering a stochastic approximate MWPM that can be deployed heterogeneously on CPUs and FPGAs, it bridges the long‑standing gap between fast hardware control loops and heavyweight decoding algorithms—a key bottleneck for scaling surface‑code error correction beyond modest distances. The results suggest that real‑time fault tolerance at code distances up to d = 15 and hundreds of logical qubits is now within reach, though further validation on larger codes and under realistic noise models will be needed before it can become a standard component of quantum processors.</blockquote>
             </div>
             <div class="post-meta">
-                <span class="post-source">The Quantum Insider</span>
-                <span class="post-date">August 01, 2026</span>
-                <a href="https://thequantuminsider.com/2026/08/01/gil-kalai-hebrew-university-reichman-university-why-noise-may-doom-quantum-computers/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-source">arXiv Quantum Physics</span>
+                <span class="post-date">August 03, 2026</span>
+                <a href="https://arxiv.org/abs/2608.02030v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </div>
     </article>
@@ -88,6 +83,53 @@
     
     
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/8a7341e2.html">Oraqle: An Empirical Analysis of Qubit Readout and Discriminators in Quantum Error Correction</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Quantum error correction (QEC) is the most promising route toward fault-tolerant quantum computing and, thus, useful quantum computers. QEC operates a...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">August 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/980b308e.html">The Pangaea Architecture: Fault-Tolerant Heterogeneous Topological Codes via a Quantum Bus</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">We introduce Pangaea, a fault-tolerant quantum architecture that uses a quantum bus to mediate logical operations between remote patches of two-dimens...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">August 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Gil-Kalai.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/0a46cd2d.html">Gil Kalai (Hebrew University / Reichman University): Why noise may doom quantum computers</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Yuval Boger interviews mathematician Gil Kalai about his long-standing skepticism regarding scalable quantum computing. Kalai explains two main argume...</p>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">August 01, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
