@@ -32,7 +32,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 04, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 05, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,7 +56,7 @@
             <a href="/">Home</a> &raquo; <a href="/topics/">Topics</a> &raquo;
         </nav>
         <h1>simulation</h1>
-        <p class="page-subtitle">167 curated articles</p>
+        <p class="page-subtitle">170 curated articles</p>
     </header>
 
     
@@ -65,16 +65,16 @@
         
         <div class="featured-content">
             <h3 class="post-title">
-                <a href="/posts/70487371.html">Learnable yet not simulable: a quantum resource theory of learning models</a>
+                <a href="/posts/07e3b787.html">Realified tensor networks: quantum circuit simulation on real-valued matrix accelerators</a>
             </h3>
-            <p class="post-summary">Quantum resource theory has sharpened our understanding of the intrinsic complexity of quantum systems, particularly their classical simulability. However, it remains unclear which quantum resource governs the classical learnability of quantum circuits, especially beyond the regime of efficient clas...</p>
+            <p class="post-summary">Tensor-network contraction simulates quantum circuits, but modern matrix accelerators (NPUs, TPUs) expose only real GEMM pipelines, so the complex networks of quantum simulation must be reconstructed in software. We resolve the mismatch by a realification rewrite that maps any complex tensor network...</p>
             <div class="post-commentary">
-                <blockquote>This article identifies a new resource—dynamical stabilizer entropy (DSE)—that separates quantum circuits that are learnable from classical data from those that remain intractable to simulate, filling a long‑standing gap in our understanding of quantum learnability beyond simulability. By mapping DSE onto a computational phase diagram and constructing a DSE‑guided surrogate learner, the authors show that certain 80‑qubit families can be efficiently learned even though their exact dynamics cannot be classically emulated, suggesting a practical route for data‑driven characterization of near‑term devices. The work connects resource‑theoretic ideas with machine‑learning approaches and hints that future quantum‑hardware benchmarking may rely more on learning‑based surrogates than brute‑force simulation. However, the hardness results depend on standard complexity assumptions, so experimental validation will be crucial to confirm the predicted boundaries.</blockquote>
+                <blockquote>This article shows how to translate any complex‑valued tensor network into an equivalent real‑valued one, letting modern AI accelerators that only expose real GEMM kernels be used for high‑fidelity quantum circuit simulation without costly software emulation. By proving a tight overhead bound of at most three‑fold in real multiplications and demonstrating near‑identical contraction orders on dozens of benchmark circuits, the work bridges a long‑standing hardware–algorithm mismatch that has limited the use of TPUs, NPUs and similar devices for quantum workloads. The result opens a practical path to faster VQE, QAOA and Clifford+$T$ simulations on existing cloud‑scale AI chips, albeit with modest memory growth as intermediate tensors can double in size.</blockquote>
             </div>
             <div class="post-meta">
                 <span class="post-source">arXiv Quantum Physics</span>
-                <span class="post-date">August 03, 2026</span>
-                <a href="https://arxiv.org/abs/2608.02325v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-date">August 04, 2026</span>
+                <a href="https://arxiv.org/abs/2608.03987v1" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </div>
     </article>
@@ -83,6 +83,48 @@
     
     
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/fd5b47b9.html">A lower bound on the classical simulation cost of star-network correlations</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">It is well established that quantum strategies outperform classical ones in several communication tasks. We study the quantum communication complexity...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">August 04, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/2b595e1a.html">Matrix Product Evolution: A Method for Simulating Quantum Circuits Using Tensor Networks</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Classical simulation of quantum circuits is an essential tool in quantum information science, but its applicability is constrained by the exponential ...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">August 04, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/70487371.html">Learnable yet not simulable: a quantum resource theory of learning models</a>
+                </h4>
+                <p class="post-summary" style="font-size: 0.8125rem; margin-bottom: var(--space-xs);">Quantum resource theory has sharpened our understanding of the intrinsic complexity of quantum systems, particularly their classical simulability. How...</p>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">August 03, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
