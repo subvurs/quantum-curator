@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Majorana modes withstand disorder in atomic chains, boosting fault-tolerant quantum computing | Quantum Crier</title>
-    <meta name="description" content="Quantum computers—systems that process information and perform computations by leveraging the principles of quantum mechanics—could solve some tasks faster and ">
+    <title>QMIMO: Circuit Based Quantum MIMO Design with Variational Receiver | Quantum Crier</title>
+    <meta name="description" content="This paper investigates a quantum extension of classical Multiple-Input Multiple-Output (MIMO) communication in which the conventional linear channel model is r">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Majorana modes withstand disorder in atomic chains, boosting fault-tolerant quantum computing">
+    <meta property="og:title" content="QMIMO: Circuit Based Quantum MIMO Design with Variational Receiver">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://scx1.b-cdn.net/csz/news/tmb/2026/study-proves-the-robus.jpg">
-<meta name="twitter:image" content="https://scx1.b-cdn.net/csz/news/tmb/2026/study-proves-the-robus.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 09, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 10, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,22 +56,23 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>Majorana modes withstand disorder in atomic chains, boosting fault-tolerant quantum computing</h1>
+        <h1>QMIMO: Circuit Based Quantum MIMO Design with Variational Receiver</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Phys.org Quantum</strong></span>
-            <span class="date">June 10, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">August 07, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://scx1.b-cdn.net/csz/news/tmb/2026/study-proves-the-robus.jpg" alt="Majorana modes withstand disorder in atomic chains, boosting fault-tolerant quantum computing" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -83,19 +80,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that Majorana zero‑modes in engineered atomic chains remain robust even when the underlying lattice is disordered, a key step toward realizing topologically protected qubits that can tolerate fabrication imperfections. By confirming experimentally that disorder does not readily destroy the non‑abelian excitations, the work strengthens the case for using Majorana platforms as a practical route to fault‑tolerant quantum processors, complementing recent advances in nanowire and proximitized superconductor devices. The findings also temper optimism by noting that while disorder tolerance is improved, scaling up to large qubit arrays will still require precise control of coupling and readout architectures.
+                This article shows how a variational quantum circuit can act as a “learn‑to‑invert” receiver for a fully quantum MIMO channel, turning coherent multi‑qubit interference into a tractable decoding problem. By benchmarking the VQC against classical detectors on realistic NISQ noise models, the authors demonstrate that while quantum receivers do not yet beat conventional methods in raw bit‑error rate, they deliver far more stable performance as channel coupling grows—a trait that could be valuable for future ultra‑dense wireless or satellite links where interference is intrinsically quantum. The work therefore positions variational quantum signal processing as a complementary tool rather than a wholesale replacement, highlighting an emerging niche where quantum hardware may enhance communication robustness once error rates continue to improve.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum computers—systems that process information and perform computations by leveraging the principles of quantum mechanics—could solve some tasks faster and more effectively than classical computers. While some studies have demonstrated the advantages of these computers for specific tasks, ensuring their reliable operation in real-world settings has proved challenging.</p>
+            <p>This paper investigates a quantum extension of classical Multiple-Input Multiple-Output (MIMO) communication in which the conventional linear channel model is replaced by a parameterized multi-qubit unitary transformation. Within this framework, interference is represented through coherent quantum interactions rather than additive signal coupling. To recover transmitted information, a Variational Quantum Circuit (VQC) receiver is introduced that learns an approximate inverse channel transformation through supervised variational optimization. The proposed system is evaluated under realistic noisy intermediate-scale quantum (NISQ) conditions incorporating depolarizing noise, thermal relaxation, and measurement imperfections, and its performance is compared with that of standard classical detection methods. The results reveal a trade-off between the two approaches: classical detectors achieve substantially lower bit-error rates across much of the investigated parameter range but exhibit pronounced performance degradation for specific channel configurations, whereas the VQC receiver maintains a more uniform error profile as channel complexity increases, albeit at a higher average BER. These findings suggest that variational quantum receivers are not a direct replacement for classical detection methods, but rather a complementary approach that may offer increased performance stability in communication scenarios characterized by strong coupling and complex interference patterns.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://phys.org/news/2026-06-majorana-modes-disorder-atomic-chains.html" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Phys.org Quantum &rarr;
+            <a href="https://arxiv.org/abs/2608.07428v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -104,8 +101,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Majorana%20modes%20withstand%20disorder%20in%20atomic%20chains%2C%20boosting%20fault-tolerant%20quantum%20computing&url=https://quantumcrier.com/posts/f1bf2650.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f1bf2650.html&title=Majorana%20modes%20withstand%20disorder%20in%20atomic%20chains%2C%20boosting%20fault-tolerant%20quantum%20computing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=QMIMO%3A%20Circuit%20Based%20Quantum%20MIMO%20Design%20with%20Variational%20Receiver&url=https://quantumcrier.com/posts/deedf51d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/deedf51d.html&title=QMIMO%3A%20Circuit%20Based%20Quantum%20MIMO%20Design%20with%20Variational%20Receiver" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

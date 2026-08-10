@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigating Quantum-Embedded Transformers on Classical Datasets for Cross-Modality Classification | Quantum Crier</title>
+    <meta name="description" content="We test whether a parameterized quantum circuit (PQC) improves a hybrid quantum-classical model&#39;s performance on classical datasets, using an interface-matched ">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Investigating Quantum-Embedded Transformers on Classical Datasets for Cross-Modality Classification">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 10, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>Investigating Quantum-Embedded Transformers on Classical Datasets for Cross-Modality Classification</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">August 07, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article provides one of the most systematic head‑to‑head tests yet of a quantum‑embedded attention layer against an equally sized classical map on real‑world datasets, showing that the shallow PQC does not deliver a reliable accuracy boost or stability gain. By keeping every other component fixed and matching input‑output dimensions, the authors isolate the quantum contribution and reveal that current hardware‑level noise and limited circuit depth still outweigh any theoretical expressivity advantage—a finding that tempers the hype around near‑term hybrid transformers. The work also highlights where hybrid models may still be viable (e.g., modest tabular tasks) and underscores the need for deeper circuits, error mitigation, or more expressive encodings before quantum layers can consistently outperform classical baselines.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>We test whether a parameterized quantum circuit (PQC) improves a hybrid quantum-classical model&#39;s performance on classical datasets, using an interface-matched classical map as the control while holding all other components fixed. Our architecture, Quantum-Embedded Attention (QEA), uses a learnable projector to compress backbone features into an $n_q$-dimensional angle vector, a shallow PQC to map those angles to one- and two-qubit Pauli expectations, and a classical attention decoder to produce class logits. We hypothesized the PQC would improve accuracy or seed-to-seed stability over a classical map with matched input/output dimensions. We test this with an interface-matched $2\times2$ factorial on Breast Cancer Wisconsin at $n_q\in\{4,8\}$, independently swapping the PQC for a classical map and the attention decoder for a linear head, across five paired seeds per cell. Three of four paired quantum-minus-classical $95\%$ confidence intervals include zero; the fourth, a $+1.63$ percentage-point contrast for the attention decoder at $n_q=4$, reverses sign at $n_q=8$ and does not survive correction across the four contrasts. The experiment thus shows no consistent PQC contribution and cannot establish equivalence. A five-dataset cross-modality grid shows comparable accuracy on AG~News, Breast Cancer Wisconsin, and BirdCLEF but a large deficit on CIFAR-10; these cells are not interface-matched and are interpreted descriptively. We report all planned canonical runs, distinguish current Pauli-readout results from legacy probability-readout experiments, and analyze bottleneck, simulation, finite-shot, and noise limitations. The results do not establish a quantum advantage; they demonstrate why controlled component attribution is necessary before crediting a hybrid model&#39;s performance to its quantum layer.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2608.06846v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Investigating%20Quantum-Embedded%20Transformers%20on%20Classical%20Datasets%20for%20Cross-Modality%20Classification&url=https://quantumcrier.com/posts/537d369d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/537d369d.html&title=Investigating%20Quantum-Embedded%20Transformers%20on%20Classical%20Datasets%20for%20Cross-Modality%20Classification" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
