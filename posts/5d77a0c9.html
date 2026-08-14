@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical Simulation and Design Frontiers for IBM&#39;s Doped Clifford Sampling Experiment | Quantum Crier</title>
+    <meta name="description" content="We classically simulate the IBM doped Clifford random circuit sampling experiment, comprising $70$ qubits, $70$ entangling layers, and $468$ inserted $T$ gates.">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Classical Simulation and Design Frontiers for IBM&#39;s Doped Clifford Sampling Experiment">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 14, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>Classical Simulation and Design Frontiers for IBM&#39;s Doped Clifford Sampling Experiment</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">August 13, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that a carefully engineered tensor‑network contraction can classically reproduce the output of IBM’s 70‑qubit doped Clifford sampling experiment in under an hour on a modest GPU cluster, cutting the required memory by two orders of magnitude compared with IBM’s own estimate. By proving that the contraction width ⌈d⁄2⌉ is optimal for these brickwork circuits, the authors demonstrate that even circuits with hundreds of T‑gates remain tractable for classical simulation when the entangling structure is one‑dimensional. The result sharpens the benchmark for quantum‑advantage claims and signals that future supremacy demonstrations will need deeper, more highly connected circuits to stay beyond the reach of state‑of‑the‑art classical algorithms.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>We classically simulate the IBM doped Clifford random circuit sampling experiment, comprising $70$ qubits, $70$ entangling layers, and $468$ inserted $T$ gates. A deterministic temporal-boundary tensor network contraction approach is specifically designed to tackle such open-boundary one-dimensional brickwork circuits with operator-Schmidt-rank-$2$ entangling gates. For an $n$-qubit circuit of depth $d$, the resulting unsliced path evaluates an exact amplitude with contraction width $\lceil d/2\rceil$; Ratcatcher calculations certify that no smaller width is possible for the tested instances. Because one-qubit gates are absorbed without changing the network topology, the width and dense scheduled contraction cost are independent of their values and of the number and placement of $T$ gates. For the IBM instance, its largest intermediate tensor contains $2^{35}$ complex64 entries (256 times smaller than IBM&#39;s estimation), corresponding to a tensor payload of $256$ GiB, and is distributed across eight GPUs within a node. Using 32 nodes, with eight NVIDIA H100 GPUs per node, we completed all 2051 amplitude batches corresponding to IBM&#39;s published output bitstrings in 37.3 minutes. The resulting probabilities yield a log-XEB estimate of $0.35034$ with a 95\% interval of $[0.29763,0.40305]$. Under the Porter--Thomas and scrambled-noise assumptions, this is numerically compatible with IBM&#39;s fidelity lower bound; separately, fidelity-weighted resource accounting projects a 583-contraction workload with a 10.6-minute makespan on the same 32 nodes. More broadly, the approach provides a practical diagnostic for experimental outputs and a quantitative tool for designing future doped Clifford sampling experiments.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2608.13110v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Classical%20Simulation%20and%20Design%20Frontiers%20for%20IBM%27s%20Doped%20Clifford%20Sampling%20Experiment&url=https://quantumcrier.com/posts/5d77a0c9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5d77a0c9.html&title=Classical%20Simulation%20and%20Design%20Frontiers%20for%20IBM%27s%20Doped%20Clifford%20Sampling%20Experiment" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
