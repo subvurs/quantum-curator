@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information-Calibrated Quantum Diffusion: Aligning Forward Noise with Reverse Recoverability | Quantum Crier</title>
+    <meta name="description" content="Quantum diffusion models typically parameterize forward corruption by raw channel strength, even though equal parameter increments need not erase equal informat">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Information-Calibrated Quantum Diffusion: Aligning Forward Noise with Reverse Recoverability">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; August 17, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+        </div>
+        <h1>Information-Calibrated Quantum Diffusion: Aligning Forward Noise with Reverse Recoverability</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">August 14, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article introduces an information‑calibrated diffusion framework that uses the intrinsic loss of mutual information as a natural coordinate for quantum generative models, fixing a long‑standing mismatch between raw noise strength and actual information erasure. By aligning forward depolarization steps with a minimax recoverability budget, the authors achieve markedly lower trace‑Wasserstein distances on a four‑qubit TFIM benchmark—outperforming the standard QuDDPM while using fewer trainable parameters. The work not only clarifies why local fidelity alone cannot guarantee correct stochastic generation, but also provides a concrete recipe for more efficient quantum diffusion training that could accelerate near‑term hardware demonstrations of quantum generative AI.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Quantum diffusion models typically parameterize forward corruption by raw channel strength, even though equal parameter increments need not erase equal information or induce comparable inverse problems. We introduce the classical--quantum information decrement $Δ_t=I(X{:}Q_{t-1})-I(X{:}Q_t)$ as an intrinsic diffusion coordinate for labeled quantum ensembles. Along depolarization, equalizing $Δ_t$ yields the unique minimax discretization of the forward path, while universal recoverability gives the same quantity an operational reverse interpretation as an attainable expected log-fidelity budget for a label-independent CPTP recovery channel. Complementary continuity and pairwise-geometric converses lower-bound the optimal common-channel recovery error. We further show that local calibration is fundamentally insufficient for stochastic generation: even in a fixed noncommuting two-qubit system, identical local-fidelity laws and budget-feasible risks can coexist with macroscopically different output distributions. This motivates a stochastic learner combining theorem-scaled recovery constraints with distribution matching, for which we establish finite-sample calibration and compositional trace-Wasserstein control. On four-qubit TFIM, a controlled capacity extension reduces endpoint $\Wtr$ from $.622$ to $.424$ on all ten matched seeds and achieves lower $\Wtr$ than official QuDDPM ($.498$) with fewer trainable parameters.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2608.14083v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Information-Calibrated%20Quantum%20Diffusion%3A%20Aligning%20Forward%20Noise%20with%20Reverse%20Recoverability&url=https://quantumcrier.com/posts/f88fd7f7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f88fd7f7.html&title=Information-Calibrated%20Quantum%20Diffusion%3A%20Aligning%20Forward%20Noise%20with%20Reverse%20Recoverability" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
