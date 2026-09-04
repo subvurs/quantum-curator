@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Exact Synthesis of CNOT Circuits is NP-hard | Quantum Crier</title>
+    <meta name="description" content="Exact CNOT synthesis asks for a minimum-size CNOT circuit implementing an invertible linear transformation. Although several related synthesis models have been ">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vanilla Exact Synthesis of CNOT Circuits is NP-hard">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 04, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Vanilla Exact Synthesis of CNOT Circuits is NP-hard</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">September 03, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article settles a long‑standing open question by proving that even the most basic version of exact CNOT synthesis—no ancillas, all‑to‑all connectivity, and a fixed set of labelled qubits—is NP‑complete, meaning an efficient algorithm for finding truly minimal linear reversible circuits is unlikely. By linking the problem to Hamiltonian‑path hardness on grid graphs, the work explains why many recent compiler heuristics succeed only approximately and underscores the need for parameterized or probabilistic approaches in quantum circuit optimization. The result also ripples out to related tasks such as shortest‑word problems over Clifford groups, reminding developers that exact optimality will remain computationally prohibitive in practice.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Exact CNOT synthesis asks for a minimum-size CNOT circuit implementing an invertible linear transformation. Although several related synthesis models have been shown to be computationally hard, their hardness proofs rely on additional structure such as restricted qubit connectivity, encoded inputs, or unrestricted intermediate variables. The complexity of the most basic setting---identity input, a fixed number of labelled qubits, no ancillas, and all-to-all CNOT connectivity---had remained unresolved. In this work, we prove that the decision version of this vanilla exact CNOT synthesis problem is NP-complete, and consequently that its optimization version is NP-hard. Our proof gives a polynomial-time reduction from the Hamiltonian-path problem on grid graphs in two steps. First, we isometrically embed the grid graph into a hypercube via a unary encoding map. We then encode this hypercube Hamiltonian path problem into vanilla exact CNOT synthesis. The main challenge is that CNOT synthesis specifies only the final parity matrix and cannot directly enforce the intermediate vertex visits required by a Hamiltonian path. To overcome this difficulty, we introduce extra recorder qubits that encode the required intermediate vertex visits into the final transformation, forcing any CNOT circuit implementation to realize the intended path structure. Beyond CNOT synthesis, our result directly implies hardness for several related problems, including the shortest word problem over $\mathrm{GL}(n,2)$, distance computation on Cayley graphs over $\mathrm{GL}(n,2)$, minimization of sequential XOR programs, and exact synthesis of phase polynomial circuits.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2609.04160v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Vanilla%20Exact%20Synthesis%20of%20CNOT%20Circuits%20is%20NP-hard&url=https://quantumcrier.com/posts/50fbf10b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/50fbf10b.html&title=Vanilla%20Exact%20Synthesis%20of%20CNOT%20Circuits%20is%20NP-hard" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

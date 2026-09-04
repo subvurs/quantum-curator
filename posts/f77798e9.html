@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Quasi-Monte Carlo: a window for pre-asymptotic quantum advantage | Quantum Crier</title>
+    <meta name="description" content="Numerical integration with Monte Carlo methods is a central computational task in many scientific and industrial applications, including financial derivative pr">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Quantum Quasi-Monte Carlo: a window for pre-asymptotic quantum advantage">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 04, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Quantum Quasi-Monte Carlo: a window for pre-asymptotic quantum advantage</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">September 03, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows how low‑discrepancy point sets can be loaded into a quantum superposition and combined with amplitude estimation to create a “quantum quasi‑Monte Carlo” routine that trims the number of costly function queries needed in realistic accuracy regimes. While it does not overturn the asymptotic convergence rates of classical QMC, the authors identify a pre‑asymptotic window where a higher‑resolution net prepared coherently yields the same error with far fewer oracle calls—a sweet spot for near‑term applications such as derivative pricing and risk analysis. The work builds on the recent surge of quantum amplitude‑estimation algorithms and highlights that practical advantage may come from clever hybridization rather than pure asymptotic speedups, though it still hinges on efficient, low‑error preparation of large quasi‑random states.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Numerical integration with Monte Carlo methods is a central computational task in many scientific and industrial applications, including financial derivative pricing and risk management. Classical Monte Carlo algorithms are computationally demanding: achieving an accuracy $ε$ typically requires a number of function evaluations scaling as $O(1/ε^2)$. Quantum-accelerated Monte Carlo methods based on quantum amplitude estimation can in principle quadratically improve this dependence. However, \textit{quasi}-Monte Carlo methods have not been explored in the quantum context. In this work, we introduce a quantum quasi-Monte Carlo algorithm that combines low-discrepancy nets with quantum amplitude estimation. The proposed method prepares the quasi-random point set coherently in superposition. The method does not yield an asymptotic improvement over classical quasi-Monte Carlo, since the total error separates into a discretization error, determined by the finite net, and a quantum estimation error. Instead, we explore a pre-asymptotic advantage window: for a target accuracy that would classically require $2^q$ low discrepancy points, one can prepare a higher-resolution net of size $2^Q$, with $Q&gt;q$, in superposition and reach the same accuracy using significantly fewer function queries. This window can be controlled by tuning the circuit resolution and amplitude-estimation parameters, making the approach relevant for practical regimes where the number of queries is finite rather than asymptotically large.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2609.03625v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20Quasi-Monte%20Carlo%3A%20a%20window%20for%20pre-asymptotic%20quantum%20advantage&url=https://quantumcrier.com/posts/f77798e9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f77798e9.html&title=Quantum%20Quasi-Monte%20Carlo%3A%20a%20window%20for%20pre-asymptotic%20quantum%20advantage" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
