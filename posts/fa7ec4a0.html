@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IQM to Deliver Quantum Computer for Europe’s LUMI AI Factory | Quantum Crier</title>
-    <meta name="description" content="Insider Brief Press release – The LUMI AI Factory, led by CSC – IT Center for Science, has selected IQM Quantum Computers (Nasdaq: IQMX) to deliver IQM Halocene">
+    <title>SAR and InSAR Change Detection with Quantum Generative Models | Quantum Crier</title>
+    <meta name="description" content="Change detection in synthetic aperture radar (SAR) and interferometric synthetic aperture radar (InSAR) underpins disaster response, infrastructure monitoring a">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="IQM to Deliver Quantum Computer for Europe’s LUMI AI Factory">
+    <meta property="og:title" content="SAR and InSAR Change Detection with Quantum Generative Models">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-08_16-47.png">
-<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-08_16-47.png">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,22 +56,21 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>IQM to Deliver Quantum Computer for Europe’s LUMI AI Factory</h1>
+        <h1>SAR and InSAR Change Detection with Quantum Generative Models</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>The Quantum Insider</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">September 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/2026-07-08_16-47.png" alt="IQM to Deliver Quantum Computer for Europe’s LUMI AI Factory" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -83,19 +78,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks a milestone for Europe’s quantum ecosystem as the LUMI AI Factory will host IQM’s Halocene H4, the continent’s first on‑premises quantum accelerator designed to work side‑by‑side with classical high‑performance and AI workloads. By embedding a 5‑qubit‑per‑gate, cryogenic processor into one of the world’s most powerful supercomputers, the partnership showcases how hybrid quantum–classical architectures are moving from laboratory demos toward production‑grade research infrastructure—a trend echoed by recent IBM and Google efforts to integrate quantum nodes with existing HPC clusters. The deployment also strengthens European hardware sovereignty and offers researchers a real‑world testbed for algorithms that could accelerate materials discovery, optimization, and machine‑learning tasks, though scaling the qubit count and error rates will remain key challenges in the coming years.
+                This article shows that quantum generative models can serve as a more robust background estimator for SAR and InSAR change‑detection, especially when pixel statistics are sparse—a regime where classical conditional expectations tend to fail. By training a Born‑machine on real satellite data and running it on IonQ’s trapped‑ion hardware, the authors achieve an F1 score of 0.32 on an airport dataset, roughly doubling the best classical baseline and matching state‑of‑the‑art performance on a volcanic lava‑flow case. The work links recent advances in quantum machine‑learning generative modeling to a concrete remote‑sensing application, while also highlighting that current QPU sizes still limit scalability and overall accuracy.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Insider Brief Press release – The LUMI AI Factory, led by CSC – IT Center for Science, has selected IQM Quantum Computers (Nasdaq: IQMX) to deliver IQM Halocene H4, an advanced quantum computer aimed at accelerating hybrid high-performance computing, artificial intelligence, and quantum computing capabilities. IQM Halocene H4 is the first and most advanced on-premises […]</p>
+            <p>Change detection in synthetic aperture radar (SAR) and interferometric synthetic aperture radar (InSAR) underpins disaster response, infrastructure monitoring and land-use enforcement. Detection is limited by the background estimator, which conventionally forms a conditional expectation directly from observed pixel statistics and degrades where those statistics are sparse, including the regime produced by the heavy-tailed marginals of sub-meter-resolution radars. In this work, we integrate state-of-the-art satellite imagery with quantum machine learning on IonQ trapped-ion-based quantum processors. By replacing the empirical conditional with a quantum circuit Born machine (QCBM)-sampled generative model in Copula space, we substantially improve change detection on sparse real-world images. On Capella Space satellite image acquisitions, the generative estimator matches conventional methods when the observed statistics are adequate, and substantially outperforms them when they are not. Executing the trained model on IonQ trapped-ion based hardware reproduces the results of the ideal and noisy simulations and demonstrates up to par, or even better, performance with the classical state-of-the-art methods. For a SAR dataset of an airport, QPU circuit evaluations for both training and inference achieved a maximized filtered F1 score of 0.32, compared with 0.16 and 0.24 for the two classical baselines. For an InSAR dataset of a volcanic lava flow, all three methods reached a maximum filtered F1 of approximately 0.66. These experiments demonstrate the feasibility of executing a QCBM-based background estimator on trapped-ion hardware. We further demonstrate that the QCBM method successfully extends to interferometric coherence data, achieving performance comparable to classical approaches.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://thequantuminsider.com/2026/07/08/lumi-ai-factory-iqm-quantum-computer/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at The Quantum Insider &rarr;
+            <a href="https://arxiv.org/abs/2609.05313v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -104,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=IQM%20to%20Deliver%20Quantum%20Computer%20for%20Europe%E2%80%99s%20LUMI%20AI%20Factory&url=https://quantumcrier.com/posts/56c36d6f.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/56c36d6f.html&title=IQM%20to%20Deliver%20Quantum%20Computer%20for%20Europe%E2%80%99s%20LUMI%20AI%20Factory" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=SAR%20and%20InSAR%20Change%20Detection%20with%20Quantum%20Generative%20Models&url=https://quantumcrier.com/posts/fa7ec4a0.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/fa7ec4a0.html&title=SAR%20and%20InSAR%20Change%20Detection%20with%20Quantum%20Generative%20Models" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

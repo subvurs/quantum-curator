@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum simulation of real-world nonlinear dynamics via Koopman method | Quantum Crier</title>
-    <meta name="description" content="Nonlinear dynamics is ubiquitous in nature, ranging from chemical pattern formation to ocean circulation, yet its simulation on quantum computers is fundamental">
+    <title>Learning unknown stabilizer codes using product measurements | Quantum Crier</title>
+    <meta name="description" content="Efficiently characterizing quantum error correcting codes is a key challenge on the path to fault-tolerant quantum computation. Stabilizer codes, a central clas">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Quantum simulation of real-world nonlinear dynamics via Koopman method">
+    <meta property="og:title" content="Learning unknown stabilizer codes using product measurements">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Quantum simulation of real-world nonlinear dynamics via Koopman method</h1>
+        <h1>Learning unknown stabilizer codes using product measurements</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="date">September 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article demonstrates a concrete way to bypass the long‑standing obstacle that quantum computers can only implement linear (unitary) evolution by embedding nonlinear dynamics into a learned linear Koopman representation and then executing it with shallow circuits on existing superconducting hardware. By successfully reproducing reaction‑diffusion patterns, spherical fluid flow, and Gulf Stream currents using up to 10‑qubit, 32‑parallel circuits, the work shows that near‑term devices can already tackle moderately nonlinear problems once the dynamics are suitably lifted. The authors also identify a clear performance frontier—hardware noise dominates for weakly nonlinear cases while the finite‑dimensional Koopman truncation limits strongly nonlinear regimes—providing a practical guideline for future quantum simulation efforts.
+                This article shows that any stabilizer code can be identified from simple single‑qubit “product” measurements without prior knowledge of its structure, a capability that has been missing from most fault‑tolerance toolkits. By proving that only polylogarithmic numbers of copies are needed for quantum LDPC codes, the work bridges a gap between theoretical code families and realistic hardware verification, complementing recent efforts to automate error‑correction calibration. The result could let experimental groups quickly confirm that their devices are actually implementing the intended code, accelerating the path toward scalable fault‑tolerant processors.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Nonlinear dynamics is ubiquitous in nature, ranging from chemical pattern formation to ocean circulation, yet its simulation on quantum computers is fundamentally limited by the unitary nature of quantum evolution. We propose the quantum Koopman method, a data-driven framework that embeds nonlinear dynamics into a learned linear representation and implements the resulting evolution using shallow quantum circuits. This method learns Koopman observables from trajectory data, projects the lifted dynamics onto a finite-dimensional subspace, and decomposes the corresponding non-unitary propagator into parallel spectral channels. We utilize the Koopman method on a superconducting processor to simulate three distinct nonlinear systems, comprising reaction-diffusion dynamics, fluid motion on a sphere, and satellite-derived observations of Gulf Stream currents, employing up to 32 parallel circuits of 10 qubits. These quantum simulations capture the dominant multiscale patterns and statistical signatures of the underlying dynamics, and reveal a transition from performance limited by hardware noise in weakly nonlinear systems to performance limited by finite-dimensional Koopman representations as nonlinear scale interactions increase. This transition identifies a practical boundary for quantum-amenable nonlinear dynamics, establishing a hardware-validated route for simulating moderately nonlinear dynamics on near-term quantum hardware.</p>
+            <p>Efficiently characterizing quantum error correcting codes is a key challenge on the path to fault-tolerant quantum computation. Stabilizer codes, a central class of such codes, are defined by a set of stabilizer generators. Here, we present an algorithm that uses random single-qubit measurements to learn the stabilizer generators of any stabilizer code from $N$ copies of stabilizer states in its codespace, requiring no prior knowledge of the code&#39;s structure. This also enables verification that a device implements its intended code. We derive a lower bound on $N$ needed to recover the stabilizer generators with high probability, together with a bound on the algorithm&#39;s overall probability of success. When applied to quantum low-density parity-check (qLDPC) codes, a leading candidate for practical fault-tolerant architectures, our approach requires a number of states that scales polylogarithmically with $n$, the number of qubits.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.07338v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.04997v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Quantum%20simulation%20of%20real-world%20nonlinear%20dynamics%20via%20Koopman%20method&url=https://quantumcrier.com/posts/86c95c8b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/86c95c8b.html&title=Quantum%20simulation%20of%20real-world%20nonlinear%20dynamics%20via%20Koopman%20method" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Learning%20unknown%20stabilizer%20codes%20using%20product%20measurements&url=https://quantumcrier.com/posts/28f301d2.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/28f301d2.html&title=Learning%20unknown%20stabilizer%20codes%20using%20product%20measurements" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

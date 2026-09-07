@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geometric Interpretation of Sum Photon Blockade | Quantum Crier</title>
-    <meta name="description" content="We present a geometric interpretation of the sum photon blockade effect in multimode quantum optical systems, such as semiconductor microresonators. The blockad">
+    <title>Neural networks learn to reconstruct multipartite entanglement from quantum marginals | Quantum Crier</title>
+    <meta name="description" content="Different sets of local correlations are not equivalent: some fragments of reduced data uniquely determine a global quantum state, while others leave it ambiguo">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Geometric Interpretation of Sum Photon Blockade">
+    <meta property="og:title" content="Neural networks learn to reconstruct multipartite entanglement from quantum marginals">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,13 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
             
         </div>
-        <h1>Geometric Interpretation of Sum Photon Blockade</h1>
+        <h1>Neural networks learn to reconstruct multipartite entanglement from quantum marginals</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="date">September 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article reframes sum‑photon blockade as a geometric orthogonality condition, showing that the multi‑photon amplitudes can be confined to a hyperplane in Hilbert space and that the “dark‑state typicality” of large multimode systems makes the effect increasingly robust against dephasing. By quantifying the maximum survival probability of the blockade subspace under realistic decoherence, it bridges the gap between fragile few‑mode demonstrations and scalable non‑classical light sources needed for photonic quantum processors. The framework dovetails with recent advances in integrated microresonator arrays and circuit‑QED photon‑blockade experiments, offering a concrete design tool for building high‑fidelity, multimode quantum light devices while reminding readers that practical implementation will still hinge on precise mode engineering and loss mitigation.
+                This article shows that a neural network can infer the full four‑qubit state—and its entanglement class—directly from only two‑ and three‑qubit reduced density matrices, turning the notoriously hard quantum marginal problem into a tractable learning task. By mapping out which SLOCC families are uniquely reconstructible, the work bridges recent advances in variational quantum tomography with practical hardware demonstrations on an NMR processor, suggesting that future multi‑qubit devices could diagnose and certify entanglement using far fewer measurements. The approach highlights both the promise of machine‑learning‑driven state reconstruction and the lingering limitation that uniqueness still depends on the underlying entanglement structure, so it will be most useful when paired with prior knowledge of the target class.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We present a geometric interpretation of the sum photon blockade effect in multimode quantum optical systems, such as semiconductor microresonators. The blockade condition \(c^{(n)} \cdot v = 0\) reflects the orthogonality of the \(n\)-photon amplitude vector to a target mode vector in an \(N\)-dimensional Hilbert space, visualized as the confinement of the state to a hyperplane. A key result is the calculation of the maximum probability of the system remaining in the blockade subspace under the influence of decoherence processes (in particular, dephasing), which determines the practical feasibility and robustness of the effect. This approach extends to higher-order correlators \(g^{(2)}_Σ\) and cross-correlations, enabling the design of scalable quantum devices. We introduce the concept of &#34;dark-state typicality&#34;: as the number of modes \(M\) increases, the dark subspace annihilated by the collective mode operator asymptotically occupies a unit fraction of the \(n\)-boson Hilbert space. This allows the transition from fragile, finely tuned mechanisms to macroscopically robust non-classical light in large multimode bosonic architectures. We consider continuum collective modes, hypotheses on correlation zeros and invariant manifolds, as well as the relationship between blockade and entanglement.</p>
+            <p>Different sets of local correlations are not equivalent: some fragments of reduced data uniquely determine a global quantum state, while others leave it ambiguous. The quantum marginal problem asks whether a collection of reduced density matrices uniquely determines a compatible global quantum state. Although generic quantum states are uniquely specified by suitable sets of marginals, different collections of marginals are not equally informative: some uniquely determine the global state, whereas others leave it ambiguous. Identifying when uniqueness holds, and reconstructing the global state from partial information, remains computationally demanding and experimentally challenging. We show that information about the multipartite entanglement class and reconstructability in four-qubit systems is compactly encoded in small sets of two- and three-qubit marginals. Using semidefinite programming, we chart the reconstructability landscape across 49 inequivalent SLOCC entanglement classes and show that uniqueness strongly depends on both entanglement structure and marginal order. Neural networks trained only on reduced density matrices learn this structure directly. They accurately classify marginal reconstructability and, when uniqueness holds, reconstruct the full four-qubit density matrix with high fidelity from two- and three-qubit marginals. We benchmark the approach on a four-qubit nuclear magnetic resonance quantum processor and demonstrate that reconstructions from experimentally measured marginals remain faithful despite phase damping and control imperfections. Our results show that neural networks can learn when local correlations uniquely specify a global quantum state, and reveal how global quantum structure is encoded in reduced data.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.07591v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.04896v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Geometric%20Interpretation%20of%20Sum%20Photon%20Blockade&url=https://quantumcrier.com/posts/cdd35838.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/cdd35838.html&title=Geometric%20Interpretation%20of%20Sum%20Photon%20Blockade" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Neural%20networks%20learn%20to%20reconstruct%20multipartite%20entanglement%20from%20quantum%20marginals&url=https://quantumcrier.com/posts/336f14e9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/336f14e9.html&title=Neural%20networks%20learn%20to%20reconstruct%20multipartite%20entanglement%20from%20quantum%20marginals" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

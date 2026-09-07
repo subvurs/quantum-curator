@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Towards Minimax Estimation of High-Order Functionals by Quantum Arguments | Quantum Crier</title>
-    <meta name="description" content="We propose a novel approach to the minimax estimation of high-order functionals from the perspective of quantum computing. Specifically, for any real number $α\">
+    <title>AxQM: A Textbook-Scale Benchmark for Formal Proof Synthesis in a Library of Finite-Dimensional Quantum Mechanics | Quantum Crier</title>
+    <meta name="description" content="Formalizing mathematics in a proof assistant, where a machine checks every definition, statement and proof, has set a new standard of rigor. Large language mode">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Towards Minimax Estimation of High-Order Functionals by Quantum Arguments">
+    <meta property="og:title" content="AxQM: A Textbook-Scale Benchmark for Formal Proof Synthesis in a Library of Finite-Dimensional Quantum Mechanics">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -59,10 +59,10 @@
             <a href="/topics/general.html" class="topic-tag topic-general">general</a>
             
         </div>
-        <h1>Towards Minimax Estimation of High-Order Functionals by Quantum Arguments</h1>
+        <h1>AxQM: A Textbook-Scale Benchmark for Formal Proof Synthesis in a Library of Finite-Dimensional Quantum Mechanics</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="date">September 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +74,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows how quantum‑algorithmic ideas can shave the sample complexity for estimating high‑order Rényi‑type functionals from quadratic in α down to linear, a breakthrough that closes a long‑standing gap between known upper bounds and minimax optimal rates. By delivering a unified estimator that works for both classical distributions and mixed quantum states and runs in linear time on a quantum processor, the work demonstrates a concrete statistical advantage of quantum primitives beyond speed‑ups for simulation. The result not only tightens theoretical limits but also points to practical gains in tasks such as entropy estimation for massive alphabets or high‑dimensional quantum systems where data are scarce.
+                This article announces AxQM, the largest‑to‑date benchmark for automatically synthesizing formal proofs of finite‑dimensional quantum mechanics drawn from Nielsen and Chuang’s textbook, and it does so in a Lean library that guarantees every task has a correct solution. By providing 1,019 kernel‑checked proof‑synthesis problems, AxQM gives researchers a concrete yardstick to evaluate the rapidly improving ability of large language models and other autoformalization tools to bring machine‑verified rigor to quantum‑computing theory—a step that builds on recent breakthroughs in AI‑driven theorem proving. The benchmark could accelerate the development of provably correct quantum algorithms and protocols, though its private solutions mean that current performance baselines remain undisclosed.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We propose a novel approach to the minimax estimation of high-order functionals from the perspective of quantum computing. Specifically, for any real number $α\gg 1$, we present two estimators, one for the classical functional $\mathrm{F}_α(P) = \sum_{i=1}^S p_i^α$ of a discrete distribution $P$ and the other for the quantum functional $\mathrm{F}_α(ρ) = \operatorname{tr}(ρ^α)$ of a mixed state $ρ$. These functionals have close connections with the Rényi entropy and the Tsallis entropy. We show that both estimators achieve the minimax optimal $L_2$ rate $α\mathsf{n}^{-1}$ in the range $α\lesssim \mathsf{n} \lesssim α^{3-o(1)}$, where the support size $S$ of $P$ or the dimension of $ρ$ can be much larger than the number of samples $\mathsf{n}$. As a result, both estimators achieve the \textit{optimal} sample complexity $\mathsf{n} \asymp α$, improving upon the prior best upper bounds $O(α^2)$ established by Jiao, Venkat, Han, and Weissman (IEEE Trans. Inf. Theory 2017) for classical functionals and Chen and Wang (COLT 2025) for quantum functionals. Our estimators are constructed under a unified framework using quantum primitives and run in linear time on a quantum computer. This work reveals an unexpected path from quantum computing to statistics, suggesting a conceptually new methodology for functional estimation. It adds to the growing list of quantum proofs for classical theorems.</p>
+            <p>Formalizing mathematics in a proof assistant, where a machine checks every definition, statement and proof, has set a new standard of rigor. Large language models are now capable of formalizing autonomously, even at the scale of whole textbooks. We bring this standard of rigor to physics, where theoretical arguments carry idealizations that are rarely stated fully, and any logical gaps could have a cascading effect on interdependent results. Recognizing the need to evaluate autoformalization systems for physics, we release AxQM, 1,019 kernel-checkable proof-synthesis tasks over 479 items drawn from the textbook Quantum Computation and Quantum Information by Nielsen and Chuang. The tasks are stated in a custom Lean library of finite-dimensional quantum mechanics. By task count, it is the largest proof-synthesis benchmark in physics by a factor of four. AxQM is derived from a near-complete formalization of the formal portions of the textbook, so every task is guaranteed a solution, which we keep private. Grading of the benchmark is done deterministically by the Lean kernel, which checks that the proof compiles, that no sorry appears in it or in any declaration it depends on, and that it introduces no new axioms.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.07540v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.05157v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Towards%20Minimax%20Estimation%20of%20High-Order%20Functionals%20by%20Quantum%20Arguments&url=https://quantumcrier.com/posts/d47e534c.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d47e534c.html&title=Towards%20Minimax%20Estimation%20of%20High-Order%20Functionals%20by%20Quantum%20Arguments" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=AxQM%3A%20A%20Textbook-Scale%20Benchmark%20for%20Formal%20Proof%20Synthesis%20in%20a%20Library%20of%20Finite-Dimensional%20Quantum%20Mechanics&url=https://quantumcrier.com/posts/59fb02f9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/59fb02f9.html&title=AxQM%3A%20A%20Textbook-Scale%20Benchmark%20for%20Formal%20Proof%20Synthesis%20in%20a%20Library%20of%20Finite-Dimensional%20Quantum%20Mechanics" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

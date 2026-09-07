@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytical Landscape of Maximal Magic for Two-Qutrit States and Beyond | Quantum Crier</title>
-    <meta name="description" content="Achieving a genuine quantum advantage relies on two distinct non-classical resources that restrict efficient classical simulation: entanglement and magic (nonst">
+    <title>TETRIS-Q: Tiling-based Effective Transient-fault Reduction on Interleaved Superconducting Qubits | Quantum Crier</title>
+    <meta name="description" content="The struggle of the hour in quantum computing research is achieving effective suppression of the error mechanisms induced by the interaction of external radiati">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Analytical Landscape of Maximal Magic for Two-Qutrit States and Beyond">
+    <meta property="og:title" content="TETRIS-Q: Tiling-based Effective Transient-fault Reduction on Interleaved Superconducting Qubits">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,19 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
             <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
         </div>
-        <h1>Analytical Landscape of Maximal Magic for Two-Qutrit States and Beyond</h1>
+        <h1>TETRIS-Q: Tiling-based Effective Transient-fault Reduction on Interleaved Superconducting Qubits</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="date">September 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +82,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article delivers the first analytic description of how “magic” – the non‑stabilizer resource that fuels quantum speed‑up – is limited by entanglement in two‑qutrit and two‑ququint systems, tightening long‑standing bounds on maximal magic and revealing a rich two‑dimensional Pareto frontier. By pinpointing exact extremal states (which turn out to be Weyl–Heisenberg covariant fiducials for mutually unbiased bases) the work provides concrete targets for hardware designers seeking high‑magic resources while keeping entanglement under control, and it sharpens simulation benchmarks that rely on magic‑state quantifiers. In the broader landscape of quantum resource theory, these results bridge the gap between abstract magic‑state distillation protocols and realistic multi‑level qudit platforms, offering a clearer roadmap for exploiting both entanglement and magic in near‑term devices.
+                This article introduces TETRIS‑Q, a cross‑layer tiling scheme that pairs substrate phonon barriers with interleaved error‑correction cycles to suppress radiation‑induced correlated faults on superconducting chips without adding decoding overhead. By demonstrating up to three orders of magnitude reduction in logical error rates and an 87 % cut in barrier‑tracing cost, the work tackles a failure mode that standard QEC codes have struggled to mitigate, complementing recent hardware‑level mitigation efforts. If the simulated gains translate to real devices, TETRIS‑Q could markedly accelerate the road to fault‑tolerant superconducting processors, though experimental validation will be essential.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Achieving a genuine quantum advantage relies on two distinct non-classical resources that restrict efficient classical simulation: entanglement and magic (nonstabilizerness). We investigate the interplay between these resources by characterizing the Pareto frontiers of extreme magic at fixed entanglement for systems of two qutrits ($d=3$) and two ququints ($d=5$). Unlike the case of two qubits, the Schmidt spectrum for two qutrits features two independent entanglement parameters, resulting in two-dimensional Pareto surfaces. For the lower frontier, we recast the minimal magic as a compact function of concurrence and negativity, with a maximal value of $\ln 2$. For the upper frontier, we determine the maximal stabilizer Rényi entropy to be $M_2 = \ln(81/17) \approx 1.561$, which tightens the previous theoretical bound of $\ln 5\approx 1.609$ and improves on earlier numerical estimates. The maximum magic is achieved at eighteen distinct maxima categorized into three families of six permutation-equivalent spectra. We provide analytical expressions for the maximal magic in the neighborhood of each maximum and for the corresponding maximally magical states which turn out to be Weyl-Heisenberg-covariant fiducial states for mutually unbiased bases. Finally, numerical analysis of two ququints ($d=5$) reveals six permutation-inequivalent maxima with a peak magic value of $M_2 = \ln(625/49) \approx 2.546$. Based on these findings, we conjecture that the maximal magic for a bipartite system of two qudits with prime dimension $d$ is given by $\ln [ d^4 / (2d^2 - 1) ]$, which reproduces the previously known value for qubits, as well as the values derived here for qutrits and ququints.</p>
+            <p>The struggle of the hour in quantum computing research is achieving effective suppression of the error mechanisms induced by the interaction of external radiation with superconducting quantum devices. Despite the rapid advancements in quantum error correction (QEC) of recent years, radiation-induced faults are yet to be fully addressed. These events are known to be the cause of simultaneous correlated defects in qubits that lie onto a single substrate, ultimately jeopardising QEC code effectiveness. In this paper, we propose to selectively combine substrate-level phonon barriers and QEC interleaving via a planar-mesh tiling algorithm, TETRIS-Q, reaching efficient and effective suppression of radiation events. Our cross-layer solution comes at no extra cost in terms of QEC code execution or decoding time. We model and simulate radiation-induced transient faults over a plethora of barrier and QEC interleaving configurations. Through more than 51 million quantum circuit simulations, we show peak logical error reductions of more than $99.8 \%$, together with an $80\%$ reduction of the observable transient duration with permeable barriers. We find that sparser tiling can reach comparable performance to single qubit tiling, prompting cost reductions of upwards of $87 \%$ in barrier tracing. By leveraging independent QEC code interleaving, we measure up to one order of magnitude average logical error rate reductions without the use of permeable barriers, and up to three orders of magnitude with the joint usage of barriers.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.07197v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.05226v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +103,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Analytical%20Landscape%20of%20Maximal%20Magic%20for%20Two-Qutrit%20States%20and%20Beyond&url=https://quantumcrier.com/posts/aa5d52a4.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/aa5d52a4.html&title=Analytical%20Landscape%20of%20Maximal%20Magic%20for%20Two-Qutrit%20States%20and%20Beyond" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=TETRIS-Q%3A%20Tiling-based%20Effective%20Transient-fault%20Reduction%20on%20Interleaved%20Superconducting%20Qubits&url=https://quantumcrier.com/posts/761fe114.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/761fe114.html&title=TETRIS-Q%3A%20Tiling-based%20Effective%20Transient-fault%20Reduction%20on%20Interleaved%20Superconducting%20Qubits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

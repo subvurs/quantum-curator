@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vectorizing Quantum Control: A RISC-V Vector Extension Architecture for Scalable Qubit Systems | Quantum Crier</title>
-    <meta name="description" content="The Quantum Control Processor (QCP) bridges the gap between compiler toolchains and control electronics, and is responsible for translating compiled quantum cir">
+    <title>QMClaw: A Scalable General-purpose Framework for Quantum Measurement and Control | Quantum Crier</title>
+    <meta name="description" content="As quantum computing continues to scale, quantum measurement and control (QMC) are increasingly constrained by calibration workflow complexity and by requiremen">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Vectorizing Quantum Control: A RISC-V Vector Extension Architecture for Scalable Qubit Systems">
+    <meta property="og:title" content="QMClaw: A Scalable General-purpose Framework for Quantum Measurement and Control">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -61,10 +61,10 @@
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Vectorizing Quantum Control: A RISC-V Vector Extension Architecture for Scalable Qubit Systems</h1>
+        <h1>QMClaw: A Scalable General-purpose Framework for Quantum Measurement and Control</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="date">September 04, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows how borrowing the open‑source RISC‑V vector architecture can turn quantum control processors into highly parallel, programmable engines that address dozens of qubits with a single instruction, cutting compilation overhead and easing toolchain development. By embedding rotation parameters directly in the ISA and adding an 80 ns halt‑resume path for mid‑circuit measurements, the design delivers up to a 2.5× speedup on FPGA prototypes—an important step toward scalable, low‑latency feedback needed for error correction and hybrid algorithms. The work dovetails with the broader push for modular, standards‑based quantum hardware, though its benefits will still need validation on larger, cryogenic QPU platforms.
+                This article tackles a bottleneck that will become decisive as quantum processors grow: the ability to calibrate and control thousands of qubits with low‑latency, reproducible workflows. By separating fast, rule‑engine driven execution from higher‑level language‑model assistance, QMClaw demonstrates a scalable architecture that can keep up with the timing constraints of real hardware while still offering flexible, natural‑language interaction for operators. The single‑qubit tune‑up demo shows concrete resource savings and latency improvements over existing LLM‑only approaches, suggesting a viable path toward production‑grade quantum control stacks. If the framework holds up on multi‑qubit systems, it could become a foundational piece of the software stack needed for fault‑tolerant quantum computers.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The Quantum Control Processor (QCP) bridges the gap between compiler toolchains and control electronics, and is responsible for translating compiled quantum circuits into executable instructions that directly manipulate qubits and handle measurement feedback. However, existing designs rely primarily on customized instruction sets, limiting design reuse and requiring significant effort to build supporting toolchains. Furthermore, efficiently addressing qubits and scheduling operations in highly scalable scenarios remains a critical challenge. In this work, we present a vectorized quantum control approach built upon the RISC-V Vector (RVV) engine with a quantum-oriented extension. Leveraging the high parallelism of RVV, our approach can address up to 128 qubits in a single instruction. We also embed parameterized rotation information into the instruction set, enabling dynamic tuning of gate rotations in hybrid quantum-classical programs. To support mid-circuit measurements, we design a hardware-based halt-resume protocol that resumes pipeline execution within 80 $ns$ of receiving the measurement result. Comprehensive evaluation using both RISC-V toolchains and FPGA prototypes demonstrates that our design achieves up to 2.52$\times$ speedup over the baseline in program execution time, with excellent scalability.</p>
+            <p>As quantum computing continues to scale, quantum measurement and control (QMC) are increasingly constrained by calibration workflow complexity and by requirements for low-latency execution, robust exception handling, and traceable workflow governance. Existing frameworks for QMC are specialized and task-specific, while language-model-based agents for QMC suffer from excessive latency and cannot satisfy the strict timing and control-density demands of large-scale quantum systems. Here we propose QMClaw, a general, workflow-oriented framework for QMC built, featuring a local-first, tool-governed, robust architecture. At its core is a RuleEngine-centered control layer that processes structured context, performs rule-based state transitions, and generates execution plans for typical calibration workflows. Language models are used only for natural-language interaction, high-level task understanding, and exception support, keeping the critical fast path efficient. We implement a single qubit tune-up workflow as a demonstration and validation using real quantum device dataset. We also prove that the framework achieves quantitatively acceptable levels in terms of resource cost, LLM calling times and decision latency, enabling its practical deployment in large-scale quantum qubit measurement and control scenarios. This work presents a general workflow-oriented framework for QMC and provides evidence that rule-centered architectures are a promising design choice for scalable quantum-system calibration.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.07372v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.04674v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Vectorizing%20Quantum%20Control%3A%20A%20RISC-V%20Vector%20Extension%20Architecture%20for%20Scalable%20Qubit%20Systems&url=https://quantumcrier.com/posts/60718ed3.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/60718ed3.html&title=Vectorizing%20Quantum%20Control%3A%20A%20RISC-V%20Vector%20Extension%20Architecture%20for%20Scalable%20Qubit%20Systems" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=QMClaw%3A%20A%20Scalable%20General-purpose%20Framework%20for%20Quantum%20Measurement%20and%20Control&url=https://quantumcrier.com/posts/e3c46b4e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e3c46b4e.html&title=QMClaw%3A%20A%20Scalable%20General-purpose%20Framework%20for%20Quantum%20Measurement%20and%20Control" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

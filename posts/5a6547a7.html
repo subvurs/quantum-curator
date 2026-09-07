@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RubriQ: Rubric-Guided Group Relative Policy Optimization for Constraint-Aware Quantum Circuit Synthesis | Quantum Crier</title>
-    <meta name="description" content="Designing fault-tolerant quantum circuits that are both algorithmically correct and hardware compatible remains a major bottleneck in the transition to scalable">
+    <title>Efficient Quantum Error Correction from Three Dimensional Qubit Control | Quantum Crier</title>
+    <meta name="description" content="High-rate quantum low-density parity-check (qLDPC) codes can substantially reduce qubit overhead relative to surface codes, but their advantage depends on effic">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="RubriQ: Rubric-Guided Group Relative Policy Optimization for Constraint-Aware Quantum Circuit Synthesis">
+    <meta property="og:title" content="Efficient Quantum Error Correction from Three Dimensional Qubit Control">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 06, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 07, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,15 +60,13 @@
             
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-            
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>RubriQ: Rubric-Guided Group Relative Policy Optimization for Constraint-Aware Quantum Circuit Synthesis</h1>
+        <h1>Efficient Quantum Error Correction from Three Dimensional Qubit Control</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 08, 2026</span>
+            <span class="date">September 03, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -80,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article matters because it demonstrates a concrete way to bridge the gap between algorithmic design and hardware constraints by turning quantum circuit synthesis into an LLM‑driven code‑generation problem guided by a programmatic rubric rather than opaque neural critics. By embedding GPU‑accelerated CUDA‑Q simulation directly in the RL loop, RubriQ achieves more than threefold T‑gate compression while keeping constraint violations under 1 %, a speed and quality gain that outpaces earlier sparse‑reward approaches and could streamline compilation pipelines for both near‑term devices and future fault‑tolerant architectures. The results are promising, though they currently rely on benchmark suites and specific HPC resources, so broader validation across diverse workloads will be the next test of scalability.
+                This article shows that exploiting the native three‑dimensional geometry of neutral‑atom arrays can turn high‑rate qLDPC codes from a theoretical curiosity into a hardware‑friendly alternative to surface codes, delivering roughly four times the logical‑qubit density per optical field of view and up to forty‑two times the density of a conventional planar layout. By embedding the [[144,12,12]] bicycle code in 3D, the authors cut syndrome‑extraction time by about half while dramatically reducing atom transport distances, addressing two long‑standing bottlenecks—nonlocal connectivity and overhead—in fault‑tolerant quantum computing. The work builds on recent advances in LDPC code design and neutral‑atom control, illustrating how architectural choices can amplify code performance beyond pure algorithmic improvements. It also highlights that realizing these gains will require further refinement of 3D optical addressing and transport scheduling to keep hardware noise within tolerable limits.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Designing fault-tolerant quantum circuits that are both algorithmically correct and hardware compatible remains a major bottleneck in the transition to scalable quantum computing. We introduce RubriQ, a scalable framework that formulates circuit synthesis as a large language model (LLM) code-generation task, optimized via group relative policy optimization (GRPO). Unlike conventional black-box neural critics, RubriQ employs a domain-grounded programmatic rubric as the reinforcement learning reward function, evaluating circuits for T-gate reduction, hardware topology compliance, and unitary fidelity. To support high-throughput training, RubriQ integrates GPU-accelerated CUDA-Q simulation directly into the reinforcement learning (RL) loop and is deployed on NERSC Perlmutter using DeepSpeed ZeRO2 across multinode NVIDIA A100 clusters. On benchmark tasks, RubriQ achieves a mean T-gate compression of 3.31x, significantly outperforming sparse-reward RL baselines (2.05x), converging 2-3x faster, and maintaining less than 1\% hardware-constraint violations. Validated on IBM and IonQ quantum processors, RubriQ establishes an automated, high-performance computing (HPC)-driven pipeline for generating hardware-ready, fault-tolerant quantum circuits at scale.</p>
+            <p>High-rate quantum low-density parity-check (qLDPC) codes can substantially reduce qubit overhead relative to surface codes, but their advantage depends on efficiently realizing nonlocal syndrome extraction. We study the \([[144,12,12]]\) bivariate bicycle code on a neutral-atom architecture with native three-dimensional (3D) geometry, comparing planar and 3D embeddings while holding the code fixed. We characterize spatial efficiency using the logical-qubit density, defined as the number of encoded logical qubits per unit spatial footprint. Because the optical controller&#39;s field of view limits the transverse extent of an array, this metric estimates the number of logical qubits that can be accommodated within a fixed optical field of view. The 3D embedding achieves approximately \(4\times\) greater areal logical-qubit density than the planar layout and \(42\times\) greater than a surface-code baseline. It also reduces the bivariate bicycle syndrome-extraction time by roughly \(2\times\) compared to a planar baseline, with fewer movement operations and substantially shorter atom-transport distance. Native 3D geometry can improve both the packing density and executable realization of nonlocal qLDPC codes, making practical performance depend jointly on code structure, optical geometry, transport scheduling, and hardware-level noise. This motivates further development of control techniques in 3D.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.07554v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.04459v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -101,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=RubriQ%3A%20Rubric-Guided%20Group%20Relative%20Policy%20Optimization%20for%20Constraint-Aware%20Quantum%20Circuit%20Synthesis&url=https://quantumcrier.com/posts/b8a085ab.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b8a085ab.html&title=RubriQ%3A%20Rubric-Guided%20Group%20Relative%20Policy%20Optimization%20for%20Constraint-Aware%20Quantum%20Circuit%20Synthesis" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Efficient%20Quantum%20Error%20Correction%20from%20Three%20Dimensional%20Qubit%20Control&url=https://quantumcrier.com/posts/5a6547a7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5a6547a7.html&title=Efficient%20Quantum%20Error%20Correction%20from%20Three%20Dimensional%20Qubit%20Control" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
