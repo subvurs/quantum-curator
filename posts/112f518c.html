@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum error correction can constantly recalibrate a processor | Quantum Crier</title>
-    <meta name="description" content="Reinforcement learning uses error information to adjust control algorithms.">
+    <title>Explicit block encodings of rate matrices for simulating polymerization kinetics on quantum computers | Quantum Crier</title>
+    <meta name="description" content="Predicting how molecular weight distribution and monomer sequence evolve during polymerization is central to polymer science, yet classical approaches face a tr">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Quantum error correction can constantly recalibrate a processor">
+    <meta property="og:title" content="Explicit block encodings of rate matrices for simulating polymerization kinetics on quantum computers">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://cdn.arstechnica.net/wp-content/uploads/2019/10/Sycamore-Rainbow-cropped-1152x648.jpg">
-<meta name="twitter:image" content="https://cdn.arstechnica.net/wp-content/uploads/2019/10/Sycamore-Rainbow-cropped-1152x648.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 08, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 09, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -62,24 +58,17 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>Quantum error correction can constantly recalibrate a processor</h1>
+        <h1>Explicit block encodings of rate matrices for simulating polymerization kinetics on quantum computers</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Ars Technica - Science</strong></span>
-            <span class="date">July 10, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">September 08, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://cdn.arstechnica.net/wp-content/uploads/2019/10/Sycamore-Rainbow-cropped-1152x648.jpg" alt="Quantum error correction can constantly recalibrate a processor" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -87,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows how reinforcement‑learning agents can ingest real‑time error syndromes and continuously retune control pulses, turning error correction from a static, periodic routine into an always‑on calibration loop. By merging algorithmic learning with hardware feedback, the approach promises to shrink the overhead traditionally required for fault‑tolerant gates—an advance that dovetails with recent efforts to make surface‑code cycles more adaptive and to lower the physical qubit count needed for logical operations. While still demonstrated on a modest test chip, the technique points toward scalable processors that can self‑heal on the fly, a capability essential for moving quantum computers out of the lab and into practical use.
+                This article demonstrates the first explicit block‑encoding constructions for the non‑unitary rate matrices that govern living polymerization, showing how both single‑monomer and two‑monomer copolymer kinetics can be mapped onto quantum circuits with only O(log N) qubits despite an exponentially large species space. By leveraging sparse‑oracle and LCU techniques, the work bridges recent advances in quantum simulation of stochastic processes with a concrete materials‑science problem, offering a pathway to explore polymer microstructures that are out of reach for classical kinetic Monte Carlo methods. The resource estimates highlight that while memory requirements scale favorably, practical implementation will still demand substantial gate depth, underscoring both the promise and the near‑term challenges of quantum‑accelerated polymer design.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Reinforcement learning uses error information to adjust control algorithms.</p>
+            <p>Predicting how molecular weight distribution and monomer sequence evolve during polymerization is central to polymer science, yet classical approaches face a trade-off between molecular resolution and computational cost: for copolymers, the number of distinguishable species grows exponentially with chain length. Quantum computing offers a potential alternative, provided the non-unitary rate matrices governing the kinetics can be embedded into unitary quantum circuits, a task known as block encoding. Here we construct explicit block-encoding circuits for two kinetic models of living polymerization: Model A, single-monomer polymerization, whose lower-bidiagonal rate matrix is encoded via a sparse-oracle construction and a two-term linear combination of unitaries (LCU) decomposition; and Model B, two-monomer copolymerization, where a bijective labeling of polymer species by an integer index (the m-index) yields a structured sparse matrix encoded via either a five-term LCU or a sparse-oracle construction. Numerical simulations with the sparse-oracle encodings reproduce the classical time evolution for reactivity ratios drawn from reported olefin copolymerization systems spanning near-random ($r_1 r_2 \simeq 1$) and blocky ($r_1 r_2 &gt; 1$) microstructures, and the LCU encodings are verified by explicit reconstruction of the encoded matrix block. Resource estimation shows that both implementations require only $O(\log N)$ qubits in the matrix dimension $N$ (an exponential memory saving over the classical state space), with gate counts growing gradually, reaching $10^4$ to $10^5$ gates at $10^3$ system qubits. These results establish a concrete quantum circuit foundation for simulating polymerization kinetics on fault-tolerant quantum hardware, and a first step toward exploiting exponential state-space compression for high-dimensional polymer reaction networks.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arstechnica.com/science/2026/07/quantum-error-correction-can-constantly-recalibrate-a-processor/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Ars Technica - Science &rarr;
+            <a href="https://arxiv.org/abs/2609.08432v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -108,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Quantum%20error%20correction%20can%20constantly%20recalibrate%20a%20processor&url=https://quantumcrier.com/posts/c0fd3a93.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/c0fd3a93.html&title=Quantum%20error%20correction%20can%20constantly%20recalibrate%20a%20processor" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Explicit%20block%20encodings%20of%20rate%20matrices%20for%20simulating%20polymerization%20kinetics%20on%20quantum%20computers&url=https://quantumcrier.com/posts/112f518c.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/112f518c.html&title=Explicit%20block%20encodings%20of%20rate%20matrices%20for%20simulating%20polymerization%20kinetics%20on%20quantum%20computers" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

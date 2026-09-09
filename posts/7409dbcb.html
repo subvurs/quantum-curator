@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EeroQ Validates CMOS-Controlled Electron Shuttling on Superfluid Helium for All-to-All Qubit Routing | Quantum Crier</title>
-    <meta name="description" content="Schematic rendering of EeroQ’s Wonder Lake chip stack. Quantum hardware developer EeroQ has published peer-reviewed experimental results demonstrating the selec">
+    <title>A Platform-aware Compilation Framework for Fault-tolerant Quantum Computation | Quantum Crier</title>
+    <meta name="description" content="The compilation of an algorithm can vary significantly with the choice of physical hardware platform and error correction model. Yet, current compilation framew">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="EeroQ Validates CMOS-Controlled Electron Shuttling on Superfluid Helium for All-to-All Qubit Routing">
+    <meta property="og:title" content="A Platform-aware Compilation Framework for Fault-tolerant Quantum Computation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/07/image-141.png">
-<meta name="twitter:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/07/image-141.png">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 08, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 09, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -62,24 +58,21 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/industry.html" class="topic-tag topic-industry">industry</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>EeroQ Validates CMOS-Controlled Electron Shuttling on Superfluid Helium for All-to-All Qubit Routing</h1>
+        <h1>A Platform-aware Compilation Framework for Fault-tolerant Quantum Computation</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">July 11, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">September 08, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/07/image-141.png" alt="EeroQ Validates CMOS-Controlled Electron Shuttling on Superfluid Helium for All-to-All Qubit Routing" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -87,19 +80,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that a commercial CMOS platform can reliably move individual electrons across a superfluid‑helium surface in two dimensions, providing the first experimental proof‑of‑concept for all‑to‑all qubit routing on this ultra‑clean qubit medium. By marrying well‑established silicon control electronics with helium‑based electron spin qubits, EeroQ bridges the gap between exotic quantum hardware and scalable manufacturing pipelines that have driven progress in superconducting and semiconductor qubits. The result could dramatically simplify wiring overhead and enable flexible connectivity for large‑scale processors, though further work is needed to demonstrate high‑fidelity shuttling and integration with full gate operations. Readers should watch how this hybrid approach may accelerate the race toward practical quantum architectures that combine low‑error qubits with industry‑standard control tech.
+                This article tackles a long‑standing bottleneck by introducing a compilation stack that adapts quantum circuits to the quirks of any fault‑tolerant hardware platform, delivering concrete estimates of qubit count, runtime and classical overhead in one go. By adding the transversal active volume (t‑AV) approach for architectures with long‑range logical links, it shows how even early‑stage fault‑tolerant chemistry simulations could run on as few as 10⁴ physical qubits across photonic, superconducting or neutral‑atom systems. The framework gives researchers and engineers a practical tool to compare disparate technologies and to plan realistic experiments before the next generation of error‑corrected machines arrives.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Schematic rendering of EeroQ’s Wonder Lake chip stack. Quantum hardware developer EeroQ has published peer-reviewed experimental results demonstrating the selective, two-dimensional transport of electrons on superfluid helium using a commercial silicon control architecture. Published in Physical Review Applied (&#34;Selective shuttling of electrons on helium using a CMOS control platform&#34;), the research validates the structural integrity [...] The post EeroQ Validates CMOS-Controlled Electron Shuttling on Superfluid Helium for All-to-All Qubit Routing appeared first on Quantum Computing Report .</p>
+            <p>The compilation of an algorithm can vary significantly with the choice of physical hardware platform and error correction model. Yet, current compilation frameworks typically commit to a single architecture-hardware configuration, making it difficult to assess resource estimates across platforms. We present a platform-aware compilation framework that re-compiles a quantum circuit into a hardware-compatible instruction set as well as fault-tolerant operations and provides end-to-end resource estimates in terms of physical-qubit count, time-to-solution, and classical processing time. We benchmark the framework by obtaining end-to-end resource estimates for different compilers, each tailored to the functionalities of specific hardware modalities: connectivity, clock speed, and noise model. As part of this framework, we introduce a transversal active volume (t-AV) compilation architecture designed for the efficient execution of fault-tolerant operations in platforms supporting long-range logical connectivity. We benchmark the framework for Hamiltonian simulation of the 2D Fermi Hubbard model as well as for eigenenergy estimation of a small molecule (trimethylenemethane) as a candidate for early fault-tolerant demonstration of quantum chemistry. For the latter, we show that end-to-end quantum simulations can be achieved with $\sim10^4$ physical qubits and runtimes ranging from $10^2$ ms (photonics, superconducting) to $10^5$ ms (neutral atoms).</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/eeroq-validates-cmos-controlled-electron-shuttling-on-superfluid-helium-for-all-to-all-qubit-routing/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2609.08908v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -108,8 +101,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=EeroQ%20Validates%20CMOS-Controlled%20Electron%20Shuttling%20on%20Superfluid%20Helium%20for%20All-to-All%20Qubit%20Routing&url=https://quantumcrier.com/posts/1f063fde.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/1f063fde.html&title=EeroQ%20Validates%20CMOS-Controlled%20Electron%20Shuttling%20on%20Superfluid%20Helium%20for%20All-to-All%20Qubit%20Routing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=A%20Platform-aware%20Compilation%20Framework%20for%20Fault-tolerant%20Quantum%20Computation&url=https://quantumcrier.com/posts/7409dbcb.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7409dbcb.html&title=A%20Platform-aware%20Compilation%20Framework%20for%20Fault-tolerant%20Quantum%20Computation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
