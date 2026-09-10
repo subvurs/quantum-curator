@@ -44,10 +44,24 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         # (config.py ARXIV_CATEGORIES = ["quant-ph", "cond-mat"]). Hardware
         # / materials-physics papers (superconducting qubits, neutral-atom
         # array physics, topological matter) land in cond-mat, not quant-ph.
+        #
+        # 2026-09-09: `cat:cond-mat` matches NOTHING on the arXiv API —
+        # papers carry subcategory terms (cond-mat.mes-hall, ...), and the
+        # parent archive name is not a category. Verified live: 0 entries
+        # for cat:cond-mat on 2026-09-08 vs 28 for cat:cond-mat.mes-hall
+        # alone. This source therefore returned zero articles on every
+        # daily run since it was added ("Sources: ... 2 empty" in the
+        # journal). Re-pointed at the five quantum-relevant subarchives.
         "name": "arXiv Condensed Matter",
         "source_type": SourceType.ARXIV,
         "url": "https://arxiv.org",
-        "arxiv_categories": ["cond-mat"],
+        "arxiv_categories": [
+            "cond-mat.mes-hall",   # mesoscopic / nanoscale: qubit devices
+            "cond-mat.supr-con",   # superconductivity: transmon materials
+            "cond-mat.str-el",     # strongly correlated: simulation targets
+            "cond-mat.quant-gas",  # quantum gases: neutral-atom platforms
+            "cond-mat.mtrl-sci",   # materials for qubits / sensors
+        ],
         "fetch_interval_hours": 12,
     },
 
@@ -95,11 +109,21 @@ BUILTIN_SOURCES: list[dict[str, Any]] = [
         # Feed verified to exist at /resources/rss; if it 404s the
         # RSSFetcher's existing error-classification path (per 2026-05-25
         # patch) will surface it rather than silently degrade.
+        #
+        # 2026-09-09: /resources/rss has returned 404 on every daily run
+        # since at least Aug 16 (journal). Probed /blog/rss.xml, /rss.xml,
+        # /feed, /blog/feed, /news/rss.xml, /news/blog/rss.xml,
+        # /news/blog/feed(.xml), /newsroom/rss — all 404 — and the blog
+        # page at /news/blog carries no <link rel="alternate"> feed tag.
+        # Quantinuum currently publishes no syndication feed. Disabled
+        # (not deleted) so it stops counting as an errored source each
+        # run; re-enable with a working feed_url or an HTML fetcher.
         "name": "Quantinuum Blog",
         "source_type": SourceType.RSS,
-        "url": "https://www.quantinuum.com/news",
+        "url": "https://www.quantinuum.com/news/blog",
         "feed_url": "https://www.quantinuum.com/resources/rss",
         "fetch_interval_hours": 12,
+        "enabled": False,
     },
 
     # --- Quantum News Sites ---
@@ -227,6 +251,12 @@ def register_builtin_sources() -> list[Source]:
             source.url = source_data.get("url", source.url)
             source.news_query = source_data.get("news_query", source.news_query)
             source.arxiv_categories = source_data.get("arxiv_categories", source.arxiv_categories)
+            # An explicit `enabled` in the builtin entry wins over the DB row
+            # so a source retired in code (e.g. a feed that no longer exists)
+            # is actually switched off on the next `init`, not just in the
+            # registry listing.
+            if "enabled" in source_data:
+                source.enabled = bool(source_data["enabled"])
         else:
             source = Source(**source_data)
         db.save_source(source)

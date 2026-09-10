@@ -1287,5 +1287,94 @@ def qday_export(
         console.print(f"[dim]Signing pubkey (first 16): {fingerprint}…[/]")
 
 
+# --- Backfill (missed-window recovery) ---------------------------------
+#
+# Added 2026-09-09 after the K11 box was off from Aug 19 to Sep 4 2026 and
+# 17 days of intake were never ingested. See quantum_curator/backfill.py
+# for the design (per-day arXiv queries, paginated RSS, backdated
+# fetched_at, resumable curation, per-day digests).
+
+
+def _parse_day(value: str) -> "datetime.date":
+    from datetime import date as _date
+    try:
+        return _date.fromisoformat(value)
+    except ValueError as exc:
+        raise click.BadParameter(f"expected YYYY-MM-DD, got {value!r}") from exc
+
+
+@cli.command("backfill-fetch")
+@click.option("--since", required=True, help="First day (YYYY-MM-DD, inclusive)")
+@click.option("--until", required=True, help="Last day (YYYY-MM-DD, inclusive)")
+@click.option("--arxiv-per-day", default=50, show_default=True,
+              help="Newest arXiv submissions to pull per day per arXiv source")
+@click.option("--no-news", is_flag=True, help="Skip the paginated news feeds")
+def backfill_fetch(since: str, until: str, arxiv_per_day: int, no_news: bool):
+    """Fetch a missed date window (arXiv by day + paginated news feeds)."""
+    from .backfill import run_backfill_fetch
+
+    s, u = _parse_day(since), _parse_day(until)
+    console.print(f"[blue]Backfill fetch {s} .. {u}[/]")
+    result = asyncio.run(run_backfill_fetch(
+        s, u, arxiv_per_day=arxiv_per_day, include_news=not no_news,
+        log=lambda m: console.print(f"[dim]{m}[/]"),
+    ))
+    console.print(
+        f"[green]Backfill fetch done:[/] raw {result['fetched_raw']}, "
+        f"unique {result['unique']}, kept in window {result['kept_in_window']}, "
+        f"inserted {result['inserted']}, updated {result['updated']}, "
+        f"fk_blocked {result['fk_blocked']}, other_errors {result['other_error']}"
+    )
+    if result["failures"]:
+        console.print(f"[bold red]Source failures:[/] {result['failures']}")
+
+
+@cli.command("backfill-curate")
+@click.option("--since", required=True, help="First day (YYYY-MM-DD, inclusive)")
+@click.option("--until", required=True, help="Last day (YYYY-MM-DD, inclusive)")
+@click.option("--arxiv-per-day", default=30, show_default=True,
+              help="Max arXiv articles curated per calendar day")
+@click.option("--state-file", default="data/backfill_state.json", show_default=True,
+              help="Resume state (done article ids)")
+@click.option("--chunk-size", default=2, show_default=True)
+@click.option("--no-pause", is_flag=True,
+              help="Do not pause while the daily systemd unit is active")
+@click.option("--dry-run", is_flag=True, help="List per-day candidate counts only")
+def backfill_curate(since: str, until: str, arxiv_per_day: int, state_file: str,
+                    chunk_size: int, no_pause: bool, dry_run: bool):
+    """Curate the backfilled window in resumable chunks."""
+    from .backfill import run_backfill_curate
+
+    s, u = _parse_day(since), _parse_day(until)
+    settings = get_settings()
+    if not settings.llm_available and not dry_run:
+        console.print("[yellow]Warning: no LLM backend configured — fallback commentary, no scores.[/]")
+    result = asyncio.run(run_backfill_curate(
+        s, u,
+        state_path=Path(state_file),
+        arxiv_per_day=arxiv_per_day,
+        chunk_size=chunk_size,
+        pause_while_daily_run=not no_pause,
+        dry_run=dry_run,
+        log=lambda m: console.print(m),
+    ))
+    console.print(f"[green]Backfill curate:[/] {result}")
+
+
+@cli.command("backfill-digests")
+@click.option("--since", required=True, help="First day (YYYY-MM-DD, inclusive)")
+@click.option("--until", required=True, help="Last day (YYYY-MM-DD, inclusive)")
+@click.option("--overwrite", is_flag=True, help="Regenerate days that already have a digest")
+def backfill_digests(since: str, until: str, overwrite: bool):
+    """Create daily digests for days in the window that lack one."""
+    from .backfill import run_backfill_digests
+
+    s, u = _parse_day(since), _parse_day(until)
+    result = asyncio.run(run_backfill_digests(
+        s, u, overwrite=overwrite, log=lambda m: console.print(m),
+    ))
+    console.print(f"[green]Backfill digests:[/] {result}")
+
+
 if __name__ == "__main__":
     cli()

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Literal
 
@@ -881,3 +881,95 @@ def list_digests(limit: int = 30) -> list[DailyDigest]:
 def list_daily_digests(limit: int = 30) -> list[DailyDigest]:
     """Alias for list_digests."""
     return list_digests(limit=limit)
+
+
+# --- Cross-source coverage lookup (novelty context for the scorer) ------
+
+_TITLE_STOPWORDS = frozenset(
+    "a an the of for and or in on to with via from by at is are as its into "
+    "over under between toward towards using based new first".split()
+)
+
+
+def _title_tokens(title: str) -> set[str]:
+    """Lowercased alphanumeric tokens of length >= 3, minus stopwords."""
+    import re as _re
+
+    return {
+        t for t in _re.findall(r"[a-z0-9]+", (title or "").lower())
+        if len(t) >= 3 and t not in _TITLE_STOPWORDS
+    }
+
+
+def find_prior_coverage(
+    *,
+    title: str,
+    url: str = "",
+    arxiv_id: str = "",
+    days: int = 21,
+    exclude_article_id: str | None = None,
+    min_similarity: float = 0.6,
+    limit: int = 3,
+) -> list[dict[str, Any]]:
+    """Return prior curated posts that cover the same story.
+
+    Three match rules, checked in order per candidate:
+      * identical ``original_url``;
+      * the article's arXiv id (version suffix stripped) appears in the
+        candidate's ``original_url``;
+      * token-Jaccard similarity of the titles >= ``min_similarity``.
+
+    Only posts whose (published_at or curated_at) falls inside the last
+    ``days`` days are considered, so the scan is a few hundred rows.
+    Returns up to ``limit`` dicts with ``title``, ``source_name``,
+    ``date`` (YYYY-MM-DD), ``similarity`` and ``reason``, most similar
+    first. Never raises on malformed rows — a bad row is skipped.
+    """
+    cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            """
+            SELECT article_id, title, original_url, source_name,
+                   COALESCE(published_at, curated_at) AS when_at
+            FROM curated_posts
+            WHERE COALESCE(published_at, curated_at) >= ?
+            """,
+            (cutoff,),
+        ).fetchall()
+    finally:
+        conn.close()
+
+    base_id = (arxiv_id or "").split("v")[0].strip()
+    base_tokens = _title_tokens(title)
+    hits: list[dict[str, Any]] = []
+    for row in rows:
+        if exclude_article_id and row["article_id"] == exclude_article_id:
+            continue
+        cand_url = row["original_url"] or ""
+        reason = None
+        similarity = 0.0
+        if url and cand_url == url:
+            reason, similarity = "same url", 1.0
+        elif base_id and base_id in cand_url:
+            reason, similarity = "same arXiv id", 1.0
+        elif base_tokens:
+            cand_tokens = _title_tokens(row["title"])
+            if cand_tokens:
+                inter = len(base_tokens & cand_tokens)
+                union = len(base_tokens | cand_tokens)
+                similarity = inter / union if union else 0.0
+                if similarity >= min_similarity:
+                    reason = f"title similarity {similarity:.2f}"
+        if reason is None:
+            continue
+        hits.append({
+            "title": row["title"] or "",
+            "source_name": row["source_name"] or "",
+            "date": (row["when_at"] or "")[:10],
+            "similarity": round(similarity, 3),
+            "reason": reason,
+        })
+
+    hits.sort(key=lambda h: (-h["similarity"], h["date"]))
+    return hits[:limit]

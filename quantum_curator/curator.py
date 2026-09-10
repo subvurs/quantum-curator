@@ -452,10 +452,38 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
             return None
 
         # Match the shape score_item expects (proposal §3.2 / §5.2).
+        summary = article.summary[:1500]
+
+        # Cross-source novelty context. The scorer only ever sees one item,
+        # so a story syndicated by several outlets (e.g. the Aug 2026
+        # "sunlight generates entanglement" result, curated five times
+        # from five sources, novelty=1.0 each time) looked brand new on
+        # every pass. Surface prior corpus coverage inside the summary so
+        # the rubric's "0.1 = duplicative of work already in corpus" rung
+        # and novelty_basis=vs_curator_db can actually fire. The prompt
+        # template itself is unchanged (template hash stable).
+        prior = db.find_prior_coverage(
+            title=article.title,
+            url=article.url,
+            arxiv_id=article.arxiv_id,
+            exclude_article_id=article.id,
+        )
+        if prior:
+            listing = "; ".join(
+                f"'{p['title'][:90]}' ({p['source_name']}, {p['date']}, "
+                f"{p['reason']})"
+                for p in prior
+            )
+            summary += (
+                "\n\nPRIOR SUBVURS CORPUS COVERAGE — the same story was "
+                "already curated: " + listing + ". Score novelty against "
+                "this prior coverage (novelty_basis=vs_curator_db)."
+            )
+
         item = {
             "title": article.title,
             "source": article.source_name,
-            "summary": article.summary[:1500],
+            "summary": summary,
         }
 
         # Scorer is the highest-volume, local-only / fail-closed call: on the
@@ -472,7 +500,7 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
         # score_item is sync (single LLM call); offload to thread to
         # avoid blocking the event loop in batch curation.
         try:
-            return await asyncio.to_thread(
+            report = await asyncio.to_thread(
                 lambda: _impact_score_item(item, **score_kwargs)
             )
         except Exception as exc:  # noqa: BLE001 — final safety net
@@ -480,6 +508,26 @@ Return 1-3 sentences identifying a specific connection, or exactly "None" if no 
             # here is a library-level bug. Log and degrade gracefully.
             print(f"subvurs_impact scoring crashed: {exc!r}")
             return None
+
+        # One retry when the only defect was unparseable model output.
+        # On the local router this was ~3% of items per month (Jul–Sep
+        # 2026: 22 / 6 / 4 fail-closed zeros) and the second sample almost
+        # always parses. Any other fail_reason (router error, timeout) is
+        # returned as-is: still fail-closed, still recorded.
+        fail_reason = getattr(report, "fail_reason", None) or ""
+        if fail_reason.startswith("llm output did not parse"):
+            print(
+                f"subvurs_impact: unparseable output for "
+                f"'{article.title[:60]}'; retrying once"
+            )
+            try:
+                report = await asyncio.to_thread(
+                    lambda: _impact_score_item(item, **score_kwargs)
+                )
+            except Exception as exc:  # noqa: BLE001 — same safety net
+                print(f"subvurs_impact scoring crashed on retry: {exc!r}")
+                return None
+        return report
 
     def _save_subvurs_notes_file(self, article: RawArticle, notes: str) -> Path:
         """Save subvurs notes to a text file in data/subvurs_notes/."""

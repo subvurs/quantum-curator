@@ -61,10 +61,16 @@ logger = logging.getLogger(__name__)
 
 # --- Tunables (kept in module-scope so the CLI can override per-run) ---
 
-# Above this inventory size the full-detail prompt would blow the
-# context window, so the prompt switches to per-domain stratified
-# sampling. Intel's value, unchanged.
-INVENTORY_FULL_THRESHOLD = 1500
+# Above this inventory size the full-detail prompt switches to per-domain
+# stratified sampling. Intel's original value was 1500, sized for a cloud
+# model with a fast prefill. Under LLM_BACKEND=router (gpt-oss:120b on the
+# K11 CPU) the full-detail history for the 1,216-entry inventory is
+# ~330k chars (~82k tokens) and never finishes prefill inside the router
+# timeout: every daily run from Jul 1 to Sep 9 2026 logged
+# "[intel.synthesize] LLM call failed: router timed out after 1500.0s"
+# and no brief was written after Jun 30. The sampled context is ~23k
+# chars (~5.8k tokens). Lowered to 400 on 2026-09-09.
+INVENTORY_FULL_THRESHOLD = 400
 MAX_BRIEFS_PER_RUN = 5
 MIN_CONFIDENCE = 0.55
 RECENT_BRIEF_LOOKBACK_DAYS = 14

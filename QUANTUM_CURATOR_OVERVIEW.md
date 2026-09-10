@@ -1766,3 +1766,83 @@ commit.
 
 *Document updated: July 17, 2026*
 *Quantum Curator v1.8.1 — TL;DR LLM retry with backoff; Bluesky summary-fallback body ladder; empty photo spaces collapsed site-wide*
+
+---
+
+## Missed-Window Backfill & Pipeline Hardening (v1.8.2 — September 9, 2026)
+
+### What happened
+
+The K11 box lost DNS on Aug 17–19 (`git pull --ff-only` failed with
+"Could not resolve host: github.com") and, because the pull was a `hard`
+step, each of those three daily runs aborted before fetching anything.
+The box was then powered off from Aug 19 06:41 CDT to Sep 4 14:34 CDT
+(journal boot list). The `Persistent=true` timer fired on boot and the
+Sep 4 run ingested only what the feeds still carried. Net effect: no
+raw fetches, no curation, and no digests for Aug 18–Sep 3 (17 days);
+the arXiv stream jumps from Aug 14 to Sep 3 in `curated_posts`.
+
+Two further defects surfaced while diagnosing:
+
+- `intel.synthesize` had failed on every run since Jul 1 with
+  "router timed out after 1500.0s". The 1,216-entry inventory is below
+  the 1,500 full-detail threshold, so the prompt carried the entire
+  history (~330k chars, ~82k tokens) — far beyond what gpt-oss:120b on
+  the K11 CPU can prefill inside the timeout. No brief was written after
+  Jun 30.
+- `arXiv Condensed Matter` had returned zero articles on every run since
+  it was added (Jun 9): `cat:cond-mat` is not a category on the arXiv
+  API; papers carry subarchive terms.
+
+### Changes
+
+- **Run script** (`subvurs_export/deploy/curator/run_curator_daily.sh`):
+  `git pull --ff-only` and `pip install -e .` are now `soft()`. A failed
+  update is logged loudly; the checked-out code still runs the day.
+  Unit file `TimeoutStartSec` aligned to the 21600 actually deployed.
+- **`quantum_curator/backfill.py`** + CLI `backfill-fetch`,
+  `backfill-curate`, `backfill-digests`. Per-day arXiv queries
+  (`submittedDate:[D0000 TO D2359]`, newest 50, 3.5 s spacing),
+  paginated WordPress feeds (The Quantum Insider, Quantum Computing
+  Report), `fetched_at` backdated to `published_at` so the daily
+  `curate` selector never swallows the backfilled pool, resumable
+  chunked curation with a JSON state file that pauses while the daily
+  unit is active, and per-day digest creation.
+- **Synthesizer**: `INVENTORY_FULL_THRESHOLD` 1500 → 400. The sampled
+  history context is ~23k chars (~5.8k tokens).
+- **Router client**: one retry on an empty `answer` (the transient
+  hidden-reasoning cutoff); all other failures still raise first time.
+- **Scorer wrapper**: one retry when the only defect was unparseable
+  JSON (~3% of items per month, Jul–Sep); and prior corpus coverage
+  (same URL, same arXiv id, or title Jaccard ≥ 0.6 within 21 days) is
+  appended to the item summary so cross-source syndication no longer
+  scores novelty=1.0 on every outlet. `db.find_prior_coverage` added.
+  Scorer prompt template unchanged (hash stable).
+- **Sources**: Quantinuum Blog disabled — no feed exists at any probed
+  path and the blog page carries no feed link. `arXiv Condensed Matter`
+  re-pointed at cond-mat.mes-hall / supr-con / str-el / quant-gas /
+  mtrl-sci (verified: 50 entries for 2026-09-08 vs 0 before).
+  `register_builtin_sources` now honours an explicit `enabled` flag.
+- Tests: 153 passing (11 new: backfill selection/resume/digests,
+  prior coverage, router retry).
+
+### Not changed (flagged)
+
+- `hive_qstruct` remains in the vendored path catalog (v0.2.0-20260714)
+  and matched 8 of the top-150 items in the Jun–Sep corpus, although the
+  Hive/Qstruct program is retired in CLAUDE.md v4. Removing it changes
+  `path_keys()` and forces a rescoring version bump; left for Mark.
+- The Aug 6 "AWS researcher claims polynomial-time DCP algorithm" post
+  is on the public sites with no rebuttal item; the community rebuttal
+  landed during the outage. The backfill should ingest follow-ups if
+  the feeds carried them; a claim→rebuttal tracker does not exist yet.
+
+### Evidence
+
+- K11 journal, `journalctl --user -u quantum-curator --since 2026-08-15`;
+  `journalctl --list-boots`.
+- Curator DB on K11 (`~/quantum-curator/data/curator.db`), 1,867 curated
+  posts as of 2026-09-09 11:49 UTC; fail-closed scorer reports by month
+  (Jun 233, Jul 22, Aug 6, Sep 4).
+- Prompt size measurement: `synthesizer._build_history_context` over the
+  1,216-entry inventory at thresholds 1500 / 400.

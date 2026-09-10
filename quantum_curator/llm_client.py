@@ -66,6 +66,11 @@ def _anthropic_complete(
     return "".join(parts)
 
 
+# Total attempts for a router call whose only defect was an empty ``answer``
+# (see the retry note inside ``_router_complete``). 2 = one retry.
+ROUTER_EMPTY_ANSWER_ATTEMPTS = 2
+
+
 def _router_complete(
     *,
     system: str,
@@ -110,36 +115,54 @@ def _router_complete(
             cmd.append("--no-escalate")
         cmd.append("--json")
 
-        try:
-            proc = subprocess.run(
-                cmd,
-                cwd=router_cwd,
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-            )
-        except subprocess.TimeoutExpired as exc:
-            raise RouterError(f"router timed out after {timeout}s") from exc
-        except OSError as exc:
-            raise RouterError(f"router launch failed: {exc}") from exc
+        # An empty answer is the one router outcome that is usually
+        # transient (gpt-oss emitting only its hidden reasoning channel and
+        # running out of generation budget before the final channel). It is
+        # retried once; every other failure mode raises on the first attempt
+        # so a real outage still fails closed immediately.
+        attempt = 0
+        while True:
+            attempt += 1
+            try:
+                proc = subprocess.run(
+                    cmd,
+                    cwd=router_cwd,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout,
+                )
+            except subprocess.TimeoutExpired as exc:
+                raise RouterError(f"router timed out after {timeout}s") from exc
+            except OSError as exc:
+                raise RouterError(f"router launch failed: {exc}") from exc
 
-        if proc.returncode != 0:
-            raise RouterError(
-                f"router exited {proc.returncode}: {proc.stderr.strip()[:500]}"
-            )
+            if proc.returncode != 0:
+                raise RouterError(
+                    f"router exited {proc.returncode}: {proc.stderr.strip()[:500]}"
+                )
 
-        try:
-            payload = json.loads(proc.stdout)
-        except json.JSONDecodeError as exc:
-            raise RouterError(
-                f"router emitted non-JSON: {proc.stdout.strip()[:500]}"
-            ) from exc
+            try:
+                payload = json.loads(proc.stdout)
+            except json.JSONDecodeError as exc:
+                raise RouterError(
+                    f"router emitted non-JSON: {proc.stdout.strip()[:500]}"
+                ) from exc
 
-        answer = payload.get("answer", "")
-        if not isinstance(answer, str) or not answer.strip():
+            answer = payload.get("answer", "")
+            if isinstance(answer, str) and answer.strip():
+                return answer
+
             tier = (payload.get("provenance") or {}).get("tier", "?")
-            raise RouterError(f"router returned empty answer (tier={tier})")
-        return answer
+            if attempt < ROUTER_EMPTY_ANSWER_ATTEMPTS:
+                print(
+                    f"[llm_client] router returned empty answer (tier={tier}); "
+                    f"retrying ({attempt}/{ROUTER_EMPTY_ANSWER_ATTEMPTS})"
+                )
+                continue
+            raise RouterError(
+                f"router returned empty answer (tier={tier}) "
+                f"after {attempt} attempts"
+            )
     finally:
         for path in (sys_path, usr_path):
             try:
