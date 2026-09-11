@@ -114,8 +114,35 @@ def backdate(articles: list[RawArticle], fallback: datetime) -> list[RawArticle]
     return articles
 
 
+# Full path so an unrelated shell whose argv merely mentions the script
+# name (e.g. an ssh one-liner inspecting the journal) is not mistaken
+# for the daily run.
+DAILY_RUN_PROCESS_PATTERN = "subvurs_deploy/curator/run_curator_daily.sh"
+
+
 def daily_run_active() -> bool:
-    """True when the systemd --user daily unit is running (K11 only)."""
+    """True when the daily pipeline is running (K11 only).
+
+    Checks for the run script's process first (``pgrep -f``), then falls
+    back to ``systemctl --user is-active``. The process check is primary
+    because ``systemctl --user`` needs the user's session bus
+    (``XDG_RUNTIME_DIR`` / ``DBUS_SESSION_BUS_ADDRESS``); under ``nohup``
+    from an SSH session those are unset, the call fails with
+    "Failed to connect to bus", and the guard silently reported "idle".
+    That is exactly what happened on Sep 10–11 2026: the backfill never
+    paused, contended with the daily run for the local model, and both
+    daily runs hit the 6 h unit timeout inside intel-email.
+    """
+    try:
+        proc = subprocess.run(
+            ["pgrep", "-f", DAILY_RUN_PROCESS_PATTERN],
+            capture_output=True, text=True, timeout=10,
+        )
+        if proc.returncode == 0 and proc.stdout.strip():
+            return True
+    except (OSError, subprocess.TimeoutExpired):
+        # pgrep missing (unlikely on Linux) or hung: fall through.
+        pass
     try:
         proc = subprocess.run(
             ["systemctl", "--user", "is-active", "quantum-curator.service"],

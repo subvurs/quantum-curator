@@ -220,3 +220,34 @@ async def test_digests_created_only_for_days_with_posts_and_no_digest(isolated_d
     assert result["skipped_existing"] == ["2026-08-21"]
     assert result["no_posts"] == ["2026-08-23"]
     assert [c[1] for c in stub.calls] == [1, 1]
+
+
+# --- daily-run guard ----------------------------------------------------
+
+
+def test_daily_run_active_uses_pgrep_before_systemctl(monkeypatch):
+    import subprocess as _sp
+    calls: list[list[str]] = []
+
+    def fake_run(cmd, capture_output, text, timeout):
+        calls.append(cmd)
+        if cmd[0] == "pgrep":
+            return _sp.CompletedProcess(cmd, 0, stdout="12345\n", stderr="")
+        raise AssertionError("systemctl should not be consulted when pgrep hits")
+
+    monkeypatch.setattr(_sp, "run", fake_run)
+    assert backfill.daily_run_active() is True
+    assert calls[0][:2] == ["pgrep", "-f"]
+
+
+def test_daily_run_active_false_when_neither_reports(monkeypatch):
+    import subprocess as _sp
+
+    def fake_run(cmd, capture_output, text, timeout):
+        if cmd[0] == "pgrep":
+            return _sp.CompletedProcess(cmd, 1, stdout="", stderr="")
+        # systemctl without a session bus: non-zero, stderr noise
+        return _sp.CompletedProcess(cmd, 1, stdout="", stderr="Failed to connect to bus")
+
+    monkeypatch.setattr(_sp, "run", fake_run)
+    assert backfill.daily_run_active() is False
