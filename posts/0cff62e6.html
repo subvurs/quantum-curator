@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When More Becomes Less: Topology-Reversed Three-Qubit Gate Performance on IBM Quantum Processors | Quantum Crier</title>
+    <meta name="description" content="The exact Toffoli gate admits a six-CX decomposition, denoted by $CCX_6$, that is optimal under unrestricted two-qubit connectivity. On a linear three-qubit top">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="When More Becomes Less: Topology-Reversed Three-Qubit Gate Performance on IBM Quantum Processors">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 11, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+        </div>
+        <h1>When More Becomes Less: Topology-Reversed Three-Qubit Gate Performance on IBM Quantum Processors</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">August 21, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that on today’s noisy superconducting chips a six‑CX Toffoli decomposition, which is optimal in abstract circuit depth, can be outperformed by an eight‑CX version that respects the device’s linear nearest‑neighbor connectivity. By experimentally comparing both decompositions across many three‑qubit triples on IBM’s 156‑qubit processors, the authors demonstrate lower error rates and higher fidelity for the locality‑friendly circuit, highlighting how hardware topology can flip the usual “fewer gates = better” rule of thumb. The result underscores the need for compilers and algorithm designers to prioritize connectivity‑aware gate scheduling, a lesson that will become increasingly critical as quantum processors scale up.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>The exact Toffoli gate admits a six-CX decomposition, denoted by $CCX_6$, that is optimal under unrestricted two-qubit connectivity. On a linear three-qubit topology, however, $CCX_6$ contains 4 nearest-neighbor CX gates and 2 non-nearest-neighbor CX gates. By contrast, an alternative exact decomposition, denoted by $CCX_8$, uses only 8 nearest-neighbor CX gates. Because CCX is locally equivalent to CCZ, we perform the experiments using the corresponding $\cczs$ and $\cczl$ circuits. We compare these circuits on sampled linear triples of the 156-qubit IBM Quantum Heron processors \texttt{ibm\_fez} and \texttt{ibm\_kingston}. Under the compilation protocol, the nominal $\cczs$ circuit becomes a twelve-CZ implementation, whereas the linear-nearest-neighbor circuit retains eight native CZ gates. Experimentally measured ensemble-feature-selection estimates favor the eight-CZ realization on nearly all retained triples. We test the same ordering by preparing a three-qubit hypergraph state, which probes the coherent conditional phase rather than only computational-basis populations. The measured hypergraph-state infidelity is lower for the $\cczl$ circuit for most triples on both processors. Phase-altered interleaved randomized benchmarking provides a complementary comparison of Clifford surrogates preserving the two compiled entangling structures. Within the scope of the tested circuits and phase-sensitive input state, the results demonstrate that hardware connectivity can reverse the operational ranking of exact decompositions: a circuit with more abstract two-qubit gates can yield the better physical implementation.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2608.21004v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=When%20More%20Becomes%20Less%3A%20Topology-Reversed%20Three-Qubit%20Gate%20Performance%20on%20IBM%20Quantum%20Processors&url=https://quantumcrier.com/posts/0cff62e6.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0cff62e6.html&title=When%20More%20Becomes%20Less%3A%20Topology-Reversed%20Three-Qubit%20Gate%20Performance%20on%20IBM%20Quantum%20Processors" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
