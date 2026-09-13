@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heuristically optimizing, synthesizing, and prioritizing measurement settings for quantum state tomography | Quantum Crier</title>
+    <meta name="description" content="A key task in many quantum-computing applications, e.g., quantum simulation and quantum state tomography (QST), is to partition an arbitrary set of operators in">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Heuristically optimizing, synthesizing, and prioritizing measurement settings for quantum state tomography">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 13, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Heuristically optimizing, synthesizing, and prioritizing measurement settings for quantum state tomography</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">September 02, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that the long‑standing bottleneck of exploding measurement settings in quantum state tomography can be tamed by recasting operator partitioning as a graph‑coloring problem and applying fast heuristic solvers. By cutting the number of required commuting Pauli groups—and even ranking them for maximal information gain—the authors achieve orders‑of‑magnitude speedups on modest hardware, a practical step toward scalable tomography for near‑term devices. The work dovetails with recent advances such as classical‑shadow techniques and adaptive measurement schemes, suggesting that efficient, priority‑driven scheduling could become a standard tool in experimental quantum labs.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>A key task in many quantum-computing applications, e.g., quantum simulation and quantum state tomography (QST), is to partition an arbitrary set of operators into mutually commuting subsets for efficient measurements. However, brute-force approaches to this task quickly become intractable as the number and dimensionality of operators grow. Here, we reformulate operator partitioning as a graph-coloring (GC) problem and develop an efficient computational framework to solve it, balancing accuracy and efficiency. Our framework enables leveraging a range of GC algorithms, which we benchmark for operator partitioning. Then, we demonstrate their utility in optimizing QST experiments, where determining non-overlapping data acquisition settings for QST is a major challenge, and prioritizing among these settings, i.e., selecting the experiments that provide the most information. We further show how to perform these experiments by synthesizing Clifford circuits for joint measurement of commuting Pauli operators in multi-qubit systems. We validate our framework across multi-qubit (up to five qubits), multi-qutrit (up to three qutrits), and hybrid qubit-qutrit systems. Our results show that heuristic GC methods substantially reduce the number of required measurement settings for QST and enable priority-based scheduling that maximizes the information gain per experiment. The optimization converges within minutes on a student-grade laptop, providing speedups of several orders of magnitude over brute-force methods already for these relatively small quantum systems. This demonstrates the potential of GC heuristics as a scalable and practical tool for characterization of noisy intermediate-scale quantum devices. We have made the Python implementation of our GC framework to optimize and schedule QST experiments publicly available at https://github.com/ssm8015/QST_GT.git.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2609.02633v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Heuristically%20optimizing%2C%20synthesizing%2C%20and%20prioritizing%20measurement%20settings%20for%20quantum%20state%20tomography&url=https://quantumcrier.com/posts/035c0afc.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/035c0afc.html&title=Heuristically%20optimizing%2C%20synthesizing%2C%20and%20prioritizing%20measurement%20settings%20for%20quantum%20state%20tomography" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
