@@ -5,11 +5,45 @@
         <link>https://quantumcrier.com</link>
         <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 13 Sep 2026 09:14:39 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 14 Sep 2026 09:16:18 +0000</lastBuildDate>
         <atom:link href="https://quantumcrier.com/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
+        
+        <item>
+            <title>Fortaegis Raises $50 Million to Commercialize Chip-Based Security Technology</title>
+            <link>https://quantumcrier.com/posts/d8a1651c.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/d8a1651c.html</guid>
+            <pubDate>Mon, 14 Sep 2026 07:33:26 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article matters because Fortaegis is scaling a hardware‑level security platform that could become a critical layer of protection for the high‑bandwidth, low‑latency networks increasingly used to link AI workloads, autonomous platforms and satellite constellations—systems that are prime targets for both classical cyber attacks and future quantum threats. The $50 million Series A follows a wave of post‑quantum cryptography initiatives and hardware‑rooted trust solutions, signaling investor confidence that chip‑based defenses will be essential as quantum computers move closer to practical key‑breaking capabilities. If the company can deliver mass‑produced, tamper‑resistant chips, it could give defense and commercial AI operators a ready‑to‑deploy safeguard while buying time for broader quantum‑secure protocols to mature.</p>
+                <p>Insider Brief Dutch startup Fortaegis has raised $50 million to move its chip-based security technology into commercial production, targeting networks that connect AI systems, defense equipment, satellites and autonomous machines. The oversubscribed Series A was led by Singapore-based Serendipity Capital, according to the company. Other participants included TEL Venture Capital, the corporate venture arm of […]</p>
+                <p><a href="https://thequantuminsider.com/2026/09/14/fortaegis-raises-50-million-to-commercialize-chip-based-security-technology/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>industry</category>
+            
+        </item>
+        
+        <item>
+            <title>Quantum Machines Makes Quantum Computers Easier to Program With NVIDIA CUDA-Q And NVQLink</title>
+            <link>https://quantumcrier.com/posts/aee14c94.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/aee14c94.html</guid>
+            <pubDate>Sun, 13 Sep 2026 11:05:00 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article matters because it demonstrates the first full‑stack integration of NVIDIA’s CUDA‑Q language and NVQLink with live qubits, showing that quantum programs can now be written once and executed across both a GPU‑accelerated classical processor and a quantum processing unit without hand‑crafted translation layers. By unifying the software stack, Quantum Machines lowers the barrier for developers to experiment with hybrid algorithms—a trend echoed by recent moves from IBM and Rigetti toward tighter classical‑quantum co‑design—potentially speeding up prototype testing and error‑mitigation workflows. The breakthrough is promising, but its impact will depend on broader hardware support and how quickly the ecosystem adopts CUDA‑Q as a common programming model.</p>
+                <p>Insider Brief PRESS RELEASE — Quantum Machines, a leading provider of advanced quantum control solutions, today became the first control company to run an end-to-end NVIDIA CUDA-Q program across live qubits and a PPU classical processor with NVIDIA NVQLink. CUDA-Q is NVIDIA’s open platform for quantum-GPU supercomputing, providing a way of writing instructions that both a classical computer and a quantum computer can follow. […]</p>
+                <p><a href="https://thequantuminsider.com/2026/09/13/quantum-machines-makes-quantum-computers-easier-to-program-with-nvidia-cuda-q-and-nvqlink/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+        </item>
         
         <item>
             <title>Tiny sound waves could help solve a major quantum computing problem</title>
@@ -860,40 +894,6 @@
             <author>Mark Eatherly</author>
             
             <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Distributed Quantum Property Testing with Quantum Carrier Pigeons</title>
-            <link>https://quantumcrier.com/posts/58341f84.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/58341f84.html</guid>
-            <pubDate>Tue, 08 Sep 2026 15:09:45 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article shows how a network of quantum devices can collectively certify an unknown state while each node is limited to sending only a few classical bits and qubits—a regime that mirrors realistic constraints in distributed quantum sensing and cloud‑based quantum computing. By extending the classical distributed inference framework with shared entanglement and quantifying the exact trade‑off between communication bandwidth (n_c + n_q) and copy complexity, the authors reveal that even a modest amount of quantum communication can dramatically reduce the number of state copies needed, provided the nodes share randomness. The results tighten lower bounds for private‑coin protocols and suggest practical designs for “quantum carrier pigeon” links where bandwidth is scarce but verification fidelity remains high.</p>
-                <p>We introduce a framework for distributed quantum inference under communication constraints. In our model, $m$ distributed nodes each receive one copy of an unknown $d$-dimensional quantum state $ρ$, before communicating via a constrained one-way communication channel with a central node, which aims to infer some property of $ρ$. This framework generalizes the classical distributed inference framework introduced by Acharya, Canonne, and Tyagi [COLT 2019], by allowing quantum resources such as quantum communication and shared entanglement. Within this setting, we focus on the fundamental problem of quantum state certification: Given a complete description of some state $σ$, decide whether $ρ=σ$ or $\|ρ-σ\|_1\geq ε$. Additionally, we focus on the case of limited communication between distributed nodes and the central node: we assume each communication channel is limited to only $n_c$ bits and $n_q$ qubits with $n_c + n_q \leq \log d$. When all nodes can make use of a shared source of randomness, we show that the copy complexity of distributed state certification is $Θ(\frac{d^2}{2^{n_q} 2^{n_c/2}ε^2})$. We further demonstrate that shared randomness is necessary to achieve the above complexity, by proving an $Ω(\frac{d^3}{4^{n_q} 2^{n_c} ε^2})$ lower bound in the $\textit{private-coin}$ setting. Moreover, we develop a private-coin algorithm that matches this bound up to a $\sqrt{\log d}$ factor, showing this complexity is near-optimal. Together, our work establishes a general framework for distributed quantum inference with communication constraints and characterizes the complexity of distributed state certification with limited communication.</p>
-                <p><a href="https://arxiv.org/abs/2609.08864v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-        </item>
-        
-        <item>
-            <title>A new game demonstrates quantum advantage with provable classical limits</title>
-            <link>https://quantumcrier.com/posts/dbe4bed7.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/dbe4bed7.html</guid>
-            <pubDate>Tue, 08 Sep 2026 14:50:01 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article reports the first experimentally implemented game whose winning probability provably exceeds any classical strategy while remaining efficiently verifiable on a conventional computer, offering a concrete and transparent benchmark of quantum advantage. By sidestepping the loopholes that have hampered earlier supremacy demonstrations—such as hidden assumptions about noise or untested complexity bounds—it connects recent hardware milestones like Google’s Sycamore and IBM’s roadmap to a rigorously testable protocol. The result not only strengthens confidence that today’s processors are genuinely exploiting quantum mechanics, but also provides a practical tool for future developers to certify performance as devices scale up.</p>
-                <p>For decades, physicists have worked to prove the strange predictions of quantum mechanics with real experiments. As quantum computers have grown more powerful, researchers have devised increasingly sophisticated ways to test whether these machines are truly harnessing quantum effects—but every method so far has run into limits.</p>
-                <p><a href="https://phys.org/news/2026-09-game-quantum-advantage-provable-classical.html">Read original at Phys.org Quantum</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>research</category>
             
         </item>
         
