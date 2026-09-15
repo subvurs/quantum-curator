@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agnostic learning of qudit stabilizer states | Quantum Crier</title>
-    <meta name="description" content="Learning a classical description of a quantum state is a fundamental task in quantum computation. Among the most important classes of quantum states are stabili">
+    <title>Quandela Publishes White Paper on Photonic QPU Integration With NVIDIA Infrastructure | Quantum Crier</title>
+    <meta name="description" content="Insider Brief PRESS RELEASE — Building on our June announcement of a low-latency integration between a Quandela photonic QPU and NVIDIA AI infrastructure, the c">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Agnostic learning of qudit stabilizer states">
+    <meta property="og:title" content="Quandela Publishes White Paper on Photonic QPU Integration With NVIDIA Infrastructure">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,6 +26,10 @@
 
     
 
+<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_21-20.png">
+<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_21-20.png">
+<meta name="twitter:card" content="summary_large_image">
+
 
 </head>
 <body>
@@ -34,7 +38,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 14, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 15, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,23 +62,22 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
-            
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-            
             <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>Agnostic learning of qudit stabilizer states</h1>
+        <h1>Quandela Publishes White Paper on Photonic QPU Integration With NVIDIA Infrastructure</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 17, 2026</span>
+            <span class="source">Source: <strong>The Quantum Insider</strong></span>
+            <span class="date">September 14, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
+    
+    <div class="post-hero-image">
+        <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_21-20.png" alt="Quandela Publishes White Paper on Photonic QPU Integration With NVIDIA Infrastructure" loading="eager"
+             onerror="this.parentElement.style.display='none'">
+    </div>
     
 
     <div class="post-body">
@@ -82,19 +85,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article delivers the first efficient algorithm for agnostically learning stabilizer states in qudit systems, extending the recent qubit‑only breakthrough of Chen et al. (STOC’25) to higher‑dimensional hardware where odd‑prime dimensions are increasingly explored for their error‑resilience and gate efficiency. By adapting the stabilizer bootstrapping framework to handle the richer algebraic structure of qudits, the authors achieve a sample and runtime scaling that remains polynomial in the number of registers while only modestly exponential in the local dimension d, opening realistic pathways for state verification and fault‑tolerant code design on platforms such as trapped‑ion or photonic qudits. The result sharpens our theoretical toolkit for quantum error correction beyond binary encodings and signals that practical learning of complex quantum states is becoming tractable even under noisy, real‑world conditions.
+                This article matters because it formalises the first detailed roadmap for tightly coupling a photonic quantum processing unit with NVIDIA’s AI‑accelerated ecosystem, moving beyond a proof‑of‑concept to an architecture that could let existing GPU clusters offload specific subroutines to a low‑latency QPU. It builds on recent momentum in both silicon‑photonic qubits and the industry’s push for heterogeneous compute stacks—echoing efforts from Xanadu’s Borealis and IBM’s roadmap for quantum‑accelerated AI—while outlining concrete hardware, software, and scheduling layers needed for gradual adoption. If the integration can deliver the promised latency and error‑rate improvements, it could give early adopters a practical pathway to experiment with quantum‑enhanced machine‑learning workloads without overhauling their entire HPC infrastructure.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Learning a classical description of a quantum state is a fundamental task in quantum computation. Among the most important classes of quantum states are stabilizer states, which play a central role in quantum error correction and fault-tolerant computation. To mitigate the effects of realistic noise, agnostic learning of stabilizer states has emerged as a natural and well-motivated problem. Recently, Chen \textit{et al.} [STOC&#39;25, p. 429-438] resolved this problem for qubit systems by using a stabilizer bootstrapping framework. However, the agnostic learning of qudit stabilizer states remains largely unexplored, since the qudit setting introduces fundamental structural differences that prevent a direct generalization of existing qubit techniques. In this paper, we successfully generalize the stabilizer bootstrapping framework to qudit systems and present the first efficient quantum algorithm for agnostic learning of qudit stabilizer states. Specifically, given copies of an unknown $n$-qudit pure state $|ψ\rangle$ that has fidelity $τ$ with some stabilizer state, our algorithm outputs a stabilizer state $|φ\rangle$ such that $\left| \braket{φ|ψ} \right|^2 \geq τ- \varepsilon$ with high probability. The algorithm uses only single-copy and four-copy measurements, and its sample and time complexity scale as $(d/τ)^{O(d^2 \log(1/τ))} \cdot \mathrm{poly}(n, 1/\varepsilon)$, where the dimension $d$ is an odd prime. As a direct corollary, our algorithm enables efficient estimation of the magic of a quantum state, as quantified by its stabilizer fidelity. Completing the picture, we also present a streamlined algorithm for the high-fidelity regime $τ&gt; \cos^2(π/8)$, establishing a qudit analogue of the threshold-based approach in prior qubit work.</p>
+            <p>Insider Brief PRESS RELEASE — Building on our June announcement of a low-latency integration between a Quandela photonic QPU and NVIDIA AI infrastructure, the companies are publishing a technical white paper today. This paper outlines a vision and architectural framework for gradually integrating quantum computing into current AI and HPC environments. This approach is based […]</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.15559v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://thequantuminsider.com/2026/09/14/quandela-white-paper-photonic-qpu-nvidia-infrastructure/" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at The Quantum Insider &rarr;
             </a>
         </div>
     </div>
@@ -103,8 +106,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Agnostic%20learning%20of%20qudit%20stabilizer%20states&url=https://quantumcrier.com/posts/b8058948.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b8058948.html&title=Agnostic%20learning%20of%20qudit%20stabilizer%20states" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Quandela%20Publishes%20White%20Paper%20on%20Photonic%20QPU%20Integration%20With%20NVIDIA%20Infrastructure&url=https://quantumcrier.com/posts/db729187.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/db729187.html&title=Quandela%20Publishes%20White%20Paper%20on%20Photonic%20QPU%20Integration%20With%20NVIDIA%20Infrastructure" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

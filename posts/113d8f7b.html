@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moment Optimization in the Navascués-Pironio-Acín Hierarchy | Quantum Crier</title>
-    <meta name="description" content="The Navascués-Pironio-Acín (NPA) hierarchy provides a convergent sequence of semidefinite programming (SDP) relaxations for noncommutative polynomial optimisati">
+    <title>Infleqtion Integrates qLDPC With NVIDIA CUDA-Q Logical | Quantum Crier</title>
+    <meta name="description" content="Insider Brief PRESS RELEASE — Infleqtion (NYSE: INFQ), a global leader in quantum computing and quantum sensing powered by neutral-atom technology, today announ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Moment Optimization in the Navascués-Pironio-Acín Hierarchy">
+    <meta property="og:title" content="Infleqtion Integrates qLDPC With NVIDIA CUDA-Q Logical">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,6 +26,10 @@
 
     
 
+<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_18-50.png">
+<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_18-50.png">
+<meta name="twitter:card" content="summary_large_image">
+
 
 </head>
 <body>
@@ -34,7 +38,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 14, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 15, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,19 +60,26 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>Moment Optimization in the Navascués-Pironio-Acín Hierarchy</h1>
+        <h1>Infleqtion Integrates qLDPC With NVIDIA CUDA-Q Logical</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 16, 2026</span>
+            <span class="source">Source: <strong>The Quantum Insider</strong></span>
+            <span class="date">September 14, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
+    
+    <div class="post-hero-image">
+        <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_18-50.png" alt="Infleqtion Integrates qLDPC With NVIDIA CUDA-Q Logical" loading="eager"
+             onerror="this.parentElement.style.display='none'">
+    </div>
     
 
     <div class="post-body">
@@ -76,19 +87,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a long‑standing bottleneck in the Navascués‑Pironio‑Acín (NPA) hierarchy by treating moment selection as a combinatorial optimisation problem and showing that sophisticated search strategies—parallel tempering, an RBM‑based reinforcement learner, and Bayesian optimisation—can dramatically prune the moment set while preserving tightness of the bounds. By achieving near‑optimal performance on the notoriously hard I₃₃₂₂ Bell inequality and extending to all 174 inequalities in the (4,4,2,2) scenario as well as a Heisenberg spin chain, the work demonstrates that larger, more realistic nonlocality and many‑body problems can now be tackled within feasible SDP budgets. The advance dovetails with recent efforts to scale NPA‑type relaxations (e.g., symmetry reduction and tensor‑network embeddings), suggesting that practical device‑independent certification and quantum‑physics optimisation may become routine once the remaining exponential SDP size limits are further mitigated.
+                This article matters because it shows one of the first real‑world deployments of NVIDIA’s CUDA‑Q Logical framework together with the open‑source qLDPC library on a neutral‑atom quantum processor, moving low‑density parity‑check codes from theory toward experimental validation. By marrying high‑performance GPU‑accelerated simulation with Infleqtion’s native hardware, the work accelerates the search for error‑correction schemes that can scale beyond surface‑code limits and could shorten the path to fault‑tolerant quantum computing. The collaboration also signals a broader trend of cloud‑native tooling becoming integral to quantum research, though practical deployment will still hinge on achieving sufficiently low physical error rates in neutral‑atom arrays.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The Navascués-Pironio-Acín (NPA) hierarchy provides a convergent sequence of semidefinite programming (SDP) relaxations for noncommutative polynomial optimisation, ubiquitous in quantum physics. However, its practical applicability is limited by the combinatorial growth in operator moments required at each level. Since not all moments contribute equally to bound tightness, selecting moments within a fixed computational budget is a relevant problem. We reframe moment selection as combinatorial subset selection and show it is governed by strong higher-order synergistic interactions among moments, quantified through a marginal synergy diagnostic adapted from complex systems theory. We develop and compare three optimisation methods: Parallel Tempering (PT), an RBM-based reinforcement learning policy, and Bayesian Optimisation (BO). On the $I_{3322}$ Bell inequality benchmark, all three substantially outperform greedy approaches at costs around two orders of magnitude below brute force, with the RBM achieving the closest approach to optimal throughout the hard transition regime. We apply the framework to the 174 Bell inequalities in the $(4,4,2,2)$ scenario, finding heterogeneous convergence behaviour across inequalities, and to the one-dimensional Heisenberg spin chain, demonstrating that physically motivated monomial bases are internally compressible and are not globally optimal in general. A budget-aware search over a broader pool improves certified bounds on long-range correlations by nearly two orders of magnitude. These results establish a scalable framework for moment selection in noncommutative polynomial optimisation, with broad applications across quantum physics and quantum information.</p>
+            <p>Insider Brief PRESS RELEASE — Infleqtion (NYSE: INFQ), a global leader in quantum computing and quantum sensing powered by neutral-atom technology, today announced results from its integration of NVIDIA CUDA-Q Logical with the qLDPC open-source library for quantum error correction research. Infleqtion is among the first organizations building on the platform, which NVIDIA just announced […]</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.14755v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://thequantuminsider.com/2026/09/14/infleqtion-advances-fault-tolerant-quantum-computing-software-nvidia-cuda-q-logical/" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at The Quantum Insider &rarr;
             </a>
         </div>
     </div>
@@ -97,8 +108,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Moment%20Optimization%20in%20the%20Navascu%C3%A9s-Pironio-Ac%C3%ADn%20Hierarchy&url=https://quantumcrier.com/posts/db24e453.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/db24e453.html&title=Moment%20Optimization%20in%20the%20Navascu%C3%A9s-Pironio-Ac%C3%ADn%20Hierarchy" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Infleqtion%20Integrates%20qLDPC%20With%20NVIDIA%20CUDA-Q%20Logical&url=https://quantumcrier.com/posts/113d8f7b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/113d8f7b.html&title=Infleqtion%20Integrates%20qLDPC%20With%20NVIDIA%20CUDA-Q%20Logical" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
