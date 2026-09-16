@@ -32,7 +32,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 15, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 16, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,14 +56,14 @@
     <div class="digest-card">
         <h3>Daily Summary</h3>
         <div class="digest-summary digest-expandable" id="digest-text">
-            <p>The most striking headline from today’s quantum landscape is the rapid convergence of industry‑wide error‑correction tools around NVIDIA’s CUDA‑Q Logical framework. Within hours, Infleqtion announced a seamless integration of its qLDPC library with CUDA‑Q Logical, QC Design revealed that its Plaquette platform now runs hardware‑realistic fault‑tolerant simulations through the same stack, and IQM disclosed adoption of CUDA‑Q Logical for open‑architecture benchmarking of its Halocene error‑correction suite. This coordinated push signals that a common software substrate for logical qubits is finally emerging, promising to accelerate cross‑vendor collaboration and reduce the fragmentation that has long hampered scalable quantum development.</p>
-<p>Beyond the unifying software thrust, today’s news underscores two complementary trends: photonic hardware is moving from laboratory curiosity toward deployable networking components, as evidenced by new techniques for shaping photons for reliable quantum communication and Quandela’s joint white paper with NVIDIA outlining a NVQLink‑based architecture that couples photonic QPUs to AI‑focused GPU clusters. At the same time, ecosystem builders are seeding rapid innovation through generous grant programs—BlueQubit’s $150 000 “Quantum Flywheel” initiative, backed by IBM, AWS and NVIDIA, offers cloud compute credits for algorithm discovery and error‑correction research, while Fujitsu’s open‑source OpenQARP package adds a rich library of quantum algorithms to the public toolbox. Corporate commitment is also evident in TOYO Corporation’s purchase of a second IQM Spark system, expanding its superconducting quantum footprint.</p>
-<p>Looking ahead, readers should watch for concrete performance benchmarks emerging from the CUDA‑Q Logical integrations, especially any head‑to‑head comparisons of fault‑tolerant logical gate overheads across neutral‑atom (Infleqtion), superconducting (IQM) and photonic (Quandela) platforms. The upcoming IEEE Quantum Week, where IonQ will present nine peer‑reviewed papers, will likely showcase early results from these collaborations and may reveal the first standardized metrics for logical qubit fidelity. As grant programs fund more exploratory work, expect a surge in prototype applications that blend photonic networking with cloud‑accelerated quantum processing—an evolution that could bring the long‑promised quantum internet one step closer to reality.</p>
+            <p>The headline of today’s quantum roundup is the launch of a hardware‑realistic fault‑tolerant simulation stack: QC Design has fused its Plaquette design‑automation platform with NVIDIA’s CUDA‑Q Logical layer, giving engineers a unified environment to model error‑corrected circuits on real devices. The integration promises to shrink the gap between theoretical QEC schemes and the constraints of actual hardware, and it arrives alongside Iceberg Quantum and Diraq’s demonstration that the Pinnacle qLDPC architecture can be run on spin‑qubit chips using the same CUDA‑Q logical framework. Together these moves signal a decisive shift from isolated software prototypes toward end‑to‑end design tools that respect the quirks of today’s quantum processors.</p>
+<p>Across the day’s stories, three themes emerge. First, error correction is moving from abstract codes to concrete implementations: new work on probabilistic error cancellation for single‑mode GKP codes and the qLDPC spin‑qubit demo both target hardware‑efficient fault tolerance. Second, the ecosystem is coalescing around shared software layers—CUDA‑Q now underpins multiple collaborations, from Plaquette’s design flow to Iceberg Quantum’s architecture—creating a common language that accelerates cross‑company innovation. Third, industry and policy are scaling up: Beijing’s “Scenario Handshake Plan” aims to match quantum firms with transportation, energy and finance customers; TOYO’s acquisition of a second IQM system will establish Japan’s first dual‑QPU testbed; and Infleqtion’s CTO receiving the IEEE QTC Early Career Award highlights the growing talent pipeline.</p>
+<p>Looking ahead, readers should watch for the first operational runs of these integrated tools as QC Design and NVIDIA roll out beta simulations later this quarter, and for the early‑2027 activation of TOYO’s dual‑QPU testbed, which could become a proving ground for cross‑platform benchmarks. The rebranding of Q*Bird to Falqon Systems underscores an emerging focus on quantum‑secure networking infrastructure, suggesting that secure communications will soon move from laboratory demos to commercial rollouts. As algorithmic advances like Adaptive Algorithmic Control (A2C) demonstrate software‑level gains, the convergence of robust error correction, unified development stacks, and expanding hardware deployments points toward a near‑term era where practical quantum advantage becomes an operational reality.</p>
         </div>
         <button class="digest-toggle" id="digest-toggle" onclick="(function(){var t=document.getElementById('digest-text'),b=document.getElementById('digest-toggle');t.classList.toggle('digest-expanded');b.textContent=t.classList.contains('digest-expanded')?'Show less':'Read more'})()">Read more</button>
         <div class="digest-meta">
-            <span class="digest-date">September 15, 2026</span>
-            <span class="digest-count">21 articles</span>
+            <span class="digest-date">September 16, 2026</span>
+            <span class="digest-count">34 articles</span>
         </div>
     </div>
 </section>
@@ -77,14 +77,8 @@
         <div class="hero-content">
             <div class="post-topics">
                 
-                <a href="/topics/algorithms.html"
-                   class="topic-tag topic-algorithms">algorithms</a>
-                
-                <a href="/topics/error_correction.html"
-                   class="topic-tag topic-error_correction">error_correction</a>
-                
-                <a href="/topics/simulation.html"
-                   class="topic-tag topic-simulation">simulation</a>
+                <a href="/topics/industry.html"
+                   class="topic-tag topic-industry">industry</a>
                 
                 <a href="/topics/research.html"
                    class="topic-tag topic-research">research</a>
@@ -94,22 +88,22 @@
                 
             </div>
             <h1 class="hero-title">
-                <a href="/posts/c2184efb.html">NVIDIA Unveils CUDA-Q Logical to Accelerate Fault-Tolerant System Orchestration Across Hardware Modalities</a>
+                <a href="/posts/0a1713f3.html">Beijing Launches Program to Connect Quantum Companies With Industrial Customers</a>
             </h1>
-            <p class="hero-summary">NVIDIA has launched CUDA-Q Logical, an extension to its open-source accelerated quantum computing platform, aimed at accelerating fault-tolerant quantum computing by unifying the design of high-level algorithms, quantum error correction codes, and QP...</p>
+            <p class="hero-summary">Insider Brief Beijing has launched a program to connect quantum technology companies with prospective customers in transportation, energy, finance and other industries, part of a broader effort to move the sector from laboratory research toward comme...</p>
             <div class="hero-commentary">
                 <p class="ai-kicker">AI Commentary</p>
-                <blockquote>This article matters because CUDA‑Q Logical gives developers a single, open‑source stack that can translate high‑level algorithms, error‑correction codes and QPU micro‑architectures into full‑system resource estimates—a capability that has previously required piecemeal tooling. By leveraging NVIDIA’s GPU‑accelerated simulators and the NVQLink interconnect, the framework delivers order‑of‑magnitude speedups in fault‑tolerant modeling at places like Fermilab, accelerating the design of utility‑scale quantum‑GPU supercomputers. While the performance gains are promising, practical impact will depend on how quickly hardware vendors adopt the logical layer and integrate it with emerging error‑corrected qubit technologies.</blockquote>
+                <blockquote>This article highlights Beijing’s new “Scenario Handshake Plan,” a government‑backed effort to pair quantum startups and university labs with end‑users in transportation, energy, finance and other sectors, signaling a decisive move from pure research toward market‑ready solutions. By creating a structured matchmaking platform, China aims to accelerate real‑world pilots that can validate quantum advantage while giving companies clearer pathways to revenue—a strategy echoing similar industry‑focused programs emerging in the US and Europe. The initiative’s impact will hinge on how quickly hardware performance improves enough to meet the demanding use cases of these heavyweight industries.</blockquote>
             </div>
             <div class="post-meta">
-                <span class="post-source">Quantum Computing Report</span>
-                <span class="post-date">September 15, 2026</span>
-                <a href="https://quantumcomputingreport.com/nvidia-unveils-cuda-q-logical-to-accelerate-fault-tolerant-system-orchestration-across-hardware-modalities/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <span class="post-source">The Quantum Insider</span>
+                <span class="post-date">September 16, 2026</span>
+                <a href="https://thequantuminsider.com/2026/09/16/beijing-launches-program-to-connect-quantum-companies-with-industrial-customers/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </div>
         
         <div class="hero-image">
-            <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/nvidia-cuda-q-quantum-computing-1.jpeg" alt="" loading="eager"
+            <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/1040555.png" alt="" loading="eager"
                  onerror="this.closest('.hero-article').classList.remove('has-image');this.parentElement.style.display='none'">
         </div>
         
@@ -129,7 +123,32 @@
         <article class="featured-card">
             
             <div class="featured-image">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/IQM-MediaAsset-Spark-4-1.jpg" alt="" loading="lazy"
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-16_11-58.png" alt="" loading="lazy"
+                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/sensing.html"
+                       class="topic-tag topic-sensing">sensing</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/1f9d6029.html">Infleqtion’s Pranav Gokhale Receives 2026 IEEE QTC Early Career Award</a>
+                </h3>
+                <p class="post-summary">Insider Brief PRESS RELEASE — Infleqtion, a global leader in quantum computing and quantum sensing powered by neutral-atom technology, today announced...</p>
+                <div class="post-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 16, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="featured-card">
+            
+            <div class="featured-image">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-16_11-36.png" alt="" loading="lazy"
                      onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
             </div>
             
@@ -139,48 +158,17 @@
                     <a href="/topics/hardware.html"
                        class="topic-tag topic-hardware">hardware</a>
                     
-                </div>
-                <h3 class="post-title">
-                    <a href="/posts/39627c19.html">TOYO Corporation Buys Second IQM Quantum Computer</a>
-                </h3>
-                <p class="post-summary">Insider Brief PRESS RELEASE — IQM Quantum Computers, a global leader in superconducting quantum computers, today announced that TOYO Corporation has p...</p>
-                <div class="post-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 15, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="featured-card">
-            
-            <div class="featured-image">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-154.png" alt="" loading="lazy"
-                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="featured-content">
-                <div class="post-topics">
-                    
-                    <a href="/topics/algorithms.html"
-                       class="topic-tag topic-algorithms">algorithms</a>
-                    
-                    <a href="/topics/simulation.html"
-                       class="topic-tag topic-simulation">simulation</a>
-                    
                     <a href="/topics/industry.html"
                        class="topic-tag topic-industry">industry</a>
                     
-                    <a href="/topics/research.html"
-                       class="topic-tag topic-research">research</a>
-                    
                 </div>
                 <h3 class="post-title">
-                    <a href="/posts/232f1a6b.html">IonQ Demonstrates Hybrid HPC and Quantum-AI Workflows Across Nine Peer-Reviewed Papers at IEEE Quantum Week 2026</a>
+                    <a href="/posts/004945cc.html">Emergence Quantum and AirTrunk Partner on Cryogenic Data Centres</a>
                 </h3>
-                <p class="post-summary">At IEEE Quantum Week 2026, IonQ presented nine peer-reviewed papers, with four receiving Best Paper Awards, showcasing advancements in hybrid HPC and ...</p>
+                <p class="post-summary">Insider Brief PRESS RELEASE — Emergence Quantum today announced a partnership with hyperscale data centre specialist AirTrunk to bring cryogenic cooli...</p>
                 <div class="post-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 15, 2026</span>
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 16, 2026</span>
                 </div>
             </div>
         </article>
@@ -188,27 +176,27 @@
         <article class="featured-card">
             
             <div class="featured-image">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/Screenshot-2026-09-15-at-3.17.49-AM.png" alt="" loading="lazy"
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-163.png" alt="" loading="lazy"
                      onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
             </div>
             
             <div class="featured-content">
                 <div class="post-topics">
                     
+                    <a href="/topics/hardware.html"
+                       class="topic-tag topic-hardware">hardware</a>
+                    
                     <a href="/topics/algorithms.html"
                        class="topic-tag topic-algorithms">algorithms</a>
                     
-                    <a href="/topics/research.html"
-                       class="topic-tag topic-research">research</a>
-                    
                 </div>
                 <h3 class="post-title">
-                    <a href="/posts/b6e347d5.html">Fujitsu Releases Open Quantum Application Research Package as Open Source</a>
+                    <a href="/posts/4f44130b.html">Fujitsu Open-Sources OpenQARP Framework to Streamline Quantum Application Development</a>
                 </h3>
-                <p class="post-summary">Insider Brief PRESS RELEASE — Fujitsu Limited today announced the global open-source release of its quantum application development software, Open Qua...</p>
+                <p class="post-summary">Fujitsu has open-sourced OpenQARP, a quantum application development framework, under the Apache License 2.0. Available on GitHub, it offers over 100 ...</p>
                 <div class="post-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 15, 2026</span>
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 16, 2026</span>
                 </div>
             </div>
         </article>
@@ -229,6 +217,60 @@
         <a href="/topics/hardware.html" class="view-all">View All &rarr;</a>
     </div>
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/IQM-PR-15-Sept-2026-1536x864-2.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/c0c649cf.html">TOYO Corporation Acquires Second On-Premises IQM System to Open Dual-QPU Testbed for Japan’s Ecosystem</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 16, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-15_20-18.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/c61e0bdd.html">Iceberg Quantum and Diraq Demonstrate Pinnacle qLDPC Architecture on Spin Qubits</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/IQM-MediaAsset-Spark-4-1.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/39627c19.html">TOYO Corporation Buys Second IQM Quantum Computer</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
@@ -718,18 +760,120 @@
         
         <article class="compact-article">
             
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-3.19.20-AM-1.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
+            <div class="compact-dot topic-accent-hardware"></div>
             
             <div class="compact-content">
                 <h4 class="compact-title">
-                    <a href="/posts/16129047.html">Meissner Raises $2.6 Million to Search For New Superconducting Materials</a>
+                    <a href="/posts/eb7cf061.html">Beyond Hardware: Adaptive Algorithmic Control by State-Proxy Equalization</a>
                 </h4>
                 <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 02, 2026</span>
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/edc1c6c6.html">Quantum Compiler Design for Fault-Tolerant Quantum Computing</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/7f9b891b.html">Optimal Linear-Rate Conversion of Unknown Mixed Qubit States via SWAP Tests</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f1f3cd15.html">Forbidden Subspaces in Quantum State Smoothing</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/2daa0d1f.html">Geometric quantifier of the incompatibility of single-particle property attribution in indistinguishable boson systems</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/9e892ebd.html">Probabilistic Error Cancellation for Single-Mode Gottesman-Kitaev-Preskill Codes</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/9ebd762a.html">Constant sized support state distillation with qubit recycling</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-hardware"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/af230106.html">Classical Communication Protocol based on Joint Classical-Quantum Coding</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
                 </div>
             </div>
         </article>
@@ -1859,156 +2003,6 @@
             </div>
         </article>
         
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/e19dd90d.html">Implementation of quantum gates by Floquet analysis of kicked quantum system</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 02, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/0b53a842.html">Need One Bell-pair Only (NOBOL) for Low-Overhead Fault-Tolerant Quantum Computing</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/1dac29f9.html">Molecular spin qubits in a van der Waals bottle</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Condensed Matter</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/13010fc8.html">Error accumulation in dissipative quantum circuits</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/3fd31803.html">Depth-1 expanders on the unitary group and applications</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/3976b501.html">Verifiable quantum advantage in extremely low depth</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/cf9b4aed.html">Fast Microwave-free State Preparation and Measurement of Superconducting Qubits</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/82aed173.html">Emerging Personas and Tools for Hybrid Quantum-HPC Systems</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/e9e93a31.html">A Scalable Multi-Protocol Platform for Quantum Key Distribution Simulation with Rigorous Statistical Evaluation</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-hardware"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/1e76b49c.html">DF-SQD: Deterministic Fields for Sampling-Based Quantum Diagonalization</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </section>
 
@@ -2021,6 +2015,24 @@
         <a href="/topics/general.html" class="view-all">View All &rarr;</a>
     </div>
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-15_22-40.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/2e550c18.html">Q*Bird becomes Falqon® Systems, Building the Infrastructure for Quantum Secure Networks</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
@@ -2204,24 +2216,6 @@
         
         <article class="compact-article">
             
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/City-Summit-1.jpeg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/1aa04399.html">In an Age of Deep Tech, The City Summit Bets on Human Connections</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 02, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
             <div class="compact-dot topic-accent-general"></div>
             
             <div class="compact-content">
@@ -2310,17 +2304,439 @@
             </div>
         </article>
         
+    </div>
+</section>
+
+<section class="topic-section">
+    <div class="section-header">
+        <h2 class="topic-section-title">
+            <span class="topic-accent topic-accent-algorithms"></span>
+            Algorithms
+        </h2>
+        <a href="/topics/algorithms.html" class="view-all">View All &rarr;</a>
+    </div>
+    <div class="compact-list">
+        
         <article class="compact-article">
             
-            <div class="compact-dot topic-accent-general"></div>
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/nvidia-cuda-q-quantum-computing-1.jpeg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
             
             <div class="compact-content">
                 <h4 class="compact-title">
-                    <a href="/posts/e851a9ae.html">Comment on &#34;Environmental memory effects and quantum resource hierarchies in polarized hyperon--antihyperon systems&#34;</a>
+                    <a href="/posts/c2184efb.html">NVIDIA Unveils CUDA-Q Logical to Accelerate Fault-Tolerant System Orchestration Across Hardware Modalities</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-154.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/232f1a6b.html">IonQ Demonstrates Hybrid HPC and Quantum-AI Workflows Across Nine Peer-Reviewed Papers at IEEE Quantum Week 2026</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/Screenshot-2026-09-15-at-3.17.49-AM.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/b6e347d5.html">Fujitsu Releases Open Quantum Application Research Package as Open Source</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/2026-09-11_15-30.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/7a14ff05.html">QClairvoyance Quantum Labs Signs MoU with IITM–C-DOT Samgnya Foundation to Advance Indian Quantum Ecosystem</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 12, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-04_15-20.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f04f641c.html">RIKEN Adopts QunaSys QURI SDK for Quantum-HPC Hybrid Computing</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 04, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-03_19-07.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/a9a9ec75.html">Argonne and JPMorganChase Develop New Method to Study QAOA at Scale</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://scx1.b-cdn.net/csz/news/tmb/2023/bird-migrating.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/9f37054f.html">Quantum control algorithm looks to explain how birds migrate</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Phys.org Quantum</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-19.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/d5b65209.html">Rigetti and Purdue University Demonstrate Quantum Preconditioning Framework for Constrained Optimization</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/2c15f0d1.html">ParityQC Launches Parity Twine Optimizer via IBM Qiskit Functions Catalog</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 16, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/108112ac.html">Quantum Computing Inc. Signs Three-Year Framework Agreement with Hamad Bin Khalifa University for Middle East QPU Deployment</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 16, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/eefe6a0b.html">A Case Study on Noise Resilient Operator Selection in Adaptive Variational Quantum Algorithms</a>
                 </h4>
                 <div class="compact-meta">
                     <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/535ee2c5.html">Virtual quantum neural networks</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 10, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/b6734525.html">Quantum Hamiltonian Evolution for Coherent Quantum Learning</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-algorithms"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f77798e9.html">Quantum Quasi-Monte Carlo: a window for pre-asymptotic quantum advantage</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+<section class="topic-section">
+    <div class="section-header">
+        <h2 class="topic-section-title">
+            <span class="topic-accent topic-accent-research"></span>
+            Research
+        </h2>
+        <a href="/topics/research.html" class="view-all">View All &rarr;</a>
+    </div>
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_19-12.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/b31d9b73.html">IonQ to Present Nine Peer-Reviewed Papers and Take Part in Seven Events at 2026 IEEE Quantum Week</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 14, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://physicsworld.com/wp-content/uploads/2026/09/2026-09-ama-vermeulen.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/bfe0e885.html">Ask me anything: Kiefer Vermeulen – ‘We had to figure everything out on a shoestring budget and on a really challenging timescale’</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Physics World - Quantum</span>
+                    <span class="post-date">September 14, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-11_15-30.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/5ea85904.html">QClairvoyance and Samgnya Sign MoU on Quantum Technology Research</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 11, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-10_16-13.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/6dd22b81.html">Chalmers Researchers Make Bosonic Quantum Operations More Than 1,000 Times Faster</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 10, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://scx1.b-cdn.net/csz/news/tmb/2026/researchers-make-a-gam.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/dbe4bed7.html">A new game demonstrates quantum advantage with provable classical limits</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Phys.org Quantum</span>
+                    <span class="post-date">September 08, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-08_18-27.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/acb38426.html">Daniel Freedman Joins Quantum X Labs as Distinguished Quantum Scientist</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 08, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/ERVA.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/a3f77d39.html">Brian Gaucher (ERVA): Why engineering, not physics, now limits quantum progress</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 05, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/1x3li7tgf6o.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/7222698c.html">Europe Looks to Quantum Act to Turn Research Strength Into Industry</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 04, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-03_21-02.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/4832751d.html">Quantinuum and Aramco Sign MOU to Explore Industrial Quantum Computing</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-research"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/065692de.html">Impossible to conjugate an unknown quantum state via a unitary evolution</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 10, 2026</span>
                 </div>
             </div>
         </article>
@@ -2518,546 +2934,6 @@
             </div>
         </article>
         
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-industry"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/7328b742.html">A Four Step Process for End Users to Leverage Quantum Technology</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 02, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-industry"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/4a6135b4.html">Congressman Langworthy Introduces American Quantum Competitiveness Act (H.R. 10163)</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</section>
-
-<section class="topic-section">
-    <div class="section-header">
-        <h2 class="topic-section-title">
-            <span class="topic-accent topic-accent-research"></span>
-            Research
-        </h2>
-        <a href="/topics/research.html" class="view-all">View All &rarr;</a>
-    </div>
-    <div class="compact-list">
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-14_19-12.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/b31d9b73.html">IonQ to Present Nine Peer-Reviewed Papers and Take Part in Seven Events at 2026 IEEE Quantum Week</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 14, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://physicsworld.com/wp-content/uploads/2026/09/2026-09-ama-vermeulen.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/bfe0e885.html">Ask me anything: Kiefer Vermeulen – ‘We had to figure everything out on a shoestring budget and on a really challenging timescale’</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Physics World - Quantum</span>
-                    <span class="post-date">September 14, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-11_15-30.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/5ea85904.html">QClairvoyance and Samgnya Sign MoU on Quantum Technology Research</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 11, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-10_16-13.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/6dd22b81.html">Chalmers Researchers Make Bosonic Quantum Operations More Than 1,000 Times Faster</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 10, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://scx1.b-cdn.net/csz/news/tmb/2026/researchers-make-a-gam.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/dbe4bed7.html">A new game demonstrates quantum advantage with provable classical limits</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Phys.org Quantum</span>
-                    <span class="post-date">September 08, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-08_18-27.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/acb38426.html">Daniel Freedman Joins Quantum X Labs as Distinguished Quantum Scientist</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 08, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/ERVA.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/a3f77d39.html">Brian Gaucher (ERVA): Why engineering, not physics, now limits quantum progress</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 05, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/1x3li7tgf6o.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/7222698c.html">Europe Looks to Quantum Act to Turn Research Strength Into Industry</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 04, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-03_21-02.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/4832751d.html">Quantinuum and Aramco Sign MOU to Explore Industrial Quantum Computing</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-research"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/065692de.html">Impossible to conjugate an unknown quantum state via a unitary evolution</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 10, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-research"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/ff49cc87.html">MIT Quantum Initiative Launches Gordon and Betty Moore Foundation-Backed Postdoctoral Fellowship</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</section>
-
-<section class="topic-section">
-    <div class="section-header">
-        <h2 class="topic-section-title">
-            <span class="topic-accent topic-accent-algorithms"></span>
-            Algorithms
-        </h2>
-        <a href="/topics/algorithms.html" class="view-all">View All &rarr;</a>
-    </div>
-    <div class="compact-list">
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/2026-09-11_15-30.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/7a14ff05.html">QClairvoyance Quantum Labs Signs MoU with IITM–C-DOT Samgnya Foundation to Advance Indian Quantum Ecosystem</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 12, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-04_15-20.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/f04f641c.html">RIKEN Adopts QunaSys QURI SDK for Quantum-HPC Hybrid Computing</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 04, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-03_19-07.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/a9a9ec75.html">Argonne and JPMorganChase Develop New Method to Study QAOA at Scale</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://scx1.b-cdn.net/csz/news/tmb/2023/bird-migrating.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/9f37054f.html">Quantum control algorithm looks to explain how birds migrate</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Phys.org Quantum</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-19.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/d5b65209.html">Rigetti and Purdue University Demonstrate Quantum Preconditioning Framework for Constrained Optimization</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-algorithms"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/535ee2c5.html">Virtual quantum neural networks</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 10, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-algorithms"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/b6734525.html">Quantum Hamiltonian Evolution for Coherent Quantum Learning</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-algorithms"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/f77798e9.html">Quantum Quasi-Monte Carlo: a window for pre-asymptotic quantum advantage</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-algorithms"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/1f5abce4.html">Numerical simulation of D-Wave&#39;s quantum advantage experiment with time-dependent variational Monte Carlo</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</section>
-
-<section class="topic-section">
-    <div class="section-header">
-        <h2 class="topic-section-title">
-            <span class="topic-accent topic-accent-simulation"></span>
-            Simulation
-        </h2>
-        <a href="/topics/simulation.html" class="view-all">View All &rarr;</a>
-    </div>
-    <div class="compact-list">
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-11_15-51.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/eb1a775c.html">BWT Alpine and SEALSQ Explore Quantum-Classical Simulation for Formula One</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 11, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-02_17-11.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/8232564a.html">KACST and Imperial College London Partner on Quantum Brain Research</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 02, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-01_17-58.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/53b8b35c.html">QC Ware and IonQ Demonstrate Hybrid Quantum Chemistry Workflow for Drug Discovery</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-simulation"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/477b195c.html">Symmetry structure dependent diagnostic of the Quantum Mpemba Effect</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 09, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-simulation"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/36239435.html">Universal Driven Critical Dynamics of Entanglement Entropy</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-simulation"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/cfba6a27.html">Pasqal and True Nexus Encode Protein Gelation Structures on Neutral-Atom QPUs</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 03, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-simulation"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/001f894a.html">IonQ, NVIDIA, and qBraid Demonstrate 54% Error Reduction in Mid-Circuit Quantum Simulations</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-simulation"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/565a81ab.html">QC Ware and IonQ Achieve Chemical Accuracy in Hybrid Quantum Chemistry Workflow for Drug Discovery</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">September 01, 2026</span>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </section>
 
@@ -3196,6 +3072,133 @@
                 <div class="compact-meta">
                     <span class="post-source">Quantum Computing Report</span>
                     <span class="post-date">September 02, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+<section class="topic-section">
+    <div class="section-header">
+        <h2 class="topic-section-title">
+            <span class="topic-accent topic-accent-simulation"></span>
+            Simulation
+        </h2>
+        <a href="/topics/simulation.html" class="view-all">View All &rarr;</a>
+    </div>
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-15_20-09.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/3ab48188.html">QC Design Integrates Plaquette With NVIDIA CUDA-Q Logical for Hardware-Realistic QEC Simulation</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-11_15-51.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/eb1a775c.html">BWT Alpine and SEALSQ Explore Quantum-Classical Simulation for Formula One</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 11, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-02_17-11.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/8232564a.html">KACST and Imperial College London Partner on Quantum Brain Research</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">September 02, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f7e56ee9.html">Large-scale NMR simulation on a trapped-ion quantum computer</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 15, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/477b195c.html">Symmetry structure dependent diagnostic of the Quantum Mpemba Effect</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 09, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/36239435.html">Universal Driven Critical Dynamics of Entanglement Entropy</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">September 03, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-simulation"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/cfba6a27.html">Pasqal and True Nexus Encode Protein Gelation Structures on Neutral-Atom QPUs</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">September 03, 2026</span>
                 </div>
             </div>
         </article>
@@ -3552,15 +3555,15 @@
     <div class="topic-cloud">
         
         <a href="/topics/hardware.html" class="topic-pill topic-hardware">
-            hardware <span class="count">(520)</span>
+            hardware <span class="count">(522)</span>
         </a>
         
         <a href="/topics/research.html" class="topic-pill topic-research">
-            research <span class="count">(234)</span>
+            research <span class="count">(239)</span>
         </a>
         
         <a href="/topics/algorithms.html" class="topic-pill topic-algorithms">
-            algorithms <span class="count">(201)</span>
+            algorithms <span class="count">(204)</span>
         </a>
         
         <a href="/topics/sensing.html" class="topic-pill topic-sensing">
@@ -3568,19 +3571,19 @@
         </a>
         
         <a href="/topics/simulation.html" class="topic-pill topic-simulation">
-            simulation <span class="count">(189)</span>
+            simulation <span class="count">(186)</span>
         </a>
         
         <a href="/topics/policy.html" class="topic-pill topic-policy">
-            policy <span class="count">(165)</span>
+            policy <span class="count">(162)</span>
         </a>
         
         <a href="/topics/industry.html" class="topic-pill topic-industry">
-            industry <span class="count">(153)</span>
+            industry <span class="count">(154)</span>
         </a>
         
         <a href="/topics/general.html" class="topic-pill topic-general">
-            general <span class="count">(107)</span>
+            general <span class="count">(106)</span>
         </a>
         
         <a href="/topics/error_correction.html" class="topic-pill topic-error_correction">
@@ -3588,11 +3591,11 @@
         </a>
         
         <a href="/topics/cryptography.html" class="topic-pill topic-cryptography">
-            cryptography <span class="count">(78)</span>
+            cryptography <span class="count">(77)</span>
         </a>
         
         <a href="/topics/machine_learning.html" class="topic-pill topic-machine_learning">
-            machine_learning <span class="count">(41)</span>
+            machine_learning <span class="count">(40)</span>
         </a>
         
     </div>

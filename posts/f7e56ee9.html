@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fourier Wall: Why Public Tabular Datasets Refuse Quantum Advantage, and a Certified Recipe for Where It Lives | Quantum Crier</title>
-    <meta name="description" content="Across public tabular benchmarks, quantum machine-learning (QML) models usually lose to carefully tuned classical baselines. We argue that this is a structural ">
+    <title>Large-scale NMR simulation on a trapped-ion quantum computer | Quantum Crier</title>
+    <meta name="description" content="Simulating nuclear magnetic resonance (NMR) spectra is a promising application of quantum simulation. Using Quantinuum&#39;s System Model H2, a trapped-ion quantum ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="The Fourier Wall: Why Public Tabular Datasets Refuse Quantum Advantage, and a Certified Recipe for Where It Lives">
+    <meta property="og:title" content="Large-scale NMR simulation on a trapped-ion quantum computer">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 15, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; September 16, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,13 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>The Fourier Wall: Why Public Tabular Datasets Refuse Quantum Advantage, and a Certified Recipe for Where It Lives</h1>
+        <h1>Large-scale NMR simulation on a trapped-ion quantum computer</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">July 17, 2026</span>
+            <span class="date">September 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article pinpoints a structural “Fourier wall” that explains why quantum‑machine‑learning models have consistently lagged behind well‑tuned classical baselines on public tabular benchmarks, showing that the limitation is rooted in the data’s spectral properties rather than current hardware or algorithms. By formalising the SPECTRA certificate—an easy‑to‑run structural screen followed by a rigorous paired‑bootstrap comparison—the authors not only identify the precise conditions (off‑grid, high‑order, high‑frequency spectra) under which a quantum advantage can emerge, but also demonstrate it on an industrial energy dataset with quantum‑generated labels, where a matched quantum network outperforms classical twins by a large margin. The work gives researchers a practical roadmap for engineering or selecting problems that truly leverage quantum interference, and it clarifies that many everyday tabular tasks will remain “Fourier‑blocked” regardless of future qubit improvements.
+                This article shows that a trapped‑ion processor can now tackle NMR simulations far beyond the few‑spin examples that have dominated earlier demonstrations, delivering a faithful 21‑spin spectrum for a chemically relevant molecule. By combining a hardware‑efficient Hamiltonian reduction with tailored error suppression, the work bridges the gap between proof‑of‑principle experiments and simulations that could actually replace or augment classical NMR calculations in research and industry. While noise mitigation remains crucial, the result signals that digital quantum simulators are approaching the scale needed for practical chemical spectroscopy.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Across public tabular benchmarks, quantum machine-learning (QML) models usually lose to carefully tuned classical baselines. We argue that this is a structural property of the datasets rather than merely a limitation of current models. Because an angle-encoded quantum neural network is a partial Fourier series, a genuine advantage can arise only when the target spectrum is simultaneously off-grid, of interaction order at least three, high-frequency, supported by near-independent features, and dense beyond practical enumeration. We call the failure to satisfy these conditions the Fourier wall. We operationalize the conditions as SPECTRA, a two-tier certificate: a simulator-free structural screen followed by a decisive comparison between a matched quantum model and five tuned classical twins using paired-bootstrap confidence bounds. On industrial smart-meter data, SPECTRA correctly refuses the real peak-load target, for which gradient-boosted trees reach a held-out ROC-AUC of 0.999. On the same real energy phases with labels generated by an interacting quantum process, the dynamics-matched quantum model reaches 0.994 versus 0.699 for the best generic classical baseline, and collapses to chance when its interaction couplings are ablated. An exact classical simulator ties the quantum model at small width but incurs measured exponential evaluation cost, with an estimated hardware crossover near 13-19 sites. These results provide a practical recipe for identifying, engineering, and deploying quantum-advantage candidates in tabular data.</p>
+            <p>Simulating nuclear magnetic resonance (NMR) spectra is a promising application of quantum simulation. Using Quantinuum&#39;s System Model H2, a trapped-ion quantum computer, we demonstrate an end-to-end, large-scale digital NMR simulation of a classically challenging benchmark molecule, 1,2-di-tert-butyl-diphosphane. We implement a hardware-efficient reduction of the nuclear-spin Hamiltonian, enabling Trotterized real-time evolution of an effective 21-spin model with tailored error suppression to reduce the effects of device noise. The reconstructed liquid-state proton NMR spectrum agrees with classical reference calculations and reproduces key spectroscopic features that previous quantum hardware demonstrations did not capture. Given the widespread use of NMR in chemical analysis and industrial research, these results advance digital quantum simulation of NMR spectra towards practical quantum utility.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2607.15815v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2609.17102v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=The%20Fourier%20Wall%3A%20Why%20Public%20Tabular%20Datasets%20Refuse%20Quantum%20Advantage%2C%20and%20a%20Certified%20Recipe%20for%20Where%20It%20Lives&url=https://quantumcrier.com/posts/af0a3861.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/af0a3861.html&title=The%20Fourier%20Wall%3A%20Why%20Public%20Tabular%20Datasets%20Refuse%20Quantum%20Advantage%2C%20and%20a%20Certified%20Recipe%20for%20Where%20It%20Lives" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Large-scale%20NMR%20simulation%20on%20a%20trapped-ion%20quantum%20computer&url=https://quantumcrier.com/posts/f7e56ee9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f7e56ee9.html&title=Large-scale%20NMR%20simulation%20on%20a%20trapped-ion%20quantum%20computer" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
