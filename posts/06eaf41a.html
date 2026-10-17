@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One-at-a-Time Quantum Guessing: Multipartite Entanglement Beyond MoE Games | Quantum Crier</title>
-    <meta name="description" content="Multipartite entanglement remains a challenging and not fully understood aspect of quantum information. Monogamy-of-Entanglement (MoE) games have been highly ef">
+    <title>Energetics of Fault-Tolerant Spin-Qubit Quantum Computation | Quantum Crier</title>
+    <meta name="description" content="Semiconductor spin qubits offer a promising route to compact and scalable quantum computers, combining long coherence times in isotopically purified silicon wit">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="One-at-a-Time Quantum Guessing: Multipartite Entanglement Beyond MoE Games">
+    <meta property="og:title" content="Energetics of Fault-Tolerant Spin-Qubit Quantum Computation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 16, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 17, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>One-at-a-Time Quantum Guessing: Multipartite Entanglement Beyond MoE Games</h1>
+        <h1>Energetics of Fault-Tolerant Spin-Qubit Quantum Computation</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 17, 2026</span>
+            <span class="date">October 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that multipartite entanglement can still give a measurable edge—about 4 percent—in simple “one‑at‑a‑time” guessing games even when monogamy constraints would seem to nullify any benefit in traditional MoE scenarios. By randomising which player is queried, the OTG framework reveals correlations that are invisible to standard Bell‑type tests and suggests new ways to benchmark entangled hardware for tasks such as distributed sensing or secure multi‑party protocols. The result broadens our toolbox for quantifying useful entanglement, though the modest advantage means experimental demonstrations will need low noise and precise control to be convincing.
+                This article is the first systematic accounting of how much power a fault‑tolerant silicon spin‑qubit processor would actually consume, showing that cryogenic cooling dominates the baseline budget and that control‑signal multiplexing can cut total energy by two orders of magnitude. By comparing the quantum Fourier transform to its classical FFT counterpart, the authors demonstrate that a quantum device could become energetically competitive well before it overtakes classical hardware in runtime—a key insight for scaling strategies that have so far focused almost exclusively on speed. The work ties together recent advances in isotopically purified silicon qubits and surface‑code error correction, providing designers with concrete targets for control electronics and cooling infrastructure as the field moves toward million‑qubit systems.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Multipartite entanglement remains a challenging and not fully understood aspect of quantum information. Monogamy-of-Entanglement (MoE) games have been highly effective for studying limitations on the usefulness of entanglement imposed by monogamy constraints. To better reveal the extent to which multipartite entanglement can be useful, we introduce a class of quantum guessing games, termed One-at-a-Time Guessing (OTG) games. In these games, quantum players individually guess the outcomes of random measurements performed by a referee on a pre-shared entangled state. Unlike MoE games, OTG games select players individually at random according to a specified probability distribution, thereby probing each player&#39;s correlation with the referee. We show that, despite monogamy constraints, players sharing certain entangled states can moderately outperform those relying only on classical uncertainty. This advantage arises even in simple OTG games involving only Pauli measurements on qubits, where optimal entanglement increases the winning probability by at least 4%. This contrasts with MoE games, where shared entanglement has been shown in several settings to provide only limited (if any) advantage over classical strategies. We further establish a majorization property: the value of an OTG game respects the majorization ordering of the player-selection probability distribution. We also analyze in detail a two-player OTG game in which the referee measures one of the three Pauli observables on a qubit, and show that it is optimally played using a specific parameterized family of three-qubit $W$-like states. These results suggest that OTG games provide a useful framework for investigating the usefulness of multipartite entanglement in multiparty quantum correlations.</p>
+            <p>Semiconductor spin qubits offer a promising route to compact and scalable quantum computers, combining long coherence times in isotopically purified silicon with compatibility with semiconductor manufacturing. Beyond computational speedup, their energy efficiency is an important consideration for future large-scale systems. We evaluate the power and energy requirements of a Loss-DiVincenzo spin-qubit quantum computer by analyzing the Quantum Fourier Transform (QFT) and benchmarking it against the classical Fast Fourier Transform (FFT). We develop a detailed energy budget, identifying cryogenic cooling as the dominant baseline contribution before quantum error correction (QEC). The comparison between the QFT and the classical FFT reveals that, for any quantum workload operating under a polynomially bounded sampling regime, the crossover in energy consumption occurs at smaller problem sizes than the crossover in execution time. Thus, quantum computing can become energetically competitive before achieving a speedup in execution time. We then incorporate surface-code QEC and analyze the energy costs of QEC cycles, gate synthesis, and decoding. At scale, instrumentation and decoding become dominant contributions, while cryogenic cooling imposes a constraint on scalability. We show that optimizing the control-signal demultiplexing ratio can reduce the overall energy cost by approximately two orders of magnitude. For a system with about one million physical qubits, we estimate a power consumption of approximately 100 kW, at least one order of magnitude below that of today&#39;s highest-performance classical computing systems.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.17201v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.22199v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=One-at-a-Time%20Quantum%20Guessing%3A%20Multipartite%20Entanglement%20Beyond%20MoE%20Games&url=https://quantumcrier.com/posts/f656d1ac.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f656d1ac.html&title=One-at-a-Time%20Quantum%20Guessing%3A%20Multipartite%20Entanglement%20Beyond%20MoE%20Games" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Energetics%20of%20Fault-Tolerant%20Spin-Qubit%20Quantum%20Computation&url=https://quantumcrier.com/posts/06eaf41a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/06eaf41a.html&title=Energetics%20of%20Fault-Tolerant%20Spin-Qubit%20Quantum%20Computation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No extension of the Quantum Tensor Product admits a Superposition principle | Quantum Crier</title>
-    <meta name="description" content="Textbook quantum superposition refers to the feature that certain linear combinations of Hilbert space rays, each representing a valid quantum state, are themse">
+    <title>SynDebug: A Framework to Debug Logic Bugs in Fault-Tolerant Quantum Computing Programs | Quantum Crier</title>
+    <meta name="description" content="Fault-tolerant quantum computing (FTQC) introduces substantial systems-level complexity through quantum error correction (QEC), making debugging FTQC programs c">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="No extension of the Quantum Tensor Product admits a Superposition principle">
+    <meta property="og:title" content="SynDebug: A Framework to Debug Logic Bugs in Fault-Tolerant Quantum Computing Programs">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 16, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 17, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,13 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>No extension of the Quantum Tensor Product admits a Superposition principle</h1>
+        <h1>SynDebug: A Framework to Debug Logic Bugs in Fault-Tolerant Quantum Computing Programs</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 18, 2026</span>
+            <span class="date">October 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a long‑standing gap by giving an operational, theory‑independent definition of quantum superposition within the Generalised Probabilistic Theories framework, which is crucial for interpreting emerging experiments on indefinite causal order and quantum gravity that rely on “superposed” processes. By proving that only the standard quantum tensor product can consistently extend three natural superposition principles from subsystems to composites, it shows why entanglement and preparation uncertainty are not accidental quirks but inevitable consequences of a deeper superposition structure. The result both sharpens our foundational understanding of why quantum theory composes the way it does and sets clear constraints for any future post‑quantum or hybrid models that aim to go beyond Hilbert space mechanics.
+                This article marks the first demonstration of a systems‑level debugging framework that works inside encoded fault‑tolerant quantum programs, filling a glaring gap left by earlier tools that only inspected logical circuits. By embedding lightweight assertion primitives directly into surface‑code–style QEC layers with an average depth penalty of just 1.8 % and no detectable rise in logical error rates, SynDebug makes it feasible to catch logic bugs before they explode into costly runtime failures—a crucial step as experimental groups move from small prototypes toward scalable FTQC architectures. The work dovetails with recent advances in real‑time syndrome processing and could accelerate the development cycle for large‑scale algorithms such as Shor’s or quantum chemistry, though its current validation is largely simulation‑based and will need hardware trials to confirm performance under realistic noise.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Textbook quantum superposition refers to the feature that certain linear combinations of Hilbert space rays, each representing a valid quantum state, are themselves valid states. This notion is not operational, and it relies on the underlying Hilbert space formalism. Recent proposals for experimental tests of indefinite causal order, as well as tests probing the non-classicality of gravity, pivot on superposition, thereby calling for a theory-independent, operational formalisation of the concept. Here, we define superposition within the framework of Generalised Probabilistic Theories, based on observed statistics in prepare-and-measure experiments. Using this, we formulate three superposition principles to investigate which structural features of quantum theory carry over to other theories. We study conditions under which these principles carry over from subsystems to their compositions; to this end, we show that the quantum tensor product emerges as the largest composition rule for quantum systems respecting all three principles. Furthermore, we show how non-classical features such as entanglement and preparational uncertainty can be viewed as special forms of superposition.</p>
+            <p>Fault-tolerant quantum computing (FTQC) introduces substantial systems-level complexity through quantum error correction (QEC), making debugging FTQC programs challenging. Existing quantum debugging approaches primarily target logical-level circuits and do not naturally support debugging within realistic FTQC execution flows. We present SynDebug, the first systems-level debugging framework for FTQC programs. SynDebug introduces lightweight assertion-based debugging primitives that operate directly within encoded FTQC infrastructures while avoiding additional logical surface area and minimizing temporal overhead. We evaluate SynDebug across multiple QEC code families, code distances, and encoded workloads, including state preparation, entanglement validation, and Shor-style programs. Our results demonstrate that SynDebug enables practical FTQC debugging with an average 1.8% additional circuit depth overhead (0% in most cases) and no measurable increase in the logical error rate, showing that systems-level debugging for large-scale FTQC applications is both feasible and practical.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.17572v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.22275v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=No%20extension%20of%20the%20Quantum%20Tensor%20Product%20admits%20a%20Superposition%20principle&url=https://quantumcrier.com/posts/070aa062.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/070aa062.html&title=No%20extension%20of%20the%20Quantum%20Tensor%20Product%20admits%20a%20Superposition%20principle" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=SynDebug%3A%20A%20Framework%20to%20Debug%20Logic%20Bugs%20in%20Fault-Tolerant%20Quantum%20Computing%20Programs&url=https://quantumcrier.com/posts/cbf1187e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/cbf1187e.html&title=SynDebug%3A%20A%20Framework%20to%20Debug%20Logic%20Bugs%20in%20Fault-Tolerant%20Quantum%20Computing%20Programs" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

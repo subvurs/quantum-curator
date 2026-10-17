@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-purpose quantum laboratories from superconducting circuits | Quantum Crier</title>
-    <meta name="description" content="Superconducting circuits (SCs) are the cornerstone of modern quantum technology, enabling scalable computing through coherent control of macroscopic quantum sta">
+    <title>Same Spectrum, Harder First-Order Training: Phase-Locking in Single- versus Multi-Qubit Re-Uploading Circuits | Quantum Crier</title>
+    <meta name="description" content="Angle-encoded variational quantum circuits implement truncated Fourier series. For one-dimensional inputs, a single-qubit re-uploading (serial) circuit represen">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Multi-purpose quantum laboratories from superconducting circuits">
+    <meta property="og:title" content="Same Spectrum, Harder First-Order Training: Phase-Locking in Single- versus Multi-Qubit Re-Uploading Circuits">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 16, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 17, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,15 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-            
-            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
         </div>
-        <h1>Multi-purpose quantum laboratories from superconducting circuits</h1>
+        <h1>Same Spectrum, Harder First-Order Training: Phase-Locking in Single- versus Multi-Qubit Re-Uploading Circuits</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 17, 2026</span>
+            <span class="date">October 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This review spotlights superconducting circuits not just as the workhorse of gate‑based quantum computers but as a versatile experimental platform that can probe condensed‑matter, high‑energy and information‑theoretic phenomena in a single hardware suite. By tracing how improvements in coherence, connectivity and microwave control have turned qubit chips into “quantum laboratories,” it connects today’s noisy‑intermediate‑scale processors with emerging analog simulators and ultra‑sensitive sensors, underscoring a unifying roadmap for cross‑disciplinary discovery. Readers should see this as a call to leverage the same scalable technology that powers IBM and Google’s machines for broader scientific investigations, while remembering that many of these capabilities still rely on cryogenic infrastructure and careful calibration.
+                This article shows that although a single‑qubit re‑uploading circuit can mathematically reproduce any function a multi‑qubit encoder of the same budget can, its gradient landscape is severely constrained by “phase‑locking,” giving it far fewer independent tangent directions for first‑order optimization. The result explains why many near‑term quantum‑machine‑learning proposals that favor ultra‑narrow, deep circuits may suffer dramatically slower convergence compared with modestly wider multi‑qubit designs—a trade‑off echoed in recent studies of expressivity versus trainability and barren‑plateau phenomena. Practically, the work suggests developers should be cautious about swapping width for depth alone and consider hybrid architectures or richer encodings to ensure reliable training on real hardware.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Superconducting circuits (SCs) are the cornerstone of modern quantum technology, enabling scalable computing through coherent control of macroscopic quantum states. Through a legacy that predates modern quantum computing, SCs have emerged as high-precision instruments for discovery. In this review, we highlight the role of SCs as general-purpose quantum laboratories, outlining the emerging landscape of correlated matter-circuit science. We review and unify the capabilities of superconducting quantum hardware across condensed matter, high energy and quantum information sciences. We trace the technical evolution of these architectures, illustrating how their foundational development has culminated in a toolkit for resolving the complexities of macroscopic quantum states.</p>
+            <p>Angle-encoded variational quantum circuits implement truncated Fourier series. For one-dimensional inputs, a single-qubit re-uploading (serial) circuit represents every function that a multi-qubit circuit with the same encoding budget $E$ can; we find that this exchange of width for depth is not free in first-order training. Because its state lives on the Bloch sphere, all parameters of the serial circuit move the state, at each input, along one complex direction, which we call \emph{phase-locking}. We prove that this costs no Fourier direction but leaves no direction to spare: however many parameters it has, the serial circuit has at most $2E+2$ tangent directions, one more than its $2E+1$ Fourier coefficients need, while a two-qubit control with the same encoding budget and model class generically has at least $6E+6$. The cost in training is measured against this control, as the number of runs out of 100 that reach the optimum within a fixed step budget. On an exact loss with flat-spectrum targets the gap grows with $E$; at $E=32$ the serial circuit converges in 3, 53 and 83 runs under gradient descent, Adam and Levenberg--Marquardt, the control in 99, 100 and 100. On three real-world series, at matched parameter counts, the serial circuit reaches the least-squares optimum in at most 9 runs under Adam and in 32 to 93 under Levenberg--Marquardt, the control in at least 98 and in all 100; its held-out error is up to about $1.5$ times that of the control under Adam, but no larger in the typical run under Levenberg--Marquardt.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.17020v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.21778v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Multi-purpose%20quantum%20laboratories%20from%20superconducting%20circuits&url=https://quantumcrier.com/posts/e42ce26a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e42ce26a.html&title=Multi-purpose%20quantum%20laboratories%20from%20superconducting%20circuits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Same%20Spectrum%2C%20Harder%20First-Order%20Training%3A%20Phase-Locking%20in%20Single-%20versus%20Multi-Qubit%20Re-Uploading%20Circuits&url=https://quantumcrier.com/posts/c5373008.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/c5373008.html&title=Same%20Spectrum%2C%20Harder%20First-Order%20Training%3A%20Phase-Locking%20in%20Single-%20versus%20Multi-Qubit%20Re-Uploading%20Circuits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

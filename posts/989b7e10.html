@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Entanglement-Weighted Pruning for Quantum Federated Unlearning in Supply-Chain Risk Prediction | Quantum Crier</title>
-    <meta name="description" content="Federated deployments of variational quantum classifiers are attractive for cross-organisation risk prediction in supply chains, because raw data never leaves t">
+    <title>Remote Gottesman-Kitaev-Preskill Entanglement Generation between Trapped Ions | Quantum Crier</title>
+    <meta name="description" content="Distributing entanglement directly between error-corrected logical qubits is an important capability for scalable quantum networks. We propose a heralded protoc">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Dynamic Entanglement-Weighted Pruning for Quantum Federated Unlearning in Supply-Chain Risk Prediction">
+    <meta property="og:title" content="Remote Gottesman-Kitaev-Preskill Entanglement Generation between Trapped Ions">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 16, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 17, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,15 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>Dynamic Entanglement-Weighted Pruning for Quantum Federated Unlearning in Supply-Chain Risk Prediction</h1>
+        <h1>Remote Gottesman-Kitaev-Preskill Entanglement Generation between Trapped Ions</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 17, 2026</span>
+            <span class="date">October 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a pressing gap at the intersection of quantum machine learning and data‑privacy law by showing how a variational quantum classifier can be “unlearned” without retraining from scratch—a capability that will become essential as federated quantum services move toward real‑world deployment. By marrying quantum Fisher information with an entanglement‑based weight, the Entanglement‑Weighted Pruning (EWP) method identifies and removes the most client‑specific circuit parameters, achieving oracle‑level accuracy while cutting compute time dramatically compared with full retraining. The work not only demonstrates a practical pathway for GDPR‑compliant quantum federated learning on near‑term hardware but also sets a benchmark that future experimental implementations will need to meet, highlighting both the promise and the current reliance on simulated validation.
+                This article demonstrates a practical route to entangle error‑corrected GKP logical qubits across separate trapped‑ion modules using heralded photon links, moving the field beyond proof‑of‑concept demonstrations of raw physical‑qubit networking. By leveraging already‑tested motional‑control and photonic interfacing techniques, the authors show that realistic imperfections still permit logical Bell‑pair fidelities above 95 %, a threshold that could enable fault‑tolerant distributed quantum computing. The work ties together recent progress in modular ion traps and bosonic error correction, suggesting that scalable quantum networks may soon be built from hardware that already exists in many labs.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Federated deployments of variational quantum classifiers are attractive for cross-organisation risk prediction in supply chains, because raw data never leaves the client, yet data-protection regulations such as the GDPR grant clients a right to request that their contribution be removed from a trained model after the fact. Retraining a federated model from scratch to honour such a request is correct but wasteful, and it is not obvious which quantum circuit parameters actually carry a given client&#39;s influence. We introduce Entanglement-Weighted Pruning (EWP), an unlearning procedure for quantum federated learning that scores every trainable circuit parameter with the product of two signals: the diagonal entry of the quantum Fisher information matrix estimated on the target client&#39;s data via the parameter-shift rule, and a structural entanglement weight associated with the parameter&#39;s gate. Parameters with the lowest scores are pruned, optionally followed by a short fine-tuning pass on the retained clients. We implement the full pipeline in Qiskit for a four-qubit data-re-uploading ansatz trained with FedAvg across five simulated supply-chain-risk clients, and benchmark EWP against full retraining, fine-tuning alone, random pruning, Fisher-only pruning, and entanglement-only pruning, over three random seeds. EWP attains a mean post-unlearning accuracy statistically indistinguishable from the full-retraining oracle, while producing a lower forgetting score and requiring roughly 16 times less wall-clock time. Ablations over pruning threshold, client count, and non-IID strength show that combining the two signals is necessary, as entanglement-only and Fisher-only pruning each substantially degrade accuracy relative to EWP.</p>
+            <p>Distributing entanglement directly between error-corrected logical qubits is an important capability for scalable quantum networks. We propose a heralded protocol for generating remote entanglement between Gottesman--Kitaev--Preskill qubits encoded in the motional modes of spatially separated trapped ions, using the internal electronic states to interface the motional qubits with emitted photons. We derive the protocol for single-rail and polarization photonic encodings and evaluate the effects of finite GKP squeezing, photon loss, photon recoil, motional heating, and motional dephasing on the decoded logical state. Moreover, we numerically analysed the fidelity of distributed logical Bell-pair fidelity. We find that one can achieve more than 95% of fidelity in the realistic situation. The protocol combines motional-control and photonic-networking operations that have already been demonstrated in trapped-ion experiments.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.17069v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.21754v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Dynamic%20Entanglement-Weighted%20Pruning%20for%20Quantum%20Federated%20Unlearning%20in%20Supply-Chain%20Risk%20Prediction&url=https://quantumcrier.com/posts/e286d26b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e286d26b.html&title=Dynamic%20Entanglement-Weighted%20Pruning%20for%20Quantum%20Federated%20Unlearning%20in%20Supply-Chain%20Risk%20Prediction" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Remote%20Gottesman-Kitaev-Preskill%20Entanglement%20Generation%20between%20Trapped%20Ions&url=https://quantumcrier.com/posts/989b7e10.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/989b7e10.html&title=Remote%20Gottesman-Kitaev-Preskill%20Entanglement%20Generation%20between%20Trapped%20Ions" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

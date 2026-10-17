@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Simulation of QCD in Axial Gauge | Quantum Crier</title>
-    <meta name="description" content="We study quantum simulation of SU(3) non-Abelian gauge theory dynamically coupled with fundamental fermions in $3+1$ dimensions by employing the lattice Hamilto">
+    <title>ZZ-Free bSWAP Gates under Strong Driving in Far-Detuned Fixed-Frequency Transmons | Quantum Crier</title>
+    <meta name="description" content="Far-detuned frequency allocations in fixed-frequency superconducting processors mitigate spectral crowding but constrain cross-resonance interactions at practic">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Quantum Simulation of QCD in Axial Gauge">
+    <meta property="og:title" content="ZZ-Free bSWAP Gates under Strong Driving in Far-Detuned Fixed-Frequency Transmons">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 16, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 17, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -63,10 +63,10 @@
             <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>Quantum Simulation of QCD in Axial Gauge</h1>
+        <h1>ZZ-Free bSWAP Gates under Strong Driving in Far-Detuned Fixed-Frequency Transmons</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 17, 2026</span>
+            <span class="date">October 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks the first concrete proposal for simulating full‑scale SU(3) gauge theory with dynamical fermions in four dimensions on a quantum computer, sidestepping the costly Gauss‑law constraints by working in axial gauge. By deriving explicit qubit‑count and gate‑complexity formulas that scale polynomially with lattice volume and energy cutoff, it gives the community realistic resource estimates that can be benchmarked against emerging superconducting or trapped‑ion devices. The work bridges the gap between abstract quantum‑field‑theory algorithms and near‑term hardware, suggesting that quantitative QCD studies may become tractable once modest error‑corrected qubit numbers are available.
+                This article shows that a strong single‑tone drive can generate a clean XX–YY interaction in far‑detuned fixed‑frequency transmons, enabling a 150 ns √bSWAP gate that creates maximally entangled states without the unwanted ZZ phase. By pairing the strong drive with a weak second tone to cancel the residual ZZ, the authors achieve a SWAP operation 33 % faster than conventional cross‑resonance CNOTs while maintaining higher interleaved randomized benchmarking fidelity, highlighting a practical path to speed up two‑qubit gates on spectrally crowded processors. The work also demonstrates two‑axis counter‑twisting squeezing, suggesting that the newly accessible interaction can be leveraged for both more efficient gate synthesis and analog quantum simulation of spin models—though its advantage hinges on careful calibration of drive amplitudes and may require hardware with sufficient anharmonicity to avoid leakage.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We study quantum simulation of SU(3) non-Abelian gauge theory dynamically coupled with fundamental fermions in $3+1$ dimensions by employing the lattice Hamiltonian in axial gauge that avoids Gauss&#39;s law constraints. The temporal component of the gauge field is analytically solved in terms of independent field degrees of freedom and a lattice regulated Green&#39;s function. The axial gauge condition is trivially maintained in time evolution, even under Trotterization. The gauge field degrees of freedom are expressed in the local field basis and can be efficiently transformed into the canonical conjugate momentum basis by local quantum Fourier transforms. We prove the number of qubits needed for describing all states up to an energy $E$ with an accuracy $ε$ on a lattice of volume $V$ at bare coupling $g$ is bounded as $16n_A V + 12n_f V$, where $n_A \approx \log_2 (\frac{64 E&#39; V^{4/3}}{π^2ε} + \frac{32\sqrt{2}g n_f E&#39;^{1/2} V^{7/6}}{\sqrt{3}π^3ε^{1/2}} ) $ is the number of qubits needed for each independent gauge field per site with a shifted energy $E&#39;$, and $n_f$ denotes the number of fermion flavors. We then analyze a quantum algorithm for time evolution that is based on Trotterization, quantum Fourier transform, and Jordan-Wigner transformation, for which quantum circuits can be explicitly constructed under arbitrary gauge field truncation and digitization. We find the numbers of CNOT and single-qubit rotation gates both scale as $O(n_A^4 V^{4/3}) + O(V^{5/3})$ per Trotter step for fixed $n_f\leq 6$. We conclude that quantum resources needed for simulating real-time dynamics of lattice QCD scale polynomially with volume, energy, time, accuracy, and bare Hamiltonian parameters.</p>
+            <p>Far-detuned frequency allocations in fixed-frequency superconducting processors mitigate spectral crowding but constrain cross-resonance interactions at practical drive amplitudes. Here, we demonstrate that a single strong drive induces a large $XX-YY$ interaction in the far-detuned regime, while a weak second tone tunes the accompanying $ZZ$ phase. The interaction realizes a 150-ns $\sqrt{\mathrm{bSWAP}}$ gate, which can directly prepare a maximally entangled state from the ground state. For the implementations on the same qubit pair at matched drive strengths, cross resonance gives a shorter CNOT operation, while $\sqrt{\mathrm{bSWAP}}$ gives a 33% shorter SWAP operation with a higher IRB fidelity. The multilevel theory further predicts a regime where stronger driving can yield a speed advantage for CNOT as well, a possibility absent in the two-level model. As an application of the $XX-YY$ interaction, we also demonstrate two-spin squeezing beyond the standard quantum limit through two-axis countertwisting. The interaction realized here complements cross resonance and offers a route to efficient gate synthesis and quantum simulation of interacting spin systems.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.16783v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.21936v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Quantum%20Simulation%20of%20QCD%20in%20Axial%20Gauge&url=https://quantumcrier.com/posts/f575286e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f575286e.html&title=Quantum%20Simulation%20of%20QCD%20in%20Axial%20Gauge" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=ZZ-Free%20bSWAP%20Gates%20under%20Strong%20Driving%20in%20Far-Detuned%20Fixed-Frequency%20Transmons&url=https://quantumcrier.com/posts/5545d1b2.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5545d1b2.html&title=ZZ-Free%20bSWAP%20Gates%20under%20Strong%20Driving%20in%20Far-Detuned%20Fixed-Frequency%20Transmons" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

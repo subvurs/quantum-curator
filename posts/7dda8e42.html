@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum simulation of slow analytic time-dependent Hamiltonians | Quantum Crier</title>
-    <meta name="description" content="We develop a quantum algorithm for slow analytic Hamiltonians $\widetilde H(t)=H(t/T)$ with $\|H(s)\|\leqα$ that achieves nearly additive query complexity and l">
+    <title>Programmable all-to-all entangling gates for cavity-coupled atoms | Quantum Crier</title>
+    <meta name="description" content="Fault tolerant quantum computers greatly benefit from having both high fidelity entangling gates and a non-local qubit connectivity. However, most entangling ga">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Quantum simulation of slow analytic time-dependent Hamiltonians">
+    <meta property="og:title" content="Programmable all-to-all entangling gates for cavity-coupled atoms">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 16, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 17, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,17 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-            
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>Quantum simulation of slow analytic time-dependent Hamiltonians</h1>
+        <h1>Programmable all-to-all entangling gates for cavity-coupled atoms</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 18, 2026</span>
+            <span class="date">October 15, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article pushes quantum simulation toward truly continuous‑time problems by showing that slowly varying analytic Hamiltonians can be simulated with essentially additive cost in evolution time and only logarithmic overhead for precision. By leveraging a periodic Gevrey extension and modern Floquet‑embedding techniques, the authors achieve query complexity matching the best known time‑independent algorithms while keeping gate counts polynomially modest—a notable step beyond earlier methods that suffered exponential scaling with the smoothness parameters. The result opens a practical pathway for high‑fidelity modeling of adiabatic processes, quantum control sequences, and even certain dissipative dynamics on near‑term devices, provided one can supply coherent access to the Hamiltonian’s derivatives or block encodings.
+                This article demonstrates a cavity‑mediated Mølmer‑Sørensen gate that gives neutral‑atom qubits genuine all‑to‑all connectivity without shuttling atoms with optical tweezers, a long‑standing bottleneck for scaling up atom arrays. By leveraging the shared photonic mode and local laser addressing, the authors achieve &gt;99 % fidelity while suppressing motional errors, bringing neutral‑atom platforms closer to the error‑rates needed for fault‑tolerant codes such as the surface code. The approach also dovetails with recent advances in Rydberg‑mediated gates and cavity QED, suggesting a clear path toward modular, high‑connectivity quantum processors that can be programmed on demand.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We develop a quantum algorithm for slow analytic Hamiltonians $\widetilde H(t)=H(t/T)$ with $\|H(s)\|\leqα$ that achieves nearly additive query complexity and low gate overhead. Our main technical contribution is a periodic Gevrey extension of $H(s)$, together with Fourier component decay and truncation bounds that enable an efficient finite-dimensional simulation. Combined with Floquet embedding and optimal time-independent Hamiltonian simulation technique, this gives query complexity $\widetilde{\mathcal O}\!\left(αT+\log(1/\varepsilon)\right)$ and additional gate complexity $\widetilde{\mathcal O}\!\left((αT+\log(1/\varepsilon))^2\log(1/\varepsilon)\right)$, assuming coherent access to $H&#39;(s)$ and endpoint derivatives. For slow analytic control Hamiltonians, only block encodings of the time-independent control operators are required, with the same query complexity and lower gate overhead. Our method also extends to Gevrey Hamiltonians and improves the precision dependence for simulating slow analytic semi-dissipative linear differential equations.</p>
+            <p>Fault tolerant quantum computers greatly benefit from having both high fidelity entangling gates and a non-local qubit connectivity. However, most entangling gates for neutral atoms are local, requiring separated atoms to be moved using optical tweezers to yield entanglement between them. Here, we design a high fidelity Mølmer Sørensen-like entangling gate between neutral atoms coupled to a photonic cavity, enabling a programmable all-to-all connectivity through the shared cavity coupling. The gate is both robust to changes in cavity photon number, and enables selective entanglement between any subset of separated atoms through local laser addressing. This eliminates the need to physically move atoms to perform the gate, and therefore motional errors and erasure are suppressed. Using experimentally realistic parameters we demonstrate gate fidelities exceeding $F &gt; 0.99$, with higher fidelities achievable through optimal control of the pump amplitudes.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.17653v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.22220v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Quantum%20simulation%20of%20slow%20analytic%20time-dependent%20Hamiltonians&url=https://quantumcrier.com/posts/66097ec1.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/66097ec1.html&title=Quantum%20simulation%20of%20slow%20analytic%20time-dependent%20Hamiltonians" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Programmable%20all-to-all%20entangling%20gates%20for%20cavity-coupled%20atoms&url=https://quantumcrier.com/posts/7dda8e42.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7dda8e42.html&title=Programmable%20all-to-all%20entangling%20gates%20for%20cavity-coupled%20atoms" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
