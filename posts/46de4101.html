@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum algorithm for differential equations via permutation matrix representation with application to the Burgers equation | Quantum Crier</title>
-    <meta name="description" content="We develop a quantum algorithm for solving the dynamics of the nonlinear viscous Burgers equation. We apply the Carleman linearization procedure on the spatiall">
+    <title>Solving Large-Scale Parameter Inference in Controllable Nuclear Fusion via Coherent Ising Machines and Block Coordinate Descent | Quantum Crier</title>
+    <meta name="description" content="Bayesian inference enables self-consistent plasma parameter inversion in tokamak integrated data analysis by fusing multi-source diagnostics. However, under non">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Quantum algorithm for differential equations via permutation matrix representation with application to the Burgers equation">
+    <meta property="og:title" content="Solving Large-Scale Parameter Inference in Controllable Nuclear Fusion via Coherent Ising Machines and Block Coordinate Descent">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 18, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 19, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,15 +58,11 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-            
         </div>
-        <h1>Quantum algorithm for differential equations via permutation matrix representation with application to the Burgers equation</h1>
+        <h1>Solving Large-Scale Parameter Inference in Controllable Nuclear Fusion via Coherent Ising Machines and Block Coordinate Descent</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 19, 2026</span>
+            <span class="date">October 16, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +74,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article presents a new way to encode the Carleman‑linearized Burgers equation as a sum of diagonal masks and reversible permutation operators, making it directly compatible with linear‑combination‑of‑Hamiltonians simulation techniques. By showing that the runtime depends on the off‑diagonal norm rather than the full matrix norm, the work offers a potential speedup for diagonally dominant fluid‑dynamics generators and extends naturally to higher‑dimensional or multi‑variable PDEs. The approach is promising for quantum‑enhanced CFD simulations, but its practical advantage hinges on managing the exponential post‑selection cost introduced by the stabilizing shift.
+                This article shows how a Coherent Ising Machine can turn the notoriously slow Bayesian inversion of tokamak plasma parameters into a millisecond‑scale optimization by encoding the MAP problem directly onto an all‑to‑all spin Hamiltonian, leveraging optical parametric oscillators for rapid quantum‑fluctuation–driven search. It builds on recent demonstrations that analog quantum optimizers such as CIMs and D‑Wave can tackle combinatorial problems far faster than classical sampling, extending those capabilities to a high‑impact fusion‑control application. While the current need for block‑coordinate iteration limits true real‑time operation today, the work outlines a clear scaling path that could make closed‑loop plasma control feasible once larger optical networks become available.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We develop a quantum algorithm for solving the dynamics of the nonlinear viscous Burgers equation. We apply the Carleman linearization procedure on the spatially discretized equation, followed by a padding scheme that allows implementation on qubit registers. Existing Carleman-based quantum algorithms commonly formulate the lifted linear differential equation in an oracle model. Here we decompose the padded generator into diagonal masks and reversible arithmetic permutations using the Permutation Matrix Representation (PMR), which we show to be naturally compatible with the Linear Combination of Hamiltonian Simulations (LCHS) algorithm. Under the assumptions required by LCHS - most importantly positive semidefiniteness of the Hermitian part of the linear generator, possibly after a stabilizing shift - the algorithm prepares a normalized quantum state proportional to the solution of the truncated lifted system; the stabilizing shift introduces an exponential postselection overhead, which we quantify and mitigate through a rescaling scheme. We show that our algorithm scales with the off-diagonal norm of the Carleman generator instead of the matrix norm, which can be advantageous for other generators that are diagonally dominant. We also extend the PMR scheme to general fluid equations that may contain higher-order derivatives or nonlinear terms, or may involve multiple fluid variables or spatial dimensions. The construction illustrates how PMR can serve as a convenient Hamiltonian-simulation primitive for a broader class of LCU-based algorithms.</p>
+            <p>Bayesian inference enables self-consistent plasma parameter inversion in tokamak integrated data analysis by fusing multi-source diagnostics. However, under nonlinear Gaussian likelihoods, finding the maximum a posteriori (MAP) estimate typically relies on sampling methods whose high computational overhead precludes real-time plasma control. To address this bottleneck, we propose a Bayesian inversion framework using a Coherent Ising Machine (CIM)-a quantum computing architecture based on coupled degenerate optical parametric oscillators (DOPOs). With native all-to-all connectivity, the CIM directly maps the negative log-posterior potential onto a spin Hamiltonian and leverages quantum vacuum fluctuations for rapid state-space search during pitchfork bifurcation. Validated on plasma current profile inversion for the EAST tokamak, this method achieves a single-run solution time of approximately 1 ms. Although current qubit limits necessitate a block-wise iterative scheme that prevents full real-time execution today, rapidly scaling quantum hardware offers a clear pathway toward real-time tokamak control.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.19508v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.23507v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Quantum%20algorithm%20for%20differential%20equations%20via%20permutation%20matrix%20representation%20with%20application%20to%20the%20Burgers%20equation&url=https://quantumcrier.com/posts/d9e70d04.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d9e70d04.html&title=Quantum%20algorithm%20for%20differential%20equations%20via%20permutation%20matrix%20representation%20with%20application%20to%20the%20Burgers%20equation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Solving%20Large-Scale%20Parameter%20Inference%20in%20Controllable%20Nuclear%20Fusion%20via%20Coherent%20Ising%20Machines%20and%20Block%20Coordinate%20Descent&url=https://quantumcrier.com/posts/46de4101.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/46de4101.html&title=Solving%20Large-Scale%20Parameter%20Inference%20in%20Controllable%20Nuclear%20Fusion%20via%20Coherent%20Ising%20Machines%20and%20Block%20Coordinate%20Descent" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

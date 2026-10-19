@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RushHour: A Dynamically Reconfigurable Lattice-Surgery Architecture | Quantum Crier</title>
-    <meta name="description" content="Practical fault-tolerant quantum computing (FTQC) requires efficient lattice surgery (LS), so that large algorithms fit on resource-constrained quantum chips. E">
+    <title>Quantum approximate stochastic combinatorial optimisation | Quantum Crier</title>
+    <meta name="description" content="Two-stage stochastic combinatorial optimisation concerns discrete decisions made before all relevant information is known. An initial decision is made; once unc">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="RushHour: A Dynamically Reconfigurable Lattice-Surgery Architecture">
+    <meta property="og:title" content="Quantum approximate stochastic combinatorial optimisation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 18, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 19, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,17 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>RushHour: A Dynamically Reconfigurable Lattice-Surgery Architecture</h1>
+        <h1>Quantum approximate stochastic combinatorial optimisation</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 19, 2026</span>
+            <span class="date">October 16, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a long‑standing bottleneck in fault‑tolerant quantum computing by turning lattice surgery from a static, pre‑planned operation into a flexible, on‑the‑fly resource manager, which could let near‑term devices squeeze far larger algorithms onto modest chip areas. By co‑designing an ISA, a Lattice Management Unit and a compiler, the RushHour framework demonstrates up to a sevenfold speedup on space‑constrained chips and eliminates the need for oversized hardware that earlier compilers demanded. The work builds directly on recent pushes toward dynamic error‑correction scheduling and suggests that future quantum processors may achieve practical scalability without waiting for massive qubit counts, though its benefits will still depend on the underlying physical error rates and connectivity of the target architecture.
+                This article tackles a notoriously hard class of problems—two‑stage stochastic combinatorial optimisation—by embedding the scenario‑dependent recourse directly into a variational quantum‑walk circuit, allowing the algorithm to search over first‑stage decisions without explicitly computing costly expected minima. By demonstrating that QASCO concentrates probability on optimal choices more effectively than earlier two‑stage QAOA approaches and can be calibrated with a depth‑independent parameter set that generalises to unseen instances of size beyond 2³², it points toward scalable quantum heuristics for real‑world planning under uncertainty. However, the results are still limited to exact state‑vector simulations, so experimental validation on near‑term hardware will be the next crucial step.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Practical fault-tolerant quantum computing (FTQC) requires efficient lattice surgery (LS), so that large algorithms fit on resource-constrained quantum chips. Existing approaches, however, are rigid: qubits, routing space, and resource states are allocated ahead of execution, which prevents running on small chips, leaves statically scheduled executions with large time overheads, and fixes each design at a single area of the space-time trade-off. We present dynamic LS, which enables efficient reconfiguration of the ancilla space, just-in-time allocation of resource states, and dynamic rotations of logical qubits, thereby spanning the entire space-time trade-off with a single, unified approach. We realize dynamic LS with RushHour through a hardware-compiler co-design: the RushHour ISA formalizes and programs our dynamic lattice model, the Lattice Management Unit abstracts dynamic lattice management and performs efficient lattice reconfiguration, and the RushHour Compiler compiles logical circuits for physical chips into optimized ISA programs while pipelining instructions. We evaluate RushHour against six state-of-the-art compilers and two resource models. On the smallest chips, 86% of benchmarks run only with RushHour, while existing approaches require 1.2-3.5$\times$ larger chips. On space-constrained early-FTQC chips, RushHour runs a median 2.3-7.2$\times$ faster than the best feasible alternative, while achieving results comparable to the state of the art on very large chips. RushHour&#39;s constructive results run 4.8$\times$ from an idealized-machine resource limit.</p>
+            <p>Two-stage stochastic combinatorial optimisation concerns discrete decisions made before all relevant information is known. An initial decision is made; once uncertainty is resolved, it can be adapted to the realised scenario, at a cost. The aim is to find the initial decision that minimises the upfront cost plus the expected cost of optimal adaptation. The first-stage decision problem is often NP-hard, and computing the expected minimum recourse cost can be $\#\mathrm{P}$-hard for a single first-stage candidate. We introduce Quantum Approximate Stochastic Combinatorial Optimisation (QASCO), a variational quantum-walk ansatz that coherently incorporates scenario-dependent recourse into its dynamics to search over first-stage decisions without explicitly evaluating expected minimum recourse costs. We demonstrate QASCO for MaxCut with stochastic edge weights, obtain a circuit with polynomial per-layer gate complexity, and study the ansatz via exact state-vector simulation. Across the instances considered, QASCO concentrates amplitude more effectively on stochastic-optimal first-stage decisions than a previously proposed two-stage QAOA construction. We further show that the ansatz can be calibrated using a depth-independent number of parameters and applied to unseen instances without further circuit-parameter optimisation, including joint decision--scenario--recourse spaces spanning more than $2^{32}$ configurations. Under a query-cost model, comparison with the tested classical heuristics using sample-average approximations of the expected minimum recourse cost shows that QASCO more reliably reaches globally optimal first-stage solutions while requiring fewer cut evaluations. These results show how to incorporate scenario-dependent recourse into the ansatz dynamics, providing a general framework for variational quantum walks in two-stage stochastic combinatorial optimisation.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.18985v2" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.22876v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=RushHour%3A%20A%20Dynamically%20Reconfigurable%20Lattice-Surgery%20Architecture&url=https://quantumcrier.com/posts/a5cf64a0.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a5cf64a0.html&title=RushHour%3A%20A%20Dynamically%20Reconfigurable%20Lattice-Surgery%20Architecture" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20approximate%20stochastic%20combinatorial%20optimisation&url=https://quantumcrier.com/posts/6670c82b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/6670c82b.html&title=Quantum%20approximate%20stochastic%20combinatorial%20optimisation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realizing Logical Diagonal Gates via Transversal Physical $Z$-Rotations in CSS Codes | Quantum Crier</title>
-    <meta name="description" content="Calderbank-Shor-Steane (CSS) codes, constructed from nested classical codes $C_2 \subseteq C_1$, are typically optimized for good code parameters. However, prac">
+    <title>ConQUESTA: Topology-Aware Post-Training Structural Pruning of Quantum Neural Networks | Quantum Crier</title>
+    <meta name="description" content="Deploying quantum neural networks (QNNs) on sparse hardware requires preserving task accuracy while reducing compiler-induced two-qubit gates, SWAPs, and depth.">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Realizing Logical Diagonal Gates via Transversal Physical $Z$-Rotations in CSS Codes">
+    <meta property="og:title" content="ConQUESTA: Topology-Aware Post-Training Structural Pruning of Quantum Neural Networks">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 18, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 19, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
             
         </div>
-        <h1>Realizing Logical Diagonal Gates via Transversal Physical $Z$-Rotations in CSS Codes</h1>
+        <h1>ConQUESTA: Topology-Aware Post-Training Structural Pruning of Quantum Neural Networks</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 19, 2026</span>
+            <span class="date">October 16, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles one of the thorniest bottlenecks in fault‑tolerant quantum computing—how to realize non‑Clifford diagonal gates without costly magic‑state distillation—by showing that a wide class of CSS codes can be systematically extended so that a simple transversal Z‑rotation implements any desired single‑qubit or multi‑controlled Z gate. The “appending construction” builds on earlier no‑go theorems for transversal logical operations, turning them into a constructive design tool that can retrofit existing CSS codes while preserving any gates they already support. Although the added qubits may modestly reduce code distance, the authors demonstrate how to control this trade‑off, opening a practical pathway for more efficient gate synthesis in near‑term error‑corrected processors.
+                This article introduces ConQUESTA, a topology‑aware post‑training pruning framework that jointly optimizes task saliency and compiler cost to trim entangling gates in quantum neural networks while guaranteeing an accuracy bound. By evaluating whole‑circuit masks across multiple coupling maps, the method achieves up to 82 % reduction in two‑qubit operations on standard benchmarks—far surpassing simple baseline pruning and dramatically easing the gate‑depth constraints of near‑term hardware. The work signals a practical step toward scalable QNN deployment on sparse superconducting or ion‑trap devices, though its current validation is limited to small (4–12 qubit) models and a handful of datasets.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Calderbank-Shor-Steane (CSS) codes, constructed from nested classical codes $C_2 \subseteq C_1$, are typically optimized for good code parameters. However, practical quantum computing equally demands fault-tolerant logical gates. In this work, we characterize nested pairs $(C_1, C_2)$ whose resulting CSS codes realize a target logical diagonal gate via transversal physical $Z$-rotations. In doing so, we recover a result of Camps-Moreno et al. that CSS codes can realize only logical single-qubit $Z$-rotations and multi-qubit controlled-$Z$ rotations via transversal physical $Z$-rotations. Building on our characterization, we develop the &#39;&#39;appending construction&#39;&#39;, that takes as input an $[[n&#39;,k&#39;]]$ CSS code $Q&#39;$ and a target logical $Z$-rotation (single-qubit or multi-controlled) $U_L$, and extends $Q&#39;$ by systematically appending $n&#39;&#39;$ physical qubits to obtain an $[[n,k]]$ CSS code $Q$ with $n = n&#39;+n&#39;&#39;$ and $k=k&#39;$. The target logical gate $U_L$ is realized in $Q$ by applying a well-chosen physical transversal $Z$-rotation to the $n&#39;&#39;$ appended physical qubits. Moreover, any logical gate realized via transversal physical $Z$-rotations in the input code $Q&#39;$ remains transversally realizable in the extended code $Q$. The CSS code $Q$ may incur a loss in minimum distance, but the loss can be controlled through the parameter choices made in the construction. By repeatedly applying the appending construction, we can extend any CSS code $Q&#39;$ to obtain a CSS code $Q$ that supports fault-tolerant implementations of multiple desired logical $Z$-rotations. The cost to be paid for this is the increased physical qubit overhead as the number of target logical gates grows. We illustrate our methodology by providing explicit constructions of CSS code families that transversally realize addressable logical single-qubit $Z$-rotations.</p>
+            <p>Deploying quantum neural networks (QNNs) on sparse hardware requires preserving task accuracy while reducing compiler-induced two-qubit gates, SWAPs, and depth. We present ConQUESTA (\underline{C}onstrained \underline{Qu}antum \underline{E}ntangler \underline{S}election with \underline{T}opology \underline{A}wareness), a post training pruning framework that combines task saliency with compiler cost, screens candidate entanglers, and searches complete pruning masks under an explicit accuracy constraint. Unlike one-shot ranking, each mask is transpiled as a whole across multiple coupling topologies. Across 4-, 6-, and 8-qubit QNNs and eight model seeds at 55% pruning, ConQUESTA achieves mean resource reductions of 61.6% on Breast Cancer, 72.0% on Digits01, and 82.2% on Iris, exceeding the strongest matched simple baseline by 3.5, 1.7, and 8.9 percentage points, respectively. Fixed-mask recovery raises feasibility from 16/24 to 22/24 runs. In a fixed-k=4 scaling study on a scaling probe of 4 to 12-qubits, the raw mask space grew from 495 to 12.1M while the evaluated masks increase only from 189 to 305. Resource-weight changes alter depth/routing priorities with at most a 0.44-point mean validation shift.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.19094v3" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.23415v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Realizing%20Logical%20Diagonal%20Gates%20via%20Transversal%20Physical%20%24Z%24-Rotations%20in%20CSS%20Codes&url=https://quantumcrier.com/posts/eff74049.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/eff74049.html&title=Realizing%20Logical%20Diagonal%20Gates%20via%20Transversal%20Physical%20%24Z%24-Rotations%20in%20CSS%20Codes" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=ConQUESTA%3A%20Topology-Aware%20Post-Training%20Structural%20Pruning%20of%20Quantum%20Neural%20Networks&url=https://quantumcrier.com/posts/dcb05bf7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/dcb05bf7.html&title=ConQUESTA%3A%20Topology-Aware%20Post-Training%20Structural%20Pruning%20of%20Quantum%20Neural%20Networks" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

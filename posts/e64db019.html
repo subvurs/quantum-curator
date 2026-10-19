@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Gaussian processes for prediction of channel observations | Quantum Crier</title>
-    <meta name="description" content="Given a set of input states, we consider the task of predicting the expectation value of a Pauli observable at the output of an unknown quantum evolution, using">
+    <title>Learning angles for quantum approximate optimization | Quantum Crier</title>
+    <meta name="description" content="The Quantum Approximate Optimization Algorithm (QAOA) and its variants are leading algorithms to help solve challenging combinatorial optimization problems. QAO">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Quantum Gaussian processes for prediction of channel observations">
+    <meta property="og:title" content="Learning angles for quantum approximate optimization">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 18, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 19, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,19 +56,13 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
-            
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-            
         </div>
-        <h1>Quantum Gaussian processes for prediction of channel observations</h1>
+        <h1>Learning angles for quantum approximate optimization</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 19, 2026</span>
+            <span class="date">October 16, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -80,18 +74,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article pushes quantum Gaussian‑process regression beyond idealised unitary dynamics by proving that the outputs of an arbitrary quantum channel converge to a QGP and by giving a closed‑form kernel for a uniform prior over channels. By exposing the exponential “dimensional factor’’ that limits learnability on large subsystems, the authors introduce an empirical‑Bayes scaling trick that restores practical training even for 64‑qubit global maps, showing systematic improvement with shot budget and robustness on noisy hardware. The work therefore provides one of the first scalable, data‑efficient tools for learning unknown quantum processes—a key step toward real‑time error mitigation and system identification on near‑term quantum processors.
+                This article tackles one of QAOA’s biggest practical hurdles—finding high‑quality variational angles—by training a neural model that predicts them directly from the problem graph, turning an expensive per‑instance optimizer into a single forward pass. The approach not only matches solver performance on current quantum hardware but also generalizes to unseen topologies such as Barabási‑Albert and 2D grids, suggesting a scalable route for real‑world combinatorial workloads. By amortizing the data‑generation cost, the method could make QAOA viable for industrial settings where many similar optimization instances must be solved repeatedly.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Given a set of input states, we consider the task of predicting the expectation value of a Pauli observable at the output of an unknown quantum evolution, using only a limited number of measurements. Recently, quantum Gaussian process (QGP) regression was introduced for this task across various classes of unitary evolution. Here, we extend the QGP framework beyond unitary dynamics. In particular, we prove convergence of the channel&#39;s outputs to a QGP and derive the associated closed-form kernel under a uniform (Lebesgue measure) prior over quantum channels. The kernel&#39;s dimensional factor, however, dictates the required observation precision. While manageable when the channel and observable are restricted to small subsystems, exponential suppression precludes learning when the subsystem grows extensively with the system size. Since the Lebesgue prior is overly broad for many applications, we propose an empirical Bayes heuristic that replaces the dimensional factor with a learnable scale parameter while retaining the kernel&#39;s state-overlap correlation structure. In numerical simulations of up to 64 qubits, channel QGP regression with the Lebesgue kernel exhibits a strong inductive bias for local channels, enabling faithful extrapolation. For global 64-qubit channels, the rescaled kernel restores learnability, with predictions improving systematically with the shot budget. Results from a noisy quantum computer further demonstrate the robustness of QGP regression under experimental conditions. Beyond regression, we validate QGPs as Bayesian-optimization surrogates for state preparation under noisy XXZ dynamics.</p>
+            <p>The Quantum Approximate Optimization Algorithm (QAOA) and its variants are leading algorithms to help solve challenging combinatorial optimization problems. QAOA maps these problems to Ising Hamiltonians such that their ground state is the desired solution. Candidate solutions are then drawn from a variational quantum circuit. The performance of QAOA hinges on a set of variational angles. However, finding good angles is an instance-specific and computationally expensive non-convex classical optimization task. Here, we learn the mapping from the problem instance to high-quality QAOA angles. Our learned models replace the per-instance optimization, that we call the solver, with a single forward pass that is several orders of magnitude faster than the solver with a near identical quality. Our models further generalize to unseen topologies such as Barabási-Albert and 2D grid graphs. Experiments on quantum hardware confirm that QAOA samples with angles produced by our open-source models are indistinguishable from solver angles. Crucially, models sensitive to the topology of the problem instance increase the quality of the QAOA angles. Our work amortizes a major bottleneck in QAOA by an up-front data generation and training cost. Importantly, this cost can be amortized over time in settings where many similar problems are optimized on a regular basis, as is often the case in applications for industry.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.19306v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.23296v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -101,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Quantum%20Gaussian%20processes%20for%20prediction%20of%20channel%20observations&url=https://quantumcrier.com/posts/6a365ace.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/6a365ace.html&title=Quantum%20Gaussian%20processes%20for%20prediction%20of%20channel%20observations" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Learning%20angles%20for%20quantum%20approximate%20optimization&url=https://quantumcrier.com/posts/e64db019.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e64db019.html&title=Learning%20angles%20for%20quantum%20approximate%20optimization" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

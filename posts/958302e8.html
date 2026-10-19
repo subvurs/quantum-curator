@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlphaClifford: Efficient Clifford Synthesis and Transpilation with Model-based RL | Quantum Crier</title>
-    <meta name="description" content="Clifford circuits play a foundational role in quantum computing, particularly due to their importance in quantum error correction and fault-tolerant logical syn">
+    <title>SpinControl: Control Software for Prototyping and Benchmarking of Spin-Qubit Devices and Measurement Protocols | Quantum Crier</title>
+    <meta name="description" content="Quantum computers require software to control the states of the qubits. As the actions on qubits grow in complexity with circuit execution, calibration, and ben">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="AlphaClifford: Efficient Clifford Synthesis and Transpilation with Model-based RL">
+    <meta property="og:title" content="SpinControl: Control Software for Prototyping and Benchmarking of Spin-Qubit Devices and Measurement Protocols">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 18, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 19, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,13 +60,15 @@
             
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>AlphaClifford: Efficient Clifford Synthesis and Transpilation with Model-based RL</h1>
+        <h1>SpinControl: Control Software for Prototyping and Benchmarking of Spin-Qubit Devices and Measurement Protocols</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 19, 2026</span>
+            <span class="date">October 16, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +80,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article matters because it shows that model‑based reinforcement learning can beat traditional Clifford synthesis algorithms, delivering consistently lower total and CNOT gate counts even when restricted to the minimal H‑S‑CNOT gate set. By leveraging the symplectic structure of Clifford operations within a Monte Carlo Tree Search framework, AlphaClifford bridges recent advances in machine‑learning‑driven compilation with the practical need for tighter error‑correction overhead on both near‑term hardware and fault‑tolerant logical layers. The results suggest that RL‑based compilers could become a standard post‑processing step for Clifford+T synthesis pipelines, though scaling to very large circuits will still require careful engineering of the search space.
+                This article introduces SpinControl, a purpose‑built control stack that finally bridges the gap between low‑level hardware tuning and high‑level circuit programming for spin‑qubit processors. By cleanly separating data from behavior, modularizing functionality, and embedding CI‑driven robustness, it lets experimental teams prototype new pulse sequences or calibration routines while giving algorithm developers a stable API for running circuits—something that has been missing as silicon‑based qubits scale beyond a handful of dots. The framework’s cloud connectivity, virtual‑gate compilation and spin‑qubit‑specific GUIs could accelerate both device optimization and benchmark reproducibility across labs, positioning spin qubits to compete more directly with superconducting platforms. However, its impact will depend on community adoption and integration with existing hardware stacks, which remain fragmented today.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Clifford circuits play a foundational role in quantum computing, particularly due to their importance in quantum error correction and fault-tolerant logical synthesis. While these circuits can be efficiently simulated and represented as symplectic matrices, standard synthesis methods-such as the Aaronson-Gottesman algorithm-often yield sub-optimal circuits with excessively high gate counts. In this work, we introduce AlphaClifford, a model-based Reinforcement Learning framework powered by Monte Carlo Tree Search, designed to efficiently synthesize Clifford circuits from the fundamental gate set composed of H, S, and CNOT. By modeling the state space through the algebraic properties of the symplectic group, AlphaClifford effectively explores this combinatorial space to minimize overall circuit cost. For unconstrained Clifford optimization, our approach achieves a consistent reduction in both total and two-qubit (CNOT) gate counts compared to state-of-the-art synthesis heuristics, despite operating with a strictly less expressive gate set. Furthermore, we demonstrate the broad applicability of our framework on two additional tasks: hardware-constrained Clifford transpilation, where we outperform existing RL-based compilers, and as a post-synthesis optimization component within a full Clifford+T logical synthesis pipeline. Our results underscore that model-based RL is highly effective at addressing the combinatorial complexities of quantum compilation, offering a scalable pathway to mitigate hardware constraints in both near-term and future fault-tolerant quantum devices.</p>
+            <p>Quantum computers require software to control the states of the qubits. As the actions on qubits grow in complexity with circuit execution, calibration, and benchmarking, the complexity of the control software grows in tandem. Spin-qubit quantum computers are at a stage where experimentalists need low-level access for tuning and calibration, and quantum algorithm researchers want high-level circuit-level access. In this article, we present the software design of SpinControl. SpinControl integrates three architectural metrics: 1) customizability, to allow prototyping devices and measurement protocols, is achieved by separating data and behaviour; 2) modularity and extensibility are achieved by separating functionalities into different components; and 3) robustness, to reliably execute quantum circuits on many qubits, is achieved by CI pipelines and input validation. SpinControl allows different types of measurements while customizing the instruments used, the pulse or circuit program executed, and the data processing. It allows building standardized experiments from measurement and analysis building blocks and executing these for calibration in a custom and conditional order. SpinControl implements these functionalities alongside robust configuration and data management, a connection to the cloud, and calibration scheduling. Pulse and circuit compilation, virtual gate matrices, as well as spin-qubit-specific GUIs integrated by SpinControl, make heavy use of software packages developed by Delft University of Technology: pulse lib, core-tools (both open source), and QConstruct</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.18946v2" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.23316v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +101,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=AlphaClifford%3A%20Efficient%20Clifford%20Synthesis%20and%20Transpilation%20with%20Model-based%20RL&url=https://quantumcrier.com/posts/810dafa0.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/810dafa0.html&title=AlphaClifford%3A%20Efficient%20Clifford%20Synthesis%20and%20Transpilation%20with%20Model-based%20RL" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=SpinControl%3A%20Control%20Software%20for%20Prototyping%20and%20Benchmarking%20of%20Spin-Qubit%20Devices%20and%20Measurement%20Protocols&url=https://quantumcrier.com/posts/958302e8.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/958302e8.html&title=SpinControl%3A%20Control%20Software%20for%20Prototyping%20and%20Benchmarking%20of%20Spin-Qubit%20Devices%20and%20Measurement%20Protocols" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
