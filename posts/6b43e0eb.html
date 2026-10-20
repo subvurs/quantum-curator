@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architecture and Compilation Co-Design for High-Rate Quantum Product Codes on Neutral Atom Arrays | Quantum Crier</title>
-    <meta name="description" content="Achieving fault-tolerant quantum computing at a practical scale demands quantum error correction (QEC) codes with high encoding rates. Quantum low-density parit">
+    <title>Advance Could Lead to Bigger, More Reliable Quantum Computers, University of Edinburgh Scientists Say | Quantum Crier</title>
+    <meta name="description" content="Insider Brief PRESS RELEASE — Researchers have developed an algorithm that enables off-the-shelf computers to run quantum simulations previously only possible u">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Architecture and Compilation Co-Design for High-Rate Quantum Product Codes on Neutral Atom Arrays">
+    <meta property="og:title" content="Advance Could Lead to Bigger, More Reliable Quantum Computers, University of Edinburgh Scientists Say">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,6 +26,10 @@
 
     
 
+<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/10/Screenshot-2026-10-19-at-4.09.09-AM.png">
+<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/10/Screenshot-2026-10-19-at-4.09.09-AM.png">
+<meta name="twitter:card" content="summary_large_image">
+
 
 </head>
 <body>
@@ -34,7 +38,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 19, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 20, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,21 +60,26 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>Architecture and Compilation Co-Design for High-Rate Quantum Product Codes on Neutral Atom Arrays</h1>
+        <h1>Advance Could Lead to Bigger, More Reliable Quantum Computers, University of Edinburgh Scientists Say</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 20, 2026</span>
+            <span class="source">Source: <strong>The Quantum Insider</strong></span>
+            <span class="date">October 19, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
+    
+    <div class="post-hero-image">
+        <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/Screenshot-2026-10-19-at-4.09.09-AM.png" alt="Advance Could Lead to Bigger, More Reliable Quantum Computers, University of Edinburgh Scientists Say" loading="eager"
+             onerror="this.parentElement.style.display='none'">
+    </div>
     
 
     <div class="post-body">
@@ -78,19 +87,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a key roadblock to scalable fault‑tolerant quantum computers by showing how neutral‑atom arrays can efficiently run high‑rate qLDPC product codes despite the notoriously hard compilation problem. By breaking a two‑dimensional scheduling task into optimal one‑dimensional subproblems and feeding those solutions through an anytime, movement‑aware pipeline, ONEX delivers provably depth‑optimal plans with dramatically reduced wall‑clock times. The reported 3.7–6.1× (and up to 42× for certain configurations) speedups in clock rate demonstrate that neutral‑atom platforms can now approach the throughput needed for practical quantum error correction, complementing recent advances in hardware connectivity and algorithmic code design. Readers should note that while the gains are impressive for hypergraph product codes, extending the approach to other QEC families will be an important next step.
+                This article matters because the new algorithm slashes the classical compute budget for simulating quantum devices to roughly five percent of what even top‑tier supercomputers require, opening high‑fidelity modeling to many more research groups and industry teams. It builds on recent advances in tensor‑network and hybrid quantum‑classical techniques that have been pushing the boundary of what can be emulated without full‑scale hardware, and it could accelerate algorithm development, error‑mitigation studies, and hardware benchmarking. The breakthrough is still limited to certain circuit structures and problem sizes, but its practical impact lies in democratizing large‑scale quantum simulation and shortening the feedback loop between theory and experiment.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Achieving fault-tolerant quantum computing at a practical scale demands quantum error correction (QEC) codes with high encoding rates. Quantum low-density parity-check (qLDPC) codes emerge as a promising candidate, especially given the rise of neutral atom arrays that provide dynamic long-range connectivity via atom movements. In general, synthesizing valid and efficient physical execution plans for QEC is a provably hard combinatorial problem, forming a critical compilation bottleneck that worsens as code sizes grow. To overcome this complexity, we focus on an important product family of qLDPC codes with dimension-reduction properties, and propose ONEX. This framework decomposes complex 2D physical execution planning into independent 1D subproblems, each solved to optimal execution depth within practical compilation time. First, we formulate the 1D execution plan with an explicit satisfiability modulo theories (SMT) encoding. This protocol produces provably depth-optimal solutions with substantial duration reduction. Second, we develop a multi-stage compilation pipeline featuring anytime optimization, movement compaction, and iterative feedback. This pipeline maintains practical wall-clock times while providing progressive refinement and on-demand retrieval of quality solutions. Third, we evaluate ONEX in the application of hypergraph product (HGP) code memory mapped onto neutral atom arrays, achieving 3.7x to 6.1x and 29.8x to 42.1x higher clock rates than the constructive 1D algorithm and the general 2D compiler, respectively, while scaling efficiently to codes with 2,500 data qubits. Finally, we extend ONEX to zoned layouts, revealing architectural insights into the associated trade-offs, and demonstrate its applicability to the broader lifted-product (LP) code family through a representative example.</p>
+            <p>Insider Brief PRESS RELEASE — Researchers have developed an algorithm that enables off-the-shelf computers to run quantum simulations previously only possible using the world’s most powerful supercomputers. It means the simulations can be run using around five percent of the computing power previously needed to perform them with a supercomputer, the team says. Quantum experiments […]</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.20164v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://thequantuminsider.com/2026/10/19/advance-could-lead-to-bigger-more-reliable-quantum-computers-university-of-edinburgh-scientists-say/" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at The Quantum Insider &rarr;
             </a>
         </div>
     </div>
@@ -99,8 +108,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Architecture%20and%20Compilation%20Co-Design%20for%20High-Rate%20Quantum%20Product%20Codes%20on%20Neutral%20Atom%20Arrays&url=https://quantumcrier.com/posts/60786aff.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/60786aff.html&title=Architecture%20and%20Compilation%20Co-Design%20for%20High-Rate%20Quantum%20Product%20Codes%20on%20Neutral%20Atom%20Arrays" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Advance%20Could%20Lead%20to%20Bigger%2C%20More%20Reliable%20Quantum%20Computers%2C%20University%20of%20Edinburgh%20Scientists%20Say&url=https://quantumcrier.com/posts/6b43e0eb.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/6b43e0eb.html&title=Advance%20Could%20Lead%20to%20Bigger%2C%20More%20Reliable%20Quantum%20Computers%2C%20University%20of%20Edinburgh%20Scientists%20Say" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
