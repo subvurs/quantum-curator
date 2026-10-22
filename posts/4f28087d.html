@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qiskit-qudits: A Qiskit Extension for Simulating Qudit Circuits | Quantum Crier</title>
-    <meta name="description" content="qiskit-qudits is a Qiskit extension that simulates d-level qudits by encoding each one into m = ceil(log_2 d) qubits. Qudit gates are exposed as ordinary Qiskit">
+    <title>Black Kite Introduces Quantum Readiness Controls to Assess Third-Party Cryptographic Risk | Quantum Crier</title>
+    <meta name="description" content="Black Kite has launched Quantum Readiness, a new feature in its Cyber Rating engine that assesses third-party vendors&#39; preparedness for post-quantum cryptograph">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="qiskit-qudits: A Qiskit Extension for Simulating Qudit Circuits">
+    <meta property="og:title" content="Black Kite Introduces Quantum Readiness Controls to Assess Third-Party Cryptographic Risk">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 21, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 22, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,19 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-            
-            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
             
             <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
             
         </div>
-        <h1>qiskit-qudits: A Qiskit Extension for Simulating Qudit Circuits</h1>
+        <h1>Black Kite Introduces Quantum Readiness Controls to Assess Third-Party Cryptographic Risk</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 22, 2026</span>
+            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
+            <span class="date">October 21, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -80,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article introduces qiskit‑qudits, a practical extension that lets researchers model higher‑dimensional quantum systems within the familiar Qiskit ecosystem by automatically encoding each d‑level qudit into the minimal number of qubits and handling both unitary and non‑unitary operations. By supporting exact dense‑unitary synthesis for any dimension up to 16—not just powers of two—it opens the door to exploring algorithms, error‑correction codes, and hardware concepts that exploit the richer state space of qudits without requiring bespoke simulators. The work also demonstrates seamless integration with Qiskit’s transpiler pipeline, meaning existing tooling can immediately benefit from qudit simulations, although users should be aware of the overhead from identity padding when the logical Hilbert space does not match a power‑of‑two encoding.
+                This article is noteworthy because it marks one of the first commercial tools that systematically evaluates a supply chain’s exposure to “harvest‑now‑decrypt‑later” attacks by checking for quantum‑resistant cryptography. By embedding post‑quantum readiness into its Cyber Rating engine, Black Kite aligns vendor risk management with imminent policy mandates such as OMB M‑26‑15 and the EU NIS2 directive, helping organizations avoid costly compliance gaps. The move reflects a broader industry shift from theoretical PQC discussions to actionable governance frameworks, though its effectiveness will ultimately depend on how quickly vendors adopt vetted standards and how regulators refine migration timelines.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>qiskit-qudits is a Qiskit extension that simulates d-level qudits by encoding each one into m = ceil(log_2 d) qubits. Qudit gates are exposed as ordinary Qiskit Gate and ControlledGate subclasses, and operations that are not unitary gates (measurement, reset, barrier, state preparation) as dedicated Instruction subclasses dispatched through a dedicated apply() hook; every gate carries both a dense encoded unitary (via NumPy&#39;s array protocol) and a qubit-level definition. Because d need not be a power of two, the encoded Hilbert space is generally larger than the logical one; the library resolves this by the identity-padding convention, in which every gate acts as the identity on the unphysical part of the encoded space. When every operand dimension is a power of two, gates decompose into a fixed, transpiler-recognisable cascade of standard qubit gates; otherwise the library falls back to exact dense unitary synthesis, so that dimensions 2 &lt;= d &lt;= 16 are supported exactly, not only powers of two. This paper describes the software&#39;s circuit model, gate hierarchy, decomposition strategy, and measurement/decoding machinery, states its limitations, and verifies the implementation numerically: the qudit QFT against the discrete Fourier transform for both power-of-two and non-power-of-two d, extending the check of the underlying theory paper, which could only be run for d = 2^m, and every gate&#39;s emitted decomposition against its dense unitary across the whole gate set.</p>
+            <p>Black Kite has launched Quantum Readiness, a new feature in its Cyber Rating engine that assesses third-party vendors&#39; preparedness for post-quantum cryptography. This helps organizations identify vendors using quantum-resistant encryption and meet upcoming regulatory deadlines like OMB M-26-15 and EU NIS2. The tool aims to mitigate &#34;harvest now, decrypt later&#34; vulnerabilities before national PQC migration deadlines. The post Black Kite Introduces Quantum Readiness Controls to Assess Third-Party Cryptographic Risk appeared first on Quantum Computing Report .</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.22032v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://quantumcomputingreport.com/black-kite-introduces-quantum-readiness-controls-to-assess-third-party-cryptographic-risk/" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at Quantum Computing Report &rarr;
             </a>
         </div>
     </div>
@@ -101,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=qiskit-qudits%3A%20A%20Qiskit%20Extension%20for%20Simulating%20Qudit%20Circuits&url=https://quantumcrier.com/posts/07c300dd.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/07c300dd.html&title=qiskit-qudits%3A%20A%20Qiskit%20Extension%20for%20Simulating%20Qudit%20Circuits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Black%20Kite%20Introduces%20Quantum%20Readiness%20Controls%20to%20Assess%20Third-Party%20Cryptographic%20Risk&url=https://quantumcrier.com/posts/4f28087d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/4f28087d.html&title=Black%20Kite%20Introduces%20Quantum%20Readiness%20Controls%20to%20Assess%20Third-Party%20Cryptographic%20Risk" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

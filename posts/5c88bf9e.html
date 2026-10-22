@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automating detection of Two-Level Systems in Superconducting Qubits | Quantum Crier</title>
-    <meta name="description" content="Microscopic two-level system (TLS) defects remain a primary mechanism of decoherence and operational instability in superconducting transmon qubits, necessitati">
+    <title>Decoding quantum errors with NVIDIA Ising Decoding on AWS | Quantum Crier</title>
+    <meta name="description" content="Quantum computers today are fragile: they lose their quantum state to noise and decoherence faster than a useful algorithm completes. Quantum error correction (">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Automating detection of Two-Level Systems in Superconducting Qubits">
+    <meta property="og:title" content="Decoding quantum errors with NVIDIA Ising Decoding on AWS">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,6 +26,10 @@
 
     
 
+<meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/5a5b0f9b7d3f8fc84c3cef8fd8efaaa6c70d75ab/2026/10/19/QuantumBlogThumbnail-1-1120x630.jpg">
+<meta name="twitter:image" content="https://d2908q01vomqb2.cloudfront.net/5a5b0f9b7d3f8fc84c3cef8fd8efaaa6c70d75ab/2026/10/19/QuantumBlogThumbnail-1-1120x630.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
 
 </head>
 <body>
@@ -34,7 +38,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 21, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 22, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,17 +62,24 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>Automating detection of Two-Level Systems in Superconducting Qubits</h1>
+        <h1>Decoding quantum errors with NVIDIA Ising Decoding on AWS</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 22, 2026</span>
+            <span class="source">Source: <strong>AWS Quantum Computing Blog</strong></span>
+            <span class="date">October 21, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
+    
+    <div class="post-hero-image">
+        <img src="https://d2908q01vomqb2.cloudfront.net/5a5b0f9b7d3f8fc84c3cef8fd8efaaa6c70d75ab/2026/10/19/QuantumBlogThumbnail-1-1120x630.jpg" alt="Decoding quantum errors with NVIDIA Ising Decoding on AWS" loading="eager"
+             onerror="this.parentElement.style.display='none'">
+    </div>
     
 
     <div class="post-body">
@@ -76,19 +87,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles one of the thorniest bottlenecks in superconducting qubit engineering—microscopic two‑level system defects—by delivering fully automated pipelines that extract TLS statistics directly from time‑resolved SWAP spectroscopy. By showing that moderate post‑fabrication annealing can halve the dielectric loss without changing the overall defect count, the work provides a practical route to improve coherence times on existing hardware while preserving yield. The dual‑approach methodology (1D decay‑rate fitting and a non‑parametric computer‑vision analysis) also sets a new benchmark for scalable defect diagnostics across large qubit arrays, a capability that will be essential as quantum processors move toward thousands of qubits.
+                This article shows how leveraging NVIDIA’s Ising‑model decoder on AWS’s GPU cloud can dramatically speed up the classical post‑processing that underpins quantum error correction, turning a long‑standing bottleneck into a tractable step even as logical qubit counts grow. By demonstrating near‑real‑time decoding of surface‑code syndromes, it bridges recent advances in hardware fidelity with the algorithmic demands of fault‑tolerant architectures, suggesting that scalable QEC may soon be limited more by qubit quality than by decoder latency. The work also highlights a practical pathway for cloud providers to offer turnkey error‑correction services, though its performance will still depend on the underlying physical error rates and code distances used in experiments.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Microscopic two-level system (TLS) defects remain a primary mechanism of decoherence and operational instability in superconducting transmon qubits, necessitating scalable and automated methods for their characterization. Here, we present and benchmark two complementary analysis pipelines for extracting TLS statistics directly from time-resolved SWAP spectroscopy: one-dimensional decay-rate fitting (1D-DRF), which detects defects via localized enhancements in the qubit relaxation rate, and a deterministic, non-parametric computer-vision framework (2D-CV) that achieves two-dimensional spectral localization by exploiting the temporal persistence of coherent population suppression. We deploy both methods on SWAP spectroscopy measurements from 52 flux-tunable transmon qubits on Rigetti processors with and without moderate ($\sim 10\%$) post-fabrication frequency trimming via Alternating-Bias Assisted Annealing (ABAA). We show that both pipelines converge on a consistent global characterization of the defect landscape while exhibiting complementary sensitivity across distinct coupling regimes. Crucially, both methods independently reveal a count--loss decoupling under moderate annealing: while the total detectable TLS defect density remains statistically unchanged, the span-integrated dielectric loss is reduced by approximately a factor of two, demonstrating selective suppression of the most strongly dissipative defect channels. These results establish an automated, non-parametric analysis framework for high-throughput hardware diagnostics and provide a statistical baseline for post-fabrication defect engineering in large-scale superconducting quantum processors.</p>
+            <p>Quantum computers today are fragile: they lose their quantum state to noise and decoherence faster than a useful algorithm completes. Quantum error correction (QEC) makes longer computations possible by encoding each logical qubit across many physical qubits, so that errors can be detected and removed without disturbing the encoded information. In practice, QEC runs as […]</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.21983v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://aws.amazon.com/blogs/quantum-computing/decoding-quantum-errors-with-nvidia-ising-decoding-on-aws/" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at AWS Quantum Computing Blog &rarr;
             </a>
         </div>
     </div>
@@ -97,8 +108,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Automating%20detection%20of%20Two-Level%20Systems%20in%20Superconducting%20Qubits&url=https://quantumcrier.com/posts/ce7846ea.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/ce7846ea.html&title=Automating%20detection%20of%20Two-Level%20Systems%20in%20Superconducting%20Qubits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Decoding%20quantum%20errors%20with%20NVIDIA%20Ising%20Decoding%20on%20AWS&url=https://quantumcrier.com/posts/5c88bf9e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5c88bf9e.html&title=Decoding%20quantum%20errors%20with%20NVIDIA%20Ising%20Decoding%20on%20AWS" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
