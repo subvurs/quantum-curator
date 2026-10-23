@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efficient Quantum Simulation of Linearized Vlasov--Poisson Dynamics Using Trotter and THRIFT Hamiltonian Simulation Methods | Quantum Crier</title>
-    <meta name="description" content="The Vlasov--Poisson system provides the fundamental kinetic description of plasma and plays a central role in understanding collective phenomena such as Landau ">
+    <title>High-fidelity and robust controlled-Z gates for superconducting transmon qubits. II. System-parameter uncertainties and overall errors | Quantum Crier</title>
+    <meta name="description" content="In the companion paper (Part I), we developed an optimal-control framework to suppress intrinsic and decoherence-induced errors in controlled-Z (CZ) gates betwe">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Efficient Quantum Simulation of Linearized Vlasov--Poisson Dynamics Using Trotter and THRIFT Hamiltonian Simulation Methods">
+    <meta property="og:title" content="High-fidelity and robust controlled-Z gates for superconducting transmon qubits. II. System-parameter uncertainties and overall errors">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 22, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 23, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
             
         </div>
-        <h1>Efficient Quantum Simulation of Linearized Vlasov--Poisson Dynamics Using Trotter and THRIFT Hamiltonian Simulation Methods</h1>
+        <h1>High-fidelity and robust controlled-Z gates for superconducting transmon qubits. II. System-parameter uncertainties and overall errors</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 24, 2026</span>
+            <span class="date">October 22, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article demonstrates the first systematic comparison of conventional Trotter‑Suzuki product formulas with the newer Time‑Resolved Interaction Framework (THRIFT) for simulating the linearized Vlasov–Poisson equations, a benchmark problem that captures essential plasma physics such as Landau damping. By reformulating the discretized kinetic model into a Hermitian Hamiltonian and quantifying circuit depth, two‑qubit gate counts, and error‑mitigation via Richardson extrapolation, the authors provide concrete resource estimates that bridge theoretical algorithms with the capabilities of near‑term superconducting or trapped‑ion devices. The work therefore offers a practical roadmap for using quantum computers to tackle high‑dimensional kinetic simulations, while highlighting that achieving useful accuracy still demands careful trade‑offs between time‑step size and hardware limits.
+                This article demonstrates that high‑fidelity CZ gates between tunable transmons can be made robust to realistic uncertainties in coupling strengths, anharmonicities and qubit frequencies, pushing gate errors below the 10⁻³ threshold even when parameters drift by several megahertz. By integrating optimal‑control techniques with dynamical decoupling and a symmetric‑detuning operating point, the authors show a practical route to reduce calibration overhead and improve reliability across successive hardware generations—a key step toward scalable superconducting error‑corrected processors. The results complement recent advances in fast, low‑leakage two‑qubit gates, though they still rely on coherence times that match today’s best transmon devices.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The Vlasov--Poisson system provides the fundamental kinetic description of plasma and plays a central role in understanding collective phenomena such as Landau damping and wave--particle interactions. Efficient numerical simulation of these dynamics remains challenging because of the high dimensionality of phase space. In this work, we studied magnetized and non-magnetized plasma using a quantum simulation framework for the linearized Vlasov-Poisson equation by reformulating the discretized system as a Hermitian Hamiltonian suitable for gate-based quantum computation. The time evolution is implemented using first, second and fourth-order Trotter--Suzuki product formulas and the recently proposed Time-Resolved Interaction Framework (THRIFT). The performance of the different simulation methods is systematically evaluated through electric field evolution, state fidelity, convergence behavior, energy conservation, entanglement entropy and quantum resource requirements, including circuit depth and two-qubit gate complexity, for both magnetized and non-magnetized plasma models. To further reduce finite time step errors without increasing circuit depth, Richardson extrapolation is incorporated as a error-mitigation technique. The results provide a comprehensive comparison of Trotter and THRIFT approaches and establish practical guidelines for accurate and resource-efficient quantum simulation of plasma dynamics on gate-based quantum computers.</p>
+            <p>In the companion paper (Part I), we developed an optimal-control framework to suppress intrinsic and decoherence-induced errors in controlled-Z (CZ) gates between directly coupled, frequency-tunable transmons. Here, we extend this framework to incorporate uncertainties in coupling strength, anharmonicities, and zero-flux qubit frequencies, enabling the design of high-fidelity gates robust against noise and parameter uncertainties. We classify these uncertainties by whether they perturb the off-diagonal coupling strengths or the diagonal detunings of the Hamiltonian, and we identify distinct suppression mechanisms for each class. Coupling errors are mitigated through dynamical decoupling induced by strong detuning modulation. For a 30-ns gate, this strategy reduces the coupling error to $6.21\times10^{-7}$ and tolerates coupling-strength uncertainties up to $2π\times4$ MHz while keeping total gate infidelity below $10^{-3}$. Detuning errors are minimized near a symmetric-detuning operating point that balances the two dominant leakage-mediated interactions. A 24-ns gate operated near this point tolerates individual uncertainties of up to $2π\times5$ MHz in each relevant diagonal parameter under the same infidelity threshold. We further optimize gate performance under realistic conditions where intrinsic errors, decoherence, and parameter uncertainties coexist across six representative stages of progressively improving hardware performance. The resulting stage-specific controls achieve lower infidelity and greater robustness. Together with the companion study (Part I), this framework offers a practical approach to balance speed, fidelity, and robustness while reducing the need for exhaustive characterization and frequent recalibration in large-scale superconducting quantum processors.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.23127v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.30681v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Efficient%20Quantum%20Simulation%20of%20Linearized%20Vlasov--Poisson%20Dynamics%20Using%20Trotter%20and%20THRIFT%20Hamiltonian%20Simulation%20Methods&url=https://quantumcrier.com/posts/dfe03dd8.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/dfe03dd8.html&title=Efficient%20Quantum%20Simulation%20of%20Linearized%20Vlasov--Poisson%20Dynamics%20Using%20Trotter%20and%20THRIFT%20Hamiltonian%20Simulation%20Methods" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=High-fidelity%20and%20robust%20controlled-Z%20gates%20for%20superconducting%20transmon%20qubits.%20II.%20System-parameter%20uncertainties%20and%20overall%20errors&url=https://quantumcrier.com/posts/370bd71c.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/370bd71c.html&title=High-fidelity%20and%20robust%20controlled-Z%20gates%20for%20superconducting%20transmon%20qubits.%20II.%20System-parameter%20uncertainties%20and%20overall%20errors" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

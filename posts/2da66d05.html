@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics-Guided Linear Mapper for Quantum Error Mitigation | Quantum Crier</title>
-    <meta name="description" content="We introduce a novel physics-guided linear mapper (PGLM) for quantum error mitigation that uses seven distinct interpretable features derived from circuit compl">
+    <title>Noise redistribution by stabilizer codes: an organizing view of concatenated three-qubit codes | Quantum Crier</title>
+    <meta name="description" content="We present an organizing framework for concatenated quantum error correction based on the observation that the syndrome projection of a stabilizer code reshapes">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Physics-Guided Linear Mapper for Quantum Error Mitigation">
+    <meta property="og:title" content="Noise redistribution by stabilizer codes: an organizing view of concatenated three-qubit codes">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 22, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 23, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,17 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
-            
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>Physics-Guided Linear Mapper for Quantum Error Mitigation</h1>
+        <h1>Noise redistribution by stabilizer codes: an organizing view of concatenated three-qubit codes</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 24, 2026</span>
+            <span class="date">October 22, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -80,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article introduces a physics‑guided linear mapper that replaces opaque neural networks with an interpretable, data‑efficient model for error mitigation on NISQ hardware, showing up to a 50 % reduction in RMSE on three‑qubit benchmarks and sub‑millisecond inference suitable for real‑time variational workflows. By grounding the predictor in circuit depth and CNOT count—features directly linked to decoherence—the work bridges algorithmic error mitigation with device‑level calibration data, echoing recent pushes toward hybrid physics‑ML approaches that can scale without massive training sets. Although the results are currently limited to simulated noise models, the demonstrated speed and transparency make the method a promising candidate for near‑term integration on actual quantum processors, provided hardware validation confirms its robustness.
+                This article introduces a clean “noise‑redistribution” picture that shows how any stabilizer code automatically reshapes an incoming error channel into a block‑diagonal logical map, eliminating the need for artificial Pauli twirling and making the effect of each concatenation step analytically tractable. By applying the framework to the simplest three‑qubit bit‑flip and phase‑flip codes, the authors derive a concrete threshold (γ ≈ 0.30) for amplitude‑damping noise that rivals the performance of the more complex five‑qubit code, suggesting a practical route to low‑overhead error correction on near‑term devices. The work also points toward adaptive concatenation schemes that could exploit dominant logical errors in real time, although its ideal‑recovery assumptions mean experimental validation under realistic gate imperfections will be essential.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We introduce a novel physics-guided linear mapper (PGLM) for quantum error mitigation that uses seven distinct interpretable features derived from circuit complexity and device calibration data. The goal is to provide a data-efficient, interpretable, and low-latency alternative to the black-box machine learning for quantum error mitigation in noisy-intermediate scale quantum devices. Evaluated on 52 simulated benchmark circuits (1--4 qubits), PGLM demonstrates strong performance in noise-accumulation regimes: 50.1% RMSE reduction on 3-qubit circuits and 32.3% on 4-qubit circuits, while single-qubit circuits show degraded performance. A circuit-size-aware deployment policy achieves 32.6% aggregate improvement. Sub-millisecond inference enables integration into variational algorithms, and analysis of learned coefficients reveals that circuit depth and CNOT count dominate error prediction, consistent with decoherence mechanisms. Results are simulator-based with idealized noise models; hardware validation remains essential future work.</p>
+            <p>We present an organizing framework for concatenated quantum error correction based on the observation that the syndrome projection of a stabilizer code reshapes the noise channel in a code-determined manner. For any stabilizer code, one level of QEC maps the physical noise to a block-diagonal logical channel whose diagonal Pauli weights are fixed by the code geometry. Coherences between different syndrome classes vanish, and no physical Pauli twirl is required to reach this block-diagonal form. Concatenation can then be viewed as the iteration of the same redistribution step: the dominant logical error after one level selects the code used at the next. We instantiate the framework with the two smallest stabilizer codes, the bit-flip and phase-flip codes, and apply it to amplitude damping. The redistribution rules give the concatenation protocol $C_2(\hatσ_y) C_1(\hatσ_x)$, whose ideal-recovery fidelity scales as $f_l=1-\mathcal O(γ^2)$. Solving the crossover condition $F_l&gt;F_{l-1}$ in the ideal-gate limit yields a critical damping parameter $γ_c\approx0.30$; in terms of the initial channel fidelity, $f=1-1.72755γ^2$. Under the same ideal-recovery assumption, we compare the overall gate accuracy rate with that of the five-qubit code. The scope of the framework, in particular for coherent and correlated noise, is stated explicitly.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.23109v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.31007v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -101,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Physics-Guided%20Linear%20Mapper%20for%20Quantum%20Error%20Mitigation&url=https://quantumcrier.com/posts/abbc37f8.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/abbc37f8.html&title=Physics-Guided%20Linear%20Mapper%20for%20Quantum%20Error%20Mitigation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Noise%20redistribution%20by%20stabilizer%20codes%3A%20an%20organizing%20view%20of%20concatenated%20three-qubit%20codes&url=https://quantumcrier.com/posts/2da66d05.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/2da66d05.html&title=Noise%20redistribution%20by%20stabilizer%20codes%3A%20an%20organizing%20view%20of%20concatenated%20three-qubit%20codes" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

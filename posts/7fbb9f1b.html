@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Unified Quantum Neural Network Framework for Hamiltonian Learning and Emulation of Unknown Quantum Systems | Quantum Crier</title>
-    <meta name="description" content="Accurate identification of unknown quantum systems is essential for quantum computing, sensing, and control because the Hamiltonian governs quantum state evolut">
+    <title>Qubits Are Not Enough: Deflation and Measurement Limits in Variational Quantum Modal Analysis | Quantum Crier</title>
+    <meta name="description" content="Amplitude encoding stores an N-degree-of-freedom structural mode using ceiling(log2 N) qubits. This article develops an evaluation framework for variational qua">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="A Unified Quantum Neural Network Framework for Hamiltonian Learning and Emulation of Unknown Quantum Systems">
+    <meta property="og:title" content="Qubits Are Not Enough: Deflation and Measurement Limits in Variational Quantum Modal Analysis">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 22, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 23, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,15 +60,13 @@
             
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
-            
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>A Unified Quantum Neural Network Framework for Hamiltonian Learning and Emulation of Unknown Quantum Systems</h1>
+        <h1>Qubits Are Not Enough: Deflation and Measurement Limits in Variational Quantum Modal Analysis</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 24, 2026</span>
+            <span class="date">October 22, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -80,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article introduces a unified quantum neural‑network framework that learns the full density‑matrix trajectory of an unknown system, enabling direct reconstruction of its Hamiltonian and differentiable emulation rather than relying on final‑state snapshots or limited observables. By exploiting Lindblad dynamics together with chirped excitations and randomized initial states, the method achieves single‑qubit fidelity above 0.92 and demonstrates promising performance on a two‑qubit bus resonator benchmark, suggesting a powerful new tool for rapid calibration of NISQ hardware and quantum sensors. It builds on recent variational Hamiltonian‑learning approaches but shows that leveraging complete temporal information can markedly improve accuracy and convergence speed. The results are still based on synthetic data, so scaling to larger, experimentally noisy systems will be the next critical test.
+                This article shows that simply adding more qubits does not automatically yield better modal analyses; it rigorously refines the deflation condition for variational quantum eigensolvers and quantifies how approximate projectors and Pauli‑term growth limit accuracy in realistic finite‑element problems. By mapping a generalized eigenproblem to a mass‑orthonormal Hamiltonian via Cholesky whitening, the authors expose a concrete resource bottleneck—an order‑of‑magnitude increase in operator density—that explains why current VQE implementations still lag classical methods despite modest qubit counts. The study therefore provides a valuable benchmark for algorithm‑hardware co‑design and cautions practitioners that any quantum speedup in structural dynamics will require more than just larger registers, highlighting the need for smarter encodings and error mitigation strategies.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Accurate identification of unknown quantum systems is essential for quantum computing, sensing, and control because the Hamiltonian governs quantum state evolution. This work proposes a QNN based framework for black box Hamiltonian learning and quantum system emulation using full density matrix trajectory learning. Unlike approaches based only on final states or selected observables, the method exploits the complete temporal evolution of the density matrix under Lindblad dynamics. A synthetic dataset of physically admissible Hamiltonians and dissipation parameters is generated to emulate experimental measurements. The QNN learns a nonlinear mapping from control inputs to a 32-dimensional Hamiltonian coefficient vector, enabling reconstruction and differentiable emulation of the unknown system. Chirped excitation and randomized initial quantum states are incorporated to improve robustness and provide richer dynamical information. Performance is evaluated using trajectory density loss, quantum-state fidelity, and trace distance. Randomized initialization improves state-level reconstruction, increasing fidelity to 0.929 for the single qubit benchmark and 0.787 for the unknown system, while reducing trace distance to 0.124 and 0.316, respectively. In contrast, chirped excitation primarily improves optimization by accelerating convergence and reducing trajectory density loss. Finally, the learned Hamiltonian is mapped onto a physical two qubit bus resonator architecture in the dispersive regime, yielding key circuit parameters including transmon capacitances, Josephson inductances, qubit separation, and bus-resonator length. The framework therefore establishes a data-driven pathway from black box quantum system identification to physical quantum emulation, with potential applications in quantum digital twin modeling.</p>
+            <p>Amplitude encoding stores an N-degree-of-freedom structural mode using ceiling(log2 N) qubits. This article develops an evaluation framework for variational quantum eigensolvers in finite-element structural dynamics. A Cholesky transformation maps the generalized eigenproblem to a symmetric mass-orthonormal Hamiltonian, ensuring Euclidean quantum-state orthogonality equals structural mass orthogonality. For higher modes, the deflation penalty condition is sharpened to a necessary-and-sufficient threshold, with a Davis-Kahan bound quantifying effects of approximate projectors. Numerical studies separate mapping correctness, ansatz expressibility, preprocessing, Pauli growth, finite-shot uncertainty, and damage localization. For 128-DOF chains, consistent-mass whitening increases transformed-operator density from 0.023 to 0.308 and Pauli terms from 576 to 2950. Exact state-vector experiments show qubit count and circuit expressibility are distinct. At 10^5 shots per Pauli term, first-mode frequency RMS error is 2.45%. In an oracle-state study, 10% stiffness loss is localized in 84.5% of trials. Results sharpen the deflation condition, quantify resource bottlenecks, and claim no speedup.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.23025v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.31393v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -101,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=A%20Unified%20Quantum%20Neural%20Network%20Framework%20for%20Hamiltonian%20Learning%20and%20Emulation%20of%20Unknown%20Quantum%20Systems&url=https://quantumcrier.com/posts/7821ae7b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7821ae7b.html&title=A%20Unified%20Quantum%20Neural%20Network%20Framework%20for%20Hamiltonian%20Learning%20and%20Emulation%20of%20Unknown%20Quantum%20Systems" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Qubits%20Are%20Not%20Enough%3A%20Deflation%20and%20Measurement%20Limits%20in%20Variational%20Quantum%20Modal%20Analysis&url=https://quantumcrier.com/posts/7fbb9f1b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7fbb9f1b.html&title=Qubits%20Are%20Not%20Enough%3A%20Deflation%20and%20Measurement%20Limits%20in%20Variational%20Quantum%20Modal%20Analysis" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Implementation of nonlocal multi-photon interference by mode swapping | Quantum Crier</title>
-    <meta name="description" content="Multi-photon interference can be observed using independently generated photons as input. In the most simple case, these photons meet up at a beam splitter, res">
+    <title>Screening strongly correlated materials in solid oxide cells with quantum simulation | Quantum Crier</title>
+    <meta name="description" content="We develop an end-to-end framework for assessing a quantum-computing application in industrial materials science: the screening of strongly correlated oxygen-el">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Implementation of nonlocal multi-photon interference by mode swapping">
+    <meta property="og:title" content="Screening strongly correlated materials in solid oxide cells with quantum simulation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 22, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 23, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,13 +56,21 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Implementation of nonlocal multi-photon interference by mode swapping</h1>
+        <h1>Screening strongly correlated materials in solid oxide cells with quantum simulation</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 24, 2026</span>
+            <span class="date">October 22, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +82,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article demonstrates a practical route to non‑local multi‑photon interference by swapping optical modes rather than bringing photons together on a single beam splitter, thereby creating entanglement between distant interferometers. The technique extends the classic Hong‑Ou‑Mandel effect into a distributed setting, aligning with recent efforts to build scalable quantum networks where nodes must share multipartite correlations without direct physical overlap. By enabling interference across spatially separated channels, it opens new possibilities for multi‑party protocols such as secret sharing and distributed sensing, though experimental implementation will still need low‑loss mode conversion and precise timing control.
+                This article shows how a full‑stack quantum workflow could tackle the notoriously hard problem of screening strongly correlated oxygen‑electrode materials for solid‑oxide fuel and electrolysis cells, moving beyond classical density‑functional tricks to quantum impurity solvers that deliver finite‑temperature Green’s functions. By embedding GW‑based methods such as GW+DMFT or SEET within a quantum simulation of the active space, the authors outline a concrete path toward quantum advantage in predicting vacancy formation energies and migration barriers—key metrics for electrolyte‑electrode performance. If the projected qubit counts and thermal‑state preparation costs can be met with near‑term error‑corrected hardware, the approach could dramatically shorten materials discovery cycles for high‑efficiency energy conversion devices.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Multi-photon interference can be observed using independently generated photons as input. In the most simple case, these photons meet up at a beam splitter, resulting in quantum interference between transmission and reflection of the photons. Here, we show that non-local multi-photon interference can be implemented by using a mode swap operation to generate entanglement between the photons detected in the outputs of two spatially separated interferometers. The spatial separation of the output photons makes this implementation of multi-photon interference particularly suitable for quantum protocols that distribute quantum information to different parties.</p>
+            <p>We develop an end-to-end framework for assessing a quantum-computing application in industrial materials science: the screening of strongly correlated oxygen-electrode materials for SOFCs and SOECs. We formulate the materials problem in terms of interface observables including oxygen-vacancy formation energies, vacancy migration barriers, and electronic conductivity. We describe how these observables can be obtained using a diagrammatic GW-based embedding, either GW+DMFT or self-energy embedding theory (SEET), applied to a DFT-screened shortlist. The atomistic electrode/electrolyte interface defines the electronic structure problem from which the correlated impurity models are constructed. Quantum impurity solvers would provide the finite-temperature impurity Green&#39;s functions required by the embedding. The computational challenges that classical solvers may encounter as the interacting active space grows, together with the polynomial scaling of quantum Hamiltonian simulation for efficiently represented discretized models, open an opportunity for quantum advantage. We identify the benchmarks needed to assess this opportunity through convergence of vacancy and migration energetics and comparison with the best applicable classical solvers. We provide illustrative logical qubit counts and identify the thermal state preparation, simulation, measurement, and repeated-solve costs needed for a complete resource assessment. We connect microscopic observables to macroscopic engineering metrics using a continuum model for mixed ionic--electronic conducting oxygen electrodes that couples oxygen surface exchange, solid-state oxygen transport, electrode microstructure, and finite electrode thickness. Finally, we estimate the potential worldwide business value of improved electrode materials under SOFC and SOEC deployment scenarios informed by public technical targets and electrolyser deployment data.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.22850v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.31591v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +103,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Implementation%20of%20nonlocal%20multi-photon%20interference%20by%20mode%20swapping&url=https://quantumcrier.com/posts/5d429eef.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5d429eef.html&title=Implementation%20of%20nonlocal%20multi-photon%20interference%20by%20mode%20swapping" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Screening%20strongly%20correlated%20materials%20in%20solid%20oxide%20cells%20with%20quantum%20simulation&url=https://quantumcrier.com/posts/28edd80f.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/28edd80f.html&title=Screening%20strongly%20correlated%20materials%20in%20solid%20oxide%20cells%20with%20quantum%20simulation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
