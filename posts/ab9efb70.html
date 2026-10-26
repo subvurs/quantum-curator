@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Switchable heavy-hole/light-hole spin qubit | Quantum Crier</title>
-    <meta name="description" content="Compressively strained Ge quantum wells in planar SiGe/Ge heterostructures are the state-of-the-art platform for hole spin qubits. While they exhibit robust coh">
+    <title>Entangled logical qubits on a superconducting quantum processor | Quantum Crier</title>
+    <meta name="description" content="We demonstrate high-fidelity logical qubit operations using \texttt{ibm\_phoenix}, a square-lattice array of 120 coupled superconducting qubits that are capable">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Switchable heavy-hole/light-hole spin qubit">
+    <meta property="og:title" content="Entangled logical qubits on a superconducting quantum processor">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 25, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,11 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
         </div>
-        <h1>Switchable heavy-hole/light-hole spin qubit</h1>
+        <h1>Entangled logical qubits on a superconducting quantum processor</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 26, 2026</span>
+            <span class="date">October 23, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article introduces a truly hybrid qubit that can be toggled between heavy‑hole and light‑hole regimes in a single Ge heterostructure, marrying the long coherence times of HH spins with the strong, linear spin‑orbit coupling of LH states for fast electric‑dipole driving. By shuttling the carrier between adjacent wells, the authors demonstrate a sweet‑spot where Rabi rates near 100 MHz coexist with predicted $T_2$ times an order of magnitude longer than pure LH devices, directly addressing the long‑standing trade‑off that has limited Ge‑based spin qubits. The work builds on recent advances in strained‑Ge quantum wells and positions switchable HH/LH platforms as a promising route toward scalable, high‑fidelity control without sacrificing coherence. If experimental implementations confirm these predictions, the approach could simplify device architectures by eliminating the need for separate HH‑only or LH‑only chips while still delivering gate speeds compatible with error‑corrected quantum processors.
+                This article marks a concrete step toward fault‑tolerant quantum computing by showing that logical qubits encoded in surface codes can be created, entangled and teleported on a real superconducting processor with error rates below the 1 % threshold for each round of error correction. By combining component selection, fast reset to suppress leakage, and noise‑aware decoding, the IBM Phoenix team pushes distance‑5 surface‑code performance into a regime where logical operations begin to outpace raw physical errors—a milestone that aligns with recent advances in lattice‑surgery protocols and multi‑round stabilizer cycles reported by other groups. The demonstrated logical Bell fidelities above 93 % and teleportation of gates suggest that near‑term applications such as error‑corrected quantum sensing or small‑scale algorithmic primitives could soon be run on hardware that already incorporates the essential ingredients for scalable fault tolerance.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Compressively strained Ge quantum wells in planar SiGe/Ge heterostructures are the state-of-the-art platform for hole spin qubits. While they exhibit robust coherence times, they possess weak intrinsic spin-orbit interaction (SOI) due to the heavy-hole (HH) character of the wavefunction. Recently, light-hole (LH) qubits were proposed in GeSn/Ge heterostructures, offering strong, intrinsic, linear-in-momentum SOI. In this work, we propose a switchable HH-LH spin qubit in a bilayer Ge heterostructure with SiGeSn barriers, combining the advantages of HH and LH devices. The character of the qubit can be changed by shuttling from an LH well to an HH well, which also enables fast, hopping-based single-qubit rotations. Additionally, we observe an HH-LH resonance introduced by the in-plane confinement, resulting in $g$-factor peaks and first-order charge noise sweet spots. Our calculations reveal a sweet spot with Rabi frequencies on the order of 100 MHz, comparable to the LH regime, but with a more than tenfold increase in coherence time, on the order of 100 $μ$s.</p>
+            <p>We demonstrate high-fidelity logical qubit operations using \texttt{ibm\_phoenix}, a square-lattice array of 120 coupled superconducting qubits that are capable of fast reset. Using strategies to exclude underperforming components together with noise informed decoding, we routinely produce surface codes at distance-3 and distance-5 with logical error per round below 1\%. We demonstrate entanglement between two logical qubits, where logical Bell-state fidelities above 93\% are observed for entanglement created via lattice surgery. With three logical qubits and lattice surgery, we perform logical teleportation of a range of states and gates, observing fidelities in the range 78\% - 93\%. Using reset to reduce qubit leakage, we show that repeated rounds of stabilizer measurements continue to exhibit improvements in a stability experiment up to $\sim 2\cdot 10^{-7}$ over 170 measurement rounds.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.25914v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.32347v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Switchable%20heavy-hole/light-hole%20spin%20qubit&url=https://quantumcrier.com/posts/9e30cb68.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/9e30cb68.html&title=Switchable%20heavy-hole/light-hole%20spin%20qubit" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Entangled%20logical%20qubits%20on%20a%20superconducting%20quantum%20processor&url=https://quantumcrier.com/posts/ab9efb70.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/ab9efb70.html&title=Entangled%20logical%20qubits%20on%20a%20superconducting%20quantum%20processor" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

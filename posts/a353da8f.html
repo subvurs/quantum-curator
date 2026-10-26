@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bosonic Encodings for Hermite-Galerkin Discretizations of High-Dimensional PDEs and Bayesian Inverse Problems | Quantum Crier</title>
-    <meta name="description" content="The Koopman-von Neumann framework has been proposed to design quantum algorithms for non-linear dynamics. It maps a non-linear ordinary differential equation to">
+    <title>Finite Nonsignalling Resources Suffice to Simulate Entangled Qubits | Quantum Crier</title>
+    <meta name="description" content="A longstanding question in Bell nonlocality is whether finite-alphabet nonsignalling resources can reproduce the continuum of measurement correlations of partia">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Bosonic Encodings for Hermite-Galerkin Discretizations of High-Dimensional PDEs and Bayesian Inverse Problems">
+    <meta property="og:title" content="Finite Nonsignalling Resources Suffice to Simulate Entangled Qubits">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 25, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Bosonic Encodings for Hermite-Galerkin Discretizations of High-Dimensional PDEs and Bayesian Inverse Problems</h1>
+        <h1>Finite Nonsignalling Resources Suffice to Simulate Entangled Qubits</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 26, 2026</span>
+            <span class="date">October 23, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article pushes the Koopman‑von Neumann line of research forward by showing how bosonic encodings of Hermite‑Galerkin discretizations can be turned into concrete qubit representations with provable convergence for a wide class of linear PDEs, including those that arise in Bayesian inverse problems. By achieving a Θ(m log N) scaling and supplying efficient block‑encodings of the truncated operators, it bridges the gap between abstract bosonic formulations and practical quantum algorithms for high‑dimensional dynamics and ground‑state preparation—areas where recent quantum‑PDE solvers have struggled with resource overheads. The work is especially relevant for developers of quantum statistical‑inference tools, though its guarantees rely on fairly strong regularity and stability assumptions that must be verified in each application.
+                This article settles a decades‑old open problem by proving that any pure two‑qubit entangled state can be reproduced exactly with only a finite number of PR‑boxes and shared randomness, eliminating the need for continuous‑alphabet resources or communication. By giving an explicit worst‑case bound that scales modestly with the Schmidt angle, it clarifies the resource hierarchy in Bell nonlocality and shows that the apparent continuity of quantum correlations does not demand infinite‑dimensional simulators. While the construction is presently a theoretical tool rather than a hardware blueprint, it opens new avenues for efficient classical‑plus‑non‑signalling simulations of entangled systems and deepens our understanding of what underlies quantum advantage in sensing and communication protocols.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The Koopman-von Neumann framework has been proposed to design quantum algorithms for non-linear dynamics. It maps a non-linear ordinary differential equation to a linear partial differential equation (PDE) governing a probability amplitude. Previous works represents this amplitude in the Hermite-function basis, equivalently as a bosonic state, and truncates the total Hermite degree to obtain a representation over $Θ(m\log N)$ qubits, where $N$ is the number of variables and $m$ the truncation order. We extend this approach to a broader class of linear PDEs whose differential operators have a structured polynomial form. We prove convergence of the truncation for both time-dependent dynamics and gapped ground-state problems under explicit regularity and stability assumptions. We then introduce a qubit encoding that supports efficient block encodings of the truncated operators. Finally, we apply the framework to Bayesian inverse problems with Gaussian priors and observation noise, reducing posterior-state preparation to the preparation of a structured Hamiltonian&#39;s ground state.</p>
+            <p>A longstanding question in Bell nonlocality is whether finite-alphabet nonsignalling resources can reproduce the continuum of measurement correlations of partially entangled qubits. Here we resolve this problem by showing that every fixed pure two-qubit state admits an exact simulation of all local projective-measurement statistics using shared randomness and finitely many Popescu-Rohrlich (PR) boxes, without communication or postselection. The boxes operate in parallel, with a worst-case bound independent of the measurement settings: at most $128\cot^4θ$ calls for the Schmidt state $\cosθ|00\rangle+\sinθ|11\rangle$, $0&lt;θ&lt;π/4$. The key is an exact finite-selection method that reduces input-dependent continuous sampling to a choice from a fixed-length shared random list, implemented through a finite PR-box network. The construction extends to arbitrary mixed two-qubit states and local binary-outcome POVMs. This reveals a fundamental separation between the continuity of quantum measurement correlations and the alphabet size of the resources needed to simulate them, shedding light on the resource-theoretic structure of Bell nonlocality.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.26268v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.32319v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Bosonic%20Encodings%20for%20Hermite-Galerkin%20Discretizations%20of%20High-Dimensional%20PDEs%20and%20Bayesian%20Inverse%20Problems&url=https://quantumcrier.com/posts/ad4b25e7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/ad4b25e7.html&title=Bosonic%20Encodings%20for%20Hermite-Galerkin%20Discretizations%20of%20High-Dimensional%20PDEs%20and%20Bayesian%20Inverse%20Problems" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Finite%20Nonsignalling%20Resources%20Suffice%20to%20Simulate%20Entangled%20Qubits&url=https://quantumcrier.com/posts/a353da8f.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a353da8f.html&title=Finite%20Nonsignalling%20Resources%20Suffice%20to%20Simulate%20Entangled%20Qubits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

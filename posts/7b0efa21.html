@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ColibriTD Raises €4M to Expand Quantum Simulation Software | Quantum Crier</title>
-    <meta name="description" content="Insider Brief Press release – ColibriTD, the French quantum software company specializing in multiphysics simulation, today announced the closing of a €4M Seed ">
+    <title>Classical Pre-Training of Large Shallow Parametrized Quantum Circuits through Pauli Propagation and deployment on Quantum Hardware | Quantum Crier</title>
+    <meta name="description" content="Scaling parametrized quantum circuits to a larger number of qubits is a central challenge in Quantum Machine Learning: gradient estimation via the parameter-shi">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="ColibriTD Raises €4M to Expand Quantum Simulation Software">
+    <meta property="og:title" content="Classical Pre-Training of Large Shallow Parametrized Quantum Circuits through Pauli Propagation and deployment on Quantum Hardware">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/08/2026-08-27_14-41.png">
-<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/08/2026-08-27_14-41.png">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 25, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,24 +56,21 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/industry.html" class="topic-tag topic-industry">industry</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
             
         </div>
-        <h1>ColibriTD Raises €4M to Expand Quantum Simulation Software</h1>
+        <h1>Classical Pre-Training of Large Shallow Parametrized Quantum Circuits through Pauli Propagation and deployment on Quantum Hardware</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>The Quantum Insider</strong></span>
-            <span class="date">August 27, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">October 23, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://thequantuminsider.com/wp-content/uploads/2026/08/2026-08-27_14-41.png" alt="ColibriTD Raises €4M to Expand Quantum Simulation Software" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -85,19 +78,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article matters because it signals growing investor confidence that sophisticated quantum‑enabled multiphysics simulators are becoming a critical bottleneck for industry adoption of quantum computers. ColibriTD’s €4 million seed round will accelerate its H‑DES platform, which promises to bridge classical and quantum models for high‑dimensional electronic‑structure problems—a capability that recent hardware advances from IBM, Rigetti and Google have made increasingly tractable. By targeting sectors such as materials design and drug discovery, the company is positioning itself alongside other emerging quantum software firms that are turning simulation from a research curiosity into a commercial workhorse. The funding also underscores a broader trend: as qubit counts rise, the market is shifting focus toward robust, application‑ready software stacks that can translate raw quantum power into tangible engineering value.
+                This article shows that a broad class of quantum‑machine‑learning models can be pre‑trained entirely on classical hardware by propagating observables backward through the circuit with Pauli propagation, sidestepping the costly parameter‑shift gradients that have limited scalability so far. By introducing weight‑ and degree‑based truncations plus pruning heuristics, the authors make the method tractable for 64‑qubit shallow ansätze and demonstrate successful deployment on IBM’s ibm_berlin processor for both a VQE Ising study and a binary‑image generative model. The result is a practical pathway to train larger quantum models with far fewer parametrized gates than IQP‑style circuits, reducing transpilation overhead and bringing near‑term quantum advantage within reach—though the approach currently relies on shallow depth and approximation choices that must be validated for deeper architectures.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Insider Brief Press release – ColibriTD, the French quantum software company specializing in multiphysics simulation, today announced the closing of a €4M Seed round led by Earlybird Venture Capital, with participation from, SymbiaVC and Medin VC. The round follows Earlybird’s initial €1M Pre-Seed investment in the company and will be deployed across R&amp;D on H-DES, […]</p>
+            <p>Scaling parametrized quantum circuits to a larger number of qubits is a central challenge in Quantum Machine Learning: gradient estimation via the parameter-shift rule quickly becomes prohibitively expensive, while gradient-free optimizers offer limited convergence guarantees. We apply the Pauli propagation framework to a broad class of Quantum Machine Learning problems in which the loss is expressed as a function of expectation values of the circuit&#39;s observables, while keeping the relevant quantity of interest, such as the quantum state or its samples, classically intractable to compute. By propagating the observables backward through the circuit, we obtain an explicit parametric expression for the loss that can be minimized entirely on classical hardware. We also present complementary strategies to make propagation tractable at large scale, including weight-based and degree-based truncations and pruning heuristics. We demonstrate the approach on two benchmarks run on 64-qubit circuits: Variational Quantum Eigensolver on a two-dimensional Ising model, and training of a discrete-type generative model for binary images. In both cases, the classically pre-trained parameters are deployed on the IBM quantum processor ibm_berlin. For generative learning, we additionally show that the circuits considered here require substantially fewer parametrized gates than IQP-style ansätze, reducing transpilation overhead and making deployment on current quantum hardware feasible.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://thequantuminsider.com/2026/08/27/colibritd-raises-4m-to-expand-quantum-simulation-software/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at The Quantum Insider &rarr;
+            <a href="https://arxiv.org/abs/2610.32571v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -106,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=ColibriTD%20Raises%20%E2%82%AC4M%20to%20Expand%20Quantum%20Simulation%20Software&url=https://quantumcrier.com/posts/0ef45001.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0ef45001.html&title=ColibriTD%20Raises%20%E2%82%AC4M%20to%20Expand%20Quantum%20Simulation%20Software" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Classical%20Pre-Training%20of%20Large%20Shallow%20Parametrized%20Quantum%20Circuits%20through%20Pauli%20Propagation%20and%20deployment%20on%20Quantum%20Hardware&url=https://quantumcrier.com/posts/7b0efa21.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7b0efa21.html&title=Classical%20Pre-Training%20of%20Large%20Shallow%20Parametrized%20Quantum%20Circuits%20through%20Pauli%20Propagation%20and%20deployment%20on%20Quantum%20Hardware" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

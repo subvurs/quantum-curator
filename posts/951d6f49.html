@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dissipatively Stabilized 0-n Fock Qubits for Noise-Biased Quantum Computing | Quantum Crier</title>
-    <meta name="description" content="Noise-biased qubits have bit-flip errors that are exponentially suppressed relative to phase-flip errors, and offer a promising route toward fault-tolerant quan">
+    <title>Photon-Number Discrimination from Increasing Time-of-Arrival Separation in Wide Superconducting Microstrip Single-Photon Detectors | Quantum Crier</title>
+    <meta name="description" content="Measurements of photon-number-dependent time-of-arrival (TOA) distributions in wide NbN superconducting microstrip single-photon detectors (SMSPDs) are presente">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Dissipatively Stabilized 0-n Fock Qubits for Noise-Biased Quantum Computing">
+    <meta property="og:title" content="Photon-Number Discrimination from Increasing Time-of-Arrival Separation in Wide Superconducting Microstrip Single-Photon Detectors">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 25, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,11 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
         </div>
-        <h1>Dissipatively Stabilized 0-n Fock Qubits for Noise-Biased Quantum Computing</h1>
+        <h1>Photon-Number Discrimination from Increasing Time-of-Arrival Separation in Wide Superconducting Microstrip Single-Photon Detectors</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 26, 2026</span>
+            <span class="date">October 23, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows how encoding a qubit in the ground state and a high‑lying Fock level of a transmon can preserve an extreme noise bias even during two‑qubit gates, pushing bit‑flip errors down to the 10⁻⁸ range. By using engineered dissipation through a multi‑mode lossy filter, the authors demonstrate that ancilla‑mediated controlled‑X operations on cat qubits retain their bias, enabling repetition‑code syndrome extraction with logical error rates in the megaquop regime at modest distance 9. If experimentally realized, such “0‑n” Fock qubits could dramatically reduce overhead for biased‑noise error‑correction schemes and bring fault‑tolerant architectures closer to practical deployment.
+                This article demonstrates that wide NbN superconducting microstrip single‑photon detectors can discriminate photon number up to n = 8 by exploiting increasingly separated time‑of‑arrival peaks, achieving a pairwise assignment fidelity of 99.6 %—a stark contrast to the compressed timing shifts seen in conventional narrow‑wire SNSPDs. By turning timing information into a reliable photon‑number readout, the work offers a hardware‑efficient alternative to multiplexed or transition‑edge sensor approaches, potentially simplifying multiphoton state tomography and photonic quantum‑information protocols. It builds on recent advances in SNSPD speed and efficiency, but the technique’s performance still depends on maintaining low jitter at lower photon numbers and on precise microstrip geometry. Readers should care because scalable, high‑fidelity number resolution is a key bottleneck for many optical quantum computing applications.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Noise-biased qubits have bit-flip errors that are exponentially suppressed relative to phase-flip errors, and offer a promising route toward fault-tolerant quantum computing. However, this bias can be compromised during gate operations with non-biased control qubits. To address this limitation, we propose a &#34;0-n&#34; Fock qubit architecture that maintains the noise bias by encoding information in the ground state and n-th excited state of a nonlinear multi-level system, such as a transmon. This encoding is achieved via a dissipative stabilization that acts as decay and gain for lower and upper intermediate levels, respectively. We first analytically demonstrate that bit-flip errors are exponentially suppressed with the number of levels. Then, we present a practical implementation using a multi-mode lossy filter to achieve the frequency-selective dissipation. Finally, we numerically demonstrate that bit-flip probabilities approaching $10^{-8}$ are achievable for controlled-X gates on cat qubits using the 0-n qubit as an ancilla with $n \geq 9$ (i.e. ten or more levels), for realistic experimental parameters. Building on this, we simulate syndrome extraction in a repetition code, achieving logical error rates in the megaquop regime with only a distance of $d=9$.</p>
+            <p>Measurements of photon-number-dependent time-of-arrival (TOA) distributions in wide NbN superconducting microstrip single-photon detectors (SMSPDs) are presented. Two \SI{10}{\um}-long devices with widths of \SI{3.2}{\um} and \SI{6.4}{\um} are characterized under pulsed \SI{515}{nm} excitation. The TOA histograms are described by sums of exponentially modified Gaussian (EMG) components, with the wider device exhibiting components assigned to photon numbers up to \(n=8\). Adjacent TOA peaks become more distinguishable relative to their widths at higher photon number, in contrast to the compression of neighboring photon-number timing shifts observed in conventional narrow-wire SNSPDs. For the components assigned to \(n=7\) and \(n=8\), the FWHM-normalized peak separation is \(2.15\), and the fitted EMG distributions yield an equal-prior pairwise TOA-assignment fidelity of \(99.6\%\). The EMG exponential-tail parameter \(τ_n\) decreases strongly with photon number, while the Gaussian-location parameter \(μ_n\) continues to shift between neighboring components. A phenomenological model motivated by absorption-site-dependent vortex processes and collective current redistribution captures these timing trends. These results support wide SMSPDs as a platform for TOA-based photon-number discrimination at high photon number, relevant to multiphoton-state characterization and photonic quantum information processing. The same geometry also provides a setting to examine how the spatial distribution of photon absorption affects vortex-assisted detection.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.25959v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.32154v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Dissipatively%20Stabilized%200-n%20Fock%20Qubits%20for%20Noise-Biased%20Quantum%20Computing&url=https://quantumcrier.com/posts/7ef51519.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7ef51519.html&title=Dissipatively%20Stabilized%200-n%20Fock%20Qubits%20for%20Noise-Biased%20Quantum%20Computing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Photon-Number%20Discrimination%20from%20Increasing%20Time-of-Arrival%20Separation%20in%20Wide%20Superconducting%20Microstrip%20Single-Photon%20Detectors&url=https://quantumcrier.com/posts/951d6f49.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/951d6f49.html&title=Photon-Number%20Discrimination%20from%20Increasing%20Time-of-Arrival%20Separation%20in%20Wide%20Superconducting%20Microstrip%20Single-Photon%20Detectors" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
