@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluating Quantum Kernel Methods for Track-Based Classification in High-Energy Physics | Quantum Crier</title>
-    <meta name="description" content="We present a systematic design for large-scale quantum kernel classification, demonstrated through a quantum support vector classifier (QSVC) for particle-track">
+    <title>Quantum-Classical Framework for the Joint Optimization of Bidirectional EV Charging and Trip Assignment | Quantum Crier</title>
+    <meta name="description" content="The integration of bidirectional (V2G) charging allows electric vehicle (EV) fleets to operate as distributed energy assets. However, the joint optimization of ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Evaluating Quantum Kernel Methods for Track-Based Classification in High-Energy Physics">
+    <meta property="og:title" content="Quantum-Classical Framework for the Joint Optimization of Bidirectional EV Charging and Trip Assignment">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 27, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
         </div>
-        <h1>Evaluating Quantum Kernel Methods for Track-Based Classification in High-Energy Physics</h1>
+        <h1>Quantum-Classical Framework for the Joint Optimization of Bidirectional EV Charging and Trip Assignment</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 27, 2026</span>
+            <span class="date">October 26, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article demonstrates that quantum kernel classifiers can be scaled to the hundred‑thousand‑event regime needed for realistic high‑energy‑physics analyses, a size an order of magnitude larger than any previous QML study in the field. By showing near‑perfect recall on ideal simulations and only modest degradation under a calibrated noise model, it provides concrete evidence that quantum support‑vector machines can retain a signal‑identification edge even on noisy NISQ hardware. The work therefore highlights both the promise of quantum embeddings for scientific data classification and the urgent need for improved error mitigation to translate that advantage into practical experiments.
+                This article shows how a hybrid quantum‑classical Benders decomposition can tackle the notoriously hard joint scheduling of bidirectional EV charging and trip assignment, introducing logic‑based conflict cuts that sidestep the qubit overhead normally required for feasibility constraints. By sparsifying the state‑of‑charge formulation and demonstrating MILP‑optimal results on benchmark problems—and even running a tiny instance on IBM’s quantum processor—the work bridges recent advances in quantum optimization (e.g., QAOA and annealing) with real‑world energy‑mobility challenges. While still at proof‑of‑concept scale, the approach hints that future quantum accelerators could become practical tools for managing distributed energy assets in smart‑grid fleets.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We present a systematic design for large-scale quantum kernel classification, demonstrated through a quantum support vector classifier (QSVC) for particle-track classification using centroid-based CLAS12 drift-chamber features. Each event is encoded into a six-qubit state via a fully entangled ZZFeatureMap, whose fidelities define a quantum kernel within a standard SVM framework. By decoupling state preparation from kernel construction and distributing evaluation across a multi-node MPI-based HPC allocation, the approach scales to 1.0x10^5 training and 4.0x10^5 test events with an exactly constructed kernel matrix, to our knowledge more than an order of magnitude larger than prior high-energy-physics quantum-kernel studies. Benchmarked against linear, polynomial, RBF, and sigmoid SVM kernels and extremely randomized trees (ERT), the ideal QSVC achieves the highest recall (99.99%) among all models. Under a calibrated hardware noise model (FakeMumbaiV2, 500 training / 2,000 test events), AUC falls from 0.9985 to 0.9671 and peak significance improvement falls from 17.5 to ~3.5, yet recall remains at 99.51% -- indicating this signal-retention advantage is attenuated but not eliminated by circuit-level decoherence. Geometric analysis of the quantum embedding shows near-orthogonal inter-class states with coherent intra-class neighborhoods under ideal simulation; under noise this structure compresses toward the maximally mixed state while preserving its relative ordering. These results demonstrate a scalable, reproducible workflow for quantum kernel experimentation at HEP-relevant scale, quantifying the practical cost of realistic hardware noise on quantum-enhanced classification.</p>
+            <p>The integration of bidirectional (V2G) charging allows electric vehicle (EV) fleets to operate as distributed energy assets. However, the joint optimization of charging schedules and trip assignments is NP-hard. Moreover, bidirectional power flows create non-monotonic state-of-charge (SoC) dynamics that weaken standard dual-based Benders cuts. We propose a hybrid quantum-classical Benders decomposition framework. To overcome the qubit overhead associated with encoding feasibility cuts, we introduce logic-based conflict cuts, which require near-zero auxiliary qubits. Furthermore, we develop a sparse recursive SoC formulation that reduces the constraint-matrix density by a factor of T/3 in the horizon length T. We demonstrate that our framework recovers MILP-optimal solutions on benchmark instances with a low auxiliary-qubit budget, and, as a minimal proof of concept, we execute a small instance end-to-end on IBM quantum hardware.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.27333v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.35300v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Evaluating%20Quantum%20Kernel%20Methods%20for%20Track-Based%20Classification%20in%20High-Energy%20Physics&url=https://quantumcrier.com/posts/fe7fb324.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/fe7fb324.html&title=Evaluating%20Quantum%20Kernel%20Methods%20for%20Track-Based%20Classification%20in%20High-Energy%20Physics" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Quantum-Classical%20Framework%20for%20the%20Joint%20Optimization%20of%20Bidirectional%20EV%20Charging%20and%20Trip%20Assignment&url=https://quantumcrier.com/posts/4c43208e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/4c43208e.html&title=Quantum-Classical%20Framework%20for%20the%20Joint%20Optimization%20of%20Bidirectional%20EV%20Charging%20and%20Trip%20Assignment" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

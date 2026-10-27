@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Types of Quantum Computers: 6 Major Quantum Computing Approaches | Quantum Crier</title>
-    <meta name="description" content="Insider Brief IBM and IonQ use very different physical systems to build quantum computers. IBM uses superconducting circuits that must be cooled to extremely lo">
+    <title>Comparing classical and quantum QUBO solvers: optimality, trajectory diagnostics, and limits of solver selection | Quantum Crier</title>
+    <meta name="description" content="Comparing solvers for quadratic unconstrained binary optimization (QUBO) requires distinguishing solution quality from optimality certification. We compare clas">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Types of Quantum Computers: 6 Major Quantum Computing Approaches">
+    <meta property="og:title" content="Comparing classical and quantum QUBO solvers: optimality, trajectory diagnostics, and limits of solver selection">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2023/06/2026-08-27_21-21.png">
-<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2023/06/2026-08-27_21-21.png">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 27, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,22 +56,17 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
         </div>
-        <h1>Types of Quantum Computers: 6 Major Quantum Computing Approaches</h1>
+        <h1>Comparing classical and quantum QUBO solvers: optimality, trajectory diagnostics, and limits of solver selection</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>The Quantum Insider</strong></span>
-            <span class="date">August 28, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">October 26, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://thequantuminsider.com/wp-content/uploads/2023/06/2026-08-27_21-21.png" alt="Types of Quantum Computers: 6 Major Quantum Computing Approaches" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -83,19 +74,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This piece demystifies why the hardware substrate—superconducting circuits versus trapped‑ion arrays—remains a decisive factor in speed, connectivity, and cryogenic overhead as the industry races toward fault‑tolerant machines. By contrasting IBM’s aggressive roadmap for 1 MHz gate times with IonQ’s naturally low error rates and all‑optical interconnects, it places today’s engineering trade‑offs into the broader context of competing scaling strategies. Readers will appreciate how these differences shape software toolchains, cloud access pricing, and ultimately which platform may dominate specific application niches, while also noting that neither approach has yet solved the full suite of scalability challenges.
+                This article matters because it provides the most systematic head‑to‑head benchmark yet between classical exact solvers, tensor‑network methods and a fixed‑schedule quantum algorithm on realistic QUBO instances up to 128 variables, revealing that mature branch‑and‑cut techniques still outpace current quantum approaches for solution quality and optimality certification. By dissecting trajectory diagnostics such as bond dimension growth and identifying warm‑start trapping in DMRG sweeps, the authors show where tensor‑network methods have untapped potential but also why simple rules for solver selection remain elusive. The finding that a linear‑ramp QAOA offers no advantage over classical comparators underscores the need for more sophisticated quantum schedules or hybrid strategies before quantum hardware can claim practical superiority on combinatorial optimization problems.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Insider Brief IBM and IonQ use very different physical systems to build quantum computers. IBM uses superconducting circuits that must be cooled to extremely low temperatures, while IonQ traps charged atoms using electromagnetic fields. Both approaches can create and control quantum states, but they come with different engineering challenges. Building a useful qubit is difficult […]</p>
+            <p>Comparing solvers for quadratic unconstrained binary optimization (QUBO) requires distinguishing solution quality from optimality certification. We compare classical, tensor-network, and fixed-schedule quantum approaches on 180 benchmark instances from ten families with 14-48 variables, supplemented by harder synthetic instances with known optimal solutions, extending to 128 variables. On the main benchmark, a general-purpose branch-and-cut solver matches all reference energies and certifies 176 instances within a 600,s cap. When the known optima are moved to randomly chosen bitstrings, the search comparison changes: at n = 48 the branch-and-cut solver finds only four of ten optima and certifies none, whereas parallel tempering reaches every optimum in every tested run at a 60,s budget. Structural and trajectory diagnostics explain aspects of tensor-network performance. A treewidth bound ranks trajectory bond-dimension demand at Spearman $ρ= 0.78$ in sample and $0.73$ out of sample, but provides only a coarse runtime estimate. Controlled experiments identify excited-state trapping during warm-started density-matrix renormalization group (DMRG) sweeps and demonstrate mitigation by restarting the variational search. These diagnostics do not yield a validated solver-selection rule. The tested linear-ramp quantum approximate optimization algorithm (LR-QAOA) runs offer no solution-quality improvement over the classical comparators. In the separate Wishart scaling study, on the harder setting, none of the classical methods tested reaches the optimum at the sampled sizes from n = 72 onward within the tested budgets. While this does not provide evidence for quantum advantage, it identifies a domain for further investigation.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://thequantuminsider.com/2026/08/28/main-types-of-quantum-computers-explained/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at The Quantum Insider &rarr;
+            <a href="https://arxiv.org/abs/2610.35126v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -104,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Types%20of%20Quantum%20Computers%3A%206%20Major%20Quantum%20Computing%20Approaches&url=https://quantumcrier.com/posts/9d088af6.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/9d088af6.html&title=Types%20of%20Quantum%20Computers%3A%206%20Major%20Quantum%20Computing%20Approaches" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Comparing%20classical%20and%20quantum%20QUBO%20solvers%3A%20optimality%2C%20trajectory%20diagnostics%2C%20and%20limits%20of%20solver%20selection&url=https://quantumcrier.com/posts/e1a67718.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/e1a67718.html&title=Comparing%20classical%20and%20quantum%20QUBO%20solvers%3A%20optimality%2C%20trajectory%20diagnostics%2C%20and%20limits%20of%20solver%20selection" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

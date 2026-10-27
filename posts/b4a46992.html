@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detuning- and Stark-robust Rydberg gates | Quantum Crier</title>
-    <meta name="description" content="Rydberg entangling gates driven by a two-photon transition in alkali atoms suffer from an adverse scaling of light-shift-induced errors. Robustness to such detu">
+    <title>A Control Line Multiplexing Framework for Scalable Quantum Computing | Quantum Crier</title>
+    <meta name="description" content="Universal fault-tolerant superconducting quantum computers are expected to require millions of physical qubits; yet extending the prevailing dedicated-control-l">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Detuning- and Stark-robust Rydberg gates">
+    <meta property="og:title" content="A Control Line Multiplexing Framework for Scalable Quantum Computing">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 26, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 27, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,11 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
         </div>
-        <h1>Detuning- and Stark-robust Rydberg gates</h1>
+        <h1>A Control Line Multiplexing Framework for Scalable Quantum Computing</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 27, 2026</span>
+            <span class="date">October 26, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a long‑standing bottleneck in neutral‑atom quantum processors by showing that Rydberg entangling gates can be made robust against the light‑shift detuning errors that have limited their fidelity. By involving both hyperfine qubit states in the two‑photon drive, the authors devise gate schemes that either cancel the error completely or relegate it to correctable single‑qubit rotations, pushing performance beyond the standard time‑optimal Rydberg gate under realistic experimental conditions. The result opens a clear path toward higher‑fidelity two‑qubit operations and even enables “fly‑by” entangling gates, which could simplify connectivity in emerging large‑scale neutral‑atom architectures.
+                This article tackles a critical bottleneck for large‑scale superconducting processors by showing that both two‑qubit and single‑qubit gates can be driven with frequency‑division multiplexed microwave pulses, cutting the number of control lines needed by up to two orders of magnitude. The demonstrated 1:4 parallel CZ and XY(π/2) gate fidelities—6.4 × 10⁻³ and 1.06 × 10⁻³ respectively—match conventional single‑line performance, indicating that multiplexing does not sacrifice error rates. By completing an all‑microwave control stack, the work paves the way for denser qubit layouts within the limited cooling power of dilution refrigerators, a prerequisite for the millions of physical qubits required by fault‑tolerant architectures. The results still rely on careful band‑pass filtering and may need further scaling studies, but they provide a concrete path toward hardware‑efficient quantum error correction.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Rydberg entangling gates driven by a two-photon transition in alkali atoms suffer from an adverse scaling of light-shift-induced errors. Robustness to such detuning errors is known to be impossible to achieve in the design of conventional Rydberg gate protocols, where only one of the qubit states is coupled to the Rydberg state. Here, we show that in a more general framework, in which both qubit states take part in the gate, full or partial robustness to these errors can be realized. We present two gate constructions, which either cancel the errors outright or convert them into single-qubit errors that can be corrected locally. We map the regimes -- in terms of light-shift strength, intensity inhomogeneity, and Rydberg decay rate -- in which these protocols outperform the widely used time-optimal Rydberg gate, and find that they already include the conditions of state-of-the-art experiments. Finally, we show the existence of a Rydberg `fly-by&#39; entangling gate, an important primitive for an emerging class of neutral-atom quantum computing architectures.</p>
+            <p>Universal fault-tolerant superconducting quantum computers are expected to require millions of physical qubits; yet extending the prevailing dedicated-control-line paradigm to this scale would exceed the wiring density and cooling-power budget of dilution refrigerators. Microwave frequency-division multiplexing (FDM) revolutionized classical communications by enabling many independent channels to share common transmission infrastructure. Translating this principle to superconducting quantum control, however, requires an all-microwave architecture and experimental validation of frequency-multiplexed gate control. Recent work in quantum error correction has demonstrated microwave-based readout, single-qubit gates and leakage suppression, whereas two-qubit gates remain predominantly driven by unipolar pulses and thus constitute the missing element of an all-microwave architecture. Here, we propose a periodically extensible hybrid multiplexing framework in which all gate operations are frequency-division multiplexed using polychromatic microwave pulses and band-pass filters, thereby reducing the required control-line count by one to two orders of magnitude. In a 1:4 demonstration, we achieve average errors of $(6.4\pm0.2)\times10^{-3}$ for parallel FDM CZ gates and $(10.6\pm0.2)\times10^{-4}$ for parallel FDM $XY(π/2)$ gates, without statistically significant multiplexing-induced degradation. Together with on-chip DC sources, this FDM-based gate-control scheme completes the last missing module in a scalable multiplexed-control architecture toward universal fault-tolerant quantum computing.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.27426v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.35227v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Detuning-%20and%20Stark-robust%20Rydberg%20gates&url=https://quantumcrier.com/posts/0d3fdd7e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0d3fdd7e.html&title=Detuning-%20and%20Stark-robust%20Rydberg%20gates" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=A%20Control%20Line%20Multiplexing%20Framework%20for%20Scalable%20Quantum%20Computing&url=https://quantumcrier.com/posts/b4a46992.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b4a46992.html&title=A%20Control%20Line%20Multiplexing%20Framework%20for%20Scalable%20Quantum%20Computing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
