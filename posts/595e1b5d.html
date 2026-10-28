@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Determinant Quantum-Quantum Monte Carlo: Coherent Auxiliary-Field Sampling | Quantum Crier</title>
-    <meta name="description" content="We introduce determinant quantum-quantum Monte Carlo (DQ$^2$MC), a quantum algorithm that lifts the auxiliary-field sampling and averaging at the operational co">
+    <title>Consensus And Information Redistribution In Quantum Networks | Quantum Crier</title>
+    <meta name="description" content="Consensus algorithms are mechanisms driving nodes of a network to agreement. In quantum networks they also redistribute information encoded in the global quantu">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Determinant Quantum-Quantum Monte Carlo: Coherent Auxiliary-Field Sampling">
+    <meta property="og:title" content="Consensus And Information Redistribution In Quantum Networks">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 27, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 28, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,11 +60,13 @@
             
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
         </div>
-        <h1>Determinant Quantum-Quantum Monte Carlo: Coherent Auxiliary-Field Sampling</h1>
+        <h1>Consensus And Information Redistribution In Quantum Networks</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 28, 2026</span>
+            <span class="date">October 26, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows how a core workhorse of condensed‑matter simulation—determinant quantum Monte Carlo—can be lifted onto a quantum processor by encoding the single‑particle action matrix and using quantum singular‑value transforms to generate Hubbard‑Stratonovich weights without ever enumerating them. By eliminating the classical Markov chain and its autocorrelation time, the approach promises dramatically lower scaling of circuit depth with system size for fermionic models such as the Hubbard Hamiltonian, complementing recent quantum‑algorithmic advances that target many‑body ground states. The main caveat is a post‑selection cost that grows exponentially for sharply peaked weight distributions, so practical advantage will hinge on problem instances where the probability landscape remains smooth.
+                This article shows how decentralized quantum consensus can turn a sprawling qudit network into a self‑organising sensor that reveals global properties from purely local measurements, sidestepping the costly full‑state tomography that has limited many distributed‑quantum applications. By proving analytic conditions under which random unitary dynamics preserve specific global observables—and by demonstrating concrete CNOT and two‑qubit interaction schemes that recover excitation‑number moments—the work bridges a gap between abstract consensus theory and practical quantum hardware implementations. The results lay groundwork for scalable quantum internet protocols, distributed metrology, and fault‑tolerant state verification, although the reliance on idealized random unitaries means experimental validation will be an essential next step.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We introduce determinant quantum-quantum Monte Carlo (DQ$^2$MC), a quantum algorithm that lifts the auxiliary-field sampling and averaging at the operational core of determinant quantum Monte Carlo onto a quantum computer. A determinant oracle synthesizes the DQMC amplitudes directly from a block encoding of the single-particle action matrix via quantum singular value transformations, so that the exponentially many Hubbard-Stratonovich weights are never enumerated, precomputed, or stored. Since the fermions are free for fixed auxiliary fields, the construction operates entirely at the single-particle level, requiring $O(\log N_{\mathrm{st}})$ system qubits and no Jordan-Wigner or Bravyi-Kitaev encoding, where $N_{\mathrm{st}}$ is the space-time volume. A full-quantum protocol makes observables interference amplitudes, eliminating the Markov chain and its autocorrelation time altogether; a hybrid quantum-classical protocol retains a constant-size active block of qubits and replaces the Metropolis-Hastings acceptance step with an exact heat-bath draw, so that cluster updates of any size are rejection-free, and passes only classical information between updates, admitting parallel tempering and distributed execution across quantum processors. The circuit-depth scales more favorably with spatial volume than classical DQMC, at the price of a post-selection overhead determined exactly by the largest target probability --- polynomial for smooth distributions, exponential for sharply peaked ones. Finally, the reweighting estimator underlying the fermion sign problem maps exactly onto a quantum weak value, placing the exponential cost of sign-problematic DQMC in precise correspondence with the post-selection overhead of weak-value extraction.</p>
+            <p>Consensus algorithms are mechanisms driving nodes of a network to agreement. In quantum networks they also redistribute information encoded in the global quantum state, allowing global properties to be inferred from local measurements without reconstructing the global state. Motivated by this, we investigate decentralized quantum consensus in qudit networks governed by discrete random unitary dynamics. We characterize the analytic asymptotic dynamics, identify global information preserved by the evolution, and derive conditions for which different notions of quantum consensus emerge. A general theorem is derived that establishes a unified framework for extracting globally encoded information from local measurements beyond consensus states. First, we analyze CNOT networks and determine which global information can be recovered by individual nodes and which requires joint measurements on cooperating nodes. The CNOT model is well understood and presents a case with entanglement creation - a characteristic quantum feature of networks worth analyzing in detail. Second, we identify the complete class of two-qubit interactions that asymptotically achieve consensus on the average number of excitations, thereby establishing a quantum analogue of classical average consensus. We further show that joint measurements on k cooperating nodes recover exactly the first k moments of the excitation-number distribution.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.28742v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.36391v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -97,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Determinant%20Quantum-Quantum%20Monte%20Carlo%3A%20Coherent%20Auxiliary-Field%20Sampling&url=https://quantumcrier.com/posts/d83df098.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d83df098.html&title=Determinant%20Quantum-Quantum%20Monte%20Carlo%3A%20Coherent%20Auxiliary-Field%20Sampling" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Consensus%20And%20Information%20Redistribution%20In%20Quantum%20Networks&url=https://quantumcrier.com/posts/595e1b5d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/595e1b5d.html&title=Consensus%20And%20Information%20Redistribution%20In%20Quantum%20Networks" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

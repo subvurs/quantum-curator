@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fully integrated continuous-variable quantum key distribution with composable security over 100 km | Quantum Crier</title>
-    <meta name="description" content="Quantum key distribution (QKD) guarantees information-theoretic security by the laws of physics, but deployment at scale requires compact, manufacturable photon">
+    <title>Effective Noise Thresholds for Reliable Quantum Approximation Optimisation Algorithm under Noisy Environment | Quantum Crier</title>
+    <meta name="description" content="Variational quantum algorithms are leading candidates for practical utilisation on noisy intermediate-scale quantum (NISQ) processors, but accumulating noise bo">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Fully integrated continuous-variable quantum key distribution with composable security over 100 km">
+    <meta property="og:title" content="Effective Noise Thresholds for Reliable Quantum Approximation Optimisation Algorithm under Noisy Environment">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 27, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 28, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,13 +60,13 @@
             
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>Fully integrated continuous-variable quantum key distribution with composable security over 100 km</h1>
+        <h1>Effective Noise Thresholds for Reliable Quantum Approximation Optimisation Algorithm under Noisy Environment</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 29, 2026</span>
+            <span class="date">October 27, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article demonstrates the first fully integrated continuous‑variable QKD system that combines on‑chip lasers, silicon transmitters and coherent receivers with composable finite‑size security over a 100 km fiber link, pushing the practical distance frontier for chip‑scale quantum cryptography. By leveraging a Bayesian machine‑learning phase‑lock algorithm and near‑Shannon multidimensional reconciliation, the platform achieves record secret‑key rates per symbol—29.3 kbps at 100 km—showing that telecom‑compatible, room‑temperature photonics can now meet both performance and security requirements for real‑world networks. The work bridges a critical gap between laboratory demonstrations and deployable quantum‑secure infrastructure, although scaling to even longer spans will still demand further loss mitigation and integration of error‑correction hardware.
+                This article introduces a quantitative “effective noise threshold” that marks the boundary between reliable and unreliable performance of QAOA as circuit depth increases, filling a gap left by prior studies that only asked how deep to go on a given device. By fitting noisy GPU‑accelerated simulations to a generalized logistic surface, the authors show that deeper QAOA layers demand dramatically lower error rates—a result that dovetails with recent findings on noise‑induced barren plateaus and helps practitioners pick an optimal depth before hitting diminishing returns. The framework also offers a practical diagnostic for real hardware such as IBM’s Marrakesh chip, pointing out which error channels dominate and guiding both algorithmic tuning and hardware improvement efforts.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum key distribution (QKD) guarantees information-theoretic security by the laws of physics, but deployment at scale requires compact, manufacturable photonic terminals. Continuous-variable QKD (CV-QKD) is well suited for this transition through telecom-compatible, room-temperature coherent detection. However, unifying full on-chip core terminal integration, room-temperature operation, high loss tolerance, and composable end-to-end security in long-distance QKD remains a key bottleneck. Here we report a fully integrated CV-QKD platform in which two hybrid III--V/Si$_3$N$_4$ integrated lasers, a silicon transmitter, and a silicon coherent receiver implement the core terminal functions, operating with a local local oscillator (LLO) over fibre links of 25--150 km. A Bayesian machine-learning algorithm maintains robust phase lock throughout the long records required for composable security, consistently outperforming the conventional unscented Kalman filter, while rate-matched multidimensional reconciliation approaches the Shannon limit. The system certifies a composable finite-size secret-key rate of 29.3 kbps at 100 km from a 140-billion-symbol block, with 12.9 kbps at 125 km under finite-size analysis and 9.17 kbps at 150 km under asymptotic analysis. By establishing the longest finite-size and asymptotic reaches and the highest secret-key rate per symbol reported for integrated CV-QKD, this work advances the development of practical chip-based quantum networks.</p>
+            <p>Variational quantum algorithms are leading candidates for practical utilisation on noisy intermediate-scale quantum (NISQ) processors, but accumulating noise bounds the usefulness of circuit depths. For the quantum approximate optimisation algorithm (QAOA), this trade-off has mostly been addressed by searching for the best depth for a given device. In this work, we consider the inverse question: how much noise each depth can tolerate. Using GPU-accelerated noisy QAOA simulations for MaxCut on three graph families with 6 to 18 vertices, depths up to 10 and three noise channels, we fit the approximation ratios with a generalised logistic surface. We propose the effective noise threshold as the inflection boundary of the logistic surfaces, a noise boundary separating reliable and unreliable QAOA approximation regimes. In general, the threshold decreases as depth rises, indicating that deeper circuits demand for stricter noise requirement for reliable approximation. Its best and worst values over depth divide the noise axis into three regions: every depth remains effective, depth must be chosen with care, or no depth induces effective optimisation. Assessing on the ibm_marrakesh processor, although modelled gate errors understate factual noise, the threshold modeling remains beneficial in informing qualitative depth-dependence structure and identifying dominating noise channel in noisy QAOA.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.29200v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.36597v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Fully%20integrated%20continuous-variable%20quantum%20key%20distribution%20with%20composable%20security%20over%20100%20km&url=https://quantumcrier.com/posts/2be11fc0.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/2be11fc0.html&title=Fully%20integrated%20continuous-variable%20quantum%20key%20distribution%20with%20composable%20security%20over%20100%20km" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Effective%20Noise%20Thresholds%20for%20Reliable%20Quantum%20Approximation%20Optimisation%20Algorithm%20under%20Noisy%20Environment&url=https://quantumcrier.com/posts/d4293de3.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d4293de3.html&title=Effective%20Noise%20Thresholds%20for%20Reliable%20Quantum%20Approximation%20Optimisation%20Algorithm%20under%20Noisy%20Environment" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

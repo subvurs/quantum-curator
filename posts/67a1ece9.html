@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware-Efficient Error Mitigation and Shot-Efficient Sampling on IBM Quantum Hardware | Quantum Crier</title>
-    <meta name="description" content="We experimentally study error mitigation and finite-shot sampling on superconducting quantum hardware under a constrained execution budget. The study combines c">
+    <title>QNETSIM for memory assisted design of satellite and hybrid quantum networks | Quantum Crier</title>
+    <meta name="description" content="Space-based quantum information networks require simulation tools that capture orbital dynamics, probabilistic quantum operations, and classical coordination. W">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Hardware-Efficient Error Mitigation and Shot-Efficient Sampling on IBM Quantum Hardware">
+    <meta property="og:title" content="QNETSIM for memory assisted design of satellite and hybrid quantum networks">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 27, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 28, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,17 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
             <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Hardware-Efficient Error Mitigation and Shot-Efficient Sampling on IBM Quantum Hardware</h1>
+        <h1>QNETSIM for memory assisted design of satellite and hybrid quantum networks</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">August 28, 2026</span>
+            <span class="date">October 27, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +76,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article delivers the first systematic, hardware‑aware benchmark of error‑mitigation techniques on a real IBM superconducting processor when the number of available shots is limited, showing exactly where mitigation pays off and where shot noise erodes any gain. By combining calibration‑driven qubit selection, depth scaling, zero‑noise extrapolation, dynamical decoupling and readout correction within Qiskit Runtime, the authors provide a practical recipe that can be adopted by developers to squeeze more accuracy out of today’s noisy devices. The study also clarifies how measurement budgeting—splitting shots across repeated runs versus deeper circuits—affects expectation‑value errors, offering concrete guidance for near‑term applications in simulation and sensing. Readers should care because these insights bridge the gap between theoretical mitigation promises and the realities of limited hardware resources, helping to accelerate useful quantum computations now rather than waiting for fault tolerance.
+                This article matters because it delivers the first dedicated discrete‑event simulator that can jointly model orbital mechanics, free‑space optics, fiber links and realistic quantum memories—capabilities that have been missing from existing network tools as satellite‑based quantum experiments move from proof‑of‑concept to deployment. By exposing how memory capacity, decoherence rates and routing policies affect entanglement fidelity, throughput and latency, QNETSIM lets designers explore the trade‑offs needed for global quantum‑internet architectures, complementing recent milestones such as China’s Micius satellite and emerging low‑Earth‑orbit constellations. The framework’s modularity will accelerate prototyping of hybrid space‑ground protocols, though its predictions will ultimately hinge on accurate physical models and forthcoming hardware performance data.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>We experimentally study error mitigation and finite-shot sampling on superconducting quantum hardware under a constrained execution budget. The study combines calibration-aware qubit selection, circuit-depth scaling, zero-noise extrapolation, dynamical decoupling, readout-error mitigation, and repeated-shot estimation on an IBM Quantum processor. Experiments are organized across ideal simulation, noise-model simulation, and physical-device execution to separate sampling uncertainty from device-induced error. We investigate how mitigation performance changes with circuit depth, effective noise scale, qubit connectivity, and measurement budget, and quantify accuracy using expectation-value error, mean-squared error, statistical uncertainty, and mitigation gain. A fixed hardware-execution budget is used to evaluate shot allocation strategies and repeated measurements without relying on unlimited sampling. The resulting analysis provides a hardware-aware characterization of when mitigation improves expectation-value estimation and when finite-shot fluctuations offset the benefit of additional mitigation overhead. The implementation uses contemporary Qiskit and IBM Quantum Runtime workflows and is designed to provide reproducible experimental evidence for error-mitigation studies on current quantum processors.</p>
+            <p>Space-based quantum information networks require simulation tools that capture orbital dynamics, probabilistic quantum operations, and classical coordination. We introduce QNETSIM, a modular discrete-event simulator for the design and performance evaluation of satellite and hybrid space-ground quantum networks. The framework integrates orbital geometry, free-space optical and fiber channels, quantum memories, entanglement generation, and Bell-state measurements within a common event-driven architecture. Physical models account for optical loss, atmospheric turbulence, detector imperfections, finite memory capacity, and storage-induced decoherence. Space-time routing and segmented nesting support entanglement distribution across changing topologies, while a software-defined control plane coordinates generation, storage, and swapping. Configurable scenarios encompass onboard repeaters, satellite constellations, ground-based repeaters, and direct satellite distribution. Through explicit interfaces between physical models, network protocols, and orchestration, QNETSIM links component characteristics and operational policies to entanglement fidelity, throughput, latency, availability, and memory utilization, enabling systematic exploration of architectural and resource-management trade-offs in future space-based quantum information networks.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2608.28535v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.37204v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Hardware-Efficient%20Error%20Mitigation%20and%20Shot-Efficient%20Sampling%20on%20IBM%20Quantum%20Hardware&url=https://quantumcrier.com/posts/0f799a12.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0f799a12.html&title=Hardware-Efficient%20Error%20Mitigation%20and%20Shot-Efficient%20Sampling%20on%20IBM%20Quantum%20Hardware" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=QNETSIM%20for%20memory%20assisted%20design%20of%20satellite%20and%20hybrid%20quantum%20networks&url=https://quantumcrier.com/posts/67a1ece9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/67a1ece9.html&title=QNETSIM%20for%20memory%20assisted%20design%20of%20satellite%20and%20hybrid%20quantum%20networks" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
