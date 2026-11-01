@@ -32,7 +32,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; October 31, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,14 +56,14 @@
     <div class="digest-card">
         <h3>Daily Summary</h3>
         <div class="digest-summary digest-expandable" id="digest-text">
-            <p>IQM’s announcement that its Emerald processor has achieved full‑chip entanglement across all 54 superconducting qubits marks today’s headline breakthrough. By demonstrating genuine lattice‑wide coherence with state fidelities well above the threshold for error‑corrected operations, IQM pushes commercial hardware into a regime previously reserved for laboratory prototypes and signals that large‑scale quantum processors are no longer a distant goal.</p>
-<p>Across the ecosystem, the day’s stories converge on two intertwined themes: deeper control of quantum errors and the rapid commercialization of quantum‑safe infrastructure. Sandia and Quantinuum unveiled Logical Gate Set Tomography, delivering the first self‑consistent tomographic map of an encoded logical gate set and giving researchers a powerful diagnostic for fault‑tolerant qubits. In parallel, Forschungszentrum Jülich reported 6.8 ns single‑qubit gates with 99.98 % fidelity, while Quantinuum’s chief scientist reminded the community that physical gate fidelity may outweigh raw speed in scaling toward fault tolerance. On the hardware front, Nord Quantique showcased a bosonic‑code qubit that achieves error correction within a single microwave cavity, and Wolfspeed introduced transparent silicon carbide for both augmented‑reality optics and quantum devices, hinting at new material pathways. Meanwhile, industry players such as Lumen, Netpoleon India with QNu Labs, and the Quantum Industry Coalition are cementing supply chains, network research, and policy support to ready enterprises for a post‑quantum world.</p>
-<p>Looking ahead, readers should watch for IQM’s next scaling milestone—whether entanglement can be maintained as qubit counts climb into the low hundreds—and for broader adoption of Logical GST on multi‑logical‑qubit systems. The convergence of ultra‑high‑fidelity gate techniques with bosonic and trapped‑ion error‑correction strategies could accelerate the first generation of fault‑tolerant processors. Finally, policy momentum from the National Quantum Initiative reauthorization and cross‑border collaborations like France’s partnership with Vietnam will shape funding streams that underpin both hardware breakthroughs and the quantum‑safe security stack essential for tomorrow’s applications.</p>
+            <p>The headline of today’s quantum news is the successful campus‑scale deployment of an entanglement‑based quantum key distribution link built around a quantum‑dot photon source at the University of Stuttgart. By converting the dot’s emission frequency and sending it through 1.59 km of existing fiber, the team generated 14.2 Mbit of provably secure key material—a clear step toward practical, hardware‑level quantum‑secure communications that can be rolled out on ordinary telecom infrastructure.</p>
+<p>Across the day’s stories a common thread emerges: the ecosystem is moving from isolated breakthroughs to integrated solutions that bridge hardware, software and applications. Chalmers University showed how careful engineering of parasitic capacitances can suppress microwave crosstalk in superconducting processors, paving the way for larger, more reliable qubit arrays. At the same time IBM’s new Quantum Safe suite tackles the looming post‑quantum migration challenge by automating code discovery and network mediation, while Los Alamos and QC Ware demonstrated a hybrid quantum‑classical workflow that uses Sample‑based Quantum Diagonalization on IBM hardware to model strongly correlated iron oxides—illustrating how near‑term machines are already being harnessed for real scientific problems.</p>
+<p>Looking ahead, readers should watch three converging fronts. First, the scalability of quantum‑dot QKD will be tested as more institutions link their networks and integrate satellite or metropolitan backbones. Second, enterprise adoption of IBM’s Quantum Safe tools could set de‑facto standards for post‑quantum readiness, especially if regulatory bodies begin to mandate such migrations. Finally, advances in crosstalk suppression and hybrid algorithms promise larger superconducting chips capable of tackling ever more complex materials simulations, making the next generation of quantum hardware a critical bellwether for both industry and research.</p>
         </div>
         <button class="digest-toggle" id="digest-toggle" onclick="(function(){var t=document.getElementById('digest-text'),b=document.getElementById('digest-toggle');t.classList.toggle('digest-expanded');b.textContent=t.classList.contains('digest-expanded')?'Show less':'Read more'})()">Read more</button>
         <div class="digest-meta">
-            <span class="digest-date">October 31, 2026</span>
-            <span class="digest-count">21 articles</span>
+            <span class="digest-date">November 01, 2026</span>
+            <span class="digest-count">4 articles</span>
         </div>
     </div>
 </section>
@@ -77,30 +77,27 @@
         <div class="hero-content">
             <div class="post-topics">
                 
-                <a href="/topics/hardware.html"
-                   class="topic-tag topic-hardware">hardware</a>
-                
-                <a href="/topics/error_correction.html"
-                   class="topic-tag topic-error_correction">error_correction</a>
+                <a href="/topics/cryptography.html"
+                   class="topic-tag topic-cryptography">cryptography</a>
                 
             </div>
             <h1 class="hero-title">
-                <a href="/posts/d062fabb.html">Julien Camirand Lemire (Nord Quantique): One Cavity, One Error-Corrected Qubit</a>
+                <a href="/posts/72524b30.html">University of Stuttgart Deploys Quantum Dot QKD Link Using Frequency Conversion Over Campus Fiber</a>
             </h1>
-            <p class="hero-summary">Julien Camirand Lemire, co-founder and CEO of Nord Quantique, is interviewed by Yuval Boger. Julien discusses Nord Quantique‘s bosonic code approach, which uses microwave photons in superconducting cavities to achieve quantum error correction without...</p>
+            <p class="hero-summary">The University of Stuttgart, in collaboration with Saarland University and Leibniz IFW Dresden, successfully deployed an entanglement-based quantum key distribution (QKD) link using a quantum dot photon source. The system generated 14.2 Mbit of secur...</p>
             <div class="hero-commentary">
                 <p class="ai-kicker">AI Commentary</p>
-                <blockquote>This article matters because Nord Quantique’s demonstration of a fully error‑corrected logical qubit using just one superconducting microwave cavity shows that bosonic codes can deliver quantum error correction without the massive physical‑qubit overhead required by surface‑code architectures. By implementing both GKP and their proprietary “Tesseract” code and reporting an error‑correction gain of more than two‑fold, the team provides a concrete benchmark that complements recent advances from Google and IBM on multi‑qubit logical operations. If the approach scales to larger registers, it could dramatically simplify hardware layouts and accelerate the path toward fault‑tolerant quantum processors, though further work is needed to integrate many such cavities into a coherent architecture.</blockquote>
+                <blockquote>This article marks the first real‑world deployment of an entanglement‑based QKD link that relies on a quantum‑dot photon source combined with frequency conversion, showing that semiconductor emitters can now deliver metropolitan‑scale secure keys at practical rates. By generating 14.2 Mbit of key material over just 1.6 km of campus fiber and using it for one‑time‑pad image encryption, the work bridges laboratory demonstrations and operational quantum‑secure networks, complementing recent advances in fiber‑based QKD with atomic or nonlinear sources. The result suggests that compact, electrically driven quantum‑dot devices could become a cost‑effective backbone for future city‑wide cryptographic infrastructure, though scaling to longer distances will still require further loss mitigation and integration with existing telecom hardware.</blockquote>
             </div>
             <div class="post-meta">
-                <span class="post-source">The Quantum Insider</span>
+                <span class="post-source">Quantum Computing Report</span>
                 <span class="post-date">October 31, 2026</span>
-                <a href="https://thequantuminsider.com/2026/10/31/julien-camirand-lemire-nord-quantique-one-cavity-one-error-corrected-qubit/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
+                <a href="https://quantumcomputingreport.com/university-of-stuttgart-deploys-quantum-dot-qkd-link-using-frequency-conversion-over-campus-fiber/" class="post-link" target="_blank" rel="noopener">Read Original &rarr;</a>
             </div>
         </div>
         
         <div class="hero-image">
-            <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Julien.jpg" alt="" loading="eager"
+            <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-256.png" alt="" loading="eager"
                  onerror="this.closest('.hero-article').classList.remove('has-image');this.parentElement.style.display='none'">
         </div>
         
@@ -120,7 +117,7 @@
         <article class="featured-card">
             
             <div class="featured-image">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-249.png" alt="" loading="lazy"
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-255.png" alt="" loading="lazy"
                      onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
             </div>
             
@@ -130,11 +127,14 @@
                     <a href="/topics/hardware.html"
                        class="topic-tag topic-hardware">hardware</a>
                     
+                    <a href="/topics/research.html"
+                       class="topic-tag topic-research">research</a>
+                    
                 </div>
                 <h3 class="post-title">
-                    <a href="/posts/374e71af.html">Forschungszentrum Jülich Demonstrates 6.8-Nanosecond Single-Qubit Gates with &gt; 99.98% Fidelity via Multi-Photon Leakage Suppression</a>
+                    <a href="/posts/1bcfc810.html">Chalmers University Demonstrates Hardware-Level Microwave Crosstalk Suppression via Parasitic Capacitance Engineering</a>
                 </h3>
-                <p class="post-summary">Physicists at Forschungszentrum Jülich, RWTH Aachen University, and the University of Cologne have achieved record-breaking 6.8-nanosecond single-qubi...</p>
+                <p class="post-summary">Physicists at Chalmers University of Technology have developed a new method to eliminate microwave crosstalk in superconducting processors. Their rese...</p>
                 <div class="post-meta">
                     <span class="post-source">Quantum Computing Report</span>
                     <span class="post-date">October 31, 2026</span>
@@ -145,54 +145,54 @@
         <article class="featured-card">
             
             <div class="featured-image">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-246-scaled.png" alt="" loading="lazy"
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-254.png" alt="" loading="lazy"
                      onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
             </div>
             
             <div class="featured-content">
                 <div class="post-topics">
                     
-                    <a href="/topics/hardware.html"
-                       class="topic-tag topic-hardware">hardware</a>
-                    
-                    <a href="/topics/industry.html"
-                       class="topic-tag topic-industry">industry</a>
-                    
-                </div>
-                <h3 class="post-title">
-                    <a href="/posts/d54e2466.html">IQM Verifies Full-Chip Entanglement Across 54-Qubit Emerald Superconducting Processor</a>
-                </h3>
-                <p class="post-summary">IQM Quantum Computers has successfully demonstrated full-chip entanglement across all 54 qubits of its IQM Emerald processor, a significant advancemen...</p>
-                <div class="post-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 31, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="featured-card">
-            
-            <div class="featured-image">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-245.png" alt="" loading="lazy"
-                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="featured-content">
-                <div class="post-topics">
-                    
-                    <a href="/topics/cryptography.html"
-                       class="topic-tag topic-cryptography">cryptography</a>
+                    <a href="/topics/research.html"
+                       class="topic-tag topic-research">research</a>
                     
                     <a href="/topics/policy.html"
                        class="topic-tag topic-policy">policy</a>
                     
                 </div>
                 <h3 class="post-title">
-                    <a href="/posts/c3a7524f.html">pQCee Enters U.S. Public Sector Through Carahsoft Master Aggregator Agreement</a>
+                    <a href="/posts/46425d2c.html">Los Alamos and QC Ware Model Correlated Iron Oxides Using Sample-Based Quantum Diagonalization on IBM Hardware</a>
                 </h3>
-                <p class="post-summary">pQCee has partnered with Carahsoft Technology Corp. to provide its post-quantum cybersecurity software to the U.S. public sector. This agreement allow...</p>
+                <p class="post-summary">Researchers from Los Alamos National Laboratory and QC Ware developed a hybrid quantum-classical workflow to simulate strongly correlated transition m...</p>
                 <div class="post-meta">
                     <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="featured-card">
+            
+            <div class="featured-image">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/07/Julien.jpg" alt="" loading="lazy"
+                     onerror="this.closest('.featured-card').classList.add('no-image');this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="featured-content">
+                <div class="post-topics">
+                    
+                    <a href="/topics/hardware.html"
+                       class="topic-tag topic-hardware">hardware</a>
+                    
+                    <a href="/topics/error_correction.html"
+                       class="topic-tag topic-error_correction">error_correction</a>
+                    
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/d062fabb.html">Julien Camirand Lemire (Nord Quantique): One Cavity, One Error-Corrected Qubit</a>
+                </h3>
+                <p class="post-summary">Julien Camirand Lemire, co-founder and CEO of Nord Quantique, is interviewed by Yuval Boger. Julien discusses Nord Quantique‘s bosonic code approach, ...</p>
+                <div class="post-meta">
+                    <span class="post-source">The Quantum Insider</span>
                     <span class="post-date">October 31, 2026</span>
                 </div>
             </div>
@@ -214,6 +214,42 @@
         <a href="/topics/hardware.html" class="view-all">View All &rarr;</a>
     </div>
     <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-249.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/374e71af.html">Forschungszentrum Jülich Demonstrates 6.8-Nanosecond Single-Qubit Gates with &gt; 99.98% Fidelity via Multi-Photon Leakage Suppression</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-246-scaled.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/d54e2466.html">IQM Verifies Full-Chip Entanglement Across 54-Qubit Emerald Superconducting Processor</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 31, 2026</span>
+                </div>
+            </div>
+        </article>
         
         <article class="compact-article">
             
@@ -769,60 +805,6 @@
                 <div class="compact-meta">
                     <span class="post-source">The Quantum Insider</span>
                     <span class="post-date">October 20, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/CQ_Founding_Team_optimized.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/7ce32883.html">Coherence Quantum Raises €2.78 Million in Seed Round</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">October 20, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-129.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/9dddcdf8.html">Chinese Startup FlipFlop Tuoyuan Emerges with Major VC Backing for 100-Logical-Qubit Neutral-Atom Systems</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 19, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/quantum-computing-jupiter-supercomputer.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/6700aa9c.html">NVIDIA and Jülich Run 104-Qubit Magic State Cultivation Simulation on JUPITER Supercomputer</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 19, 2026</span>
                 </div>
             </div>
         </article>
@@ -2265,6 +2247,322 @@
 <section class="topic-section">
     <div class="section-header">
         <h2 class="topic-section-title">
+            <span class="topic-accent topic-accent-cryptography"></span>
+            Cryptography
+        </h2>
+        <a href="/topics/cryptography.html" class="view-all">View All &rarr;</a>
+    </div>
+    <div class="compact-list">
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-245.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/c3a7524f.html">pQCee Enters U.S. Public Sector Through Carahsoft Master Aggregator Agreement</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-216.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/1e734f41.html">IonQ Deploys Intercontinental Hybrid QKD and PQC Architecture Securing Enterprise Links Between Geneva and Seoul</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 28, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-203.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/8e0afbfd.html">GQI Q3 2026 State of Play: Investment Consolidation, Accelerating Q-Day Horizons, and the Shift to Second-Generation Architectures</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 27, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/Screenshot-2026-10-27-at-2.17.42-PM-1.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/67608262.html">NIST Report Provides Guidelines for Transition to Post-Quantum Cryptography Standards</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">October 27, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/c5pxrfejq3w.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/bedfa12a.html">Guest Post: The Next Threat to Encryption May Not Need a Quantum Computer</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">October 27, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-189.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/929e89b8.html">NowSecure Benchmark Finds 97% of Mobile Applications Lack Post-Quantum Cryptography Ahead of Mandated Timelines</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 24, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-174.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/913c2e47.html">Cloudflare Launches Post-Quantum GeoKey Manager with Hybrid ML-KEM-768 Encryption for Regional Data Sovereignty</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 24, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-172.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/8c6aa40e.html">Palm Beach State College and FAU Activate First Operational Segment of Florida’s Statewide Quantum-Safe Network</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 24, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/Quantum-security-shield-over-silver-chip-1.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/d557052d.html">Study: AI Could Speed Quantum Threats — And Help Build Defenses</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">October 21, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/2026-10-20_19-12.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/fe235d7b.html">Project Eleven and Relm Explore Post-Quantum Risk in Digital Asset Insurance</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">October 20, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-thumbnail">
+                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/2026-10-20_18-20.png" alt="" loading="lazy"
+                     onerror="this.parentElement.style.display='none'">
+            </div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f69eca09.html">NowSecure Finds No Detectable PQC Code in 97% of Mobile Apps</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">The Quantum Insider</span>
+                    <span class="post-date">October 20, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/14e02ef6.html">IBM Launches Unified Quantum Safe Software Suite to Automate Enterprise PQC Migration</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/30076090.html">Lumen Expands Quantum Footprint with Ohio State Fiber Research and Fortinet PQC SASE Rollout</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 31, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/f34d8c19.html">Prepare-and-measure quantum key distribution from a bound on information leakage</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">October 27, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/6a1e7cb3.html">UK and Singapore Align on Post-Quantum Cryptography Migration and Quantum Security Standards in Financial Sector</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 24, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/59b9a385.html">Traceable Quantum Secret Sharing</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">October 23, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/dfe1ab86.html">FVQKD: A Formal Verification of Quantum Key Distribution Security in Rocq</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">arXiv Quantum Physics</span>
+                    <span class="post-date">October 22, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+        <article class="compact-article">
+            
+            <div class="compact-dot topic-accent-cryptography"></div>
+            
+            <div class="compact-content">
+                <h4 class="compact-title">
+                    <a href="/posts/4f28087d.html">Black Kite Introduces Quantum Readiness Controls to Assess Third-Party Cryptographic Risk</a>
+                </h4>
+                <div class="compact-meta">
+                    <span class="post-source">Quantum Computing Report</span>
+                    <span class="post-date">October 21, 2026</span>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+<section class="topic-section">
+    <div class="section-header">
+        <h2 class="topic-section-title">
             <span class="topic-accent topic-accent-algorithms"></span>
             Algorithms
         </h2>
@@ -2522,289 +2820,6 @@
                 </h4>
                 <div class="compact-meta">
                     <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">October 21, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</section>
-
-<section class="topic-section">
-    <div class="section-header">
-        <h2 class="topic-section-title">
-            <span class="topic-accent topic-accent-cryptography"></span>
-            Cryptography
-        </h2>
-        <a href="/topics/cryptography.html" class="view-all">View All &rarr;</a>
-    </div>
-    <div class="compact-list">
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-216.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/1e734f41.html">IonQ Deploys Intercontinental Hybrid QKD and PQC Architecture Securing Enterprise Links Between Geneva and Seoul</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 28, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-203.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/8e0afbfd.html">GQI Q3 2026 State of Play: Investment Consolidation, Accelerating Q-Day Horizons, and the Shift to Second-Generation Architectures</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 27, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/Screenshot-2026-10-27-at-2.17.42-PM-1.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/67608262.html">NIST Report Provides Guidelines for Transition to Post-Quantum Cryptography Standards</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">October 27, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/c5pxrfejq3w.jpg" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/bedfa12a.html">Guest Post: The Next Threat to Encryption May Not Need a Quantum Computer</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">October 27, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-189.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/929e89b8.html">NowSecure Benchmark Finds 97% of Mobile Applications Lack Post-Quantum Cryptography Ahead of Mandated Timelines</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 24, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-174.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/913c2e47.html">Cloudflare Launches Post-Quantum GeoKey Manager with Hybrid ML-KEM-768 Encryption for Regional Data Sovereignty</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 24, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-172.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/8c6aa40e.html">Palm Beach State College and FAU Activate First Operational Segment of Florida’s Statewide Quantum-Safe Network</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 24, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/Quantum-security-shield-over-silver-chip-1.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/d557052d.html">Study: AI Could Speed Quantum Threats — And Help Build Defenses</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">October 21, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/2026-10-20_19-12.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/fe235d7b.html">Project Eleven and Relm Explore Post-Quantum Risk in Digital Asset Insurance</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">October 20, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-thumbnail">
-                <img src="https://thequantuminsider.com/wp-content/uploads/2026/10/2026-10-20_18-20.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/f69eca09.html">NowSecure Finds No Detectable PQC Code in 97% of Mobile Apps</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">The Quantum Insider</span>
-                    <span class="post-date">October 20, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/30076090.html">Lumen Expands Quantum Footprint with Ohio State Fiber Research and Fortinet PQC SASE Rollout</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 31, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/f34d8c19.html">Prepare-and-measure quantum key distribution from a bound on information leakage</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">October 27, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/6a1e7cb3.html">UK and Singapore Align on Post-Quantum Cryptography Migration and Quantum Security Standards in Financial Sector</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 24, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/59b9a385.html">Traceable Quantum Secret Sharing</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">October 23, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/dfe1ab86.html">FVQKD: A Formal Verification of Quantum Key Distribution Security in Rocq</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">arXiv Quantum Physics</span>
-                    <span class="post-date">October 22, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
-            <div class="compact-dot topic-accent-cryptography"></div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/4f28087d.html">Black Kite Introduces Quantum Readiness Controls to Assess Third-Party Cryptographic Risk</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
                     <span class="post-date">October 21, 2026</span>
                 </div>
             </div>
@@ -3483,24 +3498,6 @@
         
         <article class="compact-article">
             
-            <div class="compact-thumbnail">
-                <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/10/image-128.png" alt="" loading="lazy"
-                     onerror="this.parentElement.style.display='none'">
-            </div>
-            
-            <div class="compact-content">
-                <h4 class="compact-title">
-                    <a href="/posts/37a0cb25.html">UK Government and UKRI Unveil £78M ($103.8M USD) Quantum Commercialization, Networking, and Skills Package</a>
-                </h4>
-                <div class="compact-meta">
-                    <span class="post-source">Quantum Computing Report</span>
-                    <span class="post-date">October 19, 2026</span>
-                </div>
-            </div>
-        </article>
-        
-        <article class="compact-article">
-            
             <div class="compact-dot topic-accent-sensing"></div>
             
             <div class="compact-content">
@@ -3572,47 +3569,47 @@
     <div class="topic-cloud">
         
         <a href="/topics/hardware.html" class="topic-pill topic-hardware">
-            hardware <span class="count">(322)</span>
+            hardware <span class="count">(309)</span>
         </a>
         
         <a href="/topics/research.html" class="topic-pill topic-research">
-            research <span class="count">(154)</span>
+            research <span class="count">(148)</span>
         </a>
         
         <a href="/topics/algorithms.html" class="topic-pill topic-algorithms">
-            algorithms <span class="count">(115)</span>
+            algorithms <span class="count">(110)</span>
         </a>
         
         <a href="/topics/simulation.html" class="topic-pill topic-simulation">
-            simulation <span class="count">(113)</span>
+            simulation <span class="count">(105)</span>
         </a>
         
         <a href="/topics/industry.html" class="topic-pill topic-industry">
-            industry <span class="count">(105)</span>
+            industry <span class="count">(102)</span>
         </a>
         
         <a href="/topics/sensing.html" class="topic-pill topic-sensing">
-            sensing <span class="count">(99)</span>
+            sensing <span class="count">(95)</span>
         </a>
         
         <a href="/topics/policy.html" class="topic-pill topic-policy">
-            policy <span class="count">(90)</span>
+            policy <span class="count">(88)</span>
         </a>
         
         <a href="/topics/error_correction.html" class="topic-pill topic-error_correction">
-            error_correction <span class="count">(79)</span>
+            error_correction <span class="count">(78)</span>
         </a>
         
         <a href="/topics/cryptography.html" class="topic-pill topic-cryptography">
-            cryptography <span class="count">(52)</span>
+            cryptography <span class="count">(53)</span>
         </a>
         
         <a href="/topics/general.html" class="topic-pill topic-general">
-            general <span class="count">(43)</span>
+            general <span class="count">(41)</span>
         </a>
         
         <a href="/topics/machine_learning.html" class="topic-pill topic-machine_learning">
-            machine_learning <span class="count">(26)</span>
+            machine_learning <span class="count">(25)</span>
         </a>
         
     </div>
