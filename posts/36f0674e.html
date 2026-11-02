@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulse-Controlled Topologically Protected Quantum Batteries | Quantum Crier</title>
-    <meta name="description" content="Quantum batteries have emerged as a promising new generation of energy-storage devices for powering quantum technologies. Long-distance charging is particularly">
+    <title>A Highly Nondegenerate Photon-Pair Source for Detector-Matched Quantum Key Distribution | Quantum Crier</title>
+    <meta name="description" content="In a commercial entanglement-distribution system over telecom fibre, the single-photon detectors are the largest part of the hardware cost. In entanglement-base">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Pulse-Controlled Topologically Protected Quantum Batteries">
+    <meta property="og:title" content="A Highly Nondegenerate Photon-Pair Source for Detector-Matched Quantum Key Distribution">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,11 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
+            
+            <a href="/topics/industry.html" class="topic-tag topic-industry">industry</a>
+            
         </div>
-        <h1>Pulse-Controlled Topologically Protected Quantum Batteries</h1>
+        <h1>A Highly Nondegenerate Photon-Pair Source for Detector-Matched Quantum Key Distribution</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 03, 2026</span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article introduces a pulse‑controlled, topologically protected charging scheme that lets a superconducting qubit chain deliver energy to a distant quantum battery without backflow or sensitivity to control errors. By marrying concepts from topological phases with optimal‑control pulse shaping, the work pushes beyond earlier short‑range or decoherence‑prone battery proposals and demonstrates scalability to larger arrays—an essential step toward practical on‑chip power for quantum processors. If experimental implementations can meet the required pulse precision, the approach could provide a robust, low‑crosstalk energy source that integrates naturally with existing superconducting hardware.
+                This article demonstrates a clever way to cut the dominant hardware expense in entanglement‑based QKD by generating highly nondegenerate photon pairs so that only the telecom‑wavelength photon needs an expensive cryogenic detector while the visible partner can be caught with a cheap, high‑efficiency Si‑SPAD. By showing that even an unoptimised source already narrows the cost per secret bit to within 25 % of a conventional dual‑SNSPD link—and that realistic improvements could slash total expense by up to 70 %—the work points toward more economically scalable quantum‑secure networks. The result dovetails with current industry pushes for integrated, low‑cost photonic sources and highlights that the remaining challenge is boosting collection efficiency and brightness before large‑scale deployment.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum batteries have emerged as a promising new generation of energy-storage devices for powering quantum technologies. Long-distance charging is particularly attractive because it minimizes interference between the charger and the battery, thereby attracting considerable interest. Here, we propose a topologically protected long-distance charging protocol for quantum batteries based on a pulse-controlled superconducting qubit chain. By dynamically modulating the pulse-mediated couplings, we realize topologically protected energy transfer from the charger to the battery. We show that the charging process is free of energy backflow and remains robust against imperfections in pulse control. Moreover, the energy stored in the battery at the target time is fully extractable, and the protocol remains effective for relatively large system sizes. To further accelerate charging, we optimize the pulse shape and elucidate the underlying physical mechanism. Our pulse-controlled topological quantum battery protocol provides a versatile framework for implementing long-distance topological charging and establishes a theoretical foundation for designing optimal-control strategies to enhance quantum battery performance.</p>
+            <p>In a commercial entanglement-distribution system over telecom fibre, the single-photon detectors are the largest part of the hardware cost. In entanglement-based quantum key distribution (QKD), both photons of each pair must be detected. With two telecom photons, each arm needs either an InGaAs single-photon avalanche diode (SPAD) of low efficiency or a superconducting nanowire single-photon detector (SNSPD) with its own cryostat. We study a highly nondegenerate photon-pair source that needs a telecom detector on one arm only. Two periodically poled KTiOPO$_4$ (ppKTP) crystals pumped at 405~nm emit pairs at 548 and 1550~nm. A Si-SPAD with 82\% efficiency detects the 548~nm photon at the source node, and only the 1550~nm photon travels through fibre. A first, unoptimised module in a polarisation-correlated configuration generates about $1.5\times10^6$ pairs/s per mW of pump power. It collects 13\% of the pairs on the 548~nm arm and 23\% on the 1550~nm arm. In an asymptotic BBM92 model, we compare its links with generic $2\times1550$~nm links that use a bright published source at the same pump power. At 50~km, our link with one SNSPD costs about 25\% more per secret bit than the generic link with one SNSPD. With optimistic target values of 52\% collection and twice the brightness, it costs about 40\% as much as the generic link with two SNSPDs. Our link without a cryostat then costs about 70\% less than the generic link with one SNSPD. If every link runs at its own best pump power, the two-SNSPD link is again the cheapest. The source can also serve clock synchronisation and detector calibration, which need only time-correlated pairs. All key rates assume the entangled configuration of the source, which is under development.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.03543v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.41709v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Pulse-Controlled%20Topologically%20Protected%20Quantum%20Batteries&url=https://quantumcrier.com/posts/dc9d5905.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/dc9d5905.html&title=Pulse-Controlled%20Topologically%20Protected%20Quantum%20Batteries" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=A%20Highly%20Nondegenerate%20Photon-Pair%20Source%20for%20Detector-Matched%20Quantum%20Key%20Distribution&url=https://quantumcrier.com/posts/36f0674e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/36f0674e.html&title=A%20Highly%20Nondegenerate%20Photon-Pair%20Source%20for%20Detector-Matched%20Quantum%20Key%20Distribution" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

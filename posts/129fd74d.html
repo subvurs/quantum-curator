@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimal Fusion Strategies for Quantum Computation | Quantum Crier</title>
-    <meta name="description" content="Logical fusions are important for a number of tasks in quantum information, such as quantum error correction and quantum repeaters. In the photonic setting one ">
+    <title>Helper-assisted quantum sensing with low dressed-state leakage | Quantum Crier</title>
+    <meta name="description" content="We study a two-qubit sensing protocol in which only a helper qubit is read out. Calibrated loading and unloading encode a transverse signal in the helper&#39;s phas">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Optimal Fusion Strategies for Quantum Computation">
+    <meta property="og:title" content="Helper-assisted quantum sensing with low dressed-state leakage">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,15 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
-            
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Optimal Fusion Strategies for Quantum Computation</h1>
+        <h1>Helper-assisted quantum sensing with low dressed-state leakage</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 02, 2026</span>
+            <span class="source">Source: <strong>arXiv Condensed Matter</strong></span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article tackles a long‑standing bottleneck in photonic quantum computing by showing when logical fusions can tolerate almost arbitrary physical failures, delivering “perfect” fusion strategies that keep error‑correcting codes intact even if all but one gate fails. By proving that random [[n, 1, d]] graph codes almost surely admit such strategies and extending the result to parity‑check codes, it dramatically lowers the resource overhead for measurement‑based architectures that rely on probabilistic entangling operations—a key step toward scalable photonic processors. The work also introduces a new graph‑theoretic parameter with an operational meaning, linking abstract code design directly to experimental fusion choices and suggesting that future hardware designs can exploit this generic robustness rather than painstakingly engineer special cases.
+                This article demonstrates that a dedicated “helper” qubit can imprint a transverse signal onto its phase while keeping the sensor qubit largely in its idle ground state, thereby reducing dressed‑state leakage and measurement back‑action—a long‑standing obstacle for high‑fidelity quantum metrology. By deriving an information bound under strict excitation budgets and showing how clever flip‑and‑sign reversal sequences can cancel static offsets with only modest (≈27 %) loss of Fisher information, the work builds on recent ancilla‑assisted readout schemes and offers a concrete pathway to more robust sensing in noisy solid‑state platforms. The results suggest that practical gains will hinge on device‑specific disturbance models, highlighting both the promise and the careful engineering required before helper‑only readout can outperform direct nondemolition verification.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Logical fusions are important for a number of tasks in quantum information, such as quantum error correction and quantum repeaters. In the photonic setting one must contend with the fact that physical fusions are probabilistic (i.e.~the associated qubits are measured in product bases), which---depending on the failures and the associated bases---can lead to a failure on the logical level. The choice of failure basis of each qubit is known as a fusion strategy, and finding good fusion strategies is important for optimizing performance of fusion-based quantum computation. Here we provide a complete characterization when $k=1$ qubits are encoded, and in particular characterize those codes and fusion strategies such that all but one physical fusion can fail, i.e.~\emph{perfect fusion strategies}. In doing so, we recover previously known perfect fusion strategies, and find perfect fusion strategies for quantum parity-check codes, answering an open question. We furthermore show that perfect fusion strategies are generic: random $[[n, 1, d]]$ graph codes admit a perfect fusion strategy with probability exponentially close to $1$. Additionally we motivate the study of a new graph parameter, namely the maximum degree of a graph at a given vertex taken over all LC-equivalent graphs, by giving a new operationally meaningful interpretation of it.</p>
+            <p>We study a two-qubit sensing protocol in which only a helper qubit is read out. Calibrated loading and unloading encode a transverse signal in the helper&#39;s phase, keep leakage out of a selected dressed-state band small, and return the sensor close to its idle ground state. We derive an information bound for a single sensor whose excitation stays below a prescribed budget, and simulate repeated operation with an uncertain coupling and finite-duration resets in a driven open-system model. At the tested settings, finite measurement records support estimation with infrequent resets. A helper flip at zero coupling, combined with a reversal of the coupling sign, suppresses a static helper offset shared across a record while retaining the signal, at a cost of about 27% of the no-offset information of a plain sequence of equal duration. Under slowly varying noise, averaging each cycle&#39;s likelihood over the correct noise law removes most of the added bias, and a wrong noise law can worsen the estimate. A selected directly read sensor with ideal controls and repeated nondemolition verification has the higher information rate. Any practical benefit of avoiding direct readout therefore requires a device-specific disturbance model.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.02559v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://arxiv.org/abs/2610.41404v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Condensed Matter &rarr;
             </a>
         </div>
     </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Optimal%20Fusion%20Strategies%20for%20Quantum%20Computation&url=https://quantumcrier.com/posts/f2236b54.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f2236b54.html&title=Optimal%20Fusion%20Strategies%20for%20Quantum%20Computation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Helper-assisted%20quantum%20sensing%20with%20low%20dressed-state%20leakage&url=https://quantumcrier.com/posts/129fd74d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/129fd74d.html&title=Helper-assisted%20quantum%20sensing%20with%20low%20dressed-state%20leakage" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

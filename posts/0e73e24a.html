@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Topology-Dependent Enhancement of Entanglement Extraction in Repeater Graph States | Quantum Crier</title>
-    <meta name="description" content="Quantum repeaters are essential for establishing long-distance quantum communication to overcome the exponential decay of entanglement due to photon loss. Tradi">
+    <title>Bounding Fidelity of Non-Stabilizer States from Local Pauli Measurements | Quantum Crier</title>
+    <meta name="description" content="Nonstabilizerness, commonly referred to as magic, is essential for universal quantum computation. Yet, for pure $n$-qubit states this property is directly linke">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Topology-Dependent Enhancement of Entanglement Extraction in Repeater Graph States">
+    <meta property="og:title" content="Bounding Fidelity of Non-Stabilizer States from Local Pauli Measurements">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,15 +58,15 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>Topology-Dependent Enhancement of Entanglement Extraction in Repeater Graph States</h1>
+        <h1>Bounding Fidelity of Non-Stabilizer States from Local Pauli Measurements</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 03, 2026</span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +78,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that the entanglement yield of memory‑less repeater graph states can be dramatically improved simply by tailoring their internal connectivity, overturning the long‑standing view that a complete bipartite RGS is fundamentally limited to one Bell pair. By demonstrating through simulation that low‑to‑moderate edge densities maximize extracted Bell pairs and that higher hop counts demand richer inner‑qubit links, the work provides a concrete design rule for next‑generation quantum‑network hardware where photon‑loss resilience can be achieved without bulky quantum memories. The findings dovetail with recent experimental progress in on‑chip graph‑state generation, suggesting that modest upgrades to connectivity could translate into far more scalable long‑distance quantum communication architectures.
+                This article tackles a long‑standing bottleneck in quantum verification by showing how the “magic” needed for universal computation can be certified with only linear‑scaling Pauli measurements, sidestepping the exponential blow‑up that plagues direct fidelity estimation of non‑stabilizer states. By exploiting permutational symmetry and casting the problem as a small linear program, the authors demonstrate practical protocols that remain tractable even for hundreds of qubits—a scale relevant to near‑term quantum processors and distributed quantum networks. The approach not only cuts measurement overhead but also opens the door to efficiently monitoring other nonlinear resources such as purity, although its performance still depends on how well the assumed symmetries match real hardware noise.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum repeaters are essential for establishing long-distance quantum communication to overcome the exponential decay of entanglement due to photon loss. Traditional repeater architectures rely on physical quantum memory, which introduces decoherence and poses significant practical implementation challenges. The repeater graph state (RGS) architecture offers a promising memory-less alternative that is inherently resilient to photon losses. A key challenge in implementing RGS lies in the requirement for highly efficient graph state generators and complex qubit measurement. In this work, we aim to investigate the strategies for extracting the maximum number of Bell pairs from the RGS structure via its qubit connection to resolve the well-known bottleneck problem of RGS in which only a single Bell pair can be extracted from a complete bipartite graph state. From simulations, we observe that the maximum number of extracted Bell pairs depends on its connection topology, where the Bell-pair yield tends to be maximal at low to moderate edge densities. As the number of network hops increases, the RGS must be equipped with higher inner-qubit connectivity to maintain a sufficient yield of extractable Bell pairs. Thus, the expected resource requirement shifts toward the use of RGSs with higher inner-qubit connectivity.</p>
+            <p>Nonstabilizerness, commonly referred to as magic, is essential for universal quantum computation. Yet, for pure $n$-qubit states this property is directly linked to the hardness of direct fidelity estimation. We propose a scheme to bound the fidelity on non-stabilizer states by choosing operators with low measurement overhead and using parallel local Pauli measurements to estimate compatible observables. We selectively measure operators that share a permutational symmetry without imposing any assumption on the physical system. This selection reduces the optimization to a linear program with only $O(n)$ variables for bounding fidelity. Our methods can be extended to bound nonlinear quantities like the purity via convex quadratic programs. For hypergraph states that can exhibit extensive nonstabilizerness, we demonstrate for up to $n=500$ qubits that our framework substantially reduces the measurement overhead under both local and global depolarizing noise. These results show that symmetry induced by measurement selection reduces both measurement and computational costs, enabling scalable characterization of magic resources in quantum computing and quantum networks.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.03496v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.41808v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Topology-Dependent%20Enhancement%20of%20Entanglement%20Extraction%20in%20Repeater%20Graph%20States&url=https://quantumcrier.com/posts/b3391ac7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b3391ac7.html&title=Topology-Dependent%20Enhancement%20of%20Entanglement%20Extraction%20in%20Repeater%20Graph%20States" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Bounding%20Fidelity%20of%20Non-Stabilizer%20States%20from%20Local%20Pauli%20Measurements&url=https://quantumcrier.com/posts/0e73e24a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0e73e24a.html&title=Bounding%20Fidelity%20of%20Non-Stabilizer%20States%20from%20Local%20Pauli%20Measurements" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

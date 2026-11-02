@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discretization-Aware Fine-Tuning for Quantum Machine Learning with Chemical Foundation Models | Quantum Crier</title>
-    <meta name="description" content="A key challenge in practical quantum machine learning (QML), particularly for discriminative tasks such as classification, is the limited capacity of near-term ">
+    <title>eCAS: An Orbital Embedding Method for Quantum Computing | Quantum Crier</title>
+    <meta name="description" content="Future fault-tolerant quantum computers will allow us to calculate electronic structures of atomistic systems. However, these systems will be intrinsically limi">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Discretization-Aware Fine-Tuning for Quantum Machine Learning with Chemical Foundation Models">
+    <meta property="og:title" content="eCAS: An Orbital Embedding Method for Quantum Computing">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,17 +56,13 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
-            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
-            
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
         </div>
-        <h1>Discretization-Aware Fine-Tuning for Quantum Machine Learning with Chemical Foundation Models</h1>
+        <h1>eCAS: An Orbital Embedding Method for Quantum Computing</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 02, 2026</span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +74,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article demonstrates that the data‑encoding bottleneck long seen as a show‑stopper for near‑term quantum machine learning can be alleviated by tailoring the upstream representation, with the new discretization‑aware fine‑tuning (DAFT) method dramatically cutting bit‑string collisions and boosting quantum classifier accuracy on a realistic chemistry benchmark. By showing that a quantum model can now outperform an equally constrained classical counterpart once the representations are optimized, it provides concrete evidence that clever preprocessing may be the key to achieving early practical advantage on NISQ hardware. The work builds on recent efforts to combine large pretrained foundation models with quantum circuits and highlights that any near‑term speedup will still hinge on having enough qubits to host the refined encodings.
+                This article introduces eCAS, a new orbital‑embedding framework that sidesteps the costly reduced‑density‑matrix measurements and repeated circuit evaluations that have hampered most quantum‑embedding schemes to date. By partitioning the problem into independent localized active spaces via a Schmidt‑decomposed impurity–bath construction, eCAS can be tackled with any existing VQE or QPE algorithm, making it far more amenable to near‑term fault‑tolerant hardware. Its systematic “mutual correlation” criterion offers a clear path for incremental accuracy without iterative self‑consistency loops, positioning the method as a practical bridge between current quantum chemistry algorithms and the larger atomistic simulations envisioned for future quantum computers.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>A key challenge in practical quantum machine learning (QML), particularly for discriminative tasks such as classification, is the limited capacity of near-term quantum devices to encode high-dimensional classical data into small quantum registers. In optimized basis-encoded (bit-bit) settings, this constraint leads to cross-class collisions, where samples with different labels are mapped to the same discrete bit-string and thus become indistinguishable to any downstream model. In this work, we investigate how data representation affects QML performance under such severe information bottlenecks. We introduce discretization-aware fine-tuning (DAFT), a method that adapts a pre-trained chemical foundation model to produce representations that remain informative after quantization. DAFT reduces collision probability through a differentiable soft collision loss. We evaluate both quantum and classical models under a controlled setting in which they receive identical discretized bit-string inputs, isolating the effect of representation from model architecture. On the blood-brain barrier penetration (BBBP) molecular property prediction benchmark using ChemBERTa-77M, DAFT reduces collision counts by several orders of magnitude and improves quantum classification accuracy by more than 12 percentage points compared to a frozen backbone. Importantly, without DAFT, classical models outperform QML under the same input constraints. With DAFT, however, this comparison reverses at higher qubit counts. At 10 qubits, the quantum model surpasses a matched classical baseline trained on identical bit-strings (0.883 vs. 0.855, $p = 0.026$). These results show that, in information-constrained regimes, achieving a quantum advantage critically depends on aligning continuous representations with discrete quantum encodings.</p>
+            <p>Future fault-tolerant quantum computers will allow us to calculate electronic structures of atomistic systems. However, these systems will be intrinsically limited in size, requiring embedding theories for many systems because of the unfavorable scaling of the number of terms describing the electron-electron interaction in the second-quantized electronic Hamiltonian. Quantum embedding theories address this challenge by partitioning a quantum system into a region of interest, the impurity, and its (larger) complement, the environment. However, currently available quantum embedding methods place restrictive demands on near-future quantum computers, such as the need to measure reduced density matrices or the need for repeated evaluations. Here, we introduce the new orbital embedding method eCAS that steers clear of these pitfalls by constructing a multi-CAS problem, the active spaces of which are localized and can be solved independently of each other with any quantum algorithm. This also allows for the development of comparatively simple gradient expressions. eCAS leverages the Schmidt decomposition to construct initial impurity and bath orbitals and augments them with localized environment orbitals, based on a mutual correlation criterion. The mutual correlation criterion makes eCAS systematically improvable without the need for any iteratively determined quantities.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.03220v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.41517v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Discretization-Aware%20Fine-Tuning%20for%20Quantum%20Machine%20Learning%20with%20Chemical%20Foundation%20Models&url=https://quantumcrier.com/posts/f42efeae.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f42efeae.html&title=Discretization-Aware%20Fine-Tuning%20for%20Quantum%20Machine%20Learning%20with%20Chemical%20Foundation%20Models" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=eCAS%3A%20An%20Orbital%20Embedding%20Method%20for%20Quantum%20Computing&url=https://quantumcrier.com/posts/9fd3a611.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/9fd3a611.html&title=eCAS%3A%20An%20Orbital%20Embedding%20Method%20for%20Quantum%20Computing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

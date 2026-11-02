@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientists Observe Einstein’s Gravity in The Quantum World | Quantum Crier</title>
-    <meta name="description" content="Insider Brief PRESS RELEASE — An international team including Nobel Prize-winning physicist Professor Sir Roger Penrose has observed a long-predicted effect of ">
+    <title>Leveraging Quantum Measurement Randomness for Shot-Efficient Diffusion Models | Quantum Crier</title>
+    <meta name="description" content="In quantum computing, the readout always carries finite-shot sampling noise. Suppressing this noise through repeated measurements raises the cost of a quantum n">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Scientists Observe Einstein’s Gravity in The Quantum World">
+    <meta property="og:title" content="Leveraging Quantum Measurement Randomness for Shot-Efficient Diffusion Models">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/Experimental-set-up-1.jpg">
-<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/Experimental-set-up-1.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,22 +56,21 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
             
         </div>
-        <h1>Scientists Observe Einstein’s Gravity in The Quantum World</h1>
+        <h1>Leveraging Quantum Measurement Randomness for Shot-Efficient Diffusion Models</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>The Quantum Insider</strong></span>
-            <span class="date">September 02, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/Experimental-set-up-1.jpg" alt="Scientists Observe Einstein’s Gravity in The Quantum World" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -83,19 +78,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks the first experimental confirmation that a quantum particle’s free‑fall trajectory is altered exactly as Einstein’s equivalence principle predicts, bridging a gap that has long separated general relativity from laboratory‑scale quantum mechanics. By demonstrating that gravity’s influence persists even for single‑atom interferometers, the work validates key assumptions underlying proposals to test quantum superposition of massive objects and informs emerging policies on funding fundamental physics experiments. While the result does not yet resolve deeper questions about quantising spacetime, it provides a concrete benchmark that future tabletop tests—and eventually space‑based missions—can build upon.
+                This article shows how the inevitable shot noise of quantum readout can be turned into a feature rather than a bug, letting a diffusion‑based quantum generative model replace part of its injected randomness with the hardware’s own measurement fluctuations. By analytically matching the mean and covariance of the ideal update, the authors derive an adaptive shot budget that cuts required measurements from millions to just a few hundred while preserving sample quality on Gaussian mixtures and MNIST latent spaces. The result tackles one of the biggest practical hurdles for quantum neural networks—expensive repeated sampling—and could bring near‑term quantum generative AI within reach, though scaling beyond low‑dimensional demos remains an open challenge.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Insider Brief PRESS RELEASE — An international team including Nobel Prize-winning physicist Professor Sir Roger Penrose has observed a long-predicted effect of gravity on a falling quantum object for the first time. The result shows that a fundamental principle at the heart of Einstein’s theory of gravity remains consistent with the behaviour of matter in […]</p>
+            <p>In quantum computing, the readout always carries finite-shot sampling noise. Suppressing this noise through repeated measurements raises the cost of a quantum neural network (QNN). Meanwhile, a stochastic diffusion sampler deliberately adds randomness at each reverse (generation) step. This paper turns the measurement noise from a liability into a resource. Specifically, we use the noise quantum measurement produces anyway to replace part of the noise the sampler would otherwise inject. We characterize the measurement error as multinomial sampling noise propagated through a trainable linear readout. To connect the circuit&#39;s Born probabilities to the denoising task, we further formulate the diffusion process on a bounded zero-sum hyperplane mapped to the probability simplex. Therefore, we can employ a compensation noise to match the mean and covariance of the shot-noise-free linear update under some minimum shot conditions. Solving this condition for the shot count gives a state-dependent adaptive budget. For the denoising diffusion implicit model (DDIM), this budget increases as the sampler becomes more deterministic. On an eight-dimensional Gaussian mixture, the schedule achieves comparable generation quality with $303$ shots per sample against a high-shot reference of $1.6\times10^{6}$, about $5300\times$ fewer. Latent diffusion experiments on MNIST further validate the proposed mechanism for generation in a learned latent space.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://thequantuminsider.com/2026/09/02/scientists-observe-einsteins-gravity-in-the-quantum-world/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at The Quantum Insider &rarr;
+            <a href="https://arxiv.org/abs/2610.41721v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -104,8 +99,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Scientists%20Observe%20Einstein%E2%80%99s%20Gravity%20in%20The%20Quantum%20World&url=https://quantumcrier.com/posts/b36423eb.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b36423eb.html&title=Scientists%20Observe%20Einstein%E2%80%99s%20Gravity%20in%20The%20Quantum%20World" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Leveraging%20Quantum%20Measurement%20Randomness%20for%20Shot-Efficient%20Diffusion%20Models&url=https://quantumcrier.com/posts/dd775a4a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/dd775a4a.html&title=Leveraging%20Quantum%20Measurement%20Randomness%20for%20Shot-Efficient%20Diffusion%20Models" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

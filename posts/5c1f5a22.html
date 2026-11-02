@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBM Releases Nighthawk r2 QPU Featuring Active Dissipative Qubit Reset and 25x Circuit Throughput | Quantum Crier</title>
-    <meta name="description" content="IBM Quantum has announced the official release of IBM Quantum Nighthawk r2 (deployed as ibm_phoenix), its fastest quantum processing unit (QPU) to date. Built o">
+    <title>Overcoming the Representational Limitations of Amplitude Encoding for Quantum Neural Networks | Quantum Crier</title>
+    <meta name="description" content="Quantum Neural Networks (QNNs) offer a framework for learning functions from classical data, but their expressive power depends critically on how inputs are enc">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="IBM Releases Nighthawk r2 QPU Featuring Active Dissipative Qubit Reset and 25x Circuit Throughput">
+    <meta property="og:title" content="Overcoming the Representational Limitations of Amplitude Encoding for Quantum Neural Networks">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,11 +58,13 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
         </div>
-        <h1>IBM Releases Nighthawk r2 QPU Featuring Active Dissipative Qubit Reset and 25x Circuit Throughput</h1>
+        <h1>Overcoming the Representational Limitations of Amplitude Encoding for Quantum Neural Networks</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">September 02, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article matters because IBM’s Nighthawk r2 (ibm_phoenix) demonstrates a practical step toward high‑throughput quantum computing by pairing a 120‑qubit square‑lattice chip with an active dissipative reset that cuts idle time between shots, pushing circuit execution past the 100 kHz mark—a roughly 25‑fold speedup over its predecessor. The breakthrough aligns with recent pushes from both IBM and other vendors to improve “quantum clock rates,” making hybrid algorithms such as VQE or QAOA far more viable on near‑term hardware where total runtime, not just qubit count, is a bottleneck. While the reset scheme dramatically raises throughput, overall algorithm depth will still be limited by coherence times and gate errors, so the advance is best viewed as a complementary performance gain rather than a cure for noise.
+                This article pinpoints a fundamental blind spot in amplitude‑encoded quantum neural networks: the unavoidable loss of information under uniform real scaling, which caps their expressive power regardless of circuit depth. By introducing a simple, parameter‑free nonlinear preprocessing step that restores sensitivity to all real inputs while preserving the logarithmic qubit advantage, the authors deliver a practical encoding upgrade that boosts benchmark classification accuracy by 21–44 % over both standard amplitude and angle encodings. The result is a timely advance for near‑term QNN implementations, showing that smarter data preparation can extract far more performance from limited quantum hardware without adding trainable complexity.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>IBM Quantum has announced the official release of IBM Quantum Nighthawk r2 (deployed as ibm_phoenix), its fastest quantum processing unit (QPU) to date. Built on a square-lattice architecture, the 120-qubit processor introduces a high-speed dissipative qubit reset framework that eliminates long inter-circuit idle periods, achieving a maximum circuit throughput of over 100,000 circuits per second—a [...] The post IBM Releases Nighthawk r2 QPU Featuring Active Dissipative Qubit Reset and 25x Circuit Throughput appeared first on Quantum Computing Report .</p>
+            <p>Quantum Neural Networks (QNNs) offer a framework for learning functions from classical data, but their expressive power depends critically on how inputs are encoded into quantum states. Angle encoding can require resources that scale with the number of features, whereas amplitude encoding represents $d$ features using only $\mathcal{O}(\log_2 d)$ qubits. This compactness comes at a representational cost: normalization makes conventional amplitude encoding invariant to nonzero real rescaling of the input, up to an unobservable global phase. We show that this invariance induces an exact, architecture-independent restriction on the resulting hypothesis class. No downstream quantum circuit can distinguish inputs differing by nonzero real scaling. We develop a general condition under which deterministic preprocessing can remove this ambiguity and show that nonlinearity alone is insufficient. Based on this analysis, we introduce a fixed nonlinear feature map that provably distinguishes all real inputs under subsequent amplitude encoding, without adding trainable parameters and while retaining logarithmic qubit scaling. We evaluate the resulting QNN on three canonical classification benchmarks and a nonlinear synthetic dataset against conventional amplitude and angle encoding, as well as a classical neural network. Across these tasks, the proposed encoding consistently improves classification accuracy over both quantum encoding baselines by 21$-$44 %. Our results establish normalization-induced scale invariance as a concrete representational bottleneck of amplitude encoding and demonstrate that it can be removed while preserving a compact quantum representation, marking a step toward quantum models capable of capturing arbitrary relationships in classical data.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/ibm-releases-nighthawk-r2-qpu-featuring-active-dissipative-qubit-reset-and-25x-circuit-throughput/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2610.41824v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -95,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=IBM%20Releases%20Nighthawk%20r2%20QPU%20Featuring%20Active%20Dissipative%20Qubit%20Reset%20and%2025x%20Circuit%20Throughput&url=https://quantumcrier.com/posts/336604f5.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/336604f5.html&title=IBM%20Releases%20Nighthawk%20r2%20QPU%20Featuring%20Active%20Dissipative%20Qubit%20Reset%20and%2025x%20Circuit%20Throughput" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Overcoming%20the%20Representational%20Limitations%20of%20Amplitude%20Encoding%20for%20Quantum%20Neural%20Networks&url=https://quantumcrier.com/posts/5c1f5a22.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5c1f5a22.html&title=Overcoming%20the%20Representational%20Limitations%20of%20Amplitude%20Encoding%20for%20Quantum%20Neural%20Networks" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

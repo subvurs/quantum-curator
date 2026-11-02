@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heuristically optimizing, synthesizing, and prioritizing measurement settings for quantum state tomography | Quantum Crier</title>
-    <meta name="description" content="A key task in many quantum-computing applications, e.g., quantum simulation and quantum state tomography (QST), is to partition an arbitrary set of operators in">
+    <title>Quantum Bernstein--Kolmogorov--Arnold approximation | Quantum Crier</title>
+    <meta name="description" content="This paper addresses the expressivity and representation gap in Quantum Neural Networks by establishing a quantum analogue of the classical Kolmogorov--Arnold r">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Heuristically optimizing, synthesizing, and prioritizing measurement settings for quantum state tomography">
+    <meta property="og:title" content="Quantum Bernstein--Kolmogorov--Arnold approximation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,17 +58,17 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
-            
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
             
             <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
         </div>
-        <h1>Heuristically optimizing, synthesizing, and prioritizing measurement settings for quantum state tomography</h1>
+        <h1>Quantum Bernstein--Kolmogorov--Arnold approximation</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 02, 2026</span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -80,18 +80,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that the long‑standing bottleneck of exploding measurement settings in quantum state tomography can be tamed by recasting operator partitioning as a graph‑coloring problem and applying fast heuristic solvers. By cutting the number of required commuting Pauli groups—and even ranking them for maximal information gain—the authors achieve orders‑of‑magnitude speedups on modest hardware, a practical step toward scalable tomography for near‑term devices. The work dovetails with recent advances such as classical‑shadow techniques and adaptive measurement schemes, suggesting that efficient, priority‑driven scheduling could become a standard tool in experimental quantum labs.
+                This article shows that Quantum Neural Networks can achieve the same universal approximation power as classical networks by embedding the input into coordinate qubits and using a single outer unitary to encode any continuous multivariate function, effectively closing a long‑standing expressivity gap in QML theory. By translating the Kolmogorov–Arnold representation into a constructive circuit built from coherent‑state inputs and commuting inner observables, it provides a concrete blueprint for hardware‑friendly architectures that could reduce depth and gate count compared with existing variational designs. The result is primarily theoretical—its practical impact will depend on advances in coherent‑state preparation and error‑robust measurement—but it offers a compelling bridge between classical approximation theory and near‑term quantum machine‑learning implementations.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>A key task in many quantum-computing applications, e.g., quantum simulation and quantum state tomography (QST), is to partition an arbitrary set of operators into mutually commuting subsets for efficient measurements. However, brute-force approaches to this task quickly become intractable as the number and dimensionality of operators grow. Here, we reformulate operator partitioning as a graph-coloring (GC) problem and develop an efficient computational framework to solve it, balancing accuracy and efficiency. Our framework enables leveraging a range of GC algorithms, which we benchmark for operator partitioning. Then, we demonstrate their utility in optimizing QST experiments, where determining non-overlapping data acquisition settings for QST is a major challenge, and prioritizing among these settings, i.e., selecting the experiments that provide the most information. We further show how to perform these experiments by synthesizing Clifford circuits for joint measurement of commuting Pauli operators in multi-qubit systems. We validate our framework across multi-qubit (up to five qubits), multi-qutrit (up to three qutrits), and hybrid qubit-qutrit systems. Our results show that heuristic GC methods substantially reduce the number of required measurement settings for QST and enable priority-based scheduling that maximizes the information gain per experiment. The optimization converges within minutes on a student-grade laptop, providing speedups of several orders of magnitude over brute-force methods already for these relatively small quantum systems. This demonstrates the potential of GC heuristics as a scalable and practical tool for characterization of noisy intermediate-scale quantum devices. We have made the Python implementation of our GC framework to optimize and schedule QST experiments publicly available at https://github.com/ssm8015/QST_GT.git.</p>
+            <p>This paper addresses the expressivity and representation gap in Quantum Neural Networks by establishing a quantum analogue of the classical Kolmogorov--Arnold representation theorem. We propose a constructive approximation framework over fixed input coherent states, where the dependence of the function argument is embedded entirely in coordinate qubits, while the target function dictates a single outer unitary evolution. By applying a Sprecher-type representation to the rotation angle of the state, we demonstrate that the multidimensional operator factorises into \(2d+1\) commuting universal inner observables. We prove that the resulting measurement probability precisely reproduces the multidimensional Bernstein polynomial of the target function. For any continuous multivariate function, the joint quantum state converges uniformly to the target output register, linking classical superposition theory with probabilistic and coherent quantum circuits.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.02633v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2610.41608v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -101,8 +101,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Heuristically%20optimizing%2C%20synthesizing%2C%20and%20prioritizing%20measurement%20settings%20for%20quantum%20state%20tomography&url=https://quantumcrier.com/posts/035c0afc.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/035c0afc.html&title=Heuristically%20optimizing%2C%20synthesizing%2C%20and%20prioritizing%20measurement%20settings%20for%20quantum%20state%20tomography" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20Bernstein--Kolmogorov--Arnold%20approximation&url=https://quantumcrier.com/posts/1a945eeb.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/1a945eeb.html&title=Quantum%20Bernstein--Kolmogorov--Arnold%20approximation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsiQuantum and Brookhaven National Lab Partner to Develop Fault-Tolerant Algorithms on Construct Platform | Quantum Crier</title>
-    <meta name="description" content="Photonic quantum hardware developer PsiQuantum and the U.S. Department of Energy’s (DOE) Brookhaven National Laboratory have established a strategic software co">
+    <title>Query-Efficient Quantum Multi-Objective Optimization for Materials Configuration Search via Bayesian Weight Selection | Quantum Crier</title>
+    <meta name="description" content="Materials design is a multi-objective problem, and recent advances in quantum optimization make it possible to bring quantum solvers to bear on such problems. T">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="PsiQuantum and Brookhaven National Lab Partner to Develop Fault-Tolerant Algorithms on Construct Platform">
+    <meta property="og:title" content="Query-Efficient Quantum Multi-Objective Optimization for Materials Configuration Search via Bayesian Weight Selection">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 01, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 02, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,17 +56,15 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
-            
             <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>PsiQuantum and Brookhaven National Lab Partner to Develop Fault-Tolerant Algorithms on Construct Platform</h1>
+        <h1>Query-Efficient Quantum Multi-Objective Optimization for Materials Configuration Search via Bayesian Weight Selection</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">September 02, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">October 30, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article matters because it links PsiQuantum’s photonic hardware ambitions with DOE‑funded expertise to tackle the hardest hurdle in quantum computing—designing algorithms that can run on error‑corrected, utility‑scale machines. By giving Brookhaven researchers open access to the Construct platform, the partnership promises realistic resource estimates and optimization tools that complement recent industry moves toward fault‑tolerant roadmaps from IBM, Google and Microsoft. The collaboration could speed up scientific applications and inform policy funding, though practical impact will depend on achieving true error correction in photonic devices first.
+                This article shows that a smart, adaptive choice of scalarisation weights can dramatically cut the number of noisy QAOA runs needed to map out Pareto fronts in multi‑objective materials design, turning query efficiency into a near‑term advantage for NISQ hardware. By framing weight selection as Bayesian optimisation and using expected hypervolume improvement, BW‑QAMOO achieves up to a 74 % reduction in solves compared with naïve uniform sampling, especially as the number of objectives grows. The result bridges algorithmic theory and practical quantum workflows, suggesting that careful experiment design can unlock useful performance gains even before full quantum advantage is realized. Readers should note that the study remains on simulated QAOA data, so real‑hardware validation will be the next critical step.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Photonic quantum hardware developer PsiQuantum and the U.S. Department of Energy’s (DOE) Brookhaven National Laboratory have established a strategic software collaboration to accelerate the development of fault-tolerant quantum algorithms and scientific applications. Under the agreement, Brookhaven scientists will utilize PsiQuantum&#39;s open-access Construct software platform to design and optimize resource requirements for utility-scale quantum workloads. [ [...] The post PsiQuantum and Brookhaven National Lab Partner to Develop Fault-Tolerant Algorithms on Construct Platform appeared first on Quantum Computing Report .</p>
+            <p>Materials design is a multi-objective problem, and recent advances in quantum optimization make it possible to bring quantum solvers to bear on such problems. The realistic near-term win, though, is not raw quantum advantage but making an expensive, noisy quantum solver usable by spending its calls wisely. Quantum Approximate Multi-Objective Optimization (QAMOO) traces a Pareto front by solving a family of scalarized Ising problems, one per objective-weight vector, with QAOA --- but chooses those weights \emph{non-adaptively}, sampling them at random, blind to what it has already found. We recast weight selection as \emph{multi-objective Bayesian optimization}: our method, BW-QAMOO (Bayes-Weighted QAMOO), picks each next weight by expected hypervolume improvement (EHVI) under a Gaussian-process (GP) surrogate over the weight-to-objective map. On a frustrated alloy-configuration benchmark across $m\in\{3,4\}$ objectives and $n\in\{10,11,12\}$ sites, BW-QAMOO reaches the same Pareto hypervolume as QAMOO&#39;s random sampling with a median 33% fewer scalarized solves across the 90/95\% targets and 60--74\% fewer than a uniform-grid baseline), on a genuine (simulated) QAOA solver; a paired Wilcoxon test confirms the saving is significant, and the advantage grows with the objective count m as the weight simplex expands and blind sampling wastes more of the budget. This is a \emph{query-efficiency} result, and we close with the open challenges on the path to real alloy data and hardware.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/psiquantum-and-brookhaven-national-lab-partner-to-develop-fault-tolerant-algorithms-on-construct-platform/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2610.41788v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -99,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=PsiQuantum%20and%20Brookhaven%20National%20Lab%20Partner%20to%20Develop%20Fault-Tolerant%20Algorithms%20on%20Construct%20Platform&url=https://quantumcrier.com/posts/22b6fe72.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/22b6fe72.html&title=PsiQuantum%20and%20Brookhaven%20National%20Lab%20Partner%20to%20Develop%20Fault-Tolerant%20Algorithms%20on%20Construct%20Platform" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Query-Efficient%20Quantum%20Multi-Objective%20Optimization%20for%20Materials%20Configuration%20Search%20via%20Bayesian%20Weight%20Selection&url=https://quantumcrier.com/posts/327f5203.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/327f5203.html&title=Query-Efficient%20Quantum%20Multi-Objective%20Optimization%20for%20Materials%20Configuration%20Search%20via%20Bayesian%20Weight%20Selection" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
