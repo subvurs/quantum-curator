@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum simulation of dissipative acoustic and elastic waves by Schrödingerisation: absorbing boundaries and explicit polynomial-size circuits | Quantum Crier</title>
+    <meta name="description" content="Explicit quantum circuits for the acoustic and elastic wave equations, obtained by Hamiltonian simulation of their first-order forms, conserve energy and theref">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Quantum simulation of dissipative acoustic and elastic waves by Schrödingerisation: absorbing boundaries and explicit polynomial-size circuits">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 03, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>Quantum simulation of dissipative acoustic and elastic waves by Schrödingerisation: absorbing boundaries and explicit polynomial-size circuits</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 02, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows how to embed simple absorbing “sponge” layers into quantum simulations of acoustic and elastic waves by using Schrödingerisation, turning the inherently dissipative dynamics into a family of unitary circuits that require only one or two auxiliary qubits. By providing explicit polynomial‑size circuit constructions in one, two and three dimensions, it overcomes the closed‑system limitation of earlier wave‑equation simulators and opens the door to realistic modeling of seismic, materials‑science and other wave‑based problems on quantum hardware. The analysis predicts a constant success probability (≈0.4 × the remaining energy) and exact recovery on the truncated auxiliary axis, making the approach compatible with near‑term devices despite the need to manage controlled‑NOT overhead and truncation errors.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Explicit quantum circuits for the acoustic and elastic wave equations, obtained by Hamiltonian simulation of their first-order forms, conserve energy and therefore describe closed domains: an outgoing wave reflects off the edge of the computational region or, with periodic boundaries, wraps around and re-enters from the opposite side. We open the domain with the simplest physical absorber, a graded sponge layer in which every wave field is damped at a rate that grows towards the outer edge, and implement the resulting dissipative dynamics on a quantum simulator by Schrödingerisation, which turns a non-unitary linear evolution into a family of unitary ones by means of a single auxiliary variable. We derive the whole chain from the partial differential equation to the circuit, in one, two and three dimensions. An independent finite-difference solver confirms that damping all wave fields absorbs far better than the common velocity-only damping mask. For the sponge the quantum analysis is sharp: recovery is exact on the whole non- negative half of the auxiliary axis at every time; that axis can be truncated periodically at a length set by the largest damping rate and the simulated time; and the success probability is a fixed constant, about 0.4, times the fraction of the energy not yet absorbed, with only one or two auxiliary qubits measured. On the circuit side, the damping step, which generic synthesis compiles into a number of controlled-NOT gates exponential in the number of qubits, factorises exactly into polynomially many multi-controlled phase gates. Gate-level simulations on up to 25 qubits agree with the classical solutions of the damped wave equations.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.02357v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20simulation%20of%20dissipative%20acoustic%20and%20elastic%20waves%20by%20Schr%C3%B6dingerisation%3A%20absorbing%20boundaries%20and%20explicit%20polynomial-size%20circuits&url=https://quantumcrier.com/posts/55a2875b.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/55a2875b.html&title=Quantum%20simulation%20of%20dissipative%20acoustic%20and%20elastic%20waves%20by%20Schr%C3%B6dingerisation%3A%20absorbing%20boundaries%20and%20explicit%20polynomial-size%20circuits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
