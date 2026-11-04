@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who’s News: Strategic Appointments at QuIC, Atom Computing, and Qilimanjaro Quantum Tech | Quantum Crier</title>
-    <meta name="description" content="Cécile Perrault is the new Executive Director of QuIC, Kevin Messerle is the new CFO of Atom Computing, and Albert Solana is the new Chief of Staff at Qilimanja">
+    <title>DynaMite: Dynamic Measurement Scheduling To Accelerate Fault-Tolerant Quantum Programs | Quantum Crier</title>
+    <meta name="description" content="Fault-tolerant quantum computers run millions of logical cycles to perform quantum error correction (QEC). As logical operations span entire logical cycles, the">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Who’s News: Strategic Appointments at QuIC, Atom Computing, and Qilimanjaro Quantum Tech">
+    <meta property="og:title" content="DynaMite: Dynamic Measurement Scheduling To Accelerate Fault-Tolerant Quantum Programs">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-33.png">
-<meta name="twitter:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-33.png">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 03, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 04, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,22 +56,23 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/general.html" class="topic-tag topic-general">general</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
             
         </div>
-        <h1>Who’s News: Strategic Appointments at QuIC, Atom Computing, and Qilimanjaro Quantum Tech</h1>
+        <h1>DynaMite: Dynamic Measurement Scheduling To Accelerate Fault-Tolerant Quantum Programs</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">September 05, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 03, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/09/image-33.png" alt="Who’s News: Strategic Appointments at QuIC, Atom Computing, and Qilimanjaro Quantum Tech" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -83,19 +80,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                These senior hires underscore how quickly the quantum ecosystem is moving from research‑heavy labs to full‑scale companies that need seasoned operational leadership. By bringing a proven executive director to QuIC, a finance veteran to Atom Computing, and a strategic chief of staff to Qilimanjaro, each firm signals intent to accelerate hardware development, secure larger funding rounds, and deepen industry partnerships at a time when venture capital and government programs are pouring record resources into quantum technologies. The appointments should help translate scientific breakthroughs into market‑ready products, though their impact will ultimately depend on how effectively the new leaders can navigate the still‑nascent supply chain and talent bottlenecks that challenge the sector.
+                This article tackles one of the biggest hidden bottlenecks in fault‑tolerant processors: the static measurement latency that inflates logical cycle times and error rates. By introducing DynaMite’s real‑time latency selection, which tailors readout speed to each logical cycle’s error budget, the authors show a clear path to shave tens of percent off both runtime and logical error probability—an advance that dovetails with recent efforts in active reset and low‑latency control stacks from IBM and Google. If hardware can expose fast, programmable measurement windows, the technique could become a practical lever for scaling up surface‑code or other QEC codes without waiting for fundamentally faster detectors.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Cécile Perrault is the new Executive Director of QuIC, Kevin Messerle is the new CFO of Atom Computing, and Albert Solana is the new Chief of Staff at Qilimanjaro Quantum Tech, all bringing their expertise to advance quantum technologies. The post Who’s News: Strategic Appointments at QuIC, Atom Computing, and Qilimanjaro Quantum Tech appeared first on Quantum Computing Report .</p>
+            <p>Fault-tolerant quantum computers run millions of logical cycles to perform quantum error correction (QEC). As logical operations span entire logical cycles, the logical cycle time (LCT) dictates program runtime. Qubit measurements, critical to extract parity information for QEC, are the slowest operations and account for 43-86% of LCT. Measurement latencies impact fidelity: fast measurements lower our ability to correctly classify quantum states, whereas slow measurements increase the likelihood of decoherence. Hardware providers thus calibrate measurement latencies that maximize readout fidelity per qubit and use them to schedule all measurements during program execution. However, calibrated latencies are sub-optimal for logical performance because logical cycles span multiple QEC rounds, during which data qubits are not measured. This increases LCT and logical error rates (LERs) due to decoherence at the logical level. We propose DynaMite, a lightweight real-time measurement latency selection policy built on two key insights. First, logical cycles must use a measurement latency that is fast enough to reduce both LCT and LER for the QEC code, instead of the calibrated latency that only maximizes readout fidelity. Second, not all logical cycles are equal; many do not fully utilize the error budget of the QEC code, i.e., the number of failed parity checks it can tolerate without compromising LER. These cycles could use even faster measurements but do not, because latencies are chosen statically, whereas error information is only available at runtime. DynaMite exploits the fact that a logical cycle comprises multiple QEC rounds and selects the fastest latency for an upcoming round based on the error budget left and rounds remaining. Our evaluations show that DynaMite reduces LCT by 1.69x on average and up to 2.29x, and reduces LER to 0.46x on average and up to 0.13x of baseline.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/whos-news-strategic-appointments-at-quic-atom-computing-and-qilimanjaro-quantum-tech/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2611.05233v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -104,8 +101,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Who%E2%80%99s%20News%3A%20Strategic%20Appointments%20at%20QuIC%2C%20Atom%20Computing%2C%20and%20Qilimanjaro%20Quantum%20Tech&url=https://quantumcrier.com/posts/ab1d3a6e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/ab1d3a6e.html&title=Who%E2%80%99s%20News%3A%20Strategic%20Appointments%20at%20QuIC%2C%20Atom%20Computing%2C%20and%20Qilimanjaro%20Quantum%20Tech" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=DynaMite%3A%20Dynamic%20Measurement%20Scheduling%20To%20Accelerate%20Fault-Tolerant%20Quantum%20Programs&url=https://quantumcrier.com/posts/f334b3f3.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/f334b3f3.html&title=DynaMite%3A%20Dynamic%20Measurement%20Scheduling%20To%20Accelerate%20Fault-Tolerant%20Quantum%20Programs" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
