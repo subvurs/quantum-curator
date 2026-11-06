@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery gates as a resource in repetition-code process tomography: exhaustive gate-optimal designs for three, five and seven qubits | Quantum Crier</title>
+    <meta name="description" content="Process tomography built on stabilizer codes compares the logical channel of a repetition code with a reference channel, and the decoder that produces that chan">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Recovery gates as a resource in repetition-code process tomography: exhaustive gate-optimal designs for three, five and seven qubits">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 06, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Recovery gates as a resource in repetition-code process tomography: exhaustive gate-optimal designs for three, five and seven qubits</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 05, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that the number of physical Pauli recovery gates needed for repetition‑code process tomography can be dramatically reduced—down to zero for three qubits and just five for seven—by exhaustively searching optimal decoder designs rather than relying on the conventional minimum‑weight rule. The resulting gate‑optimal decoders deliver up to an order‑of‑magnitude improvement in tomographic precision while cutting experimental runtime, a benefit that directly supports current efforts to benchmark and calibrate noisy intermediate‑scale quantum processors more efficiently. However, the advantage diminishes for larger codes where full decoding can even lose rank, underscoring that scaling these techniques will require careful conditioning of hardware and possibly new decoder heuristics.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Process tomography built on stabilizer codes compares the logical channel of a repetition code with a reference channel, and the decoder that produces that channel is almost always fixed to the standard minimum-weight one. We ask how many physical single-qubit Pauli gates the decoder actually needs when the measurement basis is fixed---the constraint under which the count is a resource rather than a bookkeeping artefact. Exhaustive enumeration of every recovery design for $n=3$, $5$ and $7$ qubits, with rank decided by exact modular arithmetic at two primes, gives minimal counts of $0$, $1$ and $5$ gates, against $6$, $10$ and $14$ for first-order decoding and $6$, $50$ and $308$ for full minimum-weight decoding. The count depends only on how many sites are corrected and never on which, so the two halves of the design problem separate. Correcting more sites is not monotonically better: at $n=7$ full decoding loses three dimensions of rank, and under a calibration-residual floor the precision curve at $n=3$ is U-shaped. The three-gate design is $9.5$ times more precise than the standard six-gate decoder at the median of $40$ sampled working points, and more precise at every one of them ($1.8$ to $88$ times); the size of that factor belongs to the working point, the ordering does not. Reaching a $10$\,mrad rms error then costs $1.2\times10^{7}$ shots in $65$\,s on a current superconducting device at a well-conditioned point, while $n\ge5$ stays out of reach for conditioning reasons rather than gate-count reasons. Finally, the optimal designs are not covariant under chain reversal: they separate the mirror pair of arXiv:2610.19779 by $1.3\times10^{-3}$ while leaving the Jacobian at full rank.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.08310v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Recovery%20gates%20as%20a%20resource%20in%20repetition-code%20process%20tomography%3A%20exhaustive%20gate-optimal%20designs%20for%20three%2C%20five%20and%20seven%20qubits&url=https://quantumcrier.com/posts/9c1e5993.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/9c1e5993.html&title=Recovery%20gates%20as%20a%20resource%20in%20repetition-code%20process%20tomography%3A%20exhaustive%20gate-optimal%20designs%20for%20three%2C%20five%20and%20seven%20qubits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

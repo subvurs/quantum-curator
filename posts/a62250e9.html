@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Analytical Geometric Synthesis of Robust Quantum Controls | Quantum Crier</title>
+    <meta name="description" content="High-fidelity quantum gates are a central requirement for fault-tolerant quantum computation, yet their implementation is limited by the sensitivity of qubits t">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Semi-Analytical Geometric Synthesis of Robust Quantum Controls">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 06, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Semi-Analytical Geometric Synthesis of Robust Quantum Controls</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 05, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that high‑fidelity gates can be engineered in milliseconds instead of minutes by turning the control problem into a geometric curve‑design task, dramatically speeding up the synthesis of dynamically corrected gates. By leveraging the Space Curve Quantum Control formalism and Pontryagin’s Maximum Principle, the authors produce smooth pulses that are simultaneously robust to amplitude drift and dephasing—an advance that could accelerate calibration cycles on noisy intermediate‑scale devices. The semi‑analytical approach bridges the gap between fully numerical optimal‑control methods and analytic pulse families, offering a practical pathway for building larger libraries of error‑resilient gates without sacrificing fidelity. Readers should note, however, that experimental validation on specific hardware platforms will be needed to confirm the predicted robustness under real‑world noise spectra.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>High-fidelity quantum gates are a central requirement for fault-tolerant quantum computation, yet their implementation is limited by the sensitivity of qubits to environmental noise and by control non-idealities. To mitigate these effects, quantum gates can be designed as dynamically corrected gates (DCGs), where control sequences are engineered to suppress the impact of errors on the resulting operation. Many methods in the literature are able to synthesize DCGs, but they typically rely on numerical optimization, with synthesis times on the order of minutes per gate. Here, we propose an automated semi-analytical method that reduces this cost by orders of magnitude, synthesizing smooth, robust control pulses in tens of milliseconds rather than minutes, with comparable fidelity and robustness. Our approach is based on the Space Curve Quantum Control (SCQC) formalism, where quantum evolution is mapped onto a geometric space curve whose geometric properties determine the target gate and its robustness. We parameterize the curve in the Frenet-Serret frame and employ the Pontryagin Maximum Principle (PMP) to design controls that are robust against both amplitude and dephasing errors. The PMP is formulated as a boundary-value problem and solved using a shooting method. The Frenet-Serret frame is integrated using Rodrigues&#39; formula. Starting from a reference solution, we gradually vary the target rotation angle to construct a library of solutions, whose interpolation provides initial guesses for the shooting parameters of new target gates. We evaluated the method on 2,000 single-qubit rotations, obtaining a mean local optimization time of 39.945 ms per gate after preparation of the interpolation base. Quantum propagation yielded nominal gate infidelities below 10^-9 after virtual phase correction, with verified robustness against quasistatic amplitude and dephasing errors.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.08107v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Semi-Analytical%20Geometric%20Synthesis%20of%20Robust%20Quantum%20Controls&url=https://quantumcrier.com/posts/a62250e9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a62250e9.html&title=Semi-Analytical%20Geometric%20Synthesis%20of%20Robust%20Quantum%20Controls" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
