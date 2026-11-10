@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUMI AI Factory Selects IQM’s Halocene Roadmap for Europe’s First Superconducting Logical Qubit System | Quantum Crier</title>
-    <meta name="description" content="IQM Quantum Computers will deploy Europe&#39;s first logical-qubit-capable superconducting quantum computer, LUMI-IQ, at CSC&#39;s Kajaani, Finland data center. This sy">
+    <title>The simulability frontiers of photonic quantum computing | Quantum Crier</title>
+    <meta name="description" content="Estimates of when photonic devices outgrow classical simulation are hard to compare: even for single-photon boson sampling, quoted thresholds range from 50 to 9">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="LUMI AI Factory Selects IQM’s Halocene Roadmap for Europe’s First Superconducting Logical Qubit System">
+    <meta property="og:title" content="The simulability frontiers of photonic quantum computing">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 09, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 10, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,13 +58,17 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
             
         </div>
-        <h1>LUMI AI Factory Selects IQM’s Halocene Roadmap for Europe’s First Superconducting Logical Qubit System</h1>
+        <h1>The simulability frontiers of photonic quantum computing</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
-            <span class="date">September 11, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 09, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -76,19 +80,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks a milestone for Europe’s quantum ecosystem by announcing the first superconducting system designed from the ground up to host fault‑tolerant logical qubits, moving beyond prototype demonstrations toward scalable error‑corrected computing. By embedding IQM’s Halocene roadmap into the LUMI AI Factory, the project creates a true hybrid supercomputing stack that can offload workloads between classical HPC, AI accelerators, and quantum processors—a model other regions are racing to replicate. While the phased rollout through 2029 means practical applications will still be years away, the commitment of EuroHPC funding signals strong institutional backing and could accelerate the transition from noisy‑intermediate‑scale devices to usable quantum advantage in chemistry, optimization, and materials science.
+                This article introduces a concrete benchmark—one exact sample per second on a fixed classical machine—that lets researchers compare photonic devices across architectures and algorithms on equal footing, something the field has lacked amid wildly varying photon‑count thresholds. By releasing an open‑source GPU library and reporting that state‑of‑the‑art H100 hardware can still be classically simulated up to roughly 38 single photons (or 31 entangled photons), it quantifies how far current photonic platforms are from the “quantum advantage” regime while highlighting that algorithmic gains shift the frontier more than raw speed. The work therefore provides a practical yardstick for future hardware upgrades and for assessing claims of quantum supremacy in boson‑sampling–type experiments.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>IQM Quantum Computers will deploy Europe&#39;s first logical-qubit-capable superconducting quantum computer, LUMI-IQ, at CSC&#39;s Kajaani, Finland data center. This system, co-funded by the EuroHPC Joint Undertaking, will be integrated into the LUMI AI Factory, creating a hybrid HPC-AI-quantum supercomputing platform. LUMI-IQ will be delivered in three phases through 2029, starting with 150 physical qubits and eventually supporting up to 9 fault-tolerant logical qubits for advanced quantum computations. The post LUMI AI Factory Selects IQM’s Halocene Roadmap for Europe’s First Superconducting Logical Qubit System appeared first on Quantum Computing Report .</p>
+            <p>Estimates of when photonic devices outgrow classical simulation are hard to compare: even for single-photon boson sampling, quoted thresholds range from 50 to 98 photons, as they rest on different tasks and assumptions. We propose as a common unit the time a classical computer needs to draw one sample from the device&#39;s exact output distribution, up to floating-point rounding. Only exactness applies equally to every kind of light, since the cost of approximate sampling depends on the accuracy required. The simulability frontier is the device size at which our fastest exact sampler produces one sample per second on a fixed machine; this device size increases with better hardware and algorithms. As the time per sample grows exponentially with the number of detected photons, doubling the machine speed moves the frontier by about one photon, whereas a better algorithm changes the growth rate. We measure the frontier with photonic-engines, an open-source GPU library of exact samplers for single photons, entangled photons from quantum emitters, vacuum-single-photon superpositions and squeezed light. Each sampler is validated against a simulator sharing no code with it. On one NVIDIA H100 GPU, with Haar-random interferometers, twice as many modes as photonic inputs and photon-number-resolving detectors, the frontier lies at 38.3 single photons and at 31.0 entangled photons from one emitter. For squeezed light, a timing model fitted to measurements places it at 41.5 squeezed photonic inputs of mean photon number 0.5. For our samplers, coherence alone makes simulation harder: sources that emit a photon with probability one half reach 64.2 when vacuum and photon are mixed incoherently, as for lossy single photons, but only 50.0 when they are in coherent superposition. Feed-forward from mid-circuit measurement of up to three modes lowers the single-photon frontier only from 38.3 to 38.1.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://quantumcomputingreport.com/lumi-ai-factory-selects-iqms-halocene-roadmap-for-europes-first-superconducting-logical-qubit-system/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at Quantum Computing Report &rarr;
+            <a href="https://arxiv.org/abs/2611.12876v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -97,8 +101,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=LUMI%20AI%20Factory%20Selects%20IQM%E2%80%99s%20Halocene%20Roadmap%20for%20Europe%E2%80%99s%20First%20Superconducting%20Logical%20Qubit%20System&url=https://quantumcrier.com/posts/4f1b5c6f.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/4f1b5c6f.html&title=LUMI%20AI%20Factory%20Selects%20IQM%E2%80%99s%20Halocene%20Roadmap%20for%20Europe%E2%80%99s%20First%20Superconducting%20Logical%20Qubit%20System" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=The%20simulability%20frontiers%20of%20photonic%20quantum%20computing&url=https://quantumcrier.com/posts/2d6cec94.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/2d6cec94.html&title=The%20simulability%20frontiers%20of%20photonic%20quantum%20computing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

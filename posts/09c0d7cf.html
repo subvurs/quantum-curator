@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFI Pairs Without One-Way Puzzles: Oracle Separations from Communication Complexity | Quantum Crier</title>
-    <meta name="description" content="EFI pairs (Brakerski, Canetti, and Qian, ITCS 2023) and one-way puzzles (Khurana and Tomer, STOC 2024) are the leading candidates for the minimal assumption of ">
+    <title>IonQ and Classiq Outline Architectural Trade-Offs in Fault-Tolerant Resource Estimation | Quantum Crier</title>
+    <meta name="description" content="IonQ and Classiq&#39;s analysis shows that minimizing non-Clifford gates is no longer the primary factor in fault-tolerant quantum computing performance. Advances i">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="EFI Pairs Without One-Way Puzzles: Oracle Separations from Communication Complexity">
+    <meta property="og:title" content="IonQ and Classiq Outline Architectural Trade-Offs in Fault-Tolerant Resource Estimation">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,6 +26,10 @@
 
     
 
+<meta property="og:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/11/image-41-scaled.png">
+<meta name="twitter:image" content="https://quantumcomputingreport.com/wp-content/uploads/2026/11/image-41-scaled.png">
+<meta name="twitter:card" content="summary_large_image">
+
 
 </head>
 <body>
@@ -34,7 +38,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 09, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 10, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,19 +60,24 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
             
         </div>
-        <h1>EFI Pairs Without One-Way Puzzles: Oracle Separations from Communication Complexity</h1>
+        <h1>IonQ and Classiq Outline Architectural Trade-Offs in Fault-Tolerant Resource Estimation</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 10, 2026</span>
+            <span class="source">Source: <strong>Quantum Computing Report</strong></span>
+            <span class="date">November 09, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
+    
+    <div class="post-hero-image">
+        <img src="https://quantumcomputingreport.com/wp-content/uploads/2026/11/image-41-scaled.png" alt="IonQ and Classiq Outline Architectural Trade-Offs in Fault-Tolerant Resource Estimation" loading="eager"
+             onerror="this.parentElement.style.display='none'">
+    </div>
     
 
     <div class="post-body">
@@ -76,19 +85,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article establishes a relativized separation showing that EFI pairs can exist even when one‑way puzzles provably cannot, highlighting that the two leading “minimal” assumptions for quantum cryptography are not equivalent in all worlds. By tying the security of EFI pairs to a classic communication‑complexity problem (Vector‑in‑Subspace) and using random‑matrix tools to bound superposition attacks, the work clarifies why EFI‑based protocols may be fundamentally more robust than puzzle‑based ones. The result sharpens the theoretical landscape that has been shaped by recent breakthroughs such as Brakerski et al.’s EFI construction and Khurana‑Tomer’s one‑way puzzles, guiding researchers toward assumptions with provably stronger foundations. However, because the separation is oracle‑relative, it does not yet settle which assumption will ultimately be preferred for practical quantum cryptographic schemes.
+                This article matters because it overturns the long‑standing assumption that cutting non‑Clifford gate counts alone drives fault‑tolerant performance, showing instead that magic‑state preparation efficiencies have shifted the bottleneck to routing overhead, Clifford operations and qubit idle times. By quantifying how these factors dominate the physical spacetime volume, IonQ and Classiq make a strong case for full‑stack compilation tools that co‑optimize logical circuits, error‑correction codes and hardware layout—a direction echoed by recent efforts at Google and IBM to integrate surface‑code aware schedulers. Readers should take away that future resource estimates will need to account for architecture‑level trade‑offs, not just algorithmic gate counts, before realistic quantum advantage timelines can be set.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>EFI pairs (Brakerski, Canetti, and Qian, ITCS 2023) and one-way puzzles (Khurana and Tomer, STOC 2024) are the leading candidates for the minimal assumption of quantum cryptography. The first are efficiently preparable quantum states, statistically far yet computationally indistinguishable; the second are classical puzzles, easy to sample and hard to solve. One-way puzzles imply EFI pairs, and whether the converse holds is open. We construct a single classical oracle relative to which one-way puzzles do not exist, even with an unbounded verifier, while an EFI pair survives every distinguisher that queries the oracle classically throughout and holds advice about it, making its one superposition query at the end. The oracle answers every question about the output probabilities of quantum samplers, which removes the puzzles, and hides a Haar-random half-dimensional subspace. To prove security we reduce it to communication complexity. An adversary whose knowledge of the subspace arrives as classical query answers can be simulated inside a two-party protocol against the party holding it, so it does no better than the best classical protocol for Vector-in-Subspace (Klartag and Regev, STOC 2011), whatever the oracle computes. That argument does not cover the superposition query, which we bound instead using tools from random matrix theory. The same attack gives a classical simulation of any quantum party in a classical-message protocol with no entanglement shared in advance, so relative to the oracle there is no proof of quantumness either. Quantum polynomial time therefore offers no advantage on any task with classical inputs and outputs, while the two quantum states stay indistinguishable. We state conjectures on removing the restriction on superposition queries.</p>
+            <p>IonQ and Classiq&#39;s analysis shows that minimizing non-Clifford gates is no longer the primary factor in fault-tolerant quantum computing performance. Advances in magic state preparation mean that routing, Clifford gates, and memory retention now significantly impact the overall physical spacetime volume. Therefore, a full-stack compilation approach considering physical layouts and error correction is crucial for accurate evaluation of fault-tolerant algorithms. The post IonQ and Classiq Outline Architectural Trade-Offs in Fault-Tolerant Resource Estimation appeared first on Quantum Computing Report .</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.11901v1" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at arXiv Quantum Physics &rarr;
+            <a href="https://quantumcomputingreport.com/ionq-and-classiq-outline-architectural-trade-offs-in-fault-tolerant-resource-estimation/" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at Quantum Computing Report &rarr;
             </a>
         </div>
     </div>
@@ -97,8 +106,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=EFI%20Pairs%20Without%20One-Way%20Puzzles%3A%20Oracle%20Separations%20from%20Communication%20Complexity&url=https://quantumcrier.com/posts/b3dcbde8.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/b3dcbde8.html&title=EFI%20Pairs%20Without%20One-Way%20Puzzles%3A%20Oracle%20Separations%20from%20Communication%20Complexity" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=IonQ%20and%20Classiq%20Outline%20Architectural%20Trade-Offs%20in%20Fault-Tolerant%20Resource%20Estimation&url=https://quantumcrier.com/posts/09c0d7cf.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/09c0d7cf.html&title=IonQ%20and%20Classiq%20Outline%20Architectural%20Trade-Offs%20in%20Fault-Tolerant%20Resource%20Estimation" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
