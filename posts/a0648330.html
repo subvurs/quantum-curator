@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Policy-Guided Error Mitigation (APGEM): A Unified Learning-Based Framework for Noise Resilience in Quantum Machine Learning | Quantum Crier</title>
+    <meta name="description" content="Error mitigation stands between variational quantum algorithms and useful results on today&#39;s noisy hardware, yet in practice a mitigation method is usually chos">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Adaptive Policy-Guided Error Mitigation (APGEM): A Unified Learning-Based Framework for Noise Resilience in Quantum Machine Learning">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 11, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            
+        </div>
+        <h1>Adaptive Policy-Guided Error Mitigation (APGEM): A Unified Learning-Based Framework for Noise Resilience in Quantum Machine Learning</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 10, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that a single contextual‑bandit controller can learn on the fly which error‑mitigation tool—ZNE, PEC, measurement correction, dynamical decoupling or circuit re‑optimisation—is optimal for each step of a quantum‑machine‑learning run, delivering performance within 95 % of an oracle that knows the best choice in advance. By turning mitigation into an adaptive policy rather than a static preset, APGEM directly tackles the drift in both noise and circuit parameters that has limited variational algorithms on today’s noisy devices, and it does so without requiring any algorithm‑specific redesign. The result is a practical, hardware‑agnostic layer that could make QML experiments more reliable on near‑term processors, though the added classical decision overhead and the need for sufficient feedback signals remain important considerations.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Error mitigation stands between variational quantum algorithms and useful results on today&#39;s noisy hardware, yet in practice a mitigation method is usually chosen once, by hand, and applied unchanged for the life of an experiment. This is a poor fit for quantum machine learning (QML), where the circuit and the noise drift as training proceeds, so the best strategy in one regime is often wrong in another. We present a generalized form of Adaptive Policy-Guided Error Mitigation (APGEM), which treats the choice of mitigation technique as an online decision made from an algorithm&#39;s own feedback. A single contextual-bandit controller observes signals any variational algorithm already produces, such as fidelity, entropy, reward or loss, and gradient behavior, and selects among Zero-Noise Extrapolation, Probabilistic Error Cancellation, Measurement Error Mitigation, Dynamical Decoupling, and circuit optimization per step. Because it depends only on this shared feedback interface, the framework applies unchanged across supervised, unsupervised, reinforcement, and hybrid quantum-classical learning. Evaluated on five paradigms across 80 algorithm-and-noise conditions, adaptive selection reaches 95.5% of an oracle that always picks the best technique and significantly outperforms all six fixed strategies (Friedman $χ^{2}=92.18$, $p\approx1.1\times10^{-17}$; pairwise Wilcoxon $p&lt;4\times10^{-6}$). The learned policy is noise-aware: its favored technique shifts as depolarizing and readout error rise. On noise models from eight real IBM devices, APGEM tracks the oracle almost exactly (99.9% of oracle utility) at a flat cost of roughly $1.3\times10^{4}$ shots from three to eight qubits.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.13815v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Adaptive%20Policy-Guided%20Error%20Mitigation%20%28APGEM%29%3A%20A%20Unified%20Learning-Based%20Framework%20for%20Noise%20Resilience%20in%20Quantum%20Machine%20Learning&url=https://quantumcrier.com/posts/a0648330.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a0648330.html&title=Adaptive%20Policy-Guided%20Error%20Mitigation%20%28APGEM%29%3A%20A%20Unified%20Learning-Based%20Framework%20for%20Noise%20Resilience%20in%20Quantum%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

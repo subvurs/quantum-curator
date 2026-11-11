@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Information Flow in Quantum Programs | Quantum Crier</title>
+    <meta name="description" content="Information-flow security aims to prevent the leakage of confidential information through program execution. This problem becomes fundamentally subtler for quan">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Secure Information Flow in Quantum Programs">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 11, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+        </div>
+        <h1>Secure Information Flow in Quantum Programs</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 10, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article delivers the first rigorous semantic framework for reasoning about confidentiality in quantum software, extending classical noninterference concepts to handle superposition and entanglement while proving its equivalence to an attacker‑centric simulation view. By introducing “self‑conjugation,” a clever workaround to the no‑cloning obstacle, the authors enable quantum Hoare‑logic proofs of information‑flow security for protocols such as the quantum one‑time pad, error‑correcting codes and anonymous entanglement generation. The work lays essential groundwork for future toolchains that can certify secure quantum programs on cloud platforms, even though practical verification tools are still in early development.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Information-flow security aims to prevent the leakage of confidential information through program execution. This problem becomes fundamentally subtler for quantum programs, because their states may involve superposition and entanglement, and their executions may involve intricate interactions between classical and quantum variables. This paper develops semantic foundations and verification methods for secure information flow in quantum programs. We formulate two notions of information-flow security. The first is a noninterference-based definition that naturally generalizes its classical counterpart. The second is a simulation-based definition that explicitly models an attacker, providing a clear operational interpretation of security. We prove that these two notions are equivalent. To verify the information-flow security of quantum programs, we develop a proof framework based on quantum Hoare logic. A key challenge is that the standard self-composition technique, which expresses information-flow security in Hoare logic by composing a program with a renamed copy of itself, fails in the quantum setting due to an obstruction analogous to the no-cloning theorem. To overcome this challenge, we introduce self-conjugation, a novel technique that leverages the deferred measurement principle and properties of unitary operations. We demonstrate our framework on examples drawn from the quantum one-time pad, quantum error correction, and anonymous entanglement generation.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.14147v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Secure%20Information%20Flow%20in%20Quantum%20Programs&url=https://quantumcrier.com/posts/5917e27a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/5917e27a.html&title=Secure%20Information%20Flow%20in%20Quantum%20Programs" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

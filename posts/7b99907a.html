@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Hardware-Trained Generative Quantum Eigensolver for Sample-Based Quantum Diagonalization of Organotin Hydroxides up to 70 Qubits | Quantum Crier</title>
+    <meta name="description" content="Quantum hardware can provide feedback for training circuit generators beyond the reach of exact classical simulation. We train generative quantum eigensolver (G">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="A Hardware-Trained Generative Quantum Eigensolver for Sample-Based Quantum Diagonalization of Organotin Hydroxides up to 70 Qubits">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 11, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            
+        </div>
+        <h1>A Hardware-Trained Generative Quantum Eigensolver for Sample-Based Quantum Diagonalization of Organotin Hydroxides up to 70 Qubits</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 10, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that a hardware‑in‑the‑loop training loop can teach a transformer‑based generative quantum eigensolver to produce compact state‑preparation circuits that achieve near‑chemical accuracy on organotin molecules using up to 70 qubits, something classical simulators cannot reach. By leveraging real‑time feedback from an IBM processor the trained policies use tens of times fewer two‑qubit gates than prior LUCJ ansätze while still matching DMRG reference energies within a few millihartree, highlighting a practical path toward scalable quantum chemistry on noisy intermediate‑scale devices. The work builds on recent variational and quantum‑machine‑learning advances and suggests that hardware‑aware circuit synthesis could become a key tool for tackling industrially relevant materials, though the massive shot budget and molecule‑specific training still limit immediate generality.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Quantum hardware can provide feedback for training circuit generators beyond the reach of exact classical simulation. We train generative quantum eigensolver (GQE) policies, transformers conditioned on molecular descriptors, to generate the state-preparation circuits for sample-based quantum diagonalization (SQD). Training runs first on a noiseless simulator and then with the IBM Heron processor ibm_kobe inside the loop, at 46 and 70 qubits ($1.2 \times 10^8$ shots for the four main training runs). A classical CCSD(T) reference energy of the training molecules enters only an admission gate and two auxiliary reward terms. During hardware training, a reward penalty prevents collapse to circuits that sample only the Hartree-Fock determinant. Policies trained on transition-metal complexes are applied without retraining to Sn(OH)$_3$-Me and its hydrates, minimal models of organotin photoresists for extreme-ultraviolet lithography, from 32 to 70 qubits. After one round of hardware sampling, followed by classical ranking and recovery of the cached counts with the molecular Hamiltonian and no further QPU calls, 27 of 28 runs at 46-70 qubits are within 15 mHa of the density-matrix renormalization group (DMRG) reference (median 4.5 mHa), and in all eight runs with an untrained control the trained policy is more accurate. At 56-70 qubits the selected circuits use 34-72 times fewer two-qubit gates than the local unitary cluster Jastrow (LUCJ) circuit transpiled for the same device. These results demonstrate that circuit generators can be trained with quantum hardware at 70 qubits.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.13755v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=A%20Hardware-Trained%20Generative%20Quantum%20Eigensolver%20for%20Sample-Based%20Quantum%20Diagonalization%20of%20Organotin%20Hydroxides%20up%20to%2070%20Qubits&url=https://quantumcrier.com/posts/7b99907a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/7b99907a.html&title=A%20Hardware-Trained%20Generative%20Quantum%20Eigensolver%20for%20Sample-Based%20Quantum%20Diagonalization%20of%20Organotin%20Hydroxides%20up%20to%2070%20Qubits" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
