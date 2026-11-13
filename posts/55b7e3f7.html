@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduced filtering using classical control hierarchy with linear optimality for continuous quantum error correction | Quantum Crier</title>
+    <meta name="description" content="Continuous quantum error correction promises reduced thresholds and hardware overhead compared to the digital paradigm, but its complex model estimation has gre">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Reduced filtering using classical control hierarchy with linear optimality for continuous quantum error correction">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 13, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Reduced filtering using classical control hierarchy with linear optimality for continuous quantum error correction</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 12, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article demonstrates that continuous quantum error correction can be implemented with a dramatically smaller classical estimator—its exact filter scales with the syndrome space (dimension 3·2^{n‑k‑1}) rather than the full Hilbert space, making real‑time feedback far more tractable for near‑term devices. By exposing and correcting two subtle failure modes of the feedback loop, the authors raise entanglement fidelity in a three‑qubit code by nearly ten percent and provide a systematic gain‑design recipe that avoids controller stalling, linking directly to recent advances in autonomous and measurement‑based error correction. The results are most relevant for hardware platforms that can continuously monitor stabilizers, though they currently rely on a single Pauli recovery channel and full parity readout, so extending the approach to more general codes will be the next step.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Continuous quantum error correction promises reduced thresholds and hardware overhead compared to the digital paradigm, but its complex model estimation has greatly reduced its practicality. We recast this problem as a classical control-theoretic state hierarchy made of an exact bilinear reduced model, an exact conditional filter, and standard estimation and feedback design. For any $[[n,k,d]]$ stabilizer code whose generators are all continuously monitored and which is driven by a single Pauli recovery channel, we prove that the exact filter closes at dimension $3\cdot2^{\,n-k-1}$. This dimension is set by the syndrome space instead of the Hilbert space and is minimal within invariant-subspace filtering. The reduced model exposes and corrects two failure mechanisms of the feedback loop. Strong monitoring damps the rotational partner through which the controller steers the stabilizer and injects back-action diffusion along the recovery path; lowering the measurement strength during correction raises the entanglement fidelity of partner-steering LQR control by $0.096$ in the three-qubit code with three monitored parities. Linearizing at the codespace leaves the syndrome uncontrollable, so the controller can stall; a gain designed at a shifted operating point removes this degeneracy. In the limit of zero measurement during correction, we prove that a syndrome-only filter is exact at every recovery boundary. The resulting committed-recovery controller needs only $2^{\,n-k}$ class probabilities and gives the highest entanglement fidelity compared among the methods tested in the literature, $0.947$ against $0.920$ for a measurement-based estimator protocol in the three-qubit bit-flip code, and $0.726$ vs at most $0.407$ for continuous controllers in the five-qubit perfect code.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.16751v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Reduced%20filtering%20using%20classical%20control%20hierarchy%20with%20linear%20optimality%20for%20continuous%20quantum%20error%20correction&url=https://quantumcrier.com/posts/55b7e3f7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/55b7e3f7.html&title=Reduced%20filtering%20using%20classical%20control%20hierarchy%20with%20linear%20optimality%20for%20continuous%20quantum%20error%20correction" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
