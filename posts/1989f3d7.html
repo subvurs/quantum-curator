@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSF and UKRI Invest More Than $10 Million in Quantum Chemistry Research | Quantum Crier</title>
-    <meta name="description" content="Insider Brief PRESS RELEASE — The U.S. National Science Foundation and United Kingdom Research and Innovation (UKRI) are bringing together scientists on opposit">
+    <title>Max-Cut QAOA on Non-Hardware-Native Graphs via MinLA Surrogates and Configuration Recovery | Quantum Crier</title>
+    <meta name="description" content="For non-hardware-native \textsc{MAX-CUT} instances, the Quantum Approximate Optimization Algorithm (QAOA) can incur additional two-qubit depth overhead due to S">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="NSF and UKRI Invest More Than $10 Million in Quantum Chemistry Research">
+    <meta property="og:title" content="Max-Cut QAOA on Non-Hardware-Native Graphs via MinLA Surrogates and Configuration Recovery">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-17_12-04.png">
-<meta name="twitter:image" content="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-17_12-04.png">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 15, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 16, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -60,26 +56,19 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
-            
-            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
         </div>
-        <h1>NSF and UKRI Invest More Than $10 Million in Quantum Chemistry Research</h1>
+        <h1>Max-Cut QAOA on Non-Hardware-Native Graphs via MinLA Surrogates and Configuration Recovery</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>The Quantum Insider</strong></span>
-            <span class="date">September 17, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 13, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://thequantuminsider.com/wp-content/uploads/2026/09/2026-09-17_12-04.png" alt="NSF and UKRI Invest More Than $10 Million in Quantum Chemistry Research" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -87,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article highlights a rare trans‑Atlantic partnership that pools more than $10 million to fast‑track quantum chemistry research, a field poised to unlock molecular simulations far beyond the reach of classical computers. By funding eight jointly led projects, NSF and UKRI are echoing recent national quantum initiatives and giving researchers resources to develop algorithms, error‑mitigation techniques, and hardware tailored for chemical problems such as drug design and catalyst discovery. The collaboration not only broadens the talent pool but also signals that governments see practical quantum advantage in chemistry as a near‑term milestone worth coordinated investment.
+                This article tackles a key bottleneck for near‑term QAOA implementations by showing how to prune long‑range edges in non‑native MAX‑CUT graphs and then recover lost objective value with lightweight classical post‑processing. By leveraging a Minimum Linear Arrangement ordering to keep only short‑distance two‑qubit gates, the authors dramatically cut SWAP overhead on devices like IBM Kingston while still achieving competitive cuts after signed‑residue or bipartite‑block recovery. The workflow dovetails with recent hardware‑aware compilation and hybrid quantum–classical strategies, offering a practical path to scale QAOA to larger, irregular graphs without demanding deeper circuits. Readers should note that the improvement comes from a clever trade‑off—some quantum information is discarded but efficiently restored classically, making it especially relevant for today’s noisy intermediate‑scale quantum processors.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Insider Brief PRESS RELEASE — The U.S. National Science Foundation and United Kingdom Research and Innovation (UKRI) are bringing together scientists on opposite sides of the Atlantic to explore a shared frontier in chemistry research: quantum information. The agencies are jointly investing over $10 million across eight research projects that are co-led by scientists in […]</p>
+            <p>For non-hardware-native \textsc{MAX-CUT} instances, the Quantum Approximate Optimization Algorithm (QAOA) can incur additional two-qubit depth overhead due to SWAP-based routing of interactions between non-adjacent qubits. We propose a hybrid quantum--classical workflow that reduces this depth by selectively removing interactions and subsequently recovers solution quality through classical optimization of the original \textsc{MAX-CUT} objective. We employ a Minimum Linear Arrangement (MinLA)-based vertex ordering to preferentially retain short-range interactions, thereby constructing a two-qubit depth-reduced surrogate QAOA ansatz. To compensate for the information lost through interaction removal, we develop classical \textit{recovery} strategies that refine QPU-sampled bitstrings directly on the original \textsc{MAX-CUT} objective. We develop two recovery strategies: signed-residue-based local search and bipartite-block optimization, where each conditional block problem is solved exactly using an $s$--$t$ minimum cut. Recovery is performed independently on each sampled configuration, ensuring monotonic improvement in cut value without additional QPU executions. We evaluate the workflow on \texttt{ibm\_kingston} for 120 distinct non-hardware-native instances comprising $6$-regular and Erdős--Rényi graphs with 40, 60 and 100 vertices. We verify that the surrogates substantially reduce transpiled two-qubit depth while staying within the prescribed two-qubit depth, and with recovery yield \textit{near-optimal} cuts on the original graphs. These results demonstrate the potential of hardware-aware interaction selection and classical recovery to extend QAOA to graph instances whose full cost Hamiltonians exceed practical circuit-depth budgets.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://thequantuminsider.com/2026/09/17/nsf-ukri-quantum-science-foundational-chemistry-research/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at The Quantum Insider &rarr;
+            <a href="https://arxiv.org/abs/2611.18002v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -108,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=NSF%20and%20UKRI%20Invest%20More%20Than%20%2410%20Million%20in%20Quantum%20Chemistry%20Research&url=https://quantumcrier.com/posts/decef196.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/decef196.html&title=NSF%20and%20UKRI%20Invest%20More%20Than%20%2410%20Million%20in%20Quantum%20Chemistry%20Research" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Max-Cut%20QAOA%20on%20Non-Hardware-Native%20Graphs%20via%20MinLA%20Surrogates%20and%20Configuration%20Recovery&url=https://quantumcrier.com/posts/1989f3d7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/1989f3d7.html&title=Max-Cut%20QAOA%20on%20Non-Hardware-Native%20Graphs%20via%20MinLA%20Surrogates%20and%20Configuration%20Recovery" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

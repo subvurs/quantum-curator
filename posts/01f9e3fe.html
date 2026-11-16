@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entanglement swapping across a five-node relay in a multiplexed quantum-classical network | Quantum Crier</title>
-    <meta name="description" content="Quantum networks are resources for scaling quantum computers and distributed sensing technologies while offering post-quantum security benefits. Teleporting non">
+    <title>Tessa: Encoding Classical Data Across an Entire Quantum Processor | Quantum Crier</title>
+    <meta name="description" content="We present Tessa, a hardware-aware, device-wide scheme to encode classical data on quantum computers. We use it to experimentally encode and decode up to $1568$">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Entanglement swapping across a five-node relay in a multiplexed quantum-classical network">
+    <meta property="og:title" content="Tessa: Encoding Classical Data Across an Entire Quantum Processor">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 15, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 16, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -58,15 +58,11 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/cryptography.html" class="topic-tag topic-cryptography">cryptography</a>
-            
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
-            
         </div>
-        <h1>Entanglement swapping across a five-node relay in a multiplexed quantum-classical network</h1>
+        <h1>Tessa: Encoding Classical Data Across an Entire Quantum Processor</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 16, 2026</span>
+            <span class="date">November 13, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -78,18 +74,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks the first time entanglement swapping has been achieved across a five‑node relay while sharing the same C‑band fibers with live 10‑Gbps classical traffic, demonstrating that quantum repeaters can coexist with today’s telecom infrastructure. By quantifying the fidelity‑Raman‑noise trade‑off and showing successful swapping over four × 10 km spans, the work provides a concrete roadmap for integrating quantum links into existing backbone networks rather than requiring dedicated dark fibers. The result brings practical, large‑scale quantum networking—and its promised secure communication and distributed sensing capabilities—closer to real‑world deployment.
+                This article matters because it tackles the long‑standing data‑loading bottleneck by showing how to map thousands of classical values directly onto a quantum processor without any SWAP routing, leveraging the native coupling graph of the hardware. By extending earlier QPIXL and QCrank ideas into a checkerboard layout that pairs address and data qubits, Tessa demonstrates scalable state preparation on IBM’s Phoenix and Fez devices—an advance that could accelerate near‑term quantum‑machine‑learning and quantum‑simulation workflows. The approach is still constrained by readout noise and the degree of local connectivity, but it proves that device‑aware encoding can be realized today on real hardware.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>Quantum networks are resources for scaling quantum computers and distributed sensing technologies while offering post-quantum security benefits. Teleporting non-classical resources like entanglement, via so called entanglement swapping, is essential for networks in particular overcoming rate-loss limits via quantum repeaters. Deploying these systems on real infrastructure will likely require multiplexing photonic qubits into fibers carrying &#39;classical&#39; light encoding standard Internet communications and control plane signals for multi-node quantum protocols. Here, we report the first demonstration of entanglement swapping and conventional communications operating over the same fibers. Entanglement is swapped across a five-node quantum relay topology connected by four long-distance fibers, each populated with classical data signals. Time-bin entangled photons in the C-band are multiplexed alongside C-band classical signals using dense-wavelength division multiplexing, introducing noise photons generated by high-power classical light. We experimentally and theoretically characterize the trade-off between quantum fidelity and Raman noise photons. Entanglement swapping is demonstrated over a maximum fiber length of 40 km (four 10-km fibers) while simultaneously transmitting 10-Gbps classical data through all fibers. These results represent a significant advancement in the demonstrated complexity of coexisting quantum and classical networks and provide a roadmap for achieving the widespread deployment of advanced quantum technologies.</p>
+            <p>We present Tessa, a hardware-aware, device-wide scheme to encode classical data on quantum computers. We use it to experimentally encode and decode up to $1568$ real values using IBM&#39;s Phoenix and Fez quantum computers on a variety of data. Tessa&#39;s construction is an extension of QPIXL and QCrank. However, it checkerboards address and data qubits across a coupling graph with neighbouring data qubits sharing only a subset of address qubits. When using the device&#39;s coupling graph no SWAP gates or routing is required, but the construction works for any bipartite coupling graph. The shots required for readout are determined by the local coupling degree. As examples, we have used cat states (pixel art of cats), various pixel art, audio, MIDI, DNA sequences and protein amino acid sequences.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.18899v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2611.18440v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -99,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Entanglement%20swapping%20across%20a%20five-node%20relay%20in%20a%20multiplexed%20quantum-classical%20network&url=https://quantumcrier.com/posts/4a41bdd9.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/4a41bdd9.html&title=Entanglement%20swapping%20across%20a%20five-node%20relay%20in%20a%20multiplexed%20quantum-classical%20network" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Tessa%3A%20Encoding%20Classical%20Data%20Across%20an%20Entire%20Quantum%20Processor&url=https://quantumcrier.com/posts/01f9e3fe.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/01f9e3fe.html&title=Tessa%3A%20Encoding%20Classical%20Data%20Across%20an%20Entire%20Quantum%20Processor" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">

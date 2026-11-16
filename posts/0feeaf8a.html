@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programmable Hong--Ou--Mandel interference in a giant-atom beam splitter | Quantum Crier</title>
-    <meta name="description" content="The Hong--Ou--Mandel (HOM) effect is a hallmark of two-photon quantum interference, in which two indistinguishable photons impinging on a balanced beam splitter">
+    <title>Real-time simulation of scattering in $φ^4$ theory: localized excitation, scalable wave packet preparation, and peak-generating artifacts | Quantum Crier</title>
+    <meta name="description" content="Probing real-time dynamics is essential for understanding non-perturbative scattering and interactions in quantum field theory. A common challenge in real-time ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Programmable Hong--Ou--Mandel interference in a giant-atom beam splitter">
+    <meta property="og:title" content="Real-time simulation of scattering in $φ^4$ theory: localized excitation, scalable wave packet preparation, and peak-generating artifacts">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -34,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 15, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 16, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -56,13 +56,13 @@
     <header class="post-header">
         <div class="post-topics">
             
-            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
             
         </div>
-        <h1>Programmable Hong--Ou--Mandel interference in a giant-atom beam splitter</h1>
+        <h1>Real-time simulation of scattering in $φ^4$ theory: localized excitation, scalable wave packet preparation, and peak-generating artifacts</h1>
         <div class="post-meta-full">
             <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
-            <span class="date">September 16, 2026</span>
+            <span class="date">November 13, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
@@ -74,18 +74,18 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article shows that a giant atom coupled to two waveguides can be tuned to act as a programmable Hong‑Ou‑Mandel interferometer, giving continuous control over single‑photon beam splitting and the resulting two‑photon bunching or antibunching statistics. By exploiting coupling‑phase differences, the device can switch between an effective 50:50 splitter and other asymmetric configurations without any hardware redesign, linking directly to recent advances in waveguide QED and reconfigurable photonic quantum processors. The authors also demonstrate that the same interference pattern can be used for high‑precision estimation of the atom’s coupling phases, suggesting a dual role as both a quantum logic element and a metrological sensor. Practical impact will hinge on achieving low‑loss, phase‑stable implementations in superconducting or integrated‑photonic platforms.
+                This article tackles a core obstacle in quantum‑field‑theory simulations by presenting a scalable way to prepare localized wave packets directly from the interacting vacuum, which is essential for realistic scattering experiments on quantum hardware. It extends recent variational and Lorentz‑symmetry techniques to ensure that the prepared states converge correctly in the continuum limit, offering clear diagnostics of Airy‑type distortions and their mitigation as lattice spacing is refined. The work gives practitioners concrete guidance on parameter regimes for reliable two‑particle scattering studies, a step forward as experimental groups target small‑scale φ⁴ simulations on superconducting or trapped‑ion platforms. Nonetheless, the observed artificial inelasticity from coarse digitization highlights that finer field encoding and error mitigation will still be required for quantitatively accurate results.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>The Hong--Ou--Mandel (HOM) effect is a hallmark of two-photon quantum interference, in which two indistinguishable photons impinging on a balanced beam splitter bunch into the same output port. Here, we show that a giant atom (GA), coupled to two waveguides through two coupling points each, can function as a programmable HOM interferometer, enabling continuous control over single-photon beam splitting and two-photon interference. This programmability arises from coupling-phase differences in the GA, which tune its self-interference and directionality, and thereby its scattering response. To characterize the two-photon interference, we analyze the scattering of two Gaussian single-photon wave packets injected through different waveguides and evaluate the bunching and antibunching (coincidence) probabilities of the resulting four output ports. At the operating point where the GA acts as an effective 50:50 beam splitter for single photons, we observe a pronounced HOM dip as the relative input delay between the two wave packets is varied. Away from this point, adjusting the coupling phases continuously tunes the two-photon output statistics between bunching into the same output port and antibunching across distinct output ports. In addition, we explore an application to quantum parameter estimation, showing that small deviations of coupling phases can be estimated from the two-photon output statistics, with the achievable sensitivity quantified by the classical Fisher information associated with a binary coincidence measurement. Our giant-atom beam splitter thus provides a programmable platform for two-photon interference in waveguide quantum electrodynamics, with potential applications in quantum information processing, quantum communication, and quantum sensing.</p>
+            <p>Probing real-time dynamics is essential for understanding non-perturbative scattering and interactions in quantum field theory. A common challenge in real-time simulation is preparing accurate asymptotic incoming states. Through efficiently solvable eigenvalue problems, we jointly optimize a superposition of single particle momentum eigenstates and a single site interpolating operator to maximize preparation fidelity from the interacting vacuum. This leads to a localized excitation in the interacting theory analogous to a position eigenstate. Weighted sums of the resulting interpolating operator over lattice sites prepare wave packets of arbitrary spatial extent. To ensure that this construction produces the correct continuum limit, relative phases among single particle momentum eigenstates in this superposition are calibrated using a relation derived from Lorentz symmetry. Analyzing single particle wave packet propagation through the position space profile reveals oscillatory Airy distortions, which originate from interference between saddle point contributions at different momenta that share the same lattice group velocity. These oscillations systematically weaken when approaching the continuum limit, and reliable regimes are identified as a function of simulation time and wave packet momentum profile. Two-particle scattering simulations in interacting scalar field theory are also implemented, revealing artificial inelasticity arising from coarse local field digitization or deviation from the Nyquist-Shannon sampling point. With these artifacts under control, present simulations provide emerging evidence for physical inelastic processes in $φ^4$ theory. The constructions introduced in this work may provide new understanding of state preparation for the quantum simulation of scattering.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://arxiv.org/abs/2609.18530v1" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://arxiv.org/abs/2611.18552v1" class="btn btn-primary" target="_blank" rel="noopener">
                 Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
@@ -95,8 +95,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Programmable%20Hong--Ou--Mandel%20interference%20in%20a%20giant-atom%20beam%20splitter&url=https://quantumcrier.com/posts/400cb28d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/400cb28d.html&title=Programmable%20Hong--Ou--Mandel%20interference%20in%20a%20giant-atom%20beam%20splitter" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Real-time%20simulation%20of%20scattering%20in%20%24%CF%86%5E4%24%20theory%3A%20localized%20excitation%2C%20scalable%20wave%20packet%20preparation%2C%20and%20peak-generating%20artifacts&url=https://quantumcrier.com/posts/0feeaf8a.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/0feeaf8a.html&title=Real-time%20simulation%20of%20scattering%20in%20%24%CF%86%5E4%24%20theory%3A%20localized%20excitation%2C%20scalable%20wave%20packet%20preparation%2C%20and%20peak-generating%20artifacts" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
