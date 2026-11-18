@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth-Dependent Collapse and Warm-Start Limits of a Symmetry-Preserving VQE for the J$_1$--J$_2$ Heisenberg Ring | Quantum Crier</title>
+    <meta name="description" content="Increasing circuit depth is expected to improve a variational quantum eigensolver (VQE). We show that this expectation can fail, and that curing the failure doe">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Depth-Dependent Collapse and Warm-Start Limits of a Symmetry-Preserving VQE for the J$_1$--J$_2$ Heisenberg Ring">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 18, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Depth-Dependent Collapse and Warm-Start Limits of a Symmetry-Preserving VQE for the J$_1$--J$_2$ Heisenberg Ring</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 17, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that simply adding more layers to a VQE does not guarantee better results – the authors observe a sharp “collapse” of fidelity at intermediate depths before the performance recovers, a double‑descent pattern that stems from optimization failure rather than expressibility limits. By introducing a chained warm‑start strategy they can largely suppress the collapse, yet even then the circuit stalls at modest fidelities despite low energy errors, highlighting that energy alone is an insufficient metric for assessing VQE quality on frustrated spin systems. The findings underscore the need for smarter initialization and multi‑objective diagnostics (fidelity, entropy, total spin) as the community pushes variational algorithms toward larger, more complex problems.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Increasing circuit depth is expected to improve a variational quantum eigensolver (VQE). We show that this expectation can fail, and that curing the failure does not guarantee the exact ground state. We study a symmetry-preserving ansatz of SingleExcitationMinus gates, started from the Néel state, on the frustrated spin-$1/2$ $J_1$--$J_2$ Heisenberg ring with $N=10$ and $12$ sites. With random initialization the fidelity, energy error, half-chain entropy and total spin change abruptly at intermediate depth ($L\approx 9$ for $N=10$, $L=10$--$12$ for $N=12$), giving improvement, degradation and recovery, a double-descent-like shape. The circuit family is nested and the gradient stays finite, so this is an optimization failure, not a loss of expressibility or a barren plateau. A chained warm start, which extends an optimized shallow circuit with identity layers, removes the collapse and improves energy error and fidelity almost monotonically for most frustration values. However, near $J_2/J_1=0.60$ ($N=10$) and over $J_2/J_1=0.60$--$1.00$ ($N=12$) the warm start stalls at a fidelity of $\approx 0.50$--$0.58$, although the energy error is small and the total spin stays in the $S=0$ sector. Removing the non-monotonic depth dependence is therefore not the same as reaching the ground state, and low energy and a singlet-like state are not sufficient: the fidelity, entropy and total spin must be satisfied together. The conclusions are limited to the system sizes and frustration values studied.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.22810v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Depth-Dependent%20Collapse%20and%20Warm-Start%20Limits%20of%20a%20Symmetry-Preserving%20VQE%20for%20the%20J%24_1%24--J%24_2%24%20Heisenberg%20Ring&url=https://quantumcrier.com/posts/a161936d.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a161936d.html&title=Depth-Dependent%20Collapse%20and%20Warm-Start%20Limits%20of%20a%20Symmetry-Preserving%20VQE%20for%20the%20J%24_1%24--J%24_2%24%20Heisenberg%20Ring" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
