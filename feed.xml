@@ -5,11 +5,185 @@
         <link>https://quantumcrier.com</link>
         <description>Daily curated quantum computing news and insights by Mark Eatherly</description>
         <language>en-us</language>
-        <lastBuildDate>Fri, 20 Nov 2026 13:18:23 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 21 Nov 2026 10:53:54 +0000</lastBuildDate>
         <atom:link href="https://quantumcrier.com/feed.xml" rel="self" type="application/rss+xml"/>
         <managingEditor>Mark Eatherly</managingEditor>
         <webMaster>Mark Eatherly</webMaster>
 
+        
+        <item>
+            <title>Qubit Pharmaceuticals and Sorbonne Université Develop Polynomial-Time Lie Algebra Generator Pool Construction for Quantum Chemistry</title>
+            <link>https://quantumcrier.com/posts/cc8d7ae6.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/cc8d7ae6.html</guid>
+            <pubDate>Sat, 21 Nov 2026 08:10:01 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows a polynomial‑time method for constructing Minimal Complete Pools of Lie‑algebra generators, directly tackling the scaling bottleneck that has limited variational quantum eigensolvers in chemistry applications. By leveraging GPU acceleration on the Jean Zay supercomputer and releasing C++/CUDA verification tools, the work builds on recent adaptive‑ansatz research and gives practitioners a practical way to generate compact, expressive operator sets for near‑term hardware. The open‑source code lowers the barrier for other groups to test these pools, potentially speeding up molecular‑energy calculations that underpin drug‑discovery pipelines. Nonetheless, actual speedups on noisy quantum processors will still depend on qubit fidelity and effective error mitigation strategies.</p>
+                <p>Researchers from Qubit Pharmaceuticals and Sorbonne Université have developed a new method for quantum chemistry, introducing a polynomial-scaling algebraic framework to construct and verify Minimal Complete Pools (MCPs) for variational quantum eigensolvers (VQE). This approach significantly reduces computational overhead, as demonstrated by GPU-accelerated benchmarks on the Jean Zay supercomputer. The team has open-sourced their C++ and CUDA routines for MCP verification on GitHub. The post Qubit Pharmaceuticals and Sorbonne Université Develop Polynomial-Time Lie Algebra Generator Pool Construction for Quantum Chemistry appeared first on Quantum Computing Report .</p>
+                <p><a href="https://quantumcomputingreport.com/qubit-pharmaceuticals-and-sorbonne-universite-develop-polynomial-time-lie-algebra-generator-pool-construction-for-quantum-chemistry/">Read original at Quantum Computing Report</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>simulation</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>Qubit Pharmaceuticals, Sorbonne Université, and Q-CTRL Demonstrate 3D Protein Hydration-Site Prediction on IBM Heron Processors</title>
+            <link>https://quantumcrier.com/posts/4a0ad40a.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/4a0ad40a.html</guid>
+            <pubDate>Sat, 21 Nov 2026 08:00:26 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows that a near‑term quantum processor can tackle a concrete drug‑discovery subproblem—predicting where water molecules bind in a protein’s active site—by leveraging up to 123 qubits on IBM’s Heron chip and, in benchmark cases, finding lower‑energy configurations than classical heuristics. The result builds on the recent wave of quantum chemistry demonstrations (e.g., VQE studies of small molecules) by moving from isolated electronic structure calculations toward a biologically relevant, three‑dimensional optimization problem. While the authors estimate that around 900 qubits would be needed for routine pharmaceutical use, the work provides an early proof‑of‑concept that quantum hardware can already contribute to computer‑aided drug design and motivates continued scaling of error‑corrected processors.</p>
+                <p>Researchers from Qubit Pharmaceuticals, Sorbonne Université, and Q-CTRL successfully demonstrated 3D protein hydration-site prediction on IBM Heron quantum processors, utilizing up to 123 qubits to identify optimal water placements in drug-target proteins. Their quantum approach outperformed classical methods in certain scenarios, finding lower-energy solutions and achieving higher optimal sampling probabilities. This research paves the way for practical computer-aided drug discovery, with projections indicating utility with approximately 900 qubits. The post Qubit Pharmaceuticals, Sorbonne Université, and Q-CTRL Demonstrate 3D Protein Hydration-Site Prediction on IBM Heron Processors appeared first on Quantum Computing Report .</p>
+                <p><a href="https://quantumcomputingreport.com/qubit-pharmaceuticals-sorbonne-universite-and-q-ctrl-demonstrate-3d-protein-hydration-site-prediction-on-ibm-heron-processors/">Read original at Quantum Computing Report</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>simulation</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>QuEra, Harvard, and UMD Researchers Develop Polynomial-Time Classical Benchmarking for Non-Clifford Fault-Tolerant Circuits</title>
+            <link>https://quantumcrier.com/posts/762b370c.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/762b370c.html</guid>
+            <pubDate>Sat, 21 Nov 2026 07:36:27 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article matters because it delivers the first scalable classical tool for rigorously benchmarking the non‑Clifford components that make fault‑tolerant quantum computers universal, a task that has long been limited to small, brute‑force simulations. By turning arbitrary Pauli faults into Clifford operations and using Monte Carlo sampling, the method can evaluate logical fidelity on circuits with hundreds of physical qubits—far beyond prior capabilities—and it already highlights design choices such as shared ancilla blocks that boost magic‑state factory efficiency. In the broader landscape, the technique gives hardware teams at QuEra, IBM, Google and others a practical way to predict real‑world performance before costly experimental runs, accelerating the path toward usable error‑corrected processors. The results are still limited to circuits where the fault model fits the backpropagation scheme, so further extensions will be needed for more exotic noise sources.</p>
+                <p>Researchers developed a polynomial-time Monte Carlo method for benchmarking fault-tolerant non-Clifford quantum circuits, which are essential for universal quantum computation. This method efficiently simulates complex circuits and evaluates logical fidelity by backpropagating Pauli faults and reducing errors to Clifford operators. They demonstrated its effectiveness on circuits up to 256 physical qubits and various magic-state factory designs, finding that a shared ancilla block significantly improves efficiency. The post QuEra, Harvard, and UMD Researchers Develop Polynomial-Time Classical Benchmarking for Non-Clifford Fault-Tolerant Circuits appeared first on Quantum Computing Report .</p>
+                <p><a href="https://quantumcomputingreport.com/quera-harvard-and-umd-researchers-develop-polynomial-time-classical-benchmarking-for-non-clifford-fault-tolerant-circuits/">Read original at Quantum Computing Report</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>University of Innsbruck, ParityQC, and QuEra Turn Rydberg Array Embeddings into Intrinsic Error-Correcting Codes</title>
+            <link>https://quantumcrier.com/posts/92fd4f4b.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/92fd4f4b.html</guid>
+            <pubDate>Sat, 21 Nov 2026 07:16:02 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows that the extra “auxiliary” atoms already present in neutral‑atom Rydberg processors can double as a built‑in classical error‑correcting code, turning what was previously overhead into a resource for more reliable optimization runs. By pairing this intrinsic code with a new Cluster decoder, the team demonstrated error‑correction thresholds above 23 % and rescued exact solutions on QuEra’s Aquila hardware that standard post‑processing missed—a milestone that narrows the gap between noisy analog devices and fault‑tolerant quantum advantage. The result dovetails with recent efforts to embed error mitigation directly into hardware architectures, suggesting a practical pathway for scaling neutral‑atom platforms without waiting for full quantum error correction. Readers should note, however, that the approach currently applies to combinatorial optimization embeddings rather than universal gate operations, so broader applicability will depend on future extensions of the technique.</p>
+                <p>Researchers from the University of Innsbruck, ParityQC, and QuEra have discovered that auxiliary qubits used in neutral-atom processors for combinatorial optimization problems inherently form a classical error-correcting code. They developed a Cluster decoder to work with this code, achieving error-correction thresholds of over 23% across various graph types. This method, validated on QuEra&#39;s Aquila processor, significantly improved the success rate of finding optimal solutions, even recovering exact solutions where raw hardware and other post-processing methods failed. The post University of Innsbruck, ParityQC, and QuEra Turn Rydberg Array Embeddings into Intrinsic Error-Correcting Codes appeared first on Quantum Computing Report .</p>
+                <p><a href="https://quantumcomputingreport.com/university-of-innsbruck-parityqc-and-quera-turn-rydberg-array-embeddings-into-intrinsic-error-correcting-codes/">Read original at Quantum Computing Report</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>University of California, QuEra, and Collaborators Introduce Multi-Agent LLM Compiler Qubrio for Neutral-Atom Processors</title>
+            <link>https://quantumcrier.com/posts/c5560ac9.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/c5560ac9.html</guid>
+            <pubDate>Sat, 21 Nov 2026 07:12:42 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article showcases Qubrio, the first multi‑agent large‑language‑model compiler that can automatically place, route and schedule gates on neutral‑atom devices, a platform that has recently begun scaling to hundreds of qubits. By delivering noticeably lower circuit depth and higher fidelity than existing toolchains—and even inventing novel shuttling strategies—the work bridges the gap between hardware advances at QuEra and practical algorithm deployment, echoing similar AI‑driven compiler breakthroughs seen for superconducting chips. The result could accelerate experimental demonstrations of error‑corrected subroutines on neutral‑atom processors, though real‑world gains will still depend on how well the model adapts to evolving trap geometries and noise characteristics.</p>
+                <p>Researchers have introduced Qubrio, a multi-agent LLM compiler for neutral-atom quantum circuits, which automates qubit placement, routing, and schedule optimization. Qubrio significantly outperforms existing compilers, demonstrating faster execution, higher fidelity, and adaptability to various hardware configurations. The system also autonomously discovered efficient qubit shuttling techniques. The post University of California, QuEra, and Collaborators Introduce Multi-Agent LLM Compiler Qubrio for Neutral-Atom Processors appeared first on Quantum Computing Report .</p>
+                <p><a href="https://quantumcomputingreport.com/university-of-california-quera-and-collaborators-introduce-multi-agent-llm-compiler-qubrio-for-neutral-atom-processors/">Read original at Quantum Computing Report</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>algorithms</category>
+            
+            <category>research</category>
+            
+        </item>
+        
+        <item>
+            <title>QuEra Computing and Lawrence Berkeley National Lab Observe Prethermal Dynamical Phase Transitions on 180 Qubits in Nature Study</title>
+            <link>https://quantumcrier.com/posts/43f6ef86.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/43f6ef86.html</guid>
+            <pubDate>Sat, 21 Nov 2026 06:56:35 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article shows that a neutral‑atom processor can reliably explore non‑equilibrium many‑body physics on a scale (180 qubits) previously only accessible to classical supercomputers, confirming that prethermal dynamical phase transitions are not just theoretical curiosities but experimentally observable phenomena. By combining the Aquila hardware with state‑of‑the‑art simulations, the collaboration bridges the gap between quantum simulation and traditional computational methods, echoing recent advances from trapped‑ion and superconducting platforms in probing Floquet dynamics. The result underscores how near‑term quantum devices are becoming practical testbeds for complex condensed‑matter problems, although scaling to larger system sizes will still require improvements in coherence and error mitigation.</p>
+                <p>Researchers observed prethermal dynamical phase transitions on up to 180 qubits using QuEra&#39;s Aquila quantum processor. The study, published in Nature, details three phenomena: Floquet-like prethermal steady states, resonant melting, and a first-order dynamical phase transition in 2D. This work, a collaboration between QuEra, Lawrence Berkeley National Lab, Harvard, and Boston University, utilized both quantum hardware and classical supercomputer simulations. The post QuEra Computing and Lawrence Berkeley National Lab Observe Prethermal Dynamical Phase Transitions on 180 Qubits in Nature Study appeared first on Quantum Computing Report .</p>
+                <p><a href="https://quantumcomputingreport.com/quera-computing-and-lawrence-berkeley-national-lab-observe-prethermal-dynamical-phase-transitions-on-180-qubits-in-nature-study/">Read original at Quantum Computing Report</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>hardware</category>
+            
+            <category>simulation</category>
+            
+            <category>research</category>
+            
+            <category>policy</category>
+            
+        </item>
+        
+        <item>
+            <title>How the Department of Commerce’s Quantum Awards Work and What Companies Give in Return</title>
+            <link>https://quantumcrier.com/posts/593ed42c.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/593ed42c.html</guid>
+            <pubDate>Fri, 20 Nov 2026 16:05:47 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article pulls back the curtain on a hybrid funding model where the Department of Commerce provides capital for targeted engineering work in exchange for equity and governance rights, a structure that could dramatically accelerate U.S. quantum commercialization. It dovetails with recent public‑private initiatives such as the NSF Quantum Leap Challenge, signaling a broader shift toward strategic partnerships that blend research dollars with market incentives. For startups and investors, the scheme offers a new source of non‑dilutive financing but also introduces obligations around milestones, IP handling and government oversight. The ultimate impact will hinge on whether companies can meet these requirements without slowing the rapid innovation pace needed to stay competitive globally.</p>
+                <p>Insider Brief The U.S. Department of Commerce’s quantum computing awards combine research funding with government ownership, giving companies access to capital for specific engineering projects in exchange for shares and commitments governing how the work is completed. Agreements disclosed in SEC filings by Rigetti Computing, D-Wave Quantum and Quantinuum show how the arrangement works. Each […]</p>
+                <p><a href="https://thequantuminsider.com/2026/11/20/how-the-department-of-commerces-quantum-awards-work-and-what-companies-give-in-return/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>industry</category>
+            
+            <category>research</category>
+            
+            <category>policy</category>
+            
+        </item>
+        
+        <item>
+            <title>KT and LG Electronics Demonstrate Quantum Secure Direct Communication</title>
+            <link>https://quantumcrier.com/posts/915d7865.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/915d7865.html</guid>
+            <pubDate>Fri, 20 Nov 2026 11:27:32 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article marks one of the first real‑world demonstrations of quantum secure direct communication (QSDC), showing that image and text can be transmitted and recovered without first generating a shared key—a step beyond conventional quantum key distribution. By leveraging existing fiber infrastructure through a partnership between telecom operator KT and consumer‑electronics giant LG, the experiment hints at how QSDC could be folded into commercial networks for ultra‑low‑latency, tamper‑evident messaging. However, the prototype remains confined to controlled lab conditions, so scaling the protocol to high‑throughput, long‑distance links will be the next critical hurdle before practical deployment.</p>
+                <p>Insider Brief Image and text data were sent and then recovered at the receiving end using a quantum secure direct communication (QSDC) system that KT developed jointly with LG Electronics, KT said on Thursday, according to Digital Today. Digital Today described QSDC as a next-generation quantum communications technology that carries the information itself as a […]</p>
+                <p><a href="https://thequantuminsider.com/2026/11/20/kt-lg-electronics-quantum-secure-direct-communication/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
+        
+        <item>
+            <title>Mastercard Launches Quantum Advisory Practice for Financial Services</title>
+            <link>https://quantumcrier.com/posts/b636b1d9.html</link>
+            <guid isPermaLink="true">https://quantumcrier.com/posts/b636b1d9.html</guid>
+            <pubDate>Fri, 20 Nov 2026 09:51:04 +0000</pubDate>
+            <description><![CDATA[
+                <p><strong>Curator's Take:</strong> This article matters because it signals the first major financial‑services firm to institutionalize quantum strategy, moving beyond speculative research into a dedicated advisory practice that will help banks and merchants assess both opportunities—such as faster fraud detection and portfolio optimization—and emerging threats from quantum‑capable attackers. It follows a wave of similar initiatives at firms like JPMorgan and HSBC, underscoring a broader industry consensus that quantum readiness must be baked into risk management today rather than tomorrow. By translating abstract quantum capabilities into concrete use cases for payments, loyalty programs, and cybersecurity, Mastercard’s move could accelerate the adoption curve while also prompting regulators to consider new standards for quantum‑resilient finance.</p>
+                <p>Insider Brief PRESS RELEASE — Quantum computing is not currently a mainstream technology, but cybersecurity experts and the financial services industry need to operate as if it’s here. Quantum computing has transformative potential, from strengthening fraud detection to optimizing financial operations and loyalty, to unlocking new forms of innovation. Yet, risk management is critical. Cybercriminals […]</p>
+                <p><a href="https://thequantuminsider.com/2026/11/20/mastercard-quantum-advisory-practice-financial-services/">Read original at The Quantum Insider</a></p>
+            ]]></description>
+            <author>Mark Eatherly</author>
+            
+            <category>general</category>
+            
+        </item>
         
         <item>
             <title>Guest Post: Building the Conditions for a Quantum Breakthrough</title>
@@ -740,182 +914,6 @@
             <author>Mark Eatherly</author>
             
             <category>hardware</category>
-            
-        </item>
-        
-        <item>
-            <title>Quantum Simulation of First-Quantised Chemistry with a Sum-of-Squares Representation</title>
-            <link>https://quantumcrier.com/posts/3a84ed25.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/3a84ed25.html</guid>
-            <pubDate>Wed, 18 Nov 2026 18:29:52 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article shows that a first‑quantised phase‑estimation approach, built on a sum‑of‑squares Hamiltonian representation and spectral‑gap amplification, can slash the logical gate count needed for realistic molecular simulations by up to an order of magnitude compared with the best second‑quantised methods. By exploiting the low‑filling regime—where each electron is encoded in only logarithmically many qubits—the authors demonstrate a concrete pathway to chemistry calculations on hardware that will initially have far fewer than the thousands of logical qubits traditionally assumed necessary. The results suggest that near‑term error‑corrected devices could tackle chemically relevant systems sooner, though full fault‑tolerant overheads and state‑preparation costs still need careful assessment.</p>
-                <p>Calculating molecular energies is expected to be an important application of quantum computers, but the most efficient algorithms to achieve this typically have significant space requirements. Scaling quantum processors to thousands of logical qubits is a daunting engineering challenge, so developing algorithms that run with reduced qubit requirements is of particular importance. Moreover, most algorithms are benchmarked on active spaces with about as many orbitals as electrons, missing dynamical correlation which is necessary to describe real chemistry. Capturing this correlation requires several times more orbitals than electrons, even in compact atomic-orbital basis sets. This low-filling regime favours first quantisation, where each electron is represented by a number of qubits that grows only logarithmically with the number of orbitals. Whether this approach translates into a practical advantage in orbital basis sets of realistic size, however, has been unclear. Here, we develop a first-quantised phase estimation algorithm for generic orbital basis sets, based on a non-convex sum-of-squares representation of the Hamiltonian and spectral-gap amplification. We compare it with the state-of-the-art second-quantised algorithm, compiling both with the same techniques at the logical level. For six molecules with 4 to 24 electrons in 5 to 14 times as many orbitals, our first-quantised method needs up to 16 times fewer Toffoli gates than the second-quantised algorithm in the low-qubit regime, where only a few hundred logical qubits are available. It stays cheaper up to between several hundred and about 1\,400 qubits, and its smallest qubit count is 1.4 to 2 times lower than in second quantisation. In the low-qubit and low-filling regime, our algorithm is therefore the method of choice for chemistry in orbital basis sets.</p>
-                <p><a href="https://arxiv.org/abs/2611.24885v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>algorithms</category>
-            
-            <category>error_correction</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Hurst Exponent Estimation with Quantum Wavelets</title>
-            <link>https://quantumcrier.com/posts/84294b75.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/84294b75.html</guid>
-            <pubDate>Wed, 18 Nov 2026 18:28:18 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article shows how a quantum‑enhanced wavelet transform can estimate the Hurst exponent of fractional Brownian motion with root‑N statistical efficiency, a scaling that matches classical optimal estimators while exploiting quantum amplitude‑estimation primitives. By eliminating the endpoint jump through a one‑qubit mirror extension and compiling the transform from paraunitary filter banks, the authors achieve up to an order‑of‑magnitude reduction in RMSE for modest‑size data (512 points), highlighting a concrete advantage for quantum‑enabled signal‑processing and sensing tasks. The work bridges recent advances in quantum wavelet circuits with practical time‑series analysis, though its impact will depend on scaling the method to larger datasets and integrating it into near‑term hardware platforms.</p>
-                <p>How accurately can the Hurst exponent $H$ of fractional Brownian motion be estimated from repeated preparations of a single amplitude-encoded path, when every measurement interrogates the same realization? We extend the $ε$-decimated quantum nondecimated wavelet transform in three directions: we remove the endpoint jump of circular filtering, derive the sampling distribution of the estimator, and compare readouts at equal query budgets. A one-qubit mirror extension removes the jump and keeps every coefficient that straddles a fold of the same order as an interior coefficient, for any compactly supported filter and circular shift. The transform for any such filter is compiled from the paraunitary lattice of its filter bank, and the energy share of a level is the success probability of one multiply-controlled reflection, which is both the controlled unitary of a Hadamard test and the oracle of amplitude estimation. For filters with at least two vanishing moments we prove a root-$N$ central limit theorem for the log-energy contrasts, independent of the limiting path norm, so the studentized estimator is asymptotically standard normal for deterministic query budgets under which the success count at every level diverges. For sparse counts we give a working multinomial--lognormal likelihood, exact in its readout model for direct measurement, and check its coverage by simulation. For paths of length $512$, mirroring reduces RMSE by a factor of $3$--$10$ for $H\ge0.5$, and with exact shares the nondecimated db2 estimator is $6$--$14\%$ above the root Cramér--Rao bound. Hadamard level tests are less accurate than direct measurement of the leading qubits at every budget. At $H=0.9$ and $2^{20}$ queries, maximum-likelihood amplitude estimation attains RMSE $0.0347$, against $0.0451$ for direct measurement and $0.0295$ with exact shares.</p>
-                <p><a href="https://arxiv.org/abs/2611.24882v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>sensing</category>
-            
-        </item>
-        
-        <item>
-            <title>Quantum Physics Can Verify a Person’s Location, NIST Researchers Show</title>
-            <link>https://quantumcrier.com/posts/5dfa083d.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/5dfa083d.html</guid>
-            <pubDate>Wed, 18 Nov 2026 18:06:57 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article highlights a pioneering NIST demonstration that uses quantum‑enhanced physics to certify a device’s geographic position, offering a fundamentally tamper‑proof layer of authentication beyond traditional cryptographic keys. By tying location proof to the immutable properties of entangled photons, the technique could harden high‑value financial networks and critical infrastructure against remote spoofing attacks—a growing concern as cyber‑threats become more sophisticated. While still experimental, the work dovetails with recent advances in quantum key distribution and may soon inform policy standards for secure, location‑aware communications.</p>
-                <p>Insider Brief PRESS RELEASE — Imagine a corporate treasurer directing her company’s financial network to make a $50 million wire transfer. How can the network be certain the command is coming from a secure terminal in the company’s headquarters, and not a hacker’s laptop across the globe? In a first-of-its-kind experiment, scientists at the National […]</p>
-                <p><a href="https://thequantuminsider.com/2026/11/18/quantum-physics-can-verify-a-persons-location-nist-researchers-show/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>research</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>Soft Mixture of Quantum Experts for Hybrid Quantum-Classical Learning</title>
-            <link>https://quantumcrier.com/posts/4b2b3764.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/4b2b3764.html</guid>
-            <pubDate>Wed, 18 Nov 2026 17:41:45 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article introduces Soft‑MoQE, a mixture‑of‑experts framework that replaces costly variational training with a classical gating network that selects and combines fixed quantum feature maps, thereby sidestepping barren‑plateau issues and dramatically lowering quantum resource demands. By achieving performance on MNIST‑derived tasks comparable to trainable quantum neural networks while using orders of magnitude less quantum optimization, it demonstrates a practical route for near‑term hybrid QML on noisy hardware. The approach builds on recent trends toward static quantum embeddings and adaptive classical routing, suggesting that smarter use of existing circuits can unlock useful quantum advantage without deep parameter tuning. Readers should note that the benchmarks rely on PCA‑reduced data, so further validation on larger, less preprocessed datasets will be needed to confirm scalability.</p>
-                <p>Quantum Machine Learning (QML) has attracted increasing interest as a possible route to construct feature representations that are difficult to reproduce with classical models. However, near-term QML architectures based on trainable parametrized quantum circuits remain affected by limited hardware resources, noise, and severe optimization difficulties such as barren plateaus. In this work we propose Soft-MoQE, a Soft Mixture of Quantum Experts architecture that replaces variational quantum training with the input-dependent selection and combination of fixed quantum feature maps. The model is composed of a heterogeneous pool of non-trainable quantum circuits, each defining a distinct embedding, and a classical gating network that learns how to weight these embeddings for each data point. We benchmark Soft-MoQE on three PCA-reduced tasks: MNIST parity, MNIST 10-class, and FashionMNIST. Soft-MoQE outperforms the single best expert, the uniform average of all experts and a linear baseline, achieving task-dependent performance comparable to that of a trainable quantum neural network, without optimizing any quantum parameter and with a quantum training cost that is lower by orders of magnitude. The analysis of the class- conditioned expert usage shows that the learned routing combines a few experts for each input, with a selection that depends on the class. These results support the learned routing among fixed quantum circuits as a trainability-aware design principle for hybrid QML.</p>
-                <p><a href="https://arxiv.org/abs/2611.24798v1">Read original at arXiv Quantum Physics</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>algorithms</category>
-            
-            <category>machine_learning</category>
-            
-        </item>
-        
-        <item>
-            <title>Quandela and NVIDIA Benchmark Photonic Quantum Simulability Frontiers on H100 GPUs</title>
-            <link>https://quantumcrier.com/posts/c62aa5c3.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/c62aa5c3.html</guid>
-            <pubDate>Wed, 18 Nov 2026 17:04:11 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article matters because it establishes a concrete “simulability frontier” that tells researchers exactly when a photonic processor begins to outpace even the most powerful NVIDIA H100 GPUs, moving beyond vague photon‑count cutoffs that have hampered fair benchmarking. By introducing a unified metric and releasing the open‑source photonic‑engines library, Quandela, CNRS and NVIDIA give the community a reproducible toolset for assessing quantum advantage across both hardware platforms and simulation software—a timely development as photonic systems such as Xanadu’s Borealis and Luminous push toward larger scale experiments. The work not only sharpens claims of quantum supremacy in the photonic domain but also highlights that classical supercomputing resources remain formidable, reminding readers to treat any advantage claim with rigorous, metric‑driven validation.</p>
-                <p>Quandela, CNRS, and NVIDIA have established a &#34;simulability frontier&#34; for photonic quantum processors using NVIDIA H100 GPUs. Their research defines a unified metric for when quantum processors outperform classical simulations, moving beyond varying photon count thresholds. They&#39;ve also released an open-source library, photonic-engines, to support this work. The post Quandela and NVIDIA Benchmark Photonic Quantum Simulability Frontiers on H100 GPUs appeared first on Quantum Computing Report .</p>
-                <p><a href="https://quantumcomputingreport.com/quandela-and-nvidia-benchmark-photonic-quantum-simulability-frontiers-on-h100-gpus/">Read original at Quantum Computing Report</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>simulation</category>
-            
-            <category>research</category>
-            
-        </item>
-        
-        <item>
-            <title>QuEra Computing and Berkeley Lab Publish Nature Study of Quantum Dynamics on Up to 180 Qubits</title>
-            <link>https://quantumcrier.com/posts/818d6092.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/818d6092.html</guid>
-            <pubDate>Wed, 18 Nov 2026 17:03:12 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article showcases the first experimental demonstration of quantum many‑body dynamics on a neutral‑atom processor with up to 180 qubits, pushing analog quantum simulators into a regime where classical supercomputers like Perlmutter can no longer track the full wavefunction in real time. By pairing Aquila’s programmable Rydberg interactions with high‑performance computing for verification, the work bridges the gap between proof‑of‑principle experiments and scalable, fault‑tolerant architectures that industry rivals are pursuing. It signals that neutral‑atom platforms are now competitive contenders for tackling classically intractable problems such as quantum chemistry and materials modeling, while also highlighting that full validation still relies on hybrid classical–quantum workflows. Readers should watch how this scaling milestone informs both hardware roadmaps and policy discussions about funding large‑scale quantum simulation initiatives.</p>
-                <p>Insider Brief PRESS RELEASE — The National Energy Research Scientific Computing Center (NERSC) at Lawrence Berkeley National Laboratory and QuEra Computing, the leader in neutral-atom quantum computing, today announced the publication of a new study in Nature. Using Aquila, QuEra’s analog neutral-atom quantum computer, coupled with classical calculations on NERSC’s Perlmutter supercomputer, the team observed […]</p>
-                <p><a href="https://thequantuminsider.com/2026/11/18/quera-berkeley-lab-study-quantum-dynamics-aquila/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>research</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>Quandela Expands International Photonic Footprint with Deployment Alliance in Qatar and Foundry MoU in Taiwan</title>
-            <link>https://quantumcrier.com/posts/900d935b.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/900d935b.html</guid>
-            <pubDate>Wed, 18 Nov 2026 17:00:59 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article matters because it marks the first large‑scale push to commercialize photonic quantum processors outside the traditional North American and European hubs, giving the Gulf states a home‑grown route to sovereign quantum infrastructure while linking them to Taiwan’s mature silicon‑photonic foundry ecosystem. The Qatar partnership dovetails with recent Middle‑East national AI and quantum strategies, and the Hermes‑Epitek MoU mirrors similar moves by PsiQuantum and Xanadu to secure dedicated photonic fabs for scalable qubit production. If the collaborations succeed, they could accelerate hardware availability and diversify supply chains, though turning integrated photonic designs into reliable, error‑corrected processors remains a formidable engineering challenge.</p>
-                <p>On November 18, 2026, Quandela announced two international collaborations: a tripartite partnership in Qatar with Mekdam Holding Group and MEEZA to deploy photonic quantum systems across GCC states, and a memorandum of understanding with Taiwan-based Hermes-Epitek Corporation to co-develop and industrialize integrated photonic quantum hardware. These agreements aim to advance sovereign quantum infrastructure in the Middle East and photonic component industrialization in Asia. The post Quandela Expands International Photonic Footprint with Deployment Alliance in Qatar and Foundry MoU in Taiwan appeared first on Quantum Computing Report .</p>
-                <p><a href="https://quantumcomputingreport.com/quandela-expands-international-photonic-footprint-with-deployment-alliance-in-qatar-and-foundry-mou-in-taiwan/">Read original at Quantum Computing Report</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>industry</category>
-            
-            <category>policy</category>
-            
-        </item>
-        
-        <item>
-            <title>Alice &amp; Bob Accelerates Modular Cat-Qubit Roadmap to 200 Logical Qubits from 3,600 Physical Qubits by 2030</title>
-            <link>https://quantumcrier.com/posts/f992cd4e.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/f992cd4e.html</guid>
-            <pubDate>Wed, 18 Nov 2026 16:36:48 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article is noteworthy because it shows that Alice &amp; Bob’s cat‑qubit platform can shrink the physical‑to‑logical qubit overhead to roughly 18:1, a ratio far better than most superconducting or trapped‑ion approaches and therefore a realistic path toward hundreds of error‑corrected qubits within the next decade. By leveraging modular hardware and AI‑driven layout tools, the roadmap sidesteps the traditional bottleneck of scaling a single dilution refrigerator, positioning the Carbon system for near‑term quantum chemistry and cryptographic simulations that were previously out of reach. The timeline remains ambitious—achieving 200 logical qubits by 2030 will still require sustained advances in cat‑qubit coherence, inter‑module connectivity, and fault‑tolerant control software—but the announced milestones mark a concrete step toward practical, large‑scale quantum advantage.</p>
-                <p>Alice &amp; Bob has unveiled an accelerated quantum computing roadmap, aiming for 200 logical qubits from 3,600 physical cat qubits by 2030 in their Carbon system, and scaling to 2,048 logical qubits by 2034. This advancement is due to their cat qubits&#39; ability to suppress bit-flip errors, reducing the physical-to-logical qubit ratio. The modular architecture and AI-assisted design contribute to bypassing single-fridge scaling limits, enabling complex simulations and cryptographic applications. The post Alice &amp; Bob Accelerates Modular Cat-Qubit Roadmap to 200 Logical Qubits from 3,600 Physical Qubits by 2030 appeared first on Quantum Computing Report .</p>
-                <p><a href="https://quantumcomputingreport.com/alice-bob-accelerates-modular-cat-qubit-roadmap-to-200-logical-qubits-from-3600-physical-qubits-by-2030/">Read original at Quantum Computing Report</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>hardware</category>
-            
-            <category>error_correction</category>
-            
-            <category>simulation</category>
-            
-        </item>
-        
-        <item>
-            <title>Bradesco and evolutionQ Begin Quantum Communication Tests to Assess New Data Protection Models</title>
-            <link>https://quantumcrier.com/posts/37e774c7.html</link>
-            <guid isPermaLink="true">https://quantumcrier.com/posts/37e774c7.html</guid>
-            <pubDate>Wed, 18 Nov 2026 16:21:01 +0000</pubDate>
-            <description><![CDATA[
-                <p><strong>Curator's Take:</strong> This article matters because it marks one of the first large‑scale, industry‑driven trials of quantum‑secure communication in Latin America, showing that major banks are moving beyond theoretical discussions to real‑world testing of quantum key distribution and related protocols. By partnering with evolutionQ, Bradesco is joining a growing global cohort—including European consortia and Chinese telecom operators—who are piloting quantum networks to future‑proof financial data flows against the eventual arrival of quantum computers. The initiative could accelerate the development of regional standards and regulatory frameworks for quantum‑safe messaging, while also highlighting practical hurdles such as integration with legacy banking infrastructure and the need for cost‑effective hardware. Readers should watch how these early results influence both commercial adoption timelines and policy discussions on quantum resilience in the financial sector.</p>
-                <p>Insider Brief PRESS RELEASE — A pioneering initiative in Brazil’s financial sector seeks to study, in a controlled environment, the feasibility of the technology and its potential to strengthen the security of information exchange among companies, financial institutions and startups in the coming years. São Paulo, September 2026 — Bradesco, through inovabra, has begun pioneering […]</p>
-                <p><a href="https://thequantuminsider.com/2026/11/18/bradesco-and-evolutionq-begin-quantum-communication-tests-to-assess-new-data-protection-models/">Read original at The Quantum Insider</a></p>
-            ]]></description>
-            <author>Mark Eatherly</author>
-            
-            <category>industry</category>
-            
-            <category>policy</category>
             
         </item>
         
