@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demonstrating genuine multipartite non-locality on quantum processors using Amazon Braket | Quantum Crier</title>
-    <meta name="description" content="This post was contributed by Federico Hernán Holik, Andrés Camilo Granda Arango, Carlo Cuccu, Roberto Giuntini, Giuseppe Sergioli, Peter Komar, and Ishaan Pakra">
+    <title>Full-chip constrained quantum annealing via self-calibrating spin-susceptibility control | Quantum Crier</title>
+    <meta name="description" content="Discrete optimization in finance, power grids, and logistics requires minimizing Ising Hamiltonians under coupled linear constraints. However, quadratic-penalty">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Demonstrating genuine multipartite non-locality on quantum processors using Amazon Braket">
+    <meta property="og:title" content="Full-chip constrained quantum annealing via self-calibrating spin-susceptibility control">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/5a5b0f9b7d3f8fc84c3cef8fd8efaaa6c70d75ab/2026/09/21/QuantumBlogThumbnail-1-1120x630.jpg">
-<meta name="twitter:image" content="https://d2908q01vomqb2.cloudfront.net/5a5b0f9b7d3f8fc84c3cef8fd8efaaa6c70d75ab/2026/09/21/QuantumBlogThumbnail-1-1120x630.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 22, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 23, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -62,20 +58,17 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
         </div>
-        <h1>Demonstrating genuine multipartite non-locality on quantum processors using Amazon Braket</h1>
+        <h1>Full-chip constrained quantum annealing via self-calibrating spin-susceptibility control</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>AWS Quantum Computing Blog</strong></span>
-            <span class="date">September 23, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 20, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://d2908q01vomqb2.cloudfront.net/5a5b0f9b7d3f8fc84c3cef8fd8efaaa6c70d75ab/2026/09/21/QuantumBlogThumbnail-1-1120x630.jpg" alt="Demonstrating genuine multipartite non-locality on quantum processors using Amazon Braket" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -83,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks one of the first demonstrations of genuine multipartite non‑locality on publicly available quantum processors, showing that cloud platforms like Amazon Braket can now be used to probe foundational quantum correlations beyond simple two‑qubit tests. By generating and verifying high‑order entangled states across multiple qubits, the work provides a new benchmark for hardware fidelity and paves the way for device‑independent protocols that could underpin future secure communication and distributed quantum computing schemes. The results also highlight current noise limitations—while impressive, scaling to larger parties will still require continued improvements in error mitigation and gate performance.
+                This article tackles a long‑standing obstacle for quantum annealers—efficiently handling linear constraints without inflating the problem into dense penalty graphs that quickly outstrip the sparse connectivity of current superconducting chips. By exploiting single‑shot spin‑fluctuation covariances to reconstruct dual curvature, the SelfCal‑QSQN scheme eliminates extra slack qubits and penalty couplers, enabling full‑chip feasibility on D‑Wave Advantage devices and delivering performance that rivals time‑matched mixed‑integer solvers at the 256‑spin scale. The result opens a realistic pathway for applying quantum annealing to real‑world constrained optimization in finance, power grids and logistics, though further work will be needed to confirm scalability beyond today’s few‑hundred‑qubit problems.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>This post was contributed by Federico Hernán Holik, Andrés Camilo Granda Arango, Carlo Cuccu, Roberto Giuntini, Giuseppe Sergioli, Peter Komar, and Ishaan Pakrasi. Quantum physics produces correlations that no classical theory can reproduce, and testing these differences on real hardware is now possible with cloud-based quantum computing through Amazon Braket. One of the most striking […]</p>
+            <p>Discrete optimization in finance, power grids, and logistics requires minimizing Ising Hamiltonians under coupled linear constraints. However, quadratic-penalty formulations generate dense cliques that exhaust the minor-embedding capacity of sparse superconducting processors at 128-176 spins, and first-order dual subgradient schemes diverge or stall under constraint coupling. Accordingly, this study proposes a closed-loop primal-dual scheme, designated as Self-Calibrating Quantum Susceptibility Quasi-Newton (SelfCal-QSQN), in which linear constraints are encoded in longitudinal fields and dual curvature is reconstructed from single-shot spin-fluctuation covariances. This scheme requires no penalty couplers, slack qubits, or perturbation queries. Evaluated over 891 runs on D-Wave Advantage (5,612 qubits) and Advantage2 (4,560 qubits), SelfCal-QSQN achieves 83.3% full-chip exact feasibility, reduces high-constraint error by 6.1-20.1-fold over $K$-scaled first-order updates (138.4-323.3-fold over fixed-gain curvature), outperforms time-matched mixed-integer programming at 256 spins, and attains 95.0%-96.7% feasibility on non-native and inequality benchmarks. Moreover, the scheme is robust toward shot noise and freeze-out drift.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://aws.amazon.com/blogs/quantum-computing/demonstrating-genuine-multipartite-non-locality-on-quantum-processors-using-amazon-braket/" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at AWS Quantum Computing Blog &rarr;
+            <a href="https://arxiv.org/abs/2611.27702v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -104,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=Demonstrating%20genuine%20multipartite%20non-locality%20on%20quantum%20processors%20using%20Amazon%20Braket&url=https://quantumcrier.com/posts/8cc2dd6c.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/8cc2dd6c.html&title=Demonstrating%20genuine%20multipartite%20non-locality%20on%20quantum%20processors%20using%20Amazon%20Braket" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Full-chip%20constrained%20quantum%20annealing%20via%20self-calibrating%20spin-susceptibility%20control&url=https://quantumcrier.com/posts/20559c00.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/20559c00.html&title=Full-chip%20constrained%20quantum%20annealing%20via%20self-calibrating%20spin-susceptibility%20control" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
