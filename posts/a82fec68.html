@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear entanglement suffices for $f$-routing | Quantum Crier</title>
+    <meta name="description" content="In $f$-routing, Alice receives an $n$-bit string $x$ and an unknown qubit, and Bob receives an $n$-bit string $y$. They share a state prepared in advance and ex">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Linear entanglement suffices for $f$-routing">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 24, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            
+            <a href="/topics/policy.html" class="topic-tag topic-policy">policy</a>
+            
+        </div>
+        <h1>Linear entanglement suffices for $f$-routing</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 23, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article settles a lingering open question in quantum communication complexity by proving that any Boolean‑controlled routing task can be achieved with only 2n + 2 EPR pairs, bringing the entanglement requirement down from super‑polynomial to linear for all functions f. By shifting the burden to an exponentially long quantum message from Alice while keeping Bob’s side classical, it highlights a concrete trade‑off between shared entanglement and communication bandwidth that will inform the design of future distributed quantum networks. Although the total resource cost remains higher than earlier schemes when both messages and entanglement are counted, the linear bound sharply limits how much entanglement‑saving lower‑bounds can ever be proved, tightening our theoretical understanding of quantum routing protocols.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>In $f$-routing, Alice receives an $n$-bit string $x$ and an unknown qubit, and Bob receives an $n$-bit string $y$. They share a state prepared in advance and exchange one simultaneous message each. The party selected by the Boolean function $f(x,y)$ must then recover the unknown qubit without further communication. To perform $f$-routing successfully, Alice and Bob need to share entanglement that scales with $n$ for some functions $f$, but the lower and upper bounds for the entanglement are not tight. This paper shows that $2n+2$ shared EPR pairs suffice for every function $f$. The best previous bound that holds for all functions is a shared state of $2^{O(\sqrt{n\log n})}$ qubits. The new strategy moves the cost from the shared state to the messages: Alice sends an exponentially long message of $2^{n+1}+1$ qubits, while Bob sends only classical bits. When the messages are counted towards the resources as well, the previous strategy remains the cheapest known. The result also limits lower bounds that count only the shared state: they cannot exceed a linear number of EPR pairs. The result is formalized in Lean.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.30947v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Linear%20entanglement%20suffices%20for%20%24f%24-routing&url=https://quantumcrier.com/posts/a82fec68.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/a82fec68.html&title=Linear%20entanglement%20suffices%20for%20%24f%24-routing" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

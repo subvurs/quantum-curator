@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable-Level Expressivity in Fixed-Readout Quantum Neural Networks | Quantum Crier</title>
+    <meta name="description" content="A central question in quantum machine learning is which functions of an input state a model can represent when its measurement is fixed by hardware or by experi">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Observable-Level Expressivity in Fixed-Readout Quantum Neural Networks">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 24, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/machine_learning.html" class="topic-tag topic-machine_learning">machine_learning</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Observable-Level Expressivity in Fixed-Readout Quantum Neural Networks</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 23, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article pinpoints exactly how much expressive power remains in a quantum neural network when the measurement operator is locked by hardware, showing that unitary, mixed‑unitary and general CPTP dynamics form three strictly nested families of reachable observables. By mapping these families to concrete geometric objects—a fixed‑spectrum orbit, its convex hull and an operator interval—the work gives designers a clear checklist for what can (and cannot) be learned without adding trainable readout layers, a question that has become urgent as near‑term devices are increasingly constrained by fixed detectors or sensor architectures. The derived loss floors also provide the first quantitative benchmarks for how much error mitigation or ancillary channels are needed to reach full CPTP expressivity, guiding both algorithm developers and experimentalists toward more realistic quantum‑ML pipelines.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>A central question in quantum machine learning is which functions of an input state a model can represent when its measurement is fixed by hardware or by experimental design. We address this question for quantum neural networks with a fixed readout observable, where the trainable pre-measurement dynamics determine the effective observable in the Heisenberg picture and the scalar output is the measured expectation value itself, without trainable affine post-processing. We characterize the reachable effective observables under three physical resource classes: unitary evolution, which preserves the spectrum of the readout; mixed-unitary evolution, which relaxes this to a majorization constraint while preserving the trace; and completely positive trace-preserving (CPTP) evolution, whose Heisenberg adjoint is unital rather than trace-preserving and therefore lifts the trace constraint inherited at the mixed-unitary level. The three reachable sets are a fixed-spectrum orbit, its convex hull, and an operator interval, and the inclusions are strict for any readout that is not proportional to the identity. The separation is witnessed locally: for a fixed Pauli readout $Z_j$ on an arbitrary number of qubits, the amplitude-damping observable $γ\id+(1-γ)Z_j$ lies outside the mixed-unitary level for every $γ&gt;0$. We realize the CPTP level with a Stinespring-channelized circuit and derive closed-form loss floors, $4γ^2/3$ and $γ^2$ for the unitary and mixed-unitary levels and zero at the CPTP level, which the numerics reproduce within precision. Structured-observable, Rényi-moment and classification experiments illustrate how the hierarchy manifests in finite-depth ansätze. The results identify which spectral constraint each physical resource relaxes, framing reachable-observable classes as a resource for expressivity rather than an architectural advantage.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.30175v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Observable-Level%20Expressivity%20in%20Fixed-Readout%20Quantum%20Neural%20Networks&url=https://quantumcrier.com/posts/d6c0004e.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/d6c0004e.html&title=Observable-Level%20Expressivity%20in%20Fixed-Readout%20Quantum%20Neural%20Networks" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

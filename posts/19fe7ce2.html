@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THeatA: Transport- and Heating-aware QEC simulation with Cooling Strategies for QCCD Trapped-Ion Systems | Quantum Crier</title>
+    <meta name="description" content="The quantum charge-coupled device (QCCD) architecture is a promising approach to scalable trapped-ion quantum computing, enabling flexible qubit interactions by">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="THeatA: Transport- and Heating-aware QEC simulation with Cooling Strategies for QCCD Trapped-Ion Systems">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 24, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/error_correction.html" class="topic-tag topic-error_correction">error_correction</a>
+            
+            <a href="/topics/simulation.html" class="topic-tag topic-simulation">simulation</a>
+            
+        </div>
+        <h1>THeatA: Transport- and Heating-aware QEC simulation with Cooling Strategies for QCCD Trapped-Ion Systems</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 23, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article introduces THeatA, a full‑stack simulation framework that explicitly tracks ion‑by‑ion motional heating during transport and schedules cooling operations, allowing realistic error models for QCCD trapped‑ion processors. By linking the mean phonon number to gate‑dependent error rates, it reveals how shuttling‑induced heating can dominate logical error scaling of surface‑code cycles—information that was missing from prior QEC simulators. The work arrives as several groups are prototyping modular ion traps, giving them a practical tool to balance transport speed, cooling overhead, and fault‑tolerance thresholds. Its current focus on single‑species linear arrays means further extensions will be needed for mixed‑species or two‑dimensional architectures.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>The quantum charge-coupled device (QCCD) architecture is a promising approach to scalable trapped-ion quantum computing, enabling flexible qubit interactions by transporting ions between dedicated trap zones. Programs for such systems require operations beyond conventional circuit primitives: ion shuttling, physical SWAPs, trap splitting and merging, and cooling. Motional excitation accumulated during transport increases the mean phonon number of ions and degrades the fidelity of the two-qubit Molmer-Sorensen gates. However, existing quantum error correction (QEC) simulation frameworks do not jointly track per-ion motional excitation and explicitly schedule cooling operations with their transport time and heating costs. We develop a full-stack software framework for QEC experiments and simulations on linear QCCD systems with a single ion species, comprising an intermediate representation (IR) supporting QCCD-native operations, a compiler that translates syndrome-extraction circuits into the IR, and a heating-aware noise-injection pipeline that generates noisy Stim circuits. The compiler updates the mean phonon number of each ion throughout the schedule, and the pipeline derives gate-dependent error rates from the tracked phonon states and per-ion timing, enabling the evaluation of finite-size logical-error scaling of the rotated surface code under transport- and heating-aware noise. We show that transport-induced heating prevents logical error rates from decreasing with increasing code distance under the evaluated conditions, and that indirectly cooling the ion pairs involved in two-qubit gates, by merging them with precooled coolant ions immediately before each gate, restores this decrease. By sweeping the duration and post-cooling mean phonon number of an abstract cooling instruction, we characterize their trade-off and identify the region in which logical-error scaling is maintained.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.30676v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=THeatA%3A%20Transport-%20and%20Heating-aware%20QEC%20simulation%20with%20Cooling%20Strategies%20for%20QCCD%20Trapped-Ion%20Systems&url=https://quantumcrier.com/posts/19fe7ce2.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/19fe7ce2.html&title=THeatA%3A%20Transport-%20and%20Heating-aware%20QEC%20simulation%20with%20Cooling%20Strategies%20for%20QCCD%20Trapped-Ion%20Systems" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
