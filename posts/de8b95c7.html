@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IonQ | IonQ Superion 256 to Power NVIDIA Quantum Research Center | Quantum Crier</title>
-    <meta name="description" content="IonQ announces its Superion 256 quantum processor will be the first deployed at NVIDIA’s NVAQC to advance hybrid AI and quantum supercomputing.">
+    <title>Quantum optimization beyond qubit count by low-energy subspace sampling | Quantum Crier</title>
+    <meta name="description" content="On current digital quantum devices, standard one-qubit-per-variable encodings restrict quantum optimization algorithms to problem sizes where classical solvers ">
     <meta name="author" content="Mark Eatherly">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="IonQ | IonQ Superion 256 to Power NVIDIA Quantum Research Center">
+    <meta property="og:title" content="Quantum optimization beyond qubit count by low-energy subspace sampling">
     <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quantumcrier.com">
@@ -26,10 +26,6 @@
 
     
 
-<meta property="og:image" content="https://cdn.prod.website-files.com/68836cf9cff21bf9efa61419/693ac0977541e2da439e7454_OG%20Image%20(5).jpg">
-<meta name="twitter:image" content="https://cdn.prod.website-files.com/68836cf9cff21bf9efa61419/693ac0977541e2da439e7454_OG%20Image%20(5).jpg">
-<meta name="twitter:card" content="summary_large_image">
-
 
 </head>
 <body>
@@ -38,7 +34,7 @@
             <div class="header-content">
                 <a href="/" class="site-logo">
                     <span class="logo-text">Quantum Crier</span>
-                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 24, 2026</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 25, 2026</span>
                 </a>
                 <nav class="main-nav">
                     <a href="/">Home</a>
@@ -62,22 +58,17 @@
             
             <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
             
-            <a href="/topics/research.html" class="topic-tag topic-research">research</a>
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
             
         </div>
-        <h1>IonQ | IonQ Superion 256 to Power NVIDIA Quantum Research Center</h1>
+        <h1>Quantum optimization beyond qubit count by low-energy subspace sampling</h1>
         <div class="post-meta-full">
-            <span class="source">Source: <strong>IonQ Blog</strong></span>
-            <span class="date">September 25, 2026</span>
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 24, 2026</span>
             <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
         </div>
     </header>
 
-    
-    <div class="post-hero-image">
-        <img src="https://cdn.prod.website-files.com/68836cf9cff21bf9efa61419/693ac0977541e2da439e7454_OG%20Image%20(5).jpg" alt="IonQ | IonQ Superion 256 to Power NVIDIA Quantum Research Center" loading="eager"
-             onerror="this.parentElement.style.display='none'">
-    </div>
     
 
     <div class="post-body">
@@ -85,19 +76,19 @@
             <h2>Curator's Take</h2>
             <p class="ai-kicker">AI Commentary</p>
             <blockquote class="commentary">
-                This article marks the first time IonQ’s Superion 256 trapped‑ion processor will be installed in a dedicated research facility, giving NVIDIA’s Quantum Research Center a high‑fidelity platform to explore hybrid AI–quantum workflows at scale. By pairing a large, all‑optical ion trap with NVIDIA’s GPU‑accelerated software stack, the collaboration could accelerate development of quantum‑enhanced machine‑learning primitives that have so far been limited to small testbeds. While the deployment showcases a significant step toward practical quantum acceleration, the system will still need improvements in error rates and fault‑tolerant protocols before it can tackle production‑grade AI tasks.
+                This article introduces Quantum Subspace Sampling Descent (QSSD), a heuristic that breaks the traditional one‑qubit‑per‑variable bottleneck by using a fixed‑angle QAOA circuit as a low‑energy sampler, allowing problems with thousands of variables to be tackled on devices with only a few hundred qubits. By demonstrating approximation ratios above 0.95 on a 10 000‑variable Max‑cut instance with just 100 circuit runs, the work shows that quantum optimization can begin to scale beyond current hardware limits and may eventually compete with classical heuristics as gate fidelity improves. While QSSD still trails the best classical solvers in raw performance, its slower but problem‑size‑independent runtime points to a promising niche for near‑term quantum processors on large combinatorial tasks.
             </blockquote>
             <p class="curator-attr">&mdash; Mark Eatherly</p>
         </section>
 
         <section class="article-summary">
             <h2>Summary</h2>
-            <p>IonQ announces its Superion 256 quantum processor will be the first deployed at NVIDIA’s NVAQC to advance hybrid AI and quantum supercomputing.</p>
+            <p>On current digital quantum devices, standard one-qubit-per-variable encodings restrict quantum optimization algorithms to problem sizes where classical solvers typically excel. To avoid this constraint, we introduce Quantum Subspace Sampling Descent (QSSD), an iterative heuristic that decouples the number of problem variables from qubit count, while preserving knowledge of the problem&#39;s global structure. QSSD drives the energy descent using a fixed-angle Quantum Approximate Optimization Algorithm as a low-energy sampler. As the angles are precomputed, each iteration requires just a single circuit execution. We test QSSD on IBM Heron and Nighthawk quantum devices with up to 152 qubits on instances of higher-order unconstrained binary optimization and Max-cut problems. On the largest instance with 10000 variables, QSSD reaches an approximation ratio above 0.95 with 100 circuit executions. We provide both exact and heuristic classical baselines, namely greedy, branch-and-bound solver, and simulated annealing. While our approach still does not match the performance of the best classical baseline, it shows promise in a slower runtime scaling with problem size given a fixed budget. This suggests a regime of large problems where subspace sampling on quantum devices could become competitive, as we also demonstrate how improvements in hardware will lead to better algorithm performance. QSSD is thus a practical heuristic for combinatorial optimization problems that helps bring quantum optimization a step closer to utility.</p>
         </section>
 
         <div class="read-original">
-            <a href="https://ionq.com/news/ionq-to-advance-quantum-supercomputing-by-bringing-first-qpu-to-nvidia-accelerated-quantum-research-center" class="btn btn-primary" target="_blank" rel="noopener">
-                Read Full Article at IonQ Blog &rarr;
+            <a href="https://arxiv.org/abs/2611.32560v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
             </a>
         </div>
     </div>
@@ -106,8 +97,8 @@
         <div class="share-section">
             <h3>Share This Article</h3>
             <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=IonQ%20%7C%20IonQ%20Superion%20256%20to%20Power%20NVIDIA%20Quantum%20Research%20Center&url=https://quantumcrier.com/posts/39db86ad.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/39db86ad.html&title=IonQ%20%7C%20IonQ%20Superion%20256%20to%20Power%20NVIDIA%20Quantum%20Research%20Center" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?text=Quantum%20optimization%20beyond%20qubit%20count%20by%20low-energy%20subspace%20sampling&url=https://quantumcrier.com/posts/de8b95c7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/de8b95c7.html&title=Quantum%20optimization%20beyond%20qubit%20count%20by%20low-energy%20subspace%20sampling" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
             </div>
         </div>
         <div class="nav-links">
