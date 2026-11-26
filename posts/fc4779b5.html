@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry, masking and selection in Differential Evolution and SOMA on quantum state manifolds | Quantum Crier</title>
+    <meta name="description" content="Differential Evolution (DE) and the Self-Organizing Migrating Algorithm (SOMA) generate new candidates through vector arithmetic: they subtract population membe">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Geometry, masking and selection in Differential Evolution and SOMA on quantum state manifolds">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 26, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/algorithms.html" class="topic-tag topic-algorithms">algorithms</a>
+            
+        </div>
+        <h1>Geometry, masking and selection in Differential Evolution and SOMA on quantum state manifolds</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 25, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article shows that tailoring classic evolutionary heuristics to the true geometry of quantum‑state spaces can turn modest optimisers into high‑performing workhorses, with full‑crossover DE jumping from sub‑50 % success on periodic problems to a perfect record and boosting variational eigensolver accuracy by 90 % for only a few percent extra runtime. By replacing Euclidean subtraction with manifold‑aware angular or geodesic differences, the authors demonstrate a concrete pathway to more reliable hybrid quantum–classical optimisation—a hot topic as VQE and QAOA scale up. The results suggest that geometry‑consistent operators may become a standard upgrade for evolutionary algorithms, though their overhead and scalability beyond six qubits still need systematic testing.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Differential Evolution (DE) and the Self-Organizing Migrating Algorithm (SOMA) generate new candidates through vector arithmetic: they subtract population members, scale the difference, and mask coordinates. Many practical search spaces are not vector spaces, however. Rotation angles are periodic, normalized states lie on spheres and projective spaces, and circuit parameters are coupled through the quantum states they produce. We present a systematic study of how such geometry affects the core operations of DE and SOMA. Keeping the operators and selection rules fixed, we replace only their geometric primitives and separate the effects of difference construction, masking, and selection in a large paired numerical study covering textbook manifolds and variational quantum problems. Geometry-consistent differences make full-crossover (CR = 1) DE significantly better on 16 of 31 non-Euclidean configurations, with no significant deterioration, and the advantage persists when the measured computational cost of each variant is taken into account. The effect is largest where ordinary subtraction misrepresents distances between candidates: success on periodic synchronization rises from 44% to 100%, and on a positive-definite matrix problem from 1% to 99%. On six- qubit variational eigensolvers, shortest-path angular differences reduce the mean final loss by 90% for about 3% extra runtime. The improvements come with two contrasting diversity patterns, more effective population contraction or preserved population diversity, so higher acceptance rates do not necessarily indicate better search. Crossover masks interact with geometry: they can favor cheaper retractions and can increase the distance moved in quantum-state space when circuit parameters are coupled. These results give practical rules for designing population-based optimizers on non-Euclidean and quantum search spaces.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.34217v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Geometry%2C%20masking%20and%20selection%20in%20Differential%20Evolution%20and%20SOMA%20on%20quantum%20state%20manifolds&url=https://quantumcrier.com/posts/fc4779b5.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/fc4779b5.html&title=Geometry%2C%20masking%20and%20selection%20in%20Differential%20Evolution%20and%20SOMA%20on%20quantum%20state%20manifolds" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

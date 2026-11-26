@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Quantum Hardware Benchmarks of Flat Non-Clifford Hypergraph States, Antipodal Obstructions, and Nonlocal Games on IBM Heron r2 | Quantum Crier</title>
+    <meta name="description" content="Real-hardware demonstrations of quantum contextuality have reached high precision on superconducting processors, exemplified by Google Quantum AI&#39;s Mermin-Peres">
+    <meta name="author" content="Mark Eatherly">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Experimental Quantum Hardware Benchmarks of Flat Non-Clifford Hypergraph States, Antipodal Obstructions, and Nonlocal Games on IBM Heron r2">
+    <meta property="og:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumcrier.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Crier">
+    <meta name="twitter:description" content="Daily curated quantum computing news and insights by Mark Eatherly">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Quantum Crier RSS Feed" href="/feed.xml">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    
+
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="site-logo">
+                    <span class="logo-text">Quantum Crier</span>
+                    <span class="masthead-dateline">Daily curated quantum computing news and insights by Mark Eatherly &middot; November 26, 2026</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/topics/">Topics</a>
+                    <a href="/archive/">Archive</a>
+                    <a href="/search.html">Search</a>
+                    <a href="/about.html">About</a>
+                    <a href="/feed.xml" class="rss-link" title="RSS Feed">RSS</a>
+                    <a href="https://subvurs.github.io/qrater" title="Interactive Dashboard">Qrater</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+<article class="post-full">
+    <header class="post-header">
+        <div class="post-topics">
+            
+            <a href="/topics/hardware.html" class="topic-tag topic-hardware">hardware</a>
+            
+            <a href="/topics/sensing.html" class="topic-tag topic-sensing">sensing</a>
+            
+        </div>
+        <h1>Experimental Quantum Hardware Benchmarks of Flat Non-Clifford Hypergraph States, Antipodal Obstructions, and Nonlocal Games on IBM Heron r2</h1>
+        <div class="post-meta-full">
+            <span class="source">Source: <strong>arXiv Quantum Physics</strong></span>
+            <span class="date">November 25, 2026</span>
+            <span class="curator">Curated by <strong>Mark Eatherly</strong></span>
+        </div>
+    </header>
+
+    
+
+    <div class="post-body">
+        <section class="curator-take">
+            <h2>Curator's Take</h2>
+            <p class="ai-kicker">AI Commentary</p>
+            <blockquote class="commentary">
+                This article reports the first large‑scale hardware benchmarks of genuinely non‑Clifford hypergraph states on IBM’s 156‑qubit Heron r2 processors, demonstrating contextuality and coherence far beyond random baselines for up to 16 entangled qubits. By extending the Clifford‑only demonstrations such as Google’s magic‑square experiment, it provides a concrete proof‑of‑principle that near‑term devices can generate and verify the algebraic invariants needed for fault‑tolerant algorithms that rely on non‑Clifford resources. The results also highlight how calibration‑aware layout and barrier‑protected Loschmidt echoes can push win rates close to 97 %, though they still lag behind Willow’s record, underscoring both progress and the remaining scaling challenges.
+            </blockquote>
+            <p class="curator-attr">&mdash; Mark Eatherly</p>
+        </section>
+
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <p>Real-hardware demonstrations of quantum contextuality have reached high precision on superconducting processors, exemplified by Google Quantum AI&#39;s Mermin-Peres magic square and stabilizer games on Willow (Science, 2026). Extending such benchmarks beyond the Clifford regime requires non-Clifford hypergraph states |ψ_f&gt; = 2^{-n/2} \sum_x (-1)^{f(x)} |x&gt; governed by discrete algebraic invariants. Building on our Lean 4-verified framework of Modular Walsh Rigidity and Antipodal Obstructions, we present an experimental study on two 156-qubit IBM Heron r2 processors (ibm_fez, ibm_kingston) across 3 to 50 qubits and 11 auditable jobs (2.13 RUs total). First, we verify antipodal obstructions and mod-17 Walsh rigidity for degree-3/4 states (n=6,8,10), observing 5.4x-11.6x X-basis flatness separation between bent states, obstructed controls, and a degree-4 mod-3 fooler (W = +-1 mod 3), plus n=7 nonlinearity extraction (54.83 vs. 56.00). Second, barrier-protected Loschmidt echoes confirm non-Clifford coherence up to genuinely entangled 16-qubit degree-4 states (1,488x above random on ibm_fez; 17,296x on ibm_kingston for 2x8q, a 2.87x cross-chip gain) and locate a Heavy-Hex depth-513 coherence cliff. Third, calibration-aware layout raises the raw Mermin-Peres win rate on ibm_fez to 96.85 +- 0.09% raw (+87.4 sigma above 88.89% classical; 1.45 pp below Willow&#39;s 98.30% raw), while a tensored SPAM diagnostic reaches 98.35%. Uniformly random even-weight GHZ parity games beat the classical bound up to n=30 (89.44% [+79.4 sigma] at 6q to 59.46 +- 0.54% [+17.4 sigma] at 30q). Finally, 3-qubit CCZ rotated Mermin-3 (83.95 +- 0.29%, +31.2 sigma) and Hardy/Guhne-Cabello (77.15 +- 0.33%, +6.5 sigma) games strictly violate the exhaustive 75.00% LHV ceiling, and degree-3/4 antipodal parity witnesses achieve up to +45.87 pp (n=12) and +35.79 pp joint advantage on connected 16-qubit degree-4 states.</p>
+        </section>
+
+        <div class="read-original">
+            <a href="https://arxiv.org/abs/2611.34683v1" class="btn btn-primary" target="_blank" rel="noopener">
+                Read Full Article at arXiv Quantum Physics &rarr;
+            </a>
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Experimental%20Quantum%20Hardware%20Benchmarks%20of%20Flat%20Non-Clifford%20Hypergraph%20States%2C%20Antipodal%20Obstructions%2C%20and%20Nonlocal%20Games%20on%20IBM%20Heron%20r2&url=https://quantumcrier.com/posts/6b51c7b7.html" target="_blank" rel="noopener" class="share-btn twitter">Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://quantumcrier.com/posts/6b51c7b7.html&title=Experimental%20Quantum%20Hardware%20Benchmarks%20of%20Flat%20Non-Clifford%20Hypergraph%20States%2C%20Antipodal%20Obstructions%2C%20and%20Nonlocal%20Games%20on%20IBM%20Heron%20r2" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </footer>
+</article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Curated by <strong>Mark Eatherly</strong></p>
+                    <p class="footer-tagline">Daily curated quantum computing news and insights by Mark Eatherly</p>
+                </div>
+                <div class="footer-links">
+                    
+                    <div class="social-links">
+                        
+                        <a href="https://bsky.app/profile/markeatherly.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                        
+                    </div>
+                    
+                    <p class="copyright">&copy; 2026 <a href="https://markeatherly.com">Mark Eatherly</a>. All rights reserved.</p>
+                    <p class="footer-powered">A <a href="https://subvurs.com">Subvurs</a> Project &mdash; <a href="https://qrater.org">Qrater</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Broken images collapse their reserved photo space entirely
+        // (2026-07-17): hide the container and fix layout classes so the
+        // text column reflows to full width.
+        document.querySelectorAll('.hero-image img, .featured-image img, .compact-thumbnail img, .post-hero-image img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.parentElement.style.display = 'none';
+                var hero = this.closest('.hero-article');
+                if (hero) { hero.classList.remove('has-image'); }
+                var card = this.closest('.featured-card');
+                if (card) { card.classList.add('no-image'); }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
